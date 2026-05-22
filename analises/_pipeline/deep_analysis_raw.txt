@@ -1,0 +1,695 @@
+
+======================================================================
+CATEGORIA: PRECO  |  20 leads
+======================================================================
+
+  [1] contato.carlospinto@gmail.com | Restaurante | triagem | msgs=468
+  >> tipo=pergunta_repetida | turno=31
+  Lead:  Atualmente tenho o anota ai
+  Lead:  Fiquei em dúvida sobre sua solicitação .
+  Lead:  Fiquei em dúvida sobre sua solicitação .
+  Lead:  Quero pagar menos mensalidade
+  Clara: Compreendo, Carlos.
+  Clara: Então hoje você usa o Anota Aí e está buscando reduzir a mensalidade.
+  Clara: Seu atendimento é focado em delivery, salão ou os dois?
+
+
+  [2] hrauzeburguer@gmail.com | Hamburgueria | apresentacao | msgs=286
+  >> tipo=pergunta_repetida | turno=108
+  Lead:  Estou aqui
+  Lead:  Estou lendo
+  Lead:  Não somente eu
+  Lead:  Além deste valor teria Augum outro valor para pagar ou taxas que serão cobradas
+  Lead:  ?
+  Clara: Entendi, Bruno!
+  Clara: Para aproveitarmos ao máximo a reunião com o especialista, precisamos que todos que decidem estejam presentes.
+
+  >> tipo=pergunta_repetida | turno=121
+  Clara: Perfeito, Bruno! Autoridade confirmada — só você decide. ✅
+  Clara: Se ao final da reunião com o especialista você estiver convencido que conseguimos resolver sua necessidade, você está disposto a iniciar a implementação de imediato?
+  Lead:  Já falei que sou só eu
+  Lead:  Si for bem claro todas as vantagens e valores o benefício for melhor
+  Clara: Desculpe a repetição, Bruno! Já anotei aqui — só você decide. ✅
+  Lead:  ​Olá novamente! Para te ajudar melhor, você gostaria de saber mais sobre o nosso cardápio, como os nossos hambúrgueres, ou prefere saber sobre nossos horários de funcionamento aqui no Hrouze Burguer?
+  Clara: Então me responde: se ao final da reunião com o especialista você estiver convencido que conseguimos resolver sua necessidade, você está disposto a iniciar a implementação de imediato?
+
+
+  [3] dcs_sp@hotmail.com | Marmitaria | qualificacao | msgs=192
+  >> tipo=pergunta_repetida | turno=90
+  Clara: Sendo bem transparente com você: neste momento não temos um plano oficial mais abaixo disso só “pro começo”.
+  Clara: Como você comentou que ainda vai estudar como investir particular no projeto, o melhor é você organizar esse orçamento com calma e, quando tiver uma margem próxima desse valor mensal, me chamar aqui que eu retomo a partir do combo mais enxuto possível pra sua marmitaria.
+  Clara: Posso deixar combinado assim com você?
+  Lead:  Então mas 179 e bem diferente do que 524
+  Lead:  Entende ?
+  Lead:  500 pesa ...menos que isso já e viável da pra atentar fazer
+  Lead:  Tem algum tipo de fidelidade ? Como funciona esse contrato ?
+
+  >> tipo=pergunta_repetida | turno=97
+  Clara: Faz sentido o que você falou, a diferença é grande mesmo.
+  Clara: A faixa existe porque o plano perto de R$179,99 é mais básico e o de R$524,94 é o mais completo, com todos os módulos.
+  Clara: Sobre contrato/fidelidade: vou só confirmar aqui os detalhes certinhos e já te explico, tudo bem?
+  Lead:  Me diga o que vem nesse pano de 179 e o que teria nesse completo de 524
+  Lead:  Pra que eu possa estudar a viabilidade
+  Clara: Faz todo sentido você querer comparar, Dayene.
+  Clara: No resumo, hoje funciona assim (valores aproximados que você já viu):
+
+
+  [4] wesleytecbh@hotmail.com | Hamburgueria | qualificacao | msgs=127
+  >> tipo=pergunta_repetida | turno=41
+  Clara: Mesmo sem motoboy, o Plano Delivery pode te atender, porque ele tem módulo de entregadores e também integração com iFood/Entrega Fácil iFood.
+  Clara: Isso permite usar entregadores do iFood.
+  Clara: Isso ajudaria no seu início?
+  Lead:  Esse valor seria mês ou anual
+  Lead:  Ótimo
+  Lead:  Ficou feliz
+  Clara: Perfeito, Wesley. Esse valor de R$179,99 é mensal no plano anual.
+
+  >> tipo=pergunta_repetida | turno=117
+  Clara: Isso faz mais sentido pra você?
+  Clara: Perfeito, Wesley.
+  Clara: Então quero validar só um ponto com você: o investimento de R$179,99/mês no plano anual cabe no seu orçamento hoje?
+  Lead:  Como já lhe disse esse valor tá muito pra mim que tô começando né vc não acha me ajuda aí com um valor bom
+  Clara: Compreendo, Wesley.
+  Clara: Como hoje o valor ainda fica pesado pra você, o mais correto é não te pressionar agora.
+  Clara: Vou encerrar por aqui, mas fico à disposição:
+
+
+  [5] christianirocha44@gmail.com | Hamburgueria | qualificacao | msgs=111
+  >> tipo=pergunta_repetida | turno=83
+  Clara: Perfeito, testar já na abertura é uma ótima ideia, Christiani.
+  Clara: Esse teste começa com uma conversa rápida com o especialista, que te mostra o sistema funcionando e já pensa o melhor formato pra sua hamburgueria.
+  Clara: Sabendo que o plano parte de R$179,99/mês e sem fidelidade, esse valor ainda fica muito pesado pra você agora ou dá pra considerar?
+  Lead:  esse plano 179,99 o que ele tem e me diz a diferença dele para os utros
+  Clara: Perfeito, Christiani, vamos por partes.
+  Clara: O plano a partir de R$179,99 é o mais básico da Cardápio Web.
+  Clara: Ele inclui as funções principais de cardápio digital e automação no WhatsApp, mas sem todos os módulos avançados.
+
+  >> tipo=pergunta_repetida | turno=90
+  Clara: Nos planos mais completos (valores maiores), normalmente entram recursos extras, como mais automações, relatórios avançados e módulos adicionais.
+  Clara: Vou confirmar certinho quais funções exatamente entram no de R$179,99 e o que os outros têm a mais, pra te explicar de forma bem clara, tudo bem pra você?
+  Clara: Christiani, passando rapidinho pra te ajudar: você quer seguir vendo o plano básico ou prefere que eu te explique melhor o que precisa pra sua hamburgueria?
+  Lead:  Esse valor é mensal? Tem taxa de instalação?”
+  Clara: Perfeito, Christiani, boa pergunta.
+  Clara: Sim, esse valor de R$179,99 é *por mês*.
+  Clara: Sobre *taxa de instalação/ativação*, vou só confirmar certinho nas condições atuais pra te responder direitinho, tudo bem pra você?
+
+
+  [6] denicetata@icloud.com | Lanchonete | qualificacao | msgs=110
+  >> tipo=confusao_explicita | turno=45
+  Clara: Perfeito. Vou te explicar de forma simples: no Plano Delivery você recebe pedidos por um cardápio digital, pode cobrar por pix/cartão, organizar entregas e automatizar mensagens no WhatsApp.
+  Clara: Também tem caixa, balcão, clientes e fidelidade.
+  Clara: Ficou mais claro?
+  Lead:  Isso eu entendi, o que eu não entendi é 179,90, 180 no caso, barra mês, no anual com módulos extra, 505,24, é isso que eu não entendi.
+  Clara: Perfeito. Funciona assim:
+  Clara: *R$179,99 por mês* é o valor do *Plano Delivery no contrato anual*.
+  Clara: Ou seja, você paga esse valor mensalmente e mantém esse plano por 12 meses.
+
+
+  [7] osmanielfernando@gmail.com | Marmitaria | triagem | msgs=88
+  >> tipo=pergunta_repetida | turno=27
+  Clara: O Plano Delivery resolve isso: cardápio digital próprio, chatbot que atende no WhatsApp automaticamente, disparo de mensagens pra sua base e programa de fidelidade — tudo pra aumentar suas vendas.
+  Clara: Faz sentido pra você?
+  Lead:  Faz
+  Lead:  Quais valores
+  Lead:  Você tem aí
+  Clara: Osmaniel, o próximo passo é uma videochamada com um dos nossos especialistas.
+  Clara: O Plano Delivery começa em R$179,99/mês (anual) e pode chegar até R$524,94 com todos os módulos extras.
+
+  >> tipo=pergunta_repetida | turno=32
+  Clara: Osmaniel, o próximo passo é uma videochamada com um dos nossos especialistas.
+  Clara: O Plano Delivery começa em R$179,99/mês (anual) e pode chegar até R$524,94 com todos os módulos extras.
+  Clara: Esse valor cabe no seu orçamento?
+  Lead:  porque (anual)?
+  Lead:  179,99/ mês
+  Clara: Existe sim modalidade mensal, por R$209,99/mês — o anual sai mais em conta (R$179,99/mês) por isso priorizei ele.
+  Clara: Mas você escolhe o que encaixa melhor!
+
+
+  [8] mariana.colamonico@gmail.com | Outro | qualificacao | msgs=86
+  >> tipo=pergunta_repetida | turno=33
+  Clara: Perfeito. No Plano Delivery, na prática funciona assim:
+  Clara: • *Entregadores*: ajuda no controle e distribuição das entregas.
+  Clara: Ele foi pensado para delivery, retirada e pedidos rápidos no local. Quer que eu te detalhe agora como isso ficaria no seu dia a dia?
+  Lead:  Eu queria que você me detalhasse, por favor, como todo o plano funciona no dia a dia, com todas as funcionalidades, como é que eu uso ele num dia de trabalho normal, sozinha, e depois num fechamento mensal. Em todas as áreas que tem atuação do Cardápio Web no plano delivery, como seria?
+  Clara: Compreendo.
+  Clara: No dia a dia, você recebe pedidos pelo cardápio digital/WhatsApp, cobra por pix ou cartão, organiza clientes, caixa e entregas em um só lugar.
+  Clara: No mês, acompanha vendas e usa fidelidade/cupons/disparos no WhatsApp.
+
+
+  [9] irisdepontesandradeiris@gmail.com | Lanchonete | triagem | msgs=84
+  >> tipo=pergunta_repetida | turno=40
+  Clara: O Plano Delivery começa em R$179,99/mês (anual) e pode chegar a R$524,94 com módulos extras.
+  Clara: Esse valor cabe no seu orçamento?
+  Clara: O próximo passo é uma videochamada com um dos nossos especialistas para apresentar tudo ao vivo. 😊
+  Lead:  179.99 por mês? E 524.94 ,o que são esses módulos extras?
+  Clara: O Plano Delivery começa em *R$179,99/mês* (plano anual) e pode chegar a *R$524,94* com todos os módulos extras incluídos.
+  Clara: Esse valor cabe no seu orçamento?
+  Lead:  Os 179.99 sim, isso inclui tudo o que VC me falou?
+
+  >> tipo=pergunta_repetida | turno=43
+  Lead:  179.99 por mês? E 524.94 ,o que são esses módulos extras?
+  Clara: O Plano Delivery começa em *R$179,99/mês* (plano anual) e pode chegar a *R$524,94* com todos os módulos extras incluídos.
+  Clara: Esse valor cabe no seu orçamento?
+  Lead:  Os 179.99 sim, isso inclui tudo o que VC me falou?
+  Clara: Os módulos extras são funcionalidades opcionais que você pode adicionar conforme a necessidade, como:
+  Clara: • 📊 Gestão Financeira — R$69,99
+  Clara: • 🧾 Fiscal (notas fiscais) — R$69,99
+
+
+  [10] marielemaia0405@gmail.com | Hamburgueria | qualificacao | msgs=80
+  >> tipo=pergunta_repetida | turno=46
+  Clara: Se preferir sem fidelidade, tem o mensal por R$209,99/mês. 😊
+  Clara: Alguma dessas opções cabe no seu orçamento?
+  Lead:  Então só pago uma vez no ano né
+  Lead:  O anual
+  Clara: Isso mesmo, Mariele!
+  Clara: No anual, você paga o valor total de uma vez — ou parcela em até 12x no cartão sem juros.
+  Clara: Esse valor cabe no seu orçamento? 😊
+
+  >> tipo=confusao_explicita | turno=57
+  Clara: Ótimo, então a decisão é toda sua! 😊
+  Clara: Se ao final da reunião com o especialista você estiver convencida que conseguimos resolver sua necessidade,
+  Clara: você está disposta a iniciar a implementação de imediato?
+  Lead:  Me explica o plano de 524,94 pfv, é anual
+  Clara: Sim, Mariele! É o Plano Delivery anual (R$179,99) com todos os módulos extras incluídos:
+  Clara: ➕ Gestão Financeira
+  Clara: ➕ Fiscal (emissão de notas)
+
+
+  [11] senhorbatata1989@gmail.com | Outro | triagem | msgs=76
+  >> tipo=pergunta_repetida | turno=59
+  Clara: Faz sentido, Normand.
+  Clara: Nesse caso, o Plano Delivery pode te ajudar justamente a levar o tráfego para um canal seu: com cardápio digital próprio, pedido sem app, pagamento por Pix/cartão e integração com Meta Ads e Google Ads.
+  Clara: A parte que você quer entender melhor é a integração com iFood?
+  Lead:  É que vou colocar os preços pela loja mais baratos então se puxar o cardápio do Ifood teria que reajustar os valores no cardápio Web certo?
+  Lead:  Gostei
+  Lead:  É mais amplo que o insta delivery
+  Lead:  Sim
+
+
+  [12] fabg.gon@gmail.com | Outro | triagem | msgs=66
+  >> tipo=pergunta_repetida | turno=25
+  Clara: Mas preciso ser honesta: o detalhe específico sobre integração com entregadores terceiros independentes é algo que nosso especialista vai conseguir confirmar com muito mais precisão do que eu aqui no chat.
+  Clara: Valeria uma reunião rápida só pra ele te mostrar como funciona na prática e confirmar se resolve exatamente o que você precisa — sem enrolação?
+  Lead:  Sim, eu até conversei com a minha esposa sobre isso, né? Quando eu vi a propaganda ali de vocês, o anúncio, eu falei assim, eu vou tentar entrar em contato com eles, para eles me explicar como é que funciona, para a gente ter uma ideia, se realmente atender a gente, a gente já muda, entendeu? Vamos ver, eu preciso dessa explicação. Num momento eu já estou em outra correria aqui, que além de comprar, de ter que produzir, vender, trazer as coisas tudo e entregar, eu estou indo agora para pegar ...
+  Lead:  E todo mundo, muita gente tá pedindo pra gente colocar tipo porções, dois salgados, né? Tipo assim, a gente tem empada pra vender, tem empadãozinho pequeno, só que não dá de colocar. Porque daí começa a sair, tipo, um lado e pro outro, pro outro e pro outro, e eu não consigo atender. Aí vai queimar a gente ainda, entendeu? E... E a única coisa que a gente tentou fazer foi esse... Esse sob demanda do iFood, só que daí ele assume o controle do pedido nosso. Que já passou pelo Insta Delivery, no...
+  Clara: Fábio, o Plano Delivery já vem com o Módulo de Entregadores incluso — exatamente o que você precisa pra gerenciar quem faz suas entregas, sem depender do iFood pra isso.
+  Clara: O especialista vai te mostrar como funciona na prática.
+  Clara: Esse plano custa R$179,99/mês no anual.
+
+  >> tipo=pergunta_repetida | turno=41
+  Lead:  Quanto ao pagamento online
+  Lead:  Vcs tem integração com o asaas?
+  Lead:  Porque agente usa o asaas e mercado pago
+  Lead:  Pra receber os valores online pelo app
+  Lead:  MBC 뉴스 이덕영입니다.
+  Clara: Show, Fábio! O plano Delivery já inclui pagamento online com cartão e PIX.
+  Clara: Sobre compatibilidade específica com Asaas e Mercado Pago, é exatamente esse tipo de detalhe técnico que o especialista confirma na reunião — pra você não tomar decisão sem saber 100%.
+
+
+  ... (limitado a 12 cases por categoria)
+
+  Total de cases únicos encontrados: 12
+
+======================================================================
+CATEGORIA: TIMING_LONGO  |  25 leads
+======================================================================
+
+  [1] natygonzaga99@gmail.com | Confeitaria | qualificacao | msgs=94
+  >> tipo=timing_longo | turno=76
+  Clara: Diante disso, qual é a sua previsão pra colocar o sistema em prática?
+  Lead:  Os motoqueiro de delivery próprio
+  Lead:  Em breve
+  Clara: Exatamente! O módulo é feito para gerenciar os seus próprios motoboys — cadastra cada um, vê quem tá disponível e despacha o pedido em tempo real. 🛵
+  Clara: Esse "em breve" que você mencionou: seria implementar nos próximos 30 dias?
+  Lead:  Sim
+  Clara: Natielly, antes de te passar os horários disponíveis, preciso ser honesta: nossa agenda de especialistas é muito concorrida e os horários disponíveis são disputados.
+
+
+  [2] osmanielfernando@gmail.com | Marmitaria | triagem | msgs=88
+  >> tipo=timing_longo | turno=67
+  Clara: Mas retomando: posso contar com o seu compromisso de comparecer à reunião com o especialista?
+  Lead:  marcaremos
+  Lead:  em breve
+  Clara: Entendo, Osmaniel! Mas os horários com nossos especialistas são bem disputados e podem fechar antes.
+  Clara: Por isso preciso de uma confirmação sua agora: posso reservar um horário pra você com a certeza de que vai comparecer?
+  Lead:  então pode deixar fechar
+  Lead:  depois entro em contato
+
+  >> tipo=timing_longo | turno=74
+  Lead:  necessário
+  Lead:  tudo bem?
+  Lead:  em breve retorno o contato
+  Lead:  ainda nao tenho a quantidade de pedidos
+  Clara: Tudo bem, Osmaniel! Sem pressão.
+  Clara: Fico à disposição para quando você estiver pronto.
+  Clara: É só me chamar aqui que a gente retoma.
+
+
+  [3] mariana.colamonico@gmail.com | Outro | qualificacao | msgs=86
+  >> tipo=timing_longo | turno=17
+  Clara: Então a operação vai ser só delivery, saindo da sua casa.
+  Clara: Hoje você já usa alguma plataforma de cardápio digital ou ainda está organizando tudo de forma mais manual, tipo WhatsApp e anotações?
+  Lead:  Ainda não abri o negócio, estou estruturando
+  Lead:  Tudo feito em Excel, bloco de notas e chat gpt
+  Clara: Faz sentido, Mariana.
+  Clara: Como você vai operar sozinha e no delivery, o Plano Delivery é o mais indicado.
+  Clara: Ele ajuda a centralizar pedidos, automatizar o WhatsApp, organizar entregas e receber pagamento online.
+
+
+  [4] ribeirotomaz47@gmail.com | Restaurante | qualificacao | msgs=80
+  >> tipo=timing_longo | turno=7
+  Clara: Faz sentido!
+  Clara: E tem previsão de quando retoma o Ares?
+  Lead:  Eu tô querendo no mês que vem agora
+  Clara: Show, Tomaz! Maio já tá logo aí — ótimo momento pra deixar tudo pronto antes de abrir as portas. 😄
+  Clara: Pra te ajudar da melhor forma, me conta: como você ficou sabendo da Cardápio Web?
+  Lead:  Na internet
+  Clara: Entendido!
+
+
+  [5] marcinhamgjf@gmail.com | Marmitaria | qualificacao | msgs=64
+  >> tipo=timing_longo | turno=43
+  Clara: Antes de reservar um pra você, preciso que você me confirme que vai realmente comparecer na reunião.
+  Clara: Posso contar com esse compromisso?
+  Lead:  Ainda não, volto a falar com vcs em breve.
+  Clara: Sem problemas, Márcia!
+  Clara: Só quero entender melhor pra te ajudar: tem alguma dúvida específica que ainda ficou em aberto antes de você confirmar?
+  Lead:  Não sei se vou conseguir lidar com isso, não tenho prática na internet
+  Clara: Entendo essa preocupação, Márcia! Mas a boa notícia é que você não precisa fazer nada técnico — nossa equipe monta todo o seu cardápio do zero, de graça.
+
+
+  [6] Erika_pluma@hotmail.com | Açaiteria | triagem | msgs=64
+  >> tipo=timing_longo | turno=9
+  Lead:  Vi um anuncio no Instagram
+  Clara: Perfeito, Erica.
+  Lead:  Como disse,  ainda estou organizando tudo, em breve irei inaugurar.
+  Clara: Vi que você conheceu a Cardápio Web por um anúncio no Instagram e que ainda está estruturando a operação.
+  Clara: Me conta: o que motivou você a buscar uma automação agora?
+  Clara: Compreendo, Erica.
+  Clara: Então você quer já inaugurar com a operação mais organizada desde o início, certo?
+
+
+  [7] duartes.cacau@gmail.com | Confeitaria | qualificacao | msgs=63
+  >> tipo=timing_longo | turno=45
+  Clara: Faz sentido, Pedro!
+  Clara: E qual seria a sua previsão para iniciar a implementação?
+  Lead:  Mês que vem
+  Clara: Essa previsão de "mês que vem" pode entrar dentro dos próximos 30 dias.
+  Clara: Para confirmar: sua ideia é implementar ainda nos próximos 30 dias?
+  Lead:  Sim
+  Clara: Pedro, antes de te passar os horários disponíveis, preciso ser honesta: nossa agenda de especialistas é muito concorrida e os horários disponíveis são disputados.
+
+
+  [8] lucicleidelima85@gmail.com | Sushi | qualificacao | msgs=61
+  >> tipo=timing_longo | turno=11
+  Clara: Entendi, você encontrou a Cardápio Web pesquisando os sistemas que os restaurantes da sua região usam e entrou pelo link de um deles.
+  Clara: Como você está nos últimos ajustes para começar, me conta: o que motivou a buscar uma automação justamente agora?
+  Lead:  Então, eu já trabalhei, né? Só que assim, eu saí de uma cidade grande pra vir pra uma cidade interior e eu tô fazendo uma pesquisa de preço, né? De valores, de sistema. Então, assim, eu tô vendo aqui as lanchonetes com qual o sistema que eles usam pra atender os clientes. Eu vou começar com delivery, mas futuramente vou abrir ao público, né? Eu preciso capacitar um pessoal aí, uma equipe, né? Uma mão de obra pra atender o público. Pra delivery eu já tenho e tô fazendo uma pesquisa. Quero ver ...
+  Clara: Compreendo. Como você está recomeçando e buscando o menor custo mensal possível, faz todo sentido comparar bem antes de decidir.
+  Clara: Vi também que você vai começar no delivery e depois abrir ao público.
+  Clara: Hoje, para operar, você já usa algum sistema/cardápio digital ou está começando do zero?
+  Lead:  Então, como eu te falei antes, eu tinha meu cardápio digital, eu tinha um sistema que tinha o abote, que ele é um robozinho nesse sistema, que ele, quando o cliente solicita cardápio, dá boa noite, ele vai falando, respondendo ao cliente, eu já tinha com outra empresa, mas é como eu estou te falando, eu estou fazendo um novo orçamento com outras empresas para ver o que vai ser melhor para mim, mas eu já tenho experiência com sistema, com cardápio digital, só que agora eu vou ter que começar d...
+
+
+  [9] wqdesignerjp@gmail.com | Confeitaria | triagem | msgs=59
+  >> tipo=timing_longo | turno=3
+  Lead:  Estruturando
+  Lead:  Pode ser
+  Lead:  Vou abrir uma doceria , e vi que o cardápio web integra com Ifood e pode usar a entrega fácil né isso do ifood
+  Lead:  Estou implantando o cardápio para o iFood, nossa previsão seria por dia das mães, mas aí eu tô vendo ainda, certo? A gente tá organizando tudo, eu quero abrir já organizado. Eu só tenho uma dúvida, o cardápio web, se a gente conseguir vender por ele, aí tem a opção da entrega, certo? Ele vai integrar o iFood, não é isso? Essa entrega fácil. Aí lá, quando chegar esse pedido, a gente precisa digitar na entrega fácil o endereço do cliente, ou já é integrado, ele automaticamente pede essa entrega...
+  Lead:  Valores?
+  Lead:  Vai ter delivery e talvez eu coloque a opção de retirada. Vai depender da minha demanda aqui no bairro.
+  Lead:  Estou em joao pessoa , me mudei
+
+  >> tipo=timing_longo | turno=4
+  Lead:  Pode ser
+  Lead:  Vou abrir uma doceria , e vi que o cardápio web integra com Ifood e pode usar a entrega fácil né isso do ifood
+  Lead:  Estou implantando o cardápio para o iFood, nossa previsão seria por dia das mães, mas aí eu tô vendo ainda, certo? A gente tá organizando tudo, eu quero abrir já organizado. Eu só tenho uma dúvida, o cardápio web, se a gente conseguir vender por ele, aí tem a opção da entrega, certo? Ele vai integrar o iFood, não é isso? Essa entrega fácil. Aí lá, quando chegar esse pedido, a gente precisa digitar na entrega fácil o endereço do cliente, ou já é integrado, ele automaticamente pede essa entrega...
+  Lead:  Valores?
+  Lead:  Vai ter delivery e talvez eu coloque a opção de retirada. Vai depender da minha demanda aqui no bairro.
+  Lead:  Estou em joao pessoa , me mudei
+  Lead:  Sim
+
+
+  [10] carolinasantos2761@gmail.com | Hamburgueria | qualificacao | msgs=59
+  >> tipo=timing_longo | turno=51
+  Clara: Se quiser parcelar, hoje é só no cartão de crédito.
+  Lead:  Entendi
+  Lead:  Vou fazer o seguinte irei deixa para mês que vem
+  Lead:  Vou fazer esse dinheiro
+  Clara: Perfeito, Ana.
+  Clara: Faz sentido se organizar primeiro e retomar no mês que vem, sem pressão.
+  Clara: Quando fizer sentido pra você, me chama por aqui que eu continuo de onde paramos e te explico os próximos passos.
+
+
+  [11] joao.k89@hotmail.com | Pizzaria | qualificacao | msgs=57
+  >> tipo=timing_longo | turno=55
+  Clara: você está disposto a iniciar a implementação de imediato?
+  Clara: João, só retomando de forma rápida: se a reunião mostrar que conseguimos atender o que vocês precisam, você teria condição de começar a implementação de imediato?
+  Lead:  Ola, mês que vem talvez
+  Clara: Entendi! Então a previsão é para o mês que vem — isso caberia dentro dos próximos 30 dias.
+  Clara: Essa é a ideia, João?
+
+
+  [12] viniciussaudi@gmail.com | Marmitaria | triagem | msgs=57
+  >> tipo=timing_longo | turno=1
+  Clara: Oi, Audi! Aqui é a Clara da Cardápio Web. Vi que você se cadastrou pra conhecer melhor nossa plataforma e a ideia desse contato é te conhecer melhor e passar mais detalhes de como podemos te ajudar. Posso te fazer 4 perguntas rápidas 😁?
+  Lead:  Olá! Recebi sua mensagem e já estou verificando. Em breve retorno com mais informações!
+  Lead:  Já tá rodando
+  Clara: Parece que foi uma resposta automática! 😄
+  Clara: Sem pressa, pode me chamar quando tiver um minutinho livre.
+  Clara: Estarei por aqui!
+
+
+  ... (limitado a 12 cases por categoria)
+
+  Total de cases únicos encontrados: 12
+
+======================================================================
+CATEGORIA: VOU_VERIFICAR  |  20 leads
+======================================================================
+
+  [1] fernandacampos16504@gmail.com | Marmitaria | triagem | msgs=129
+  >> tipo=vou_verificar | turno=87
+  Clara: Compreendo. Pelo que encontrei, o Cardápio Web tem *pagamento online com cartão e Pix* e, no Plano Delivery, esse recurso pode ser incluído.
+  Clara: *Não achei aqui a informação das taxas/percentuais* nem a confirmação sobre usar só maquininha externa.
+  Clara: Vou verificar isso com o time, tudo bem?
+  Lead:  Blz
+  Clara: Perfeito, Fernanda.
+  Clara: Acabei de encaminhar sua dúvida sobre taxas no Pix/cartão e sobre usar maquininha externa para o nosso time te responder com mais precisão, tudo bem?
+
+
+  [2] wesleytecbh@hotmail.com | Hamburgueria | qualificacao | msgs=127
+  >> tipo=vou_verificar | turno=76
+  Lead:  Sim 99 delivery e Ifood delivery
+  Clara: Perfeito. Com iFood, sim: temos integração com iFood e Entrega Fácil iFood, então você recebe pedidos no gestor e pode usar entregadores do iFood.
+  Clara: Sobre 99 Delivery, não achei essa informação confirmada aqui. Vou verificar certinho pra não te passar algo errado.
+  Lead:  Como seria isso vc pode me explicar melhor por favor
+  Clara: Faz sentido.
+  Clara: Funciona assim: você recebe pedidos pelo seu cardápio digital, com pagamento online por Pix ou cartão.
+
+
+  [3] christianirocha44@gmail.com | Hamburgueria | qualificacao | msgs=111
+  >> tipo=vou_verificar | turno=88
+  Clara: Ele inclui as funções principais de cardápio digital e automação no WhatsApp, mas sem todos os módulos avançados.
+  Clara: Nos planos mais completos (valores maiores), normalmente entram recursos extras, como mais automações, relatórios avançados e módulos adicionais.
+  Clara: Vou confirmar certinho quais funções exatamente entram no de R$179,99 e o que os outros têm a mais, pra te explicar de forma bem clara, tudo bem pra você?
+  Clara: Christiani, passando rapidinho pra te ajudar: você quer seguir vendo o plano básico ou prefere que eu te explique melhor o que precisa pra sua hamburgueria?
+  Lead:  Esse valor é mensal? Tem taxa de instalação?”
+  Clara: Perfeito, Christiani, boa pergunta.
+
+
+  [4] tchellobom@gmail.com | Sushi | qualificacao | msgs=108
+  >> tipo=vou_verificar | turno=54
+  Lead:  Isso tb é necessário demais ne
+  Clara: Entendi. O que eu consigo te confirmar é que a Cardápio Web faz a montagem e configuração do cardápio sem custo, e a implantação leva em média de 4 a 7 dias úteis, conforme o envio das informações do negócio e do cardápio.
+  Clara: Sobre o CNPJ/MEI, vou confirmar esse ponto específico pra te orientar com precisão.
+  Lead:  Mesmo pra entrar pros app ifood ou keeta 99
+  Clara: Compreendo, Marcelo.
+  Clara: O que eu consigo te confirmar com segurança é que a Cardápio Web tem integração com iFood e Entrega Fácil iFood.
+
+  >> tipo=vou_verificar | turno=66
+  Clara: Sua previsão é estruturar isso nos próximos 30 dias?
+  Lead:  Creio que sim
+  Clara: Marcelo, sobre essa exigência de MEI/CNPJ pro iFood, eu não tenho essa informação confirmada na nossa base agora e prefiro não te passar algo impreciso.
+  Clara: O que consigo te confirmar com segurança é que a Cardápio Web tem integração com iFood e Entrega Fácil iFood.
+  Clara: Vou verificar esse ponto certinho pra te orientar da forma correta.
+  Lead:  Preciso tb elaborar cardápio enxuto e fotos boas
+
+
+  [5] mariana.colamonico@gmail.com | Outro | qualificacao | msgs=86
+  >> tipo=vou_verificar | turno=28
+  Clara: No Plano Delivery estão inclusos delivery, balcão, caixa, entregadores, pagamento online, automação/chatbot e WhatsApp.
+  Clara: No anual, fica R$179,99/mês; no mensal, R$209,99/mês.
+  Clara: Sobre as regras contratuais do anual, vou confirmar certinho pra te passar sem risco de te informar algo errado.
+  Lead:  Me explica melhor?
+  Clara: Perfeito. No Plano Delivery, na prática funciona assim:
+  Clara: • *Entregadores*: ajuda no controle e distribuição das entregas.
+
+
+  [6] 3adistribuidora.oficial@gmail.com | Açaiteria | qualificacao | msgs=86
+  >> tipo=vou_verificar | turno=82
+  Clara: Ótimo, Wesley! Com início em 04/05, o tempo tá contado — seria importante garantir sua vaga logo.
+  Clara: Você chega a ter alguma janelinha ainda hoje à tarde pra gente encaixar a reunião com o especialista? 😊
+  Clara: Wesley, acabei cometendo um engano e já podemos sim garantir um horário na segunda feira (27/04), às 13h30. Posso confirmar?
+  Lead:  Para hoje eu conseguiria às 17
+  Lead:  Se não podemos deixar para segunda mesmo às 13:30
+  Lead:  Bom dia
+
+
+  [7] vieiradaniela971@gmail.com | Restaurante | qualificacao | msgs=83
+  >> tipo=vou_verificar | turno=31
+  Clara: Tem sim, Daniela: o *Plano Premium* inclui *fidelidade*.
+  Clara: Sobre *notas fiscais*, não encontrei essa informação aqui com segurança e prefiro não te passar algo incerto.
+  Clara: Vou verificar isso pra você e te confirmo certinho, tudo bem?
+  Clara: Faz sentido.
+  Clara: O cardápio é simples e fácil de usar, sem exigir conta ou app.
+  Clara: E não é só link: temos chatbot com IA no WhatsApp e até PDV dentro do próprio WhatsApp para atender e lançar pedidos ao mesmo tempo.
+
+  >> tipo=vou_verificar | turno=68
+  Lead:  239, oque entra mesmo ?
+  Clara: Perfeito. No *Premium anual de R$ 239,99/mês* entram: *mesas/comandas, delivery, balcão, caixa, entregadores, fidelidade, pagamento online, extensão do WhatsApp, disparo de mensagens e automação do chatbot*.
+  Clara: O *Fiscal* é à parte: *R$ 69,99/mês*. Sobre vídeo do plano em funcionamento, vou verificar pra te confirmar certinho, tudo bem?
+  Lead:  Ok
+  Lead:  Mensal ?
+  Clara: Perfeito. Os *R$ 239,99* são no *plano anual*, cobrados em valor mensal.
+
+
+  [8] carlosleonam@yahoo.com.br | Pastelaria | triagem | msgs=81
+  >> tipo=vou_verificar | turno=78
+  Lead:  Se tiver a ficha técnica e a API aberta, sim pode vir a fazer sentido pra nós!
+  Clara: Pela base que consultei agora, não encontrei informação sobre *ficha técnica* nem *API aberta* vinculadas a um plano específico.
+  Clara: Para não te passar algo impreciso, vou verificar esse ponto com mais detalhe e te retorno em seguida.
+  Clara: Compreendo. Como esse ponto de *ficha técnica* e *API aberta* não está claro na base que consultei, já encaminhei sua dúvida para o time confirmar com precisão.
+  Clara: Assim que eu tiver esse retorno, te aviso por aqui.
+  Lead:  Beleza!
+
+
+  [9] alcioneleandrofilho@hotmail.com | Confeitaria | qualificacao | msgs=79
+  >> tipo=vou_verificar | turno=66
+  Clara: Compreendo.
+  Clara: O material que tenho aqui não detalha especificamente sobre iPad.
+  Clara: Pra te passar isso com segurança, vou verificar certinho e te retorno em seguida.
+  Lead:  Certo fico no aguardo
+  Clara: Perfeito.
+  Clara: O que consigo te confirmar com segurança é que o cardápio funciona online, sem exigir download de app do cliente, e nossa equipe monta e configura tudo pra você.
+
+  >> tipo=vou_verificar | turno=70
+  Clara: Perfeito.
+  Clara: O que consigo te confirmar com segurança é que o cardápio funciona online, sem exigir download de app do cliente, e nossa equipe monta e configura tudo pra você.
+  Clara: Sobre uso específico no iPad e impressão do cupom, vou confirmar certinho e te retorno.
+  Lead:  Perfeito
+  Clara: Perfeito. Já pedi a confirmação certinha sobre o uso no iPad pra te passar com segurança.
+  Lead:  Ta bom
+
+
+  [10] mirandajoaovictor42@gmail.com | Restaurante | triagem | msgs=75
+  >> tipo=vou_verificar | turno=43
+  Clara: O que consigo te confirmar com segurança é: a integração recebe pedidos do iFood no gestor e permite usar entregadores do iFood.
+  Clara: Sobre acionamento automático do entregador e cálculo automático da taxa por endereço, não encontrei essa confirmação aqui agora.
+  Clara: Vou verificar certinho e te retorno, tudo bem?
+  Lead:  Certo
+  Clara: Compreendo, João. Verifiquei aqui: o que consigo te confirmar com segurança é que a integração permite receber pedidos do iFood no gestor e utilizar entregadores do iFood.
+  Clara: Sobre o acionamento automático do entregador e o cálculo automático da taxa por endereço, não encontrei uma confirmação clara na base agora.
+
+
+  [11] alicefiori15@yahoo.com.br | Outro | qualificacao | msgs=72
+  >> tipo=vou_verificar | turno=31
+  Clara: Tem pagamento por Pix/cartão e integração com iFood/Entrega Fácil iFood.
+  Clara: A montagem é grátis e leva de 4 a 7 dias úteis.
+  Clara: Vou confirmar pra você a parte de CNPJ e valores exatos.
+  Lead:  Ok
+  Clara: Perfeito. Funciona assim:
+  Clara: seu cardápio fica em um site para receber pedidos online, sem app.
+
+  >> tipo=vou_verificar | turno=37
+  Clara: Para delivery + salão, o *Premium* é o mais indicado.
+  Clara: Temos montagem grátis em 4 a 7 dias úteis.
+  Clara: Sobre CNPJ, eu vou confirmar certinho pra você.
+  Clara: Isso faz sentido até aqui?
+  Lead:  Sim sim
+  Lead:  Ai me fala como funciona cada plano e quanto é
+
+
+  [12] mersonorama@gmail.com | Pastelaria | triagem | msgs=68
+  >> tipo=vou_verificar | turno=13
+  Lead:  Queria saber se o sistema ele me avisa quando o volume do produto tá baixo ou zerado
+  Clara: Entendi, José! O sistema já inclui controle de estoque em todos os planos.
+  Clara: Sobre o aviso automático quando o produto está baixo ou zerado, vou verificar esse detalhe específico pra te confirmar com precisão. 😊
+  Clara: Enquanto isso, me conta: você atende só pelo delivery, só no salão ou os dois?
+  Lead:  Os 2
+  Lead:  Mais a minha maior demanda é delivery
+
+
+  ... (limitado a 12 cases por categoria)
+
+  Total de cases únicos encontrados: 12
+
+======================================================================
+CATEGORIA: CONCORRENTE  |  20 leads
+======================================================================
+
+  [1] fernandaberreto506@gmail.com | Açaiteria | qualificacao | msgs=116
+  >> tipo=concorrente | turno=41
+  Clara: Sucesso com o geladinho! 🍧
+  Lead:  Não tem o mais barato aí não.
+  Lead:  Não tenho mais barato não aí
+  Clara: Tem sim, Fernanda! 😊
+  Clara: Existe o *Plano Delivery*, que sai a R$179,99/mês no anual — cobre delivery e atendimento no balcão.
+  Clara: Esse valor cabe melhor no seu orçamento?
+
+  >> tipo=concorrente | turno=42
+  Lead:  Não tem o mais barato aí não.
+  Lead:  Não tenho mais barato não aí
+  Clara: Tem sim, Fernanda! 😊
+  Clara: Existe o *Plano Delivery*, que sai a R$179,99/mês no anual — cobre delivery e atendimento no balcão.
+  Clara: Esse valor cabe melhor no seu orçamento?
+  Lead:  Eu queria fazer um cardápio digital pra minha loja.
+
+
+  [2] goncalvesdesousaribeirorosendo@gmail.com | Açaiteria | triagem | msgs=113
+  >> tipo=concorrente | turno=86
+  Clara: Se quiser, eu posso te explicar como o cliente faz o pedido no cardápio.
+  Lead:  Eu não tenho os clientes e isto é e preciso ter um plataforma  que capita os clientes  e por isto que não dá já tenho um cardápio online não tenho uma plataforma  ifood e isto que capita é emvia o cliente e o motoqueiro que vem busca
+  Clara: Entendi, Solange.
+  Clara: A Cardápio Web não é uma vitrine aberta igual o iFood que já traz clientes sozinha.
+  Clara: Ela cria o seu cardápio digital, organiza pedidos e pode usar entregadores pela integração com o Entrega Fácil iFood.
+  Clara: Mesmo assim, isso faria sentido pra você?
+
+  >> tipo=concorrente | turno=102
+  Clara: Oi, Solange! Vi que você começou o atendimento, mas ainda não me contou qual procedimento/solução você quer pro seu delivery — pode me dizer rapidinho?
+  Lead:  Não eu já tenho preciso de vender  desculpa muito obrigado
+  Lead:  Eu não tenho um delivery tenho uma cardápio digital que não vende e isto é aí preciso do ifood foi o que entendi
+  Clara: Perfeito, Solange.
+  Clara: Foi isso mesmo que você entendeu: hoje sua prioridade é entrar numa vitrine que ajude a trazer clientes, como o iFood.
+  Clara: Nesse momento, faz mais sentido seguir por esse caminho.
+
+
+  [3] celestinofabiana500@gmail.com | Restaurante | qualificacao | msgs=101
+  >> tipo=concorrente | turno=1
+  Clara: Oi, Fabiana! Aqui é a Clara da Cardápio Web. Vi que você se cadastrou pra conhecer melhor nossa plataforma e a ideia desse contato é te conhecer melhor e passar mais detalhes de como podemos te ajudar. Posso te fazer 4 perguntas rápidas 😁?
+  Lead:  Já tenho restaurante
+  Clara: Show, Fabiana! Então já temos um contexto bem concreto pra trabalhar. 😊
+  Clara: Como você ficou sabendo da Cardápio Web?
+  Clara: Foi por anúncio, indicação ou outro canal?
+  Lead:  De um outro restaurante
+
+
+  [4] enilsonalmeida124@gmail.com | Restaurante | triagem | msgs=92
+  >> tipo=concorrente | turno=1
+  Clara: Oi, enilson! Aqui é a Clara da Cardápio Web. Vi que você se cadastrou pra conhecer melhor nossa plataforma e a ideia desse contato é te conhecer melhor e passar mais detalhes de como podemos te ajudar. Posso te fazer 4 perguntas rápidas 😁?
+  Lead:  Já tenho restaurante
+  Clara: Perfeito, Enilson! É justamente com restaurantes como o seu que a gente trabalha.
+  Clara: Pra eu te orientar melhor: você lembra como conheceu a Cardápio Web?
+  Clara: Foi por anúncio, indicação ou outra forma?
+  Lead:  Facebook
+
+
+  [5] analuizanunes1314@gmail.com | Açaiteria | qualificacao | msgs=85
+  >> tipo=concorrente | turno=15
+  Clara: O que te fez buscar uma solução de cardápio digital agora?
+  Lead:  Amiga eu já tenho um sistema mais não me atende muito
+  Lead:  Estou em busca outro
+  Clara: Faz sentido! Às vezes a gente fica presa num sistema que prometia mas não entregava né. 😄
+  Clara: Me conta: você opera com delivery, salão ou os dois?
+  Lead:  Os dois
+
+
+  [6] vieiradaniela971@gmail.com | Restaurante | qualificacao | msgs=83
+  >> tipo=concorrente | turno=6
+  Lead:  Pesquisando internet
+  Lead:  Uso anotai tá muito caro
+  Clara: Entendi, Daniela.
+  Clara: Então você encontrou a Cardápio Web pesquisando na internet e hoje usa o Anota Aí, mas o custo está pesando pra vocês.
+  Clara: Hoje vocês operam com delivery, salão ou os dois?
+  Lead:  Sim
+
+  >> tipo=concorrente | turno=11
+  Lead:  Sim
+  Lead:  Apesar do anotai tem sistema completo
+  Lead:  Está alto custo
+  Lead:  Pago 399.00
+  Clara: Compreendo.
+  Clara: Então hoje vocês usam o Anota Aí, ele atende bem em funcionalidades, mas o valor está alto pra operação de vocês.
+
+
+  [7] dkacai0308@gmail.com | Açaiteria | qualificacao | msgs=82
+  >> tipo=concorrente | turno=4
+  Lead:  Temos opções incríveis esperando por você! Dá uma olhadinha no cardápio aqui embaixo e escolha o que combina mais com seu dia! 👇
+  Lead:  https://app.anota.ai/m/XtLz0iK0w
+  Clara: Perfeito.
+  Clara: Vi que esse número está com atendimento automático ativo.
+  Clara: Estou falando com o responsável pelo KD Açaí?
+  Lead:  Agradecemos seu feedback! 😄 É importante para que possamos melhorar!
+
+
+  [8] aureagastronomica@gmail.com | Restaurante | qualificacao | msgs=80
+  >> tipo=concorrente | turno=2
+  Lead:  Bom dia, Clara!
+  Lead:  Já tenho um restaurante  delivery rodando bem pouco
+  Clara: Perfeito!
+  Clara: Vi que você já está com um delivery rodando, mesmo que ainda em ritmo menor.
+  Clara: Pra eu entender seu cenário direitinho: como você conheceu a Cardápio Web?
+  Lead:  Através do Instagram
+
+
+  [9] alcioneleandrofilho@hotmail.com | Confeitaria | qualificacao | msgs=79
+  >> tipo=concorrente | turno=45
+  Lead:  Todo mês esse valor
+  Lead:  Já tenho que está com meu cardápio pronto isso
+  Clara: Isso: no plano anual, o Delivery fica em *R$179,99 por mês*.
+  Lead:  Pq daí já tenho o dinheiro da entrada
+  Clara: Se preferir, também existem outras recorrências, mas a anual costuma sair mais em conta.
+  Clara: *Esse valor mensal faz sentido pra você seguir?*
+
+  >> tipo=concorrente | turno=47
+  Clara: Isso: no plano anual, o Delivery fica em *R$179,99 por mês*.
+  Lead:  Pq daí já tenho o dinheiro da entrada
+  Clara: Se preferir, também existem outras recorrências, mas a anual costuma sair mais em conta.
+  Clara: *Esse valor mensal faz sentido pra você seguir?*
+  Lead:  Sim mais só posso a partir da semana que vem
+  Clara: Compreendo.
+
+
+  [10] almirxavierdeoliveira2@gmail.com | Hamburgueria | abertura | msgs=78
+  >> tipo=concorrente | turno=63
+  Clara: Sucesso com o Espeto d'Ouro! 🤝
+  Lead:  Desculpa, achei que era mais barato ,deixa para próxima
+  Lead:  🙏
+  Lead:  Obrigado!
+  Clara: Sem problemas, Almir!
+  Clara: Quando o momento for certo, é só chamar. 🙏
+
+
+  [11] acaidaora.capimmacio@gmail.com | Açaiteria | triagem | msgs=77
+  >> tipo=concorrente | turno=1
+  Clara: Oi, Açaí! Aqui é a Clara da Cardápio Web. Vi que você se cadastrou pra conhecer melhor nossa plataforma e a ideia desse contato é te conhecer melhor e passar mais detalhes de como podemos te ajudar. Posso te fazer 4 perguntas rápidas 😁?
+  Lead:  Já tenho restaurante rodando e estou abrindo uma nova unidade
+  Clara: Entendi, então vocês já têm uma operação rodando e estão estruturando uma nova unidade — faz sentido buscar mais organização nessa fase.
+  Clara: Como vocês conheceram a Cardápio Web? Foi por anúncio, indicação ou outro canal?
+  Lead:  Indicação
+  Clara: Perfeito, indicação costuma vir quando alguém já teve uma boa experiência com a gente.
+
+  >> tipo=concorrente | turno=30
+  Lead:  Oiii Ana, Tudo sim.
+  Lead:  Já uso a cardápio web em uma operação minha já começo o sistema
+  Lead:  Estou buscando o sistema para uma nova operação de delivery
+  Lead:  Quero a parte de delivery com integração do iFood e emissão de NFCe
+  Lead:  Esse módulo Marketing place seria o que?
+  Lead:  Vocês conseguem copiar o cardápio que já tenho e deixar tudo cadastrado?
+
+
+  [12] senhorbatata1989@gmail.com | Outro | triagem | msgs=76
+  >> tipo=concorrente | turno=59
+  Clara: A parte que você quer entender melhor é a integração com iFood?
+  Lead:  É que vou colocar os preços pela loja mais baratos então se puxar o cardápio do Ifood teria que reajustar os valores no cardápio Web certo?
+  Lead:  Gostei
+  Lead:  É mais amplo que o insta delivery
+  Lead:  Sim
+  Lead:  Desculpa eu não entendo muito dessas coisas
+
+
+  ... (limitado a 12 cases por categoria)
+
+  Total de cases únicos encontrados: 12

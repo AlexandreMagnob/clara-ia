@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GWT-2432 — Hipóteses e Soluções | Clara IA</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 40px 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* CAPA */
+  .cover {
+    min-height: 260px;
+    border-bottom: 3px solid #59327A;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+  }
+  .cover-tag {
+    display: inline-block;
+    background: #59327A;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+  .cover h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f0f0f;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .cover-sub {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  .cover-meta {
+    font-size: 11.5px;
+    color: #888;
+    display: flex;
+    gap: 28px;
+    margin-top: 20px;
+  }
+  .cover-meta span strong { color: #444; }
+
+  /* SEÇÕES */
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #59327A;
+    border-left: 4px solid #A543FA;
+    padding-left: 10px;
+    margin: 36px 0 14px;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #59327A;
+    margin: 20px 0 8px;
+    page-break-after: avoid;
+  }
+  p { margin-bottom: 10px; color: #333; }
+
+  /* TABELAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 20px;
+    font-size: 12px;
+  }
+  thead tr { background: #F5F0FA; }
+  th {
+    text-align: left;
+    padding: 8px 10px;
+    font-weight: 700;
+    color: #59327A;
+    border-bottom: 2px solid #D4B8E8;
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    color: #333;
+  }
+  tr:hover td { background: #fafafa; }
+
+  /* CARDS DE GAP */
+  .gap-card {
+    border: 1px solid #E2D4EE;
+    border-left: 4px solid #A543FA;
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+  }
+  .gap-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .gap-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #A543FA;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .gap-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f0f0f;
+  }
+  .gap-body { font-size: 12.5px; }
+  .gap-body p { margin-bottom: 6px; }
+  .gap-row {
+    display: flex;
+    gap: 0;
+    margin-top: 10px;
+  }
+  .gap-col {
+    flex: 1;
+    padding: 10px 12px;
+    background: #F9F5FC;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .gap-col:first-child { margin-right: 8px; }
+  .gap-col-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #A543FA;
+    margin-bottom: 4px;
+  }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-left: 6px;
+  }
+  .badge-critico { background: #FFE5E5; color: #CC0000; }
+  .badge-alto    { background: #FFF5D6; color: #996B00; }
+  .badge-medio   { background: #EEE0FA; color: #59327A; }
+
+  /* SUMÁRIO EXECUTIVO */
+  .exec-box {
+    background: #F5F0FA;
+    border: 1px solid #D4B8E8;
+    border-left: 4px solid #59327A;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+  .exec-box p { color: #333; margin-bottom: 6px; }
+  .exec-box strong { color: #59327A; }
+
+  /* FUNIL */
+  .funil-grid {
+    display: flex;
+    gap: 10px;
+    margin: 14px 0 20px;
+  }
+  .funil-item {
+    flex: 1;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 12px;
+    text-align: center;
+  }
+  .funil-item.destaque {
+    background: #F5F0FA;
+    border-color: #59327A;
+  }
+  .funil-pct {
+    font-size: 22px;
+    font-weight: 800;
+    color: #59327A;
+    line-height: 1;
+  }
+  .funil-item:not(.destaque) .funil-pct { color: #aaa; }
+  .funil-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 3px 0;
+  }
+  .funil-num {
+    font-size: 11px;
+    color: #888;
+  }
+
+  /* PRÓXIMAS AÇÕES */
+  .action-list {
+    list-style: none;
+    margin: 8px 0 20px;
+  }
+  .action-list li {
+    padding: 9px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 12.5px;
+    color: #333;
+  }
+  .action-list li:last-child { border-bottom: none; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+    font-size: 11px;
+    color: #bbb;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* PRINT */
+  @media print {
+    body { padding: 24px 36px; }
+    .cover { page-break-after: always; }
+    h2 { page-break-before: auto; }
+    .gap-card { page-break-inside: avoid; }
+    .funil-grid { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <div class="cover-tag">GWT-2432</div>
+  <h1>Análise de Gaps<br>Etapas de Abertura e Triagem</h1>
+  <div class="cover-sub">Clara IA — Funil SDR Cardápio Web</div>
+  <div class="cover-meta">
+    <span><strong>Data da análise:</strong> 21/05/2026</span>
+    <span><strong>Período analisado:</strong> 01/04/2026 a 21/05/2026</span>
+    <span><strong>Fonte:</strong> Supabase + N8N Workflow 4LXmcG2FltxmPIxM</span>
+  </div>
+</div>
+
+<!-- SUMÁRIO EXECUTIVO -->
+<div class="exec-box">
+  <p><strong>75% dos leads ativos tier 4+5 estão presos nas duas primeiras etapas do funil</strong> — abertura e triagem — sem avançar para qualificação. A análise exploratória conduzida em 21/05/2026 identificou 6 hipóteses concretas que explicam esse travamento. O principal achado é estrutural: o <strong>CRM Analyser tem um threshold de 15 mensagens que descarta 43% dos leads engajados</strong>, deixando-os presos em abertura para sempre.</p>
+</div>
+
+<!-- SNAPSHOT DO FUNIL -->
+<h2>Snapshot do Funil</h2>
+<p>Distribuição de leads ativos na data da análise (20/05/2026):</p>
+
+<div class="funil-grid">
+  <div class="funil-item destaque">
+    <div class="funil-pct">28,6%</div>
+    <div class="funil-label">Abertura</div>
+    <div class="funil-num">2.344 leads</div>
+    <div class="funil-num">⌀ 6,0 msgs</div>
+  </div>
+  <div class="funil-item destaque">
+    <div class="funil-pct">54,1%</div>
+    <div class="funil-label">Triagem</div>
+    <div class="funil-num">4.437 leads</div>
+    <div class="funil-num">⌀ 23,7 msgs</div>
+  </div>
+  <div class="funil-item">
+    <div class="funil-pct">12,5%</div>
+    <div class="funil-label">Qualificação</div>
+    <div class="funil-num">1.023 leads</div>
+    <div class="funil-num">⌀ 38,7 msgs</div>
+  </div>
+  <div class="funil-item">
+    <div class="funil-pct">2,6%</div>
+    <div class="funil-label">Agendado</div>
+    <div class="funil-num">213 leads</div>
+    <div class="funil-num">⌀ 87 msgs</div>
+  </div>
+  <div class="funil-item">
+    <div class="funil-pct">1,6%</div>
+    <div class="funil-label">Atendido</div>
+    <div class="funil-num">130 leads</div>
+    <div class="funil-num">⌀ 25 msgs</div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subgrupo — Abertura</th>
+      <th>Volume</th>
+      <th>Problema</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fantasmas (count_messages = 1)</td>
+      <td>1.034</td>
+      <td>Receberam mensagem inicial, nunca responderam. Sem engajamento real.</td>
+    </tr>
+    <tr>
+      <td>Engajados presos (4–14 msgs, com pipedrive_id)</td>
+      <td>~824</td>
+      <td>Tiveram conversa real mas pararam na sondagem. CRM Analyser não os processa (abaixo do threshold).</td>
+    </tr>
+    <tr>
+      <td>Sem pipedrive_id (invisíveis)</td>
+      <td>168</td>
+      <td>Deal não criado no Pipedrive. Invisíveis para todas as automações.</td>
+    </tr>
+    <tr>
+      <td>Status null</td>
+      <td>164</td>
+      <td>Sem status — não entram em fluxos que dependem desse campo.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- PERFIL ETÁRIO -->
+<h3>Perfil etário dos leads presos</h3>
+<table>
+  <thead>
+    <tr><th>Etapa</th><th>Criados há 8–30 dias</th><th>Criados há 31–90 dias</th><th>Criados há 90+ dias</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Triagem</strong></td>
+      <td>—</td>
+      <td>3.285 (74%)</td>
+      <td>712</td>
+    </tr>
+    <tr>
+      <td><strong>Abertura</strong></td>
+      <td>871 (43%)</td>
+      <td>volume menor</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+<p style="font-size:11.5px;color:#888;">Triagem está cheia de conversas antigas que nunca avançaram. Abertura ainda recebe volume novo entrando.</p>
+
+<!-- HIPÓTESES -->
+<h2>Hipóteses Identificadas</h2>
+
+<!-- H1 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-num">Hipótese 1</div>
+    <div class="gap-title">CRM Analyser com threshold inadequado e stage "abertura" ausente</div>
+    <span class="badge badge-critico">Crítico</span>
+  </div>
+  <div class="gap-body">
+    <p>O workflow <strong>4LXmcG2FltxmPIxM</strong> (Agente Analista de CRM) só processa leads com <code>count_messages ≥ 15</code>. Isso descarta os ~824 leads engajados em abertura (4–14 msgs) — que tiveram conversa real com a Clara — de qualquer reclassificação automática.</p>
+    <p>Adicionalmente, o mapeamento de stages na tool <code>atualizar_etapa</code> não tem o stage <em>"abertura"</em> — o campo não pode ser setado pelo CRM Analyser. E o Track B do workflow (filtro de 2+ msgs) aparece inativo nas últimas 100 execuções verificadas.</p>
+    <p>Taxa atual de processamento: ~1 lead/hora para 2.800+ leads presos.</p>
+    <div class="gap-row">
+      <div class="gap-col">
+        <div class="gap-col-label">Evidência</div>
+        Query Supabase: 824 leads abertura com 4–14 msgs. Análise do JSON do workflow e histórico de execuções N8N.
+      </div>
+      <div class="gap-col">
+        <div class="gap-col-label">Ação proposta</div>
+        Baixar threshold para 4 msgs. Reativar Track B. Adicionar "abertura" ao mapeamento da tool.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- H2 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-num">Hipótese 2</div>
+    <div class="gap-title">168 leads sem pipedrive_id — invisíveis para todas as automações</div>
+    <span class="badge badge-alto">Alto</span>
+  </div>
+  <div class="gap-body">
+    <p>168 leads em abertura não têm <code>pipedrive_id</code>, o que significa que o deal no Pipedrive nunca foi criado. Sem esse ID, o CRM Analyser não os processa e o fluxo de follow-up também pode deixá-los de fora. 164 desses têm <code>status = null</code>.</p>
+    <div class="gap-row">
+      <div class="gap-col">
+        <div class="gap-col-label">Evidência</div>
+        Query Supabase: <code>WHERE etapa_conversa = 'abertura' AND pipedrive_id IS NULL</code> → 168 registros.
+      </div>
+      <div class="gap-col">
+        <div class="gap-col-label">Ação proposta</div>
+        Investigar por que a criação do deal falhou. Reprocessar manualmente ou via script para criar os deals em falta.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- H3 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-num">Hipótese 3</div>
+    <div class="gap-title">Encerramento prematuro por timing — sem nurturing</div>
+    <span class="badge badge-alto">Alto</span>
+  </div>
+  <div class="gap-body">
+    <p>Quando o lead declara timing longo ("daqui 2 meses", "ainda não abri", "mês que vem"), a Clara encerra a conversa de forma educada e não propõe nenhuma continuidade. O lead fica preso em <em>abertura</em> indefinidamente sem nenhum follow-up de nurturing.</p>
+    <p><strong>Exemplo real (lead iago, 13/05/2026):</strong> "Dois meses ainda é um prazo distante para fazermos um bom aproveitamento da reunião com o especialista. Vou deixar nosso contato aqui e quando estiver mais próximo de abrir, me chama."</p>
+    <div class="gap-row">
+      <div class="gap-col">
+        <div class="gap-col-label">Evidência</div>
+        Análise qualitativa de 85 casos (05/2026) + conversa real verificada na sessão de análise.
+      </div>
+      <div class="gap-col">
+        <div class="gap-col-label">Ação proposta</div>
+        Patch no system prompt: perguntar data prevista de abertura → propor agendar demonstração para a época certa. Não encerrar sem proposta de retorno.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- H4 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-num">Hipótese 4</div>
+    <div class="gap-title">Gargalo na pergunta de motivação/dor — cópia a rever</div>
+    <span class="badge badge-alto">Alto</span>
+  </div>
+  <div class="gap-body">
+    <p>A pergunta de sondagem mais aberta ("O que te motivou a buscar a Cardápio Web agora?" / "O que mais te incomoda hoje?") é onde a maioria dos leads engajados para de responder. Quando respondem, as respostas são vagas ("pedidos", "correria", "outra coisa") e a Clara não consegue extrair dado qualificado.</p>
+    <p>Dos 10 leads com 14 mensagens analisados na sessão, 7 pararam exatamente nessa pergunta ou na pergunta de dor específica.</p>
+    <div class="gap-row">
+      <div class="gap-col">
+        <div class="gap-col-label">Evidência</div>
+        Análise de 10 conversas reais de leads abertura com 14 msgs. Padrão recorrente em todas as amostras.
+      </div>
+      <div class="gap-col">
+        <div class="gap-col-label">Ação proposta</div>
+        Revisar cópia da pergunta: torná-la mais específica e fechada. Ex: "Hoje o que mais pesa: responder rápido, organizar os pedidos ou evitar erros?"
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- H5 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-num">Hipótese 5</div>
+    <div class="gap-title">Sem argumento de ROI para objeção de valor — encerramento prematuro</div>
+    <span class="badge badge-medio">Médio</span>
+  </div>
+  <div class="gap-body">
+    <p>Quando o lead diz "tá pesado" ou "é caro", a Clara encerra a conversa educadamente sem aplicar diagnóstico de perda atual (pedidos com erro, retrabalho, comissão iFood). O RAG não tem dados de ROI nem comparativo de preço com concorrentes como Anota.ai.</p>
+    <div class="gap-row">
+      <div class="gap-col">
+        <div class="gap-col-label">Evidência</div>
+        Análise qualitativa de 85 casos. RAG inspecionado: IDs 2–106 — sem documentos de ROI ou competitivos.
+      </div>
+      <div class="gap-col">
+        <div class="gap-col-label">Ação proposta</div>
+        Adicionar ao RAG: documento de ROI (quanto custa não ter), comparativo Anota.ai (R$350–400/mês vs R$179,99), comparativo iFood (comissão vs mensalidade).
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- H6 -->
+<div class="gap-card">
+  <div class="gap-header">
+    <div class="gap-num">Hipótese 6</div>
+    <div class="gap-title">Leads bot-to-bot — loops infinitos inflando count_messages</div>
+    <span class="badge badge-medio">Médio</span>
+  </div>
+  <div class="gap-body">
+    <p>Leads que têm WhatsApp bot ativo (ex: Anota.ai) geram trocas automáticas entre os dois sistemas, inflando o <code>count_messages</code> artificialmente e travando o slot de processamento do CRM Analyser para esse lead. Volume real desconhecido.</p>
+    <div class="gap-row">
+      <div class="gap-col">
+        <div class="gap-col-label">Evidência</div>
+        Identificado durante análise exploratória de conversas de triagem com alto volume de mensagens sem engajamento real.
+      </div>
+      <div class="gap-col">
+        <div class="gap-col-label">Ação proposta</div>
+        Mapear volume via query. Definir regra de detecção (resposta em menos de X segundos, padrão de texto). Pausar atendimento automaticamente nesses casos.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABELA RESUMO -->
+<h2>Resumo das Hipóteses</h2>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Hipótese</th>
+      <th>Impacto</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>CRM Analyser — threshold 15 msgs + stage abertura ausente</td>
+      <td><span class="badge badge-critico">Crítico</span></td>
+      <td>Ajustar workflow N8N</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>168 leads sem pipedrive_id</td>
+      <td><span class="badge badge-alto">Alto</span></td>
+      <td>Script de reprocessamento</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Encerramento prematuro por timing — sem nurturing</td>
+      <td><span class="badge badge-alto">Alto</span></td>
+      <td>Patch system prompt</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Gargalo na pergunta de motivação/dor</td>
+      <td><span class="badge badge-alto">Alto</span></td>
+      <td>Revisar cópia da sondagem</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Sem argumento de ROI — encerramento por orçamento</td>
+      <td><span class="badge badge-medio">Médio</span></td>
+      <td>Documento RAG de ROI e competitivo</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Leads bot-to-bot inflando count_messages</td>
+      <td><span class="badge badge-medio">Médio</span></td>
+      <td>Mapear + definir regra de detecção</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- PRÓXIMAS AÇÕES -->
+<h2>Próximas Ações</h2>
+<ul class="action-list">
+  <li>
+    <div><strong>Ajustar CRM Analyser (H1)</strong> — Baixar threshold de 15 para 4 msgs no nó "Consulta base de leads3". Reativar Track B. Adicionar "abertura" ao mapeamento da tool <code>atualizar_etapa</code>. Deploy no workflow 4LXmcG2FltxmPIxM.</div>
+  </li>
+  <li>
+    <div><strong>Publicar system prompt v2.9 (H3 e H4)</strong> — Patches: nurturing para timing longo, pergunta de motivação mais fechada, resposta padrão para "você é IA?". Colar conteúdo no nó AI Agent do workflow SDR pTmvz1Qc8wQ6v9aD.</div>
+  </li>
+  <li>
+    <div><strong>Enviar documento de ROI e competitivo ao RAG (H5)</strong> — 3 chunks: ROI do plano, comparativo Anota.ai, comparativo iFood vs mensalidade. Executar script via webhook Supabase.</div>
+  </li>
+  <li>
+    <div><strong>Investigar leads sem pipedrive_id (H2)</strong> — Confirmar causa da falha na criação do deal. Reprocessar os 168 leads manualmente ou via script.</div>
+  </li>
+  <li>
+    <div><strong>Confirmar critério abertura → triagem com líder</strong> — Validar se "respondeu a primeira pergunta de sondagem" é suficiente ou se a sondagem completa é necessária. Atualizar mapeamento se necessário.</div>
+  </li>
+  <li>
+    <div><strong>Medir resultados (GWT-2432 DOD)</strong> — Rodar cenários de teste no WhatsApp de teste da Clara após deploy do v2.9. Registrar before/after na planilha teste-clara-ia.xlsx.</div>
+  </li>
+  <li>
+    <div><strong>Mapear volume bot-to-bot (H6)</strong> — Query para identificar leads com padrão de resposta ultra-rápida. Definir regra de detecção e proposta de pause automático.</div>
+  </li>
+</ul>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>Clara IA — Cardápio Web | GWT-2432</span>
+  <span>Análise: 21/05/2026 | Período: 01/04 – 21/05/2026</span>
+</div>
+
+</body>
+</html>

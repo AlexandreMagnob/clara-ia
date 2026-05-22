@@ -1,0 +1,421 @@
+
+============================================================
+TÓPICO: PRECO  |  265 leads únicos
+============================================================
+
+  [1] email=mariasilvalucia95@gmail.com | segmento=Açaiteria | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Eu acredito que sim, porque assim, o que a gente está fazendo com a nota aí, nós já estamos fazendo isso devido que conforme, quanto mais pedido, mais vai crescendo a tarifa do valor. Porque a gente c
+  CONTEXTO:
+    Lead:  Por causa desse valor de R$ 239,00 eu teria que pagar já as 12 parcelas de uma vez só, é? Eu achei que todo mês eu teria que pagar R$ 239,99, não é assim não?
+    Lead:  Perguntar, esse plano de R$ 179,99 não serviria não para mim?
+    Lead:  Eu acredito que sim, porque assim, o que a gente está fazendo com a nota aí, nós já estamos fazendo isso devido que conforme, quanto mais pedido, mais vai crescendo a tarifa do valor. Porque a gente começou com 79 e hoje já está com 240. Aí assim, quanto mais pedido, mais o valor da mensalidade aume
+    Lead:  Ah, então é melhor fazer o mensal delivery, né, que é o de 179, é isso? Aí, no caso, já fica um ano tranquilo. Aí, no próximo ano, quando completar, aí tem que renovar, é, de novo.
+    Lead:  no caso o meu cardápio eu tenho que enviar o meu cardápio para vocês para vocês fazerem tudo certinho né fica tudo bem organizadinho não fica E aí
+
+  [2] email=cintinhasilvinhaazx@gmail.com | segmento=Pizzaria | etapa=qualificacao | tipo=A_confusao_explicita
+  Mensagem do lead: E quais as opções mais vendidas de pizzas, eu tô muito meio confusa assim, eu não gosto de valores também, valores de tamanho de pizza, entendeu? Porque eu tô fazendo a minha, aquela pizza broto, né, 
+  CONTEXTO:
+    Clara: E o que motivou você a buscar automação agora para a sua pizzaria?
+    Lead:  Oi, boa tarde, tudo bom? É o que acontece, porque eu tô começando a trabalhar com pizzas em casa, entendeu? Já comecei as vendas. Só que eu não tô sabendo muito montar o cardápio, de um pé de cardápio, mas eu não tô sabendo muito fazer um cardápio, entendeu? Aí eu queria montar um cardápio pra mim.
+    Lead:  E quais as opções mais vendidas de pizzas, eu tô muito meio confusa assim, eu não gosto de valores também, valores de tamanho de pizza, entendeu? Porque eu tô fazendo a minha, aquela pizza broto, né, brotinho, 18 centímetros, eu tô vendendo a minha por 8,50 e ela é bem recheada, entendeu? Eu fico as
+    Clara: Entendi, Cintia.
+    Lead:  A imagem mostra quatro pizzas pequenas em pratos sobre uma superfície escura. As duas pizzas superiores têm queijo, presunto, molho, fatias de tomate e cebola. As duas inferiores têm queijo, fatias de salame, azeitonas, milho e mostarda. Parece um preparo caseiro, ainda não assadas.
+
+  [3] email=matheus.fer.ferreira@gmail.com | segmento=Marmitaria | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Oi, atenderia sim, atenderia muito, tá? E deixa eu te falar, você teria algum vídeo pra mostrar, mais ou menos explicando? Mais ou menos eu já sei, mas só pra me explicar pra minha esposa, e como é o 
+  CONTEXTO:
+    Clara: O Plano Delivery foi feito pra quem está exatamente nesse momento: você teria um cardápio digital próprio pra receber pedidos, chatbot que atende no WhatsApp automaticamente e até integração com o iFood quando ativar o cadastro.
+    Clara: Essas funcionalidades fazem sentido pra sua marmitaria?
+    Lead:  Oi, atenderia sim, atenderia muito, tá? E deixa eu te falar, você teria algum vídeo pra mostrar, mais ou menos explicando? Mais ou menos eu já sei, mas só pra me explicar pra minha esposa, e como é o procedimento, valores, essas coisas.
+    Clara: Em vez de um vídeo genérico, a gente tem algo bem melhor: uma videochamada personalizada com um especialista, em menos de 30 min — sua esposa pode participar também!
+    Clara: Assim ela vê a plataforma funcionando, tira dúvidas e entende tudo na prática 😊
+
+  [4] email=denicetata@icloud.com | segmento=Lanchonete | etapa=qualificacao | tipo=A_confusao_explicita
+  Mensagem do lead: Isso eu entendi, o que eu não entendi é 179,90, 180 no caso, barra mês, no anual com módulos extra, 505,24, é isso que eu não entendi.
+  CONTEXTO:
+    Clara: Também tem caixa, balcão, clientes e fidelidade.
+    Clara: Ficou mais claro?
+    Lead:  Isso eu entendi, o que eu não entendi é 179,90, 180 no caso, barra mês, no anual com módulos extra, 505,24, é isso que eu não entendi.
+    Clara: Perfeito. Funciona assim:
+    Clara: *R$179,99 por mês* é o valor do *Plano Delivery no contrato anual*.
+
+  [5] email=fcorteleti02@gmail.com | segmento=Confeitaria | etapa=qualificacao | tipo=A_confusao_explicita
+  Mensagem do lead: não entendi, esse valor é mensal para uma contratação anual?
+  CONTEXTO:
+    Clara: O Plano Delivery começa em R$179,99/mês (anual) e pode chegar até R$524,94 com módulos extras.
+    Clara: Esse valor básico cabe no seu orçamento?
+    Lead:  não entendi, esse valor é mensal para uma contratação anual?
+    Clara: Exatamente! É R$179,99/mês no plano anual — você pode pagar à vista ou parcelar em até 12x no cartão sem juros.
+    Clara: Esse valor cabe no seu orçamento?
+
+============================================================
+TÓPICO: IFOOD  |  75 leads únicos
+============================================================
+
+  [1] email=rubangourmet@gmail.com | segmento=Restaurante | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Ah, tá, entendi. Então, eu não vendo pro iFood ainda, porque eu teria que ativar o meu CNPJ e como eu voltei a pouco tempo, eu não ativei ainda, entendeu? Eu tenho umas coisinhas pra resolver. No caso
+  CONTEXTO:
+    Clara: E o nosso cardápio também recebe pedidos online.
+    Clara: Hoje você já vende pelo iFood?
+    Lead:  Ah, tá, entendi. Então, eu não vendo pro iFood ainda, porque eu teria que ativar o meu CNPJ e como eu voltei a pouco tempo, eu não ativei ainda, entendeu? Eu tenho umas coisinhas pra resolver. No caso, o cardápio de vocês precisa ter CNPJ ou não precisa? É só pelo CPF? Como é que é? Me explica aí.
+    Clara: Rubem, pelo que confirmei aqui, eu não tenho uma informação segura sobre exigência de CPF/CNPJ para te responder com precisão agora.
+    Clara: Pra não te passar nada errado, vou verificar isso certinho e te retorno em seguida, tudo bem?
+
+  [2] email=rosanamccbitt@gmail.com | segmento=Sushi | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: Ótimo, Rian. Gostei porque não é uma máquina. Eu tô cansada de falar com máquina e eles não entendem nada do que eu tô falando e ficam perguntando a mesma coisa várias vezes. Você acabou de responder 
+  CONTEXTO:
+    Clara: Desejo melhoras no seu pé e fico à disposição quando preferir seguir.
+    Lead:  Parece que você é uma máquina.
+    Lead:  Você é uma máquina ou é uma pessoa? Se você for uma máquina, eu não vou conversar com você.
+    Lead:  Ótimo, Rian. Gostei porque não é uma máquina. Eu tô cansada de falar com máquina e eles não entendem nada do que eu tô falando e ficam perguntando a mesma coisa várias vezes. Você acabou de responder aqui, daqui um pouco tá te perguntando a mesma coisa. Então assim, eu venho nesse segmento, já tive
+    Lead:  E se você não fizer isso, se você não fizer isso, eu vou acabar com você, tá? Aí ele... na mesma hora ele tirou do Google, tirou do iFood, tá? Aí eu vou amanhã aí pra gente fazer, o amanhã ele não veio, não veio, não veio, não veio, passou três ou quatro dias, ele... Ah, tô indo aí agora pra gente f
+
+  [3] email=fabg.gon@gmail.com | segmento=Outro | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: Não, é eu e a minha esposa, até, mas é nós dois, no exemplo, o que eu falar ali pra ela, explicar que realmente foi isso, porque nós dois estamos procurando essa solução, né? Então, e ela fica mais na
+  CONTEXTO:
+    Clara: Show, Fábio! O plano Delivery já inclui pagamento online com cartão e PIX.
+    Clara: Sobre compatibilidade específica com Asaas e Mercado Pago, é exatamente esse tipo de detalhe técnico que o especialista confirma na reunião — pra você não tomar decisão sem saber 100%.
+    Clara: Além de você, tem mais alguém que decide sobre a contratação?
+    Lead:  Não, é eu e a minha esposa, até, mas é nós dois, no exemplo, o que eu falar ali pra ela, explicar que realmente foi isso, porque nós dois estamos procurando essa solução, né? Então, e ela fica mais na produção, né? E eu que fico vendo essas coisas assim do sistema e tal. Se nós achar esse sistema de
+    Clara: Entendi, Fábio! Faz todo sentido vocês dois decidirem juntos.
+
+  [4] email=noor200035@gmail.com | segmento=Marmitaria | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: Eu não tenho um restaurante, eu só faço comida em casa, eu vendo comida de iFood, só internet, eu faço venda marmita, só isso, eu faço iFood, ela faz tudo, ela faz entrega, faz toda coisa, eu não faço
+  CONTEXTO:
+    Lead:  A plataforma de 99, ela quer o cardápio, eu não sabe, eu terminei todo o processor, só ela não terminou, eu não sabe abrir a loja de 99, ela quer o cardápio, eu não sabe.
+    Clara: Entendi, Noor. Então sua urgência agora é ter um cardápio para conseguir concluir a ativação da loja na 99, certo?
+    Clara: Hoje você atende só delivery ou também trabalha com salão?
+    Lead:  Eu não tenho um restaurante, eu só faço comida em casa, eu vendo comida de iFood, só internet, eu faço venda marmita, só isso, eu faço iFood, ela faz tudo, ela faz entrega, faz toda coisa, eu não faço entrega, eu não faço nada. Eu sou minha esposa, ela abre loja biquininha para entrar em casa.
+    Clara: Compreendo, Noor. Então hoje você trabalha só com delivery de marmita, sem salão, e vende pelos aplicativos, certo?
+
+  [5] email=mirandajoaovictor42@gmail.com | segmento=Restaurante | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: Cara, no momento a gente tá com mais entrega no WhatsApp, né, no Salão e um pouquinho no iFood. Eu queria acabar com o iFood e eu ia utilizar só a entrega parceira do iFood, né, que no caso o Cardápio
+  CONTEXTO:
+    Lead:  Do cardápio web
+    Lead:  Premium
+    Lead:  Isso
+    Lead:  Cara, no momento a gente tá com mais entrega no WhatsApp, né, no Salão e um pouquinho no iFood. Eu queria acabar com o iFood e eu ia utilizar só a entrega parceira do iFood, né, que no caso o Cardápio Web dá pra fazer essa junção, né, pedido com a entrega parceira do iFood, não é isso?
+    Lead:  É, no WhatsApp, por enquanto, tá sendo tudo manual, cara. Tudo manual mesmo. Aí é iFood, mesmo, normal. Só. A gente tá escrevendo ainda no papel e caneta, sabe? Por isso que eu quero ir contratar o Prêmio. Porque tem a... Tem a comando aí, né? Pra gente anotar no celular e tudo.
+
+============================================================
+TÓPICO: GERAL  |  340 leads únicos
+============================================================
+
+  [1] email=caveonthegrill@gmail.com | segmento=Açaiteria | etapa=qualificacao | tipo=A_confusao_explicita
+  Mensagem do lead: Eu não sei se você é bot ou se você é uma pessoa mandando a mensagem mesmo, mas você leu a conversa ali, ficou claro tudo que eu tô fazendo ou não? Não tô entendendo, você mandou umas perguntas meio d
+  CONTEXTO:
+    Clara: Kaku, passando só para dar continuidade: conseguiu comparar com calma e ver se o plano Delivery faz sentido para a nova operação?
+    Clara: Kaku, fiquei curiosa: depois de comparar, o que mais pesou pra você decidir se o Delivery faz sentido nessa nova operação?
+    Lead:  Eu não sei se você é bot ou se você é uma pessoa mandando a mensagem mesmo, mas você leu a conversa ali, ficou claro tudo que eu tô fazendo ou não? Não tô entendendo, você mandou umas perguntas meio desconexas, eu quero entender a diferença disso pra anotar aí. Enquanto eu não entender, não faz dife
+    Clara: Compreendo, Kaku — você tem razão.
+    Clara: Li sim o contexto, e a conversa ficou desconexa.
+
+  [2] email=wqdesignerjp@gmail.com | segmento=Confeitaria | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Na verdade, é o único WhatsApp, é a quantidade de pessoas que falam que teve uma hora que eu disse, não, não, não tem mais condição não estou repetindo a mesma coisa para duas, três, dez pessoas, não 
+  CONTEXTO:
+    Lead:  A mensagem dada amanhã de 9h30 é fulana, que eu não sei o teu nome.
+    Lead:  Desculpe não ter decorado teu nome, é porque eu acho que todo mundo do web cardápio, cardápio web, falava comigo.
+    Lead:  Na verdade, é o único WhatsApp, é a quantidade de pessoas que falam que teve uma hora que eu disse, não, não, não tem mais condição não estou repetindo a mesma coisa para duas, três, dez pessoas, não dá ele, não, agora é só comigo, nesse mesmo WhatsApp aí e aí depois, ele estava tudo certo para aman
+    Lead:  E não foi eu não, tá? Ele disse que tinha essa pessoa disponível, tudinho. Perguntou quando. Pô, diz, eu não posso agora, tô muito ocupado. Só amanhã 9h30 mesmo assim, vou encaixar no meu horário. Ele pronto. Então amanhã 9h30 esse especialista vai falar.
+    Lead:  Soooooooo
+
+  [3] email=joaohueder@gmail.com | segmento=Outro | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Certo, vou conversar com ele. Me explica melhor esses R$80, que eu ganho é uma única vez ou é enquanto ele estiver ativo com você? Só para eu entender.
+  CONTEXTO:
+    Lead:  A imagem mostra uma coleção de pratos de comida dispostos em um formato de colagem. Há uma variedade de pratos visíveis, com diferentes ingredientes e apresentações, como arroz, vegetais, massa e carne. Todos os pratos são coloridos e parecem muito apetitosos. O nome "L&A Sabor Perfeito" está em des
+    Lead:  somente para delivery
+    Lead:  Certo, vou conversar com ele. Me explica melhor esses R$80, que eu ganho é uma única vez ou é enquanto ele estiver ativo com você? Só para eu entender.
+    Lead:  esse valor eu ganho 1x só ou todo mês deste cliente?
+    Lead:  certo... estou vendo quanto ele paga no outro pra ver se está próximo ou se vc vai precisar me ajudar ai rsss
+
+  [4] email=wesleytecbh@hotmail.com | segmento=Hamburgueria | etapa=qualificacao | tipo=A_confusao_explicita
+  Mensagem do lead: Só não entendi a respeito da divulgação do meu produtor que vc tá dizendo que só seria no watzap e mas outras plataforma não teria divulgação
+  CONTEXTO:
+    Clara: Considerando esse cenário pra começar no delivery, quero só validar um ponto com você:
+    Clara: o investimento de R$179,99/mês no plano anual cabe no seu orçamento hoje?
+    Lead:  Só não entendi a respeito da divulgação do meu produtor que vc tá dizendo que só seria no watzap e mas outras plataforma não teria divulgação
+    Clara: Entendi. A divulgação do seu restaurante é feita por você, Wesley.
+    Clara: A *Cardápio Web* te dá a estrutura pra vender melhor: cardápio digital, disparo de mensagens no WhatsApp e integração com ferramentas de anúncio, além de integração com iFood.
+
+  [5] email=maxfunilaria82@gmail.com | segmento=Outro | etapa=apresentacao | tipo=A_confusao_explicita
+  Mensagem do lead: ​Não entendi sua solicitação. Posso ajudar com informações sobre Delícias da Ju?
+  CONTEXTO:
+    Lead:  ​Olá! Para que eu possa te ajudar melhor, você poderia me dizer se está buscando informações sobre nossos horários, promoções, algum prato específico do cardápio, ou se deseja fazer um pedido?
+    Clara: ▶️ Próximo passo — quando Max retornar pessoalmente
+    Lead:  ​Não entendi sua solicitação. Posso ajudar com informações sobre Delícias da Ju?
+    Lead:  ​Entendo. Para que eu possa te ajudar melhor, você gostaria de saber sobre nossos horários de funcionamento, fazer um pedido ou tem alguma outra dúvida sobre o Delicias da Ju?
+    Clara: Conclusão: aguardar retorno humano do Max. Nenhuma mensagem deve ser disparada agora.
+
+============================================================
+TÓPICO: FUNCIONALIDADE  |  22 leads únicos
+============================================================
+
+  [1] email=rosanamccbitt@gmail.com | segmento=Sushi | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Esse áudio ficou muito longo... enfim... Pois é. Aí... o que acontece... vieram mais dois. Um disse que fazia porque acontecia... aí fez um esboço... e colocou... pegou o meu cardápio... o meu cardápi
+  CONTEXTO:
+    Lead:  Ótimo, Rian. Gostei porque não é uma máquina. Eu tô cansada de falar com máquina e eles não entendem nada do que eu tô falando e ficam perguntando a mesma coisa várias vezes. Você acabou de responder aqui, daqui um pouco tá te perguntando a mesma coisa. Então assim, eu venho nesse segmento, já tive
+    Lead:  E se você não fizer isso, se você não fizer isso, eu vou acabar com você, tá? Aí ele... na mesma hora ele tirou do Google, tirou do iFood, tá? Aí eu vou amanhã aí pra gente fazer, o amanhã ele não veio, não veio, não veio, não veio, passou três ou quatro dias, ele... Ah, tô indo aí agora pra gente f
+    Lead:  Esse áudio ficou muito longo... enfim... Pois é. Aí... o que acontece... vieram mais dois. Um disse que fazia porque acontecia... aí fez um esboço... e colocou... pegou o meu cardápio... o meu cardápio que eu tinha feito antigo... um cardápio que eu mandei fazer na gráfica... com os preços todos ant
+    Lead:  O Ryan. Então, Ryan Filipe, né, é seu nome. Depois de passar por tudo isso, veio um monte de gente, um monte de seres, máquinas, um monte de máquinas oferecendo um cardápio pra mim, que eu pensava que eu ia conversar com alguém, quando eu tava abrindo, entrava uma máquina... Aí eu falava alguma cois
+    Lead:  Então, tô esperando você aqui. Você falou aí, depois apareceu?
+
+  [2] email=fabg.gon@gmail.com | segmento=Outro | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Sim, eu até conversei com a minha esposa sobre isso, né? Quando eu vi a propaganda ali de vocês, o anúncio, eu falei assim, eu vou tentar entrar em contato com eles, para eles me explicar como é que f
+  CONTEXTO:
+    Clara: Mas preciso ser honesta: o detalhe específico sobre integração com entregadores terceiros independentes é algo que nosso especialista vai conseguir confirmar com muito mais precisão do que eu aqui no chat.
+    Clara: Valeria uma reunião rápida só pra ele te mostrar como funciona na prática e confirmar se resolve exatamente o que você precisa — sem enrolação?
+    Lead:  Sim, eu até conversei com a minha esposa sobre isso, né? Quando eu vi a propaganda ali de vocês, o anúncio, eu falei assim, eu vou tentar entrar em contato com eles, para eles me explicar como é que funciona, para a gente ter uma ideia, se realmente atender a gente, a gente já muda, entendeu? Vamos
+    Lead:  E todo mundo, muita gente tá pedindo pra gente colocar tipo porções, dois salgados, né? Tipo assim, a gente tem empada pra vender, tem empadãozinho pequeno, só que não dá de colocar. Porque daí começa a sair, tipo, um lado e pro outro, pro outro e pro outro, e eu não consigo atender. Aí vai queimar
+    Clara: Fábio, o Plano Delivery já vem com o Módulo de Entregadores incluso — exatamente o que você precisa pra gerenciar quem faz suas entregas, sem depender do iFood pra isso.
+
+  [3] email=juliaceli.melo@gmail.com | segmento=Outro | etapa=qualificacao | tipo=A_confusao_explicita
+  Mensagem do lead: Pode me explicar esses modulos extras?
+  CONTEXTO:
+    Clara: O Plano Delivery começa em R$179,99/mês (anual), podendo chegar a R$524,94 com módulos extras.
+    Clara: Esse valor cabe no seu orçamento?
+    Lead:  Pode me explicar esses modulos extras?
+    Clara: Claro! São módulos opcionais que você adiciona conforme a necessidade:
+    Clara: • 💰 Financeiro: R$69,99
+
+  [4] email=larissamariafragasilveira92@gmail.com | segmento=Outro | etapa=abertura | tipo=B_pergunta_repetida
+  Mensagem do lead: Então, eu cheguei a falar com um outro WhatsApp, a gente trabalha como distribuidora de bebidas e até um dos WhatsApp a moça falou que não tinha jeito de atender, porque não é nesse ramo, mas só que a
+  CONTEXTO:
+    Lead:  Nao
+    Lead:  Sim
+    Lead:  Sim
+    Lead:  Então, eu cheguei a falar com um outro WhatsApp, a gente trabalha como distribuidora de bebidas e até um dos WhatsApp a moça falou que não tinha jeito de atender, porque não é nesse ramo, mas só que a pessoa que me indicou eu mandei até o link aqui no WhatsApp. É... Acho que foi nesse WhatsApp mesmo
+    Lead:  mas eu não consegui ainda e por enquanto a gente vai estar trabalhando com esse de que é site porque eu queria um aplicativo baixado entendeu que a gente pode enviar o qr-code para o cliente pelo qr-code o cliente baixa o aplicativo
+
+  [5] email=cravojunior@gmail.com | segmento=Outro | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: Então, pelo que eu vi no evento aqui, que eles fizeram, foi até numa igreja, eles usaram o sistema e colocaram só a forma de Marmitex lá, entendeu? A pessoa entrava online, escolhia a Marmitex, seleci
+  CONTEXTO:
+    Clara: É uma necessidade bem específica e nossa plataforma é voltada para restaurantes.
+    Clara: Por isso, vou te conectar com um especialista da nossa equipe que vai avaliar se conseguimos te atender da melhor forma.
+    Clara: Em breve alguém entra em contato! 😊
+    Lead:  Então, pelo que eu vi no evento aqui, que eles fizeram, foi até numa igreja, eles usaram o sistema e colocaram só a forma de Marmitex lá, entendeu? A pessoa entrava online, escolhia a Marmitex, selecionava o pagamento e aparecia o Pix. Pronto, ia lá na portaria e mostrava. Igualzinho funciona um res
+    Lead:  Eu conheci vocês através de um evento beneficente feito numa igreja na minha cidade, onde foi vendido yakisoba através do sistema e as pessoas passaram a buscar.
+
+============================================================
+TÓPICO: HUMANO_IA  |  15 leads únicos
+============================================================
+
+  [1] email=marianavalmini@gmail.com | segmento=Confeitaria | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Oi, bom dia, tudo bem? Prazer, Annalice. Isso, eu pedi para ser atendida por uma pessoa. Eu vou te explicar um pouquinho, tá? Resumidamente o nosso negócio. Bom, nós estamos abrindo uma padaria saudáv
+  CONTEXTO:
+    Lead:  Oi bom dia
+    Lead:  Escuta áudio?
+    Lead:  Oi, bom dia, tudo bem? Prazer, Annalice. Isso, eu pedi para ser atendida por uma pessoa. Eu vou te explicar um pouquinho, tá? Resumidamente o nosso negócio. Bom, nós estamos abrindo uma padaria saudável, né? Livre de glúten, mais saudável, enfim. Só que nós decidimos que nesse primeiro momento nós i
+    Lead:  Aguardando
+    Lead:  Oi, tudo bem? Não, imagina, sem problemas. Então, como eu te mandei na mensagem anterior, eu quero conhecer mais, quero saber quais são as funcionalidades, o que que vocês podem estar oferecendo. Como eu te falei, a minha dificuldade maior, o meu propósito maior, é a gestão completa da loja, o cardá
+
+  [2] email=hrauzeburguer@gmail.com | segmento=Hamburgueria | etapa=apresentacao | tipo=A_confusao_explicita
+  Mensagem do lead: ​Olá! Ainda não entendi bem o que você precisa. Você gostaria de saber sobre nosso cardápio, horário de funcionamento ou alguma promoção especial do Hrouze Burguer?
+  CONTEXTO:
+    Clara: *Etapa 2 — Sondagem ✅*
+    Lead:  ​Olá! Bem-vindo(a) ao _Hrouze Burguer_
+    Lead:  ​Olá! Ainda não entendi bem o que você precisa. Você gostaria de saber sobre nosso cardápio, horário de funcionamento ou alguma promoção especial do Hrouze Burguer?
+    Lead:  ​Olá! Para que eu possa te ajudar melhor, você poderia me dizer se está procurando informações sobre nossos pratos, horários de funcionamento ou alguma promoção especial?
+    Clara: Campo: Dor — Cardápio virtual com gatilhos para facilitar pedidos.
+
+  [3] email=rosanamccbitt@gmail.com | segmento=Sushi | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: O Ryan. Então, Ryan Filipe, né, é seu nome. Depois de passar por tudo isso, veio um monte de gente, um monte de seres, máquinas, um monte de máquinas oferecendo um cardápio pra mim, que eu pensava que
+  CONTEXTO:
+    Lead:  Ótimo, Rian. Gostei porque não é uma máquina. Eu tô cansada de falar com máquina e eles não entendem nada do que eu tô falando e ficam perguntando a mesma coisa várias vezes. Você acabou de responder aqui, daqui um pouco tá te perguntando a mesma coisa. Então assim, eu venho nesse segmento, já tive
+    Lead:  E se você não fizer isso, se você não fizer isso, eu vou acabar com você, tá? Aí ele... na mesma hora ele tirou do Google, tirou do iFood, tá? Aí eu vou amanhã aí pra gente fazer, o amanhã ele não veio, não veio, não veio, não veio, passou três ou quatro dias, ele... Ah, tô indo aí agora pra gente f
+    Lead:  Esse áudio ficou muito longo... enfim... Pois é. Aí... o que acontece... vieram mais dois. Um disse que fazia porque acontecia... aí fez um esboço... e colocou... pegou o meu cardápio... o meu cardápio que eu tinha feito antigo... um cardápio que eu mandei fazer na gráfica... com os preços todos ant
+    Lead:  O Ryan. Então, Ryan Filipe, né, é seu nome. Depois de passar por tudo isso, veio um monte de gente, um monte de seres, máquinas, um monte de máquinas oferecendo um cardápio pra mim, que eu pensava que eu ia conversar com alguém, quando eu tava abrindo, entrava uma máquina... Aí eu falava alguma cois
+    Lead:  Então, tô esperando você aqui. Você falou aí, depois apareceu?
+
+  [4] email=rubangourmet@gmail.com | segmento=Restaurante | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: Então, mas é o que eu tô te falando, teria como a gente ver como é que funciona? Você teria como deixar um pouquinho mais claro? Porque eu entendendo, eu creio que meu cliente vai entender. Entendeu? 
+  CONTEXTO:
+    Clara: Hoje vocês ainda dependem muito do WhatsApp, e nosso cardápio é mais simples porque o cliente faz o pedido online sem baixar app nem criar conta.
+    Clara: Na integração com iFood/Entrega Fácil iFood, você recebe pedidos do iFood no gestor e pode usar entregadores do iFood.
+    Clara: Isso esclarece melhor?
+    Lead:  Então, mas é o que eu tô te falando, teria como a gente ver como é que funciona? Você teria como deixar um pouquinho mais claro? Porque eu entendendo, eu creio que meu cliente vai entender. Entendeu? Aí eu queria saber um pouquinho mais a fundo como é que funciona. Entendeu?
+    Lead:  E se saber dizer se essa situação aí é CNPJ ou pode ser CPF também.
+
+  [5] email=hugo.lourenco@pillarsgroup.com.br | segmento=Outro | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: No caso, é um cliente de vocês já, então eu sou um parceiro, um fornecedor desse seu cliente e aí para a gente fazer algumas coisas, eu gostaria de fazer integração com o sistema de vocês para a gente
+  CONTEXTO:
+    Clara: Entendido, Hugo!
+    Clara: Essa é uma questão técnica bem específica sobre nossa API — vou acionar alguém do nosso time que pode te ajudar direitinho com a documentação e os detalhes de integração.
+    Clara: Em breve alguém entra em contato contigo! 🙂
+    Lead:  No caso, é um cliente de vocês já, então eu sou um parceiro, um fornecedor desse seu cliente e aí para a gente fazer algumas coisas, eu gostaria de fazer integração com o sistema de vocês para a gente atuar em projetos internos nossos.
+    Lead:  🤖 *IA do Hugo Lourenço | Transcrição do áudio:*
+
+============================================================
+TÓPICO: HARDWARE  |  5 leads únicos
+============================================================
+
+  [1] email=sandyysilva150@gmail.com | segmento=Confeitaria | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: Bom dia, tudo bem? Então, porque eu abri uma confeitaria, né, só que é de livre, é em casa. Trabalho na minha casa, na minha residência. Eu queria fazer um cadáver web pra mim, divulgar pros clientes,
+  CONTEXTO:
+    Clara: Oi Sandrieli, tudo bem?
+    Lead:  Pode ser por aqui
+    Lead:  Oi
+    Lead:  Bom dia, tudo bem? Então, porque eu abri uma confeitaria, né, só que é de livre, é em casa. Trabalho na minha casa, na minha residência. Eu queria fazer um cadáver web pra mim, divulgar pros clientes, sabe? Tudo montadinho, bonitinho, né? É... Eu tenho impressora, mini impressora, né? E tenho celula
+    Lead:  Então não vai dá pramim pq não tenho computador
+
+  [2] email=kaiquearaujo219@yahoo.com | segmento=Lanchonete | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: A imagem mostra uma tela de computador com configurações de impressão abertas. Há um aviso de que "QzTray não encontrado" e orientações para baixar e instalar o programa. A impressora padrão está indi
+  CONTEXTO:
+    Clara: Eles seguem por aí com você, tá?
+    Lead:  Perfeito
+    Lead:  A imagem mostra uma impressora térmica da marca Bematech, modelo MP-4200 HS. Ela está sobre uma superfície metálica e há um papel parcialmente impresso saindo. A impressora possui dois botões visíveis com ícones de tesoura e gaveta, além de dois indicadores luminosos. Ao fundo, há uma embalagem de k
+    Lead:  A imagem mostra uma tela de computador com configurações de impressão abertas. Há um aviso de que "QzTray não encontrado" e orientações para baixar e instalar o programa. A impressora padrão está indisponível. Detalhes: 42 colunas, impressora térmica. Data e hora no canto inferior: 14:16, 15/04/2026
+    Lead:  Boa tarde
+
+  [3] email=deborahribeiro0528@outlook.com | segmento=Hamburgueria | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: A imagem mostra uma impressora térmica com especificações em uma etiqueta. Detalhes: Modelo POS58D, largura de impressão de 58mm, voltagem de trabalho DC9V3A e velocidade de impressão de 90mm/s. Tem i
+  CONTEXTO:
+    Clara: Perfeito. O Plano Delivery tem *impressão automática* inclusa, então ele atende bem essa parte da notinha também.
+    Clara: Sobre *usar exatamente essa impressora da foto*, preciso confirmar o modelo certinho pra te passar com segurança.
+    Clara: Você sabe qual é?
+    Lead:  A imagem mostra uma impressora térmica com especificações em uma etiqueta. Detalhes: Modelo POS58D, largura de impressão de 58mm, voltagem de trabalho DC9V3A e velocidade de impressão de 90mm/s. Tem interface USB e Bluetooth. É fabricada na China, com certificações FCC e CE. Há cabos conectados e um
+    Clara: Perfeito, Deborah. Vi que é uma POS58D 58mm com USB e Bluetooth.
+
+  [4] email=liviaramazote95@gmail.com | segmento=Marmitaria | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: Vai ter que sair a comanda na impressora com o pedido e o endereço
+  CONTEXTO:
+    Clara: Tudo sem papel e sem processo manual.
+    Clara: Essas funcionalidades atendem o que você precisa?
+    Lead:  Sim
+    Lead:  Vai ter que sair a comanda na impressora com o pedido e o endereço
+    Clara: Show, Lívia!
+
+  [5] email=agenciadamkt@gmail.com | segmento=Açaiteria | etapa=triagem | tipo=B_pergunta_repetida
+  Mensagem do lead: Integraçao com balança é um ponto importante para o meu negócio
+  CONTEXTO:
+    Lead:  O PDV Já tem Integraçao com balança para selfservice?
+    Lead:  Ok
+    Lead:  Nao iremos avançar por enquato
+    Lead:  Integraçao com balança é um ponto importante para o meu negócio
+    Lead:  Mas obrigado pelo atendimento
+
+============================================================
+TÓPICO: PAGAMENTO  |  3 leads únicos
+============================================================
+
+  [1] email=juliana.silvadpm@gmail.com | segmento=Hamburgueria | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Ah, entendi. Aí o que acontece? Essa gestão de pedidos aí seria o que? A interação do cliente com o delivery? Eu acho melhor a gente fazer um videochamada, porque aí você vai me explicar direitinho, e
+  CONTEXTO:
+    Clara: Na videochamada a gente te mostra, na prática, como ficaria seu delivery: cardápio digital, pedidos online, pix/cartão, automação no WhatsApp e gestão dos pedidos.
+    Clara: Pro seu caso, isso ajuda a já começar mais organizada. Isso te ajuda a visualizar melhor?
+    Lead:  Ah, entendi. Aí o que acontece? Essa gestão de pedidos aí seria o que? A interação do cliente com o delivery? Eu acho melhor a gente fazer um videochamada, porque aí você vai me explicar direitinho, entendeu? O cardápio digital eu já entendi. Os pedidos via online vão ser feitos através... Eu posso
+    Lead:  Eu consigo ter nessa plataforma de vocês fechamento de caixa, abertura de caixa, esse tipo de auxílio? Ou não? É só realmente o que você já me passou aí?
+    Lead:  Esse plano que você tá me passando, eu pago esse valor mensal, mas eu tenho que fechar com vocês o anual, certo?
+
+  [2] email=arleteaparecidatupi@gmail.com | segmento=Outro | etapa=triagem | tipo=A_confusao_explicita
+  Mensagem do lead: Deixa eu te fazer outra pergunta, eu tenho celular, quem tem computador é meu filho, mas eu não sei mexer, e os pedidos vêm pelo celular e daí ele é imprimido em alguma máquina, como que funciona? Eu 
+  CONTEXTO:
+    Clara: Mas entendo completamente a sua situação. Faz todo sentido organizar o capital antes de dar esse passo.
+    Clara: Quando estiver pronta pra começar, é só me chamar aqui! Boa sorte com a Delícia Caseira 🍽️
+    Lead:  Deixa eu te fazer outra pergunta, eu tenho celular, quem tem computador é meu filho, mas eu não sei mexer, e os pedidos vêm pelo celular e daí ele é imprimido em alguma máquina, como que funciona? Eu teria que comprar uma maquininha para imprimir o pedido, como que é? Porque eu não entendo nada diss
+    Lead:  Mas eu vou ver mais esse negócio sobre a embalagem, essas coisas, eu vou entrar em contato com você porque eu também quero começar logo, sabe, eu não quero ficar esperando muito tempo, eu só tenho, eu já fiz o meu CNPJ, eu só falto pagar ele para ele ficar ativo.
+    Clara: Boa notícia, Arlete! Não precisa comprar impressora não 😊
+
+  [3] email=doncarlosbr@gmail.com | segmento=Pizzaria | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: Eu queria uma informação, por exemplo, se eu tenho conta numa cooperativa de crédito da Ailos, tenho conta no Banco do Brasil e tenho conta no Santander e Caixa Econômica. Numa dessas aí dá para pôr o
+  CONTEXTO:
+    Lead:  Tá, e qual é o valor do investimento mensal nisso?
+    Lead:  Sem pegadinhas.
+    Lead:  Bom dia, tudo bem? Não, na verdade assim, eu vou fazer só que, como eu falei, a minha operação começa só no meio de julho, né, então não tem necessidade de eu resolver isso aí agora, fazer isso agora, começar a gastar, pagar mensalidade agora. Então, quando estiver mais próximo do meu lançamento, eu
+    Lead:  Eu queria uma informação, por exemplo, se eu tenho conta numa cooperativa de crédito da Ailos, tenho conta no Banco do Brasil e tenho conta no Santander e Caixa Econômica. Numa dessas aí dá para pôr o recebimento dos pagamentos ou tem que ser só no mercado pago e ir lá na Cielo?
+
+============================================================
+TÓPICO: CONCORRENTE  |  5 leads únicos
+============================================================
+
+  [1] email=carlosilva0320@gmail.com | segmento=Açaiteria | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: Até cabe , porém se o anota ai cumprir oque prometeu ficaria bem mais em conta
+  CONTEXTO:
+    Lead:  Sim
+    Clara: Show! O próximo passo é uma videochamada rápida com um dos nossos especialistas para te apresentar tudo na prática.
+    Clara: Considerando o valor de R$179,99/mês no plano anual, esse valor cabe no seu orçamento?
+    Lead:  Até cabe , porém se o anota ai cumprir oque prometeu ficaria bem mais em conta
+    Clara: Entendo, Carlos.
+
+  [2] email=jainesousalansarin@gmail.com | segmento=Lanchonete | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: O aplicativo que uso seria o anota ai
+  CONTEXTO:
+    Lead:  Anota ai
+    Clara: Pode mandar, Jaine!
+    Clara: Estou toda ouvidos. 😊
+    Lead:  O aplicativo que uso seria o anota ai
+    Clara: Anotei, Jaine! 😊
+
+  [3] email=vieiradaniela971@gmail.com | segmento=Restaurante | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: Apesar do anotai tem sistema completo
+  CONTEXTO:
+    Clara: Então você encontrou a Cardápio Web pesquisando na internet e hoje usa o Anota Aí, mas o custo está pesando pra vocês.
+    Clara: Hoje vocês operam com delivery, salão ou os dois?
+    Lead:  Sim
+    Lead:  Apesar do anotai tem sistema completo
+    Lead:  Está alto custo
+
+  [4] email=renatabarnete97@gmail.com | segmento=Hamburgueria | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: Somente cisto...gosto muito do anotai
+  CONTEXTO:
+    Lead:  Somente com delivery
+    Clara: Faz sentido! Delivery fixo + eventos mensais com trailer.
+    Clara: Além do custo do Anotaí, teve mais alguma coisa que motivou vocês a buscar uma alternativa agora?
+    Lead:  Somente cisto...gosto muito do anotai
+    Clara: Faz sentido, Renata! Quem gosta do que usa, o ideal é só reduzir o custo sem perder qualidade. 😊
+
+  [5] email=petriiick1@gmail.com | segmento=Lanchonete | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: Bah hoje no diggy eu pago 49,90
+  CONTEXTO:
+    Clara: Exatamente isso, Patrick! 🎯 O cliente manda "oi" e o robô já responde com o cardápio automático — sem você precisar fazer nada.
+    Clara: O próximo passo é uma videochamada com nosso especialista.
+    Clara: O Plano Delivery é R$179,99/mês no plano anual. Esse valor cabe no seu orçamento?
+    Lead:  Bah hoje no diggy eu pago 49,90
+    Clara: Faz sentido, Patrick!
+
+============================================================
+TÓPICO: ONBOARDING  |  2 leads únicos
+============================================================
+
+  [1] email=deborahribeiro0528@outlook.com | segmento=Hamburgueria | etapa=qualificacao | tipo=A_confusao_explicita
+  Mensagem do lead: Mas me explica mais, aí eu pagando esses R$180 por mês... É... Bem, eu pago esses R$180 por mês, vocês montam o meu cardápio... E... a questão do... das vendas e tudo mais...
+  CONTEXTO:
+    Clara: Olhoando pra sua realidade hoje, *esse valor cabe no seu orçamento*?
+    Lead:  Eu vou primeiro fazer meus cálculos aqui, porque eu tô retornando e aí trabalho eu e minha sogra no lanche. Então, eu tenho que fazer algo que venha me beneficiar, né? E isso daí seria uma boa. Eu gostei, me interessei, porque eu preciso de alguém pra fazer o atendimento. Sendo que eu vou tá fazendo
+    Lead:  Mas me explica mais, aí eu pagando esses R$180 por mês... É... Bem, eu pago esses R$180 por mês, vocês montam o meu cardápio... E... a questão do... das vendas e tudo mais...
+    Clara: Faz sentido você olhar isso com calma, Deborah.
+    Clara: Nesse valor de R$179,99/mês no plano anual, o Plano Delivery inclui cardápio digital, automação no WhatsApp, pagamento online, gestão de pedidos/clientes, impressão automática e fidelidade.
+
+  [2] email=rayanerms@hotmail.com | segmento=Confeitaria | etapa=triagem | tipo=C_abandono_apos_clara
+  Mensagem do lead: Quem monta o cardápio?
+  CONTEXTO:
+    Clara: Mas pensa comigo: se o cardápio digital te ajudar a recuperar só alguns pedidos por semana que hoje se perdem no WhatsApp, ele já pode se pagar e ainda gerar lucro.
+    Clara: Olhando por esse lado, faz sentido seguir?
+    Lead:  Quem monta o cardápio?
+    Clara: Nossa equipe monta tudo pra você, sem nenhum custo!
+    Clara: Você só nos envia as informações dos seus produtos e a gente configura o cardápio em 4 a 7 dias úteis. 😊
+
+============================================================
+TÓPICO: TRIAL  |  1 leads únicos
+============================================================
+
+  [1] email=darllan_ddm@hotmail.com | segmento=Restaurante | etapa=qualificacao | tipo=B_pergunta_repetida
+  Mensagem do lead: Então eu agradeço o contato pra mim sem testar antes se vai atender ao que eu preciso não vai dar certo pra mim
+  CONTEXTO:
+    Clara: Não temos teste gratuito, mas temos a *Satisfação Garantida*: até 30 dias pra cancelar sem custo se não ficar satisfeito (plano anual).
+    Clara: E a própria reunião já é pra você conhecer tudo por dentro antes de decidir. 😊
+    Clara: Se ao final da reunião com o especialista você estiver convencido que conseguimos resolver sua necessidade, você está disposto a iniciar a implementação de imediato?
+    Lead:  Então eu agradeço o contato pra mim sem testar antes se vai atender ao que eu preciso não vai dar certo pra mim
+    Lead:  Pode encerrar o atendimento
+
+============================================================
+TÓPICO: NFCE  |  1 leads únicos
+============================================================
+
+  [1] email=nathalia-fernandes0820@hotmail.com | segmento=Açaiteria | etapa=abertura | tipo=C_abandono_apos_clara
+  Mensagem do lead: Esse plano premium incluir emissão de nota fiscal quando precisa?
+  CONTEXTO:
+    Clara: Esse valor cabe no seu orçamento?
+    Lead:  Como eu vou iniciar gostaria de saber a diferença do plano básico?
+    Lead:  Esse plano premium incluir emissão de nota fiscal quando precisa?
+    Clara: Entendi, duas dúvidas importantes! Vou responder as duas 👇
+    Clara: O Plano Delivery (R$179,99/mês anual) cobre só delivery e retirada — sem gestão de mesas. Já o *Premium* (R$239,99/mês anual) une salão, delivery e retirada num só sistema, com mesas, comandas, caixa e chatbot.

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório — Correção de Falhas nos Follow-ups</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f7; color: #1a1a2e; }
+
+  .cover {
+    background: linear-gradient(135deg, #6C3FC5 0%, #4a2d8a 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    page-break-after: always;
+  }
+  .cover-tag {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    display: inline-block;
+  }
+  .cover h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    max-width: 700px;
+  }
+  .cover-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 60px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 30px;
+    width: 100%;
+  }
+  .cover-meta-item { color: rgba(255,255,255,0.6); font-size: 13px; }
+  .cover-meta-item strong { color: #fff; display: block; font-size: 15px; margin-bottom: 4px; }
+
+  .page { padding: 60px 80px; page-break-after: always; background: #fff; }
+  .page:last-child { page-break-after: avoid; }
+
+  .section-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6C3FC5;
+    margin-bottom: 10px;
+  }
+  h2 { font-size: 30px; font-weight: 800; color: #1a1a2e; margin-bottom: 30px; }
+  h3 { font-size: 18px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; margin-top: 32px; }
+  p { font-size: 14px; line-height: 1.8; color: #444; margin-bottom: 14px; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .stat-box {
+    background: #F0EAFA;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+  .stat-box .num { font-size: 38px; font-weight: 800; color: #6C3FC5; }
+  .stat-box .label { font-size: 12px; color: #666; margin-top: 6px; line-height: 1.4; }
+
+  .bug-card {
+    border-left: 4px solid #e53e3e;
+    background: #fff5f5;
+    border-radius: 0 10px 10px 0;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .bug-card.warning { border-color: #dd6b20; background: #fffaf0; }
+  .bug-card.info { border-color: #3182ce; background: #ebf8ff; }
+  .bug-card .tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e53e3e;
+    margin-bottom: 6px;
+  }
+  .bug-card.warning .tag { color: #dd6b20; }
+  .bug-card.info .tag { color: #3182ce; }
+  .bug-card h4 { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+  .bug-card p { font-size: 13px; margin: 0; color: #555; }
+
+  .fix-card {
+    border-left: 4px solid #38a169;
+    background: #f0fff4;
+    border-radius: 0 10px 10px 0;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .fix-card .tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #38a169; margin-bottom: 6px; }
+  .fix-card h4 { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+  .fix-card p { font-size: 13px; margin: 0; color: #555; }
+
+  code {
+    background: #f0eafa;
+    color: #6C3FC5;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: #6C3FC5;
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 10px 14px; border-bottom: 1px solid #eee; color: #444; }
+  tr:nth-child(even) td { background: #fafafa; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+  .badge.red { background: #fff5f5; color: #e53e3e; }
+  .badge.green { background: #f0fff4; color: #38a169; }
+  .badge.yellow { background: #fffaf0; color: #dd6b20; }
+
+  .execution-summary {
+    background: #f9f9fc;
+    border: 1px solid #e8e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .execution-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+  }
+  .execution-row:last-child { border-bottom: none; }
+  .execution-row .date { color: #666; }
+  .execution-row .result { font-weight: 700; }
+  .ok { color: #38a169; }
+  .err { color: #e53e3e; }
+
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    margin: 20px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e0e0e8;
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6C3FC5;
+  }
+  .tl-item .tl-date { font-size: 11px; color: #888; margin-bottom: 4px; }
+  .tl-item .tl-title { font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+  .tl-item .tl-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+  .footer-bar {
+    background: #6C3FC5;
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    padding: 16px 80px;
+    display: flex;
+    justify-content: space-between;
+    page-break-before: avoid;
+  }
+  .footer-bar strong { color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <span class="cover-tag">GWT-2392 — Relatório Técnico</span>
+  <h1>Correção de Falhas nos Follow-ups da Clara IA</h1>
+  <p class="cover-sub">
+    Diagnóstico completo dos gaps identificados no workflow [SDR] Follow UP,
+    análise das execuções com falha e registro das correções aplicadas.
+  </p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>Data</strong>20/05/2026</div>
+    <div class="cover-meta-item"><strong>Workflow</strong>[SDR] Follow UP</div>
+    <div class="cover-meta-item"><strong>Tarefa</strong>GWT-2392</div>
+    <div class="cover-meta-item"><strong>Status</strong>Corrigido ✓</div>
+  </div>
+</div>
+
+<!-- CONTEXTO -->
+<div class="page">
+  <div class="section-tag">01 — Contexto</div>
+  <h2>O Problema</h2>
+  <p>
+    A tarefa GWT-2392 foi aberta para investigar falhas nos follow-ups automáticos da Clara IA.
+    Os dados do mês mostravam um padrão anômalo: a grande maioria dos leads recebia no máximo
+    2 follow-ups, e praticamente nenhum lead chegava aos FUPs 4, 5, 6 ou 7 — mesmo com o
+    workflow configurado para enviar até 7 follow-ups por lead.
+  </p>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="num">787</div>
+      <div class="label">Leads travados no FUP 2, aguardando o FUP 3 que nunca chegou</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">4</div>
+      <div class="label">Leads que chegaram ao FUP 4 no mês inteiro</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">0</div>
+      <div class="label">Leads que receberam os FUPs 5, 6 ou 7</div>
+    </div>
+  </div>
+
+  <p>
+    O workflow possui 3 blocos de execução paralelos, cada um com seu scheduler próprio:
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th>Bloco</th><th>Trigger</th><th>Leads alvo</th><th>Ação</th></tr>
+      <tr><td><strong>Block 1 — Follow &lt;24h</strong></td><td>A cada 10 min</td><td>followup_count ≤ 2, responderam</td><td>AI Agent personalizado (GPT)</td></tr>
+      <tr><td><strong>Block 2 — Follow &gt;24h</strong></td><td>A cada 15 min</td><td>followup_count &gt; 2, responderam</td><td>Templates Meta aprovados</td></tr>
+      <tr><td><strong>Block 3 — Sem resposta</strong></td><td>A cada 15 min</td><td>followup_count ≤ 4, nunca responderam</td><td>Templates Meta aprovados</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- BUGS ENCONTRADOS -->
+<div class="page">
+  <div class="section-tag">02 — Diagnóstico</div>
+  <h2>Falhas Identificadas</h2>
+
+  <h3>Falha Crítica — Block 2 nunca enviava FUPs 3 a 7</h3>
+
+  <div class="bug-card">
+    <div class="tag">🔴 Crítico — Causa Raiz Principal</div>
+    <h4>Linhas com <code>respondeu = TRUE</code> ausentes na tabela <code>follow</code> para cadências 3–7</h4>
+    <p>
+      O nó <code>Consultar cadencia2</code> (Block 2) buscava o intervalo de tempo do próximo FUP
+      filtrando <code>cadencia = followup_count AND respondeu = TRUE</code>. Porém, na tabela
+      <code>follow</code>, apenas as cadências 1 e 2 possuíam linhas com <code>respondeu = TRUE</code>.
+      As cadências 3, 4, 5 e 6 tinham apenas <code>respondeu = NULL</code> ou <code>respondeu = FALSE</code>.
+      Resultado: o nó retornava 0 linhas para qualquer lead com followup_count &gt; 2, e o lead
+      era descartado silenciosamente da execução — sem erro, sem log, sem FUP enviado.
+    </p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th>Cadência</th><th>respondeu = TRUE</th><th>respondeu = FALSE / NULL</th><th>Block 2 funcionava?</th></tr>
+      <tr><td>1</td><td>✅ Existe</td><td>✅ Existe</td><td class="ok">✓ Sim</td></tr>
+      <tr><td>2</td><td>✅ Existe</td><td>✅ Existe</td><td class="ok">✓ Sim</td></tr>
+      <tr><td>3</td><td><span class="badge red">Ausente</span></td><td>✅ Existe</td><td class="err">✗ Não</td></tr>
+      <tr><td>4</td><td><span class="badge red">Ausente</span></td><td>✅ Existe</td><td class="err">✗ Não</td></tr>
+      <tr><td>5</td><td><span class="badge red">Ausente</span></td><td>✅ Existe (NULL)</td><td class="err">✗ Não</td></tr>
+      <tr><td>6</td><td><span class="badge red">Ausente</span></td><td>✅ Existe (NULL)</td><td class="err">✗ Não</td></tr>
+    </table>
+  </div>
+
+  <h3>Falhas Secundárias</h3>
+
+  <div class="bug-card warning">
+    <div class="tag">🟠 Infra — Intermitente</div>
+    <h4>ETIMEDOUT no nó <code>Consultar cadencia2</code> (Supabase)</h4>
+    <p>
+      Execução 80953518 (16/05) falhou com timeout de rede ao conectar no Supabase
+      (IP 104.18.38.10:443). O nó não possuía "Retry on Fail" configurado.
+      O AI Agent já tinha retry habilitado — os demais nós Supabase não.
+    </p>
+  </div>
+
+  <div class="bug-card warning">
+    <div class="tag">🟠 Infra — Intermitente</div>
+    <h4>Google Sheets HTTP 429 — Rate limit no <code>Append row in sheet1</code></h4>
+    <p>
+      Quando o Block 2 processava múltiplos leads em sequência rápida, a API do Google Sheets
+      retornava erro 429 (Too Many Requests). O intervalo configurado era de 5–10 segundos
+      entre iterações do loop, insuficiente para o volume de requisições em horário de pico.
+    </p>
+  </div>
+
+  <div class="bug-card info">
+    <div class="tag">🔵 Atenção — Nome de coluna</div>
+    <h4>Nó <code>Consultar cadencia7</code> usa coluna <code>Cadência</code> (com acento)</h4>
+    <p>
+      O filtro desse nó usa <code>keyName: "Cadência"</code> (acento + maiúscula) enquanto a coluna
+      real no Supabase é <code>cadencia</code>. O nó retorna 0 linhas silenciosamente.
+      Verificar se esse nó está ativo e corrigir o nome da coluna se necessário.
+    </p>
+  </div>
+</div>
+
+<!-- CORREÇÕES -->
+<div class="page">
+  <div class="section-tag">03 — Correções Aplicadas</div>
+  <h2>O Que Foi Corrigido</h2>
+
+  <div class="fix-card">
+    <div class="tag">✅ Corrigido — Causa Raiz</div>
+    <h4>Linhas <code>respondeu = TRUE</code> adicionadas na tabela <code>follow</code> para cadências 3–7</h4>
+    <p>
+      As linhas que estavam com <code>respondeu = NULL</code> (IDs 4, 5, 6, 7) foram atualizadas
+      para <code>respondeu = TRUE</code>, seguindo o mesmo padrão das cadências 1 e 2.
+      Com isso, o <code>Consultar cadencia2</code> passa a encontrar os intervalos corretos
+      para os FUPs 3, 4, 5, 6 e 7, desbloqueando o Block 2 completamente.
+    </p>
+  </div>
+
+  <div class="fix-card">
+    <div class="tag">✅ Corrigido — Rate Limit Google Sheets</div>
+    <h4>Intervalo entre iterações aumentado de 5–10s para 15–20s</h4>
+    <p>
+      O nó <code>Intervalo (5 a 15s)</code> foi atualizado para aguardar entre 15 e 20 segundos
+      entre cada iteração do loop. Isso reduz a frequência de chamadas à API do Google Sheets
+      e previne o erro 429 durante processamentos em lote no horário de pico.
+    </p>
+  </div>
+
+  <h3>Estado das Execuções após as correções</h3>
+
+  <div class="execution-summary">
+    <div class="execution-row">
+      <span class="date">19/05/2026 — Dia inteiro</span>
+      <span class="result ok">✅ 0 erros — 100% sucesso</span>
+    </div>
+    <div class="execution-row">
+      <span class="date">20/05/2026 — 08h00 BRT (pré-correção)</span>
+      <span class="result err">❌ 2 erros — Google Sheets 429</span>
+    </div>
+    <div class="execution-row">
+      <span class="date">20/05/2026 — 08h10 em diante</span>
+      <span class="result ok">✅ 0 erros — 100% sucesso</span>
+    </div>
+    <div class="execution-row">
+      <span class="date">20/05/2026 — 11h10 a 16h30 BRT</span>
+      <span class="result ok">✅ Processando leads com execuções de até 5 min (Block 2 ativo)</span>
+    </div>
+  </div>
+
+  <p>
+    Os 2 erros de 08h foram originados pela correção do intervalo ainda não ter sido aplicada
+    naquele momento. A partir da atualização, nenhum erro de rate limit foi registrado.
+  </p>
+</div>
+
+<!-- TIMELINE + PRÓXIMOS PASSOS -->
+<div class="page">
+  <div class="section-tag">04 — Linha do Tempo e Próximos Passos</div>
+  <h2>Cronologia da Investigação</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">18/05/2026</div>
+      <div class="tl-title">Abertura do GWT-2392 e início da análise</div>
+      <div class="tl-desc">Acesso ao workflow via API do N8N. Mapeamento dos 3 blocos de execução e identificação de 4 execuções com erro no histórico.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">18/05/2026</div>
+      <div class="tl-title">Diagnóstico da causa raiz</div>
+      <div class="tl-desc">Consulta à tabela <code>follow</code> no Supabase revelou ausência de linhas com <code>respondeu = TRUE</code> para cadências 3–7. Confirmado que o Block 2 retornava 0 leads há meses.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">19–20/05/2026</div>
+      <div class="tl-title">Correção na tabela <code>follow</code></div>
+      <div class="tl-desc">Atualização do campo <code>respondeu</code> de NULL para TRUE nas cadências 3, 4, 5 e 6. Block 2 desbloqueado e passando a processar leads com followup_count &gt; 2.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">20/05/2026</div>
+      <div class="tl-title">Correção do rate limit no Google Sheets</div>
+      <div class="tl-desc">Intervalo entre iterações aumentado de 5–10s para 15–20s. Erros HTTP 429 cessaram após a mudança.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">20/05/2026</div>
+      <div class="tl-title">Verificação das execuções — tudo verde</div>
+      <div class="tl-desc">Todas as execuções do período pós-correção finalizaram com sucesso. Execuções de até 5 minutos indicam Block 2 processando ativamente lotes de leads.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-bar">
+  <span>GWT-2392 — Correção de Falhas nos Follow-ups</span>
+  <span><strong>Cardápio Web</strong> — Clara IA · 20/05/2026</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1197 @@
+[1][Restaurante|agendado|108msg] Estou aqui
+[2][Restaurante|agendado|108msg] Foi uma amiga
+[3][Restaurante|agendado|108msg] Eu também estava
+[4][Restaurante|agendado|108msg] Então não vai mas me atender
+[5][Restaurante|agendado|108msg] Qual ho
+[6][Restaurante|agendado|108msg] Horário
+[7][Restaurante|agendado|108msg] 16:15
+[8][Restaurante|agendado|108msg] Sim
+[9][Restaurante|agendado|108msg] Bora
+[10][Restaurante|agendado|108msg] Sim
+[11][Restaurante|agendado|108msg] Antonieta dos santos Fernandes
+[12][Lanchonete|triagem|18msg] Eu já tenho o sistema de vcs
+[13][Lanchonete|triagem|18msg] Queria um suporte urgente
+[14][Lanchonete|triagem|18msg] Pois meu Pc quebrou
+[15][Lanchonete|triagem|18msg] Estou com outro e preciso passar o sistema para ele
+[16][Lanchonete|triagem|18msg] Teria como me ajudar?
+[17][Lanchonete|qualificacao|61msg] Bom dia
+[18][Lanchonete|qualificacao|61msg] Na verdade eu quero conhecer o sistema de vocês na prática, quero prestar o serviço de vocês a donos de lanchonete
+[19][Lanchonete|qualificacao|61msg] Ela funciona fisicamente e no delivery
+[20][Lanchonete|qualificacao|61msg] Quais são os planos e Quantos custar cada planos
+[21][Lanchonete|qualificacao|61msg] Da pra fazer teste de 10 dias gratuitos ?
+[22][Lanchonete|qualificacao|61msg] É tudo manual, anotações no papel
+[23][Lanchonete|qualificacao|61msg] Eu quero prestar o serviço para uma lanchonete
+[24][Lanchonete|qualificacao|61msg] Só tô aguardando a reposta do cliente
+[25][Lanchonete|qualificacao|61msg] Bo noite
+[26][Lanchonete|qualificacao|61msg] Qual é o valor do plano delivery
+[27][Açaiteria|triagem|47msg] Da sim
+[28][Açaiteria|triagem|47msg] Depois das 16:00
+[29][Açaiteria|triagem|47msg] Na verdade, eu trabalho em um restaurante e quando eu chego, eu abro minha loja no 99 para vender açaí. Mas eu gostaria de ter um cardápio online e ter um atendimento, assim, tipo, pelo... Como se diz assim? Online? Porque eu sou sozinha. Então, assim, agora, no começo, tá tranquilo. Eu ainda consigo fazer as coisas sozinha, mas eu não quero focar tanto na plataforma, entendeu? Eu quero ver se eu consigo fazer algo por fora.
+[30][Açaiteria|triagem|47msg] Muito bom mesmo
+[31][Açaiteria|triagem|47msg] É sim mais vou deixar pra fazer mais pra frente
+[32][Açaiteria|triagem|47msg] Melhor por q é pago né e eu tô começando agora
+[33][Outro|agendado|86msg] Opa estou entrando
+[34][Confeitaria|triagem|46msg] Oi bom dia
+[35][Confeitaria|triagem|46msg] Escuta áudio?
+[36][Confeitaria|triagem|46msg] Oi, bom dia, tudo bem? Prazer, Annalice. Isso, eu pedi para ser atendida por uma pessoa. Eu vou te explicar um pouquinho, tá? Resumidamente o nosso negócio. Bom, nós estamos abrindo uma padaria saudável, né? Livre de glúten, mais saudável, enfim. Só que nós decidimos que nesse primeiro momento nós iremos trabalhar somente com delivery, retirada. Não vai ter atendimento no balcão. E aí, eu encontrei vocês pelo Instagram e fiquei curiosa, fiquei interessada. Gostaria de saber de que forma vocês podem me ajudar com o meu negócio, como que funciona o cardápio web, vocês fazem a gestão completa do negócio, ajuda com divulgação ou somente com o cardápio. Me explica um pouquinho como que funciona, se é interessante para mim também trabalhar com vocês. Por favor, agradeço e aguardo a sua resposta. Obrigada!
+[37][Confeitaria|triagem|46msg] Aguardando
+[38][Confeitaria|triagem|46msg] Oi, tudo bem? Não, imagina, sem problemas. Então, como eu te mandei na mensagem anterior, eu quero conhecer mais, quero saber quais são as funcionalidades, o que que vocês podem estar oferecendo. Como eu te falei, a minha dificuldade maior, o meu propósito maior, é a gestão completa da loja, o cardápio, né, otimizar essa parte do atendimento, que demanda muito tempo, energia, então, tudo que possa facilitar para o cliente poder fazer o pedido dele, né, com rapidez e agilidade. E é isso, não sei se vocês fazem também o marketing da empresa.
+[39][Outro|abertura|47msg] Instagram
+[40][Outro|abertura|47msg] Sim
+[41][Outro|abertura|47msg] Delivery e retirada
+[42][Outro|abertura|47msg] Quero praticidade no meu negócio
+[43][Outro|abertura|47msg] Integração com delivery
+[44][Outro|abertura|47msg] Cardápio digital
+[45][Outro|abertura|47msg] Prefiro ligação
+[46][Outro|abertura|47msg] Pode ser a tarde?
+[47][Outro|abertura|47msg] Vc é de onde?
+[48][Outro|abertura|47msg] 16 horas
+[49][Outro|abertura|47msg] Sim
+[50][Outro|abertura|47msg] Me desculpe
+[51][Outro|abertura|47msg] Tive um imprevisto
+[52][Outro|abertura|47msg] Podemos marcar pra amanhã?
+[53][Outro|abertura|47msg] Tive um imprevisto
+[54][Outro|abertura|47msg] Pode ser na segunda-feira, então.
+[55][Outro|abertura|47msg] Não chegou nenhum áudio esse último aí, não deu pra escutar nada.
+[56][Outro|abertura|47msg] A tarde
+[57][Outro|abertura|47msg] 16 horas
+[58][Outro|abertura|47msg] Obrigada
+[59][Outro|qualificacao|46msg] Laise Ribeiro | Shake Point agradece seu contato. Como podemos ajudar?
+[60][Outro|qualificacao|46msg] Já fui atendida
+[61][Outro|qualificacao|46msg] Obrigada
+[62][Confeitaria|agendado|140msg] Sim
+[63][Confeitaria|agendado|140msg] Eu não trabalho com iFood, eu trabalho em casa na minha confeitaria e eu queria aumentar as minhas vendas. Deixa eu te perguntar, vocês têm algum consultor que entre em contato?
+[64][Confeitaria|agendado|140msg] Confeitaria
+[65][Confeitaria|agendado|140msg] Tenho uma confeitaria em casa
+[66][Confeitaria|agendado|140msg] Ta bom
+[67][Confeitaria|agendado|140msg] E cm aumenta minhas vendas
+[68][Confeitaria|agendado|140msg] Vc fazem propaganda algo assim
+[69][Confeitaria|agendado|140msg] Vcs orientam cm usar dw forma correta para ter este aumento
+[70][Confeitaria|agendado|140msg] Eu não entendi direito essa parte dos anúncios, vocês que anunciam as lojas que vocês têm dentro da sua plataforma, é isso?
+[71][Confeitaria|agendado|140msg] E vc ensinam a usar isso
+[72][Confeitaria|agendado|140msg] Tendi
+[73][Confeitaria|agendado|140msg] O cardápio sou q faco ou vcs ?
+[74][Confeitaria|agendado|140msg] Ajudam
+[75][Confeitaria|agendado|140msg] Tendi e qual valor eu pago
+[76][Confeitaria|agendado|140msg] Entendi. Esse 179, que é o básico, ele tá incluso o que? Que diferencia do outro, de duzentos e pouco que você falou?
+[77][Confeitaria|agendado|140msg] E esse valor de 179, vocês parcelam ou tem que ser só à vista?
+[78][Confeitaria|agendado|140msg] Deixa eu te falar uma coisa, quando você me mandou o primeiro contato, logo em seguida uma outra pessoa também me mandou o contato com o mesmo nome de cardápio web, de vocês também, ela marcou uma, eu não sei como vocês chamam, um horário com essa pessoa que explica o que aconteceu, é de vocês mesmo ou não?
+[79][Confeitaria|agendado|140msg] O valor de 179,99 e mensal?
+[80][Confeitaria|agendado|140msg] Clara
+[81][Confeitaria|agendado|140msg] Pq nao aparece o de 179,99?
+[82][Confeitaria|agendado|140msg] Então, aí se for de acordo com o que eu espero, aí eu vou ter que pagar R$179,80 mensais e esse valor mensal eu pago como?
+[83][Confeitaria|agendado|140msg] O mensal que você fala é 209, aí vocês mandam o boleto todo mês para me pagar. Eu escolho a data do vencimento ou é vocês que estipulam? E pela sua experiência, você acha que contratando esse serviço, eu vou ter mesmo o aumento do cliente para poder pagar o boleto nesse valor?
+[84][Confeitaria|agendado|140msg] Ta bom obgd por enquanto
+[85][Confeitaria|agendado|140msg] Podemos sim
+[86][Outro|triagem|53msg] Já sim a contratação
+[87][Açaiteria|triagem|52msg] Através da operação de um amigo
+[88][Açaiteria|triagem|52msg] Sim
+[89][Pizzaria|agendado|92msg] Sim
+[90][Açaiteria|qualificacao|20msg] no anuncio
+[91][Açaiteria|qualificacao|20msg] Boa tarde Thais
+[92][Açaiteria|qualificacao|20msg] Estou começando agora no ramo de açaiteria
+[93][Açaiteria|qualificacao|20msg] E queria ver com vocês algo bem legal para chamar clientes
+[94][Açaiteria|qualificacao|20msg] Eu não. Eu vou abrir ainda. Está chegando ainda umas marcadorias. Preciso estar tudo em ordem. O principal ainda é o freezer, que ainda vai demorar um pouquinho. Acho que uns 10 dias pra chegar. Então assim, a gente vai começar ainda. Então assim, eu queria uma coisa bem legal, sabe? Uma coisa bem bacana. Eu tenho que ir atrás de fotos. Acredito eu também. Aí, assim, me dá uma ajuda. O que você poderia estar fazendo? Me manda. Como é que funciona também. Por favor.
+[95][Açaiteria|qualificacao|20msg] entao estou querendo abrir no dia 15/05
+[96][Açaiteria|qualificacao|20msg] se estiver tudo em ordem
+[97][Açaiteria|qualificacao|20msg] CARDAPIO DIGITAL
+[98][Açaiteria|qualificacao|20msg] e depois posso ir vendo os outros
+[99][N/A|triagem|29msg] 🔥 Brasa Ocian agradece o contato, de uma olhada em nosso cardápio e aguardamos você jaja 😁
+[100][N/A|triagem|29msg] 🔥 Brasa Ocian agradece o contato, de uma olhada em nosso cardápio e aguardamos você jaja 😁
+[101][N/A|triagem|29msg] 🔥 Brasa Ocian agradece o contato, de uma olhada em nosso cardápio e aguardamos você jaja 😁
+[102][Pizzaria|agendado|88msg] Olá
+[103][Confeitaria|triagem|34msg] Rede social
+[104][Confeitaria|triagem|34msg] Rede social
+[105][Confeitaria|triagem|34msg] Aumentar as vendas
+[106][Confeitaria|triagem|34msg] Sim
+[107][Confeitaria|triagem|34msg] Não
+[108][Pizzaria|qualificacao|55msg] gostaria de saber mais sobre o cardapio digital, valores, o que tem direito
+[109][Pizzaria|qualificacao|55msg] gostaria de saber também, como funciona a integração com apps de entregas
+[110][Pizzaria|qualificacao|55msg] Bom dia
+[111][Pizzaria|qualificacao|55msg] Ei, tudo bem? Quais plataformas de entrega?
+[112][Pizzaria|qualificacao|55msg] Pq eu moro em Juiz de Fora. Preciso saber se elas funcionam aqui
+[113][Pizzaria|qualificacao|55msg] O que acontece é que quero sair do ifood aí não pode ser nenhuma vinculada ao ifood
+[114][Pizzaria|qualificacao|55msg] Me envia por favor os planos de vocês, as taxas que vocês absorvem
+[115][Pizzaria|qualificacao|55msg] Tudo o que eu preciso saber pra contratar vocês
+[116][Pizzaria|qualificacao|55msg] Somente delivery
+[117][Pizzaria|qualificacao|55msg] Não consegui ver o e-mail, queria tratar por aqui mesmo. Achei bem interessante, sim
+[118][Pizzaria|qualificacao|55msg] O que acontece, estou no ifood mas quero sair de lá
+[119][Pizzaria|qualificacao|55msg] Atender pelo meu WhatsApp
+[120][Pizzaria|qualificacao|55msg] Gosyarka também de saber sobre os planos de vcs e as taxas sobre os produtos
+[121][Pizzaria|qualificacao|55msg] Vocês tem algum restaurante de Juiz de Fora que vcs atendem?
+[122][Pizzaria|agendado|98msg] Bom dia
+[123][Pizzaria|agendado|98msg] Bom dia já fechei
+[124][Confeitaria|agendado|89msg] podemos
+[125][Confeitaria|agendado|89msg] ainda pode ?
+[126][Confeitaria|agendado|89msg] estava terminando um relatorio
+[127][Confeitaria|agendado|89msg] link
+[128][Confeitaria|agendado|89msg] to no telefone mas posso entrar
+[129][Açaiteria|triagem|77msg] Olá Jonas
+[130][Açaiteria|triagem|77msg] Tudo certo?
+[131][Açaiteria|triagem|77msg] Olá, Boa Tarde. me chato Thiago
+[132][Açaiteria|triagem|77msg] Oiii Ana, Tudo sim.
+[133][Açaiteria|triagem|77msg] Já uso a cardápio web em uma operação minha já começo o sistema
+[134][Açaiteria|triagem|77msg] Estou buscando o sistema para uma nova operação de delivery
+[135][Açaiteria|triagem|77msg] Quero a parte de delivery com integração do iFood e emissão de NFCe
+[136][Açaiteria|triagem|77msg] Esse módulo Marketing place seria o que?
+[137][Açaiteria|triagem|77msg] Vocês conseguem copiar o cardápio que já tenho e deixar tudo cadastrado?
+[138][Açaiteria|triagem|77msg] O pagamento é pré pago?
+[139][Açaiteria|triagem|77msg] Sim é algo que preciso que seja feito rápido
+[140][Açaiteria|triagem|77msg] Como já tinha te dito o cardápio que eu já uso é o cardápio web
+[141][Açaiteria|triagem|77msg] Sim isso, é uma segunda unidade
+[142][Açaiteria|triagem|77msg] Vamos fazer o
+[143][Açaiteria|triagem|77msg] Oii
+[144][Açaiteria|triagem|77msg] Vamos fechar
+[145][Açaiteria|triagem|77msg] Whatsapp é o da loja ou pessoal?
+[146][Açaiteria|triagem|77msg] CNPJ: 47985871000175
+[147][Açaiteria|triagem|77msg] WhatsApp pessoal (84) 996551997
+[148][Açaiteria|triagem|77msg] Após o cadastro você já cria o login e a senha pra mim ter o acesso?
+[149][Açaiteria|triagem|77msg] Eu tenho como criar um login unificado para que quando eu entre eu tenha acesso as minhas duas operações?
+[150][Açaiteria|triagem|77msg] Qual o prazo para entrarem em contato para fazer a replicação do cardápio?
+[151][Açaiteria|triagem|77msg] Aguardando entrarem em contato
+[152][Açaiteria|triagem|77msg] Ele não entrou em contato
+[153][Açaiteria|triagem|77msg] Pois não mandou
+[154][Açaiteria|triagem|77msg] Troca para o plano mensal
+[155][Açaiteria|triagem|77msg] Por gentileza
+[156][Açaiteria|triagem|77msg] Me confundi
+[157][Açaiteria|triagem|77msg] Sim
+[158][Açaiteria|triagem|77msg] Boa tarde
+[159][Açaiteria|triagem|77msg] Perfeito Ana, muito obrigado
+[160][Açaiteria|triagem|77msg] Pronto
+[161][Açaiteria|triagem|77msg] Olá, Reno
+[162][Açaiteria|triagem|77msg] Boa Tarde
+[163][Açaiteria|triagem|77msg] Falaram que você ia entrar em contato para resolver
+[164][Açaiteria|triagem|77msg] Tenho duas operações e quero fazer um login unificado para ter acesso as duas de forma simultânea
+[165][Açaiteria|triagem|77msg] Reno já falei com o Gustavo e com o suporte e ambos me encaminham pra você. E quando você em fim entra em contato diz que não é contigo?
+[166][Açaiteria|triagem|77msg] Acredito que está acontecendo algum delei de comunicado interno entre vocês
+[167][Açaiteria|triagem|77msg] Só uma dúvida, a aba de multi lojas só aparece aparece se as lojas forem no mesmo CPNJ é isso?
+[168][Açaiteria|triagem|77msg] Boa tarde
+[169][Açaiteria|triagem|77msg] Gustavo ainda não tive nenhum retorno
+[170][Açaiteria|triagem|77msg] Desde sexta-feira da semana passada que eu estou aguardando
+[171][Açaiteria|triagem|77msg] Eu preciso disso urgente
+[172][Açaiteria|triagem|77msg] Boa tarde
+[173][Açaiteria|triagem|77msg] Gustavo ainda estou aguardando
+[174][Restaurante|triagem|75msg] Bom dia
+[175][Restaurante|triagem|75msg] Qual menor valor da mensalidade
+[176][Restaurante|triagem|75msg] Do cardápio web
+[177][Restaurante|triagem|75msg] Premium
+[178][Restaurante|triagem|75msg] Isso
+[179][Restaurante|triagem|75msg] Cara, no momento a gente tá com mais entrega no WhatsApp, né, no Salão e um pouquinho no iFood. Eu queria acabar com o iFood e eu ia utilizar só a entrega parceira do iFood, né, que no caso o Cardápio Web dá pra fazer essa junção, né, pedido com a entrega parceira do iFood, não é isso?
+[180][Restaurante|triagem|75msg] É, no WhatsApp, por enquanto, tá sendo tudo manual, cara. Tudo manual mesmo. Aí é iFood, mesmo, normal. Só. A gente tá escrevendo ainda no papel e caneta, sabe? Por isso que eu quero ir contratar o Prêmio. Porque tem a... Tem a comando aí, né? Pra gente anotar no celular e tudo.
+[181][Restaurante|triagem|75msg] Aí a gente trabalha com espechinho, espetaria.
+[182][Restaurante|triagem|75msg] Isso
+[183][Restaurante|triagem|75msg] A questão da entrega parceira
+[184][Restaurante|triagem|75msg] É automática também?
+[185][Restaurante|triagem|75msg] Isso
+[186][Restaurante|triagem|75msg] Na verdade
+[187][Restaurante|triagem|75msg] O ifood tem a opção de solicitar os entregadores
+[188][Restaurante|triagem|75msg] Que se chama entrega parceira
+[189][Restaurante|triagem|75msg] Quero saber se o cardápio web se integra com a entrega parceira
+[190][Restaurante|triagem|75msg] Quando o cliente realizar o pedido o sistema solicita o entregador já automático?
+[191][Restaurante|triagem|75msg] Ou eu tenho que fazer isso manualmente
+[192][Restaurante|triagem|75msg] Show de bola, show de bola. Que horas você consegue perceber de chamada? Umas duas horas da tarde? Um e meia, quatorze horas? Aí você me diz, hein?
+[193][Restaurante|triagem|75msg] Esta acima do meu orçamento
+[194][Restaurante|triagem|75msg] Média de 140 a 170
+[195][Restaurante|triagem|75msg] Mas temos boas expectativas
+[196][Restaurante|triagem|75msg] Entendi
+[197][Lanchonete|triagem|17msg] Eu já tenho a plataforma
+[198][Lanchonete|triagem|17msg] Eu já tenho a plataforma de vocês. Eu queria ver a questão de reabertura, que a gente deu uma pausa, mas a gente já tem a loja cadastrada.
+[199][Lanchonete|triagem|17msg] Não lembro
+[200][Lanchonete|triagem|17msg] Amigo
+[201][Lanchonete|triagem|17msg] Eu já tenho a plataforma de vocês
+[202][Lanchonete|triagem|17msg] Mas está inativa
+[203][Lanchonete|triagem|17msg] reestegkg_@hotmail.com
+[204][Lanchonete|triagem|17msg] Acho que é este
+[205][Confeitaria|triagem|59msg] Pode ser
+[206][Confeitaria|triagem|59msg] Vou abrir uma doceria , e vi que o cardápio web integra com Ifood e pode usar a entrega fácil né isso do ifood
+[207][Confeitaria|triagem|59msg] Estou implantando o cardápio para o iFood, nossa previsão seria por dia das mães, mas aí eu tô vendo ainda, certo? A gente tá organizando tudo, eu quero abrir já organizado. Eu só tenho uma dúvida, o cardápio web, se a gente conseguir vender por ele, aí tem a opção da entrega, certo? Ele vai integrar o iFood, não é isso? Essa entrega fácil. Aí lá, quando chegar esse pedido, a gente precisa digitar na entrega fácil o endereço do cliente, ou já é integrado, ele automaticamente pede essa entrega fácil. Ou é manual, a gente tem que solicitar.
+[208][Confeitaria|triagem|59msg] Valores?
+[209][Confeitaria|triagem|59msg] Vai ter delivery e talvez eu coloque a opção de retirada. Vai depender da minha demanda aqui no bairro.
+[210][Confeitaria|triagem|59msg] Estou em joao pessoa , me mudei
+[211][Confeitaria|triagem|59msg] Sim
+[212][Confeitaria|triagem|59msg] Essa
+[213][Confeitaria|triagem|59msg] Espero que seja, menos eu mesmo.
+[214][Confeitaria|triagem|59msg] Pode prosseguir sem dúvidas
+[215][Confeitaria|triagem|59msg] É o plano de delivery com a integração do iFood com a plataforma, né, e pra mim pegar também a entrega do iFood, né, que seria entrega fácil.
+[216][Confeitaria|triagem|59msg] Tá bom, a gente vai ver, eu vou analisar direitinho e qualquer coisa eu volto a falar, tá bom? Obrigado. Isso já está com a Include, então a Include já não é adicional, né, com a questão da entrega fácil do iFood, né?
+[217][Confeitaria|triagem|59msg] A mensagem dada amanhã de 9h30 é fulana, que eu não sei o teu nome.
+[218][Confeitaria|triagem|59msg] Desculpe não ter decorado teu nome, é porque eu acho que todo mundo do web cardápio, cardápio web, falava comigo.
+[219][Confeitaria|triagem|59msg] Na verdade, é o único WhatsApp, é a quantidade de pessoas que falam que teve uma hora que eu disse, não, não, não tem mais condição não estou repetindo a mesma coisa para duas, três, dez pessoas, não dá ele, não, agora é só comigo, nesse mesmo WhatsApp aí e aí depois, ele estava tudo certo para amanhã e você pergunta de novo aí fica, é confuso para o cliente isso aí
+[220][Confeitaria|triagem|59msg] E não foi eu não, tá? Ele disse que tinha essa pessoa disponível, tudinho. Perguntou quando. Pô, diz, eu não posso agora, tô muito ocupado. Só amanhã 9h30 mesmo assim, vou encaixar no meu horário. Ele pronto. Então amanhã 9h30 esse especialista vai falar.
+[221][Confeitaria|triagem|59msg] Soooooooo
+[222][Confeitaria|triagem|52msg] Através de uma pesquisa no Google.
+[223][N/A|qualificacao|63msg] Redes sociais
+[224][N/A|qualificacao|63msg] Olá
+[225][N/A|qualificacao|63msg] Vamos inaugurar dia 8
+[226][N/A|qualificacao|63msg] Tá bom
+[227][N/A|qualificacao|63msg] Isso
+[228][N/A|qualificacao|63msg] Queria cadarpio digital e o robô do WhatsApp
+[229][N/A|qualificacao|63msg] Simm
+[230][Outro|triagem|24msg] tudo certo, gostaria de entender os planos e o uso, tenho um cliente que quer uma solução e estou vendo qual melhor se encaixa para ele
+[231][Outro|triagem|24msg] é uma empresa pequena de vendas de bolos e doces
+[232][Outro|triagem|24msg] queremos um cardapio digital para gerenciar os pedidos feitos pelo whatsapp
+[233][Outro|triagem|24msg] Julio
+[234][Outro|triagem|24msg] certo e como funciona o vinculo com o whatsapp?
+[235][Outro|triagem|24msg] a plataforma fica conectada no meu whtaspp?
+[236][Outro|triagem|24msg] Legal
+[237][Outro|triagem|24msg] Qual o valor?
+[238][Outro|triagem|24msg] Por enquanto nao
+[239][Outro|triagem|24msg] Qualquer coisa eu entro em contato
+[240][Outro|triagem|24msg] Obrigado
+[241][Outro|triagem|24msg] Certo, podemos marcar amanhã
+[242][Outro|triagem|24msg] Pode ser de manha mesmo
+[243][Outro|triagem|24msg] Também
+[244][Outro|triagem|24msg] Sim, eu tenho um cliente e estou cotando esse serviço pra ele
+[245][Outro|triagem|24msg] Ele mesmo vai assinar o serviço com vcs mas estou analisando as possibilidades pra sugerir pra ele
+[246][Outro|triagem|24msg] Não
+[247][Outro|triagem|24msg] Pode sim
+[248][Outro|triagem|24msg] valeu
+[249][Confeitaria|agendado|79msg] Boa tarde
+[250][Confeitaria|agendado|79msg] Tudo bem
+[251][Confeitaria|agendado|79msg] Já entrei
+[252][Confeitaria|agendado|79msg] Pode sim por favor
+[253][Confeitaria|agendado|79msg] Obrigada
+[254][Confeitaria|agendado|79msg] Esse horário não consigo
+[255][Lanchonete|triagem|41msg] Sim
+[256][Lanchonete|triagem|41msg] Oi, Tatiana. Bom dia. Tatiana, eu tô com um problema que eu não consegui resolver ainda. É sobre o repasso semanal. O meu tá como mensal, mas eu preciso alterar. Consegue me ajudar?
+[257][Lanchonete|triagem|41msg] Ah, não tô falando da plataforma de postagem, eu tô falando do iFood.
+[258][Hamburgueria|qualificacao|71msg] Bom dia
+[259][Açaiteria|qualificacao|43msg] Olá! Quero experimentar a Cardápio Web no meu restaurante ou delivery!
+[260][Pastelaria|triagem|16msg] Fiz uma pesquisa das principais empresas que prestam esse serviço, e achei vocês
+[261][Pizzaria|agendado|97msg] Já falei com alguém agora
+[262][Pizzaria|agendado|97msg] Em teu união
+[263][Pizzaria|agendado|97msg] Não
+[264][Pizzaria|agendado|97msg] Já comprei o cardápio
+[265][Pizzaria|qualificacao|66msg] Boa tarde.
+[266][Pizzaria|qualificacao|66msg] Fernando Miranda
+[267][Pizzaria|qualificacao|66msg] Na verdade eu estou falando com uma outra moça ali também, agora eu entrevocei mas já estou falando com ela desde cedo. É assim, eu vou montar um delivery, estou montando um delivery de pizza e quero trabalhar já organizado desde o princípio, entendeu? Esse aqui é o objetivo de ter ido atrás de vocês de orçamento.
+[268][Pizzaria|qualificacao|66msg] Doido, eu falei por áudio, gravou o áudio, tudo, falou comigo, posso até te mandar usar o áudio, que doido isso, hein? Essa inteligência artificial é braba mesmo, hein?
+[269][Pizzaria|qualificacao|66msg] questão de taxas e tal, né, como é que funciona a integração, porque eu nessa parte sou meio leigo, entendeu, como funciona a integração junto ao banco e tal, que banco que pode ser usado, se é o banco que eu já tenho a
+[270][Pizzaria|qualificacao|66msg] Eles vão trabalhar só Delivery, na verdade. Só, vamos mexer só com Delivery, por enquanto.
+[271][Pizzaria|qualificacao|66msg] Tá, e qual é o valor do investimento mensal nisso?
+[272][Pizzaria|qualificacao|66msg] Sem pegadinhas.
+[273][Pizzaria|qualificacao|66msg] Bom dia, tudo bem? Não, na verdade assim, eu vou fazer só que, como eu falei, a minha operação começa só no meio de julho, né, então não tem necessidade de eu resolver isso aí agora, fazer isso agora, começar a gastar, pagar mensalidade agora. Então, quando estiver mais próximo do meu lançamento, eu vou estar fazendo sim, vou estar mexendo com vocês aí sim.
+[274][Pizzaria|qualificacao|66msg] Eu queria uma informação, por exemplo, se eu tenho conta numa cooperativa de crédito da Ailos, tenho conta no Banco do Brasil e tenho conta no Santander e Caixa Econômica. Numa dessas aí dá para pôr o recebimento dos pagamentos ou tem que ser só no mercado pago e ir lá na Cielo?
+[275][Açaiteria|qualificacao|116msg] Eu queria fazer um cardápio digital pra minha loja.
+[276][Açaiteria|qualificacao|116msg] É só no delírio, mas tem retirada, é delírio e retirada.
+[277][Açaiteria|qualificacao|116msg] Sim
+[278][Açaiteria|qualificacao|116msg] Qual é
+[279][Açaiteria|qualificacao|116msg] É, mas me fala, quanto seria o valor desses planos, porque eu entrei em contato com uma pessoa que era tanta, 200 lá vai porrada.
+[280][Açaiteria|qualificacao|116msg] Qual seria esse mensal? Qual seria esse mensal?
+[281][Açaiteria|qualificacao|116msg] Esse valor, esse valor é o do mensal, é?
+[282][Hamburgueria|agendamento|82msg] Bom dia
+[283][Hamburgueria|agendamento|82msg] Então tenho uma hamburgueria
+[284][Hamburgueria|agendamento|82msg] Sim temos
+[285][Hamburgueria|agendamento|82msg] Então ja usei o cardápio web em outra empresa que trabalhei gostei mais
+[286][Hamburgueria|agendamento|82msg] Principalmente como o robô do WhatsApp
+[287][Hamburgueria|agendamento|82msg] Tem sim mais nao atende o cliente como o do cardápio web
+[288][Hamburgueria|agendamento|82msg] Isso msm
+[289][Hamburgueria|agendamento|82msg] Nem uma dúvida
+[290][Hamburgueria|agendamento|82msg] E como e forma de pagamento
+[291][Hamburgueria|agendamento|82msg] As 18 nao tem
+[292][Hamburgueria|agendamento|82msg] Hj estou um pouco corrido
+[293][Hamburgueria|agendamento|82msg] Pode ser
+[294][Hamburgueria|agendamento|82msg] Sim meu esposo
+[295][Hamburgueria|agendamento|82msg] Precisava para uso imediato
+[296][Hamburgueria|agendamento|82msg] Provavelmente vai ser ele que vai participar
+[297][Hamburgueria|agendamento|82msg] Blz
+[298][Pizzaria|atendido|59msg] Olha, bom dia, eu me chamo Ellington, eu tenho pizzaria e eu já tenho o aplicativo, eu uso do Anota.i, só que conforme o tempo o aplicativo tá me deixando muito dependente dele, tipo vou te dar um exemplo, antigamente a gente não tinha a opção de fazer esse, vou dar o exemplo do Pix, o Pix, o que aconteceu, quando eles colocaram o aplicativo pra mim eles tinham uma falha no sistema, que a gente conseguia editar, tipo eu pegava uma coisa do cartão, um cartão elo, eu ia lá, editava ele, colocava lá meu Pix e ensinava o cliente fazer daquele modo, ele ia fazer o pagamento via Pix e fazia pra mim, como modo de cartão de crédito, meu a gente fez essa manobra porque o pessoal queria pagar no Pix, direto tipo no aplicativo mesmo, fazia o pedido por lá e pagava, e eu não conseguia fazer por eles, eles não tinham essa opção, eles não liberavam, e a gente conseguiu fazer isso, conseguiu fazer esse desvio aí deles e conseguimos fazer, esse é o primeiro.
+[299][Pizzaria|atendido|59msg] O segundo é que eles cancelaram isso, esse Pix agora não existe mais, eu não tenho acesso a editar nada do aplicativo. O que tem lá, o que eu posso só colocar lá é aquilo, tipo, eu vendo, eu uso o Alelo, o VR, uso o Sodexo, uso o Plush e aí eu consigo lá só aceitar, tipo, colocar lá as bandeiras que eu aceito de cartão para o cliente quando for fazer o pedido, ele saber com o que ele pode pagar e pagar na casa dele quando receber a pizza.
+[300][Pizzaria|atendido|59msg] O que está me quebrando as pernas no caso do aplicativo é que eles colocaram o PixOnline. Eles fizeram o jeito de fazer o PixOnline e eu não tenho acesso a nada. Tipo, vou dar um exemplo. Num dia de chuva, num dia que a plataforma deles está bem carregada, tipo um dia de pagamento, principalmente, a plataforma cai. E o que acontece? Quando um cliente vai fazer um pedido, ele tem 5 minutos para fazer o pedido. No caso, se ele não fizer o pedido em 5 minutos, o pedido dele é cancelado e vai passando. Tipo, está no pedido 10. Em 5 minutos, aqui na pizzaria, em 5 minutos eu tenho 10 pedidos. Aí já vai estar no 15. Esse cliente que estava no número 5, ele fica sem fazer nada. Se ele não conseguir pagar pelo Pix, vamos dizer que ele não conseguiu pagar. Falou, pô, não consegui pagar, quero pagar de outra forma. Não dá mais. Ele tem que fazer outro pedido. E nesse caso, eu estou perdendo muita venda. Porque o cliente acha que não conseguiu pagar no Pix e o pedido dele mesmo assim foi feito. E não foi. Aí o pessoal fica me cobrando. Pô, eu fiz o pedido número 5 e não saiu o pedido tal. E aí o pessoal fica me cobrando. E isso eu perco muita venda. No caso, eu perco, tipo, até a gente prestar atenção nesse erro, a gente perdia aí 10 pedidos no dia. 10 pedidos, 8 pedidos, 5. E a gente ficava prestando atenção. Quando começava a pular o número, a gente já ficava ali, opa, pulou. Aí ficava prestando atenção. E isso estava tomando muito tempo também de quem estava atendendo no computador.
+[301][Pizzaria|atendido|59msg] E aí no caso eu fui fazer um tráfego pago, eu tô procurando algumas empresas pra fazer tráfego pago pra mim. Aí um cliente, um amigo meu, ele tem pizzaria e ele me indicou, ele falou, pô o Cardápio Web, além de ser mais barato, eles também tem esse tipo de divulgação, a plataforma deles tem esse tipo de divulgação também, pelo Google Meta né, divulgação, pelo raio de quilometragem, tipo uma foto que eu colocar, tem recuperador de vendas, então tem algumas coisas que no Anot.ai não tem, ou se tem, eu não tenho acesso pelo plano que eu pago, porque é por planos né, lá, você paga um plano, é um acesso, você tem um acesso, você paga um pouco mais caro, tem outro tipo de acesso e assim vai, e eu fico preso a isso, eu tô no caso refém do aplicativo, e eu não queria isso, porque assim, a venda é minha, é próprio, eu não tenho aplicativo de Queta, de 99food, de iFood, eu não tenho, então o cliente, ele tem que ser bem fácil para ele fazer o pedido, porque senão ele acaba não fazendo o pedido e ele acaba atendendo, e aí o pessoal falou que o Cardápio Web ele tem bastante disso, o aplicativo por ser mais fácil de atendimento, e você é liberado para eu ser o responsável, hoje eu quero atender isso, hoje eu não quero, e no Anot.ai eu não tenho, o aplicativo é deles e o jeito que eles trabalham é assim, quem souber fazer o pedido, faz, quem não souber, não compra.
+[302][Pizzaria|atendido|59msg] Bom dia
+[303][Pizzaria|atendido|59msg] Tem plano fidelidade.?
+[304][Pizzaria|atendido|59msg] Pq deixava ele rodar aqui na pizzaria pra ver como iria ficar
+[305][Pizzaria|atendido|59msg] Vocês que fazem o cadastro e fotos no cardápio
+[306][Pizzaria|atendido|59msg] Sim
+[307][Pizzaria|atendido|59msg] Pode ligar
+[308][Pizzaria|atendido|59msg] Estou no aguarde
+[309][Pizzaria|atendido|59msg] Ta bom
+[310][Pizzaria|atendido|59msg] Obrigado
+[311][Hamburgueria|agendado|90msg] Eu marquei para sexta
+[312][Hamburgueria|agendado|90msg] Sim
+[313][Hamburgueria|agendado|90msg] 65904361000108
+[314][Hamburgueria|agendado|90msg] Telefone vou estar aderindo segunda
+[315][Hamburgueria|agendado|90msg] Qual seria o valor msm?
+[316][Lanchonete|abertura|18msg] Gostaria de saber os valores do acesso ao cardápio interativo, estou iniciando um negócio e estou pesquisando alternativas
+[317][Lanchonete|abertura|18msg] Somente delivery
+[318][Lanchonete|abertura|18msg] Não estamos em operação no momento, iniciaremos no começo de Maio e estou buscando alternativas de simplificar o cardápio
+[319][Lanchonete|abertura|18msg] Exato
+[320][Lanchonete|abertura|18msg] Nesse primeiro momento, a questão de valores mesmo, a variação de valores. Por exemplo, o que eu observei muito, x-valor é até dois meses, entendeu? Se ele vai aumentando, se tem variação, e o até dois meses é bem pequenininho, quase não vê. Então, induz um pouco a gente ao erro. Então, eu queria saber muito real, assim, os valores a curto prazo e a médio prazo.
+[321][Lanchonete|abertura|18msg] Se o valor ele fica congelado, se o valor varia, se depende de quantidade de pedidos, já acima de 30 pedidos, altera o valor. Há tantos pedidos, é tanto valor. Em relação a valores, essa ainda é uma dúvida.
+[322][Lanchonete|abertura|18msg] Então, nesse caso, seria um valor à parte ou seria um valor de algum outro plano, ou eu teria que aderir algum outro plano com algum outro valor, nesse caso de alavancar as vendas e tal. Eu gostaria muito que tu me passasse os valores logo, porque como eu tô iniciando, eu só vou escolher um que esteja dentro do orçamento, né. Quando a gente está iniciando um negócio, a gente pensa muito no orçamento, no custo-benefício. Então, nesse início mesmo, do início imediato, eu tô pensando no custo-benefício. Aí depois, num outro momento, eu vou pensar em alavancar a venda, dessa vez fazer um outro plano maior, mas nesse início eu não tenho nenhum cliente, ainda não tenho nenhuma base, então eu preciso do melhor custo-benefício pra mim agora.
+[323][Lanchonete|abertura|18msg] É Bruna kkkk
+[324][Lanchonete|abertura|18msg] Eu imagino rss
+[325][Lanchonete|abertura|18msg] Eu vou ser muito sincera, pra esse primeiro momento, realmente, tá fora do orçamento. Mas, e o de vocês parece muito completo, então, com certeza mais lá na frente, caso alavanque as vendas, caso dê certo, a gente ainda tá na indecisão, ainda tá nesse primeiro contato, primeiro público, vamos ver como é que vai dar, se vai dar. Então, pra esse primeiro momento, eu não vou conseguir obter esse plano, mas lá na frente, quem sabe.
+[326][Lanchonete|abertura|18msg] Ah sim! É sanduíche
+[327][Lanchonete|abertura|18msg] Amém 🙌🏽
+[328][Lanchonete|abertura|18msg] É muito legal mesmo ☺️
+[329][Lanchonete|abertura|18msg] Sim, obrigada pela atenção
+[330][Outro|triagem|39msg] Olá Dayane estamos analisando logo te retorno
+[331][Outro|triagem|39msg] Daiane, nesse pacote que eu vou comprar de vocês, desse cardápio web, o sistema vai ser mais ou menos completinho, né? Eu vou conseguir imprimir os pedidos numa impressora, vou ter um cardápio, vai montar um cardápio, vou conseguir imprimir ele numa impressora, o sistema já vem completinho, né?
+[332][Outro|triagem|39msg] Ô Daiane, é só delivery com retirada, entendeu? É só delivery com retirada, eu não tenho mezanilho, não tenho garçom, não tenho nada.
+[333][Outro|triagem|39msg] E qual valor mesmo?
+[334][Outro|triagem|39msg] Ô Dayane, deixa eu te falar uma coisa, outra coisa né, os produtos, os meus produtos vocês mesmos que inserem né, não é eu que tenho que inserir não né.
+[335][Outro|triagem|39msg] Sim, é... Daiano, sim. Deixa eu te falar outra coisa. Então, se virem retirar no balcão também eu consigo digitar um pedido lá e imprimir pra mandar pra cozinha também, certo?
+[336][Outro|triagem|19msg] Através da redes sociais
+[337][Outro|triagem|19msg] Pelo Facebook
+[338][Outro|triagem|19msg] Isso mesmo, sim. Eu já trabalho com questão midiática, cardápio, entre outras interfaces midiáticas. Eu tenho uma rádio web, tenho uma TV web e já tenho bastante experiência para mais de 10 anos nesse ramo. Aí eu queria ver com vocês uma parceria e a gente iniciar essa parceria aí, bem proveitosa, na região de Minas Gerais, em Ouro Preto, Mariana, Itabirito, como um todo, né? Em qualquer lugar que a gente possa levar, beleza? Aí se é qualquer coisa, você pode me ligar, beleza? Muito obrigado, Ana Lise.
+[339][Outro|triagem|19msg] Sim
+[340][Outro|triagem|19msg] Abri uma conta PJ na Cora e estou gostando das vantagens que ela oferece para a minha empresa, Pix PJ sem taxas, 100 boletos mensais grátis e muito mais!
+[341][Açaiteria|triagem|48msg] Olá bom dia
+[342][Açaiteria|triagem|48msg] Na verdade vender mais e com mais plasticidade de mostra meu cardápio onde o cliente mesmo já escolhe seleciona e paga e nós só enviamos
+[343][Açaiteria|triagem|48msg] Porém sou ressente no delivery apenas 20 dias e tenho poucos clientes ainda
+[344][Lanchonete|qualificacao|32msg] ola. bom dia. nao tenho interesse no momento minha venda tão fraca ainda
+[345][Restaurante|qualificacao|101msg] Oi, boa tarde!
+[346][Restaurante|qualificacao|45msg] Já falei com um atendente obrigado
+[347][Restaurante|qualificacao|45msg] Não obrigado
+[348][Confeitaria|qualificacao|30msg] Anúncios no Instagram
+[349][Confeitaria|qualificacao|30msg] Bom dia, tudo bem
+[350][Outro|triagem|22msg] Olá
+[351][Outro|triagem|22msg] Olá, boa noite. Por favor, eu gostaria de saber como que eu consigo fazer a integração com vocês via API. Vocês possuem a documentação para me passar, para eu compreender o que que eu consigo acessar e comunicar com vocês?
+[352][Outro|triagem|22msg] 🤖 *IA do Hugo Lourenço | Transcrição do áudio:*
+[353][Outro|triagem|22msg] A necessidade disso é porque eu tenho um lead que usa essa solução de vocês e aí para apoiar eles em algumas questões, aí eu quero fazer integração com vocês ali para obter dados e etc.
+[354][Outro|triagem|22msg] 🤖 *IA do Hugo Lourenço | Transcrição do áudio:*
+[355][Outro|triagem|22msg] No caso, é um cliente de vocês já, então eu sou um parceiro, um fornecedor desse seu cliente e aí para a gente fazer algumas coisas, eu gostaria de fazer integração com o sistema de vocês para a gente atuar em projetos internos nossos.
+[356][Outro|triagem|22msg] 🤖 *IA do Hugo Lourenço | Transcrição do áudio:*
+[357][Outro|triagem|22msg] Bom diaaa
+[358][Outro|triagem|22msg] Legal...Super agradeço 👍🏼
+[359][Confeitaria|agendado|57msg] Pelo anúncio no Instagram
+[360][Outro|triagem|48msg] Boa tarde
+[361][Outro|triagem|48msg] sou uma agencia de marketing e preciso da ferramenta para um cliente
+[362][Outro|triagem|48msg] consegue me ajudar?
+[363][Outro|triagem|48msg] show
+[364][Outro|triagem|48msg] Miguel, me passa os preços por favor
+[365][Outro|triagem|48msg] posso te enviar um áudio?
+[366][Outro|triagem|48msg] Fala Miguel, beleza? João Weber falando aqui. Cara, é o seguinte, eu tenho uma agência de marketing, atendo alguns segmentos, e eu tenho atualmente dois clientes de delivery. Eu tenho um no Rio de Janeiro e um no Piauí. Eu tenho um terceiro em Rondônia, mas ele não usa cardápio ainda, tá começando agora. Mas esse do Rio de Janeiro usa o seu sistema, LA Sabores, alguma coisa assim, não vou lembrar o nome certinho agora, tá? Meu contato é o Alexandre. E esse do Piauí, ele usa o Insta Delivery, alguma coisa assim. Cara, mas eu não tô gostando esse Insta Delivery, eu não tenho muitas opções, só tenho o Pixel lá, não tenho a API da meta, não tenho o catálogo para utilizar lá nas campanhas. E já o do Rio de Janeiro tem tudo isso, cara, e fora os relatórios, eu preciso saber pela UTM, por onde tá vindo, qual campanha, sabe? Eu tenho muito mais informações. Então eu entrei em contato com vocês porque eu queria saber, né, se você consegue fazer um preço diferenciado para mim, para eu conseguir revender isso para o meu cliente. Então, eu gostaria que você me passasse os planos, né, e o valor que você consegue passar para mim.
+[367][Outro|triagem|48msg] A imagem mostra uma coleção de pratos de comida dispostos em um formato de colagem. Há uma variedade de pratos visíveis, com diferentes ingredientes e apresentações, como arroz, vegetais, massa e carne. Todos os pratos são coloridos e parecem muito apetitosos. O nome "L&A Sabor Perfeito" está em destaque, sugerindo que é um restaurante ou serviço de alimentação. O texto mencionado parece ser uma comunicação sobre os serviços que eles oferecem, possivelmente relacionados à alimentação saudável ou à culinária.
+[368][Outro|triagem|48msg] somente para delivery
+[369][Outro|triagem|48msg] Certo, vou conversar com ele. Me explica melhor esses R$80, que eu ganho é uma única vez ou é enquanto ele estiver ativo com você? Só para eu entender.
+[370][Outro|triagem|48msg] esse valor eu ganho 1x só ou todo mês deste cliente?
+[371][Outro|triagem|48msg] certo... estou vendo quanto ele paga no outro pra ver se está próximo ou se vc vai precisar me ajudar ai rsss
+[372][Outro|triagem|48msg] estou esperando ele responder
+[373][Outro|triagem|48msg] sim rss... eu não gostei... a minha taxa de conversão do finalizar compra para o compra está muito baixa... estou perdendo muito ali, sem contar a taxa para entrar no site
+[374][Outro|triagem|48msg] sem contar o sistema feio
+[375][Outro|triagem|48msg] vc consegue alguns dias de teste só pra eu tentar montar um cardápio e mostrar pra ele?
+[376][Outro|triagem|48msg] perfeito... pode ser também
+[377][Outro|triagem|48msg] neste valor está incluso quais serviços de vcs? só pra eu explicar certinho pra ele... alguma configuração ou suporte?
+[378][Outro|triagem|48msg] A imagem que você enviou parece ser uma captura de tela de um sistema de gestão de pedidos, possivelmente usado por uma clínica de estética ou um restaurante. Aqui está uma descrição do conteúdo:
+[379][Outro|triagem|48msg] show... ai o meu cliente nesta tela que te mandei vai ver que aquele pedido veio de um anúncio
+[380][Outro|triagem|48msg] é isso?
+[381][Outro|triagem|48msg] sim... esse do relatório eu já havia visto... através das utms né? eu achei que na tela do pedido também era possível ver
+[382][Outro|triagem|48msg] show... valeu
+[383][Outro|triagem|48msg] hoje não... eu só consigo amanhã, pois agora ele está no pega do delivery e não me atende kkkk
+[384][Outro|triagem|48msg] Bom dia, meu amigo, tudo bem? Já mandei mensagem lá de novo pro meu cliente, tô esperando só ele acordar, né? Porque ele deve ter trabalhado essa noite na pizzaria. E aí eu te dou um retorno, tá? Eu andei mexendo na... O Sete mandou alguns prints, né? Eu andei mexendo na conta do meu outro cliente que usa o sistema de vocês e eu fiquei com uma dúvida. Eu vi que eu consigo pegar o catálogo, né? De produto de vocês e subir isso lá na meta. Em campanhas. Só que eu senti falta lá na meta, na hora que eu subo o arquivo, né? Lá o link, né? Pra puxar os produtos. Eu senti falta dessa categorização. Porque, por exemplo, eu quero subir um catálogo só da pizza. Pizza G, por exemplo. Pizza grande. Ou, por exemplo, excluir os refrigerantes, que não faz sentido estar no catálogo. Ou, vamos imaginar que eu tenha outra categoria de açaí, por exemplo. Nada a ver, mas só pra você entender. E eu quero rodar só pizza. Categoria de pizza. Eu não consegui fazer isso. Tem essa opção lá?
+[385][Outro|triagem|48msg] Eu rodei todos os campos, até analisei as informações que vêm para o catálogo ali e não tem essa opção de categorização, só se não tiver configurado na conta desse cliente, né. Fui dar uma olhada também na parte ali das categorias, se tinha alguma coisa, não achei. Porque, por exemplo, eu quero subir somente pizza, não quero tirar o açaí, não quero que o açaí vai para catálogo. Como que eu faria isso, sendo que só tem um arquivo de catálogo no sistema de vocês?
+[386][Outro|triagem|48msg] Boa tarde meu amigo. Não, não é no cardápio, é na meta. Lá nas integrações com a meta eu consigo gerar o catálogo para levar para a meta e lá na meta rodar o catálogo de produtos do cardápio, vamos falar assim. Só que como só tem um link, que deve ser o feed dos produtos, eu achei que vocês estavam passando a categoria, alguma coisa assim, para eu conseguir separar isso lá na meta, mas eu não consigo. O link que vai do feed completo do cardápio está indo tudo e eu queria separar. Não sei se você conseguiu entender.
+[387][Outro|triagem|48msg] Bom, meu cliente, cara, eu acabei falando o nome de vocês e ele entrou direto em contato. Ele chama José, ele é da Pizzaria do Dirceu, de Teresina, Piauí. Então, se ele fechar aí, esse é o cliente que eu indiquei.
+[388][Outro|triagem|48msg] +55 86 98809-7094
+[389][Outro|triagem|48msg] conseguiu identificar o meu cliente?
+[390][Outro|triagem|48msg] ele disse que vcs entrariam em contato com ele hoje
+[391][Outro|triagem|48msg] show
+[392][Outro|triagem|48msg] Bom dia
+[393][Outro|triagem|48msg] deu certo de fechar com o meu cliente né?
+[394][Outro|triagem|48msg] https://app.cardapioweb.com/dirceupizza
+[395][Outro|triagem|48msg] show
+[396][Outro|triagem|48msg] vamos ver se melhora agora os pedidos 😀
+[397][Outro|triagem|48msg] Boa tarde
+[398][Outro|triagem|48msg] estamos com algum problema com o Dirceu Pizza? Eu indiquei vcs e parece que até agora não liberou o cardápio para ele... o problema é que foi uma indicação minha ai ele cobra eu
+[399][Outro|triagem|48msg] consegue ver isso pra mim, urgente?
+[400][Outro|triagem|48msg] Bom dia
+[401][Outro|triagem|48msg] poxa, sem resposta meu amigo... ai fica difícil indicar vcs
+[402][Outro|triagem|48msg] ok, ela está bem chateado ai com vcs... pois o plano dele com o InstaDelivery está vencendo essa semana e o de vcs ainda não está ativo... dá uma força ai pra mim... obrigado.
+[403][Outro|triagem|48msg] o ruim, que acaba me queimando, pois indiquei vcs
+[404][Outro|triagem|48msg] muito obrigado
+[405][Outro|triagem|48msg] vou falar com a pizzaria para entender melhor e já te falo
+[406][Outro|triagem|48msg] audio do meu cliente
+[407][Marmitaria|qualificacao|36msg] Boa tarde
+[408][Marmitaria|qualificacao|36msg] Oiê bom dia !
+[409][Marmitaria|qualificacao|36msg] Eu vou começa meu negócio agora
+[410][Marmitaria|qualificacao|36msg] Sim
+[411][Marmitaria|qualificacao|36msg] Não
+[412][Marmitaria|qualificacao|36msg] Boa tarde
+[413][Restaurante|triagem|15msg] opa boa tarde
+[414][Restaurante|triagem|15msg] vou abrir meu negocio dia 16 de maio
+[415][Restaurante|triagem|15msg] preciso do sistema para cardapio
+[416][Restaurante|triagem|15msg] sim sim, qual valor de voces?
+[417][Restaurante|triagem|15msg] as ferramentas de marketing
+[418][Restaurante|triagem|15msg] no caso, pro marketing utilizar
+[419][Restaurante|triagem|15msg] bacana
+[420][Restaurante|triagem|15msg] eu vou funcionar com delivery, retirada e comer no local
+[421][Restaurante|triagem|15msg] garçom e pedido no balcao
+[422][Sushi|agendado|57msg] Bom dia
+[423][Sushi|agendado|57msg] Sim
+[424][Sushi|agendado|57msg] Bom dia sim
+[425][Restaurante|agendado|110msg] Show
+[426][Restaurante|agendado|110msg] Indicação de um amigo
+[427][Restaurante|agendado|110msg] Aí é foda
+[428][Restaurante|agendado|110msg] É quem?
+[429][Restaurante|agendado|110msg] Desligaram a chamada
+[430][Restaurante|agendado|110msg] Eu estou esperando uma chamada de vídeo
+[431][Restaurante|agendado|110msg] Já falei tudo q tinha q falar pra assistente
+[432][Restaurante|agendado|110msg] A imagem mostra um laptop, especificamente um MacBook, com a tela aberta e exibindo a interface do Google Meet. Na tela, está escrito "Videochamadas e reuniões para todos", juntamente com opções para conectar-se a uma reunião. Ao fundo, pode-se ver uma grande janela panorâmica com vista para o exterior, onde há palmeiras e uma linha costeira, sugerindo um ambiente tropical. O clima parece ser nebuloso ou chuvoso. A mesa onde o laptop está apoiado é de superfície escura e a iluminação do ambiente é suave.
+[433][Restaurante|agendado|110msg] Não, tô demorando só porque eu ia colocar o da Correio Promoções, que é o da Empresa Geral, mas aí a gente é um encosto muito alto lá, eu vou fazer o meio só pro estabelecimento mesmo. Eu tinha até esquecido esse detalhe. Desculpe, mas vou fazer o meio aqui e já envio pra vocês.
+[434][Restaurante|agendado|110msg] 66.432.893/0001-52
+[435][Restaurante|agendado|110msg] Cnpj mesmo
+[436][Restaurante|agendado|110msg] Miguel Edson Lopes Correia
+[437][Restaurante|agendado|110msg] miguelzinholopes_10@hotmail.com
+[438][Restaurante|agendado|110msg] 83991025511
+[439][Restaurante|agendado|110msg] Mastigh
+[440][Restaurante|agendado|110msg] 58170-000 o cep
+[441][Restaurante|agendado|110msg] Mais alguma coisa?
+[442][Restaurante|agendado|110msg] Okay
+[443][Restaurante|agendado|110msg] Prontinho
+[444][Restaurante|agendado|110msg] A imagem contém um comprovante de pagamento enviado para uma clínica de estética e cirurgia plástica. Aqui estão os detalhes principais presentes no documento:
+[445][Restaurante|agendado|110msg] Precisa não
+[446][Restaurante|agendado|110msg] Confio 100% no sistema de vocês! 😉
+[447][Lanchonete|triagem|52msg] Pesquisa
+[448][Lanchonete|triagem|52msg] Eu já falei tudo isso com a outra atendente
+[449][Lanchonete|triagem|52msg] E tanta coisa assim pra cadastrar a empresa?
+[450][Lanchonete|triagem|52msg] Perfeito
+[451][Lanchonete|triagem|52msg] Tudo bem
+[452][Lanchonete|triagem|52msg] E o cardápio como funciona?
+[453][Lanchonete|triagem|52msg] Eu posso fazer pela plataforma de vcs e consigo usar ele mas plataformas tbm ?
+[454][Lanchonete|triagem|52msg] Salgados
+[455][Lanchonete|triagem|52msg] Pretendo expandir mas não por agora
+[456][Lanchonete|triagem|52msg] Interessante
+[457][Lanchonete|triagem|52msg] Não não
+[458][Lanchonete|triagem|52msg] E quais são os valores?
+[459][Lanchonete|triagem|52msg] Estou aguardando
+[460][Açaiteria|qualificacao|82msg] Olá, 👋 Seja bem-vindo (a) à Kd açai! 💜 O açaí mais cremoso da Região já vai te atender. Agradecemos seu contato como podemos ajudar?
+[461][Açaiteria|qualificacao|82msg] Olá! 😊
+[462][Açaiteria|qualificacao|82msg] Boa tarde
+[463][Açaiteria|qualificacao|82msg] Obrigada
+[464][Lanchonete|agendado|87msg] Na internet
+[465][Lanchonete|agendado|87msg] Ola
+[466][Lanchonete|agendado|87msg] Sim pode falar
+[467][Lanchonete|agendado|87msg] Certo trabalhamos com delivery temos uma lanchonete e gostaria de melhora meu atendimento
+[468][Lanchonete|agendado|87msg] Sim exatamente isso
+[469][Lanchonete|agendado|87msg] Como funciona quais os planos ?
+[470][Hamburgueria|agendado|72msg] Oi, eu não vou mais poder participar da reunião, tá? Eu tive imprevisto, até respondi lá, mas a inteligência artificial acho que não entendeu lá, não respondi.
+[471][Açaiteria|qualificacao|86msg] Recebi sim
+[472][Confeitaria|agendado|89msg] Sim
+[473][Confeitaria|agendado|89msg] Não estou
+[474][Confeitaria|agendado|89msg] Sim
+[475][Confeitaria|agendado|89msg] Sim
+[476][Confeitaria|agendado|89msg] Marca pra próxima semana, que estou com meu esposo internado
+[477][Confeitaria|agendado|89msg] Sim
+[478][Confeitaria|agendado|89msg] Bom dia
+[479][Confeitaria|agendado|89msg] Sim
+[480][Confeitaria|agendado|89msg] Às 16:30
+[481][Outro|abertura|50msg] https://app.cardapioweb.com/green_black_distribuidora_de_bebidas
+[482][Outro|abertura|50msg] Esse cliente me insico
+[483][Outro|abertura|50msg] Os 3
+[484][Outro|abertura|50msg] Os 3
+[485][Outro|abertura|50msg] Isso
+[486][Outro|abertura|50msg] Tenho os dous
+[487][Outro|abertura|50msg] O delivery é só o aplicativo do ze delivery
+[488][Outro|abertura|50msg] Por isso quero criar uma pra loja meu
+[489][Outro|abertura|50msg] Nao
+[490][Outro|abertura|50msg] Sim
+[491][Outro|abertura|50msg] Sim
+[492][Outro|abertura|50msg] Então, eu cheguei a falar com um outro WhatsApp, a gente trabalha como distribuidora de bebidas e até um dos WhatsApp a moça falou que não tinha jeito de atender, porque não é nesse ramo, mas só que a pessoa que me indicou eu mandei até o link aqui no WhatsApp. É... Acho que foi nesse WhatsApp mesmo, tô olhando aqui agora. É de bebidas, o cliente, amigo nosso que indicou vocês. Então, o nosso é bebidas e mercearia. A gente tem loja física, mas é só pra venda de bebidas e mercearia, entendeu? Não tem lanche salgado, tem salgado só, mas é coisa pouca. Mas a pessoa vem, busca e retira e vai embora, entendeu? E a gente atualmente tá trabalhando com o aplicativo do Zé Delivery. Tanto que eu preciso, eu tô à procura de um aplicativo, de uma pessoa que faça um aplicativo pra mim, meu, espelhado no do Zé Delivery, entendeu? Igual.
+[493][Outro|abertura|50msg] mas eu não consegui ainda e por enquanto a gente vai estar trabalhando com esse de que é site porque eu queria um aplicativo baixado entendeu que a gente pode enviar o qr-code para o cliente pelo qr-code o cliente baixa o aplicativo
+[494][Outro|abertura|50msg] Sim lro enquanto vamos fazer em site
+[495][Outro|abertura|50msg] Mais estou a procura de um que faça aplicativo
+[496][Outro|abertura|50msg] Tamben
+[497][Outro|abertura|50msg] E a entrega e nos mesmo que faz entendeu
+[498][Outro|abertura|50msg] E sobre os pagamento cliente concegue fazer pagamento online
+[499][Outro|abertura|50msg] Eu não tenho mesa
+[500][Outro|abertura|50msg] Minha loja é distribuidora de bebibas
+[501][Outro|abertura|50msg] E mercearias
+[502][Outro|abertura|50msg] Principal e bebibas
+[503][Outro|abertura|50msg] Em geral
+[504][Outro|abertura|50msg] Eu tenho interesse fikei aguardando a vídeo chamada
+[505][Pizzaria|triagem|50msg] Indicação
+[506][Pizzaria|triagem|50msg] Não tenho plataforma nenhuma
+[507][Pizzaria|triagem|50msg] Só delivery
+[508][Pizzaria|triagem|50msg] Manual
+[509][Pizzaria|triagem|50msg] Então, eu não tenho um computador, né, ainda, e não tenho um CNPJ, por enquanto eu não regularizei ainda. Aí, o que que acontece? Eu queria saber se tem como a gente fazer de acordo pelo celular mesmo, imprimir, se é possível imprimir junto com a impressora pelo celular, entendeu? Que é possível, sem precisar de computador.
+[510][Pizzaria|triagem|50msg] Oii
+[511][Pizzaria|triagem|50msg] Começaram ontem
+[512][Pizzaria|triagem|50msg] Com 9 atendimento
+[513][Pizzaria|triagem|50msg] E pararam
+[514][Pizzaria|triagem|50msg] 2 vezes
+[515][Pizzaria|triagem|50msg] Tudo pelo whatsapp
+[516][Restaurante|agendado|74msg] Google
+[517][Restaurante|agendado|74msg] Olá bom dia
+[518][Restaurante|agendado|74msg] Não trabalhamos ainda com este sistema
+[519][Restaurante|agendado|74msg] Não, estamos inaugurando neste ramo em poucas dias
+[520][Restaurante|agendado|74msg] Meu maior suporte seria na criação o cardápio on-line, um design no caso
+[521][Restaurante|agendado|74msg] Acredito que só nesta , neste momento
+[522][Restaurante|agendado|74msg] Consumo no local
+[523][Restaurante|agendado|74msg] Olá bom dia
+[524][Restaurante|agendado|74msg] Sim
+[525][Restaurante|qualificacao|41msg] Oi, eu tô abrindo um restaurante e eu só queria que vocês liberassem pra mim um aplicativo onde eu poderia imprimir comandos e lançar pedido no sistema.
+[526][Restaurante|qualificacao|41msg] Mesas e delícias.
+[527][Restaurante|qualificacao|41msg] Ô, Toninho, hoje eu não vou soltar marmita, hoje, porque eu estou sozinha e hoje eu lavo tudo, não deu como, já era dez, não tem nem como, viu? Assim, quando eu fazer aqui, eu mando pra você o cardápio, as de amanhã em diante, que eu tô aqui só, ninguém vem e eu tenho que fazer sozinha.
+[528][Outro|qualificacao|50msg] 😍 Olá , seja bem vindo(a) ao *PAO*!
+[529][Outro|qualificacao|50msg] 😍 Olá , seja bem vindo(a) ao *PAO*!
+[530][Açaiteria|triagem|56msg] Gostaria de saber mais?
+[531][Açaiteria|triagem|56msg] Valores, e se vcs montão cardápio para iFood?
+[532][Açaiteria|triagem|56msg] Os dois
+[533][Açaiteria|triagem|56msg] Bom dia
+[534][Açaiteria|triagem|56msg] Delivery e loja física
+[535][Açaiteria|triagem|56msg] Então, qual que é a minha maior dificuldade? Montar um cardápio para o iFood e um para a minha loja também. Então, assim, eu preciso de um auxílio nessa parte.
+[536][Açaiteria|triagem|56msg] Balcão
+[537][Açaiteria|triagem|56msg] Preciso de um cardápio pronto já para imprimir
+[538][Outro|agendado|84msg] Olá! Quero experimentar a Cardápio Web no meu restaurante ou delivery!
+[539][Outro|agendado|126msg] Conheci através de indicação
+[540][Outro|agendado|126msg] Estou montando um hot dog com minha mulher
+[541][Outro|agendado|126msg] Decidimos abrir esse negócio e estamos buscando suporte, principalmente no delivery, que é algo que trás mais comodidade pra quem utiliza esse serviço como consumidor... Aqui em casa, usamos muito o Ifood qnd não estamos afim de fazer uma janta por exemplo, e hoje temos muitas opções na palma da mão. Pensando nisso, tivemos a ideia de montar um cachorro quente para complementar nossa renda. Fizemos umas economias e estamos ajustando detalhes importantes como o cardápio web, por exemplo
+[542][Outro|agendado|126msg] Podemos utilizar os dois
+[543][Outro|agendado|126msg] No início sim.... Mas já alugamos um ponto físico
+[544][Outro|agendado|126msg] Exatamente isso
+[545][Outro|agendado|126msg] A princípio, o que vai me ajudar melhor... Notebook ou meu próprio smartphone?
+[546][Outro|agendado|126msg] Perfeito
+[547][Outro|agendado|126msg] Podemos
+[548][Outro|agendado|126msg] Positivo
+[549][Outro|agendado|126msg] Plano mensal?
+[550][Outro|agendado|126msg] Certo
+[551][Outro|agendado|126msg] Está dentro do orçamento
+[552][Outro|agendado|126msg] Pretendemos tbm....
+[553][Outro|agendado|126msg] Eu não entendi muito bem esse começo do áudio
+[554][Outro|agendado|126msg] Certo entendido
+[555][Outro|agendado|126msg] Estão
+[556][Outro|agendado|126msg] Minha maior urgência é terminar a cozinha, compramos tbm alguns utensílios pela internet e estamos aguardando chegar... Mas gostaria muito de me familiarizar já com o sistema antes de iniciar o negócio, o que vc acha?
+[557][Outro|agendado|126msg] Pode ser, do que vcs vão precisar?
+[558][Outro|agendado|126msg] Fora a parte do pagamento 😅
+[559][Outro|agendado|126msg] Tudo bem.
+[560][Outro|agendado|126msg] A princípio as dúvidas vão aparecendo qnd eu começar a operar o sistema
+[561][Outro|agendado|126msg] Pode sim
+[562][Outro|agendado|126msg] Preciso desses dados para o especialista gerar o link de pagamento
+[563][Outro|agendado|126msg] Opa
+[564][Outro|agendado|126msg] Ainda não
+[565][Outro|agendado|126msg] Obrigado
+[566][Restaurante|triagem|36msg] bom dia tudo bem ?
+[567][Restaurante|triagem|36msg] Ja recebi  aqui o positivo quanto integração com o ifood para uso do serviço de entrega deles demanda off
+[568][Restaurante|triagem|36msg] o que gostaria de saber é como se da o processo para cliente , no momento do pedido ele ja tem o valor do frete automaticamente ?
+[569][Restaurante|triagem|36msg] seria exatamente isso , como posso testar ? existe um periodo de teste ?
+[570][Restaurante|triagem|36msg] quais os valores ?
+[571][Pastelaria|qualificacao|54msg] Olá
+[572][Pastelaria|qualificacao|54msg] Boa tarde
+[573][Pastelaria|qualificacao|54msg] Esse é o atendimento da cardápio web? Segunda atendente que some e não fala mais nada...
+[574][Pastelaria|qualificacao|54msg] Bom dia
+[575][Pastelaria|qualificacao|54msg] Tranquilo, queria saber se pode ser no CPF,e como funciona a forma de pagamento no plano de 179,00 se é pagamento total do ano todo no cartão ou pagamento de mensalidade todo mês... obrigado
+[576][Pastelaria|qualificacao|54msg] Tá bom,eu entro em contato... obrigado
+[577][Pastelaria|qualificacao|54msg] Não, Tatiana, tá tudo pela ordem, tá tranquilo. Era essa dúvida mesmo sobre o CPF, porque eu tenho uma outra empresa, já construí o CNPJ, e agora eu tô abrindo um outro estabelecimento, mas eu tô construindo o CNPJ com o nome de outra pessoa, ou tô vendo aqui como que eu faço para enquadrar aqui no mesmo CNPJ, mas por ora eu queria saber sobre o CNPJ e o valor do plano mesmo, tá bom? E provavelmente, se eu for contratar, vai ser esse de 209, que eu posso pagar mês a mês, pra evitar investimento agora no início, tá bom? Mas qualquer coisa eu te contato aí, obrigado, viu?
+[578][Pastelaria|qualificacao|54msg] É uma maravilha, já conheço a Cardápio Web já, inclusive já vi tutoriais, já vi tudo o que funciona, enquadra bem no que eu vou fazer, tá bom? Mas eu entro em contato aí, obrigado viu?
+[579][Confeitaria|triagem|26msg] Quando podemos agendar uma demo? Pode ser hoje?
+[580][Confeitaria|triagem|26msg] 15:45 pode ser...
+[581][Confeitaria|triagem|26msg] só delivery
+[582][Confeitaria|triagem|26msg] preciso de NFCe, estoque, recebimento de cartões de crédito e PIX, e integração com entrega do ifood ou outro sistema que seja interessante
+[583][Confeitaria|triagem|26msg] Oi Gustavo
+[584][Confeitaria|triagem|26msg] Conversei com a minha esposa. Como tivemos aquela experiência ruim com o Anotai, e investimos 2 meses, ficamos ressabiados. Então decidimos testar o diggy, que nos disponibilizou uma conta gratuita por 30 dias. Se não nos adaptarmos, voltamos a avaliar a possibilidade de contratação do Cardápio Web.
+[585][Confeitaria|triagem|26msg] ela não é gratuita... é paga. Se eu não gostar, posso cancelar a qualquer momento dentro dos 30 dias. Nem preciso esperar.
+[586][Outro|triagem|16msg] Por favor, tente simplificar a sua frase para que eu possa entender melhor o que você quer dizer.
+[587][Confeitaria|qualificacao|48msg] Conheci comprando em lugares que utilizam a plataforma
+[588][Confeitaria|qualificacao|48msg] Conheci comprando em lugares que utilizam a plataforma
+[589][Açaiteria|triagem|22msg] O PDV Já tem Integraçao com balança para selfservice?
+[590][Açaiteria|triagem|22msg] Se nao tiver nem avanço
+[591][Açaiteria|triagem|22msg] O PDV Já tem Integraçao com balança para selfservice?
+[592][Açaiteria|triagem|22msg] Nao iremos avançar por enquato
+[593][Açaiteria|triagem|22msg] Integraçao com balança é um ponto importante para o meu negócio
+[594][Açaiteria|triagem|22msg] Mas obrigado pelo atendimento
+[595][Açaiteria|triagem|22msg] Áudio não chegou. Está indisponível
+[596][Açaiteria|triagem|22msg] Okay! Entendi. Realmente é importante para mim.
+[597][Açaiteria|triagem|22msg] Atualize o seu CRM antes de mandar mensagens
+[598][Açaiteria|triagem|22msg] Veja o histórico da conversa para nao mandar mensagens automática
+[599][Açaiteria|triagem|22msg] Atualize o seu CRM antes de mandar mensagens
+[600][Açaiteria|triagem|22msg] Veja o histórico da conversa para nao mandar mensagens automática
+[601][Outro|qualificacao|15msg] Pelo Google
+[602][Outro|qualificacao|15msg] Oi meu amigo, bom dia, tudo bom? Desculpa não te retornar ontem. Então, cara, eu tenho um... abriu um artifrutizinho aqui, na minha região, e a concorrência, eles costumam ter um tal do link que eles falam, um sitezinho que o cliente vai lá, faz compra, e aí eles mandam entregar lá na casa dele. Pelo que eu entendi, eu acho que o sistema de vocês é parecido com esse link aí. Basicamente, eu queria implantar serviço, entendeu?
+[603][Outro|qualificacao|15msg] Mas eu comecei um negocinho agora, enfim, eu não sei quais são os valores aí que vocês praticam. Pra ver se vale a pena eu começar com isso agora, se deixa a empresa crescer um pouquinho pra poder contratar vocês aí. É isso.
+[604][Outro|qualificacao|15msg] Ô meu amigo, tudo bom, cara? Então como eu te falei, cara, eu não queria esse monte de coisa não, entendeu? Eu queria só um local que o cara pudesse fazer as compras aqui do Norte Fruit pela internet e eu puder entregar. Eu vou ver aqui com um amigo que tem aqui no outro bairro, ele tem esse link que eu comentei com você, e aí eu vou estar contratando esse mesmo, tá bom? Muito obrigado.
+[605][Outro|qualificacao|15msg] Vlw
+[606][Lanchonete|qualificacao|27msg] Então montamos 50 nossa loja em dezembro de 2025 nós queremos abrir nossa loja física agora e estamos procurando uma melhor forma de vender tanto no balcão quanto online
+[607][Lanchonete|qualificacao|27msg] De início nós vendíamos só Açai agora nós vamos vender outras coisas tipo uma lanchonete
+[608][Lanchonete|qualificacao|27msg] Isso
+[609][Lanchonete|qualificacao|27msg] Não
+[610][Lanchonete|qualificacao|27msg] Acredito que possa me ajudar, quero saber mais informações dos planos e valores pra ver se cabe no meu bolso
+[611][Outro|triagem|22msg] Escolhi por indicação
+[612][Outro|triagem|22msg] Quero vender 3 tipos de suplementos
+[613][Outro|triagem|22msg] Quero meu cardápio todo em espanhol
+[614][Outro|triagem|22msg] É que seja fácil mexer nas opções
+[615][Outro|triagem|26msg] Olá! Quero experimentar a Cardápio Web no meu restaurante ou delivery!
+[616][Outro|triagem|26msg] https://dompizzariopreto.com.br/dom_pizza_rio_preto
+[617][Outro|triagem|26msg] Olá Dayana, essa empresa que vcs fizeram o cardápio está aplicando golpes, qual é o procedimento da empresa?
+[618][Outro|triagem|26msg] fui vítima, paguei e nao recebi
+[619][Outro|triagem|26msg] tem outras reclamaçoes no reclame aqui
+[620][Outro|triagem|26msg] Obrigado, se puder suspenda o site.
+[621][Outro|triagem|26msg] ok, boa tarde
+[622][Outro|triagem|15msg] Atendimento humano
+[623][Outro|triagem|15msg] Bom dia Ryan
+[624][Outro|triagem|15msg] No caso, eu gostaria de falar sobre oportunidade de emprego
+[625][Outro|triagem|15msg] Caso seja possível uma chamada de voz, eu agradeceria humildemente
+[626][Outro|triagem|15msg] Me chamo David Khauan
+[627][Outro|triagem|15msg] No caso, seria possível eu fazer uma pre entrevista com voce?
+[628][Outro|triagem|15msg] Sem nenhum compromisso
+[629][Outro|triagem|15msg] Ta bem
+[630][Outro|triagem|15msg] pronto, me inscrevi
+[631][Outro|triagem|15msg] certinho, nao teria como eu falar um pouco sobre mim aqui ne?
+[632][Outro|triagem|15msg] certinho, obrigado pelo suporte
+[633][Confeitaria|triagem|17msg] Olá boa tarde
+[634][Confeitaria|triagem|17msg] Oi Jonathan, tudo bem? Boa tarde. Na verdade, eu não conheço o cardápio web. Eu vi através de uma seguidora no Instagram e gostaria de saber qual a função, a finalidade dele, porque eu pretendo montar um delivery de pudins e bolos, né? E aí eu gostaria de saber, eu não tenho ninguém para me ajudar e vi que as vendas aparecem, mas eu queria saber mais informações onde eu consigo ver essas coisas.
+[635][Confeitaria|triagem|17msg] Não, é tudo, não tem data prevista, não tenho nada ainda organizado, mas assim, é tudo um pensamento futuro, um pensamento que eu pretendo fazer isso, mas aí eu tô pesquisando, tô estudando as possibilidades. Essa plataforma, pelo que eu vi muito rápido no Instagram, ela ajuda no faturamento, nas vendas, você consegue acompanhar direito, você consegue observar os pagamentos, são essas coisas que eu vi. Como eu não vou ter ninguém pra me ajudar, então acho que a plataforma iria me ajudar bastante, por isso que eu entrei em contato pra saber como que ela funciona, como que ela pode me auxiliar, desde o cliente querer saber quais sabores dos cardápios, dos pudins, dos bolos, até a finalização da compra, até eu saber o pagamento do paciente, do cliente, quer dizer, caiu o pagamento, então até aí vai me auxiliar bastante.
+[636][Confeitaria|agendado|119msg] Chris Brigadeiros agradece seu contato. 🥰
+[637][Confeitaria|agendado|119msg] To sim
+[638][Confeitaria|agendado|119msg] Oieee Reno
+[639][Confeitaria|agendado|119msg] Vamo dar continuidade?
+[640][Confeitaria|agendado|119msg] Preciso dos teus dados.
+[641][Confeitaria|agendado|119msg] Rua Betari 240 Penha de França 03634040
+[642][Confeitaria|agendado|119msg] 23312545000210
+[643][Confeitaria|agendado|119msg] CUPOM: LUCASFAECW
+[644][Confeitaria|agendado|119msg] A imagem é um comprovante de pagamento enviado para uma clínica de estética e cirurgia plástica. O documento contém as seguintes informações:
+[645][Confeitaria|agendado|119msg] Ok!!
+[646][Outro|triagem|22msg] Sim
+[647][Outro|triagem|22msg] Boa tarde
+[648][Outro|triagem|22msg] Tem como adiantar
+[649][Outro|triagem|22msg] Esse de 17:15
+[650][Outro|triagem|22msg] aguardando
+[651][Confeitaria|agendado|92msg] Instagram
+[652][Confeitaria|agendado|92msg] Alcançar mais clientes
+[653][Confeitaria|agendado|92msg] Fidelizando a compra dos produtos
+[654][Confeitaria|agendado|92msg] Não
+[655][Confeitaria|agendado|92msg] Ja sim
+[656][Confeitaria|agendado|92msg] Sim
+[657][Confeitaria|agendado|92msg] Bom dia
+[658][Confeitaria|agendado|92msg] Sim podemos
+[659][Confeitaria|agendado|92msg] Somente delivery
+[660][Confeitaria|agendado|92msg] Qual horário?
+[661][Confeitaria|agendado|92msg] 18:15
+[662][Confeitaria|agendado|92msg] Somente eu
+[663][Confeitaria|agendado|92msg] Teodorathalita9@gmail.com
+[664][Confeitaria|agendado|92msg] Ok obrigada
+[665][Hamburgueria|agendado|58msg] Boa tarde, tudo bem?
+[666][Hamburgueria|agendado|58msg] Sim
+[667][Hamburgueria|agendado|58msg] Estou no aguardo
+[668][Restaurante|qualificacao|80msg] Bom dia, Ana Alice!
+[669][Restaurante|qualificacao|80msg] Conheci pelo Instagram
+[670][Restaurante|qualificacao|80msg] Oi Ana, ficou uma outra dúvida que eu esqueci de perguntar, é sobre o período que eu consigo colocar de encomenda. O meu cardápio vai ser a maioria por encomenda, então não vai ser para entrega na hora. Eu consigo colocar esse prazo no cardápio, na compra, no link, não sei como seria, pelo menos dois dias, como se fosse uma encomenda? Ou não, o cardápio é só para compra, feita na hora?
+[671][Restaurante|qualificacao|80msg] Show
+[672][Restaurante|qualificacao|80msg] Obrigada
+[673][Restaurante|qualificacao|80msg] Pode ser sim
+[674][Restaurante|qualificacao|80msg] Oi Ana, tudo bem? Pode ser às quatro e meia sim, não tem problema nenhum, tá?
+[675][Restaurante|qualificacao|80msg] Tudo bem,tranquilo
+[676][Restaurante|qualificacao|80msg] Oi, ficou para às 16:30hs certo?
+[677][Restaurante|qualificacao|80msg] Oi Ranier, vou ter remarcar essa vídeo chamada para amanhã tudo bem?
+[678][Restaurante|qualificacao|80msg] Na parte da manhã
+[679][Restaurante|qualificacao|80msg] Não consigo pois estou indo para uma situação de emergência agora
+[680][Restaurante|qualificacao|80msg] Boa tarde, Ana. Sim, eu peço até desculpas que eu confirmei que eu ia conseguir fazer, mas eu tive uma situação que não tinha como não ir resolver. Amanhã às 9 da manhã, sim, fica melhor.
+[681][Restaurante|qualificacao|80msg] Conseguimos juntas sim
+[682][Restaurante|qualificacao|80msg] Bom dia
+[683][Restaurante|qualificacao|80msg] Tudo certo para reunião às 9h?
+[684][Restaurante|qualificacao|80msg] Combinado
+[685][Restaurante|qualificacao|80msg] Já estrei
+[686][Restaurante|qualificacao|80msg] A imagem mostra a tela de um computador, onde está sendo exibida uma interface de videoconferência. Na parte superior, aparecem abas do navegador com websites variados, incluindo "compras.gov.br" e WhatsApp. No centro da tela, há uma animação de uma pessoa sentada em uma cadeira, acariciando um cachorro que está ao seu lado. Ao lado, há também um gato em outra cadeira. Abaixo da animação, aparece uma mensagem dizendo: "Ainda tentando participar..." e outra instrução: "Aguarde até que um organizador da reunião adicione você à chamada."
+[687][Restaurante|qualificacao|80msg] Ranier, tem um contrato ou algum documento desse serviço que vamos fechar com a descrição de tudo que esta incluso?
+[688][Restaurante|qualificacao|80msg] Ta bom
+[689][Restaurante|qualificacao|80msg] A imagem é um comprovante de pagamento gerado pelo Mercado Pago, referente a uma transação realizada via Pix. Aqui estão os detalhes contidos no comprovante:
+[690][Restaurante|qualificacao|80msg] Comprovante de pagamento
+[691][Restaurante|qualificacao|80msg] Tudo certo para iniciarmos essa parceria 😊
+[692][Restaurante|qualificacao|80msg] Me avise quais são os próximos passos
+[693][Hamburgueria|agendado|122msg] ‎saude_levezaa agradece seu contato. Como podemos ajudar?
+[694][Restaurante|agendado|95msg] Olá! Quero experimentar a Cardápio Web no meu restaurante ou delivery!
+[695][Restaurante|agendado|95msg] Agradecemos sua mensagem. Não estamos disponíveis no momento, mas responderemos assim que possível.
+[696][Restaurante|agendado|95msg] Gustavo
+[697][Restaurante|agendado|95msg] Qtos pessoas mandam msg pra falar da mesma coisa?
+[698][Restaurante|agendado|95msg] This message type can’t be displayed because it’s not supported yet.
+[699][Restaurante|agendado|95msg] A imagem mostra uma conversa de WhatsApp entre um cliente e uma clínica de estética e cirurgia plástica. O conteúdo inclui:
+[700][Restaurante|agendado|95msg] A imagem mostra uma conversa de WhatsApp que revela informações de contato de uma empresa, provavelmente uma clínica de estética e cirurgia plástica. Aqui estão os detalhes:
+[701][Restaurante|agendado|95msg] Qual o motivo?
+[702][Restaurante|agendado|95msg] Eu já não tinha agendado?
+[703][Restaurante|agendado|95msg] Aí manda áudio vazio
+[704][Restaurante|agendado|95msg] Tô com eletricista na minha casa
+[705][Restaurante|agendado|95msg] Meu apartamento qse pegou fogo hoje
+[706][Restaurante|agendado|95msg] Tô sem tempo pra idiotice
+[707][Restaurante|agendado|95msg] Pode cancelar nossa reunião
+[708][Restaurante|agendado|95msg] Vou fechar com o pessoal da consumer
+[709][Restaurante|agendado|95msg] Obrigada!
+[710][Hamburgueria|agendado|98msg] Sim, vou entrar agora.
+[711][Hamburgueria|agendado|98msg] Não tô conseguindo entrar nesse link, você me botou ou não?
+[712][Lanchonete|triagem|16msg] Boa tarde
+[713][Lanchonete|triagem|16msg] Estou com problemas
+[714][Lanchonete|triagem|16msg] Boa tarde
+[715][Outro|agendado|77msg] Bom dia
+[716][Outro|agendado|77msg] Tudo jóia
+[717][Outro|qualificacao|100msg] Sinceramente, eu só mencionei algo, não que eu estivesse procurando, eu estava procurando alguma coisa relacionada a essa situação. E eu não sei como vocês entraram, assim, e eu comecei a ler e disse, nossa, acho que é isso que eu estou precisando.
+[718][Outro|qualificacao|100msg] Pela internet
+[719][Outro|qualificacao|100msg] Querida, eu precisava de uma coisa muito importante, muita coisa, de uma forma de precificação, entendeu?
+[720][Outro|qualificacao|100msg] Sim
+[721][Outro|qualificacao|100msg] Vc tem o sistema de precificação?
+[722][Outro|qualificacao|100msg] Sim
+[723][Outro|qualificacao|100msg] Estou a abando de montar minha loja
+[724][Outro|qualificacao|100msg] Boa, meu filho. Amanhã a gente fala, tá? Eu cheguei agora, vou dar hoje, tô extremamente cansado. Aí a gente conversa com o carro amanhã, porque o meu funcionário se morreu de embora, aí eu fiquei atrapalhado sozinho. Mas amanhã a gente vai, amanhã ou depois da manhã a gente resolve isso, tá bom? Vamos falando.
+[725][Outro|qualificacao|100msg] Ok, meu amigo. Muito obrigado. Eu sinto igualmente por você.
+[726][Pizzaria|agendado|101msg] Ola
+[727][Pizzaria|agendado|101msg] Ola
+[728][Pizzaria|agendado|101msg] Eu estou na rua
+[729][Pizzaria|agendado|101msg] Aconteceu um imprevisto
+[730][Pizzaria|agendado|101msg] Urgente
+[731][Pizzaria|agendado|101msg] Pode remarcar
+[732][Pizzaria|agendado|101msg] Por favor
+[733][Pizzaria|agendado|101msg] Muito obrigado
+[734][Restaurante|triagem|38msg] Oi Annalice, bom dia, tudo bem? Realmente correria mesmo. Eu gostaria de saber o que o sistema de vocês tem a oferecer. E pra mim o primordial é que tem o cupom fiscal e leitor de barras.
+[735][Restaurante|triagem|38msg] O nosso segmento é um restaurante de comidas, lanches, salgados, tudo inclusivos, saudável. Então, assim, a gente atende mais delivery do que salão.
+[736][Restaurante|triagem|38msg] Ah, tá, entendi. Não, é porque assim, ó, eu atendo mais é livre, porém eu tenho um espaço físico que eu faço a venda desses produtos. Aí é pra controle de estoque, entrada e saída e até financeiro.
+[737][Sushi|triagem|60msg] Parece que você é uma máquina.
+[738][Sushi|triagem|60msg] Você é uma máquina ou é uma pessoa? Se você for uma máquina, eu não vou conversar com você.
+[739][Sushi|triagem|60msg] Ótimo, Rian. Gostei porque não é uma máquina. Eu tô cansada de falar com máquina e eles não entendem nada do que eu tô falando e ficam perguntando a mesma coisa várias vezes. Você acabou de responder aqui, daqui um pouco tá te perguntando a mesma coisa. Então assim, eu venho nesse segmento, já tive dois restaurantes orientais de comida oriental, tanto chinesa quanto... eu faço uma mistureba, eu morei no Japão, então eu gosto muito de comida indiana também e eu sempre, nos meus restaurantes, eu tinha doces indianos, que eu gosto muito do Gulab Jamun e eu fazia o frango xadrez, né. Mas eu tô mais voltada para comida japonesa. Agora, eu não quero mais montar restaurante, sabe, porque eu tô com 72 anos de idade, tô cansada. Muitos anos com restaurante, muitos anos trabalhando, ai. Então, eu resolvi pegar um trailer, comprei um trailer de 5 metros e 80, ele é enorme, bonito e aluguei uma casa, porque ele não cabe na casa minha. Então, aluguei uma casa e me mudei para essa casa para ficar em conta do trailer, como se... né. Então, o trailer, ele é um trailer de comida oriental, tá bom? O que acontece? Veio um cara que falou para mim assim, eu falei, eu preciso de um cardápio digital. Eu faço, só que para eu começar a fazer o seu cardápio digital, eu te cobro 600 reais, você paga 600 reais hoje e eu, durante a semana, já começo o seu cardápio. Passou uma semana e meia, esse cara apareceu de novo. Aí, ele disse, olha, eu só vim me inteirar um pouquinho mais, porque daí eu já vou começar o seu cardápio e você tem uma impressora híbrida? Eu nem tenho para isso. Não, não tenho, porque até então eu nunca usei isso. Então, aí ele falou, o ideal é você comprar a impressora híbrida. Ele foi lá, entrou no coisa com o tal, compra essa. Eu peguei e comprei. Aí, no final, essa impressora híbrida é de fio. Então, o que acontece? Aí, eu vim com o meu notebook. Ele disse, não, esse notebook é muito lento, tem que ser um novo. Aí, lá fui eu, comprei um notebook novo. Liguei no fio, só que não tem encabimento, porque eu queria colocar... eu estou montando uma lojinha no estabelecimento, eu queria colocar tudo isso, a impressora dentro do trailer e o coisa para receber na lojinha, porque daí eu tomo conta da loja e também vejo o trailer para a pessoa que está fazendo lá ou vice-versa, mas a impressora híbrida estaria lá dentro. Que conclusão? Eu estou com um trailer que está me ocupando o espaço, com um notebook grandinho e mais uma impressora híbrida que é de fio e fica lá e a pessoa tem que ficar ali para receber as mensagens. Conclusão, até agora não recebi nada, porque na verdade ele cobrou 600 reais e ele fez um cardápio para mim e colocou no Google e aí falou para mim assim, vou lá no Google e no iFood e vejo o seu cardápio. Quando eu abri, estava escrito assim, comida chinesa caseira, bolinho frito vegetariano de frango. O bolinho era a gyoza, ver se tem alimento. Aí depois, pastel frito vegetariano de frango, bovino e suíno. Aí eu falei, pera um pouquinho, o que você está me dizendo aqui? Era o rolinho primavera. Esse rolinho, esse bolinho aí frito, esse pastel frito que você faz aí. Aí eu fiquei muito brava, eu falei, olha, eu te dei 600 reais, você não se deu trabalho de estudar sequer o cardápio, o que é a comida, nada. Você só fez coisa errada, tá tudo errado, tira isso já do Google, apaga isso imediatamente, porque você tá queimando o meu restaurante.
+[740][Sushi|triagem|60msg] E se você não fizer isso, se você não fizer isso, eu vou acabar com você, tá? Aí ele... na mesma hora ele tirou do Google, tirou do iFood, tá? Aí eu vou amanhã aí pra gente fazer, o amanhã ele não veio, não veio, não veio, não veio, passou três ou quatro dias, ele... Ah, tô indo aí agora pra gente fazer o cardápio, eu falei... não venha mais. Não venha mais, eu quero o meu dinheiro de volta, isso aqui é uma palhaçada, tá? Você tá achando que você tá tirando um saco da minha cara, mas não tá não, tá bom? Então eu vou... eu quero o meu dinheiro de volta. Ah, o dinheiro eu não devolvo, falei, então não apareça mais aqui, tá?
+[741][Sushi|triagem|60msg] Esse áudio ficou muito longo... enfim... Pois é. Aí... o que acontece... vieram mais dois. Um disse que fazia porque acontecia... aí fez um esboço... e colocou... pegou o meu cardápio... o meu cardápio que eu tinha feito antigo... um cardápio que eu mandei fazer na gráfica... com os preços todos antigos porque era do restaurante da praia... e outro do restaurante aqui de Hortolândia mas que também está com os preços mais antigos ainda. Aí copiou... e fez um desenhinho lá e mandou para mim. Eu falei... mas isso aqui não é o preço. Ah... mas tem um problema... eu não consigo mudar o preço. Eu falei... como assim você não consegue mudar o preço? Eu não vou poder mudar o preço? Não. Não dá para mudar o preço. Eu falei... ah, moço, olha... não quero você. Daí veio o irmão... olha... eu sou chefe de cozinha e mostrou um monte de prato e não sei o que... eu vou fazer o cardápio para você... meu irmão não sabe fazer... aí ele veio aqui... ficou aqui em casa até 15 para meia-noite... e... falando comigo... e vendo o que eu queria e o que eu não queria... aí ele falou assim... não... a melhor coisa é a senhora fazer assim... a senhora faz todos os pratos... a gente vai fotografar todos os pratos... aí a senhora vai me ajudar a fazer... eu falei... o que? eu vou fazer todos os pratos... para você fazer o cardápio? Sinto muito... eu tenho as fotos aqui... ah... mas essas fotos não estão bonitas... ele não sabe fazer o cardápio.
+[742][Sushi|triagem|60msg] O Ryan. Então, Ryan Filipe, né, é seu nome. Depois de passar por tudo isso, veio um monte de gente, um monte de seres, máquinas, um monte de máquinas oferecendo um cardápio pra mim, que eu pensava que eu ia conversar com alguém, quando eu tava abrindo, entrava uma máquina... Aí eu falava alguma coisa e a máquina me perguntava a mesma coisa, eu disse, eu não falo com máquina e desliguei. Então, você é a primeira pessoa, ser humano, que tá aparecendo depois de uns 10 ou 15 que apareceram aqui. Eu não encontrei vocês em lugar nenhum. O próprio Google vai mandando... Se você procurar um sapato, eles mandam sapataria de todos os tipos. Então, é isso que aconteceu, vocês apareceram aqui. Cardápio Web. Não sei de onde vocês são, mas você é humano. É humano mesmo, né?
+[743][Sushi|triagem|60msg] Então, tô esperando você aqui. Você falou aí, depois apareceu?
+[744][Sushi|triagem|60msg] Não, eu tô querendo fazer o cardápio e tô pensando que vocês colocam no iFood, no 99, colocam em todo o sistema. Eu pensei que vocês faziam isso.
+[745][Hamburgueria|atendido|58msg] Pesquisa na Internet
+[746][Hamburgueria|atendido|58msg] E recebe na hora? Ou precisa de alguns dias pra receber?
+[747][Hamburgueria|atendido|58msg] Sim
+[748][Hamburgueria|atendido|58msg] Ainda não, eu só tenho mais uma pergunta
+[749][Hamburgueria|atendido|58msg] Em relação aos cardápios
+[750][Hamburgueria|atendido|58msg] É vcs que fazem e mandam pra nós no sistema ou nos que temos que montar o cardápio?
+[751][Hamburgueria|atendido|58msg] Como que é essa integrassão com a impressora? Precisa de uma impressora própria?
+[752][Hamburgueria|atendido|58msg] É a ideia nossa seria uma impressora mesmo, pra não precisar ficar anotando no papel, pra não perder tempo já que precisa ser rapido
+[753][Hamburgueria|atendido|58msg] E sobre o pagamento do cliente. Ele só vai conseguir pagar via link de pagamento ou pode ser feito de outra forma?
+[754][Hamburgueria|atendido|58msg] Tá certo, eu vou deixar o contato da minha irmã pra vc falar com ela. Pode ser
+[755][Hamburgueria|atendido|58msg] O nome dela é Fernanda
+[756][Hamburgueria|atendido|58msg] 12991842321
+[757][Hamburgueria|atendido|58msg] Eu que agradeço 🙏🏼
+[758][Lanchonete|atendido|56msg] Oi, Matheus!
+[759][Lanchonete|atendido|56msg] Conheci vocês através do Google
+[760][Lanchonete|atendido|56msg] Sim
+[761][Lanchonete|atendido|56msg] Sim, já está incluso! 🙌 O Plano Premium conta com um cardápio digital — um site/link onde seus clientes fazem o pedido online, sem precisar baixar app ou criar conta.
+[762][Lanchonete|atendido|56msg] Funciona para delivery, mesa e balcão.
+[763][Lanchonete|atendido|56msg] Com isso + o robô de IA no WhatsApp, você abre já com tudo redondo.
+[764][Lanchonete|atendido|56msg] Faz sentido
+[765][Lanchonete|atendido|56msg] O Plano Premium no anual sai por R$239,99/mês.
+[766][Lanchonete|atendido|56msg] Eu já vi na outra conversa Matheus
+[767][Lanchonete|atendido|56msg] Gostaria de saber qual o limite de pedido dentro desse plano R$239,99
+[768][Lanchonete|atendido|56msg] Ótimo!
+[769][Lanchonete|atendido|56msg] Então dentro desse plano, o que oferece?
+[770][Lanchonete|atendido|56msg] Certo. Então, no caso, eu consigo integrar o 99Food dentro também do cardápio web ali na automação e abrir só uma tela ou eu tenho que abrir várias telas, né?
+[771][Lanchonete|atendido|56msg] Mas teria como fazer tudo em um só plano?
+[772][Lanchonete|atendido|56msg] Ah, tá. Agora eu entendi. Precisaria pagar o anual já todo, né? Assim não teria como pra gente.
+[773][Lanchonete|atendido|56msg] E aí incluiria mais os R$ 29,99 do iFood, né, o R$ 9,99 Food.
+[774][Pizzaria|qualificacao|68msg] Tudo certo
+[775][Pizzaria|qualificacao|68msg] Conheci por outras pizzarias
+[776][Pizzaria|qualificacao|68msg] Ja fechei o sistema
+[777][Lanchonete|triagem|26msg] Bom dia
+[778][Lanchonete|triagem|26msg] Não estou conseguindo acessar o cardápio
+[779][Lanchonete|triagem|26msg] Tem uma fatura em aberto, porém não estou conseguindo pagar
+[780][Lanchonete|triagem|26msg] Tenho não
+[781][Lanchonete|triagem|26msg] Na verdade eu tenho um aqui porém nem chegar mensagem, chega
+[782][Lanchonete|triagem|26msg] Ok, vou chamar aqui
+[783][Lanchonete|triagem|26msg] Brigadao
+[784][Lanchonete|triagem|26msg] Opa não deu certo não
+[785][Lanchonete|triagem|26msg] Opa, bom dia, tudo bom, irmão?
+[786][Lanchonete|triagem|26msg] Então, o suporte não está conseguindo me enviar a fatura. E eu não estou conseguindo ter acesso ao site.
+[787][Lanchonete|triagem|26msg] Esse número que vocês me mandou aí ó Tá parecendo que é pra convidar no Whatsapp Só que porém eu não consigo nem enviar aqui, tá dando falha Mandar mensagem pelo e-mail, ai tá dando falha
+[788][Lanchonete|triagem|26msg] Vocês não tem outro número aí não, que vocês podem me indicar? Porque eu tenho aqui, eles... Tipo, assim, não tá nem chegando mais mensagem, eu acho que esse número nem é mais ativo. É diferente desses aí. 4042-9080, hein?
+[789][Lanchonete|triagem|26msg] A imagem mostra uma conversa em um aplicativo de mensagem, onde aparentemente uma clínica de estética e cirurgia plástica está interagindo com um serviço de suporte, chamado "Cardápio Web".
+[790][Lanchonete|triagem|26msg] Oque eu já tenho
+[791][Lanchonete|triagem|26msg] Deu certo de mandar mensagem aqui
+[792][Lanchonete|triagem|26msg] Vou conversar com eles
+[793][Lanchonete|triagem|26msg] Brigadao
+[794][Hamburgueria|agendado|70msg] +55 38 9742-6245
+[795][Hamburgueria|agendado|70msg] Quem vai participar da reunião é o Vitor
+[796][Hamburgueria|agendado|70msg] Consegue enviar pra ele a mensagem?
+[797][Confeitaria|triagem|21msg] Indicação
+[798][Confeitaria|qualificacao|79msg] Obrigada já estou falando com a Clara
+[799][Restaurante|qualificacao|21msg] Bom dia
+[800][Restaurante|qualificacao|21msg] Ele ja utilizava a saipos antes
+[801][Restaurante|qualificacao|21msg] Só preciso saber dos valores
+[802][Restaurante|qualificacao|21msg] Consegue me passar?
+[803][Restaurante|qualificacao|21msg] Eu realmente no momento só preciso dos valores dos planos e dos pacotes q sao pagos a parte
+[804][Restaurante|qualificacao|21msg] vamos querer salao e delivery
+[805][Restaurante|qualificacao|21msg] com plano ifood
+[806][Restaurante|qualificacao|21msg] salao
+[807][Restaurante|qualificacao|21msg] e eu queria saber se o plano financeiro emite NF
+[808][Restaurante|qualificacao|21msg] Esse valor premiu já esta incluso o salao e delivery?
+[809][Restaurante|qualificacao|21msg] Alem disso, vc tem mais algum modulo e os valores dele?
+[810][Restaurante|qualificacao|21msg] o que vem no modulo financeiro?
+[811][Restaurante|qualificacao|21msg] Eu já conheço a plataforma, só nao tenho conhecimento do modulo de financeiro
+[812][Restaurante|qualificacao|21msg] e o cliente esta com pressa, ele que fecha a negociaçao
+[813][Confeitaria|triagem|18msg] Olá, meu nome é Andreele. Minha loja é de bolo e doces. Faço doces e bolo. Queria saber como funciona o cadáver para me montar um.
+[814][Confeitaria|triagem|18msg] Não, nunca trabalhei com sistema nenhum, não.
+[815][Confeitaria|triagem|18msg] Isso, eu trabalho na produção e no atendimento, tudo manual.
+[816][Confeitaria|triagem|18msg] Não tem um computador, nem tem um notebook. Trabalho com celular e uma impressora pequena e coisa aí pelo bluetooth.
+[817][Confeitaria|triagem|18msg] Ah, tá bom então. Então deixa que eu não tenho não. Computador ainda não. Tá bom? Muito obrigada. Tá difícil para me coisar, porque eu tenho impressora, mas eu não tenho computador.
+[818][Confeitaria|triagem|18msg] Pode ser por aqui
+[819][Confeitaria|triagem|18msg] Bom dia, tudo bem? Então, porque eu abri uma confeitaria, né, só que é de livre, é em casa. Trabalho na minha casa, na minha residência. Eu queria fazer um cadáver web pra mim, divulgar pros clientes, sabe? Tudo montadinho, bonitinho, né? É... Eu tenho impressora, mini impressora, né? E tenho celular, eu só não tenho notebook, eu não sei se consegue, porque a maioria das coisas hoje em dia é devido pro notebook, né? Então, por enquanto, eu não tenho notebook.
+[820][Confeitaria|triagem|18msg] Então não vai dá pramim pq não tenho computador
+[821][Confeitaria|triagem|18msg] Boa noite
+[822][Confeitaria|triagem|18msg] Tem colo me explica novamente
+[823][Confeitaria|triagem|18msg] Não tenho computador
+[824][Confeitaria|triagem|18msg] Entendi agora mas qual valor
+[825][Confeitaria|triagem|18msg] Eu que controlo meu cardápio coloco lá oq tem todos os dias
+[826][Confeitaria|triagem|18msg] Eu tenho interesse mas estou sem dinheiro agor
+[827][Confeitaria|triagem|18msg] 💖Bem-vindo(a) à Sandi bolos &doces 💖
+[828][Outro|triagem|18msg] Gostaria de criar um cardápio para que os clientes possam acessar e pedir minhas cestas, buquê pelo delivery
+[829][Outro|triagem|18msg] Me chamo Thales, atualmente trabalhamos com catálogo do whatsapp apenas, então são somente imagens que confeccionamos
+[830][Outro|triagem|18msg] Quero automatizar os processos, pois a criação dos designs que vão para o WhatsApp é muito manual. Quero tornar tudo mais dinâmico e automatizado, para que meus clientes possam escolher um item diretamente, em vez de eu ficar tirando prints do que está no catálogo
+[831][Outro|triagem|18msg] Exatamente isso
+[832][Outro|triagem|18msg] Sem dúvidas, pode simm
+[833][Sushi|agendado|73msg] Ok **
+[834][Sushi|agendado|73msg] Para participar da reunião como faço
+[835][Pastelaria|agendado|75msg] Desculpa, acabei atrasando aqui na outra reunião
+[836][Restaurante|agendado|96msg] ‎Abuela Lasagna agradece seu contato. Aguarde um momento que já iremos te atender. ☺️
+[837][Marmitaria|triagem|129msg] Olá, boa noite Dayana. Tudo jóia? Por aqui tudo certo. Creio que Já passamos dessa fase Dayana. Expliquei tudo lá, preciso explicar novamente?
+[838][Marmitaria|triagem|129msg] Qual o valor?
+[839][Marmitaria|triagem|129msg] To sim
+[840][Marmitaria|triagem|129msg] Podemos agendar uma reunião para voce me apresentar o negócio de voces?
+[841][Marmitaria|triagem|129msg] Delivery e retirada
+[842][Marmitaria|triagem|129msg] O mínimo mensal de vcs é 130,00? 190,00? Nao lembro, mt bem.. recorda pra mim por favor
+[843][Marmitaria|triagem|129msg] Qual o prazo para período de teste de vocês?
+[844][Marmitaria|triagem|129msg] Preciso de mais de 10 dias de teste para tomar uma decisão
+[845][Marmitaria|triagem|129msg] 1 mês
+[846][Marmitaria|triagem|129msg] Para eu entender o processo de vocês e a conversão
+[847][Marmitaria|triagem|129msg] Ok, pode ser
+[848][Marmitaria|triagem|129msg] Semestral
+[849][Marmitaria|triagem|129msg] Mas antes quero entrar na reunião com voces
+[850][Marmitaria|triagem|129msg] Preciso fazer algumas perguntas, etc
+[851][Marmitaria|triagem|129msg] Blza
+[852][Marmitaria|triagem|129msg] Sim
+[853][Marmitaria|triagem|129msg] 21h acredito que possa
+[854][Marmitaria|triagem|129msg] tarde que horas
+[855][Marmitaria|triagem|129msg] Qual teu último horario?
+[856][Marmitaria|triagem|129msg] 18h15
+[857][Marmitaria|triagem|129msg] Beleza
+[858][Marmitaria|triagem|129msg] Oi, Luiz. Vou precisar reagendar contigo, saíram muitos pedidos aqui na cozinha e nao chegarei a tempo para reunião. Amanha voces funcionam?
+[859][Marmitaria|triagem|129msg] Ou somente segunda-feira?
+[860][Marmitaria|triagem|129msg] Fala galera! Falei que vou ter que adiar pra segunda-feira. Qual último horario de voces?
+[861][Marmitaria|triagem|129msg] Sim
+[862][Marmitaria|triagem|129msg] Ola
+[863][Marmitaria|triagem|129msg] Preciso remarcar novamente
+[864][Marmitaria|triagem|129msg] Terça 18h15 se tiver vaga
+[865][Marmitaria|triagem|129msg] Bom dia
+[866][Marmitaria|triagem|129msg] Ta bom
+[867][Marmitaria|triagem|129msg] Pode confirmar
+[868][Marmitaria|triagem|129msg] Espero que eu goste do app de vocês.
+[869][Marmitaria|triagem|129msg] Estou precisando
+[870][Marmitaria|qualificacao|17msg] Obgada
+[871][Marmitaria|qualificacao|17msg] Querida  venho do ramo  alimentício
+[872][Marmitaria|qualificacao|17msg] Olá  👋  me conta  como funciona  ?
+[873][Marmitaria|qualificacao|17msg] Olá, boa tarde, tudo bem? Vamos lá. Eu acredito na automação de, assim que o cliente chamar no WhatsApp, já enviar para ele o cardápio e dentro desse atendimento já pedir o endereço, ele vai formar os pedidos e já sai o tempo que vai ser entregue. E assim que sair o pedido dele, informar que o pedido saiu. Eu acho que é bem legal isso.
+[874][Marmitaria|qualificacao|17msg] Legal
+[875][Marmitaria|qualificacao|17msg] Maravilha
+[876][Marmitaria|qualificacao|17msg] Faz sentido  durante  a confecção  de pedidos
+[877][Marmitaria|qualificacao|17msg] Consigo  enviar  em modelo flayr
+[878][Marmitaria|qualificacao|17msg] Vou analisar  junto a minha  equipe  e retorno
+[879][Marmitaria|qualificacao|17msg] Lagal
+[880][Marmitaria|qualificacao|17msg] Vou conseguir  após dia 05 ..estou de viagem marcada
+[881][Marmitaria|qualificacao|17msg] Dia  07
+[882][Marmitaria|qualificacao|17msg] Não
+[883][Marmitaria|qualificacao|17msg] Eu sempre consulto  minha  filha.  Interagimos  muito
+[884][Marmitaria|qualificacao|17msg] Bom diaaaa!! Sim claro  Obgda
+[885][Marmitaria|qualificacao|17msg] 😉👍🏼
+[886][Açaiteria|triagem|57msg] Olá! Quero experimentar a Cardápio Web no meu restaurante ou delivery!
+[887][Sushi|atendido|17msg] Olá! Quero experimentar a Cardápio Web no meu restaurante ou delivery!
+[888][Sushi|atendido|17msg] Instagram
+[889][Sushi|atendido|17msg] Pode
+[890][Sushi|atendido|17msg] Opa
+[891][Sushi|atendido|17msg] Bom dia
+[892][Sushi|atendido|17msg] Estava enrolado
+[893][Sushi|atendido|17msg] Pode ser as 17hrs
+[894][Sushi|atendido|17msg] Opa
+[895][Sushi|atendido|17msg] Bom dia
+[896][Sushi|atendido|17msg] Oi, tudo bem? Boa tarde. Eu queria saber com vocês aí como é que funciona, quais os valores para a gente fazer o cardápio. O que vocês fazem é só para mandar pelo WhatsApp, certo? Não é vinculado com o da plataforma?
+[897][Sushi|atendido|17msg] Trabalho com 99 Ifood
+[898][Sushi|atendido|17msg] Isso, tudo manual. Na verdade já está tudo ativo. A 99 e o iFood. Usava mais o digital para poder mandar para os clientes. A gente ficava mandando o link do... da 99 e do iFood.
+[899][Sushi|atendido|17msg] Então não, mas eu só mando o link para os clientes verem o cardápio, entendeu? Mas eles fazem o pedido comigo lá e retira lá, entendeu? Tem alguns clientes que retiram, mas a maioria é tudo que vem mesmo através dos aplicativos.
+[900][Sushi|atendido|17msg] Qual valor
+[901][Sushi|atendido|17msg] vc teria como mandar um exemplo
+[902][Sushi|atendido|17msg] video
+[903][Restaurante|triagem|15msg] Bom dia
+[904][Restaurante|triagem|15msg] Quero fala com o suporte estou com problema na impressão
+[905][Restaurante|triagem|15msg] Muito obrigado pelo seu feedback, sua opinião é muito importante para nós 😉!
+[906][Lanchonete|qualificacao|48msg] Não, quero saber se necessita ter CNPJ pra tá fazendo esse cardápio da web.
+[907][Lanchonete|qualificacao|48msg] Oi, boa tarde, tudo bem? Aqui é a Ana Paula. Deixa eu te falar, eu não vou abrir portas, eu vou trabalhar em casa. Deliveries. Entendeu? Só no Deliveries.
+[908][Lanchonete|qualificacao|48msg] Semana que vem
+[909][Sushi|qualificacao|40msg] Sim
+[910][Sushi|qualificacao|40msg] Gostaria de um plano que me ajudasse com anotações de pedidos controle de estoque
+[911][Sushi|qualificacao|40msg] E entrada e saida no fim do mês
+[912][Sushi|qualificacao|40msg] Delivery
+[913][Sushi|qualificacao|40msg] Ifood
+[914][Sushi|qualificacao|40msg] Sim
+[915][Sushi|qualificacao|40msg] Não, só quero facilitar
+[916][Sushi|qualificacao|40msg] Entendi
+[917][Sushi|qualificacao|40msg] E qual o valor desse sistema ?
+[918][Sushi|qualificacao|40msg] Está um pouco acima do que posso
+[919][Sushi|qualificacao|40msg] Acredito que dê inicio até $99
+[920][Sushi|qualificacao|40msg] Meu ticket $60
+[921][Confeitaria|triagem|36msg] Bom dia
+[922][Confeitaria|triagem|36msg] Bom dia! Tudo bem? Em questão das ligações, como eu recebo muita ligação de spam, ligações estranhas, eu coloquei o meu próprio celular para não atender essas chamadas que não estão salvas no meu celular. Então eu acabo muitas vezes nem vendo porque ele já joga para spam. Em questão do cardápio, no momento eu não tenho interesse porque eu tô começando a minha doceria agora e eu não tô tendo... não tô tendo muitas vendas ainda para colocar um cardápio online. Então no futuro, se tiver uma quantidade boa de venda, aí sim eu procuro vocês para mim poder colocar o cardápio online. Mas por enquanto eu não tô tendo muitas vendas, então não tô tendo muita renda. Por esse motivo que eu não continuei o atendimento. Tá bom? Muito obrigada!
+[923][Marmitaria|atendido|38msg] Como faço
+[924][Marmitaria|atendido|38msg] Oi, Gabriele, mas a plataforma de vocês é de vendas ou é só de montar cardápio?
+[925][Marmitaria|atendido|38msg] Eu perguntei  se é só cardápio ou vendas tbm
+[926][Marmitaria|atendido|38msg] Sim
+[927][Marmitaria|atendido|38msg] Como podemos começar
+[928][Marmitaria|atendido|38msg] E motoboy é com vcs tbm
+[929][Outro|agendado|60msg] Já sou cliente, bom dia.
+[930][Confeitaria|qualificacao|59msg] Olá! Quero experimentar a Cardápio Web no meu restaurante ou delivery!
+[931][Restaurante|triagem|15msg] Facebook
+[932][Hamburgueria|agendado|95msg] To sim
+[933][Hamburgueria|agendado|95msg] Blz
+[934][Hamburgueria|agendado|95msg] Sim
+[935][Hamburgueria|agendado|95msg] 18:30 estarei a disposição
+[936][Hamburgueria|agendado|95msg] Certo
+[937][Açaiteria|triagem|26msg] Pesquisando no Google
+[938][Açaiteria|triagem|26msg] Eu trabalho há dois anos com o Sistema Notaí, só que eu tô pagando o mesmo valor que vocês estão cobrando. Porém, eu gostaria de saber de vocês a questão de PICs e cartão, se cobra alguma taxa, se cobra alguma taxa do PICs e do cartão, aí eu quero saber de vocês. E quanto tempo leva pra vocês instalar o sistema lá, se vem alguém ou como é que faz? Me diga aí, me explique, porque eu falei com a outra moça, ela não me explicou e até agora eu tô sem saber. Eu queria trocar de plano, mas pra me trocar eu preciso saber tudo direitinho, como funciona, como não funciona, entendeu?
+[939][Açaiteria|triagem|26msg] Porque eu anoto aí, eu comecei com R$79,90 o valor, aí conforme os pedidos foi aumentando, aí já aumentou, aí foi para R$159,00, aí aumentou os pedidos, agora tá nesse valor de R$200,00 e pouco. E o PIX, eles estão cobrando uma taxa de R$0,99, aí os clientes estão reclamando. Aí eu quero saber de vocês, como é que funciona de vocês aí, que eu me interessei muito.
+[940][Açaiteria|triagem|26msg] Sobre o sistema, minha filha fez um pedido em uma lanchonete e viu esse sistema, ela gostou e me falou, por isso estou entrando em contato com vocês. Eu quero saber qual seria o valor fixo por mês, se cobra alguma coisa referente a PIX e cartão, se tem um suporte, porque o Anotaí está deixando a desejar porque na hora que eu mais preciso de suporte, quando dá algum problema ninguém para ajudar, aí eu quero saber de vocês, se tem alguém para dar suporte.
+[941][Açaiteria|triagem|26msg] No caso, o Pix, a gente confirmando no Whatsapp, o Pix a gente confirmando na loja mesmo, no Whatsapp, não é cobrado nada não, né? E questão das maquininhas, a gente mesmo passa as maquininhas normal, não precisa instalar nada no sistema não, sobre maquininha de cartão. Pra gente, isso aí não tem nada não. Porque eu só não quero estar pagando tanta taxa, porque eu já estou pagando o plano, que é duzentos e poucos reais ainda pagar essas coisinhas que ainda a gente sai perdendo, né?
+[942][Açaiteria|triagem|26msg] Pronto, no caso, eu posso trabalhar com o Pix manual e os cartões também, né? Porque eu tenho minhas maquininhas e a pessoa faz o pagamento no ato da entrega.
+[943][Açaiteria|triagem|26msg] Delivery e presencial
+[944][Açaiteria|triagem|26msg] A gente atende delivery presencial também. Aí, no caso, ficaria o valor daquele pano que a moça me passou ontem e, no caso, quanto tempo para você me entregar já o sistema todo prontinho? Porque tem que cadastrar nosso cardápio, né, tudo direitinho. Porque daí eu poderia continuar não anotar aí, para não ficar perdendo vendas, até vocês deixarem o sistema todo pronto.
+[945][Açaiteria|triagem|26msg] No caso, você precisa do IKEI para proteger esse sistema ainda hoje. Vai precisar do IKEI, diga aí.
+[946][Açaiteria|triagem|26msg] No anual, ele sai a partir de *R$ 239,99/mês*.
+[947][Açaiteria|triagem|26msg] Ela falou que seria esse valor
+[948][Açaiteria|triagem|26msg] Dê só se eu entender, se eu for pagar por mês, seria R$ 269,00, é? Quem lida direito não me explica aí, por favor.
+[949][Açaiteria|triagem|26msg] Por causa desse valor de R$ 239,00 eu teria que pagar já as 12 parcelas de uma vez só, é? Eu achei que todo mês eu teria que pagar R$ 239,99, não é assim não?
+[950][Açaiteria|triagem|26msg] Perguntar, esse plano de R$ 179,99 não serviria não para mim?
+[951][Açaiteria|triagem|26msg] Eu acredito que sim, porque assim, o que a gente está fazendo com a nota aí, nós já estamos fazendo isso devido que conforme, quanto mais pedido, mais vai crescendo a tarifa do valor. Porque a gente começou com 79 e hoje já está com 240. Aí assim, quanto mais pedido, mais o valor da mensalidade aumenta. Agora, se esse delivery for esse valor aí, fique dependente de quantos pedidos sejam, porque aqui no presencial, a gente tira na comanda mesmo, sem problema. A gente tira na comanda mesmo. O problema é só o delivery, para não atrapalhar, para não tirar pedido no WhatsApp, escrevendo, perde muito tempo. Mas presencial, a gente prefere tirar na comanda, porque tem dias que, como aqui é uma praça, ao lado da igreja, tem dias que é muito movimento. Aí a gente prefere na comanda do que no sistema, porque atrapalha muito. Se não, vou ter que fazer dois caixas, entendeu? Aí as meninas, elas conseguem tirar na comanda. Só que eu fico pensando, se eu começar com esse de 179, se sair muito pedido no delivery, vocês aumentam o valor. Ou se tem alguma coisa a ver, sei lá. Não estou entendendo muito não, meu Deus.
+[952][Açaiteria|triagem|26msg] Ah, então é melhor fazer o mensal delivery, né, que é o de 179, é isso? Aí, no caso, já fica um ano tranquilo. Aí, no próximo ano, quando completar, aí tem que renovar, é, de novo.
+[953][Açaiteria|triagem|26msg] no caso o meu cardápio eu tenho que enviar o meu cardápio para vocês para vocês fazerem tudo certinho né fica tudo bem organizadinho não fica E aí
+[954][Açaiteria|triagem|26msg] Não, mulher, você tá me passando confiança, só que eu fico... porque, assim, o anotar aí também, quando foi pra eles venderem o sistema pra mim, eles falaram uma coisa, depois foi outra, né? E sem contar que vai, não vai. Ele tá dando um probleminha e eu não consigo suporte, porque as coisas deles são tudo online, eles não conseguem lhe dar suporte. Aí eu tenho que pagar um técnico por fora pra vir resolver o problema. Aí é isso que mais me preocupa, sabe? Mas você tá passando confiança, sim, vamos fechar, então... Aí, mas no caso, porque hoje a gente, dia de segunda, é fechado lá. Aí amanhã a gente trabalha, que amanhã é um feriadão, a gente abre. E aí a gente vai ficar usando o anotar aí até vocês prepararem ele direitinho, pra ficar tudo organizadinho.
+[955][Açaiteria|triagem|26msg] Sim, eu não vou pagar tipo R$179,00 em 12 vezes, né? 12 vezes de R$179,00. É como se eu estivesse pagando ele todo mês, só que eu vou pagar no meu cartão de crédito.
+[956][Açaiteria|triagem|26msg] A minha filha, ela fez um pedido de uma lanchonete, como eu tinha falado mais acima. Aí eu comecei a pesquisar no Google que sistema era esse, aí mostrava, era cardápio web. Esse de 79 vem também, que é cardápio web ou vem delivery.
+[957][Açaiteria|triagem|26msg] Esse WhatsApp aí que você quer, seria o meu ou o WhatsApp da empresa?
+[958][Açaiteria|triagem|26msg] Eu tô falando, esse WhatsApp que você pede aí, seria o meu pessoal ou o WhatsApp da empresa, que é o do Delivery?
+[959][Açaiteria|triagem|26msg] CNPJ 63.483.666/0001-68
+[960][Açaiteria|triagem|26msg] 82 994036144
+[961][Açaiteria|triagem|26msg] Então é esse aí que eu te mandei agora, é esse que eu coloquei em cima, é o próximo do CNPJ, é o da empresa.
+[962][Açaiteria|triagem|113msg] Não eu já tenho preciso de vender  desculpa muito obrigado
+[963][Açaiteria|triagem|113msg] Andressa faço empadão sobre encomenda e tô vendendo açai na garafa também se precisa pode comta comigo eu entrego
+[964][Açaiteria|agendado|83msg] Tudo bem
+[965][Açaiteria|agendado|83msg] Eu já tenho uma reunião agendada para 4 e 15, eu pensei que você estava falando comigo por conta que era você que era com você a reunião.
+[966][Açaiteria|agendado|83msg] Eu tô numa guarda aqui do link, era pra 4 e 15 e ninguém me enviou.
+[967][Açaiteria|agendado|83msg] Já entrei
+[968][Açaiteria|agendado|83msg] Não têm ninguém
+[969][Açaiteria|agendado|83msg] ????
+[970][Açaiteria|agendado|83msg] Eu estou na sala ja
+[971][Açaiteria|agendado|83msg] Já mandei pro meu irmão
+[972][Açaiteria|agendado|83msg] Oi Reno
+[973][Hamburgueria|qualificacao|50msg] Instagram
+[974][Hamburgueria|qualificacao|50msg] O rodo já me explicou essas coisas
+[975][Hamburgueria|qualificacao|50msg] Assim obrigado
+[976][Hamburgueria|qualificacao|50msg] Mais como funciona o cardápio ?
+[977][Hamburgueria|qualificacao|50msg] Sebe me informar
+[978][Hamburgueria|qualificacao|50msg] Assim
+[979][Hamburgueria|qualificacao|50msg] Posso vê alguma amostra ?
+[980][Hamburgueria|qualificacao|50msg] Pra mim te ideia do cardápio
+[981][Hamburgueria|qualificacao|50msg] Assim
+[982][Lanchonete|qualificacao|45msg] Olá, tudo bem?
+[983][Restaurante|abertura|37msg] Um amigo da primix burgue indicou vocês
+[984][Restaurante|abertura|37msg] O motoboy da primix burguer me mostrou uns dos trabalhos de vocês, e me mostrou uma forma de ajudar eles que fica mais fácil pra entregar
+[985][Restaurante|abertura|37msg] Acho que já mostra os dados dos clientes
+[986][Restaurante|abertura|37msg] Aí queria saber como que funciona
+[987][Restaurante|abertura|37msg] E como que faço pra cadastrar o meu cardápio no aplicativo de vocês
+[988][Restaurante|abertura|37msg] Quero cadastrar
+[989][Restaurante|abertura|37msg] O cardápio aqui da loja
+[990][Restaurante|abertura|37msg] Me mandaram uma msg dizendo que tinha até dia 3  pra eles ajudarem a cadastrar
+[991][Restaurante|abertura|37msg] Mas não me responderam mais
+[992][Restaurante|abertura|37msg] A imagem apresenta uma conversa no aplicativo de mensagens WhatsApp, onde um usuário chamado Jefferson está trocando mensagens com a equipe de suporte de um serviço chamado "Frango pra hora". O suporte informa que chegaram para fazer a entrega do "cardápio".
+[993][Restaurante|abertura|37msg] Isso
+[994][Restaurante|abertura|37msg] Quero saber como que faço pra colocar os itens no cardápio
+[995][Restaurante|abertura|37msg] Jeffersonandrade6778@gmail.com
+[996][Restaurante|abertura|37msg] Tá bom, obrigado
+[997][Restaurante|abertura|37msg] Bom dia
+[998][Restaurante|abertura|37msg] Tudo sim e com vc?
+[999][Restaurante|abertura|37msg] Tenho sim
+[1000][Restaurante|abertura|37msg] Trabalhamos com delivery, retirada e almoço aqui na loja também
+[1001][Restaurante|abertura|37msg] Isso
+[1002][Restaurante|abertura|37msg] Sim
+[1003][Restaurante|abertura|37msg] Eu uso o instadelivery
+[1004][Restaurante|abertura|37msg] Mas queria as mensagens automáticas no WhatsApp
+[1005][Restaurante|abertura|37msg] Pq é muito cliente pra responder no mesmo tempo
+[1006][Restaurante|abertura|37msg] Sim
+[1007][Restaurante|abertura|37msg] Como faço pra colocar? Já tenho o link de vocês aqui e estou fazendo o cardápio ainda
+[1008][Restaurante|abertura|37msg] Então primeiro eu tenho que fazer o cardápio do link, mas não estou tendo retorno direito
+[1009][Restaurante|abertura|37msg] Eu já paguei
+[1010][Restaurante|abertura|37msg] Jeffersonandrade6778@gmail.com
+[1011][Outro|qualificacao|20msg] olá
+[1012][Outro|qualificacao|20msg] sim
+[1013][Outro|qualificacao|20msg] encontrei vcs na internet
+[1014][Outro|qualificacao|20msg] Olá, sou um prestador de serviços de TI. E estou criando uma proposta de atualização de site para um mercado de bairro, e gostaria de saber se o cardápio web seria uma opção para entrar em minha proposta para o mercado.
+[1015][Outro|qualificacao|20msg] estou aguardando
+[1016][Outro|qualificacao|20msg] Oi Jonas tudo bem bom dia tá vou te passar aqui mais ou menos o panorama tá é o mercado de bairro é o mercado que tá tá o faturamento tá tá crescendo eles têm duas unidades mas eles não tem operação nenhuma online né eles não vendem de forma online hoje a única forma que eles fazem é via whatsapp mas de forma bem manual então um funcionário que tem um número lá do mercado ele recebe o pedido ali ele envia uma uma foto de um jornalzinho com as promoções o cliente escolhe ele faz o pedido né e o pedido segue lá de forma convencional para entregas lá dentro do mercado é o que eu tô sugerindo aqui para nessa proposta para eles é primeiro né é uma fase onde criar um site institucional para eles né que vai posicioná-los na internet né e aí é deixá-los presente no mundo online né e aí dentro do site institucional um dos caminhos para a gente chegar é para ele fazer um pedido seria usando o cardápio web nesse momento né para eu não ter que oferecer um sistema complexo de marketplace ou de um e-commerce que seria uma proposta muito mais cara e complexa nesse momento ofereceria isso então o site institucional que levaria o usuário e os clientes para o cardápio web ele escolheria os produtos do mercado e a gente faria essa integração com whatsapp enviando automaticamente né esse pedido para o whatsapp ali e a partir de então ali o funcionário do mercado assim ele ele faria a separação dos produtos e aí tocaria a entrega fazendo a separação e a entrega ali dentro do mercado é basicamente é isso que eu quero propor para esse mercado de bairro nesse momento e eu preciso entender se faz sentido a gente fazer isso em conjunto com vocês
+[1017][Outro|qualificacao|20msg] perfeito!
+[1018][Outro|qualificacao|20msg] Legal, Jonas, acho que tá de acordo com o que eu tô imaginando aqui. Então, seriam os dois caminhos para a gente ofertar o catálogo, o cardápio web, né? Então, o site institucional a gente direciona ele ou para o WhatsApp ou para o próprio cardápio e no próprio WhatsApp, se alguém tem já o número do supermercado ali salvo, na hora que ele entra em contato, o chatbot já tá conversando com ele e direciona ele para o cardápio de novo, para o catálogo de novo, né? Perfeito, acho que isso faz sentido para a gente. Uma pergunta que surgiu aqui é com relação...
+[1019][Outro|qualificacao|20msg] Com relação à gestão, a gente consegue fazer uma integração com o sistema atual deles que faz o gerenciamento dos produtos e tudo mais?
+[1020][Outro|qualificacao|20msg] Perfeito, se vocês têm a API aberta, legal. Vou verificar aqui qual é o sistema para saber quais são as possibilidades. Mas beleza, maravilha. Vamos falar de valores então, pensando nesse cenário do cardápio, da automatização do WhatsApp com esse chatbot, como que funciona.
+[1021][Outro|qualificacao|20msg] Certo. Como é que funciona essa integração com o iFood? Porque tem uma das unidades que eles já fazem hoje. Entrega-se pelo WhatsApp, mas também eles recebem pedidos pelo iFood. Como é que funciona essa integração com o iFood?
+[1022][Outro|qualificacao|20msg] Legal, maravilha, tudo no mesmo lugar. Legal, Jonas. Você consegue me mandar uma proposta com esses valores pra eu poder estudar aqui direitinho e poder bater o martelo se a gente vai por esse caminho de fato?
+[1023][Outro|qualificacao|20msg] Queria te agradecer pelas explicações aí, ajudou bastante, eu acho que é esse caminho que eu vou seguir nesse momento, esse número eu sempre vou falar com você, outras pessoas podem me atender aqui também.
+[1024][Outro|qualificacao|20msg] blz
+[1025][Açaiteria|qualificacao|47msg] Primeiro eu tive indicações  do Tiago vieira mas aí eu estava fuçando no ifood e tinha o link de vcs lah
+[1026][Açaiteria|qualificacao|47msg] E eu cliquei em cima e pronto
+[1027][Açaiteria|qualificacao|47msg] Eu queria algo que possa me ajudar no wattsap pq a vezes eu fazendo pedido e chega. Msg e não tem como eu ficar passando cardápio atrapalha muito
+[1028][Açaiteria|qualificacao|47msg] Eu trabalho apenas com delivery
+[1029][Açaiteria|qualificacao|47msg] Isso
+[1030][Açaiteria|qualificacao|47msg] Me estressa pq e muita pergu tá eu quero saber dos planos
+[1031][Açaiteria|qualificacao|47msg] Valores
+[1032][Açaiteria|qualificacao|47msg] O meu é somente para delivery
+[1033][Açaiteria|qualificacao|47msg] Eu uso a mão para marca os pedido
+[1034][Açaiteria|qualificacao|47msg] Sim
+[1035][Restaurante|qualificacao|25msg] Vou começa amanhã com delivery de monte sua massa
+[1036][Restaurante|qualificacao|25msg] Vi que tem cardápio online gratuito então deixa , pq estou começando e vai gerar gasto
+[1037][Restaurante|qualificacao|25msg] Obrigada pela sua atenção
+[1038][Restaurante|qualificacao|25msg] É, eu pesquisando aqui sobre cardápio, preço e tudo, e tem cardápio online gratuito. Aí pra começar, eu não posso ficar investindo por enquanto, né? Aí mais pra frente eu vejo com vocês então, porque o de vocês com certeza tem alguma taxa, tem mensalidade, alguma coisa assim, né?
+[1039][Restaurante|qualificacao|25msg] Com um pedido como cliente
+[1040][Restaurante|qualificacao|25msg] Me passa os valores pfv
+[1041][Lanchonete|agendamento|48msg] Bom dia. Tudo bem, e com você?
+[1042][Lanchonete|agendamento|48msg] Estamos buscando um parceiro para gestão do nosso empreendimento que está sendo montado.
+[1043][Lanchonete|agendamento|48msg] Vocês possuem alguma cartilha de apresentação do produto?
+[1044][Lanchonete|agendamento|48msg] Então, nós estamos estruturando uma lanchonete voltada para o segmento de Hambúrgueres. Com isso, buscamos alguma ferramenta que pudesse nos ajudar na gestão do negócio.
+[1045][Lanchonete|agendamento|48msg] Ainda não tem data. Estamos no processo burocrático ainda de abertura. Porém, já estamos vendo a questão de um sistema de gestão..Para termos noção de preço e etc
+[1046][Lanchonete|agendamento|48msg] Entendi. E como funciona a parte de pagamentos?
+[1047][Lanchonete|agendamento|48msg] O valor para utilização da plataforma
+[1048][Lanchonete|agendamento|48msg] Isso mesmo
+[1049][Lanchonete|agendamento|48msg] Entendi. No caso quais os valores dos módulos para vermos quais nos atende melhor?
+[1050][Lanchonete|agendamento|48msg] Eu consigo na quarta-feira pela manhã, a partir das 09h. Dá certo?
+[1051][Lanchonete|agendamento|48msg] Tenho algumas reuniões jaja. Possivelmente não consiga.
+[1052][Lanchonete|agendamento|48msg] Amanhã é feriado né
+[1053][Lanchonete|agendamento|48msg] Pode ser
+[1054][Lanchonete|agendamento|48msg] Pode ser às 09:30
+[1055][Lanchonete|agendamento|48msg] Não. Há um sócio
+[1056][Lanchonete|agendamento|48msg] Acredito que será somente comigo
+[1057][Lanchonete|agendamento|48msg] Não entendi. Há algum problema?
+[1058][Lanchonete|agendamento|48msg] Estamos avaliando diversas ferramentas de gestão ainda.
+[1059][Lanchonete|agendamento|48msg] Primeiro eu desejo ver, se possível,  plataforma. Se houver algum impedimento, eu compreendo Ryan. Não tem problema tá?
+[1060][Lanchonete|agendamento|48msg] Tudo bem
+[1061][Lanchonete|agendamento|48msg] Ainda estamos vendo se serão entregadores próprios ou pelo Ifood
+[1062][Lanchonete|agendamento|48msg] Tranquilo. Obrigado pela atenção.
+[1063][Lanchonete|agendamento|48msg] Nós sempre analisamos todo o contexto, apresentação, valores e etc para decidirmos nossos negócios Ryan.
+[1064][Lanchonete|agendamento|48msg] Valeu!
+[1065][Lanchonete|agendamento|48msg] Sim
+[1066][Outro|triagem|33msg] Eu conheci vocês através de um evento beneficente feito numa igreja na minha cidade, onde foi vendido yakisoba através do sistema e as pessoas passaram a buscar.
+[1067][Outro|triagem|33msg] Então, eu vou tentar te contar em detalhes aqui, que eu acho que rende mais nesses áudios do que fazendo ligação, porque eu entro em gravação agora Então, na verdade assim, hoje a gente trabalha com eventos sociais, que são os eventos beneficentes Inclusive nós acabamos de encerrar um evento com 1.200 Marmitex vendidos Porém, a gente tá com uma dificuldade pra vender essa quantidade de ingresso Hoje a gente trabalha com ingresso manual, sabe? Ingresso físico, na verdade Então a gente faz o ingresso físico e entrega pra pessoa Alguns entregam em mãos, outros tiram foto do ingresso e mandam por WhatsApp Hoje é a solução que nós temos É sem custo, é trabalhoso? É, mas sai sem custo E a entidade arrecada mais dinheiro, que é o objetivo no final Porém, a gente quer aumentar essas vendas Nós temos um evento agora em julho, que é uma feijoada beneficente em prol da PAI E ela vai ser em dois formatos Nesse caso específico, ela vai ser em dois formatos Ela vai ser no formato presencial e no formato Marmitex Metade no presencial, 400
+[1068][Outro|triagem|33msg] Isso mesmo, essa é a ideia.
+[1069][Outro|triagem|33msg] Isso, é pra vender os ingressos de forma digital, tanto o ingresso pra participar da feijoada quanto comprar uma Hermitex pra retirada.
+[1070][Outro|triagem|33msg] Cert
+[1071][Outro|triagem|33msg] E quanto custa?
+[1072][Outro|triagem|33msg] Se quiser ir mandando as mensagens por aqui, aí a gente vai vendo e vou acompanhando, tem gravação o dia todo hoje.
+[1073][Outro|triagem|33msg] Estão sim
+[1074][Outro|triagem|33msg] Bom dia, tudo bem? Rapaz, o nosso negócio aqui não pára, é muita correria, muito evento o tempo todo Ah, eu entendo, se você quiser encerrar aí não tem problema, mas aqui é corrido mesmo, é corrido Por isso que eu falei, às vezes é melhor ir trocando mensagens aqui do que... Vamos tentar hoje à tarde uma ligação? Pode ser?
+[1075][Hamburgueria|agendado|77msg] Opa João
+[1076][Hamburgueria|agendado|77msg] Já conversei com outra pessoas aí
+[1077][Pizzaria|triagem|21msg] Oi Ryan
+[1078][Pizzaria|triagem|21msg] Eu já tenho cadastro já na cardápio web é que um tempo atrás eu passei lá para frente não lembro se eu desativei o cadastro eu queria confirmar se ele tá ativo
+[1079][Pizzaria|triagem|21msg] Não, é que no caso eu queria saber se ele está ativo ou não, que aí eu tenho que cancelar ele pra mim fazer um outro, né? Senão eu não consigo, não é isso?
+[1080][Pizzaria|triagem|21msg] Ou a pessoa tá pagando, né, porque eu passei o comércio que eu tinha e foi junto. Eu não lembro o procedimento, o que eu fiz depois.
+[1081][Pizzaria|triagem|21msg] edneyosmarpires@gmail.com
+[1082][Pizzaria|triagem|21msg] É, porque eu precisava saber se está ativo ou não, porque eu não sei se tem débito, se ficou débito para trás, alguma coisa, é isso que eu quero confirmar.
+[1083][Pizzaria|triagem|21msg] mundodapizza01@gmail.com
+[1084][Pizzaria|triagem|21msg] Então será que eu deixei no do comercial
+[1085][Pizzaria|triagem|21msg] Saúde Comercial é esse e-mail que eu te mandei aqui acima.
+[1086][Pizzaria|triagem|21msg] Ou tu consegue me transferir pra um financeiro, que aí lá eu acho que eles consultam pelo meu CPF, pelo meu nome.
+[1087][Pizzaria|triagem|21msg] porque aqui pra mim o cardápio ele continua ativo né, então eu queria já resolver essas pendências
+[1088][Pizzaria|triagem|21msg] Ah tá, Rian, entendi. Então é porque o meu comércio eu passei ele para frente, aí eu não me lembro se eu transferi, o que eu fiz, se ficou com a pessoa. Porque eu estava aqui atualmente, entrei aqui no cardápio e ele entrou, entendeu? Por isso que eu queria saber disso, eu lembro que pagava tipo como se fosse um pré-pago, eu pagava e usava. Então não corre esse risco de ter débito. Muito obrigado.
+[1089][Pizzaria|triagem|21msg] Sim,só estou terminando de estruturar as coisas para já começar com tudo certinho site, aplicativo
+[1090][Pizzaria|triagem|21msg] Então irei fazer tudo do zero ,para não misturar as coisas
+[1091][Pizzaria|triagem|21msg] Por enquanto muito obrigada Ryan
+[1092][Hamburgueria|abertura|78msg] Pelo stagram
+[1093][Hamburgueria|abertura|78msg] Só trabalho por delivery e retirada
+[1094][Hamburgueria|abertura|78msg] Manual
+[1095][Hamburgueria|abertura|78msg] Quero mudar é isso
+[1096][Hamburgueria|abertura|78msg] Pq o movimento tá crescendo então manual não dá mas
+[1097][Hamburgueria|abertura|78msg] Certo
+[1098][Hamburgueria|abertura|78msg] E por Quato fica
+[1099][Hamburgueria|abertura|78msg] ???
+[1100][Hamburgueria|abertura|78msg] Esse módulos a mas
+[1101][Hamburgueria|abertura|78msg] Certo
+[1102][Hamburgueria|abertura|78msg] Mas tem o tempo de teste
+[1103][Hamburgueria|abertura|78msg] O caso anual
+[1104][Hamburgueria|abertura|78msg] Não pode ser cancelado antes de um ano correto
+[1105][Hamburgueria|abertura|78msg] Pq se eu fizer seria o anual
+[1106][Hamburgueria|abertura|78msg] Entendi
+[1107][Hamburgueria|abertura|78msg] Só q esse valor todo pro anual não tenho
+[1108][Hamburgueria|abertura|78msg] E no caso iria paga mensal
+[1109][Hamburgueria|abertura|78msg] Só q fica meio salgado
+[1110][Hamburgueria|abertura|78msg] Pro mensal
+[1111][Hamburgueria|abertura|78msg] No momento
+[1112][Hamburgueria|abertura|78msg] Tem como tu ver um
+[1113][Hamburgueria|abertura|78msg] E o tempo de eu me organizar
+[1114][Hamburgueria|abertura|78msg] Tbm
+[1115][Hamburgueria|abertura|78msg] E depois poder paga o anual até pelo cartão de crédito
+[1116][Hamburgueria|abertura|78msg] Certo
+[1117][Hamburgueria|abertura|78msg] Vou ver um cartão até mas
+[1118][Hamburgueria|abertura|78msg] Tarde nós conversa
+[1119][Hamburgueria|abertura|78msg] Pq no caso teho q paga os 3 messes agora neh
+[1120][Hamburgueria|abertura|78msg] Mas vcs podia por no cartão descontão mensalmente
+[1121][Hamburgueria|abertura|78msg] Automático em vez  de puxa tudo
+[1122][Hamburgueria|abertura|78msg] Me interesso muito
+[1123][Hamburgueria|abertura|78msg] Mas no momento o valor é alto
+[1124][Hamburgueria|abertura|78msg] Uma mensalidade mas baixa
+[1125][Hamburgueria|abertura|78msg] Até que minhas vendas almente bastante
+[1126][Hamburgueria|abertura|78msg] Por dia varia muito as vendas entre 10 a 13 pedidos
+[1127][Hamburgueria|abertura|78msg] Na cada dia começa almentar
+[1128][Hamburgueria|abertura|78msg] 300
+[1129][Hamburgueria|abertura|78msg] Qual o menor valor mensal
+[1130][Hamburgueria|abertura|78msg] Vc ode fazer pra mim
+[1131][Hamburgueria|abertura|78msg] Entra com vcs
+[1132][Hamburgueria|abertura|78msg] Umas 15 horas
+[1133][Hamburgueria|abertura|78msg] 15:45
+[1134][Hamburgueria|abertura|78msg] Certo
+[1135][Restaurante|agendado|87msg] Bem-vindo(a)! ✨
+[1136][Restaurante|agendado|87msg] obrigada
+[1137][Restaurante|agendado|87msg] boa tarde
+[1138][Restaurante|agendado|87msg] mas foi agendada as 14:00
+[1139][Restaurante|agendado|87msg] ja acessei
+[1140][Restaurante|agendado|87msg] estou agurdando me aceitar
+[1141][Restaurante|agendado|87msg] aqui
+[1142][Marmitaria|triagem|22msg] Montei uma marmitaria e açaí, vamos inaugurar mês que vem, delivery e retirada, gostaria de saber planos e valores, um amigo usa seu sistema, já sei mais ou menos como funciona
+[1143][Marmitaria|triagem|22msg] Não tem data
+[1144][Marmitaria|qualificacao|58msg] Oi, Dayana, tudo bem? Eu sou a Juliana, eu tô em contato aqui no WhatsApp de vocês e eu fiz algumas perguntas lá. Não sei se você tem acesso. Ela já tá me respondendo aqui, na verdade. Eu vou inaugurar dia 9 e eu e minha sócia, a gente já mudou o nome da empresa, pra você ver como é tudo muito simples, é tudo muito... é um sonho, né, na verdade. E a gente vai meter a cara, né, vamos ver. Se der certo, eu vou ficar super feliz e vou, claro, querer crescer com o negócio de delivery. E aí, conforme eu vou crescendo, a gente vai poder também contratar uns planos mais complexos, né, de vocês, uns planos mais completos, na verdade. Tá bom? Você prefere que eu fale tudo aqui novamente ou eu continuo respondendo lá no outro contato?
+[1145][Marmitaria|qualificacao|58msg] Eu fiquei na verdade só com uma dúvida, eu queria saber como é feito o repasse do pagamento do cliente, né, o cliente finaliza o pedido lá no PIX ou no cartão de crédito, acredito que vocês tenham essa funcionalidade na plataforma de cartão de crédito, e o valor é faturado e ele vai pra qual espaço? Ele vai pra minha conta, pra conta da empresa no caso, ou ele vai pra plataforma do cardápio e depois é repassado pra mim, essa é a minha dúvida principal.
+[1146][Marmitaria|qualificacao|58msg] Clara
+[1147][Marmitaria|qualificacao|58msg] Oi Dani, conversei com elas e por enquanto não vamos contratar.. qualquer novidade volto a falar com você  e damos continuidade em outro momento
+[1148][Marmitaria|qualificacao|58msg] Mas obrigada pelo atendimento viu
+[1149][Marmitaria|qualificacao|58msg] Não entra no orçamento Inicial no momento
+[1150][Outro|qualificacao|62msg] Boa noite  Dayana
+[1151][Outro|qualificacao|62msg] Vc e humana ou assiste virtual ?
+[1152][Outro|qualificacao|62msg] Tem uma lanchonete de doces e salgados
+[1153][Outro|qualificacao|62msg] Tem duas que ha almoço e vendemos lanches também
+[1154][Outro|qualificacao|62msg] E uma loja em incio de operação se estruturando então não temos ainda um lucro sobre o investimento
+[1155][Outro|qualificacao|62msg] Boa tarde
+[1156][Confeitaria|agendado|63msg] Oi boa noite, tudo bem
+[1157][Confeitaria|agendado|63msg] Boa tarde,  sim
+[1158][Confeitaria|agendado|63msg] É, deixa eu te falar. Tem como remarcar para a próxima segunda? Por que que eu vou te explicar? Segunda-feira é o dia que eu estou de folga. E amanhã é dia de eu fazer produção para a minha loja. Então, é um dia muito corrido. Eu quase não tenho tempo para parar. Você quer saber, eu como até em pé. Eu nem sento para comer para poder agilizar a produção. Porque eu trabalho em feira, né? Nas quintas-feiras eu tenho feira. Então, eu tenho que fazer minha produção da loja, do delivery e da feira. Tudo amanhã, quarta, porque quinta-feira eu tenho que ir para a feira. Aí, na sexta-feira, de novo, entendeu? Aí, se puder ser na segunda-feira, para mim é melhor. Porque o melhor dia que eu tenho é segunda-feira. Eu falei que amanhã estava bom, mas agora que eu vi que amanhã é terça-feira.
+[1159][Confeitaria|agendado|63msg] Pode as 14hrs mesmo
+[1160][Confeitaria|abertura|25msg] Dcakes agradece seu contato. Como podemos ajudar?
+[1161][Confeitaria|abertura|25msg] Bem-vindo(a) à Dcakes!
+[1162][Confeitaria|agendado|77msg] A imagem apresenta uma conversa via WhatsApp entre um comerciante e Paulo, discutindo o agendamento de uma reunião. O tom é profissional e amigável.
+[1163][Confeitaria|agendado|77msg] Estava falando com esse daqui agora pouco agendando a vídeo chamada com o especialista de vocês
+[1164][Confeitaria|agendado|77msg] Para o dia 11 as 17:15h
+[1165][Confeitaria|agendado|77msg] Opa, Rua Jequitibá Mimoso LT 15 Quadra G, Belford roxo - bom pastor RJ
+[1166][Confeitaria|agendado|77msg] A imagem apresenta um comprovante de transação financeira de R$209,99, indicando que a transação foi concluída. Detalhes da transação incluem:
+[1167][Confeitaria|agendado|77msg] Ah sim
+[1168][Outro|agendado|84msg] Afff esqueci de vc .   Precisei viajar na urgência  ... podemos remarcar?
+[1169][Outro|agendado|84msg] Pode ser  hoje as 16:30?
+[1170][Outro|agendado|84msg] Vamos deixar então p semana que vem, na terça feira?
+[1171][Outro|agendado|84msg] Ola
+[1172][Outro|agendado|84msg] Estou na estrada
+[1173][Outro|agendado|84msg] Podemos marcar p amanha as 11h?
+[1174][Outro|agendado|84msg] Ao vou conseguir entrar agora  .... pode ser as 17h?
+[1175][Outro|agendado|84msg] Ótimo  ....
+[1176][Restaurante|triagem|25msg] Pelo comercial no Instagram
+[1177][Restaurante|triagem|25msg] Primeira vez
+[1178][Restaurante|triagem|25msg] Então eu preciso de um sistema que aumente minhas vendas
+[1179][Restaurante|triagem|25msg] This message type can’t be displayed because it’s not supported yet.
+[1180][Restaurante|triagem|25msg] A imagem parece mostrar uma textura granulada, semelhante a uma mistura de ingredientes que podem ser utilizados em tratamentos estéticos, provavelmente um esfoliante ou uma mistura para cuidados da pele. A cor é predominantemente clara, com alguns sinais de amarelo, sugerindo a presença de ingredientes naturais, como açúcar ou sal, combinados com óleo ou outros aditivos.
+[1181][Restaurante|triagem|25msg] A imagem apresenta um pôster promocional da marca "Rei do Alho Temperado" e destaca suas "pastas de alho saborosas". No topo, há um logotipo com uma coroa, sugerindo que é um produto premium.
+[1182][Restaurante|triagem|25msg] Esse é meu trabalho
+[1183][Restaurante|triagem|25msg] Eu só de Cabuçu o seu sistema abrange essa área ?
+[1184][Restaurante|triagem|25msg] Eu sou do Rio
+[1185][Restaurante|triagem|25msg] Então eu tô na procura de alguma coisa que traga o cliente entende ?
+[1186][Outro|qualificacao|39msg] Olá
+[1187][Outro|qualificacao|39msg] Seria isso aqui
+[1188][Outro|qualificacao|39msg] A imagem mostra uma interface de um sistema chamado "Cardápio Web", que parece ser utilizado para gerenciar informações sobre diferentes locais de estabelecimentos.
+[1189][Outro|qualificacao|39msg] Acho que seria mais ou menos como uma franquia. Aparecem todas as lojas da Croc, mas eu só operaciono uma unidade no meu sistema.
+[1190][Outro|qualificacao|39msg] Tudo bem.
+[1191][Outro|qualificacao|39msg] A imagem mostra uma interface de um sistema onde se gerencia estabelecimentos. No topo, há um título indicando "Estabelecimentos" com um símbolo de adição (+) ao lado, sugerindo a opção de adicionar novos locais. Abaixo, estão listados dois estabelecimentos: "Pizzaria Vicente" e "Frederico Pasta e Grill", sendo esta última localizada em Aldeota, Fortaleza - CE. Os estabelecimentos têm ícones para possíveis ações, como excluir ou editar.
+[1192][Outro|qualificacao|39msg] O primeiro video é da menina da agencia que mkt que indicou voces, acredito que ela ja trabalhe com algum cliente dessa form
+[1193][Outro|qualificacao|39msg] Obrigada!!
+[1194][Outro|qualificacao|39msg] https://pedidos.pizzariadosamba.com.br/franquia?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaARPf2lleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadg_odCAMHywJ-vGgNevadTts2gNrclVYmPcgyHsiZRliWvIGLb7SOXloce4g_aem_l2CFHM4jjA_In4tTqMV-Xg
+[1195][Outro|qualificacao|39msg] Oi, simm
+[1196][Outro|qualificacao|39msg] Sim, nosso unico impasse hoje é que alguns clientes fazem o pedido e lancham no local, pagando só no final.
+[1197][Outro|qualificacao|39msg] Desculpe enviei errado

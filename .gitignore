@@ -1,0 +1,22 @@
+# Credenciais e ambiente
+.env
+.env.local
+*.env
+secrets/
+credentials/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporários
+tmp/
+temp/
+*.tmp

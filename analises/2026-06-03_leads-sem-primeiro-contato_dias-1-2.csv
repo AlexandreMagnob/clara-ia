@@ -1,0 +1,391 @@
+data_hora;nome;whatsapp;tier;segmento;faturamento;onde_nos_conheceu;situacao;lead_id
+2026-06-01 00:01;Sany Silva Batista;5534999651564;3.2;Açaiteria;;;so cadastro;ab2633be-29bc-4f93-8a83-33afb55324e2
+2026-06-01 00:56;Elizandra Ferreira;5599984833864;1;Hamburgueria;;;so cadastro;417eb44e-2a0b-4504-9d03-f45e0dd6668d
+2026-06-01 01:08;Gabriela Rabelo;5511934400126;1;Hamburgueria;;;lead respondeu/iniciou;2f4a1d68-acaa-4135-874e-35450310071e
+2026-06-01 01:09;Giselle;5562984299401;1;Pizzaria;;;so cadastro;f6b867da-0813-4c9b-b6f8-354e498485ee
+2026-06-01 01:09;Fernando de Jesus;5573981637884;2;Confeitaria;;;so cadastro;e372a439-a819-47af-bcf1-12b7d2ae296f
+2026-06-01 01:13;Lucas andrade;5511943630141;2;Restaurante;;;so cadastro;b4602288-c148-4957-8b58-8a1eaaa2d5c4
+2026-06-01 01:59;Carolina;5541984990961;3.1;Confeitaria;;;so cadastro;d0199a9b-a5e6-4359-b8f6-8ea83612747d
+2026-06-01 02:04;KLEBER PEREIRA DA SILVA;5577991375813;3.1;Pastelaria;;;so cadastro;08985268-f4f1-430c-82c3-e045f086a5d7
+2026-06-01 02:26;Jorhana Martha João da Costa;5583993272072;3.1;Outro;;;so cadastro;ec3fa0c3-1f17-41e6-8fbe-4972c96ed037
+2026-06-01 06:13;Gecione;5518997742280;1;Sushi;;;lead respondeu/iniciou;c4ec2b4b-59ca-44c9-af47-1e1056da3406
+2026-06-01 07:07;LETICIA MAGALHAES DA SILVA;5511996539639;3.1;Hamburgueria;;;lead respondeu/iniciou;f285a4b0-0413-48ea-84d9-0ec7913a8018
+2026-06-01 07:51;FlÃ¡via h;5511943377729;2;;;;lead respondeu/iniciou;a6d3fd4c-173f-452b-ba8c-3f3aba235384
+2026-06-01 08:01;thales william;5521984069957;3.2;Marmitaria;;;so cadastro;25937c59-6adc-4a6b-b458-8fa12794d0d2
+2026-06-01 08:02;Silvana;5551981391167;2;Confeitaria;;;so cadastro;154cf2d3-fea7-4625-b335-952c1f975ad1
+2026-06-01 08:29;Ivani Borges da silva;5527998455499;3.1;Restaurante;;;so cadastro;04bd522e-7255-44d6-a64b-83236d52f393
+2026-06-01 08:29;DIEGO RUFINO DA SILVA REIS;5591989335117;3.2;Restaurante;;;so cadastro;8f410402-26c4-4268-96ac-ec8b2cbced4d
+2026-06-01 08:46;Lumara;5583981342099;1;Pizzaria;;;so cadastro;45941ba6-eca1-4b58-8af5-d979b5dae5f7
+2026-06-01 08:48;Eduardo;5564993088840;3.1;Hamburgueria;;;so cadastro;295c00a6-f3da-4a2c-922b-1399955bd6c5
+2026-06-01 08:49;Ana Paula zandomenighi;5543988308099;1;Confeitaria;;;so cadastro;bc500041-ae56-45f4-8f32-8735b3954cd6
+2026-06-01 09:01;Rafaela Martinho;5547996483079;3.2;Confeitaria;;;so cadastro;4b10bb0b-e048-4db6-a456-849a3a92d03c
+2026-06-01 09:18;Maria Adriana;5574999916159;3.1;Lanchonete;;;so cadastro;cb750ae8-0601-4bbd-ae8c-359ada825750
+2026-06-01 09:45;Mariluce Miranda;5521973461362;3.1;Hamburgueria;;;so cadastro;50c45eb9-0e30-42c9-81b0-77dc7c6bfd18
+2026-06-01 09:45;Gabriel;5581999571907;1;Pizzaria;;;so cadastro;263dd24d-9006-453b-8954-a40f2dcc49cb
+2026-06-01 09:56;DÃ©bora Evelin;5585991839717;2;;;;so cadastro;3ff52a58-d148-47b2-9bf2-c5626a8195ad
+2026-06-01 09:59;Arilei Jose;5542999100485;3.1;Restaurante;;;so cadastro;c8d5e9c1-e66d-41a4-a2c2-c37688102f7e
+2026-06-01 10:03;Karem Andressa;5586981295929;2;;;;so cadastro;abca1b4b-9fd6-40bf-b933-0e95d619563b
+2026-06-01 10:04;alexander alberto mondego dos santos costa ;5521996157069;3.1;Confeitaria;;;so cadastro;993178df-a3a8-4ed3-b4f8-5a80e934f68d
+2026-06-01 10:17;Anderson Alves Barcelos;5527998217716;1;Outro;;;lead respondeu/iniciou;97176430-9124-4881-a8d0-2233b33a5987
+2026-06-01 10:28;Jaine cristina;5517997499418;3.2;Restaurante;;;lead respondeu/iniciou;7022a4b9-baaf-4c36-8f89-453169f75731
+2026-06-01 10:37;Carolina Barros;5584991183565;3.1;Confeitaria;;;so cadastro;5861bb00-bd75-491f-9f8d-e2f6521d7266
+2026-06-01 10:38;ANTÔNIO CLÁUDIO;5586981251400;3.1;Outro;;;so cadastro;c27982df-88cf-47b5-9482-dafe2c0cf075
+2026-06-01 10:39;Tadeu fagundes;5521972172564;1;Restaurante;;;lead respondeu/iniciou;58fff985-24ea-4af2-b799-c88b7daab86e
+2026-06-01 10:49;Alexandre;5561999746327;2;;;;so cadastro;5442dcad-9111-481e-a032-6eebc893c929
+2026-06-01 10:56;Amanda Reis;5521976280980;3.1;Confeitaria;;;lead respondeu/iniciou;6fb74e7a-7a8f-49c6-b624-9ab56c0c88bb
+2026-06-01 11:01;Alexander Alberto Mondego Dos Santos;5521996157096;3.1;Confeitaria;;;lead respondeu/iniciou;b990f55d-b4c5-45b4-a6ee-6add2274d255
+2026-06-01 11:01;Santiago ferreira;5521965385878;1;Pizzaria;;;lead respondeu/iniciou;31fb25e0-b266-4773-a833-13f1a23fc342
+2026-06-01 11:07;Josué Prandi;5544999245938;1;Pizzaria;;;so cadastro;41f2e9a2-6884-4b24-9c9e-384f50bdcec8
+2026-06-01 11:24;CRISTIANE MARIA PEREIRA;5545999347142;1;Confeitaria;;;so cadastro;a0e402c6-345b-4681-9417-cf6718e99b83
+2026-06-01 11:25;Yasmin khétllyn;5588992291140;3.1;Outro;;;so cadastro;ef65f7fe-cea6-4eab-b954-10e0dc6bb1a9
+2026-06-01 11:29;Eduardo Alcântara EduSabe;5571988772526;1;Restaurante;;;so cadastro;d7674737-0d85-4b91-a2ce-725405200f73
+2026-06-01 11:46;Kaio;5575981653869;3.2;Confeitaria;;;so cadastro;e3da79d4-b452-4a69-a652-5f7ef16616a4
+2026-06-01 11:50;Nubia Jovió;5565996165471;1;Outro;;;so cadastro;2222ea61-c110-4ebf-bc7d-6cbc44f30241
+2026-06-01 11:51;ParaÃ­so Dos Salgados;5524988112198;2;;;;so cadastro;2911f965-4792-4c09-8c75-2480b7c06ff5
+2026-06-01 11:52;Vinícius Alves de Sousa;5562984955431;3.1;Açaiteria;;;so cadastro;9144fc02-e0ce-4f69-9929-5dfeb78aee25
+2026-06-01 11:54;Laryssa Stephanie;5511999266520;2;;;;lead respondeu/iniciou;1ed20e76-5f0a-46ce-be5c-d22e234c6d03
+2026-06-01 11:56;Kleber Lago;5511986594973;2;Pizzaria;;;lead respondeu/iniciou;f3ac740e-474d-4948-85b5-44529e9d5675
+2026-06-01 12:15;Giovana;5585981327875;1;Restaurante;;;so cadastro;dc05dcbf-d0dd-432f-94e1-21f44332e5e3
+2026-06-01 12:17;Rosângela santa Braz da costa;5527999513129;1;Lanchonete;;;lead respondeu/iniciou;47fd5034-1891-42e4-8a36-12c1081396a2
+2026-06-01 12:18;Tatiane Flores;5511978564402;3.1;Hamburgueria;;;lead respondeu/iniciou;094fea42-780a-491c-9aa9-bb7b87e717cb
+2026-06-01 12:22;Karla Almeida;5511954927029;1;Outro;;;so cadastro;b3cb7d97-17ca-401c-8cec-36a547beb320
+2026-06-01 12:23;José Edcarlos Figueira da Silva;5516992925417;1;Hamburgueria;;;lead respondeu/iniciou;ed0f9417-b956-48e2-9755-17c29d1f6785
+2026-06-01 12:26;MARIA DA LAPA RODRIGUES SILVA;5585992123965;3.1;Marmitaria;;;so cadastro;78b30c6a-b003-49d8-bccf-409731c4b7d8
+2026-06-01 12:29;Alessandra;5521994215559;1;Outro;;;lead respondeu/iniciou;7666c80c-69f7-4ac2-b7ca-23ee7daa38ea
+2026-06-01 12:35;Rodrigo Santos Silva;5511966199260;3.2;Outro;;;lead respondeu/iniciou;17c3e29f-bb20-451c-9dd5-4fdc8cbc98b8
+2026-06-01 12:37;Eduane;5535999687947;1;Outro;;;so cadastro;83895a92-5aa7-45df-9b8f-ea8531210ef6
+2026-06-01 12:46;Jeferson;5553991339073;3.1;Pizzaria;;;so cadastro;b14e5ad1-331c-4984-96ce-c8bf7ce35bdc
+2026-06-01 12:54;Augusto;5575993029569;2;;;;so cadastro;13052ee2-14b9-4592-bb01-4405cbd01ead
+2026-06-01 12:57;Dandara Lopes;5561984849122;3.2;Confeitaria;;;so cadastro;dd23aab2-7cc3-4fa0-97f1-29a9627382d5
+2026-06-01 13:02;Thiago Hiratomi;5511940262507;2;Confeitaria;;;lead respondeu/iniciou;4bc21982-bea6-438f-b106-108cbdf1dc57
+2026-06-01 13:06;Reneylson ;5583994009696;3.1;Pizzaria;;;so cadastro;2f1bccf5-ac3b-455f-9a60-ccd80347935c
+2026-06-01 13:15;Grazi Pacheco;5582993492684;2;;;;so cadastro;42e00708-1834-4fdc-8487-94f00e58cb16
+2026-06-01 13:21;Shirley Teixeira Moutim Guedes;5511992296531;2;Confeitaria;;;so cadastro;b0513318-2b8d-4490-982c-22a116523ac2
+2026-06-01 13:34;Hugo Nogueira Junior;5548996124430;1;Hamburgueria;;;so cadastro;97988e18-f97b-4431-8a97-40ff216d525d
+2026-06-01 13:42;Monaliza;5511914143584;3.2;Marmitaria;;;lead respondeu/iniciou;c01e9dbe-9f23-4d10-b8f9-b65773376a0f
+2026-06-01 13:49;Gerlania Pinto da Silva Aquino;5585997145222;1;Restaurante;;;so cadastro;f4444e0e-503b-433c-9f0c-a3c8c36bbfe0
+2026-06-01 13:55;MAURILIO H S SANTOS;5581998070835;1;Hamburgueria;;;so cadastro;7991ac0f-f4ac-452e-8bcc-58ca4a372d6b
+2026-06-01 14:00;Elisabeth;5521998381512;2;;;;so cadastro;d32bc5a2-6e86-4ab0-9608-4983a58733f0
+2026-06-01 14:09;Cristiane Amazonas Macambira Santana Lima;5593984027887;1;Pizzaria;;;so cadastro;64ed6d07-9440-4615-b5f1-de69f062bcc0
+2026-06-01 14:13;Churrascaria Transnordestina;5587999126487;3.1;Restaurante;;;so cadastro;c7974010-63a6-4f91-90c6-0451a3e1e6ea
+2026-06-01 14:19;Ana Paula Dall anese;5511952343424;1;Confeitaria;;;lead respondeu/iniciou;9571aafb-b518-46c1-912d-c7378658fe93
+2026-06-01 14:25;Ranielli;5528999513405;3.1;Hamburgueria;;;lead respondeu/iniciou;f4aae0fc-caa8-4eaa-b123-bc32e06e2048
+2026-06-01 14:29;Cristiane Drumond;5531997844049;2;;;;so cadastro;160154c6-09ac-411a-bcf3-f310a568f211
+2026-06-01 14:30;Vitor Vargas;5571996566909;3.1;Lanchonete;;;so cadastro;48428b31-cb8b-4b82-b2b4-fe47490a69ff
+2026-06-01 14:34;Matheus;5588996106630;2;Outro;;;so cadastro;5a2afcda-eaae-48d3-83ac-e0639486de28
+2026-06-01 14:45;Eliade Alves;5591986237511;2;Confeitaria;;;so cadastro;a3ca98b0-c3b0-46b6-a5c3-b60839a3cc88
+2026-06-01 14:47;Anderson Elias da Silva;5518997500797;1;Hamburgueria;;;so cadastro;a6172eb5-0b75-434d-a106-19b5b93878a3
+2026-06-01 14:48;Emanuelle;5587991220226;2;Confeitaria;;;so cadastro;1b36acd5-df93-469c-a6ec-24482562db53
+2026-06-01 14:51;Ana Gaby;5568999375552;2;;;;so cadastro;7c560ee5-e310-441a-ae3e-a5c9c347fb60
+2026-06-01 14:53;Émerson Moch Pedro;5551980556661;1;Outro;;;so cadastro;4b8bdad0-9d9e-4b95-848a-d47bb7bccf89
+2026-06-01 14:53;Laysa Santiago;5511986800614;3.1;Confeitaria;;;lead respondeu/iniciou;7e219f56-27ed-45b7-b6de-8bd5b03ff7a8
+2026-06-01 15:05;Kethleen Rodrigues;5551994994671;3.1;Hamburgueria;;;so cadastro;251f0393-808d-4c9c-af33-a4dee4ffea16
+2026-06-01 15:08;Yuri Kauan de Morias;5547996804757;1;Hamburgueria;;;so cadastro;c896c2f5-19a0-4812-b68a-3e22b533a8a8
+2026-06-01 15:09;Hellen;5571996146288;3.1;Confeitaria;;;lead respondeu/iniciou;20fa22f8-b824-4bdf-94e7-39faa01fe0eb
+2026-06-01 15:14;Irema dos Santos abreu;5551981151770;3.1;Restaurante;;;so cadastro;7980ee53-d0f0-462f-846a-28cd514d7d18
+2026-06-01 15:21;douglas REOLON;5541987541362;1;Lanchonete;;;so cadastro;48d7aa0d-1454-4cce-9fd7-326ce4ead146
+2026-06-01 15:22;Evelyn Samilla Rodrigues;5592988346676;3.1;Outro;;;so cadastro;05f0d433-89d2-4406-9a56-353eca0b176b
+2026-06-01 15:30;Thamires;5521971718511;3.1;Restaurante;;;lead respondeu/iniciou;02a7ee1e-b056-455a-be6f-e8b2bf8057a4
+2026-06-01 15:38;Juliana veiga;5511980015883;1;Lanchonete;;;so cadastro;c87dc988-143c-456e-a800-1aa578d42ad6
+2026-06-01 15:46;Caroliny;5527981132920;3.2;Hamburgueria;;;lead respondeu/iniciou;ab40389d-aa9e-4323-a7d5-801275a98218
+2026-06-01 15:47;Gustavo Alves;5511967979200;3.1;Hamburgueria;;;lead respondeu/iniciou;68fcd9d7-5055-40d0-abb0-24bdb9c656e0
+2026-06-01 15:47;Leticia Rocha;5511958787911;3.1;Hamburgueria;;;so cadastro;3ccadd71-73c8-45c9-8737-8f5e9c794715
+2026-06-01 15:53;Andressa De jesus;5521966821422;3.1;Confeitaria;;;lead respondeu/iniciou;01c97b81-e83e-45c7-a0af-15444345f646
+2026-06-01 16:05;Vanessa tomaz;55819877705;3.1;Restaurante;;;so cadastro;82f9807e-11e5-4dd3-8d9f-0b8a3e20b915
+2026-06-01 16:16;LEANDRO CORTEZ MARTINS;5511918324232;3.1;Lanchonete;;;so cadastro;f958ac7d-dcc0-4078-b36e-f34b981bbed0
+2026-06-01 16:21;KETELY K CESAR NAS;5517996803381;2;Restaurante;;;so cadastro;5d40a049-1d5e-47af-8e48-7fc73e597a7c
+2026-06-01 16:23;ana carolina duranti;5517991877567;3.1;Outro;;;so cadastro;9330004b-90dd-4c91-8650-7cedbe4c3708
+2026-06-01 16:27;Jamille Almeida;5573999624254;3.1;Hamburgueria;;;lead respondeu/iniciou;4035de6e-68b7-4232-966a-f25e9a6685c7
+2026-06-01 16:37;Marlon jose;5541998194360;3.2;Outro;;;so cadastro;142d5fca-9932-4aa6-8c8b-13ad89eb0f70
+2026-06-01 16:45;Yasmin;5554999350195;3.1;Outro;;;so cadastro;c95d6955-84a5-400b-8e24-5c874179e625
+2026-06-01 16:48;Barbara;5515991485005;1;Outro;;;lead respondeu/iniciou;4a665faa-ea23-44f6-b2f6-3af674a1df6c
+2026-06-01 16:53;Hannah;5592993049318;3.1;Confeitaria;;;so cadastro;683e25a3-57b8-445b-9b55-fb120ea59df4
+2026-06-01 16:56;Maria Amanda Silva de Sousa;5585988892188;3.2;Confeitaria;;;so cadastro;b0103792-af2f-4621-b632-e5d8533d075a
+2026-06-01 17:00;Ingrid Izabelle;5543999164637;3.1;Outro;;;so cadastro;579d23b7-deab-46dc-aa9f-7dabe76ee705
+2026-06-01 17:01;Guilherme Jose Silva Urban;5511967933036;2;Lanchonete;;;lead respondeu/iniciou;cee7cc5a-93e0-4a8c-93df-a8bf60443f98
+2026-06-01 17:05;Ana Beatriz Silva Muniz;5594984239926;3.1;Outro;;;so cadastro;c10c6bb4-1010-4a34-88a5-20c056eb049b
+2026-06-01 17:08;Juliana;5511999327001;1;Confeitaria;;;lead respondeu/iniciou;b31d3eb7-8424-490d-b3d3-a53d60869486
+2026-06-01 17:10;Janielson Vieira;5582991677997;1;Pizzaria;;;so cadastro;3a93a062-2d4f-4efe-9564-a64bf34015cd
+2026-06-01 17:12;Maria Fernanda Pantaleão;5512992559411;3.2;Confeitaria;;;lead respondeu/iniciou;75c63747-1d81-47e5-a99e-443eb7694612
+2026-06-01 17:18;Yndaiara Cristina de Souza Gomes;5521994927153;2;Confeitaria;;;lead respondeu/iniciou;a90e8aaf-1d89-4e3f-893b-ceaa56e3d020
+2026-06-01 17:34;Vanessa Mascarenhas;5581986639400;2;;;;so cadastro;64b32013-ae2b-4d22-8fa6-2ca7c8776e48
+2026-06-01 17:41;Leny  reis lima;5521973755161;3.1;Restaurante;;;lead respondeu/iniciou;67d6f800-e6e0-4876-9073-630ccfc1d7cc
+2026-06-01 17:48;Jardel Oliveira;5511954049912;1;Hamburgueria;;;lead respondeu/iniciou;3cee8235-57fd-44a8-8c18-e3a5262212b9
+2026-06-01 17:52;Arianny;5511952976268;3.1;Restaurante;;;so cadastro;204c6a9b-6986-448c-950d-6f94fdf0ff74
+2026-06-01 17:56;Patrick Kennedy Oliveira campos;5521965980568;1;Hamburgueria;;;so cadastro;b4ee21b7-bd52-4b47-b559-5d09f1a4b37c
+2026-06-01 18:00;Taynara;5583987720408;2;Lanchonete;;;so cadastro;74432e54-5c2e-4dcc-b7b5-6bbcc41f206e
+2026-06-01 18:00;Yasmim Kethellem;5521972296183;3.1;Confeitaria;;;lead respondeu/iniciou;aa53240d-053d-407a-b01a-2689fefad12a
+2026-06-01 18:01;Renato costa Azevedo;5511914816010;3.1;Hamburgueria;;;so cadastro;86a6cfeb-2a38-48e4-a86b-e39c1f071d81
+2026-06-01 18:05;Maria Júlia;5516982125504;3.1;Confeitaria;;;lead respondeu/iniciou;e1037605-6840-408f-9d79-e44df8c21afd
+2026-06-01 18:11;Kleverson Barbosa Sreeldin;5531975872008;3.2;Pizzaria;;;so cadastro;13242a23-60a5-47b7-aad7-90ac4b93f233
+2026-06-01 18:13;Priscila Mara Gonçlves;5547991668478;1;Outro;;;so cadastro;097250d7-d1a3-47a7-8ca8-7fffb44b774f
+2026-06-01 18:26;Juliana Reis;5512991913750;3.1;Confeitaria;;;lead respondeu/iniciou;d907e9ed-81eb-49c6-8c20-74aa7b7c378f
+2026-06-01 18:34;Cleyton;5524999661940;1;Restaurante;;;lead respondeu/iniciou;8f59bd38-53a4-44ba-8acd-a630e8b44fd7
+2026-06-01 18:36;michele ventura;5524993103396;2;;;;lead respondeu/iniciou;3de463a7-bdbb-4be3-abbc-1bd5b71a4482
+2026-06-01 18:43;Cleiderson;5561996218684;3.1;Hamburgueria;;;so cadastro;4c1fd953-333b-43cc-b744-422837f182c4
+2026-06-01 18:49;Elisângela sacramento da conceição;5571985158123;3.1;Marmitaria;;;so cadastro;8ee05c11-991e-44fe-9134-aa7ab8d65205
+2026-06-01 18:57;Emanuel;5573981118594;3.1;Restaurante;;;so cadastro;496aff0d-e2fb-4ea1-9138-d1d2aec4b6c7
+2026-06-01 18:58;Mikaella;5521979773278;3.1;Marmitaria;;;so cadastro;f9d9c6fb-ae7a-48f2-a135-28f7272b21bf
+2026-06-01 19:05;Eduarda;5521982067082;3.1;Pizzaria;;;lead respondeu/iniciou;5d16a12c-bd20-4217-a9c4-dbef41c20c2c
+2026-06-01 19:06;Mariana;5515981540202;3.2;Lanchonete;;;so cadastro;4baefac5-4fa8-4775-b87b-bdae729551e8
+2026-06-01 19:08;wanderley antonio pereira;5519953305073;3.1;Hamburgueria;;;lead respondeu/iniciou;2a78661d-5359-46c6-8d11-5abb7c924964
+2026-06-01 19:10;Nathalia;5521978962489;1;Confeitaria;;;lead respondeu/iniciou;66267f91-6fb4-44cf-ab35-9a795144cc
+2026-06-01 19:12;Leandro;5516997611385;2;Lanchonete;;;lead respondeu/iniciou;adf19edd-9a7f-4e70-b6db-d3980f63a490
+2026-06-01 19:13;Jadison Dias dos santo;5511971700095;3.1;Sushi;;;lead respondeu/iniciou;edd5ed46-d0fe-4f30-befb-8cb34cd67a62
+2026-06-01 19:47;Patrick Luiz;5521969141462;1;Hamburgueria;;;lead respondeu/iniciou;2926c77a-d6a4-4959-9e7d-7b4c955876af
+2026-06-01 19:56;Taymara santos da Silva;55219987939;2;Confeitaria;;;so cadastro;944c5a08-2db0-44e6-8507-8784d4705156
+2026-06-01 19:57;Edinaldo dos Reis de Gois;5573999357991;3.2;Restaurante;;;so cadastro;905d9b3d-d8b8-4771-8626-e378790f0967
+2026-06-01 20:01;Maria Helena Alves;5522997160044;2;;;;lead respondeu/iniciou;02f86bf4-9843-42ef-9d22-66d72f9acba7
+2026-06-01 20:03;Henrique Pereira Garcia da Silva;5511998799949;3.1;Hamburgueria;;;lead respondeu/iniciou;ba51ab96-e03c-46c9-bdcf-01c762c9badb
+2026-06-01 20:08;Patrick Gabriel Rodrigues da Silva;5511978339033;3.1;Lanchonete;;;so cadastro;746289b4-5e10-48d7-a00d-7fc01e95bc25
+2026-06-01 20:10;Gilberto;5511991117351;1;Outro;;;lead respondeu/iniciou;224ad2c9-26ab-4291-9c9a-bd116d7c001e
+2026-06-01 20:18;Flávio gonçalves hernandes ;5513981828289;3.1;Pastelaria;;;so cadastro;77d02715-c07c-4d34-9ca5-5afc3a472fc0
+2026-06-01 20:20;Leonardo Júnior;5521976541461;3.1;Lanchonete;;;so cadastro;76242cce-3d95-4eb0-8cfb-2cc51c45bba8
+2026-06-01 20:20;LEMERSON;5575998600768;3.1;Confeitaria;;;so cadastro;50119641-74df-4f2d-92ee-6a7555c69682
+2026-06-01 20:28;Natália Sthephanie Sampaio Dutra;5562991641637;3.2;Pizzaria;;;so cadastro;83f4ed73-8237-497a-b9eb-dcd667dac723
+2026-06-01 20:42;Carolina Spinelli;5521966390698;2;;;;so cadastro;b79b09f3-a395-4f56-a1f0-f69706aeecbf
+2026-06-01 20:43;João Oliveira;5574988233452;3.1;Marmitaria;;;so cadastro;77bbbb94-bbd1-44e9-8c11-4ccf7c2f3a3c
+2026-06-01 20:57;Jadiele;5575988076292;3.1;Pizzaria;;;so cadastro;d1c70171-799a-4640-abef-a6bb49bf4a28
+2026-06-01 20:58;Graziele Lopes;5561983740603;3.1;Outro;;;so cadastro;ed0ca930-e4e9-4d24-8443-808d32f8b6fb
+2026-06-01 21:02;Arlon Cezar;5592992147503;3.1;Restaurante;;;so cadastro;13cf7cc8-b9aa-4327-9a6a-e423131a2cc0
+2026-06-01 21:09;Vitoria Cristina;5521983291371;3.1;Pastelaria;;;so cadastro;d2597fbb-d1fe-4d82-8c8b-ee59228f6743
+2026-06-01 21:09;lucilene Sunderhus;5527988773190;2;;;;lead respondeu/iniciou;dbcc82a5-2945-4ee8-aaa7-9aecdb0db7d7
+2026-06-01 21:13;Ideuvania Soares Torres;5589981507694;3.1;Hamburgueria;;;so cadastro;3f3cd419-8048-4230-858c-e2640e6b6b32
+2026-06-01 21:14;Guilherme Santos;5511973206508;1;Pizzaria;;;lead respondeu/iniciou;fcea6d77-966d-4544-8bdd-daf22c9afef1
+2026-06-01 21:14;Joana;5583986886014;3.1;Marmitaria;;;so cadastro;a915d530-9a15-40b5-8474-a5d86a02b1af
+2026-06-01 21:16;Marilene Siqueira Moreira;5513991531331;3.2;Confeitaria;;;lead respondeu/iniciou;ed23fc33-80cd-4f5d-8870-480e32e6aefb
+2026-06-01 21:16;Warley Junio Silva Vieira;5531994993657;1;Restaurante;;;so cadastro;ebfe47b9-04f9-4 a1-9a16-b59578f96766
+2026-06-01 21:17;Luiz Fernando Silva profirio;5575982956955;3.1;Pizzaria;;;so cadastro;2cfa4ea3-eca1-474a-b03f-0ce4724c58b2
+2026-06-01 21:18;Eloane;5518991124659;3.2;Confeitaria;;;lead respondeu/iniciou;475a066f-c304-490d-bba1-962d78e8d8c5
+2026-06-01 21:22;Rafael de Paula Natella ;5521983899995;1;Açaiteria;;;lead respondeu/iniciou;01e10bc6-0889-4f0f-9155-d5c540bfbc17
+2026-06-01 21:22;Mirelle cristine Vieira Camargos;5538998538971;1;Pizzaria;;;so cadastro;bd112e57-8a60-4b8a-8a61-ba308dee498d
+2026-06-01 21:27;STEFANY BRIZOLA DE ALMEIDA;5519993610475;3.2;Confeitaria;;;so cadastro;53005e25-dadd-4ac1-900e-318a66f2fa22
+2026-06-01 21:28;Almeida;5521968909323;2;;;;so cadastro;84ed221c-034b-4671-a0ab-a63e60c9dbf6
+2026-06-01 21:46;ROMENIGUE FERREIRA;5511947497390;1;Outro;;;so cadastro;1c2c4acb-b8ff-4a68-ab85-9702657d20fd
+2026-06-01 21:48;Cristina Vianna;5511969797999;3.2;Marmitaria;;;lead respondeu/iniciou;6d4ad487-f47d-449c-8bf7-c846b6f22755
+2026-06-01 21:51;David;5511914654855;1;Confeitaria;;;so cadastro;d38d19b1-6018-436a-921f-b213a5275940
+2026-06-01 22:02;JULIANA SILVA GOMES;5575983345875;3.2;Confeitaria;;;lead respondeu/iniciou;3ea07ab1-cca8-4cf3-a49b-01a74e177f3e
+2026-06-01 22:07;Rhaissa mayara rodrigues da silva alexandre;5567998219485;3.2;Lanchonete;;;so cadastro;1730b161-6a4e-40e7-bddb-b4bbecce0d17
+2026-06-01 22:24;Aglair;5521997799188;3.1;Confeitaria;;;so cadastro;0388909c-c523-4606-bb7c-a67e8396a63e
+2026-06-01 22:27;Humberto melo;5579998328380;1;Hamburgueria;;;so cadastro;9ec6d791-6f94-4e37-8f55-cb73864aafec
+2026-06-01 22:28;Eliaquim de Sousa Costa;5586995428303;3.2;Confeitaria;;;so cadastro;4db9788c-447d-426d-b7ae-16041a9ae1a0
+2026-06-01 22:29;Mikaela Dantas;5581997731244;3.1;Açaiteria;;;so cadastro;317f22d6-b1af-4a6f-9fd9-3617f20c4fc4
+2026-06-01 22:36;Leonardo Fernandes;5533998403861;3.1;Outro;;;so cadastro;6ba561e7-3088-411c-921e-8f2763698d37
+2026-06-01 22:40;Daniela Peres da silva;5562995485702;3.1;Marmitaria;;;so cadastro;48167558-ff2c-41ef-a04a-289b7fb60848
+2026-06-01 22:44;israel rodrigues;5581983369114;3.1;Outro;;;so cadastro;772a42fe-f2dd-44f3-bd65-7ebbca0f67c1
+2026-06-01 22:47;Luiz Feliphe Nascimento Campos;5587981379356;3.1;Marmitaria;;;so cadastro;af96245f-5440-4e3b-b143-df3dff8505b9
+2026-06-01 22:52;Pedro;5561983001455;3.1;Açaiteria;;;so cadastro;95f6adb1-ba17-4513-99a1-5fdf47b0b567
+2026-06-01 22:57;Luiz Otávio Silva Machado;5551998305711;3.1;Outro;;;so cadastro;2f588489-e5dc-4d71-97e9-c652dde57b30
+2026-06-01 23:00;Jonas Souto;5511934477779;3.1;Outro;;;so cadastro;d6484e99-71d8-4aad-95b9-23a0b5838a11
+2026-06-01 23:11;TaiseOliveiraSantos;5574998101339;3.1;Outro;;;so cadastro;9af38287-70c3-4405-94ad-25994cb08455
+2026-06-01 23:14;João Victor;5524998619308;3.1;Outro;;;so cadastro;af7fbb40-f7ce-4f1c-9c5d-b1a022c3cb33
+2026-06-01 23:32;Ana Vitoria;5522999326483;2;Açaiteria;;;so cadastro;f75cd249-eda4-438d-9d44-242cac83f014
+2026-06-01 23:34;Emily;5579998570929;2;Sushi;;;so cadastro;1f3268f2-0160-4ce0-b8fa-51b13300fd0d
+2026-06-01 23:44;Camila Cangane;5511958876798;3.2;Outro;;;so cadastro;ff32f0ec-4193-4142-b80c-6cb85531fe79
+2026-06-01 23:50;Geovanna Luisa;5581981179301;1;Pizzaria;;;so cadastro;6ea83173-c262-47c6-af89-686208d9ed73
+2026-06-01 23:55;ð²;5511985394774;2;;;;so cadastro;3f7c43fb-4dfa-45c1-aa68-c4abd495ab9b
+2026-06-01 23:57;Tarcio;5581973248609;3.1;Lanchonete;;;so cadastro;0aaa33d4-ec87-44f1-966e-dae4ee32bb75
+2026-06-02 00:04;Beatriz;5561992550757;1;Açaiteria;;;so cadastro;8e6d0b1d-1f74-4a1d-8eec-0f603431827e
+2026-06-02 00:05;Taylon paulino;5528998864077;3.2;Açaiteria;;;so cadastro;d6e23a29-dd5c-4b56-8c28-91bb93fec3c5
+2026-06-02 00:52;Yasmim Camilli;5567991950846;3.1;Confeitaria;;;so cadastro;9adf6f18-c95e-400a-963d-54543aa56a94
+2026-06-02 00:55;Gabriella Sarrazin;5592981022277;3.1;Confeitaria;;;so cadastro;40e80ce3-a3fa-455e-b059-0fdd51a2d2e2
+2026-06-02 01:43;Bruno;5581994482009;1;Outro;;;so cadastro;cd00717b-63ff-4fb8-8899-e19a51ec42e7
+2026-06-02 01:47;Edilaine Andrade;5531988218675;2;Outro;;;so cadastro;2ff14332-e354-46df-9e3c-942ceb58b234
+2026-06-02 01:53;Matheus;5564984313135;2;Pizzaria;;;so cadastro;29f971ef-f724-4903-8811-ad80261fe188
+2026-06-02 02:07;Ezequiel Aguiar;5569981190246;1;Outro;;;so cadastro;4e9060dc-118a-4d42-9d0c-3c5e83220ae4
+2026-06-02 02:16;Marcelo Vitor Santos de Almeida;5516999986969;3.2;Restaurante;;;lead respondeu/iniciou;563810a3-a0c7-4467-810a-98f9618d4bd1
+2026-06-02 02:39;Talles Júnior;5531289648713;3.1;Hamburgueria;;;so cadastro;5829c750-8df9-4af1-af26-33973fab613c
+2026-06-02 03:34;Wesley Hofman;5554993276472;3.1;Outro;;;so cadastro;484f2ba8-c7c4-405a-8042-02a9a099f9f9
+2026-06-02 03:45;Tais oliveira pereira;5549988872124;3.1;Outro;;;so cadastro;70356deb-5fd9-48fb-9540-0ac1b24ef411
+2026-06-02 04:33;José Augusto Vasconcelos Júnior;5547997300746;3.2;Hamburgueria;;;so cadastro;26893d96-96fa-4ca2-b08c-c00f48399b4f
+2026-06-02 05:51;Fabiana Luiza Rodrigues da cruz;5521981823870;3.1;Outro;;;lead respondeu/iniciou;e036f1d9-6bf8-4b31-9c60-116b5d122034
+2026-06-02 06:59;Amanda Dionísio;55679929684;2;Confeitaria;;;so cadastro;1e5d1ab5-1da9-496f-9629-e817f6698f36
+2026-06-02 07:18;Clayverson;5521974969653;1;Outro;;;lead respondeu/iniciou;37101060-4a37-4fc2-aa40-368ed3b688c0
+2026-06-02 07:43;Vitor angel Rafael caciatori de oliveira;5543998238032;3.1;Sushi;;;so cadastro;60e64182-8fb2-4ada-8bdb-8bc65c9671fa
+2026-06-02 07:46;Wanderley;5511940786095;3.1;Outro;;;lead respondeu/iniciou;95b92552-660e-4e2a-980d-5e7b3b3ecb30
+2026-06-02 07:52;Leidiany Soares Diorio;5527997981642;3.2;Restaurante;;;so cadastro;6d3395ff-c407-40c9-bc3e-a023b3055e52
+2026-06-02 07:52;Aline;5511974371926;3.1;Confeitaria;;;so cadastro;a15e4652-fe07-49d9-ab75-22f8ede45cb7
+2026-06-02 08:19;Alice;5562991898257;3.1;Açaiteria;;;so cadastro;75f12e1c-fd50-41a9-aa9a-fc90f42b3490
+2026-06-02 08:30;Elenita;5517997792674;3.1;Outro;;;lead respondeu/iniciou;6956ecb3-13e8-44f1-afeb-d29fd7a010af
+2026-06-02 08:32;Deise cristini Silva;5569993873272;3.1;Confeitaria;;;so cadastro;5de3a4ef-e903-4a63-868d-65cf00ef914f
+2026-06-02 08:33;Emilena;5518997241979;3.2;Lanchonete;;;lead respondeu/iniciou;cd1643a4-6482-48f1-840a-3b7ddb3ff71b
+2026-06-02 08:43;Maria;5583986270506;1;Pizzaria;;;so cadastro;e206f41a-022c-4b85-b709-8e8cec93e1fe
+2026-06-02 08:58;Erika;5528999854039;3.1;Lanchonete;;;so cadastro;d09a2e03-3504-49ee-83c0-99a900674ac8
+2026-06-02 09:13;Bianca;5515997906129;1;Pizzaria;;;lead respondeu/iniciou;d37b508d-e94f-48eb-8506-77d9705d8122
+2026-06-02 09:13;Larissa Caroline dos Santos sales;5544997396950;3.1;Confeitaria;;;so cadastro;8df40ee3-f5b6-4a0b-88d2-bc47896c9911
+2026-06-02 09:20;Miguel Oliveira;5592994937492;1;Sushi;;;so cadastro;2fc2d1bd-afcd-461e-a77c-496333fc50f9
+2026-06-02 09:21;Jéssica Moreira;5511982630039;1;Restaurante;;;so cadastro;40b96a8a-3314-4d26-8926-f0c777ac70bc
+2026-06-02 09:34;Dri Cake;5573988230280;2;;;;so cadastro;f5756e56-ce1c-4581-8c25-514258d04535
+2026-06-02 09:36;Adriany;5573988449938;3.2;Confeitaria;;;so cadastro;221e41eb-c539-47ba-9afc-84d6c0c5ed55
+2026-06-02 09:44;Deisinara maria gomes de sousa;5586995403602;3.2;Confeitaria;;;so cadastro;2e097839-eda7-48dd-ac18-124e8f0e826e
+2026-06-02 09:48;Juliana Soltau;5551994571627;3.1;Açaiteria;;;so cadastro;8381252c-6759-470b-80f3-37927fb93b6b
+2026-06-02 09:50;Naila carina;5596984365377;2;Confeitaria;;;so cadastro;32bf04d2-6110-466d-a626-42291c0d60e6
+2026-06-02 09:53;Carlos Andrei Benites;5527998960626;1;Outro;;;so cadastro;9b389485-3f37-454f-b286-a2ea88a5b4ac
+2026-06-02 10:01;DHIEGO LIAM OLIVEIRA;5522988491696;1;Restaurante;;;lead respondeu/iniciou;ae74e49e-a5d0-4d52-82cc-61ce8863345f
+2026-06-02 10:08;Wesley Alves de lima;5535998315307;3.1;Outro;;;so cadastro;2e195ba8-920d-40bd-b541-9c2570857638
+2026-06-02 10:09;Victor Gabriel;5535984686540;3.1;Outro;;;so cadastro;3a4ded2c-369f-418b-bef5-18480ed1c300
+2026-06-02 10:10;Yan;5567993249919;1;Pizzaria;;;so cadastro;8f40f636-4aa0-46ff-a25b-0cab4089c581
+2026-06-02 10:16;Alice Silveira;5521966763563;3.1;Confeitaria;;;lead respondeu/iniciou;0e145b53-e160-400b-bda2-9eb5aa1ee602
+2026-06-02 10:22;Tiago viana Da Costa;5585997056252;1;Confeitaria;;;so cadastro;5fd8b1f9-fe41-4f4e-8235-c1798a0fa0e1
+2026-06-02 10:37;Fabíola;5521989589637;2;Hamburgueria;;;so cadastro;19375851-e2f0-49a5-bc6b-9095483585ed
+2026-06-02 10:48;Lorival  Emidio;5519989313243;3.2;Pizzaria;;;lead respondeu/iniciou;34314fb0-f891-4c4b-acd4-e8c7ea1e5d61
+2026-06-02 10:50;Karina;5585992221131;1;Pizzaria;;;so cadastro;6ef0f865-bbfa-4627-9879-c999a4ffa821
+2026-06-02 10:54;Nicollas fernandes;5551989759801;3.1;Restaurante;;;so cadastro;f709a30b-f5d8-4a92-99f1-14ee79860fb9
+2026-06-02 10:56;Andressa;5585985061527;3.1;Pastelaria;;;so cadastro;d4883ee3-363a-4864-9796-171eca8b1164
+2026-06-02 10:58;João Paulo;5581986626930;3.2;Hamburgueria;;;so cadastro;f0233815-4583-44f1-849f-3345ef533fbf
+2026-06-02 11:03;Gustavo Alves Ferreira;5511958078049;2;Outro;;;lead respondeu/iniciou;5e528a2b-722c-4d6b-86e1-2ece2c59dd63
+2026-06-02 11:04;Rayssa Lima;5511948963046;3.1;Confeitaria;;;lead respondeu/iniciou;81f78885-866a-4eb9-b359-b6d9dd8435aa
+2026-06-02 11:17;Diogo Rocha;5516988308383;1;Outro;;;lead respondeu/iniciou;c90fedd0-ce41-49dc-afd0-b3d3faa17f70
+2026-06-02 11:18;brayan;5531982013419;1;Hamburgueria;;;so cadastro;afacbc36-150b-4e61-9ecf-dcf0d9b0bff4
+2026-06-02 11:19;Jaqueline silva cesar;5521976620585;3.1;Pizzaria;;;so cadastro;8420f39a-f729-4c17-815d-e7d9340c7ed4
+2026-06-02 11:19;Daniel Santos;5527988415583;3.1;Lanchonete;;;so cadastro;4577edc2-9b62-42e3-9cb8-f0579eb723cf
+2026-06-02 11:20;Jessyca;5511973300925;2;Outro;;;so cadastro;d11bd6fd-e7c8-4904-82bb-ce85f1cfee72
+2026-06-02 11:22;Confeitaria;5592992298833;3.1;Confeitaria;;;so cadastro;8dbb61f0-331f-476c-9982-3e61ea6b3ee2
+2026-06-02 11:23;Sandro Luis Vasconselos de Melo;5551998427293;3.1;Pizzaria;;;so cadastro;d27be9a3-ce89-4208-bd4d-8c79dfeeb1b5
+2026-06-02 11:24;Maria Edna monteiro ribeiro;5585996976135;3.1;Açaiteria;;;so cadastro;f52d8f36-be93-4a30-8e97-a2652d088896
+2026-06-02 11:30;Leticia;5581991530565;3.1;Outro;;;so cadastro;c735accd-af58-4bbd-9431-6fa4543de68e
+2026-06-02 11:43;Larissa;5518998223204;3.1;Outro;;;so cadastro;dcfa5330-c3f7-4330-9d34-2e37e32fd743
+2026-06-02 11:45;ANDERSON M V OLIVEIRA;5543999836261;1;Outro;;;so cadastro;77c18f9c-1509-4440-ab34-6c3f8c2e7320
+2026-06-02 11:47;Beatriz vitoria;5522999778187;3.2;Pizzaria;;;so cadastro;5bf69665-448b-479f-981c-6524869c3a89
+2026-06-02 11:48;Artur Vasconcelos;5582999847575;2;Marmitaria;;;so cadastro;1269299a-485c-437b-b6f5-609881909928
+2026-06-02 11:51;Welton;5587996414062;3.1;Hamburgueria;;;so cadastro;5383807a-dbc2-42a4-a3ad-626817e1ff66
+2026-06-02 11:55;Isadora;5517996804209;3.1;Outro;;;lead respondeu/iniciou;ff879fe8-84f3-470e-9587-17ba8635bb56
+2026-06-02 11:59;Mikaelly;5581988294961;3.1;Outro;;;so cadastro;945a490a-109d-4de5-8d9b-ed46c4e13ad6
+2026-06-02 11:59;Nathana de;5551989585129;3.1;Outro;;;so cadastro;91391f37-9f1b-4e65-ac5f-1f95abd6594a
+2026-06-02 12:00;Alice;5585996091831;3.1;Hamburgueria;;;so cadastro;183b4d7e-30ac-42f4-b6ea-b8db0bddaff0
+2026-06-02 12:03;Isaias fontes;5584988226292;3.1;Sushi;;;so cadastro;724bec7e-4ae2-4059-bdc4-a36f040f3d96
+2026-06-02 12:07;Ronaldo Alves;5519991900515;3.2;Confeitaria;;;lead respondeu/iniciou;f35fcaed-1eb3-427a-9bce-fcece32926df
+2026-06-02 12:14;Marcos Frota;5592988021257;1;Sushi;;;so cadastro;f30974d4-0513-4d20-bb88-700151d8e3db
+2026-06-02 12:17;Ana Clara Araújo Nogueira;55859873731;3.1;Outro;;;so cadastro;ea265ffb-51ca-4382-af7e-6daf6672ef21
+2026-06-02 12:18;Rose;5538998183014;3.1;Confeitaria;;;so cadastro;dc8ad51c-0143-4474-99dd-2d680d4cc2e0
+2026-06-02 12:20;Natanael pereira de Jesus Aquino;5531973606106;3.1;Hamburgueria;;;so cadastro;43d09ef1-b17e-41db-86cc-e5ade5e1999b
+2026-06-02 12:20;Angela Soares da Silva ;5521969316687;3.2;Marmitaria;;;lead respondeu/iniciou;77c195da-74b5-474a-99d7-e3fe0f7b841c
+2026-06-02 12:21;Miguel;5531996903494;1;Sushi;;;so cadastro;1c58b0df-291c-4898-b5dc-d3874f2f9802
+2026-06-02 12:22;Francisco Santos;5531994580410;3.1;Outro;;;so cadastro;6c08f359-8bab-4b96-8e0d-1868fdc8b685
+2026-06-02 12:24;Evellyn Martins Campos;5565999573202;3.1;Outro;;;so cadastro;709d0611-32c4-4809-9c47-4d1d866351ec
+2026-06-02 12:27;Jeovana de Oliveira serrao;5592991444935;3.1;Pastelaria;;;so cadastro;939c15de-43a7-4eba-ae05-cc56efa22743
+2026-06-02 12:30;Geovany;5561999736265;1;Pizzaria;;;so cadastro;10451928-8b57-480f-b23c-79888816ac3a
+2026-06-02 12:32;T&R Lanches;5521991626648;2;;;;so cadastro;0af4ccd9-adb3-43a6-9522-44ccb0a00cf4
+2026-06-02 12:33;Eloah Paula;5519981051706;3.1;Sushi;;;so cadastro;7462c30d-7466-44fa-b4b4-7638e2ccfc52
+2026-06-02 12:40;Leonardo Moraes;5516991493040;3.1;Confeitaria;;;lead respondeu/iniciou;55cb2a65-3b01-4ab5-b32f-c45475d072dd
+2026-06-02 12:44;eduardo rodrigues;5594992081147;1;Hamburgueria;;;so cadastro;29bb0ecf-a91b-4544-b17c-996b1cf5f9a9
+2026-06-02 12:50;Gilson de Souza Teixeira Souza;5591989966432;3.2;Sushi;;;so cadastro;5bd38b46-9587-431a-a11b-313ba1e4c145
+2026-06-02 12:55;Jhessi da Silva Almeida;5566996806717;3.1;Lanchonete;;;so cadastro;610fa251-6c38-4e25-8387-314522eee67d
+2026-06-02 12:55;Willyam Santana Martines;5519998341953;3.2;Outro;;;so cadastro;602edce1-c9b5-4f74-bc8b-f32c69e35934
+2026-06-02 12:56;manu;55996899254;3.1;Lanchonete;;;so cadastro;3495583d-7d6a-4086-b077-68dd85741429
+2026-06-02 12:58;Rian Soares;5598984912364;3.1;Hamburgueria;;;lead respondeu/iniciou;6a187298-3457-47ec-9026-d4ef3018bd12
+2026-06-02 12:58;JONATHAN ARAUJO GOMES;5583998589822;3.1;Pizzaria;;;so cadastro;e9b2f4dc-45ee-4265-a810-637b0126e280
+2026-06-02 13:06;Carolaine Alves da Silva;5514996264112;3.1;Outro;;;lead respondeu/iniciou;d01eed71-c781-4f65-9af2-b6236cc8f1e2
+2026-06-02 13:15;Crislaine Oliveira;5567998909080;3.1;Hamburgueria;;;so cadastro;1f633117-fa6b-48c8-8cfc-2e873c827421
+2026-06-02 13:20;Ciro alexandre;5548988381353;2;Marmitaria;;;so cadastro;b56457a4-6758-4655-9ebe-4afccc50ec50
+2026-06-02 13:23;Bárbara;5534997297722;3.1;Hamburgueria;;;so cadastro;9d1b84eb-9143-402e-8850-9a9d0cc064bc
+2026-06-02 13:25;julianna nonato dos santos;5561981214471;3.1;Outro;;;so cadastro;8c63b81d-1e78-4069-915e-e714c2fa318f
+2026-06-02 13:28;Geovannaâ¡ï¸;5581984179301;2;;;;so cadastro;2b8cdc4f-7b8e-4e3b-8f2c-9b16d6b444b6
+2026-06-02 13:28;Luiz Gomes;5551990182199;3.1;Outro;;;so cadastro;abeae1fa-9d3a-4f09-86f4-2e87078d25bb
+2026-06-02 13:29;Francislanne Sepulveda de Souza;5522981746994;3.1;Confeitaria;;;lead respondeu/iniciou;2764a788-6d8e-421e-b69a-fed3b92bcaf0
+2026-06-02 13:32;BIANCA DA SILVA ROCHA;5521988154646;3.1;Hamburgueria;;;so cadastro;e42f86a9-6982-4352-ba63-c8ffa2fd9f32
+2026-06-02 13:49;CAROLINE CUNHA DA COSTA;5521976812811;3.1;Outro;;;lead respondeu/iniciou;5f462ee5-de21-45c3-9abb-e1e8c036d31c
+2026-06-02 13:57;Gleice Soares;5521967817397;3.1;Marmitaria;;;lead respondeu/iniciou;1b2852ed-10eb-471a-a421-2a686ab4d459
+2026-06-02 14:07;Allan Britto;5561998106198;2;;;;so cadastro;f8f1334f-1b52-40c5-a9a6-0cdb32316296
+2026-06-02 14:08;Gabriel Brasil;5554999209356;2;Açaiteria;;;so cadastro;9f9fd8e2-cd96-4d1d-8576-7a2ab10ec8dd
+2026-06-02 14:17;fernanda;5549999326655;1;Lanchonete;;;so cadastro;f845810a-cf75-4f20-9ae2-07fad25b3022
+2026-06-02 14:28;Alessandra soares barreira;5551997240246;3.1;Hamburgueria;;;so cadastro;6a806805-74b3-43ae-8556-65d422c20ca9
+2026-06-02 14:37;ernandes;5511979601128;1;Hamburgueria;;;lead respondeu/iniciou;55f16de7-c065-4619-8797-0260a9e4b89c
+2026-06-02 14:39;ayane priscila silva oliveira;5564993196966;3.1;Outro;;;so cadastro;164fce9b-1711-42c8-48f4-ce21b579f27b
+2026-06-02 14:40;Grazielle;5566984324812;3.2;Açaiteria;;;so cadastro;aa7038be-d911-4f26-a982-dd9c266551df
+2026-06-02 14:41;Jéssica Brito;5521967060244;1;Confeitaria;;;so cadastro;fde89c8c-3ffe-4244-b7ff-56a017fc1e9f
+2026-06-02 14:48;Jussara;5521998453391;3.1;Outro;;;so cadastro;20fca52a-e0cf-481b-9351-2eb9702b776f
+2026-06-02 14:53;Joyce;5551980133156;3.1;Hamburgueria;;;so cadastro;cfc7c123-d6c1-4091-a2d8-45a0893184a0
+2026-06-02 14:57;EDMILSON ROSA ALEIXO PEDRO;5511983636641;1;Marmitaria;;;lead respondeu/iniciou;a0fa05b6-7613-4222-92bc-62b4677ca524
+2026-06-02 15:10;Vitor Antonio ;5517981565833;3.1;Confeitaria;;;lead respondeu/iniciou;cbb5fdfd-5d0a-4155-83ae-9b8e47e48877
+2026-06-02 15:17;Pedro Bustamante ;5534998347297;3.1;Pizzaria;;;so cadastro;7f181c84-56c2-4c25-a457-e6265825ef5e
+2026-06-02 15:42;Giovana de Oliveira Cardoso;5533988273794;3.2;Confeitaria;;;so cadastro;e9aaf8fb-19b4-45ee-adfe-acb0984fdc65
+2026-06-02 15:43;Brittos Lima;5543996403469;2;;;;so cadastro;04b3ea6d-8ea8-445d-b156-ea3970b47a9a
+2026-06-02 15:50;Angélica Teixeira da Silva;5561998528241;3.1;Pizzaria;;;so cadastro;9a15cb88-ad2b-4544-a982-4b447dde0dc9
+2026-06-02 15:56;NICOLY CAPELLARI COSTA;5515997065379;3.1;Confeitaria;;;lead respondeu/iniciou;d6aaab14-b22c-47df-984f-766f35f1a48e
+2026-06-02 15:59;José Guilherme Silva Araújo;5585987709157;3.2;Lanchonete;;;so cadastro;e7f1aadb-e3ac-4705-96b8-388b6e344e9a
+2026-06-02 15:59;ANA CARLA JANUARIO DE OLIVEIRA;5521969356490;3.1;Lanchonete;;;so cadastro;4cf27036-1156-48c2-846d-565ddae5277b
+2026-06-02 16:00;marcioxavier;5581997183282;3.1;Pastelaria;;;so cadastro;9eeb2987-de13-40db-ad63-4db53ef8285a
+2026-06-02 16:05;Vitória Luiza Muller heller;5553999496424;3.1;Confeitaria;;;lead respondeu/iniciou;70eaa541-88fb-472d-8636-61a1938dc015
+2026-06-02 16:08;MATHEUS DE ARAUJO TRINDADE OLIVEIRA;5514998957585;2;Hamburgueria;;;so cadastro;73d2651a-4284-46cb-adfe-175a9534a843
+2026-06-02 16:16;Cleyton Rocha;5561982597090;3.2;Lanchonete;;;so cadastro;d81005d9-ada2-47b4-ab47-e233f72483bc
+2026-06-02 16:16;Nicole;5564992550061;3.1;Hamburgueria;;;so cadastro;95a999eb-9b93-4ab4-9559-30ee13f9316a
+2026-06-02 16:29;Gabriela;5531980302475;3.1;Confeitaria;;;so cadastro;76e8e070-e2d0-4319-9102-6ee4a9147775
+2026-06-02 16:36;Adriana;5521993176880;2;Confeitaria;;;lead respondeu/iniciou;3b7368f0-3e79-444a-b7f4-6b4af4b94be9
+2026-06-02 16:46;RAUL ARAUJO DA CRUZ;5511958049427;3.1;Outro;;;lead respondeu/iniciou;d4fbdc41-1fb6-41ec-9c5a-e8ddaec47434
+2026-06-02 16:47;Ana Cecília;5528999257112;3.1;Confeitaria;;;so cadastro;3b7f5be2-baf3-415c-ba66-29029e287f08
+2026-06-02 16:49;Daiany ;5512991776915;3.1;Lanchonete;;;so cadastro;d3e155ab-dee4-4ea2-893c-57ad65e98e07
+2026-06-02 17:01;Maria Ediarda Pires;5562982049458;3.1;Açaiteria;;;so cadastro;d750a6f9-75e3-497f-a3a0-070251e636bd
+2026-06-02 17:07;KR EIRELI LTDA;5591980647411;3.2;Restaurante;;;so cadastro;a07cc56a-dba1-4015-91c3-70c55a80b565
+2026-06-02 17:07;Jady;5581920049104;3.1;Outro;;;so cadastro;104aa63d-72b5-4108-aa8d-3bcb639cd8bb
+2026-06-02 17:09;Brendhon Cristian falcao ferreira;5521983589227;3.1;Pizzaria;;;lead respondeu/iniciou;0806ba32-6544-492b-98b9-4e5542a0d0a2
+2026-06-02 17:09;Andrea;5512991139294;1;Restaurante;;;so cadastro;4b9f51df-747d-4524-becc-30e91d54f02f
+2026-06-02 17:12;Célio;5541999187972;1;Pizzaria;;;so cadastro;9f9f0eca-c50c-410e-ade0-19f0d47c110f
+2026-06-02 17:13;JosÃ©;5564992294579;2;;;;so cadastro;a23863df-e0b3-49f7-8652-cbffd1f7a469
+2026-06-02 17:19;Vinicius;5551999468670;3.1;Lanchonete;;;so cadastro;7a5ec01b-ccb9-474b-97a1-d3519f721297
+2026-06-02 17:21;Yasmim;5582993684237;3.1;Confeitaria;;;so cadastro;2322d7fc-a241-46bc-a52c-462a7fb90e49
+2026-06-02 17:21;Ana Clara ;5531988908081;1;Hamburgueria;;;so cadastro;d4bed603-4ab1-459f-96d6-5c4fc5fa5a82
+2026-06-02 17:29;Ricardo Garcia Schirato;5516981316666;3.1;Pizzaria;;;so cadastro;00bf55b5-a7ea-44cd-89bb-da4afde3240c
+2026-06-02 17:36;Gabriel Henrique;5521978997341;3.1;Outro;;;lead respondeu/iniciou;095eddde-3adc-4079-bf9e-8e516a954c7c
+2026-06-02 17:38;Rayssa;5562993188100;3.1;Outro;;;so cadastro;21b26011-17a5-46d6-a28d-5ae8b013136b
+2026-06-02 17:42;Denise Sosa;55992061721;2;Confeitaria;;;lead respondeu/iniciou;5fc20b08-4e2a-4a08-acc5-1daee397e5c7
+2026-06-02 17:45;DAMAZIO GODOY;5566999340176;3.1;Lanchonete;;;so cadastro;25d661bf-91db-471f-a27d-c16a1cceb6e9
+2026-06-02 17:54;valquirio;5586999514827;1;Marmitaria;;;so cadastro;e554beb4-d7cb-4a31-bf93-6f046e360eb8
+2026-06-02 17:59;Kauan;5511999999129;3.1;Hamburgueria;;;lead respondeu/iniciou;7dddb8b9-1050-402b-927f-18c49ef8ee02
+2026-06-02 18:04;Victória Moura;5521978802754;2;Outro;;;lead respondeu/iniciou;9fc44375-3605-4552-a5b8-309599d0f851
+2026-06-02 18:08;Lari;5541998615416;2;;;;so cadastro;f473d35c-322a-497f-95c3-979230de279b
+2026-06-02 18:11;Gabriela ;553188689300;1;Outro;;;so cadastro;d3d496d8-8141-4acb-b331-ab89ec68ae40
+2026-06-02 18:12;Talita;5521981746736;3.1;Confeitaria;;;so cadastro;66f20fad-84e1-47ba-be2a-158ec8534ad7
+2026-06-02 18:18;â¨;5585996619772;2;;;;so cadastro;1ce1e96e-85d6-46d2-98bf-4e998aa55660
+2026-06-02 18:22;Claudia;5588988654525;2;Açaiteria;;;so cadastro;1118e907-ca0a-4762-bd38-f69d3c4011e0
+2026-06-02 18:31;Clebison De Matos Vieira;5522999384151;2;;;;lead respondeu/iniciou;bd466c1e-446a-4cff-acfc-79b19bfd7152
+2026-06-02 18:33;Fabiano;5521979058992;2;;;;so cadastro;4963915a-acb7-4acc-a804-9a46c7e55f73
+2026-06-02 18:37;Guilherme Rezende de Sousa;5531997661550;1;Hamburgueria;;;lead respondeu/iniciou;23a31043-32a2-4c5a-b8d5-f399efb14efa
+2026-06-02 18:39;Clarisa maron Martins;5551998318996;3.1;Outro;;;so cadastro;071a6559-1f1f-42d3-aad5-969c8cd9c6d8
+2026-06-02 18:43;fernando bernardi;5541999503114;1;Confeitaria;;;so cadastro;c2ae4d21-161e-47c7-8e1c-1feb812a57eb
+2026-06-02 18:43;Sthefany Sousa;5511977428226;1;Confeitaria;;;lead respondeu/iniciou;2f80c347-93c9-448e-b377-52a47b380de6
+2026-06-02 18:51;GABRIEL POZZER DA SILVA;5554996871602;1;Sushi;;;so cadastro;6b1abda9-43a7-4082-ab58-9ab30ffda9ac
+2026-06-02 18:56;IZABELLA OLIVEIRA;5531983990680;1;Lanchonete;;;so cadastro;12af29f7-fe4c-4d07-9054-862e4eb012f0
+2026-06-02 19:01;Mercia Tatiane Moraes de Carvalho;5575981700179;3.2;Outro;;;so cadastro;87cd0360-3555-49ef-b5f3-30280f36553d
+2026-06-02 19:10;Ranieri carvalho da Silva;5527996555788;3.1;Pizzaria;;;so cadastro;b32f4804-ec13-4af7-863b-96a09e7cfc59
+2026-06-02 19:15;açaibenditaesquina;5561996091636;3.1;Açaiteria;;;so cadastro;da638df3-93f1-4654-b95f-0fdc660bacf8
+2026-06-02 19:22;Mylena;5521964341908;1;Restaurante;;;lead respondeu/iniciou;55c3bf79-7472-4dc4-b439-ae286aefadee
+2026-06-02 19:23;Willker Nobre;5588992086369;3.1;Lanchonete;;;so cadastro;290a6bd4-5b01-4a46-be5c-bdcb19c8180e
+2026-06-02 19:30;AGATHA GONCALVES PROCEK;5547996710153;1;Hamburgueria;;;so cadastro;0be3d916-a264-4bd7-ab02-7ab82e28a054
+2026-06-02 19:49;joao lima;5531975054094;3.1;Outro;;;so cadastro;7d3d3303-0baa-461b-a400-fbfd3528f4e9
+2026-06-02 19:55;Thayla;5551982042989;1;Hamburgueria;;;so cadastro;e61d2877-0a36-49b8-b08e-754b9dfaa96d
+2026-06-02 19:57;Deliziare Gourmet;5521975787523;1;Pastelaria;;;so cadastro;46a3876e-68d8-4754-8eae-f12f70a0cd61
+2026-06-02 19:58;Weslei Tavares;5551992775801;1;Hamburgueria;;;so cadastro;4cadd2cb-f4e9-4dcd-8155-3adcd69f7fa3
+2026-06-02 20:03;Gabrielli;5528999060734;3.1;Outro;;;so cadastro;ffcbe3d2-1d8d-4ff0-bb47-1571648b03a3
+2026-06-02 20:03;Joao Vitor Dos Santos;5527981202750;3.2;Hamburgueria;;;so cadastro;e994e9fe-96af-46cb-b2d1-c39c79399e2a
+2026-06-02 20:06;José Carlos dos Santos;5519988021477;1;Outro;;;lead respondeu/iniciou;7b111083-6201-4a41-972c-37b674254246
+2026-06-02 20:12;Luis Felipe Cassel;5551995047457;3.1;Outro;;;so cadastro;302e1785-466a-4b33-adb3-d99d6be6129a
+2026-06-02 20:13;Rosirene Bispo soares;5589981249519;3.1;Confeitaria;;;so cadastro;1904cb33-41e4-4027-8550-e7fd9e0fc771
+2026-06-02 20:25;Endereço do usuário;5535992338947;3.2;Pizzaria;;;so cadastro;63458877-d12f-4fbc-940b-f138fb42cd0d
+2026-06-02 20:36;Marcos Paulo;5562993091678;3.1;Pizzaria;;;so cadastro;4044b4cb-7868-4ee3-81fd-c2c4aa26d457
+2026-06-02 20:37;Admilson Rodrigues;5511939598778;3.2;Marmitaria;;;lead respondeu/iniciou;070febbd-3eda-43b5-a52b-4f45b487b414
+2026-06-02 20:39;Suellen Mesquita braz;5598981536985;3.1;Açaiteria;;;so cadastro;d3e7e72d-4758-4543-91ea-aa85dbc9aa24
+2026-06-02 20:43;Milenny Luanny;5598988533732;3.2;Pizzaria;;;so cadastro;e0308788-f4e3-4def-a931-046fbf01bfbe
+2026-06-02 20:44;bruna santos oliveira;5569981326048;3.2;Outro;;;so cadastro;bd33728e-5f70-4101-ae8a-2b7c8813e69b
+2026-06-02 20:45;Tay;5583999530472;3.1;Confeitaria;;;so cadastro;6eaa79ec-c39b-48b4-bb14-5e3ed8391d7b
+2026-06-02 20:51;Adely;5527999567100;3.2;Açaiteria;;;so cadastro;4f340e06-2e04-4a59-b826-29c72b6c55cb
+2026-06-02 20:56;Andre;5511930074597;3.1;Outro;;;so cadastro;0ee7ff13-ec2b-4886-b1be-51840814614d
+2026-06-02 21:19;Ana Paula;5527998106622;1;Confeitaria;;;lead respondeu/iniciou;dbd51fcb-e747-4757-b27a-d4f32a5a73f1
+2026-06-02 21:25;AGUEDA ;5582999361982;3.1;Lanchonete;;;so cadastro;90317d31-2745-4a7d-a7ea-83992ab1a5e8
+2026-06-02 21:26;Walisson;5531990836402;1;Outro;;;lead respondeu/iniciou;64c098fe-d1f3-45a2-9510-9239cf41020c
+2026-06-02 21:27;Bruna Macedo Kopke;5524993357994;3.1;Confeitaria;;;lead respondeu/iniciou;d1eccb3a-1d8e-4cb5-b044-bb2da78b2792
+2026-06-02 21:34;HEVERTHON CHAGAS;5583987077266;3.1;Hamburgueria;;;so cadastro;f6f7d81a-df03-432d-b5fb-926ae14e7100
+2026-06-02 21:37;Julio;5527992248107;1;Restaurante;;;lead respondeu/iniciou;fe85dc8f-df07-4c69-95e3-475e314c7909
+2026-06-02 21:39;Sérgio;5519981667798;3.1;Marmitaria;;;so cadastro;8b366c6a-9d58-43bc-981a-931d978b336e
+2026-06-02 21:50;Cristina de Oliveira;5511961186070;3.1;Hamburgueria;;;lead respondeu/iniciou;4d925bc7-704c-4dca-b441-635d5423ab59
+2026-06-02 21:51;Guilherme Alexandre Borges Silva;5588996031292;3.2;Outro;;;lead respondeu/iniciou;ba8ad1a3-4e04-4b53-b7af-14b8b36bf5c5
+2026-06-02 21:54;Luiz Otavio Franco Do Vale Neto;5591984042451;3.1;Restaurante;;;so cadastro;9ad5e31c-8634-4ee6-83a2-3ab050d5ef37
+2026-06-02 22:19;Renata;5566999437613;1;Restaurante;;;so cadastro;15bb4ab5-2d4a-487f-af07-cab706fcbaa1
+2026-06-02 22:40;Welliton quadreli;5565984215864;1;Pizzaria;;;so cadastro;b882aecc-7296-46c9-83d4-9cddb043f895
+2026-06-02 22:45;TAMIRES DA SILVA LINDOSO;5581989874598;1;Confeitaria;;;lead respondeu/iniciou;94bae611-b0e9-4b3d-af08-0ed63b1ed1ee
+2026-06-02 23:00;Eliane Almeida Guimarães;5593991529112;3.1;Outro;;;so cadastro;1a4efc72-77eb-48e4-b725-759bcbb198d4
+2026-06-02 23:36;Mender;5518991170633;3.1;Outro;;;so cadastro;00682da0-e9e0-42c1-a3bf-62dae3cb692e
+2026-06-02 23:37;Jefferson;5511959081660;2;Hamburgueria;;;so cadastro;8451d06e-9d04-4640-863b-a906590c7df1
+2026-06-02 23:48;Rafaela Barreto;5521983779276;1;Outro;;;lead respondeu/iniciou;f6427eec-0356-4499-9691-995c715b7919
+2026-06-02 23:50;Cesar Lopes Malta;5532999570790;1;Outro;;;so cadastro;094af6df-92e2-4321-97a7-67031b0a8eb5
+2026-06-02 23:55;christiane viceconte;5521998730152;2;Pizzaria;;;lead respondeu/iniciou;96c74be7-3f07-4152-b854-07a222b339ce

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXP-16 — A/B Plano Mensal vs. Anual | Clara IA</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --roxo: #6C3FC5; --roxo-esc: #4a2d8a; --tinta: #1a1a2e;
+    --cinza: #5b5b6e; --linha: #e6e3ef; --bg: #faf9fd;
+    --verde: #1f9d6b; --verde-bg: #e9f7f0;
+    --azul: #2f6df0; --azul-bg: #eaf0fe;
+    --amarelo-bg: #fff7e6; --amarelo-bd: #f0c36b;
+  }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--tinta); background: #fff; font-size: 13.5px; line-height: 1.62; }
+
+  /* ---------- CAPA ---------- */
+  .cover {
+    background: linear-gradient(135deg, var(--roxo) 0%, var(--roxo-esc) 100%);
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 90px 80px; page-break-after: always; color: #fff;
+  }
+  .cover-tag {
+    background: rgba(255,255,255,.16); font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; padding: 7px 15px;
+    border-radius: 20px; margin-bottom: 36px; align-self: flex-start;
+  }
+  .cover h1 { font-size: 46px; font-weight: 800; line-height: 1.12; margin-bottom: 22px; max-width: 720px; }
+  .cover .sub { font-size: 18px; color: rgba(255,255,255,.8); max-width: 600px; margin-bottom: 56px; }
+  .cover-meta { display: flex; gap: 48px; flex-wrap: wrap; }
+  .cover-meta .lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 4px; }
+  .cover-meta .val { font-size: 15px; font-weight: 600; }
+
+  /* ---------- LAYOUT ---------- */
+  .page { padding: 48px 60px 60px; max-width: 980px; margin: 0 auto; }
+  h2 { font-size: 22px; font-weight: 800; color: var(--roxo); margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--linha); }
+  h2:first-child { margin-top: 0; }
+  h3 { font-size: 15.5px; font-weight: 700; color: var(--tinta); margin: 22px 0 8px; }
+  p { margin-bottom: 11px; }
+  ul, ol { margin: 0 0 12px 22px; }
+  li { margin-bottom: 5px; }
+  strong { color: #14142b; }
+  code { font-family: 'Cascadia Code','Consolas',monospace; background: #f1eefb; color: #5a2ca0; padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+
+  /* ---------- COMPONENTES ---------- */
+  .lead { font-size: 15px; color: var(--cinza); margin-bottom: 18px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 18px; font-size: 12.8px; }
+  th { background: var(--roxo); color: #fff; text-align: left; padding: 9px 12px; font-weight: 600; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--linha); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--bg); }
+
+  .callout { border-radius: 10px; padding: 14px 18px; margin: 16px 0; font-size: 13px; }
+  .callout.info { background: var(--azul-bg); border-left: 4px solid var(--azul); }
+  .callout.ok { background: var(--verde-bg); border-left: 4px solid var(--verde); }
+  .callout.warn { background: var(--amarelo-bg); border-left: 4px solid var(--amarelo-bd); }
+  .callout .t { font-weight: 700; margin-bottom: 4px; }
+
+  pre { background: #1e1b2e; color: #e8e6f3; padding: 16px 18px; border-radius: 10px; overflow-x: auto; font-family: 'Cascadia Code','Consolas',monospace; font-size: 11.5px; line-height: 1.55; margin: 12px 0; }
+  pre .c { color: #8a86a8; } pre .k { color: #c792ea; } pre .s { color: #c3e88d; } pre .v { color: #82aaff; }
+
+  /* fluxo */
+  .flow { display: flex; align-items: stretch; gap: 0; margin: 18px 0; flex-wrap: wrap; }
+  .node { background: #fff; border: 2px solid var(--linha); border-radius: 12px; padding: 12px 14px; min-width: 130px; flex: 1; text-align: center; box-shadow: 0 2px 6px rgba(108,63,197,.06); }
+  .node.hl { border-color: var(--roxo); background: #f7f4fe; }
+  .node .ico { font-size: 20px; } .node .nm { font-weight: 700; font-size: 12px; margin-top: 4px; } .node .ds { font-size: 10.5px; color: var(--cinza); }
+  .arrow { display: flex; align-items: center; color: var(--roxo); font-size: 20px; padding: 0 6px; }
+
+  /* variantes lado a lado */
+  .cols { display: flex; gap: 16px; margin: 14px 0; }
+  .col { flex: 1; border-radius: 12px; padding: 16px 18px; }
+  .col.mensal { background: var(--verde-bg); border: 1px solid #bfe6d4; }
+  .col.anual { background: var(--azul-bg); border: 1px solid #c6d6fb; }
+  .col .badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 12px; margin-bottom: 8px; }
+  .col.mensal .badge { background: var(--verde); color: #fff; }
+  .col.anual .badge { background: var(--azul); color: #fff; }
+
+  /* chat */
+  .chat { background: var(--bg); border: 1px solid var(--linha); border-radius: 12px; padding: 14px 16px; margin: 10px 0 16px; }
+  .msg { margin: 7px 0; display: flex; }
+  .msg .who { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--cinza); width: 56px; flex-shrink: 0; padding-top: 3px; }
+  .msg .bubble { background: #fff; border: 1px solid var(--linha); border-radius: 10px; padding: 7px 11px; font-size: 12.3px; max-width: 88%; }
+  .msg.lead .bubble { background: #eee9f8; }
+  .msg.hl .bubble { background: var(--verde-bg); border-color: var(--verde); font-weight: 600; }
+  .msg.hl.anual .bubble { background: var(--azul-bg); border-color: var(--azul); }
+
+  .fig { margin: 16px 0; }
+  .fig img { width: 100%; border: 1px solid var(--linha); border-radius: 10px; display: block; }
+  .fig .cap { font-size: 11.5px; color: var(--cinza); margin-top: 6px; text-align: center; font-style: italic; }
+  .fig .ph { border: 2px dashed var(--linha); border-radius: 10px; padding: 28px; text-align: center; color: var(--cinza); font-size: 12px; background: var(--bg); }
+
+  .pill { display:inline-block; font-size:11px; font-weight:700; padding:2px 9px; border-radius:12px; }
+  .pill.ok { background: var(--verde-bg); color: var(--verde); }
+  .pill.todo { background:#f1eefb; color: var(--roxo); }
+
+  .foot { margin-top: 50px; padding-top: 18px; border-top: 1px solid var(--linha); font-size: 11px; color: var(--cinza); text-align: center; }
+  h2, h3 { page-break-after: avoid; }
+  .callout, .chat, .flow, table, .fig { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ================= CAPA ================= -->
+<div class="cover">
+  <span class="cover-tag">Experimento A/B · EXP-16</span>
+  <h1>Plano mensal R$209 vs. anual parcelado na fala da Clara</h1>
+  <p class="sub">Como ajustamos a Clara para testar, sem trocar o modelo, qual forma de apresentar o preço gera mais agendamentos.</p>
+  <div class="cover-meta">
+    <div><div class="lbl">Setor</div><div class="val">Comercial</div></div>
+    <div><div class="lbl">Sprint</div><div class="val">SM-28</div></div>
+    <div><div class="lbl">Data</div><div class="val">02/06/2026</div></div>
+    <div><div class="lbl">Ambiente</div><div class="val">Homologação</div></div>
+    <div><div class="lbl">Status</div><div class="val">Mecânica validada</div></div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ============ 1. RESUMO ============ -->
+  <h2>1. Resumo</h2>
+  <p class="lead">A EXP-16 testa uma hipótese de fricção comercial: apresentar o <strong>plano mensal claro (R$209,99 no boleto, sem compromisso anual)</strong> reduz a hesitação do lead na hora de agendar a reunião, comparado a apresentar o <strong>plano anual parcelado no cartão (R$179,99/mês)</strong>.</p>
+  <p>Para testar isso sem reescrever a Clara, criamos um mecanismo que <strong>injeta o texto de preço já pronto</strong> no prompt, escolhido por um campo do lead. Cada lead cai aleatoriamente em um dos dois braços, e a Clara fala exatamente a versão correspondente — o resto do atendimento (qualificação, escassez, agendamento) permanece idêntico.</p>
+  <div class="callout ok"><div class="t">✅ Validado em homologação (02/06/2026)</div>Nos dois testes a Clara trocou corretamente a fala da Etapa 4 conforme o braço, e nenhuma outra parte do fluxo foi afetada. A mecânica está pronta; falta apenas fixar o baseline antes de ligar em produção.</div>
+
+  <!-- ============ 2. DESENHO ============ -->
+  <h2>2. A hipótese e o desenho do teste</h2>
+  <div class="cols">
+    <div class="col mensal">
+      <span class="badge">Variante A — Mensal</span>
+      <p style="margin:0"><strong>R$209,99/mês no boleto</strong>, sem fidelidade e sem compromisso anual. Valor mensal claro, sem "pegadinha" de parcelamento.</p>
+    </div>
+    <div class="col anual">
+      <span class="badge">Controle — Anual</span>
+      <p style="margin:0"><strong>R$179,99/mês no plano anual</strong> parcelado no cartão. É o comportamento atual da Clara em produção.</p>
+    </div>
+  </div>
+  <table>
+    <tr><th style="width:34%">Item</th><th>Definição</th></tr>
+    <tr><td><strong>Métrica primária</strong></td><td>Taxa de agendamento de reunião após a qualificação. <strong>Meta: +20%</strong> na variante.</td></tr>
+    <tr><td><strong>Métrica de guarda</strong></td><td>Conversão das reuniões que aconteceram (reunião → venda). Não pode cair mais que <strong>5 pontos percentuais</strong>.</td></tr>
+    <tr><td><strong>Divisão</strong></td><td>50/50 aleatório por lead, fixado na entrada e gravado no banco (cada lead fica no mesmo braço a conversa toda).</td></tr>
+    <tr><td><strong>Baseline</strong></td><td>A calibrar com os últimos ~30 dias antes de ligar em produção.</td></tr>
+  </table>
+
+  <!-- ============ 3. COMO PENSAMOS ============ -->
+  <h2>3. Como pensamos a solução</h2>
+  <h3>Por que não reusamos o A/B de modelo (Model Selector)</h3>
+  <p>A Clara já tem um teste A/B no fluxo: o nó <strong>Model Selector</strong> troca o <em>motor</em> de linguagem (Claude vs. GPT) conforme o campo <code>modelo_llm</code>, mantendo um prompt só. Mas na EXP-16 o que muda não é o motor — é o <strong>texto</strong> que a Clara fala. Então o Model Selector não se aplica.</p>
+  <h3>A mesma filosofia, aplicada ao texto</h3>
+  <p>Mantivemos a filosofia que já funciona — <strong>um agente, uma variável decide o comportamento</strong> — só que aqui a variável decide qual <em>bloco de texto</em> entra no prompt, em vez de qual modelo roda. A decisão é <strong>determinística</strong>: o texto certo já chega pronto no prompt, sem depender de a Clara "interpretar" uma instrução de qual preço usar.</p>
+  <div class="callout info"><div class="t">A peça central: o campo <code>plano_apresentado</code></div>Uma coluna nova na tabela <code>leads</code> guarda em qual braço o lead caiu: <code>mensal</code>, <code>anual</code> ou vazio (fora do experimento). É o equivalente do <code>modelo_llm</code>, mas para a modalidade de preço. Os dois testes convivem no mesmo agente sem conflito.</div>
+
+  <!-- ============ 4. ARQUITETURA ============ -->
+  <h2>4. Como ficou no fluxo (homologação)</h2>
+  <p>Adicionamos <strong>um único nó novo</strong> entre a leitura do lead e a Clara. Nada do fluxo existente foi removido:</p>
+  <div class="flow">
+    <div class="node"><div class="ico">💬</div><div class="nm">When chat message</div><div class="ds">entrada</div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="ico">⚡</div><div class="nm">Get a row</div><div class="ds">lê o lead<br>(+ plano_apresentado)</div></div>
+    <div class="arrow">→</div>
+    <div class="node hl"><div class="ico">{ }</div><div class="nm">Define blocos Etapa 4</div><div class="ds">NÓ NOVO<br>monta os textos</div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="ico">🤖</div><div class="nm">AI Agent (Clara)</div><div class="ds">usa os textos<br>no prompt</div></div>
+  </div>
+  <div class="fig">
+    <img src="exp-16_prints/01-fluxo-homolog.png" alt="Fluxo do homolog" onerror="this.parentElement.querySelector('.ph').style.display='block'; this.style.display='none';">
+    <div class="ph" style="display:none">[ Print 1 — fluxo de homolog · salvar como <code>analises/exp-16_prints/01-fluxo-homolog.png</code> ]</div>
+    <div class="cap">Print 1 — Fluxo simplificado em homologação: o nó "Define blocos Etapa 4" entra entre o Get a row e o AI Agent.</div>
+  </div>
+
+  <!-- ============ 5. SUPABASE ============ -->
+  <h2>5. A divisão dos leads (mensal × anual)</h2>
+  <p>Na entrada do lead, sorteamos o braço <strong>uma única vez</strong> (50/50) e gravamos em <code>plano_apresentado</code>. Como o valor fica salvo no banco, o lead permanece no mesmo braço em todas as mensagens seguintes. Só entram no experimento os leads que vão para a Clara (tier 4–5); os demais ficam com o campo vazio.</p>
+  <table>
+    <tr><th>Valor de <code>plano_apresentado</code></th><th>Significado</th><th>O que a Clara fala na Etapa 4</th></tr>
+    <tr><td><code>mensal</code></td><td>Variante A</td><td>R$209,99/mês no boleto</td></tr>
+    <tr><td><code>anual</code></td><td>Controle</td><td>R$179,99/mês no anual</td></tr>
+    <tr><td>vazio / inválido</td><td>Fora do experimento</td><td>Cai no controle (anual) por segurança</td></tr>
+  </table>
+  <div class="fig">
+    <img src="exp-16_prints/04-atribuicao-mensal-anual.png" alt="Atribuição mensal/anual" onerror="this.parentElement.querySelector('.ph').style.display='block'; this.style.display='none';">
+    <div class="ph" style="display:none">[ Print 4 — integração que define o braço · salvar como <code>analises/exp-16_prints/04-atribuicao-mensal-anual.png</code> ]</div>
+    <div class="cap">Print 4 — Integração inicial que define se o lead entra no braço mensal ou anual.</div>
+  </div>
+
+  <!-- ============ 6. O CODE NODE ============ -->
+  <h2>6. O Code node: como ele age na automação</h2>
+  <p>O nó <strong>"Define blocos Etapa 4"</strong> é o coração do mecanismo. Ele roda logo depois do <code>Get a row</code> e faz três coisas:</p>
+  <ol>
+    <li><strong>Lê</strong> o <code>plano_apresentado</code> do lead.</li>
+    <li><strong>Monta</strong> os textos completos da Etapa 4 e do exemplo de atendimento já com o preço da variante correta.</li>
+    <li><strong>Devolve</strong> esses textos prontos para o prompt da Clara consumir.</li>
+  </ol>
+  <p>O trecho que decide é simples — só a linha de preço muda entre os braços; o resto da Etapa 4 (BANT, autoridade, prioridade) é idêntico:</p>
+  <pre><span class="c">// lê o braço do lead; qualquer valor ausente/inválido → controle 'anual'</span>
+<span class="k">const</span> plano = ($(<span class="s">'Get a row'</span>).item.json.plano_apresentado || <span class="s">'anual'</span>).toLowerCase().trim();
+<span class="k">const</span> isMensal = plano === <span class="s">'mensal'</span>;
+
+<span class="c">// a única diferença entre as variantes: a linha de preço da Etapa 4</span>
+<span class="k">const</span> linhaPreco = isMensal
+  ? <span class="s">'Apresente o plano mensal: R$209,99 por mês no boleto, sem fidelidade...'</span>
+  : <span class="s">'Apresente a faixa de preço: R$179,99 no plano Delivery anual...'</span>;
+
+<span class="c">// devolve os dois blocos prontos + a variante usada (para auditoria)</span>
+<span class="k">return</span> [{ json: { variante_efetiva: isMensal ? <span class="s">'mensal'</span> : <span class="s">'anual'</span>, bloco_etapa4, exemplo_atendimento } }];</pre>
+  <div class="callout ok"><div class="t">Fallback seguro</div>Se o campo vier vazio, com espaço ou um valor desconhecido, o nó cai automaticamente no <strong>controle (anual)</strong> — nenhum lead fora do experimento quebra o atendimento. Testado com 8 variações de entrada.</div>
+
+  <h3>Como o prompt da Clara consome isso</h3>
+  <p>No System Message da Clara, o texto fixo da Etapa 4 e do exemplo foi substituído por duas referências ao nó. Assim o prompt fica enxuto e os textos vivem num lugar só:</p>
+  <pre><span class="c">### Etapa 4 — Qualificação</span>
+{{ $(<span class="s">'Define blocos Etapa 4 (A/B preço)'</span>).item.json.bloco_etapa4 }}
+
+<span class="c">## Exemplo de Atendimento Ideal</span>
+{{ $(<span class="s">'Define blocos Etapa 4 (A/B preço)'</span>).item.json.exemplo_atendimento }}</pre>
+  <div class="cols">
+    <div class="fig" style="flex:1; margin:8px 0">
+      <img src="exp-16_prints/02-prompt-bloco-etapa4.png" alt="Prompt Etapa 4" onerror="this.parentElement.querySelector('.ph').style.display='block'; this.style.display='none';">
+      <div class="ph" style="display:none">[ Print 2 · <code>02-prompt-bloco-etapa4.png</code> ]</div>
+      <div class="cap">Print 2 — Etapa 4 resolvida no prompt.</div>
+    </div>
+    <div class="fig" style="flex:1; margin:8px 0">
+      <img src="exp-16_prints/03-prompt-exemplo-atendimento.png" alt="Prompt exemplo" onerror="this.parentElement.querySelector('.ph').style.display='block'; this.style.display='none';">
+      <div class="ph" style="display:none">[ Print 3 · <code>03-prompt-exemplo-atendimento.png</code> ]</div>
+      <div class="cap">Print 3 — Exemplo de atendimento resolvido.</div>
+    </div>
+  </div>
+
+  <!-- ============ 7. DEMONSTRAÇÃO ============ -->
+  <h2>7. Demonstração dos testes</h2>
+  <p>Rodamos a <strong>mesma conversa</strong> nos dois braços para isolar a variável. O ponto de comparação é a fala da Etapa 4 (Budget), destacada abaixo. Tudo antes e depois dela seguiu o fluxo normal.</p>
+
+  <h3>Braço A — Mensal</h3>
+  <div class="chat">
+    <div class="msg lead"><div class="who">Lead</div><div class="bubble">os dois (delivery e salão) · WhatsApp · prioridade delivery</div></div>
+    <div class="msg"><div class="who">Clara</div><div class="bubble">…o plano mais indicado é o <strong>Delivery</strong>. Ele inclui automação do chatbot no WhatsApp, caixa, balcão, entregadores… Isso atende o que você precisa hoje?</div></div>
+    <div class="msg lead"><div class="who">Lead</div><div class="bubble">sim</div></div>
+    <div class="msg hl"><div class="who">Clara</div><div class="bubble">O próximo passo é uma videochamada com um especialista. No plano Delivery, o investimento é de <strong>R$209,99 por mês no boleto</strong>, sem compromisso anual. Esse valor cabe no seu orçamento?</div></div>
+    <div class="msg lead"><div class="who">Lead</div><div class="bubble">SIM</div></div>
+    <div class="msg"><div class="who">Clara</div><div class="bubble">Além de você, mais alguém decide sobre a contratação? <em>(segue para Autoridade →)</em></div></div>
+  </div>
+
+  <h3>Braço — Controle (Anual)</h3>
+  <div class="chat">
+    <div class="msg lead"><div class="who">Lead</div><div class="bubble">os dois (delivery e salão) · WhatsApp · prioridade delivery</div></div>
+    <div class="msg"><div class="who">Clara</div><div class="bubble">Se sua prioridade agora é <strong>delivery</strong>, o plano mais enxuto é o Delivery… Esse formato te atende melhor?</div></div>
+    <div class="msg lead"><div class="who">Lead</div><div class="bubble">sim</div></div>
+    <div class="msg hl anual"><div class="who">Clara</div><div class="bubble">O próximo passo é uma videochamada com um especialista. O plano Delivery fica em <strong>R$ 179,99/mês no anual</strong>. Esse valor cabe no seu orçamento?</div></div>
+  </div>
+
+  <div class="callout ok"><div class="t">Resultado da demonstração</div>A Clara falou <strong>exatamente</strong> a fala de cada braço na Etapa 4, sem misturar, e o restante do atendimento (sondagem, apresentação, BANT) seguiu igual nos dois. A troca de texto por variável funciona como esperado.</div>
+
+  <!-- ============ 8. STATUS ============ -->
+  <h2>8. Status e próximos passos</h2>
+  <table>
+    <tr><th style="width:62%">Item</th><th>Status</th></tr>
+    <tr><td>Campo <code>plano_apresentado</code> criado no banco (CW - Comercial)</td><td><span class="pill ok">Feito</span></td></tr>
+    <tr><td>Code node "Define blocos Etapa 4" escrito e testado</td><td><span class="pill ok">Feito</span></td></tr>
+    <tr><td>Prompt da Clara apontando para os blocos do nó</td><td><span class="pill ok">Feito (homolog)</span></td></tr>
+    <tr><td>Demonstração nos dois braços validada</td><td><span class="pill ok">Feito</span></td></tr>
+  </table>
+
+  <div class="foot">EXP-16 · Clara IA · Cardápio Web — Comercial · Gerado em 02/06/2026 · Documento interno</div>
+</div>
+</body>
+</html>

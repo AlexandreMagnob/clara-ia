@@ -103,7 +103,7 @@ Atenção: paridade do último dígito pode ter leve viés; prefira a aleatória
 
 ### Passo 3.3 — Injetar a diretriz de preço no User Prompt (Opção B)
 
-No nó **AI Agent**, no campo **Text (User Prompt)**, adicionar uma linha nas "Informações do lead" e uma diretriz condicional. Acrescentar ao bloco que hoje termina em `link_reuniao` ([2026-05-26_system-prompt-clara-v2.9.md:251](../prompts/atual/2026-05-26_system-prompt-clara-v2.9.md#L251)):
+No nó **AI Agent**, no campo **Text (User Prompt)**, adicionar uma linha nas "Informações do lead" e uma diretriz condicional. Acrescentar ao bloco que hoje termina em `link_reuniao` ([2026-05-26_system-prompt-clara-v2.9.md:251](../prompts/Clara%20IA/2026-05-26_system-prompt-clara-v2.9.md#L251)):
 
 ```
 plano_apresentado: {{ $('Get a row').item.json.plano_apresentado }}
@@ -113,7 +113,7 @@ plano_apresentado: {{ $('Get a row').item.json.plano_apresentado }}
 - Se plano_apresentado = "anual" ou vazio: mantenha o comportamento padrão (R$179,99/mês no plano anual).
 ```
 
-E ajustar a regra da `base_conhecimento` ([linha 55](../prompts/atual/2026-05-26_system-prompt-clara-v2.9.md#L55)) para respeitar a diretriz:
+E ajustar a regra da `base_conhecimento` ([linha 55](../prompts/Clara%20IA/2026-05-26_system-prompt-clara-v2.9.md#L55)) para respeitar a diretriz:
 - Trocar "Priorize os valores dos planos anuais" por: "Priorize o plano conforme a diretriz EXP-16 do User Prompt; na ausência dela, priorize o anual."
 
 > Isso muda **só o trecho de preço** da Etapa 4. Toda a mecânica de BANT, escassez, agendamento e guard-rails permanece intacta. **Não alterar** os scripts fixos das Etapas 5 e 6.

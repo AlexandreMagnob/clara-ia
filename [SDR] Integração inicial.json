@@ -1,0 +1,3648 @@
+{
+  "name": "[SDR] Integração inicial",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "69d12de9-b44b-4bcf-ab6b-d1a4007039fd",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -2912,
+        848
+      ],
+      "id": "b292f87b-736e-48cc-b44d-6519e8ed02e3",
+      "name": "Webhook1",
+      "webhookId": "69d12de9-b44b-4bcf-ab6b-d1a4007039fd"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.meetime.com.br/v2/leads/{{ $('Procura lead na Meetime').item.json.data[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('variáveis').item.json.token_meetime_universal }}"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"firstName\": \"{{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].name.split(' ')[0] }}\",\n  \"name\": \"{{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].name }}\",\n  \"email\": \"{{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].custom_fields_values.find(f => (f.field_name || '').toLowerCase() === 'email') ?.values?.[0]?.value  || '' }}\",\n  \"company\": \"{{ $('Kommo - Coleta Info de leads').item.json._embedded?.leads?.[0]?._embedded?.companies?.[0]?.id && $('Kommo - Coleta info da empresa').item.json._embedded?.companies?.[0]?.name || '' }}\",\n  \"ownerEmail\": \"{{$json.email_meetime}}\",\n  \"phones\": [\n    {\n      \"label\": \"Contato\",\n      \"phone\": \"{{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].custom_fields_values.find(f => (f.field_name || '').toLowerCase() === 'phone') ?.values?.[0]?.value.match(/\\d+/g).join('')  || '' }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2448,
+        -2160
+      ],
+      "id": "d9f89d71-92d6-4888-a4dc-9b39870ed1a8",
+      "name": "Edita lead na Meetime"
+    },
+    {
+      "parameters": {
+        "url": "https://api.meetime.com.br/v2/leads",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].custom_fields_values.find(f => (f.field_name || '').toLowerCase() === 'email') ?.values?.[0]?.value  || '' }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=PXSm7413i67ZWMwS6BnZ1p6qyeXso9Gh"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1968,
+        -2048
+      ],
+      "id": "b80dd628-f384-4374-85b1-aba723be19fd",
+      "name": "Procura lead na Meetime"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "8f8c2062-7e8b-43bd-bef1-9d61e9c30a16",
+              "leftValue": "={{ $json.data[0].id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2160,
+        -2048
+      ],
+      "id": "42f22955-30b2-4f0b-a092-9f1de81c7319",
+      "name": "Lead"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.meetime.com.br/v2/prospections/cadence/{{ $('variáveis').item.json.cadencia_tier5 }}/lead?token={{ $('variáveis').item.json.token_cadencia }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"firstName\": \"{{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].name.split(' ')[0] }}\",\n  \"name\": \"{{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].name }}\",\n  \"email\": \"{{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].custom_fields_values.find(f => (f.field_name || '').toLowerCase() === 'email') ?.values?.[0]?.value  || '' }}\",\n  \"company\": \"{{ $('Kommo - Coleta Info de leads').item.json._embedded?.leads?.[0]?._embedded?.companies?.[0]?.id && $('Kommo - Coleta info da empresa').item.json._embedded?.companies?.[0]?.name || '' }}\",\n  \"ownerEmail\": \"{{$json.email_meetime}}\",\n  \"phones\": [\n    {\n      \"label\": \"Contato\",\n      \"phone\": \"{{ $('Kommo - Coleta Info de contatos').item.json._embedded.contacts[0].custom_fields_values.find(f => (f.field_name || '').toLowerCase() === 'phone') ?.values?.[0]?.value.match(/\\d+/g).join('')  || '' }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2448,
+        -1952
+      ],
+      "id": "ec49d508-85cc-482d-bb18-52393108d525",
+      "name": "Cria na Meetime sem email"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "P81mKabW3umMVc5x",
+          "mode": "list",
+          "cachedResultName": "[SDR] De-para de SDRs Kommo > Meetime",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/P81mKabW3umMVc5x"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id_kommo",
+              "keyValue": "={{ $('Kommo - Coleta Info de leads').item.json._embedded.leads[0].responsible_user_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        -1888
+      ],
+      "id": "ff622230-a633-4c04-8b6f-7e538f7d82b9",
+      "name": "de-para Dados SDR",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "DzFqCj1kEJGFCIRb",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/DzFqCj1kEJGFCIRb",
+          "cachedResultName": "[REVOPS] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2544,
+        848
+      ],
+      "id": "a9abfd30-4059-45f3-9478-f6414a234afd",
+      "name": "variaveis_globais"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variaveis_globais').item.json.token_whatsapp }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('variáveis webhook').item.json.numero }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"boas_vindas_agente_cw3\",\n    \"language\": { \"code\": \"pt_BR\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"nome\",\n            \"text\": \"{{$('variáveis webhook').item.json.nome.split(' ')[0] }}\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        848,
+        1664
+      ],
+      "id": "c55cec35-0bf8-472c-9eed-39222bfe0108",
+      "name": "Mensagem inicial Whatsapp"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9fcafe5d-9876-48b7-95cc-f5f5b0ddee0f",
+              "name": "numero",
+              "value": "={{(() => {\nconst tel = ($json.body.telefone || '').replace(/\\D/g,'');\nreturn tel.startsWith('55') ? tel : '55' + tel;\n})()}}",
+              "type": "string"
+            },
+            {
+              "id": "b3349190-2341-424d-a287-d6aedeeffcfb",
+              "name": "empresa",
+              "value": "={{ $json.body.empresa }}",
+              "type": "string"
+            },
+            {
+              "id": "2a05c15f-3242-471e-ae36-1d6c2df59f01",
+              "name": "email",
+              "value": "={{ $json.body.email }}",
+              "type": "string"
+            },
+            {
+              "id": "954a2747-50ab-4550-9a44-4711588ccfa6",
+              "name": "tier",
+              "value": "={{ $json.body.tier }}",
+              "type": "string"
+            },
+            {
+              "id": "99a6bdfb-9115-4a1f-bf27-4299bb369c8a",
+              "name": "=leadscore",
+              "value": "={{ $json.body.score }}",
+              "type": "string"
+            },
+            {
+              "id": "c98adfde-9cf9-4b02-a66a-5291e02f0940",
+              "name": "segmento",
+              "value": "={{ $json.body.segmento }}",
+              "type": "string"
+            },
+            {
+              "id": "01aec1d4-d4dd-4b62-b7fc-15193a724d67",
+              "name": "utm_source",
+              "value": "={{ $json.body.utm_source }}",
+              "type": "string"
+            },
+            {
+              "id": "ba892c31-5dee-4af5-b927-adca50621755",
+              "name": "utm_medium",
+              "value": "={{ $json.body.utm_medium }}",
+              "type": "string"
+            },
+            {
+              "id": "3e7d2554-becf-4ae7-9710-7808760dcf00",
+              "name": "utm_campaign",
+              "value": "={{ $json.body.utm_campaign }}",
+              "type": "string"
+            },
+            {
+              "id": "3b2f04ab-8b43-47d3-a83e-c8f5b8b88200",
+              "name": "utm_content",
+              "value": "={{ $json.body.utm_content }}",
+              "type": "string"
+            },
+            {
+              "id": "871c00da-e149-413c-b8cb-7543a3679a0b",
+              "name": "nome",
+              "value": "={{ $json.body.nome }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2736,
+        848
+      ],
+      "id": "14057a14-d8c4-4c58-835e-e469b4226d86",
+      "name": "variáveis webhook"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        2336
+      ],
+      "id": "80f1c202-0c2d-4bae-af55-c7ee994a8c18",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "returnAll": true,
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "date_created",
+              "condition": "gt",
+              "keyValue": "2026-02-20 00:00:00.000000+00"
+            },
+            {
+              "keyName": "whatsapp",
+              "condition": "neq",
+              "keyValue": "5544998639395"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        80,
+        2336
+      ],
+      "id": "1fda3e27-9b56-4564-9810-654c8017fb89",
+      "name": "Get many rows",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variaveis_globais1').item.json.token_whatsapp }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.whatsapp }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"boas_vindas_agente_cw2\",\n    \"language\": { \"code\": \"pt_BR\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"nome\",\n            \"text\": \"{{ $json.name.split(' ')[0] }}\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        304,
+        2336
+      ],
+      "id": "8d53d04a-3840-417b-8e3f-878d4e185210",
+      "name": "Mensagem inicial Whatsapp1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "DzFqCj1kEJGFCIRb",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/DzFqCj1kEJGFCIRb",
+          "cachedResultName": "[REVOPS] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -112,
+        2336
+      ],
+      "id": "87220751-4b4d-4383-96f1-c7cef6aee8f0",
+      "name": "variaveis_globais1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "tentativas_contato1",
+              "condition": "eq",
+              "keyValue": "={{ $json.messages[0].id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "tentativas_contato1",
+              "fieldValue": "0"
+            },
+            {
+              "fieldId": "id_start_message",
+              "fieldValue": "={{ $json.messages[0].id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        512,
+        2336
+      ],
+      "id": "9b4247b2-ce66-4493-aca7-56b1a4c62bfc",
+      "name": "Update a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Disparo manual de template",
+        "height": 256,
+        "width": 1296
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -496,
+        2256
+      ],
+      "typeVersion": 1,
+      "id": "13b594db-cf9c-4bd6-8b21-9a05cf3d77ab",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Leads tier 1,2 e 3\n",
+        "height": 288,
+        "width": 384
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2304,
+        -1888
+      ],
+      "id": "70bb4dad-fef9-44dc-8a0a-91eadef9a1f2",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Leads tier 3, 4 e 5\n",
+        "height": 352,
+        "width": 384
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        688,
+        1552
+      ],
+      "id": "7ed68f4d-b812-4c7c-a41e-3218e61c27fd",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "42f09699-20ad-4b83-8789-fd3e243d4956",
+              "leftValue": "={{ $('Get a row').item.json.lead_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": "={{ true }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1408,
+        832
+      ],
+      "id": "ff4c5abe-676e-458c-be27-ef22f281750a",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Get a row').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "={{$('variáveis webhook').item.json.nome}}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $('variáveis webhook').item.json.numero }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $('variáveis webhook').item.json.email }}"
+            },
+            {
+              "fieldId": "tier",
+              "fieldValue": "={{ $('variáveis webhook').item.json.tier }}"
+            },
+            {
+              "fieldId": "segmento",
+              "fieldValue": "={{ $('variáveis webhook').item.json.segmento }}"
+            },
+            {
+              "fieldId": "kommo_id",
+              "fieldValue": "={{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}"
+            },
+            {
+              "fieldId": "conversa",
+              "fieldValue": "=[{{ $now.format('dd/MM/yyyy HH:mm:ss') }}] Comercial: {{ $json.mensagem_final }}"
+            },
+            {
+              "fieldId": "empresa",
+              "fieldValue": "={{ $('variáveis webhook').item.json.empresa }}"
+            },
+            {
+              "fieldId": "id_start_message",
+              "fieldValue": "={{ $json.id_message }}"
+            },
+            {
+              "fieldId": "utm_source",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_source }}"
+            },
+            {
+              "fieldId": "utm_medium",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_medium }}"
+            },
+            {
+              "fieldId": "utm_campaign",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_campaign }}"
+            },
+            {
+              "fieldId": "utm_content",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_content }}"
+            },
+            {
+              "fieldId": "utm_ad",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_term }}"
+            },
+            {
+              "fieldId": "usuario",
+              "fieldValue": "=clara"
+            },
+            {
+              "fieldId": "utm_adset",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_adset }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        688
+      ],
+      "id": "ea3e8931-595e-4dc5-9137-80abe4a140d5",
+      "name": "Atualiza na base de leads",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "leads",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "={{$('variáveis webhook').item.json.nome}}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $('variáveis webhook').item.json.numero }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $('variáveis webhook').item.json.email }}"
+            },
+            {
+              "fieldId": "tier",
+              "fieldValue": "={{ $('variáveis webhook').item.json.tier }}"
+            },
+            {
+              "fieldId": "segmento",
+              "fieldValue": "={{ $('variáveis webhook').item.json.segmento }}"
+            },
+            {
+              "fieldId": "kommo_id",
+              "fieldValue": "={{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}"
+            },
+            {
+              "fieldId": "conversa",
+              "fieldValue": "=[{{ $now.format('dd/MM/yyyy HH:mm:ss') }}] Comercial: {{ $json.mensagem_final }}"
+            },
+            {
+              "fieldId": "empresa",
+              "fieldValue": "={{ $('variáveis webhook').item.json.empresa }}"
+            },
+            {
+              "fieldId": "id_start_message",
+              "fieldValue": "={{ $json.id_message }}"
+            },
+            {
+              "fieldId": "utm_source",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_source }}"
+            },
+            {
+              "fieldId": "utm_medium",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_medium }}"
+            },
+            {
+              "fieldId": "utm_campaign",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_campaign }}"
+            },
+            {
+              "fieldId": "utm_content",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_content }}"
+            },
+            {
+              "fieldId": "utm_ad",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_term }}"
+            },
+            {
+              "fieldId": "status",
+              "fieldValue": "open"
+            },
+            {
+              "fieldId": "usuario",
+              "fieldValue": "=clara"
+            },
+            {
+              "fieldId": "utm_adset",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_adset }}"
+            },
+            {
+              "fieldId": "faturamento"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        944
+      ],
+      "id": "9dcb8ac6-4dc9-4fa2-b577-f8be7f63ec59",
+      "name": "Cria na base de leads",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "person",
+        "name": "={{ $('Cria na base de leads').item.json.name }}",
+        "additionalFields": {
+          "email": [
+            "={{ $('Cria na base de leads').item.json.email }}"
+          ],
+          "phone": [
+            "={{ $('Cria na base de leads').item.json.whatsapp }}"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        2576,
+        928
+      ],
+      "id": "c0e05d96-445b-45fd-8f16-747fdec4a02c",
+      "name": "Create a person",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "keyValue": "={{ $('variáveis webhook').item.json.numero }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1472,
+        832
+      ],
+      "id": "cd02cb8c-de8f-4130-9f28-bab7ef31e524",
+      "name": "Get a row",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "title": "={{ $('Cria na base de leads').item.json.empresa ? $('Cria na base de leads').item.json.empresa : $('Cria na base de leads').item.json.name }}",
+        "associateWith": "person",
+        "person_id": "={{ $json.id }}",
+        "additionalFields": {
+          "customProperties": {
+            "property": [
+              {
+                "name": "ba280a0b1ae6e6168c3e25e28460b8a02089b0be",
+                "value": "={{ $('Cria na base de leads').item.json.segmento }}"
+              },
+              {
+                "name": "921ee7657991cd504cd859f5b8fd0b47bb8b2ff6",
+                "value": "={{ $('Cria na base de leads').item.json.fbclid }}"
+              },
+              {
+                "name": "babc9dc70b0254caf284ed9ac6904531bdd2247b",
+                "value": "={{ $('Cria na base de leads').item.json.utm_source }}"
+              },
+              {
+                "name": "fbef9289bf09467ab894d55a0da0785f7d131c92",
+                "value": "={{ $('Cria na base de leads').item.json.utm_medium }}"
+              },
+              {
+                "name": "1c61ffb7c5c72afcda0aa03ec34a699098fa82a3",
+                "value": "={{ $('Cria na base de leads').item.json.utm_campaign }}"
+              },
+              {
+                "name": "ce55f714284ac86b8463c672880636db6568e5f8",
+                "value": "={{ $('Cria na base de leads').item.json.utm_content }}"
+              },
+              {
+                "name": "346353ade45adcb68850667587de1da11b3bdadd",
+                "value": "={{ $('Cria na base de leads').item.json.tier }}"
+              },
+              {
+                "name": "7b6faf899b290bfa7ba1da3fe2ac1bbe6ef118be",
+                "value": "={{ $('Cria na base de leads').item.json.faturamento }}"
+              },
+              {
+                "name": "a75682beeaee346f25771516d2f23cdaf4b7745c",
+                "value": "={{ $('Cria na base de leads').item.json.gclid }}"
+              },
+              {
+                "name": "=6eac4a1164e70734e1a77a691a857bffa84bb9a1",
+                "value": "Sim"
+              }
+            ]
+          },
+          "stage_id": "={{ 361 }}",
+          "status": "open",
+          "user_id": 11726977
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        2752,
+        928
+      ],
+      "id": "b84a1420-f6c6-4026-915a-b33fc537dbfb",
+      "name": "Create a deal",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "X7l3SOdopML86SXa",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/X7l3SOdopML86SXa",
+          "cachedResultName": "Tratamento de dados na Kommo"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "numero": "={{ $('variáveis webhook').item.json.numero }}",
+            "nome": "={{ $('variáveis webhook').item.json.nome }}",
+            "url_kommo": "={{ $json.url_kommo }}",
+            "token_kommo": "={{ $json.token_kommo }}",
+            "nome_split": "={{ $('variáveis webhook').item.json.nome.split(' ')[0] }}",
+            "email": "={{ $('variáveis webhook').item.json.email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "url_kommo",
+              "displayName": "url_kommo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "numero",
+              "displayName": "numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "token_kommo",
+              "displayName": "token_kommo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome_split",
+              "displayName": "nome_split",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -2336,
+        848
+      ],
+      "name": "Call Tratamento de dados na Kommo",
+      "id": "ebe1246c-1f5f-4196-aa67-609a07177b2f"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Cria na base de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "pipedrive_id",
+              "fieldValue": "={{ $('Create a deal').item.json.id }}"
+            },
+            {
+              "fieldId": "plano_apresentado",
+              "fieldValue": "anual"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3856,
+        752
+      ],
+      "id": "7b53c034-ba94-40ba-bc4b-496ee0c9ddb3",
+      "name": "Update a row1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "42f09699-20ad-4b83-8789-fd3e243d4956",
+              "leftValue": "={{ $('Get a row').item.json}}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        544,
+        112
+      ],
+      "id": "aa61297f-19a0-42d0-b0cc-6a8ecb4211af",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Get a row').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "={{$('variáveis webhook').item.json.nome}}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $('variáveis webhook').item.json.numero }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $('variáveis webhook').item.json.email }}"
+            },
+            {
+              "fieldId": "tier",
+              "fieldValue": "={{ $('variáveis webhook').item.json.tier }}"
+            },
+            {
+              "fieldId": "segmento",
+              "fieldValue": "={{ $('variáveis webhook').item.json.segmento }}"
+            },
+            {
+              "fieldId": "kommo_id",
+              "fieldValue": "={{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}"
+            },
+            {
+              "fieldId": "empresa",
+              "fieldValue": "={{ $('variáveis webhook').item.json.empresa }}"
+            },
+            {
+              "fieldId": "utm_source",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_source }}"
+            },
+            {
+              "fieldId": "utm_medium",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_medium }}"
+            },
+            {
+              "fieldId": "utm_campaign",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_campaign }}"
+            },
+            {
+              "fieldId": "utm_content",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_content }}"
+            },
+            {
+              "fieldId": "utm_ad",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_term }}"
+            },
+            {
+              "fieldId": "conversation_id",
+              "fieldValue": "={{ $('Call Tratamento de dados na Kommo').item.json.chat_id }}"
+            },
+            {
+              "fieldId": "usuario",
+              "fieldValue": "={{ $('Webhook1').item.json.body.usuario }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        752,
+        -32
+      ],
+      "id": "5f051005-c397-4728-919f-d823f5bdbb76",
+      "name": "Atualiza na base de leads1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "leads",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "={{$('variáveis webhook').item.json.nome}}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $('variáveis webhook').item.json.numero }}"
+            },
+            {
+              "fieldId": "email",
+              "fieldValue": "={{ $('variáveis webhook').item.json.email }}"
+            },
+            {
+              "fieldId": "tier",
+              "fieldValue": "={{ $('variáveis webhook').item.json.tier }}"
+            },
+            {
+              "fieldId": "segmento",
+              "fieldValue": "={{ $('variáveis webhook').item.json.segmento }}"
+            },
+            {
+              "fieldId": "kommo_id",
+              "fieldValue": "={{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}"
+            },
+            {
+              "fieldId": "empresa",
+              "fieldValue": "={{ $('variáveis webhook').item.json.empresa }}"
+            },
+            {
+              "fieldId": "utm_source",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_source }}"
+            },
+            {
+              "fieldId": "utm_medium",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_medium }}"
+            },
+            {
+              "fieldId": "utm_campaign",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_campaign }}"
+            },
+            {
+              "fieldId": "utm_content",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_content }}"
+            },
+            {
+              "fieldId": "utm_ad",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_term }}"
+            },
+            {
+              "fieldId": "conversation_id",
+              "fieldValue": "={{ $('Call Tratamento de dados na Kommo').item.json.chat_id }}"
+            },
+            {
+              "fieldId": "usuario",
+              "fieldValue": "={{ $('Webhook1').item.json.body.usuario }}"
+            },
+            {
+              "fieldId": "utm_adset",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_adset }}"
+            },
+            {
+              "fieldId": "utm_platform",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_placement }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        752,
+        240
+      ],
+      "id": "be6ef560-e37b-4511-8fe1-56de054fee18",
+      "name": "Cria na base de leads2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TierIA",
+              "value": "False"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        1456,
+        -160
+      ],
+      "id": "8137bc11-d00a-48af-98b4-c51e220715da",
+      "name": "Execution Data"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TierIA",
+              "value": "False"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        1472,
+        272
+      ],
+      "id": "f117a71d-5aad-4fb5-beec-eff89cb8c916",
+      "name": "Execution Data2"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TierIA",
+              "value": "True"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        2416,
+        496
+      ],
+      "id": "dea4cb25-e34a-42ac-a05b-79f621c42a04",
+      "name": "Execution Data3"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "condition": "eq",
+              "keyValue": "={{ $('variáveis webhook').item.json.email }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "name",
+              "fieldValue": "={{$('variáveis webhook').item.json.nome}}"
+            },
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $('variáveis webhook').item.json.numero }}"
+            },
+            {
+              "fieldId": "tier",
+              "fieldValue": "={{ $('variáveis webhook').item.json.tier }}"
+            },
+            {
+              "fieldId": "segmento",
+              "fieldValue": "={{ $('variáveis webhook').item.json.segmento }}"
+            },
+            {
+              "fieldId": "kommo_id",
+              "fieldValue": "={{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}"
+            },
+            {
+              "fieldId": "empresa",
+              "fieldValue": "={{ $('variáveis webhook').item.json.empresa }}"
+            },
+            {
+              "fieldId": "utm_source",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_source }}"
+            },
+            {
+              "fieldId": "utm_medium",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_medium }}"
+            },
+            {
+              "fieldId": "utm_campaign",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_campaign }}"
+            },
+            {
+              "fieldId": "utm_content",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_content }}"
+            },
+            {
+              "fieldId": "utm_adset",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_adset }}"
+            },
+            {
+              "fieldId": "conversation_id",
+              "fieldValue": "={{ $('Call Tratamento de dados na Kommo').item.json.chat_id }}"
+            },
+            {
+              "fieldId": "usuario",
+              "fieldValue": "={{ $('Webhook1').item.json.body.usuario }}"
+            },
+            {
+              "fieldId": "utm_platform",
+              "fieldValue": "={{ $('Webhook1').item.json.body.utm_placement }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        960,
+        352
+      ],
+      "id": "32111354-09c8-46d6-8701-747cb41af97b",
+      "name": "Atualiza na base de leads2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "note",
+        "content": "=Visualizar conversa completa: https://gerardo-magalhaescw.github.io/cw_clara_ia/?lead_id={{ $('Cria na base de leads').item.json.lead_id }}",
+        "additionalFields": {
+          "deal_id": "={{ $json.id }}"
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        2928,
+        928
+      ],
+      "id": "afede6aa-f588-4fda-9309-d565ac773fc9",
+      "name": "Create a note",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "zsc2xgrbYw1FtWjb",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Planos (Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/zsc2xgrbYw1FtWjb"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3104,
+        928
+      ],
+      "id": "0c6b20a6-839e-4e34-b70b-42de5a687eeb",
+      "name": "verifica roleta"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "322c14cb-23e9-4eb2-a68e-dbf76e46928c",
+              "leftValue": "={{ $json.roleta % 2 === 0 }}",
+              "rightValue": "={{ $json.roleta % 2 === 0 }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        3280,
+        928
+      ],
+      "id": "dcc84f43-3704-4033-8dbf-8df4602133a1",
+      "name": "É par (teste onboarding)?"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "zsc2xgrbYw1FtWjb",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Planos (Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/zsc2xgrbYw1FtWjb"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roleta": "={{ $('verifica roleta').item.json.roleta + 1 }}"
+          },
+          "matchingColumns": [
+            "roleta"
+          ],
+          "schema": [
+            {
+              "id": "roleta",
+              "displayName": "roleta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3680,
+        752
+      ],
+      "id": "a435a3c1-f454-4e65-a9e7-27ff6cca8892",
+      "name": "Update row(s)"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "zsc2xgrbYw1FtWjb",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Planos (Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/zsc2xgrbYw1FtWjb"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roleta": "={{ $('verifica roleta').item.json.roleta + 1 }}"
+          },
+          "matchingColumns": [
+            "roleta"
+          ],
+          "schema": [
+            {
+              "id": "roleta",
+              "displayName": "roleta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3680,
+        1168
+      ],
+      "id": "540c64dd-00ea-476b-aecc-4ace44ad757a",
+      "name": "Update row(s)1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Cria na base de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "pipedrive_id",
+              "fieldValue": "={{ $('Create a deal').item.json.id }}"
+            },
+            {
+              "fieldId": "plano_apresentado",
+              "fieldValue": "mensal"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3856,
+        1168
+      ],
+      "id": "2ad147ca-c653-4020-a46b-ed8966400ab3",
+      "name": "Update a row2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TierIA",
+              "value": "True"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        4944,
+        1280
+      ],
+      "id": "c87a6f73-73b9-4184-a2d4-46257cc655e1",
+      "name": "Execution Data4"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TierIA",
+              "value": "True"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        4944,
+        640
+      ],
+      "id": "29ec2a79-6393-41e8-89c3-adeb334a4402",
+      "name": "Execution Data1"
+    },
+    {
+      "parameters": {
+        "content": "## Mensal \n\nLeads que vão ter abordagem com o plano mensal",
+        "height": 304,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3664,
+        1024
+      ],
+      "id": "31e07bd6-ee5b-423b-9d54-2c51baa743b0",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Anual\n\nLeads que vão ter abordagem com o plano anual",
+        "height": 304,
+        "width": 320,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3664,
+        608
+      ],
+      "id": "fa8e9754-cac7-4a72-a8ec-403d5952a2fb",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "jsCode": "const atual = items[0].json.contador || 0;\nconst vai_para_clara = atual % 14 === 0;\nconst proximo = atual + 1;\nreturn [{\n  json: {\n    contador: proximo,\n    vai_para_clara: vai_para_clara,\n    usuario: vai_para_clara ? 'clara' : 'sdr'\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -336,
+        768
+      ],
+      "id": "fe33808e-dd97-4a4d-9d03-2e4ec3796a15",
+      "name": "Code in JavaScript7"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "gluTI9uyNHk4r2DO",
+          "mode": "list",
+          "cachedResultName": "[Clara] Contador distribuição Clara/SDR TIER 3",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/gluTI9uyNHk4r2DO"
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -528,
+        768
+      ],
+      "id": "375e1623-7425-4f35-875d-f6e78034bcbd",
+      "name": "Pega a última contagem da fila2"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "gluTI9uyNHk4r2DO",
+          "mode": "list",
+          "cachedResultName": "[Clara] Contador distribuição Clara/SDR TIER 3",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/gluTI9uyNHk4r2DO"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Pega a última contagem da fila2').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "contador": "={{ $('Code in JavaScript7').item.json.contador + 1}}"
+          },
+          "matchingColumns": [
+            "contador"
+          ],
+          "schema": [
+            {
+              "id": "contador",
+              "displayName": "contador",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        272,
+        752
+      ],
+      "id": "07d2cb4f-2b70-43a0-a4dc-6de1f5831170",
+      "name": "Atualiza contagem                   2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "07f117a9-d59b-441b-a242-99b8f81614e7",
+              "leftValue": "={{ $('Webhook1').item.json.body.tier }}",
+              "rightValue": 3.1,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "1c27bf93-5c73-4bee-95cf-08c409c3f1d9",
+              "leftValue": "={{ $('Webhook1').item.json.body.tier }}",
+              "rightValue": 3.2,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "10666ea0-cd47-4e67-b24d-67346f279850",
+              "leftValue": "={{ $('Webhook1').item.json.body.tier }}",
+              "rightValue": 4,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            },
+            {
+              "id": "00449aba-b608-4de8-8506-4e5390098e7d",
+              "leftValue": "={{ $('Webhook1').item.json.body.tier }}",
+              "rightValue": 5,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1232,
+        832
+      ],
+      "id": "b171e76e-e7b7-47c9-99ab-36ee1eb9700c",
+      "name": "Verifica se é Tier 1 ou 2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c7188c75-917c-4a7f-aabd-66a66d8274e8",
+              "leftValue": "={{ $('Webhook1').item.json.body.tier }}",
+              "rightValue": 3.1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "85feaf1c-60c5-4b4f-8130-36e2a053d97e",
+              "leftValue": "={{ $('Webhook1').item.json.body.tier }}",
+              "rightValue": 3.2,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -960,
+        1008
+      ],
+      "id": "7cbe88d7-3bd3-4a86-9662-84015d52ba99",
+      "name": "Verifica se é Tier 3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "eca2d29a-59e1-471d-ad3a-418cf9ac9f98",
+              "leftValue": "={{ $json.vai_para_clara }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -96,
+        768
+      ],
+      "id": "c55f50e4-e0b8-46d6-a677-695a7583510c",
+      "name": "Verifica se vai para a Clara"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "6P1Ijkzt2vWvQHy7",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/6P1Ijkzt2vWvQHy7",
+          "cachedResultName": "[CLARA IA] Envio da Mensagem inicial"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $('variáveis webhook').item.json.nome }}",
+            "Numero": "={{ $('variáveis webhook').item.json.numero }}",
+            "Segmento": "={{ $('variáveis webhook').item.json.segmento }}",
+            "Token": "={{ $('variaveis_globais').item.json.token_whatsapp }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Numero",
+              "displayName": "Numero",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Segmento",
+              "displayName": "Segmento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "Token",
+              "displayName": "Token",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1072,
+        832
+      ],
+      "id": "f9fb3254-3f4a-4cad-b9f7-a72c08627223",
+      "name": "Call '[CLARA IA] Envio da Mensagem inicial'"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QPbiFc0jOu9ZBhbl",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Modelos LLM(Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/QPbiFc0jOu9ZBhbl"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4048,
+        752
+      ],
+      "id": "1de0face-c951-4e53-a087-76914c794230",
+      "name": "verifica roleta1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "322c14cb-23e9-4eb2-a68e-dbf76e46928c",
+              "leftValue": "={{ $json.roleta % 2 === 0 }}",
+              "rightValue": "={{ $json.roleta % 2 === 0 }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4224,
+        752
+      ],
+      "id": "520ace5e-2e7f-4e90-9929-f0cdd354c4aa",
+      "name": "É par (teste onboarding)?1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QPbiFc0jOu9ZBhbl",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Modelos LLM(Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/QPbiFc0jOu9ZBhbl"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4048,
+        1168
+      ],
+      "id": "a7e6ce66-4f3f-4d5f-8fd5-d443b0058b6f",
+      "name": "verifica roleta2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "322c14cb-23e9-4eb2-a68e-dbf76e46928c",
+              "leftValue": "={{ $json.roleta % 2 === 0 }}",
+              "rightValue": "={{ $json.roleta % 2 === 0 }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4224,
+        1168
+      ],
+      "id": "490280e9-2e13-4455-a97b-f0cefea6bfb2",
+      "name": "É par (teste onboarding)?2"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Cria na base de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "modelo_llm",
+              "fieldValue": "gpt"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4544,
+        640
+      ],
+      "id": "ba9c31cd-2e67-4523-83ab-92d91ff8ecb1",
+      "name": "GPT",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Cria na base de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "modelo_llm",
+              "fieldValue": "v4"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4544,
+        832
+      ],
+      "id": "df6ec0f8-3573-44d6-bc68-3e01036c6335",
+      "name": "V4",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Cria na base de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "modelo_llm",
+              "fieldValue": "gpt"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4544,
+        1088
+      ],
+      "id": "dc06bbbc-c016-4e06-a7ab-e2a779ce7480",
+      "name": "GPT      ",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Cria na base de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "modelo_llm",
+              "fieldValue": "v4"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        4544,
+        1280
+      ],
+      "id": "72d73817-9050-4e7d-b1f4-8e4c7c64c181",
+      "name": "V4               ",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TierIA",
+              "value": "True"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        4944,
+        1088
+      ],
+      "id": "0149f5b5-f0d5-477e-81b1-50baada0667d",
+      "name": "Execution Data5"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TierIA",
+              "value": "True"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        4944,
+        832
+      ],
+      "id": "44d259d9-f2fc-4a49-bc67-0c6c97513f9d",
+      "name": "Execution Data6"
+    },
+    {
+      "parameters": {
+        "content": "## Define Modelo LLM\n",
+        "height": 432,
+        "width": 1056,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4032,
+        544
+      ],
+      "id": "23c9da49-6efe-4937-ac98-582beae4a62f",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Define Modelo LLM\n",
+        "height": 432,
+        "width": 1056,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        4032,
+        992
+      ],
+      "id": "ba51f3e2-8b45-4cb0-bd4a-d97f040d907d",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QPbiFc0jOu9ZBhbl",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Modelos LLM(Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/QPbiFc0jOu9ZBhbl"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roleta": "={{ $('verifica roleta1').item.json.roleta + 1 }}"
+          },
+          "matchingColumns": [
+            "roleta"
+          ],
+          "schema": [
+            {
+              "id": "roleta",
+              "displayName": "roleta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4752,
+        640
+      ],
+      "id": "8dea76c1-3029-418e-b99e-f1b250fe328b",
+      "name": "Update row(s)2"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QPbiFc0jOu9ZBhbl",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Modelos LLM(Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/QPbiFc0jOu9ZBhbl"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roleta": "={{ $('verifica roleta1').item.json.roleta + 1 }}"
+          },
+          "matchingColumns": [
+            "roleta"
+          ],
+          "schema": [
+            {
+              "id": "roleta",
+              "displayName": "roleta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4752,
+        832
+      ],
+      "id": "37e0d764-d165-483a-a2a9-5775f4f15884",
+      "name": "Update row(s)3"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QPbiFc0jOu9ZBhbl",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Modelos LLM(Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/QPbiFc0jOu9ZBhbl"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roleta": "={{ $('verifica roleta2').item.json.roleta + 1 }}"
+          },
+          "matchingColumns": [
+            "roleta"
+          ],
+          "schema": [
+            {
+              "id": "roleta",
+              "displayName": "roleta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4752,
+        1088
+      ],
+      "id": "b60f285f-b5ef-4613-80cf-317348b32102",
+      "name": "Update row(s)4"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QPbiFc0jOu9ZBhbl",
+          "mode": "list",
+          "cachedResultName": "[SDR] Roleta teste A/B - Modelos LLM(Clara IA)",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/QPbiFc0jOu9ZBhbl"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roleta": "={{ $('verifica roleta2').item.json.roleta + 1 }}"
+          },
+          "matchingColumns": [
+            "roleta"
+          ],
+          "schema": [
+            {
+              "id": "roleta",
+              "displayName": "roleta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4752,
+        1280
+      ],
+      "id": "9c906019-b012-493a-bc68-c86966f37cff",
+      "name": "Update row(s)5"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH p AS (\n  INSERT INTO persons (name, telephone, email, created_at, updated_at)\n  VALUES (\n    '{{ $('variáveis webhook').item.json.nome }}',\n    '{{ $('variáveis webhook').item.json.numero }}',\n    '{{ $('variáveis webhook').item.json.email }}',\n    now(), now()\n  )\n  RETURNING id\n),\nd AS (\n  INSERT INTO commercial_deals (\n    person_id, status, tier, segment, revenue_range, kommo_lead_id,\n    sdr_user_id, ai_enabled, raw_payload, custom_properties,\n    created_at, updated_at\n  )\n  SELECT\n    p.id, 'open',\n    '{{ $('variáveis webhook').item.json.tier }}',\n    '{{ $('variáveis webhook').item.json.segmento }}',\n    '{{ $('variáveis webhook').item.json.faturamento }}',\n    '{{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}',\n    (SELECT id FROM users WHERE lower(name) = 'clara'),\n    true,\n    jsonb_build_object(\n      'utm_source',   '{{ $('Webhook1').item.json.body.utm_source }}',\n      'utm_medium',   '{{ $('Webhook1').item.json.body.utm_medium }}',\n      'utm_campaign', '{{ $('Webhook1').item.json.body.utm_campaign }}',\n      'utm_content',  '{{ $('Webhook1').item.json.body.utm_content }}',\n      'utm_ad',       '{{ $('Webhook1').item.json.body.utm_term }}',\n      'utm_adset',    '{{ $('Webhook1').item.json.body.utm_adset }}'\n    ),\n    jsonb_build_object('empresa', '{{ $('variáveis webhook').item.json.empresa }}'),\n    now(), now()\n  FROM p\n  RETURNING id, person_id\n),\nc AS (\n  INSERT INTO commercial_conversations (\n    commercial_deal_id, person_id, channel, origin, conversation_type,\n    status, message_count, last_message_at, started_at, created_at, updated_at\n  )\n  SELECT d.id, d.person_id, 'whatsapp', 'ia', 'ia',\n         'open', 1, now(), now(), now(), now()\n  FROM d\n  RETURNING id\n)\nINSERT INTO commercial_conversation_messages (\n  commercial_conversation_id, user_id, external_message_id,\n  content, message_type, message_from, created_at, updated_at\n)\nSELECT c.id,\n       (SELECT id FROM users WHERE lower(name) = 'clara'),\n       '{{ $json.id_start_message }}',\n       '{{ $json.mensagem_final }}',\n       'text', 'user', now(), now()\nFROM c;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1808,
+        944
+      ],
+      "id": "3d84d4c7-a83d-4412-9698-147c882b43d0",
+      "name": "Execute a SQL query",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH alvo_deal AS (\n  SELECT id, person_id FROM commercial_deals WHERE kommo_lead_id = '22932422'\n),\nalvo_conv AS (\n  SELECT id FROM commercial_conversations\n  WHERE commercial_deal_id IN (SELECT id FROM alvo_deal)\n),\ndel_msg AS (\n  DELETE FROM commercial_conversation_messages\n  WHERE commercial_conversation_id IN (SELECT id FROM alvo_conv) RETURNING 1\n),\ndel_conv AS (\n  DELETE FROM commercial_conversations\n  WHERE id IN (SELECT id FROM alvo_conv) RETURNING 1\n),\ndel_deal AS (\n  DELETE FROM commercial_deals\n  WHERE id IN (SELECT id FROM alvo_deal) RETURNING person_id\n)\nDELETE FROM persons WHERE id IN (SELECT person_id FROM del_deal);\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        848,
+        1184
+      ],
+      "id": "eabf65f0-f75d-424d-99ec-a5c74eec7e9c",
+      "name": "APAGAR LEAD TESTE ALAXANDRE",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "44ec4bed-8711-4baa-94c2-97205611ed69"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1264,
+        1328
+      ],
+      "id": "adca042e-9430-4409-b450-e4092626f61d",
+      "name": "Cria na base de leads1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE commercial_conversations\nSET kommo_external_conversation_id = NULL\nWHERE kommo_external_conversation_id = 'undefined';\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        208,
+        1232
+      ],
+      "id": "448ac63b-b7b1-4d38-ae7c-bef02b6a017b",
+      "name": "Visualizar lead",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  d.id                            AS deal_id,\n  pe.name                         AS name,\n  pe.telephone                    AS whatsapp,\n  pe.email                        AS email,\n  d.status,\n  d.stage                         AS etapa_conversa,\n  d.tier,\n  d.segment                       AS segmento,\n  d.kommo_lead_id                 AS kommo_id,\n  d.custom_properties->>'empresa' AS empresa,\n  u.name                          AS usuario,\n  d.raw_payload->>'utm_source'    AS utm_source,\n  d.raw_payload->>'utm_medium'    AS utm_medium,\n  d.raw_payload->>'utm_campaign'  AS utm_campaign,\n  d.raw_payload->>'utm_content'   AS utm_content,\n  d.raw_payload->>'utm_ad'        AS utm_ad,\n  d.raw_payload->>'utm_adset'     AS utm_adset,\n  conv.total_mensagens            AS count_messages,\n  conv.conversa,\n  d.created_at,\n  d.updated_at\nFROM commercial_deals d\nJOIN persons pe        ON pe.id = d.person_id\nLEFT JOIN users u      ON u.id = d.sdr_user_id\nLEFT JOIN LATERAL (\n  SELECT\n    count(m.id) AS total_mensagens,\n    string_agg(\n      '[' || to_char(m.created_at, 'DD/MM/YYYY HH24:MI:SS') || '] ' ||\n      CASE m.message_from WHEN 'user' THEN 'Comercial' ELSE 'Lead' END\n      || ': ' || m.content,\n      E'\\n' ORDER BY m.created_at\n    ) AS conversa\n  FROM commercial_conversations c\n  JOIN commercial_conversation_messages m ON m.commercial_conversation_id = c.id\n  WHERE c.commercial_deal_id = d.id\n) conv ON true\nWHERE pe.telephone = '{{ $('variáveis webhook').item.json.numero }}'\nORDER BY d.created_at DESC;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -2128,
+        848
+      ],
+      "id": "925258b3-9595-4e4d-8e7a-37389270da67",
+      "name": "Execute a SQL query2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH d AS (\n  -- acha o deal mais recente pelo telefone\n  SELECT cd.id, cd.person_id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('variáveis webhook').item.json.numero }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n),\nupd_person AS (\n  UPDATE persons pe\n  SET name      = '{{ $('variáveis webhook').item.json.nome }}',\n      telephone = '{{ $('variáveis webhook').item.json.numero }}',\n      email     = '{{ $('variáveis webhook').item.json.email }}',\n      updated_at = now()\n  FROM d\n  WHERE pe.id = d.person_id\n  RETURNING pe.id\n),\nupd_deal AS (\n  UPDATE commercial_deals cd\n  SET tier          = '{{ $('variáveis webhook').item.json.tier }}',\n      segment       = '{{ $('variáveis webhook').item.json.segmento }}',\n      kommo_lead_id = '{{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}',\n      sdr_user_id   = COALESCE(\n                        (SELECT id FROM users WHERE lower(name) = 'clara'),\n                        cd.sdr_user_id),\n      raw_payload   = COALESCE(cd.raw_payload, '{}'::jsonb) || jsonb_build_object(\n                        'utm_source',   '{{ $('Webhook1').item.json.body.utm_source }}',\n                        'utm_medium',   '{{ $('Webhook1').item.json.body.utm_medium }}',\n                        'utm_campaign', '{{ $('Webhook1').item.json.body.utm_campaign }}',\n                        'utm_content',  '{{ $('Webhook1').item.json.body.utm_content }}',\n                        'utm_ad',       '{{ $('Webhook1').item.json.body.utm_term }}',\n                        'utm_adset',    '{{ $('Webhook1').item.json.body.utm_adset }}'\n                      ),\n      custom_properties = COALESCE(cd.custom_properties, '{}'::jsonb) || jsonb_build_object(\n                        'empresa', '{{ $('variáveis webhook').item.json.empresa }}'\n                      ),\n      updated_at = now()\n  FROM d\n  WHERE cd.id = d.id\n  RETURNING cd.id\n),\nconv AS (\n  SELECT c.id\n  FROM commercial_conversations c, d\n  WHERE c.commercial_deal_id = d.id AND c.channel = 'whatsapp'\n  ORDER BY c.created_at DESC\n  LIMIT 1\n),\nbump AS (\n  UPDATE commercial_conversations c\n  SET last_message_at = now(),\n      message_count   = COALESCE(c.message_count, 0) + 1,\n      updated_at      = now()\n  FROM conv\n  WHERE c.id = conv.id\n  RETURNING c.id\n)\nINSERT INTO commercial_conversation_messages (\n  commercial_conversation_id, user_id, external_message_id,\n  content, message_type, message_from, created_at, updated_at\n)\nSELECT conv.id,\n       (SELECT id FROM users WHERE lower(name) = 'clara'),\n       '{{ $json.id_start_message }}',\n       '{{ $json.mensagem_final }}',\n       'text', 'user', now(), now()\nFROM conv;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1824,
+        688
+      ],
+      "id": "52afa1f0-ec58-42ca-a19b-0be5a393c152",
+      "name": "Execute a SQL query1",
+      "credentials": {
+        "postgres": {
+          "id": "XOYeTIMfsvkaFsZd",
+          "name": "Postgres - RevOps"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "Erro ao Criar lead no metabase",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        2096,
+        1040
+      ],
+      "id": "6db4df43-ad40-493d-8690-9a0618bb1f9c",
+      "name": "Send a message",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "Erro ao Atualizar lead no metabase",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        2112,
+        704
+      ],
+      "id": "860e0185-2ed7-428d-a016-8325126f39ee",
+      "name": "Send a message1",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH d AS (\n  SELECT cd.id, cd.person_id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('variáveis webhook').item.json.numero }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n),\nupd_person AS (\n  UPDATE persons pe\n  SET name      = '{{ $('variáveis webhook').item.json.nome }}',\n      telephone = '{{ $('variáveis webhook').item.json.numero }}',\n      email     = '{{ $('variáveis webhook').item.json.email }}',\n      updated_at = now()\n  FROM d\n  WHERE pe.id = d.person_id\n  RETURNING pe.id\n),\nupd_deal AS (\n  UPDATE commercial_deals cd\n  SET tier          = '{{ $('variáveis webhook').item.json.tier }}',\n      segment       = '{{ $('variáveis webhook').item.json.segmento }}',\n      kommo_lead_id = NULLIF(NULLIF('{{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}', ''), 'undefined'),\n      sdr_user_id   = COALESCE(\n                        (SELECT id FROM users WHERE lower(name) = lower('{{ $('Webhook1').item.json.body.usuario }}')),\n                        cd.sdr_user_id),\n      raw_payload   = COALESCE(cd.raw_payload, '{}'::jsonb) || jsonb_build_object(\n                        'utm_source',   '{{ $('Webhook1').item.json.body.utm_source }}',\n                        'utm_medium',   '{{ $('Webhook1').item.json.body.utm_medium }}',\n                        'utm_campaign', '{{ $('Webhook1').item.json.body.utm_campaign }}',\n                        'utm_content',  '{{ $('Webhook1').item.json.body.utm_content }}',\n                        'utm_ad',       '{{ $('Webhook1').item.json.body.utm_term }}',\n                        'utm_adset',    '{{ $('Webhook1').item.json.body.utm_adset }}',\n                        'utm_platform', '{{ $('Webhook1').item.json.body.utm_placement }}'\n                      ),\n      custom_properties = COALESCE(cd.custom_properties, '{}'::jsonb) || jsonb_build_object(\n                        'empresa', '{{ $('variáveis webhook').item.json.empresa }}'\n                      ),\n      updated_at = now()\n  FROM d\n  WHERE cd.id = d.id\n  RETURNING cd.id\n)\nUPDATE commercial_conversations c\nSET kommo_external_conversation_id = NULLIF(NULLIF('{{ $('Call Tratamento de dados na Kommo').item.json.chat_id }}', ''), 'undefined'),\n    updated_at = now()\nFROM d\nWHERE c.commercial_deal_id = d.id AND c.channel = 'whatsapp';\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        960,
+        -32
+      ],
+      "id": "91c0169c-c9e3-4554-91dc-933b124d4a9b",
+      "name": "Execute a SQL query3",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "Erro ao Atualizar lead no metabase",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1200,
+        -16
+      ],
+      "id": "0653f608-6ffb-4f41-82c0-0357390982d5",
+      "name": "Send a message2",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH p AS (\n  INSERT INTO persons (name, telephone, email, created_at, updated_at)\n  VALUES (\n    '{{ $('variáveis webhook').item.json.nome }}',\n    '{{ $('variáveis webhook').item.json.numero }}',\n    '{{ $('variáveis webhook').item.json.email }}',\n    now(), now()\n  )\n  RETURNING id\n),\nd AS (\n  INSERT INTO commercial_deals (\n    person_id, status, tier, segment, kommo_lead_id,\n    sdr_user_id, ai_enabled, raw_payload, custom_properties,\n    created_at, updated_at\n  )\n  SELECT\n    p.id, 'open',\n    '{{ $('variáveis webhook').item.json.tier }}',\n    '{{ $('variáveis webhook').item.json.segmento }}',\n    NULLIF(NULLIF('{{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}', ''), 'undefined'),\n    (SELECT id FROM users WHERE lower(name) = lower('{{ $('Webhook1').item.json.body.usuario }}')),\n    true,\n    jsonb_build_object(\n      'utm_source',   '{{ $('Webhook1').item.json.body.utm_source }}',\n      'utm_medium',   '{{ $('Webhook1').item.json.body.utm_medium }}',\n      'utm_campaign', '{{ $('Webhook1').item.json.body.utm_campaign }}',\n      'utm_content',  '{{ $('Webhook1').item.json.body.utm_content }}',\n      'utm_ad',       '{{ $('Webhook1').item.json.body.utm_term }}',\n      'utm_adset',    '{{ $('Webhook1').item.json.body.utm_adset }}',\n      'utm_platform', '{{ $('Webhook1').item.json.body.utm_placement }}'\n    ),\n    jsonb_build_object('empresa', '{{ $('variáveis webhook').item.json.empresa }}'),\n    now(), now()\n  FROM p\n  RETURNING id, person_id\n)\nINSERT INTO commercial_conversations (\n  commercial_deal_id, person_id, kommo_external_conversation_id,\n  channel, origin, conversation_type, status,\n  message_count, last_message_at, started_at, created_at, updated_at\n)\nSELECT d.id, d.person_id,\n       NULLIF(NULLIF('{{ $('Call Tratamento de dados na Kommo').item.json.chat_id }}', ''), 'undefined'),\n       'whatsapp', 'ia', 'ia', 'open',\n       0, now(), now(), now(), now()\nFROM d;\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        960,
+        160
+      ],
+      "id": "c141ec40-44b4-43a8-85db-e646d5ca6c41",
+      "name": "Execute a SQL query4",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "Erro ao Criar lead no metabase",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1200,
+        176
+      ],
+      "id": "b90dde82-4c28-4ec6-971b-aa780ddc2719",
+      "name": "Send a message3",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH d AS (\n  SELECT cd.id, cd.person_id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('variáveis webhook').item.json.numero }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n),\nupd_person AS (\n  UPDATE persons pe\n  SET name      = '{{ $('variáveis webhook').item.json.nome }}',\n      telephone = '{{ $('variáveis webhook').item.json.numero }}',\n      updated_at = now()\n  FROM d\n  WHERE pe.id = d.person_id\n  RETURNING pe.id\n),\nupd_deal AS (\n  UPDATE commercial_deals cd\n  SET tier          = '{{ $('variáveis webhook').item.json.tier }}',\n      segment       = '{{ $('variáveis webhook').item.json.segmento }}',\n      kommo_lead_id = '{{ $('Call Tratamento de dados na Kommo').item.json.id_kommo }}',\n      sdr_user_id   = COALESCE(\n                        (SELECT id FROM users WHERE lower(name) = lower('{{ $('Webhook1').item.json.body.usuario }}')),\n                        cd.sdr_user_id),\n      raw_payload   = COALESCE(cd.raw_payload, '{}'::jsonb) || jsonb_build_object(\n                        'utm_source',   '{{ $('Webhook1').item.json.body.utm_source }}',\n                        'utm_medium',   '{{ $('Webhook1').item.json.body.utm_medium }}',\n                        'utm_campaign', '{{ $('Webhook1').item.json.body.utm_campaign }}',\n                        'utm_content',  '{{ $('Webhook1').item.json.body.utm_content }}',\n                        'utm_adset',    '{{ $('Webhook1').item.json.body.utm_adset }}',\n                        'utm_platform', '{{ $('Webhook1').item.json.body.utm_placement }}'\n                      ),\n      custom_properties = COALESCE(cd.custom_properties, '{}'::jsonb) || jsonb_build_object(\n                        'empresa', '{{ $('variáveis webhook').item.json.empresa }}'\n                      ),\n      updated_at = now()\n  FROM d\n  WHERE cd.id = d.id\n  RETURNING cd.id\n)\nUPDATE commercial_conversations c\nSET kommo_external_conversation_id = '{{ $('Call Tratamento de dados na Kommo').item.json.chat_id }}',\n    updated_at = now()\nFROM d\nWHERE c.commercial_deal_id = d.id AND c.channel = 'whatsapp';\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1200,
+        368
+      ],
+      "id": "03b44157-7f06-467a-a3ac-fb826ead75ae",
+      "name": "Execute a SQL query5",
+      "credentials": {
+        "postgres": {
+          "id": "XOYeTIMfsvkaFsZd",
+          "name": "Postgres - RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "Erro ao pesquisar lead no metabase",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        -1792,
+        960
+      ],
+      "id": "c38db2c9-f759-464c-baad-7e8596f28472",
+      "name": "Send a message4",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "18.234.174.209",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.cardapioweb.com",
+            "x-amzn-trace-id": "Root=1-6a3192b4-27a70ed4231f3be959a61c64",
+            "content-length": "490",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "user-agent": "axios/1.13.5",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "nome": "Matheus Vieira",
+            "empresa": "",
+            "email": "matheus@tedschippy.com.br",
+            "telefone": "+55 (27) 99811-2752",
+            "telefone_backup": "+55 (27) 99811-2752",
+            "faturamento": "Acima de R$100.000",
+            "segmento": "Pizzaria",
+            "utm_source": "direto",
+            "utm_campaign": "",
+            "utm_medium": "",
+            "utm_term": "",
+            "utm_adset": "",
+            "utm_placement": "",
+            "utm_content": "",
+            "fbclid": "",
+            "gclid": "",
+            "origem_campanha": "direto",
+            "form_name": "botao-whatsapp-geral-dee6aef5f5a5d2c127ad",
+            "canal": "Outros",
+            "porte": "Grande",
+            "tier": 1,
+            "usuario": "sdr"
+          },
+          "webhookUrl": "https://n8n.cardapioweb.com/webhook/69d12de9-b44b-4bcf-ab6b-d1a4007039fd",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "variáveis webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procura lead na Meetime": {
+      "main": [
+        [
+          {
+            "node": "Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead": {
+      "main": [
+        [
+          {
+            "node": "Edita lead na Meetime",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cria na Meetime sem email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "de-para Dados SDR": {
+      "main": [
+        [
+          {
+            "node": "Procura lead na Meetime",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variaveis_globais": {
+      "main": [
+        [
+          {
+            "node": "Call Tratamento de dados na Kommo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem inicial Whatsapp": {
+      "main": [
+        []
+      ]
+    },
+    "variáveis webhook": {
+      "main": [
+        [
+          {
+            "node": "variaveis_globais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "variaveis_globais1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many rows": {
+      "main": [
+        [
+          {
+            "node": "Mensagem inicial Whatsapp1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variaveis_globais1": {
+      "main": [
+        [
+          {
+            "node": "Get many rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem inicial Whatsapp1": {
+      "main": [
+        [
+          {
+            "node": "Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Atualiza na base de leads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cria na base de leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a person": {
+      "main": [
+        [
+          {
+            "node": "Create a deal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "Verifica se é Tier 1 ou 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria na base de leads": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Tratamento de dados na Kommo": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a deal": {
+      "main": [
+        [
+          {
+            "node": "Create a note",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Atualiza na base de leads1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cria na base de leads2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria na base de leads2": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Atualiza na base de leads2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza na base de leads1": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a row1": {
+      "main": [
+        [
+          {
+            "node": "verifica roleta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza na base de leads": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza na base de leads2": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a note": {
+      "main": [
+        [
+          {
+            "node": "verifica roleta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica roleta": {
+      "main": [
+        [
+          {
+            "node": "É par (teste onboarding)?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "É par (teste onboarding)?": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update row(s)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)": {
+      "main": [
+        [
+          {
+            "node": "Update a row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a row2": {
+      "main": [
+        [
+          {
+            "node": "verifica roleta2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)1": {
+      "main": [
+        [
+          {
+            "node": "Update a row2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega a última contagem da fila2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript7": {
+      "main": [
+        [
+          {
+            "node": "Verifica se vai para a Clara",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza contagem                   2": {
+      "main": [
+        [
+          {
+            "node": "Call '[CLARA IA] Envio da Mensagem inicial'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se é Tier 1 ou 2": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Verifica se é Tier 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se é Tier 3": {
+      "main": [
+        [
+          {
+            "node": "Pega a última contagem da fila2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call '[CLARA IA] Envio da Mensagem inicial'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se vai para a Clara": {
+      "main": [
+        [
+          {
+            "node": "Atualiza contagem                   2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call '[CLARA IA] Envio da Mensagem inicial'": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica roleta1": {
+      "main": [
+        [
+          {
+            "node": "É par (teste onboarding)?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verifica roleta2": {
+      "main": [
+        [
+          {
+            "node": "É par (teste onboarding)?2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "É par (teste onboarding)?1": {
+      "main": [
+        [
+          {
+            "node": "GPT",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "V4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "É par (teste onboarding)?2": {
+      "main": [
+        [
+          {
+            "node": "GPT      ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "V4               ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "V4               ": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT      ": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "V4": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)2": {
+      "main": [
+        [
+          {
+            "node": "Execution Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)3": {
+      "main": [
+        [
+          {
+            "node": "Execution Data6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)5": {
+      "main": [
+        [
+          {
+            "node": "Execution Data4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)4": {
+      "main": [
+        [
+          {
+            "node": "Execution Data5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query": {
+      "main": [
+        [
+          {
+            "node": "Create a person",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Data3": {
+      "main": [
+        []
+      ]
+    },
+    "Execute a SQL query2": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query1": {
+      "main": [
+        [
+          {
+            "node": "Execution Data3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Create a person",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message1": {
+      "main": [
+        [
+          {
+            "node": "Execution Data3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query3": {
+      "main": [
+        [
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message2": {
+      "main": [
+        [
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query4": {
+      "main": [
+        [
+          {
+            "node": "Execution Data2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message3": {
+      "main": [
+        [
+          {
+            "node": "Execution Data2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query5": {
+      "main": [
+        [
+          {
+            "node": "Execution Data2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message4": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "3Q2DsZIHbnUHLchf"
+  },
+  "versionId": "9793cf7a-2f8b-4678-8950-54607da12d07",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  },
+  "id": "86xlo2csLUF6hR8Z",
+  "tags": [
+    {
+      "updatedAt": "2026-02-04T21:21:24.371Z",
+      "createdAt": "2026-02-04T21:21:24.371Z",
+      "id": "DrZybk5W8Yhzb0NE",
+      "name": "kommo"
+    },
+    {
+      "updatedAt": "2026-02-04T21:21:30.260Z",
+      "createdAt": "2026-02-04T21:21:30.260Z",
+      "id": "ph632cBUkDbtrMUj",
+      "name": "meetime"
+    }
+  ]
+}

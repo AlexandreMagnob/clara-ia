@@ -57,6 +57,13 @@ Authorization: Bearer {TOKEN}
 Content-Type: application/json
 ```
 
+> ⚠️ **Encoding (acentos/emoji)**: NÃO passe o corpo com `curl -d '...'` no terminal do Windows
+> (Git Bash/cp1252) — acentos e emojis viram `?` e o template é salvo corrompido (não editável,
+> só deletar+recriar). Escreva o JSON num arquivo UTF-8 e envie com
+> `curl --data-binary @arquivo.json -H "Content-Type: application/json; charset=utf-8"`.
+> Ou use o `create_template.py` (Python lida com UTF-8). Sempre confira o texto salvo lendo
+> `?fields=components` de volta da Meta.
+
 ### MARKETING — named params (padrão)
 
 ```json

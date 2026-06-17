@@ -5,15 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>No-show da Clara IA — Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/pt.js"></script>
 <style>
   :root{
-    --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --line:#262b36;
-    --txt:#e6e8ee; --muted:#8b93a7; --accent:#5b8cff; --danger:#ff6b6b;
-    --ok:#37d39b; --warn:#ffb454; --bench:#ff6b6b;
+    --bg:#0d0911; --panel:#1a1320; --panel2:#342640; --line:#2f2537;
+    --txt:#ece7ef; --muted:#8e7e9a;
+    --brand:#a442fa; --gold:#ffb700;          /* roxo primário + dourado (Sprint Dashboard) */
+    --accent:#a442fa; --danger:#ff5757; --ok:#3fc97c; --warn:#ff9f43; --bench:#ff5757;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--txt);
-    font-family:Inter,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    font-family:Nunito,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
   .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 64px;}
   header h1{font-size:24px;margin:0 0 4px;font-weight:650;}
   header p{margin:0;color:var(--muted);font-size:13px;}
@@ -22,13 +29,47 @@
   .filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:22px 0 6px;
     background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
   .filters label{font-size:12px;color:var(--muted);margin-right:4px;}
-  .filters input[type=date]{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
-    border-radius:8px;padding:6px 10px;font-size:13px;color-scheme:dark;}
+  .filters input{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+    border-radius:8px;padding:7px 11px;font-size:13px;font-family:inherit;width:118px;cursor:pointer;
+    transition:border-color .15s,box-shadow .15s;}
+  .filters input:focus,.filters input:hover{outline:none;border-color:var(--brand);
+    box-shadow:0 0 0 3px rgba(164,66,250,.18);}
+  /* ---- flatpickr no tema CardápioWeb (roxo) ---- */
+  .flatpickr-calendar{background:var(--panel2);border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 16px 48px -12px #000;color:var(--txt);font-family:Nunito,sans-serif;padding:4px;}
+  .flatpickr-calendar.arrowTop:before,.flatpickr-calendar.arrowTop:after{border-bottom-color:var(--panel2);}
+  .flatpickr-calendar.arrowBottom:before,.flatpickr-calendar.arrowBottom:after{border-top-color:var(--panel2);}
+  .flatpickr-months,.flatpickr-month{background:transparent;color:var(--txt);fill:var(--txt);}
+  .flatpickr-current-month .flatpickr-monthDropdown-months,
+  .flatpickr-current-month input.cur-year{color:var(--txt);font-weight:700;}
+  .flatpickr-monthDropdown-months{background:var(--panel2);}
+  .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month{background:var(--panel2);}
+  span.flatpickr-weekday{color:var(--muted);font-weight:700;}
+  .flatpickr-prev-month svg,.flatpickr-next-month svg{fill:var(--muted);}
+  .flatpickr-prev-month:hover svg,.flatpickr-next-month:hover svg{fill:var(--brand);}
+  .flatpickr-day{color:var(--txt);border-radius:9px;border:1px solid transparent;}
+  .flatpickr-day:hover{background:var(--panel2);border-color:var(--line);}
+  .flatpickr-day.today{border-color:var(--gold);color:var(--gold);}
+  .flatpickr-day.today:hover{background:var(--gold);color:var(--brand-ink,#1a1320);}
+  .flatpickr-day.selected,.flatpickr-day.selected:hover,
+  .flatpickr-day.startRange,.flatpickr-day.endRange{background:var(--brand);border-color:var(--brand);
+    color:#fff;box-shadow:0 4px 14px -4px var(--brand);}
+  .flatpickr-day.inRange{background:rgba(164,66,250,.16);border-color:transparent;box-shadow:none;}
+  .flatpickr-day.flatpickr-disabled,.flatpickr-day.prevMonthDay,.flatpickr-day.nextMonthDay{color:var(--muted);opacity:.4;}
+  .flatpickr-day.flatpickr-disabled:hover{background:transparent;border-color:transparent;cursor:not-allowed;}
   .presets{display:flex;gap:6px;margin-left:auto;}
   .presets button{background:var(--panel2);border:1px solid var(--line);color:var(--muted);
     border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;}
   .presets button:hover{color:var(--txt);border-color:var(--accent);}
-  .presets button.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .presets button.active{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:700;
+    box-shadow:0 4px 16px -4px var(--brand);}
+  .brandbar{display:flex;align-items:center;gap:11px;margin-bottom:20px;}
+  .brandbar .logo{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:12px;color:#fff;background:linear-gradient(135deg,#a442fa,#6d28c9);
+    box-shadow:0 6px 18px -6px var(--brand);}
+  .brandbar .mark{font-weight:800;font-size:15px;letter-spacing:.2px;color:var(--txt);line-height:1.1;}
+  .brandbar .mark b{color:var(--gold);}
+  .brandbar .tag{font-size:11.5px;color:var(--muted);margin-top:1px;}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 22px;}
   .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
   .kpi .label{font-size:12px;color:var(--muted);margin-bottom:8px;}
@@ -50,6 +91,13 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="brandbar">
+    <span class="logo">CW</span>
+    <div>
+      <div class="mark">Cardápio<b>Web</b></div>
+      <div class="tag">Growth · Clara IA</div>
+    </div>
+  </div>
   <header>
     <h1>No-show da Clara IA <span class="badge" id="periodo">—</span></h1>
     <p>Reuniões agendadas pela Clara · taxa de não-comparecimento e tempo entre marcação e reunião · atualizado <span id="gerado">—</span></p>
@@ -58,13 +106,13 @@
   <div class="warnbar" id="warnbar"></div>
 
   <div class="filters">
-    <span><label>De</label><input type="date" id="de"></span>
-    <span><label>Até</label><input type="date" id="ate"></span>
+    <span><label>De</label><input type="text" id="de" placeholder="dd/mm/aaaa"></span>
+    <span><label>Até</label><input type="text" id="ate" placeholder="dd/mm/aaaa"></span>
     <span id="filtroResumo" style="font-size:12px;color:var(--muted)"></span>
     <div class="presets">
-      <button data-d="7">7 dias</button>
-      <button data-d="30">30 dias</button>
-      <button data-d="all" class="active">Tudo</button>
+      <button data-d="week">Esta semana</button>
+      <button data-d="prevmonth">Mês anterior</button>
+      <button data-d="month" class="active">Este mês</button>
     </div>
   </div>
 
@@ -113,7 +161,12 @@ Chart.defaults.font.family = 'Inter, sans-serif';
 Chart.defaults.borderColor = css('--line');
 const taxaColor = t => t >= 0.45 ? css('--danger') : t >= 0.30 ? css('--warn') : css('--ok');
 
-let DATA=null, BENCH=0.30, charts={};
+let DATA=null, BENCH=0.30, charts={}, fpDe=null, fpAte=null, DMIN=null, DMAX=null, suppressOnChange=false;
+const toDate=s=>new Date(s+'T00:00:00');
+const ymd=d=>{const z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate());};
+const setDates=(a,b)=>{suppressOnChange=true;fpDe.setDate(toDate(a),false);fpAte.setDate(toDate(b),false);suppressOnChange=false;};
+const curStart=()=>fpDe&&fpDe.selectedDates[0]?ymd(fpDe.selectedDates[0]):DMIN;
+const curEnd  =()=>fpAte&&fpAte.selectedDates[0]?ymd(fpAte.selectedDates[0]):DMAX;
 
 async function load(){
   let sample=false;
@@ -126,34 +179,55 @@ async function load(){
   }
   document.getElementById('gerado').textContent=new Date(DATA.gerado_em).toLocaleString('pt-BR');
   const dias=DATA.registros.map(r=>r.d).sort();
-  const min=dias[0], max=dias[dias.length-1];
-  document.getElementById('de').min=min; document.getElementById('de').max=max; document.getElementById('de').value=min;
-  document.getElementById('ate').min=min; document.getElementById('ate').max=max; document.getElementById('ate').value=max;
-  ['de','ate'].forEach(id=>document.getElementById(id).addEventListener('change',()=>{clearPreset();apply();}));
+  DMIN=dias[0]; DMAX=dias[dias.length-1];
+  const base={dateFormat:'d/m/Y',locale:'pt',minDate:toDate(DMIN),maxDate:toDate(DMAX),
+    allowInput:true,disableMobile:true};
+  // "De" define o início; ao escolher, abre o "Até" pra continuar a seleção no mesmo fluxo
+  fpDe=flatpickr('#de',{...base,
+    onChange:(sel)=>{ if(suppressOnChange||!sel.length) return;
+      const s=ymd(sel[0]);
+      if(s>curEnd()){ suppressOnChange=true; fpAte.setDate(toDate(s),false); suppressOnChange=false; }
+      clearPreset(); apply(); fpAte.open();
+    }});
+  // "Até" ajusta só o fim (mantém o início); se for antes do início, puxa o início junto
+  fpAte=flatpickr('#ate',{...base,
+    onChange:(sel)=>{ if(suppressOnChange||!sel.length) return;
+      const e=ymd(sel[0]);
+      if(e<curStart()){ suppressOnChange=true; fpDe.setDate(toDate(e),false); suppressOnChange=false; }
+      clearPreset(); apply();
+    }});
   document.querySelectorAll('.presets button').forEach(b=>b.addEventListener('click',()=>preset(b)));
-  apply();
+  preset(document.querySelector('.presets button[data-d="month"]'));
 }
 function clearPreset(){document.querySelectorAll('.presets button').forEach(b=>b.classList.remove('active'));}
 function preset(btn){
   clearPreset(); btn.classList.add('active');
-  const max=document.getElementById('ate').max;
-  if(btn.dataset.d==='all'){ document.getElementById('de').value=document.getElementById('de').min; document.getElementById('ate').value=max; }
-  else{
-    const d=new Date(max); d.setDate(d.getDate()-(+btn.dataset.d-1));
-    const minAllowed=document.getElementById('de').min;
-    document.getElementById('de').value=d.toISOString().slice(0,10)<minAllowed?minAllowed:d.toISOString().slice(0,10);
-    document.getElementById('ate').value=max;
+  const max=DMAX, minA=DMIN;
+  const setRange=(de,ate)=>{setDates(de<minA?minA:de,ate>max?max:ate);apply();};
+  if(btn.dataset.d==='week'){            // segunda-feira da semana do último registro até hoje
+    const d=new Date(max+'T00:00:00'); const off=(d.getDay()+6)%7; d.setDate(d.getDate()-off);
+    setRange(d.toISOString().slice(0,10), max);
   }
-  apply();
+  else if(btn.dataset.d==='prevmonth'){  // 1º ao último dia do mês anterior
+    const [y,m]=max.split('-').map(Number);
+    const py=m===1?y-1:y, pm=m===1?12:m-1, p2=String(pm).padStart(2,'0');
+    const last=String(new Date(py,pm,0).getDate()).padStart(2,'0');
+    setRange(`${py}-${p2}-01`, `${py}-${p2}-${last}`);
+  }
+  else if(btn.dataset.d==='month'){      // 1º dia do mês do último registro até hoje
+    setRange(max.slice(0,8)+'01', max);
+  }
 }
 
 const taxa = arr => { const cd=arr.filter(r=>r.o!=='pendente'); const ns=cd.filter(r=>r.o==='no_show').length;
   return {cd:cd.length, ns, real:cd.length-ns, t: cd.length?ns/cd.length:0}; };
 const mediana = a => { if(!a.length) return 0; const s=[...a].sort((x,y)=>x-y); const m=s.length>>1;
   return s.length%2?s[m]:(s[m-1]+s[m])/2; };
+const desfechoTxt = (ns,cd) => ns+(ns===1?' no-show':' no-shows')+' de '+cd+' com desfecho';
 
 function apply(){
-  const de=document.getElementById('de').value, ate=document.getElementById('ate').value;
+  let de=curStart(), ate=curEnd();
+  if(de>ate){const t=de;de=ate;ate=t;}
   const recs=DATA.registros.filter(r=>r.d>=de && r.d<=ate);
   document.getElementById('periodo').textContent=de+' a '+ate;
   document.getElementById('filtroResumo').textContent=recs.length+' reuniões no período';
@@ -167,7 +241,7 @@ function render(recs){
   document.getElementById('k-agend').textContent=recs.length;
   document.getElementById('k-agend-sub').textContent=(recs.length-g.cd)+' sem desfecho (fora da taxa)';
   document.getElementById('k-taxa').textContent=g.cd?fmtPct(g.t):'—';
-  document.getElementById('k-taxa-sub').textContent=g.cd?((g.t>BENCH?'▲ ':'▼ ')+'benchmark '+fmtPct(BENCH)):'sem desfecho';
+  document.getElementById('k-taxa-sub').textContent=g.cd?(g.ns+(g.ns===1?' no-show':' no-shows')+' · '+(g.t>BENCH?'▲ ':'▼ ')+'benchmark '+fmtPct(BENCH)):'sem desfecho';
   document.getElementById('k-real').textContent=g.real;
   document.getElementById('k-real-sub').textContent='de '+g.cd+' com desfecho';
   document.getElementById('k-lead').textContent=lts.length?(lts.reduce((a,b)=>a+b,0)/lts.length).toFixed(1).replace('.',',')+'h':'—';
@@ -179,11 +253,11 @@ function render(recs){
   dataset('cDia',{type:'line',
     data:{labels:diaRows.map(x=>x.d.slice(5)),datasets:[
       {label:'Taxa de no-show',data:diaRows.map(x=>x.cd?+(x.t*100).toFixed(1):null),spanGaps:true,
-        borderColor:css('--accent'),backgroundColor:'rgba(91,140,255,.12)',fill:true,tension:.3,
-        pointRadius:3,pointBackgroundColor:css('--accent')},
+        borderColor:css('--accent'),backgroundColor:'rgba(164,66,250,.14)',fill:true,tension:.3,
+        pointRadius:4,pointBackgroundColor:css('--gold'),pointBorderColor:css('--gold'),pointHoverRadius:6},
       {label:'Benchmark 30%',data:diaRows.map(()=>30),borderColor:css('--bench'),borderDash:[6,6],pointRadius:0,fill:false}]},
     options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},
-      tooltip:{callbacks:{afterLabel:c=>{const r=diaRows[c.dataIndex];return r?r.ns+'/'+r.cd+' com desfecho ('+r.n+' agend.)':''}}}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.formattedValue+'%',afterLabel:c=>{const r=diaRows[c.dataIndex];return r?desfechoTxt(r.ns,r.cd)+' ('+r.n+' agend.)':''}}}},
       scales:{y:{ticks:{callback:v=>v+'%'},suggestedMax:80}}}});
 
   // por hora
@@ -193,7 +267,7 @@ function render(recs){
     data:{labels:horaRows.map(x=>x.h+'h'),datasets:[{label:'no-show',data:horaRows.map(x=>x.cd?+(x.t*100).toFixed(1):0),
       backgroundColor:horaRows.map(x=>taxaColor(x.t)),borderRadius:5}]},
     options:{maintainAspectRatio:false,plugins:{legend:{display:false},
-      tooltip:{callbacks:{afterLabel:c=>{const r=horaRows[c.dataIndex];return r.ns+'/'+r.cd+' com desfecho'}}}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.formattedValue+'%',afterLabel:c=>{const r=horaRows[c.dataIndex];return desfechoTxt(r.ns,r.cd)}}}},
       scales:{y:{ticks:{callback:v=>v+'%'},suggestedMax:100}}}});
 
   // por segmento
@@ -204,7 +278,7 @@ function render(recs){
     data:{labels:segRows.map(x=>x.s),datasets:[{label:'no-show',data:segRows.map(x=>x.cd?+(x.t*100).toFixed(1):0),
       backgroundColor:segRows.map(x=>taxaColor(x.t)),borderRadius:5}]},
     options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},
-      tooltip:{callbacks:{afterLabel:c=>{const r=segRows[c.dataIndex];return r.ns+'/'+r.cd+' com desfecho ('+r.n+' agend.)'}}}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.formattedValue+'%',afterLabel:c=>{const r=segRows[c.dataIndex];return desfechoTxt(r.ns,r.cd)+' ('+r.n+' agend.)'}}}},
       scales:{x:{ticks:{callback:v=>v+'%'},suggestedMax:100}}}});
 
   // antecedencia
@@ -218,7 +292,7 @@ function render(recs){
       {type:'line',label:'Taxa de no-show',data:fxRows.map(x=>x.cd?+(x.t*100).toFixed(1):null),spanGaps:true,
         borderColor:css('--danger'),backgroundColor:css('--danger'),tension:.3,pointRadius:5,yAxisID:'y1',order:1}]},
     options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},
-      tooltip:{callbacks:{afterLabel:c=>{const r=fxRows[c.dataIndex];return c.datasetIndex===1?(r.ns+'/'+r.cd+' com desfecho'):''}}}},
+      tooltip:{callbacks:{label:c=>c.datasetIndex===1?c.dataset.label+': '+c.formattedValue+'%':c.dataset.label+': '+c.formattedValue,afterLabel:c=>{const r=fxRows[c.dataIndex];return c.datasetIndex===1?desfechoTxt(r.ns,r.cd):''}}}},
       scales:{y:{position:'left',title:{display:true,text:'Agendadas'}},
         y1:{position:'right',grid:{drawOnChartArea:false},title:{display:true,text:'No-show'},ticks:{callback:v=>v+'%'},suggestedMax:100}}}});
 }

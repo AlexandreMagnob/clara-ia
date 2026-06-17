@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>No-show da Clara IA — Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --line:#262b36;
+    --txt:#e6e8ee; --muted:#8b93a7; --accent:#5b8cff; --danger:#ff6b6b;
+    --ok:#37d39b; --warn:#ffb454; --bench:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:Inter,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 64px;}
+  header h1{font-size:24px;margin:0 0 4px;font-weight:650;}
+  header p{margin:0;color:var(--muted);font-size:13px;}
+  .badge{display:inline-block;background:var(--panel2);border:1px solid var(--line);
+    color:var(--muted);font-size:11px;padding:3px 8px;border-radius:6px;margin-left:8px;}
+  .filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:22px 0 6px;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .filters label{font-size:12px;color:var(--muted);margin-right:4px;}
+  .filters input[type=date]{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+    border-radius:8px;padding:6px 10px;font-size:13px;color-scheme:dark;}
+  .presets{display:flex;gap:6px;margin-left:auto;}
+  .presets button{background:var(--panel2);border:1px solid var(--line);color:var(--muted);
+    border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;}
+  .presets button:hover{color:var(--txt);border-color:var(--accent);}
+  .presets button.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 22px;}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .kpi .label{font-size:12px;color:var(--muted);margin-bottom:8px;}
+  .kpi .value{font-size:28px;font-weight:680;line-height:1;}
+  .kpi .sub{font-size:12px;color:var(--muted);margin-top:8px;}
+  .kpi .value.danger{color:var(--danger);} .kpi .value.ok{color:var(--ok);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 18px 8px;margin-bottom:16px;}
+  .card.full{grid-column:1 / -1;}
+  .card h2{font-size:14px;margin:0 0 2px;font-weight:600;}
+  .card .hint{font-size:12px;color:var(--muted);margin:0 0 14px;}
+  .chartbox{position:relative;height:300px;} .chartbox.tall{height:330px;}
+  footer{margin-top:28px;color:var(--muted);font-size:12px;text-align:center;}
+  .warnbar{background:#3a2a12;border:1px solid #5a4012;color:#ffce8a;
+    font-size:12px;padding:10px 14px;border-radius:8px;margin-bottom:20px;display:none;}
+  .empty{color:var(--muted);font-size:13px;text-align:center;padding:40px;}
+  @media(max-width:820px){.kpis{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>No-show da Clara IA <span class="badge" id="periodo">—</span></h1>
+    <p>Reuniões agendadas pela Clara · taxa de não-comparecimento e tempo entre marcação e reunião · atualizado <span id="gerado">—</span></p>
+  </header>
+
+  <div class="warnbar" id="warnbar"></div>
+
+  <div class="filters">
+    <span><label>De</label><input type="date" id="de"></span>
+    <span><label>Até</label><input type="date" id="ate"></span>
+    <span id="filtroResumo" style="font-size:12px;color:var(--muted)"></span>
+    <div class="presets">
+      <button data-d="7">7 dias</button>
+      <button data-d="30">30 dias</button>
+      <button data-d="all" class="active">Tudo</button>
+    </div>
+  </div>
+
+  <section class="kpis">
+    <div class="kpi"><div class="label">Reuniões agendadas</div><div class="value" id="k-agend">—</div><div class="sub" id="k-agend-sub">—</div></div>
+    <div class="kpi"><div class="label">Taxa de no-show</div><div class="value danger" id="k-taxa">—</div><div class="sub" id="k-taxa-sub">benchmark 30%</div></div>
+    <div class="kpi"><div class="label">Reuniões realizadas</div><div class="value ok" id="k-real">—</div><div class="sub" id="k-real-sub">—</div></div>
+    <div class="kpi"><div class="label">Tempo médio marcação → reunião</div><div class="value" id="k-lead">—</div><div class="sub" id="k-lead-sub">—</div></div>
+  </section>
+
+  <div class="card full">
+    <h2>No-show por dia</h2>
+    <p class="hint">Taxa diária de não-comparecimento. Linha pontilhada = benchmark de 30%.</p>
+    <div class="chartbox"><canvas id="cDia"></canvas></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>No-show por hora da reunião</h2>
+      <p class="hint">Horário local (America/Sao_Paulo). Sem reuniões às 12h (almoço).</p>
+      <div class="chartbox"><canvas id="cHora"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>No-show por segmento</h2>
+      <p class="hint">Ordenado por taxa. Rótulo = nº de agendadas.</p>
+      <div class="chartbox"><canvas id="cSeg"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card full">
+    <h2>Antecedência da marcação × no-show</h2>
+    <p class="hint">Tempo entre o momento em que a Clara marcou e o horário da reunião. Hipótese: quanto mais cedo a reunião é marcada, maior o no-show.</p>
+    <div class="chartbox tall"><canvas id="cLead"></canvas></div>
+  </div>
+
+  <footer>
+    Fontes: Supabase <code>leads</code> (agendamento, segmento, hora) + Pipedrive (motivo <code>[IS] No-show</code>, <code>add_time</code> = momento da marcação). Pipeline: n8n diário.
+  </footer>
+</div>
+
+<script>
+const fmtPct = v => (v*100).toFixed(1).replace('.',',') + '%';
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+Chart.defaults.color = css('--muted');
+Chart.defaults.font.family = 'Inter, sans-serif';
+Chart.defaults.borderColor = css('--line');
+const taxaColor = t => t >= 0.45 ? css('--danger') : t >= 0.30 ? css('--warn') : css('--ok');
+
+let DATA=null, BENCH=0.30, charts={};
+
+async function load(){
+  let sample=false;
+  try{ const r=await fetch('./data.json',{cache:'no-store'}); if(!r.ok) throw 0; DATA=await r.json(); }
+  catch(e){ const r=await fetch('./data.sample.json'); DATA=await r.json(); sample=true; }
+  BENCH = DATA.benchmark ?? 0.30;
+  if(sample || DATA._aviso){
+    const w=document.getElementById('warnbar'); w.style.display='block';
+    w.textContent='⚠️ '+(DATA._aviso||'Exibindo data.sample.json — conecte o data.json gerado pelo n8n.');
+  }
+  document.getElementById('gerado').textContent=new Date(DATA.gerado_em).toLocaleString('pt-BR');
+  const dias=DATA.registros.map(r=>r.d).sort();
+  const min=dias[0], max=dias[dias.length-1];
+  document.getElementById('de').min=min; document.getElementById('de').max=max; document.getElementById('de').value=min;
+  document.getElementById('ate').min=min; document.getElementById('ate').max=max; document.getElementById('ate').value=max;
+  ['de','ate'].forEach(id=>document.getElementById(id).addEventListener('change',()=>{clearPreset();apply();}));
+  document.querySelectorAll('.presets button').forEach(b=>b.addEventListener('click',()=>preset(b)));
+  apply();
+}
+function clearPreset(){document.querySelectorAll('.presets button').forEach(b=>b.classList.remove('active'));}
+function preset(btn){
+  clearPreset(); btn.classList.add('active');
+  const max=document.getElementById('ate').max;
+  if(btn.dataset.d==='all'){ document.getElementById('de').value=document.getElementById('de').min; document.getElementById('ate').value=max; }
+  else{
+    const d=new Date(max); d.setDate(d.getDate()-(+btn.dataset.d-1));
+    const minAllowed=document.getElementById('de').min;
+    document.getElementById('de').value=d.toISOString().slice(0,10)<minAllowed?minAllowed:d.toISOString().slice(0,10);
+    document.getElementById('ate').value=max;
+  }
+  apply();
+}
+
+const taxa = arr => { const cd=arr.filter(r=>r.o!=='pendente'); const ns=cd.filter(r=>r.o==='no_show').length;
+  return {cd:cd.length, ns, real:cd.length-ns, t: cd.length?ns/cd.length:0}; };
+const mediana = a => { if(!a.length) return 0; const s=[...a].sort((x,y)=>x-y); const m=s.length>>1;
+  return s.length%2?s[m]:(s[m-1]+s[m])/2; };
+
+function apply(){
+  const de=document.getElementById('de').value, ate=document.getElementById('ate').value;
+  const recs=DATA.registros.filter(r=>r.d>=de && r.d<=ate);
+  document.getElementById('periodo').textContent=de+' a '+ate;
+  document.getElementById('filtroResumo').textContent=recs.length+' reuniões no período';
+  render(recs);
+}
+
+function dataset(canvas, cfg){ if(charts[canvas]) charts[canvas].destroy(); charts[canvas]=new Chart(document.getElementById(canvas),cfg); }
+
+function render(recs){
+  const g=taxa(recs); const lts=recs.map(r=>r.lt).filter(v=>v!=null);
+  document.getElementById('k-agend').textContent=recs.length;
+  document.getElementById('k-agend-sub').textContent=(recs.length-g.cd)+' sem desfecho (fora da taxa)';
+  document.getElementById('k-taxa').textContent=g.cd?fmtPct(g.t):'—';
+  document.getElementById('k-taxa-sub').textContent=g.cd?((g.t>BENCH?'▲ ':'▼ ')+'benchmark '+fmtPct(BENCH)):'sem desfecho';
+  document.getElementById('k-real').textContent=g.real;
+  document.getElementById('k-real-sub').textContent='de '+g.cd+' com desfecho';
+  document.getElementById('k-lead').textContent=lts.length?(lts.reduce((a,b)=>a+b,0)/lts.length).toFixed(1).replace('.',',')+'h':'—';
+  document.getElementById('k-lead-sub').textContent=lts.length?('mediana '+mediana(lts).toFixed(0)+'h'):'';
+
+  // por dia
+  const dias=[...new Set(recs.map(r=>r.d))].sort();
+  const diaRows=dias.map(d=>{const x=taxa(recs.filter(r=>r.d===d));return {d,...x,n:recs.filter(r=>r.d===d).length};});
+  dataset('cDia',{type:'line',
+    data:{labels:diaRows.map(x=>x.d.slice(5)),datasets:[
+      {label:'Taxa de no-show',data:diaRows.map(x=>x.cd?+(x.t*100).toFixed(1):null),spanGaps:true,
+        borderColor:css('--accent'),backgroundColor:'rgba(91,140,255,.12)',fill:true,tension:.3,
+        pointRadius:3,pointBackgroundColor:css('--accent')},
+      {label:'Benchmark 30%',data:diaRows.map(()=>30),borderColor:css('--bench'),borderDash:[6,6],pointRadius:0,fill:false}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},
+      tooltip:{callbacks:{afterLabel:c=>{const r=diaRows[c.dataIndex];return r?r.ns+'/'+r.cd+' com desfecho ('+r.n+' agend.)':''}}}},
+      scales:{y:{ticks:{callback:v=>v+'%'},suggestedMax:80}}}});
+
+  // por hora
+  const horas=[...new Set(recs.map(r=>r.h))].sort((a,b)=>a-b);
+  const horaRows=horas.map(h=>{const x=taxa(recs.filter(r=>r.h===h));return {h,...x,n:recs.filter(r=>r.h===h).length};});
+  dataset('cHora',{type:'bar',
+    data:{labels:horaRows.map(x=>x.h+'h'),datasets:[{label:'no-show',data:horaRows.map(x=>x.cd?+(x.t*100).toFixed(1):0),
+      backgroundColor:horaRows.map(x=>taxaColor(x.t)),borderRadius:5}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false},
+      tooltip:{callbacks:{afterLabel:c=>{const r=horaRows[c.dataIndex];return r.ns+'/'+r.cd+' com desfecho'}}}},
+      scales:{y:{ticks:{callback:v=>v+'%'},suggestedMax:100}}}});
+
+  // por segmento
+  const segs=[...new Set(recs.map(r=>r.seg))];
+  let segRows=segs.map(s=>{const x=taxa(recs.filter(r=>r.seg===s));return {s,...x,n:recs.filter(r=>r.seg===s).length};});
+  segRows.sort((a,b)=>b.t-a.t);
+  dataset('cSeg',{type:'bar',
+    data:{labels:segRows.map(x=>x.s),datasets:[{label:'no-show',data:segRows.map(x=>x.cd?+(x.t*100).toFixed(1):0),
+      backgroundColor:segRows.map(x=>taxaColor(x.t)),borderRadius:5}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},
+      tooltip:{callbacks:{afterLabel:c=>{const r=segRows[c.dataIndex];return r.ns+'/'+r.cd+' com desfecho ('+r.n+' agend.)'}}}},
+      scales:{x:{ticks:{callback:v=>v+'%'},suggestedMax:100}}}});
+
+  // antecedencia
+  const fx=h=>h<4?'< 4h':h<24?'4h - 24h':h<48?'1 - 2 dias':'> 2 dias';
+  const ordem=['< 4h','4h - 24h','1 - 2 dias','> 2 dias'];
+  const fxRows=ordem.map(name=>{const sub=recs.filter(r=>r.lt!=null&&fx(r.lt)===name);const x=taxa(sub);return {name,...x,n:sub.length};});
+  dataset('cLead',{
+    data:{labels:ordem,datasets:[
+      {type:'bar',label:'Reuniões agendadas',data:fxRows.map(x=>x.n),backgroundColor:css('--panel2'),
+        borderColor:css('--line'),borderWidth:1,borderRadius:5,yAxisID:'y',order:2},
+      {type:'line',label:'Taxa de no-show',data:fxRows.map(x=>x.cd?+(x.t*100).toFixed(1):null),spanGaps:true,
+        borderColor:css('--danger'),backgroundColor:css('--danger'),tension:.3,pointRadius:5,yAxisID:'y1',order:1}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'},
+      tooltip:{callbacks:{afterLabel:c=>{const r=fxRows[c.dataIndex];return c.datasetIndex===1?(r.ns+'/'+r.cd+' com desfecho'):''}}}},
+      scales:{y:{position:'left',title:{display:true,text:'Agendadas'}},
+        y1:{position:'right',grid:{drawOnChartArea:false},title:{display:true,text:'No-show'},ticks:{callback:v=>v+'%'},suggestedMax:100}}}});
+}
+load();
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{
+ "_aviso": "DADOS ILUSTRATIVOS — fallback. O data.json real e gerado pelo n8n (Supabase + Pipedrive).",
+ "gerado_em": "2026-06-16T10:00:00-03:00",
+ "benchmark": 0.3,
+ "registros": [
+  {
+   "d": "2026-06-10",
+   "h": 9,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 50.2
+  },
+  {
+   "d": "2026-06-10",
+   "h": 16,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 62.0
+  },
+  {
+   "d": "2026-06-11",
+   "h": 14,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 3.5
+  },
+  {
+   "d": "2026-06-11",
+   "h": 17,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 20.1
+  },
+  {
+   "d": "2026-06-12",
+   "h": 9,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 40.0
+  },
+  {
+   "d": "2026-06-12",
+   "h": 13,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 2.0
+  },
+  {
+   "d": "2026-06-13",
+   "h": 16,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 70.0
+  },
+  {
+   "d": "2026-06-13",
+   "h": 11,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 8.0
+  },
+  {
+   "d": "2026-06-16",
+   "h": 17,
+   "seg": "Marmitaria",
+   "o": "pendente",
+   "lt": 5.0
+  }
+ ]
+}

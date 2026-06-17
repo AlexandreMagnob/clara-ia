@@ -1,0 +1,1987 @@
+{
+ "gerado_em": "2026-06-17T00:01:24-03:00",
+ "benchmark": 0.3,
+ "registros": [
+  {
+   "d": "2026-04-01",
+   "h": 18,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 2.72
+  },
+  {
+   "d": "2026-04-02",
+   "h": 11,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 22.06
+  },
+  {
+   "d": "2026-04-02",
+   "h": 16,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 20.88
+  },
+  {
+   "d": "2026-04-02",
+   "h": 11,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 12.89
+  },
+  {
+   "d": "2026-04-02",
+   "h": 11,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 11.56
+  },
+  {
+   "d": "2026-04-02",
+   "h": 16,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 5.3
+  },
+  {
+   "d": "2026-04-02",
+   "h": 16,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 5.27
+  },
+  {
+   "d": "2026-04-06",
+   "h": 16,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 92.96
+  },
+  {
+   "d": "2026-04-06",
+   "h": 11,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 63.21
+  },
+  {
+   "d": "2026-04-06",
+   "h": 11,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 56.42
+  },
+  {
+   "d": "2026-04-06",
+   "h": 15,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 54.76
+  },
+  {
+   "d": "2026-04-06",
+   "h": 16,
+   "seg": "Açaiteria",
+   "o": "no_show",
+   "lt": 49.22
+  },
+  {
+   "d": "2026-04-06",
+   "h": 15,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 44.5
+  },
+  {
+   "d": "2026-04-06",
+   "h": 15,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 42.55
+  },
+  {
+   "d": "2026-04-06",
+   "h": 16,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 15.42
+  },
+  {
+   "d": "2026-04-06",
+   "h": 18,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 2.29
+  },
+  {
+   "d": "2026-04-07",
+   "h": 11,
+   "seg": "Pizzaria",
+   "o": "no_show",
+   "lt": 90.39
+  },
+  {
+   "d": "2026-04-07",
+   "h": 15,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 91.72
+  },
+  {
+   "d": "2026-04-07",
+   "h": 16,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 74.06
+  },
+  {
+   "d": "2026-04-07",
+   "h": 15,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 68.64
+  },
+  {
+   "d": "2026-04-07",
+   "h": 15,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 68.2
+  },
+  {
+   "d": "2026-04-07",
+   "h": 16,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 50.88
+  },
+  {
+   "d": "2026-04-07",
+   "h": 9,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 20.33
+  },
+  {
+   "d": "2026-04-07",
+   "h": 9,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 20.7
+  },
+  {
+   "d": "2026-04-07",
+   "h": 11,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 19.28
+  },
+  {
+   "d": "2026-04-07",
+   "h": 11,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 17.9
+  },
+  {
+   "d": "2026-04-07",
+   "h": 16,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 22.25
+  },
+  {
+   "d": "2026-04-07",
+   "h": 13,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 15.84
+  },
+  {
+   "d": "2026-04-07",
+   "h": 14,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 0.71
+  },
+  {
+   "d": "2026-04-07",
+   "h": 18,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 2.71
+  },
+  {
+   "d": "2026-04-08",
+   "h": 16,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 42.18
+  },
+  {
+   "d": "2026-04-08",
+   "h": 13,
+   "seg": "Açaiteria",
+   "o": "no_show",
+   "lt": 26.71
+  },
+  {
+   "d": "2026-04-08",
+   "h": 9,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 21.77
+  },
+  {
+   "d": "2026-04-08",
+   "h": 9,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 20.66
+  },
+  {
+   "d": "2026-04-08",
+   "h": 16,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 24.55
+  },
+  {
+   "d": "2026-04-08",
+   "h": 11,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 19.13
+  },
+  {
+   "d": "2026-04-08",
+   "h": 11,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 18.81
+  },
+  {
+   "d": "2026-04-08",
+   "h": 15,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 21.07
+  },
+  {
+   "d": "2026-04-08",
+   "h": 16,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 19.67
+  },
+  {
+   "d": "2026-04-08",
+   "h": 16,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 18.33
+  },
+  {
+   "d": "2026-04-09",
+   "h": 9,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 21.89
+  },
+  {
+   "d": "2026-04-09",
+   "h": 11,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 0.84
+  },
+  {
+   "d": "2026-04-10",
+   "h": 16,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 27.08
+  },
+  {
+   "d": "2026-04-10",
+   "h": 9,
+   "seg": "Açaiteria",
+   "o": "no_show",
+   "lt": 18.04
+  },
+  {
+   "d": "2026-04-10",
+   "h": 11,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 15.98
+  },
+  {
+   "d": "2026-04-10",
+   "h": 11,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 15.01
+  },
+  {
+   "d": "2026-04-10",
+   "h": 11,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 14.19
+  },
+  {
+   "d": "2026-04-10",
+   "h": 13,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 15.36
+  },
+  {
+   "d": "2026-04-10",
+   "h": 17,
+   "seg": "Pizzaria",
+   "o": "no_show",
+   "lt": 4.56
+  },
+  {
+   "d": "2026-04-13",
+   "h": 18,
+   "seg": "Pizzaria",
+   "o": "no_show",
+   "lt": 96.41
+  },
+  {
+   "d": "2026-04-13",
+   "h": 13,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 89.57
+  },
+  {
+   "d": "2026-04-13",
+   "h": 11,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 87.19
+  },
+  {
+   "d": "2026-04-14",
+   "h": 11,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 90.93
+  },
+  {
+   "d": "2026-04-14",
+   "h": 15,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 80.11
+  },
+  {
+   "d": "2026-04-14",
+   "h": 10,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 70.27
+  },
+  {
+   "d": "2026-04-14",
+   "h": 10,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 48.82
+  },
+  {
+   "d": "2026-04-14",
+   "h": 10,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 46.29
+  },
+  {
+   "d": "2026-04-14",
+   "h": 10,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 37.1
+  },
+  {
+   "d": "2026-04-14",
+   "h": 14,
+   "seg": "Pizzaria",
+   "o": "no_show",
+   "lt": 28.91
+  },
+  {
+   "d": "2026-04-14",
+   "h": 14,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 26.47
+  },
+  {
+   "d": "2026-04-14",
+   "h": 17,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 23.68
+  },
+  {
+   "d": "2026-04-14",
+   "h": 10,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 16.09
+  },
+  {
+   "d": "2026-04-14",
+   "h": 14,
+   "seg": "Pastelaria",
+   "o": "no_show",
+   "lt": 2.49
+  },
+  {
+   "d": "2026-04-14",
+   "h": 15,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 3.95
+  },
+  {
+   "d": "2026-04-15",
+   "h": 18,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 114.98
+  },
+  {
+   "d": "2026-04-15",
+   "h": 10,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 86.26
+  },
+  {
+   "d": "2026-04-15",
+   "h": 14,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 53.32
+  },
+  {
+   "d": "2026-04-15",
+   "h": 15,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 46.56
+  },
+  {
+   "d": "2026-04-15",
+   "h": 10,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 40.02
+  },
+  {
+   "d": "2026-04-15",
+   "h": 10,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 37.05
+  },
+  {
+   "d": "2026-04-15",
+   "h": 10,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 34.22
+  },
+  {
+   "d": "2026-04-15",
+   "h": 9,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 23.28
+  },
+  {
+   "d": "2026-04-15",
+   "h": 15,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 22.42
+  },
+  {
+   "d": "2026-04-16",
+   "h": 10,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 42.72
+  },
+  {
+   "d": "2026-04-16",
+   "h": 9,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 39.66
+  },
+  {
+   "d": "2026-04-16",
+   "h": 14,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 26.18
+  },
+  {
+   "d": "2026-04-16",
+   "h": 18,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 30.41
+  },
+  {
+   "d": "2026-04-16",
+   "h": 9,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 21.55
+  },
+  {
+   "d": "2026-04-17",
+   "h": 13,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 40.35
+  },
+  {
+   "d": "2026-04-17",
+   "h": 9,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 19.43
+  },
+  {
+   "d": "2026-04-17",
+   "h": 9,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 19.04
+  },
+  {
+   "d": "2026-04-17",
+   "h": 11,
+   "seg": "Pastelaria",
+   "o": "no_show",
+   "lt": 17.34
+  },
+  {
+   "d": "2026-04-20",
+   "h": 9,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 69.85
+  },
+  {
+   "d": "2026-04-20",
+   "h": 9,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 67.58
+  },
+  {
+   "d": "2026-04-22",
+   "h": 15,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 51.72
+  },
+  {
+   "d": "2026-04-22",
+   "h": 15,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 51.52
+  },
+  {
+   "d": "2026-04-22",
+   "h": 16,
+   "seg": "Pizzaria",
+   "o": "no_show",
+   "lt": 42.83
+  },
+  {
+   "d": "2026-04-22",
+   "h": 13,
+   "seg": "(vazio)",
+   "o": "realizada",
+   "lt": 27.03
+  },
+  {
+   "d": "2026-04-22",
+   "h": 18,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 11.95
+  },
+  {
+   "d": "2026-04-23",
+   "h": 14,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 27.95
+  },
+  {
+   "d": "2026-04-23",
+   "h": 15,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 2.21
+  },
+  {
+   "d": "2026-04-24",
+   "h": 16,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 39.84
+  },
+  {
+   "d": "2026-04-24",
+   "h": 9,
+   "seg": "Sushi",
+   "o": "realizada",
+   "lt": 21.51
+  },
+  {
+   "d": "2026-04-24",
+   "h": 13,
+   "seg": "Pizzaria",
+   "o": "no_show",
+   "lt": 24.57
+  },
+  {
+   "d": "2026-04-24",
+   "h": 10,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 17.91
+  },
+  {
+   "d": "2026-04-24",
+   "h": 9,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 17.27
+  },
+  {
+   "d": "2026-04-24",
+   "h": 19,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": null
+  },
+  {
+   "d": "2026-04-27",
+   "h": 13,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 94.19
+  },
+  {
+   "d": "2026-04-27",
+   "h": 16,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 94.04
+  },
+  {
+   "d": "2026-04-27",
+   "h": 15,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 78.46
+  },
+  {
+   "d": "2026-04-27",
+   "h": 13,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 74.81
+  },
+  {
+   "d": "2026-04-27",
+   "h": 9,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 70.47
+  },
+  {
+   "d": "2026-04-27",
+   "h": 9,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 70.23
+  },
+  {
+   "d": "2026-04-27",
+   "h": 14,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 64.72
+  },
+  {
+   "d": "2026-04-27",
+   "h": 9,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 40.01
+  },
+  {
+   "d": "2026-04-27",
+   "h": 13,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 39.72
+  },
+  {
+   "d": "2026-04-27",
+   "h": 9,
+   "seg": "Sushi",
+   "o": "realizada",
+   "lt": 35.66
+  },
+  {
+   "d": "2026-04-27",
+   "h": 17,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 5.56
+  },
+  {
+   "d": "2026-04-27",
+   "h": 18,
+   "seg": "Sushi",
+   "o": "realizada",
+   "lt": 6.72
+  },
+  {
+   "d": "2026-04-28",
+   "h": 16,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 91.53
+  },
+  {
+   "d": "2026-04-28",
+   "h": 18,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 77.4
+  },
+  {
+   "d": "2026-04-28",
+   "h": 11,
+   "seg": "Açaiteria",
+   "o": "no_show",
+   "lt": 64.03
+  },
+  {
+   "d": "2026-04-28",
+   "h": 9,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 37.34
+  },
+  {
+   "d": "2026-04-28",
+   "h": 15,
+   "seg": "Sushi",
+   "o": "realizada",
+   "lt": 24.96
+  },
+  {
+   "d": "2026-04-28",
+   "h": 13,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 22.08
+  },
+  {
+   "d": "2026-04-29",
+   "h": 9,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 39.31
+  },
+  {
+   "d": "2026-04-29",
+   "h": 13,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 29.07
+  },
+  {
+   "d": "2026-04-29",
+   "h": 9,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 19.4
+  },
+  {
+   "d": "2026-04-29",
+   "h": 10,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 17.53
+  },
+  {
+   "d": "2026-04-29",
+   "h": 9,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 16.79
+  },
+  {
+   "d": "2026-04-29",
+   "h": 10,
+   "seg": "(vazio)",
+   "o": "realizada",
+   "lt": 14.97
+  },
+  {
+   "d": "2026-04-29",
+   "h": 14,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 0.94
+  },
+  {
+   "d": "2026-04-30",
+   "h": 11,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 44.68
+  },
+  {
+   "d": "2026-04-30",
+   "h": 11,
+   "seg": "(vazio)",
+   "o": "realizada",
+   "lt": 40.51
+  },
+  {
+   "d": "2026-04-30",
+   "h": 18,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 44.37
+  },
+  {
+   "d": "2026-04-30",
+   "h": 15,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 41.09
+  },
+  {
+   "d": "2026-04-30",
+   "h": 16,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 29.27
+  },
+  {
+   "d": "2026-04-30",
+   "h": 17,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 22.27
+  },
+  {
+   "d": "2026-04-30",
+   "h": 10,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 12.0
+  },
+  {
+   "d": "2026-04-30",
+   "h": 16,
+   "seg": "Pastelaria",
+   "o": "realizada",
+   "lt": 16.97
+  },
+  {
+   "d": "2026-04-30",
+   "h": 17,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 4.0
+  },
+  {
+   "d": "2026-05-04",
+   "h": 14,
+   "seg": "Pizzaria",
+   "o": "no_show",
+   "lt": 97.61
+  },
+  {
+   "d": "2026-05-04",
+   "h": 13,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 72.65
+  },
+  {
+   "d": "2026-05-04",
+   "h": 14,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 69.31
+  },
+  {
+   "d": "2026-05-04",
+   "h": 13,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 59.66
+  },
+  {
+   "d": "2026-05-04",
+   "h": 10,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 45.68
+  },
+  {
+   "d": "2026-05-04",
+   "h": 14,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 45.29
+  },
+  {
+   "d": "2026-05-04",
+   "h": 10,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 38.87
+  },
+  {
+   "d": "2026-05-04",
+   "h": 14,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 27.7
+  },
+  {
+   "d": "2026-05-04",
+   "h": 17,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 4.56
+  },
+  {
+   "d": "2026-05-04",
+   "h": 17,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 1.96
+  },
+  {
+   "d": "2026-05-05",
+   "h": 15,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 100.31
+  },
+  {
+   "d": "2026-05-05",
+   "h": 9,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 91.46
+  },
+  {
+   "d": "2026-05-05",
+   "h": 9,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 87.24
+  },
+  {
+   "d": "2026-05-05",
+   "h": 14,
+   "seg": "Pastelaria",
+   "o": "realizada",
+   "lt": 22.91
+  },
+  {
+   "d": "2026-05-05",
+   "h": 14,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 4.59
+  },
+  {
+   "d": "2026-05-05",
+   "h": 16,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 4.36
+  },
+  {
+   "d": "2026-05-06",
+   "h": 15,
+   "seg": "(vazio)",
+   "o": "realizada",
+   "lt": 30.3
+  },
+  {
+   "d": "2026-05-06",
+   "h": 9,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 21.87
+  },
+  {
+   "d": "2026-05-06",
+   "h": 14,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 25.82
+  },
+  {
+   "d": "2026-05-06",
+   "h": 11,
+   "seg": "Pastelaria",
+   "o": "realizada",
+   "lt": 12.59
+  },
+  {
+   "d": "2026-05-07",
+   "h": 14,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 39.88
+  },
+  {
+   "d": "2026-05-07",
+   "h": 9,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 21.87
+  },
+  {
+   "d": "2026-05-07",
+   "h": 14,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 20.2
+  },
+  {
+   "d": "2026-05-08",
+   "h": 16,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 52.26
+  },
+  {
+   "d": "2026-05-08",
+   "h": 17,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 47.99
+  },
+  {
+   "d": "2026-05-11",
+   "h": 13,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 90.44
+  },
+  {
+   "d": "2026-05-11",
+   "h": 15,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 91.4
+  },
+  {
+   "d": "2026-05-11",
+   "h": 17,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 92.98
+  },
+  {
+   "d": "2026-05-11",
+   "h": 9,
+   "seg": "Sushi",
+   "o": "no_show",
+   "lt": 67.94
+  },
+  {
+   "d": "2026-05-11",
+   "h": 17,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 76.44
+  },
+  {
+   "d": "2026-05-11",
+   "h": 10,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 65.89
+  },
+  {
+   "d": "2026-05-11",
+   "h": 13,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 52.84
+  },
+  {
+   "d": "2026-05-11",
+   "h": 16,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 28.34
+  },
+  {
+   "d": "2026-05-11",
+   "h": 11,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 2.41
+  },
+  {
+   "d": "2026-05-12",
+   "h": 11,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 97.47
+  },
+  {
+   "d": "2026-05-12",
+   "h": 9,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 84.0
+  },
+  {
+   "d": "2026-05-12",
+   "h": 13,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 72.74
+  },
+  {
+   "d": "2026-05-12",
+   "h": 11,
+   "seg": "Sushi",
+   "o": "no_show",
+   "lt": 67.75
+  },
+  {
+   "d": "2026-05-12",
+   "h": 17,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 4.62
+  },
+  {
+   "d": "2026-05-13",
+   "h": 9,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 61.52
+  },
+  {
+   "d": "2026-05-13",
+   "h": 10,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 20.81
+  },
+  {
+   "d": "2026-05-13",
+   "h": 13,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 19.69
+  },
+  {
+   "d": "2026-05-13",
+   "h": 14,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 19.08
+  },
+  {
+   "d": "2026-05-13",
+   "h": 16,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 7.99
+  },
+  {
+   "d": "2026-05-14",
+   "h": 17,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 49.59
+  },
+  {
+   "d": "2026-05-14",
+   "h": 9,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 38.65
+  },
+  {
+   "d": "2026-05-14",
+   "h": 10,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 36.65
+  },
+  {
+   "d": "2026-05-14",
+   "h": 16,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 31.36
+  },
+  {
+   "d": "2026-05-15",
+   "h": 9,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 55.42
+  },
+  {
+   "d": "2026-05-15",
+   "h": 17,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 49.56
+  },
+  {
+   "d": "2026-05-15",
+   "h": 14,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 39.65
+  },
+  {
+   "d": "2026-05-15",
+   "h": 10,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 22.2
+  },
+  {
+   "d": "2026-05-18",
+   "h": 14,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 100.66
+  },
+  {
+   "d": "2026-05-18",
+   "h": 16,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 101.38
+  },
+  {
+   "d": "2026-05-18",
+   "h": 10,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 93.14
+  },
+  {
+   "d": "2026-05-18",
+   "h": 9,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 71.59
+  },
+  {
+   "d": "2026-05-18",
+   "h": 11,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 61.39
+  },
+  {
+   "d": "2026-05-18",
+   "h": 17,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 27.64
+  },
+  {
+   "d": "2026-05-19",
+   "h": 16,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 104.12
+  },
+  {
+   "d": "2026-05-19",
+   "h": 9,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 90.46
+  },
+  {
+   "d": "2026-05-19",
+   "h": 17,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 98.82
+  },
+  {
+   "d": "2026-05-19",
+   "h": 10,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 43.8
+  },
+  {
+   "d": "2026-05-19",
+   "h": 13,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 25.74
+  },
+  {
+   "d": "2026-05-19",
+   "h": 14,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 25.85
+  },
+  {
+   "d": "2026-05-20",
+   "h": 17,
+   "seg": "Restaurante",
+   "o": "no_show",
+   "lt": 68.1
+  },
+  {
+   "d": "2026-05-20",
+   "h": 11,
+   "seg": "Sushi",
+   "o": "no_show",
+   "lt": 60.96
+  },
+  {
+   "d": "2026-05-20",
+   "h": 16,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 65.79
+  },
+  {
+   "d": "2026-05-20",
+   "h": 14,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 48.16
+  },
+  {
+   "d": "2026-05-20",
+   "h": 9,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 41.94
+  },
+  {
+   "d": "2026-05-20",
+   "h": 9,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 15.92
+  },
+  {
+   "d": "2026-05-20",
+   "h": 10,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 15.82
+  },
+  {
+   "d": "2026-05-20",
+   "h": 9,
+   "seg": "(vazio)",
+   "o": "no_show",
+   "lt": null
+  },
+  {
+   "d": "2026-05-21",
+   "h": 11,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 52.18
+  },
+  {
+   "d": "2026-05-21",
+   "h": 14,
+   "seg": "Pastelaria",
+   "o": "realizada",
+   "lt": 52.51
+  },
+  {
+   "d": "2026-05-21",
+   "h": 9,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 45.1
+  },
+  {
+   "d": "2026-05-21",
+   "h": 17,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 52.86
+  },
+  {
+   "d": "2026-05-21",
+   "h": 10,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 17.46
+  },
+  {
+   "d": "2026-05-22",
+   "h": 14,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 71.8
+  },
+  {
+   "d": "2026-05-22",
+   "h": 16,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 51.64
+  },
+  {
+   "d": "2026-05-22",
+   "h": 17,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 46.08
+  },
+  {
+   "d": "2026-05-22",
+   "h": 9,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 33.5
+  },
+  {
+   "d": "2026-05-25",
+   "h": 11,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 93.85
+  },
+  {
+   "d": "2026-05-25",
+   "h": 9,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 84.07
+  },
+  {
+   "d": "2026-05-25",
+   "h": 14,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 71.41
+  },
+  {
+   "d": "2026-05-25",
+   "h": 16,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 71.88
+  },
+  {
+   "d": "2026-05-25",
+   "h": 17,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 69.62
+  },
+  {
+   "d": "2026-05-25",
+   "h": 17,
+   "seg": "Pastelaria",
+   "o": "realizada",
+   "lt": 29.89
+  },
+  {
+   "d": "2026-05-26",
+   "h": 17,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 91.02
+  },
+  {
+   "d": "2026-05-26",
+   "h": 17,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 66.7
+  },
+  {
+   "d": "2026-05-26",
+   "h": 11,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 25.06
+  },
+  {
+   "d": "2026-05-26",
+   "h": 9,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 20.84
+  },
+  {
+   "d": "2026-05-26",
+   "h": 10,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 17.86
+  },
+  {
+   "d": "2026-05-26",
+   "h": 13,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 14.65
+  },
+  {
+   "d": "2026-05-26",
+   "h": 11,
+   "seg": "Hamburgueria",
+   "o": "pendente",
+   "lt": 1.62
+  },
+  {
+   "d": "2026-05-26",
+   "h": 18,
+   "seg": "Pastelaria",
+   "o": "no_show",
+   "lt": 3.66
+  },
+  {
+   "d": "2026-05-27",
+   "h": 11,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 64.13
+  },
+  {
+   "d": "2026-05-27",
+   "h": 16,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 42.66
+  },
+  {
+   "d": "2026-05-27",
+   "h": 17,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 37.41
+  },
+  {
+   "d": "2026-05-27",
+   "h": 9,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 23.47
+  },
+  {
+   "d": "2026-05-27",
+   "h": 16,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 24.0
+  },
+  {
+   "d": "2026-05-28",
+   "h": 16,
+   "seg": "Hamburgueria",
+   "o": "no_show",
+   "lt": 35.59
+  },
+  {
+   "d": "2026-05-28",
+   "h": 16,
+   "seg": "Hamburgueria",
+   "o": "pendente",
+   "lt": 31.09
+  },
+  {
+   "d": "2026-05-29",
+   "h": 17,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 57.39
+  },
+  {
+   "d": "2026-05-29",
+   "h": 17,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 46.49
+  },
+  {
+   "d": "2026-05-29",
+   "h": 14,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 43.33
+  },
+  {
+   "d": "2026-05-29",
+   "h": 11,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 20.38
+  },
+  {
+   "d": "2026-05-29",
+   "h": 17,
+   "seg": "Hamburgueria",
+   "o": "pendente",
+   "lt": 6.92
+  },
+  {
+   "d": "2026-06-01",
+   "h": 14,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 90.44
+  },
+  {
+   "d": "2026-06-01",
+   "h": 9,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 71.66
+  },
+  {
+   "d": "2026-06-01",
+   "h": 9,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 69.28
+  },
+  {
+   "d": "2026-06-01",
+   "h": 10,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 40.07
+  },
+  {
+   "d": "2026-06-01",
+   "h": 17,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 45.87
+  },
+  {
+   "d": "2026-06-02",
+   "h": 13,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 100.16
+  },
+  {
+   "d": "2026-06-02",
+   "h": 16,
+   "seg": "Açaiteria",
+   "o": "pendente",
+   "lt": 68.35
+  },
+  {
+   "d": "2026-06-02",
+   "h": 9,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 19.49
+  },
+  {
+   "d": "2026-06-02",
+   "h": 14,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 18.96
+  },
+  {
+   "d": "2026-06-03",
+   "h": 16,
+   "seg": "Lanchonete",
+   "o": "realizada",
+   "lt": 44.42
+  },
+  {
+   "d": "2026-06-03",
+   "h": 17,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 41.82
+  },
+  {
+   "d": "2026-06-03",
+   "h": 17,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 23.92
+  },
+  {
+   "d": "2026-06-03",
+   "h": 17,
+   "seg": "Confeitaria",
+   "o": "realizada",
+   "lt": 22.1
+  },
+  {
+   "d": "2026-06-03",
+   "h": 17,
+   "seg": "Pastelaria",
+   "o": "realizada",
+   "lt": 9.44
+  },
+  {
+   "d": "2026-06-04",
+   "h": 17,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 49.81
+  },
+  {
+   "d": "2026-06-04",
+   "h": 16,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 43.78
+  },
+  {
+   "d": "2026-06-05",
+   "h": 17,
+   "seg": "Pizzaria",
+   "o": "pendente",
+   "lt": 47.74
+  },
+  {
+   "d": "2026-06-08",
+   "h": 15,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 72.32
+  },
+  {
+   "d": "2026-06-09",
+   "h": 10,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 19.05
+  },
+  {
+   "d": "2026-06-09",
+   "h": 17,
+   "seg": "Açaiteria",
+   "o": "realizada",
+   "lt": 20.4
+  },
+  {
+   "d": "2026-06-10",
+   "h": 11,
+   "seg": "Pastelaria",
+   "o": "realizada",
+   "lt": 18.3
+  },
+  {
+   "d": "2026-06-11",
+   "h": 15,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 28.37
+  },
+  {
+   "d": "2026-06-11",
+   "h": 17,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 19.83
+  },
+  {
+   "d": "2026-06-12",
+   "h": 15,
+   "seg": "Confeitaria",
+   "o": "no_show",
+   "lt": 40.39
+  },
+  {
+   "d": "2026-06-12",
+   "h": 10,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 21.48
+  },
+  {
+   "d": "2026-06-12",
+   "h": 13,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 24.92
+  },
+  {
+   "d": "2026-06-12",
+   "h": 18,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 28.78
+  },
+  {
+   "d": "2026-06-12",
+   "h": 11,
+   "seg": "Lanchonete",
+   "o": "no_show",
+   "lt": 15.41
+  },
+  {
+   "d": "2026-06-15",
+   "h": 13,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 89.44
+  },
+  {
+   "d": "2026-06-15",
+   "h": 10,
+   "seg": "Pizzaria",
+   "o": "no_show",
+   "lt": 47.15
+  },
+  {
+   "d": "2026-06-15",
+   "h": 18,
+   "seg": "Hamburgueria",
+   "o": "realizada",
+   "lt": 47.2
+  },
+  {
+   "d": "2026-06-15",
+   "h": 11,
+   "seg": "Restaurante",
+   "o": "realizada",
+   "lt": 39.57
+  },
+  {
+   "d": "2026-06-15",
+   "h": 10,
+   "seg": "Hamburgueria",
+   "o": "pendente",
+   "lt": 13.81
+  },
+  {
+   "d": "2026-06-16",
+   "h": 15,
+   "seg": "Marmitaria",
+   "o": "no_show",
+   "lt": 87.47
+  },
+  {
+   "d": "2026-06-16",
+   "h": 13,
+   "seg": "Pizzaria",
+   "o": "realizada",
+   "lt": 38.52
+  },
+  {
+   "d": "2026-06-16",
+   "h": 9,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 23.93
+  },
+  {
+   "d": "2026-06-16",
+   "h": 16,
+   "seg": "Outro",
+   "o": "realizada",
+   "lt": 26.08
+  },
+  {
+   "d": "2026-06-16",
+   "h": 9,
+   "seg": "Outro",
+   "o": "no_show",
+   "lt": 17.54
+  },
+  {
+   "d": "2026-06-16",
+   "h": 11,
+   "seg": "Hamburgueria",
+   "o": "pendente",
+   "lt": 16.8
+  },
+  {
+   "d": "2026-06-16",
+   "h": 17,
+   "seg": "Hamburgueria",
+   "o": "pendente",
+   "lt": 13.25
+  },
+  {
+   "d": "2026-06-16",
+   "h": 11,
+   "seg": "Marmitaria",
+   "o": "realizada",
+   "lt": 0.48
+  },
+  {
+   "d": "2026-06-17",
+   "h": 9,
+   "seg": "(vazio)",
+   "o": "pendente",
+   "lt": 37.01
+  },
+  {
+   "d": "2026-06-17",
+   "h": 14,
+   "seg": "Confeitaria",
+   "o": "pendente",
+   "lt": 29.44
+  },
+  {
+   "d": "2026-06-17",
+   "h": 13,
+   "seg": "Confeitaria",
+   "o": "pendente",
+   "lt": 25.67
+  },
+  {
+   "d": "2026-06-18",
+   "h": 9,
+   "seg": "Outro",
+   "o": "pendente",
+   "lt": 63.12
+  }
+ ]
+}

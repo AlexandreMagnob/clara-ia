@@ -4,7 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>No-show da Clara IA — Dashboard</title>
+<link rel="icon" type="image/png" href="./favicon.png">
+<link rel="apple-touch-icon" href="./favicon.png">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -129,17 +132,16 @@
     <div class="chartbox"><canvas id="cDia"></canvas></div>
   </div>
 
-  <div class="grid">
-    <div class="card">
-      <h2>No-show por hora da reunião</h2>
-      <p class="hint">Horário local (America/Sao_Paulo). Sem reuniões às 12h (almoço).</p>
-      <div class="chartbox"><canvas id="cHora"></canvas></div>
-    </div>
-    <div class="card">
-      <h2>No-show por segmento</h2>
-      <p class="hint">Ordenado por taxa. Rótulo = nº de agendadas.</p>
-      <div class="chartbox"><canvas id="cSeg"></canvas></div>
-    </div>
+  <div class="card full">
+    <h2>No-show por hora da reunião</h2>
+    <p class="hint">Horário local (America/Sao_Paulo). Sem reuniões às 12h (almoço).</p>
+    <div class="chartbox"><canvas id="cHora"></canvas></div>
+  </div>
+
+  <div class="card full">
+    <h2>No-show por segmento</h2>
+    <p class="hint">Ordenado por nº de leads. Barras: taxa de no-show (cor) · volume de leads (roxo) · taxa de agendamento = agendadas ÷ leads (dourado).</p>
+    <div class="chartbox" style="height:560px"><canvas id="cSeg"></canvas></div>
   </div>
 
   <div class="card full">
@@ -147,6 +149,7 @@
     <p class="hint">Tempo entre o momento em que a Clara marcou e o horário da reunião. Hipótese: quanto mais cedo a reunião é marcada, maior o no-show.</p>
     <div class="chartbox tall"><canvas id="cLead"></canvas></div>
   </div>
+
 
   <footer>
     Fontes: Supabase <code>leads</code> (agendamento, segmento, hora) + Pipedrive (motivo <code>[IS] No-show</code>, <code>add_time</code> = momento da marcação). Pipeline: n8n diário.
@@ -157,8 +160,9 @@
 const fmtPct = v => (v*100).toFixed(1).replace('.',',') + '%';
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 Chart.defaults.color = css('--muted');
-Chart.defaults.font.family = 'Inter, sans-serif';
+Chart.defaults.font.family = 'Nunito, sans-serif';
 Chart.defaults.borderColor = css('--line');
+if(window.ChartDataLabels){ Chart.register(ChartDataLabels); Chart.defaults.set('plugins.datalabels',{display:false}); }
 const taxaColor = t => t >= 0.45 ? css('--danger') : t >= 0.30 ? css('--warn') : css('--ok');
 
 let DATA=null, BENCH=0.30, charts={}, fpDe=null, fpAte=null, DMIN=null, DMAX=null, suppressOnChange=false;
@@ -270,16 +274,29 @@ function render(recs){
       tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.formattedValue+'%',afterLabel:c=>{const r=horaRows[c.dataIndex];return desfechoTxt(r.ns,r.cd)}}}},
       scales:{y:{ticks:{callback:v=>v+'%'},suggestedMax:100}}}});
 
-  // por segmento
-  const segs=[...new Set(recs.map(r=>r.seg))];
-  let segRows=segs.map(s=>{const x=taxa(recs.filter(r=>r.seg===s));return {s,...x,n:recs.filter(r=>r.seg===s).length};});
-  segRows.sort((a,b)=>b.t-a.t);
+  // por segmento: no-show (%) + leads (volume) + taxa de agendamento; ordenado por nº de leads
+  // taxa de agendamento = AGENDADAS (as mesmas do no-show, via Pipedrive/registros) ÷ nº de leads do segmento
+  const segLeadCount={};
+  if(DATA.leads_clara){DATA.leads_clara.filter(r=>r.dc>=curStart()&&r.dc<=curEnd()).forEach(r=>segLeadCount[r.seg]=(segLeadCount[r.seg]||0)+1);}
+  const segSet=[...new Set([...recs.map(r=>r.seg), ...Object.keys(segLeadCount)])];
+  let segRows=segSet.map(s=>{const sub=recs.filter(r=>r.seg===s);const x=taxa(sub);const leads=segLeadCount[s]||0;
+    return {s,...x,n:sub.length,leads,tag:leads?sub.length/leads:0};});
+  segRows.sort((a,b)=>b.leads-a.leads || b.n-a.n);
+  const dl={display:true,anchor:'end',align:'end',clamp:true,color:css('--txt'),font:{size:9,weight:'700'}};
   dataset('cSeg',{type:'bar',
-    data:{labels:segRows.map(x=>x.s),datasets:[{label:'no-show',data:segRows.map(x=>x.cd?+(x.t*100).toFixed(1):0),
-      backgroundColor:segRows.map(x=>taxaColor(x.t)),borderRadius:5}]},
-    options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},
-      tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.formattedValue+'%',afterLabel:c=>{const r=segRows[c.dataIndex];return desfechoTxt(r.ns,r.cd)+' ('+r.n+' agend.)'}}}},
-      scales:{x:{ticks:{callback:v=>v+'%'},suggestedMax:100}}}});
+    data:{labels:segRows.map(x=>x.s),datasets:[
+      {label:'No-show',data:segRows.map(x=>x.cd?+(x.t*100).toFixed(1):0),xAxisID:'x1',backgroundColor:segRows.map(x=>taxaColor(x.t)),borderRadius:3,
+        datalabels:{...dl,formatter:(v,c)=>segRows[c.dataIndex].cd?v+'%':'—'}},
+      {label:'Leads (volume)',data:segRows.map(x=>x.leads),xAxisID:'x',backgroundColor:css('--brand'),borderRadius:3,
+        datalabels:{...dl,formatter:v=>v||''}},
+      {label:'Taxa de agendamento',data:segRows.map(x=>x.leads?+(x.tag*100).toFixed(1):0),xAxisID:'x1',backgroundColor:css('--gold'),borderRadius:3,
+        datalabels:{...dl,color:css('--gold'),formatter:(v,c)=>segRows[c.dataIndex].leads?v+'%':''}}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,layout:{padding:{right:30}},plugins:{legend:{position:'bottom'},
+      tooltip:{callbacks:{label:c=>c.datasetIndex===0?'No-show: '+c.formattedValue+'%':c.datasetIndex===1?'Leads: '+c.formattedValue:'Taxa de agendamento: '+c.formattedValue+'%',
+        afterLabel:c=>{const r=segRows[c.dataIndex];return c.datasetIndex===0?desfechoTxt(r.ns,r.cd)+' ('+r.n+' agend.)':c.datasetIndex===2?(r.n+' agendadas de '+r.leads+' leads'):''}}}},
+      scales:{y:{ticks:{autoSkip:false,font:{size:11}}},
+        x:{position:'bottom',beginAtZero:true,title:{display:true,text:'Leads (volume)'}},
+        x1:{position:'top',grid:{drawOnChartArea:false},beginAtZero:true,suggestedMax:100,ticks:{callback:v=>v+'%'},title:{display:true,text:'No-show / Taxa de agendamento'}}}}});
 
   // antecedencia
   const fx=h=>h<4?'< 4h':h<24?'4h - 24h':h<48?'1 - 2 dias':'> 2 dias';

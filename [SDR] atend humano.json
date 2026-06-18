@@ -1,0 +1,2337 @@
+{
+  "name": "[SDR] atend humano",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "whatsapp"
+            },
+            {
+              "name": "resumo"
+            },
+            {
+              "name": "nome"
+            },
+            {
+              "name": "email"
+            }
+          ]
+        }
+      },
+      "id": "3ac53988-31b6-4d8a-abdb-0953752b2db3",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -816,
+        256
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "em_atendimento",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "meetime_id",
+              "fieldValue": "={{ $('Cria na Meetime - cadencia T5').item.json.id }}"
+            },
+            {
+              "fieldId": "repassa_sdr",
+              "fieldValue": "true"
+            },
+            {
+              "fieldId": "etapa_repasse",
+              "fieldValue": "={{ $('Switch').item.json.topico_normalizado }}"
+            },
+            {
+              "fieldId": "data_repasse",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2048,
+        624
+      ],
+      "id": "4c0e0ac5-fceb-4c47-8579-41ff8645ed29",
+      "name": "Pausar atendimento",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.meetime.com.br/v2/leads",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $('When Executed by Another Workflow').item.json.email }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $json.token_meetime_universal }}"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1888,
+        1072
+      ],
+      "id": "49623c79-f134-4793-abfa-e4f5325ef6ef",
+      "name": "Procura lead na Meetime"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://api.meetime.com.br/v2/leads/28180682",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('variaveis_globais').item.json.token_meetime_universal }}"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"phones\": [\n    {\n      \"phone\": \"5585998527862\"\n    }\n  ],\n  \"name\": \"Gerardo teste\",\n  \"firstName\": \"Gerardo\",\n  \"email\": \"teste1430@teste.com\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1456,
+        1072
+      ],
+      "id": "f5737864-2a18-46db-9588-14b6c3f6cda7",
+      "name": "edit lead"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Pega o primeiro item do node anterior\nconst input = items[0].json;\n\n// Função que calcula a próxima posição da roleta\nfunction proximaRodada(atual, total) {\n  if (!total || total <= 0) {\n    throw new Error(\"num_sdrs precisa ser maior que zero\");\n  }\n\n  if (!atual || atual < 1) {\n    return 1;\n  }\n\n  return atual >= total ? 1 : atual + 1;\n}\n\n// Lê os valores do input\nconst total = input.num_sdrs;\nconst atual = input.roleta_vez;\n\n// Calcula próximo número\nconst proximo = proximaRodada(atual, total);\n\n// Retorna resultado\nreturn [\n  {\n    json: {         // mantém os dados anteriores\n      roleta: proximo // atualiza a roleta\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        624
+      ],
+      "id": "63501d86-32da-45d7-9332-73737ee670b2",
+      "name": "define vez da roleta"
+    },
+    {
+      "parameters": {
+        "url": "https://api.meetime.com.br/v2/cadences",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ $('variaveis_globais').item.json.token_meetime_universal }}"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1216,
+        1072
+      ],
+      "id": "83eb378d-7c74-46ce-9e90-c6b3c6ac746b",
+      "name": "listar cadência meetime"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.meetime.com.br/v2/prospections/cadence/{{ $('variaveis_globais').item.json.cadencia_tier5 }}/lead?token={{ $('variaveis_globais').item.json.token_cadencia }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"firstName\": \"{{ $('When Executed by Another Workflow').item.json.nome }}\",\n  \"name\": \"{{ $('When Executed by Another Workflow').item.json.nome }}\",\n  \"email\": \"{{ $('When Executed by Another Workflow').item.json.email }}\",\n  \"phones\": [\n    {\n      \"phone\": \"+{{ $('When Executed by Another Workflow').item.json.whatsapp }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1664,
+        1072
+      ],
+      "id": "db6ecb83-beea-4a04-b853-01b059bec680",
+      "name": "Cria na Meetime - cadencia T",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.meetime.com.br/v2/prospections/cadence/{{ $('Consulta tabela de leads').item.json.tier === '5' ? $('variaveis_globais').item.json.cadencia_tier5 : $('variaveis_globais').item.json.cadencia_tier4 }}/lead?token={{ $('Consulta tabela de leads').item.json.tier === '5' ? $('variaveis_globais').item.json.token_cadencia5 : $('variaveis_globais').item.json.token_cadencia4}}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"firstName\": \"{{ $('When Executed by Another Workflow').item.json.nome }}\",\n  \"name\": \"{{ $('When Executed by Another Workflow').item.json.nome }}\",\n  \"email\": \"{{ $('When Executed by Another Workflow').item.json.email }}\",\n  \"ownerEmail\": \"{{ $('Escolher SDR').item.json.email_meetime }}\",\n  \"phones\": [\n    {\n      \"phone\": \"+{{ $('When Executed by Another Workflow').item.json.whatsapp }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1264,
+        624
+      ],
+      "id": "4fdf3b38-40aa-4166-91d8-83be3bf382db",
+      "name": "Cria na Meetime - cadencia T5",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "6ZdgWCPVZwL976uu",
+          "mode": "list",
+          "cachedResultName": "[SDR] Contador de roleta de sdrs",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/6ZdgWCPVZwL976uu"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        528,
+        624
+      ],
+      "id": "efeb0a91-52f4-4a4d-8da2-34cc89e1e8fa",
+      "name": "definir número da roleta"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "P81mKabW3umMVc5x",
+          "mode": "list",
+          "cachedResultName": "[SDR] De-para de SDRs Kommo > Meetime",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/P81mKabW3umMVc5x"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "=roleta",
+              "keyValue": "={{ $json.roleta }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        912,
+        624
+      ],
+      "id": "e2c4129f-fcb6-4f31-937c-a0721392c24c",
+      "name": "Escolher SDR"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "keyValue": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -592,
+        256
+      ],
+      "id": "f5b086dc-327d-40eb-b9af-c1c452f130e0",
+      "name": "Consulta tabela de leads",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "6ZdgWCPVZwL976uu",
+          "mode": "list",
+          "cachedResultName": "[SDR] Contador de roleta de sdrs",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/6ZdgWCPVZwL976uu"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('definir número da roleta').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roleta_vez": "={{ $('define vez da roleta').item.json.roleta }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "num_sdrs",
+              "displayName": "num_sdrs",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "roleta_vez",
+              "displayName": "roleta_vez",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        1856,
+        624
+      ],
+      "id": "b8c29254-b076-4c84-b5c6-2d58e369605b",
+      "name": "atualiza vez da roleta"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://{{$('variaveis_globais').item.json.url_kommo}}.kommo.com/api/v4/leads",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$('variaveis_globais').item.json.token_kommo}}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n  {\n    \"id\": {{$('Consulta tabela de leads').item.json.kommo_id}},\n    \"pipeline_id\": {{ $('Escolher SDR').item.json.pipeline_id_kommo }},\n    \"status_id\": {{ $('Escolher SDR').item.json.status_id_kommo }},\n    \"responsible_user_id\": {{ $('Escolher SDR').item.json.id_kommo }},\n    \"_embedded\": {\n      \"tags\": [\n        {\n          \"id\": 120118\n        }\n      ]\n    }\n  }\n]",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1456,
+        624
+      ],
+      "id": "43566b3f-dd5a-4704-9ac6-632011e6b4f3",
+      "name": "Update leads",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "DzFqCj1kEJGFCIRb",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/DzFqCj1kEJGFCIRb",
+          "cachedResultName": "[REVOPS] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        320,
+        624
+      ],
+      "id": "fac78a33-0a78-4e89-8d27-112fa4a35e39",
+      "name": "variaveis_globais"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0AFAM3R3EU",
+          "mode": "id"
+        },
+        "text": "=## Atenção, Lead novo criado na Meetime para o @{{ $('Escolher SDR').item.json.user_slack }}\n\n{{ $('When Executed by Another Workflow').item.json.resumo }}\nWhatsapp: {{ $('When Executed by Another Workflow').item.json.whatsapp }}\nEmail: {{ $('When Executed by Another Workflow').item.json.email }}",
+        "otherOptions": {
+          "link_names": true,
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        2240,
+        624
+      ],
+      "id": "529ad97c-5bc7-4d80-91de-2b47d200f37a",
+      "name": "Send a message",
+      "webhookId": "e71655c6-2f72-400e-b596-20fa708e8560",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        2912,
+        992
+      ],
+      "id": "d638910e-8bb3-45b6-a21c-2674cb97674f"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0AFAM3R3EU",
+          "mode": "id"
+        },
+        "text": "=## Atenção, erro na Meetime na hora de criar lead para agendar\n\n{{ $('When Executed by Another Workflow').item.json.resumo }}\nWhatsapp: {{ $('When Executed by Another Workflow').item.json.whatsapp }}\nEmail: {{ $('When Executed by Another Workflow').item.json.email }}\nA vez era do @{{ $('Escolher SDR').item.json.user_slack }}",
+        "otherOptions": {
+          "link_names": true,
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1456,
+        816
+      ],
+      "id": "6621cbab-4a71-4803-99fc-2dced84c0031",
+      "name": "Send a message1",
+      "webhookId": "e71655c6-2f72-400e-b596-20fa708e8560",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        3504,
+        -896
+      ],
+      "id": "49371b16-9952-4827-a782-206cfd2998a1",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "6ZdgWCPVZwL976uu",
+          "mode": "list",
+          "cachedResultName": "[SDR] Contador de roleta de sdrs",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/6ZdgWCPVZwL976uu"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('definir número da roleta').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "roleta_vez": "={{ $('define vez da roleta').item.json.roleta }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "num_sdrs",
+              "displayName": "num_sdrs",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "roleta_vez",
+              "displayName": "roleta_vez",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        1856,
+        816
+      ],
+      "id": "0ad30913-8854-48ea-a16e-eb86aac5ebfc",
+      "name": "atualiza vez da roleta1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "em_atendimento",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "repassa_sdr",
+              "fieldValue": "true"
+            },
+            {
+              "fieldId": "etapa_repasse",
+              "fieldValue": "={{ $('Switch').item.json.topico_normalizado }}"
+            },
+            {
+              "fieldId": "data_repasse",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2048,
+        816
+      ],
+      "id": "67ad93e3-4886-4b48-9dbb-da004fd9e04a",
+      "name": "Pausar atendimento1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://marketingcardapiowebcom.kommo.com/api/v4/leads/notes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "=Bearer {{$('variaveis_globais').item.json.token_kommo}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n  {\n    \"note_type\": \"common\",\n    \"entity_id\": {{$('Consulta tabela de leads').item.json.kommo_id}},\n    \"params\": {\n        \"text\": \"{{ $('When Executed by Another Workflow').item.json.resumo }}\"\n    }          \n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1664,
+        624
+      ],
+      "id": "481ff962-4c24-4a18-9bca-54007dea3349",
+      "name": "adicionar nota de resumo",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://marketingcardapiowebcom.kommo.com/api/v4/leads/notes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "=Bearer {{$('variaveis_globais').item.json.token_kommo}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n  {\n    \"note_type\": \"common\",\n    \"entity_id\": {{$('Consulta tabela de leads').item.json.kommo_id}},\n    \"params\": {\n        \"text\": \"{{ $('When Executed by Another Workflow').item.json.resumo }}\"\n    }          \n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1664,
+        816
+      ],
+      "id": "ca1c9d82-0bd9-4af9-b4d9-f01feb64c3ad",
+      "name": "adicionar nota de resumo1",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk",
+          "mode": "list",
+          "cachedResultName": "[SDR] agendamentos IA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "direcionados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}",
+            "resumo": "={{ $('When Executed by Another Workflow').item.json.resumo }}",
+            "nome": "={{ $('When Executed by Another Workflow').item.json.nome }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}",
+            "Data": "={{ $now.format('dd/MM/yyyy HH:mm:ss') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resumo",
+              "displayName": "resumo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2800,
+        704
+      ],
+      "id": "d93962e2-af40-4572-9601-13ec6d6f9201",
+      "name": "Add na planilha de agendados pela IA",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://marketingcardapiowebcom.kommo.com/api/v4/leads/20533744",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjFkZDk2ZWJiYzIxMzQwZGI1YzRjMjI3NDk4MTQ3YTRhZDQ5M2YxMDg3MmI0MGFmNjkwMWQ5ZTlkYTJlMTJkN2JlNWJkZGVlNjU5ZWM0ZWY1In0.eyJhdWQiOiI1MWE2ZTBkYi1jNWU1LTQxYWUtYjZkZS1jZjE4YzA2ODVhZGIiLCJqdGkiOiIxZGQ5NmViYmMyMTM0MGRiNWM0YzIyNzQ5ODE0N2E0YWQ0OTNmMTA4NzJiNDBhZjY5MDFkOWU5ZGEyZTEyZDdiZTViZGRlZTY1OWVjNGVmNSIsImlhdCI6MTc2OTAyNzczOCwibmJmIjoxNzY5MDI3NzM4LCJleHAiOjE5MjY3MjAwMDAsInN1YiI6IjEyNzA3MDcxIiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0MTY0MjQ3LCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJjcm0iLCJmaWxlcyIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiLCJwdXNoX25vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiNDJkYmJiM2UtMjRkNy00YzUzLWIzZmUtOTdlMDcyZWI1YTQzIiwidXNlcl9mbGFncyI6MCwiYXBpX2RvbWFpbiI6ImFwaS1jLmtvbW1vLmNvbSJ9.S3uEIShn_ELrVKSScxjNjRG51T9zNQ-95K75jn_GRF35QbLnlS8kqhgZ3ee7uUblMM-2dtCpdBgrKc1a2pC8HEeWb9PzQClwW9nLH9FBgFH8TNQSGg_i01HSCNd3UU2wIEso6osZx4M-Bu7ngt9S1o5lMKwiWa6-oYMKszb94XR08tXc5Dq46-Q8d6SGoyVQ3S4K3-Hk9dFfGp1FuTdu6kb0wnT-DZoRLHDmq_u6AvSC5_VvaG7DEYMPeW6xXGZAx4fTL17iwd_UllmmRLO_VT3JG-0THc16QJlJjYNnC8_PnHwMJmXfPkG1MsgWBKyaiHtH6kzqvPCdvNwAslrc3w"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        3968,
+        -1216
+      ],
+      "id": "4f4820cc-95e7-462a-8f38-10c7d7ff46a1",
+      "name": "get leads kommo"
+    },
+    {
+      "parameters": {
+        "resource": "user",
+        "user": {
+          "__rl": true,
+          "value": "U07KTLG1EKB",
+          "mode": "list",
+          "cachedResultName": "carlos.isaac"
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        3904,
+        -896
+      ],
+      "id": "09a4b4b6-376d-4530-a166-6db91d4775cd",
+      "name": "Get information about a user",
+      "webhookId": "5b966c8f-ece3-4e08-bd5b-8dc22e704013",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "P81mKabW3umMVc5x",
+          "mode": "list",
+          "cachedResultName": "[SDR] De-para de SDRs Kommo > Meetime",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/P81mKabW3umMVc5x"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        3696,
+        -896
+      ],
+      "id": "b155d54d-4b9b-40c7-9a1b-cfb116675d13",
+      "name": "Escolher SDR1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "09730603-85f9-4775-807f-3b96a0e9c5c2",
+              "leftValue": "={{ $json.repassa_sdr }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        -384,
+        256
+      ],
+      "id": "3f6d61e9-33d8-4cdd-93b4-3eeed27ccad0",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "suporte",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "3d1c7df6-1baa-4e2b-b556-302028c6a87c"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8222dd06-6d43-49ac-93cc-dfc95003a302",
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "parcerias",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "13f9867f-8082-4a19-baf3-81dcf6b6e36d",
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "reuniao_atrasada",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8807681f-dbe4-4973-ac85-9a3c43243fc8",
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "remarcacao_agendamento",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f6aac142-702d-4c3a-9176-15543b055eb7",
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "agendamento",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "a7dbbb5d-b6d8-4c7d-a3fe-bfe18c5afc3d",
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "erro_agendamento",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "de569e7d-709b-4489-86e0-4ea337cdcd15",
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "pediu_humano",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "d4b56455-6f04-4279-a2d5-4b204953bd23",
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "outros",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "85bb6bb0-8878-4b24-a2aa-f044039e15b5",
+                    "leftValue": "={{ $json.topico_normalizado }}",
+                    "rightValue": "duvidas",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        144
+      ],
+      "id": "f470add4-945d-4359-b6de-857995611b4d",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "em_atendimento",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "repassa_sdr",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        384,
+        -304
+      ],
+      "id": "38ea34e8-c172-4a4b-91f1-533f5e8899ae",
+      "name": "Pausar atendimento2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk",
+          "mode": "list",
+          "cachedResultName": "[SDR] agendamentos IA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "direcionados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}",
+            "resumo": "={{ $('When Executed by Another Workflow').item.json.resumo }}",
+            "nome": "={{ $('When Executed by Another Workflow').item.json.nome }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}",
+            "Data": "={{ $now.format('dd/MM/yyyy HH:mm:ss') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resumo",
+              "displayName": "resumo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1040,
+        -304
+      ],
+      "id": "9b1188cd-67c3-4179-b08c-6e271df199bc",
+      "name": "Add na planilha de agendados pela IA1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const resumo = $('When Executed by Another Workflow').first().json.resumo ?? '';\n\n// Extrai só o valor depois de \"Tópico do transbordo:\" ignorando qualquer coisa entre parênteses\nconst match = resumo.match(/T[oó]pico do transbordo[^:]*:\\s*([^\\n(]+)/i);\nconst topico_raw = match ? match[1].trim() : '';\n\n// Normaliza o raw para comparação\nconst t = topico_raw\n  .toLowerCase()\n  .normalize('NFD')\n  .replace(/[\\u0300-\\u036f]/g, '')\n  .trim();\n\n// Mapa fechado — só aceita esses valores\nconst TOPICOS_VALIDOS = [\n  { key: 'reuniao_atrasada',       termos: ['reuniao atrasada', 'especialista atrasado'] },\n  { key: 'remarcacao_agendamento', termos: ['remarca', 'reagend'] },\n  { key: 'erro_agendamento',       termos: ['erro em agendamento', 'erro no agendamento'] },\n  { key: 'agendamento',            termos: ['agendamento'] },\n  { key: 'parcerias',              termos: ['parceria', 'parcerias'] },\n  { key: 'suporte',                termos: ['suporte'] },\n  { key: 'duvidas',                termos: ['duvida', 'duvidas'] },\n  { key: 'pediu_humano',           termos: ['pediu humano', 'pediu atendimento humano'] },\n  { key: 'outros',                 termos: ['outros', 'other'] },\n];\n\nconst topico_normalizado = TOPICOS_VALIDOS.find(({ termos }) =>\n  termos.some(termo => t.startsWith(termo) || t === termo)\n)?.key ?? 'outros'; // fallback sempre vai para 'outros', nunca inventa\n\nreturn [{\n  json: {\n    topico_raw,\n    topico_normalizado\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -176,
+        256
+      ],
+      "id": "a6214931-da56-4c7b-bf46-d83e59ea4d12",
+      "name": "Normalizar Tipos"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Consulta tabela de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "etapa_repasse",
+              "fieldValue": "={{ $('Switch').item.json.topico_normalizado }}"
+            },
+            {
+              "fieldId": "data_repasse",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -304
+      ],
+      "id": "eb8c4b36-9938-4007-a9ea-168015d6b6eb",
+      "name": "Update a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "em_atendimento",
+              "fieldValue": "false"
+            },
+            {
+              "fieldId": "repassa_sdr",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        384,
+        -112
+      ],
+      "id": "dbab84fa-56cd-421c-bc3c-3b6fd1a35c6f",
+      "name": "Pausar atendimento3",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk",
+          "mode": "list",
+          "cachedResultName": "[SDR] agendamentos IA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "direcionados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}",
+            "resumo": "={{ $('When Executed by Another Workflow').item.json.resumo }}",
+            "nome": "={{ $('When Executed by Another Workflow').item.json.nome }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}",
+            "Data": "={{ $now.format('dd/MM/yyyy HH:mm:ss') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resumo",
+              "displayName": "resumo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        800,
+        -112
+      ],
+      "id": "ae5ee1f2-dcdf-4225-b812-5d954c3fd041",
+      "name": "Add na planilha de agendados pela IA2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Consulta tabela de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "etapa_repasse",
+              "fieldValue": "={{ $('Switch').item.json.topico_normalizado }}"
+            },
+            {
+              "fieldId": "data_repasse",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        592,
+        -112
+      ],
+      "id": "c08ec690-32a1-4490-9928-d0a318968781",
+      "name": "Update a row1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1vjqCqOId2s5mMKmDlEW0-llJfMoCjnH9xMV5P2B0K6c",
+          "mode": "list",
+          "cachedResultName": "[CQL] Leads redirecionados para Channel",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vjqCqOId2s5mMKmDlEW0-llJfMoCjnH9xMV5P2B0K6c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "direcionados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
+            "Nome": "={{ $('When Executed by Another Workflow').item.json.nome }}",
+            "Email": "={{ $('When Executed by Another Workflow').item.json.email }}",
+            "WhatsApp": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}",
+            "Resumo": "={{ $('When Executed by Another Workflow').item.json.resumo }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "WhatsApp",
+              "displayName": "WhatsApp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Resumo",
+              "displayName": "Resumo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1040,
+        -112
+      ],
+      "id": "1c96aaa4-0fe5-4d81-b624-396335d2ff02",
+      "name": "Preencher planilha de CQL",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "lNEA9NI4buLV48Aj",
+          "name": "Google Sheets Growth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C065C82TU7N",
+          "mode": "list",
+          "cachedResultName": "passagens-de-bastao"
+        },
+        "text": "=## Atenção, Lead da Clara IA solicitando Suporte @leiliane.furtado\n\n{{ $('When Executed by Another Workflow').item.json.resumo }}\nWhatsapp: {{ $('When Executed by Another Workflow').item.json.whatsapp }}\nEmail: {{ $('When Executed by Another Workflow').item.json.email }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "link_names": true,
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        592,
+        -304
+      ],
+      "id": "39993ab3-f282-4fa1-ab5f-bc180da34ff0",
+      "name": "Avisa do lead no #passagens-de-bastao",
+      "webhookId": "e71655c6-2f72-400e-b596-20fa708e8560",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U07CM3N59LZ",
+          "mode": "list",
+          "cachedResultName": "beatriz.magalhaes"
+        },
+        "text": "=## Atenção, Lead da Clara IA redirecionado para Parcerias\n\n\nWhatsapp: {{ $('When Executed by Another Workflow').item.json.whatsapp }}\nEmail: {{ $('When Executed by Another Workflow').item.json.email }}\n\n\nPlanilha - https://docs.google.com/spreadsheets/d/1vjqCqOId2s5mMKmDlEW0-llJfMoCjnH9xMV5P2B0K6c",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "link_names": true,
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1264,
+        -112
+      ],
+      "id": "e9efbf49-f21d-45bd-b6c1-1754720cb501",
+      "name": "Avisa do lead no privado da Beatriz",
+      "webhookId": "e71655c6-2f72-400e-b596-20fa708e8560",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "etapa_repasse",
+              "fieldValue": "={{ $('Switch').item.json.topico_normalizado }}"
+            },
+            {
+              "fieldId": "data_repasse",
+              "fieldValue": "={{ $now }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        608,
+        288
+      ],
+      "id": "f481f24d-e33b-4ae6-8c68-2c78fc28a0cb",
+      "name": "Pausar atendimento4",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk",
+          "mode": "list",
+          "cachedResultName": "[SDR] agendamentos IA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "direcionados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1AQSHnXwAqz9QhcDcLTW34RsyDvthKvQUH2-Qf7ONROk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telefone": "={{ $('When Executed by Another Workflow').item.json.whatsapp }}",
+            "resumo": "={{ $('When Executed by Another Workflow').item.json.resumo }}",
+            "nome": "={{ $('When Executed by Another Workflow').item.json.nome }}",
+            "email": "={{ $('When Executed by Another Workflow').item.json.email }}",
+            "Data": "={{ $now.format('dd/MM/yyyy HH:mm:ss') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resumo",
+              "displayName": "resumo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        800,
+        288
+      ],
+      "id": "e154a5d9-3eb8-4f63-9382-6d54b09ef870",
+      "name": "Add na planilha de agendados pela IA3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0AFAM3R3EU",
+          "mode": "id"
+        },
+        "text": "=## Atenção, Lead da Clara IA ERRO DE ATENDIMENTO @alexandre.magno\n\n{{ $('When Executed by Another Workflow').item.json.resumo }}\nWhatsapp: {{ $('When Executed by Another Workflow').item.json.whatsapp }}\nEmail: {{ $('When Executed by Another Workflow').item.json.email }}",
+        "otherOptions": {
+          "link_names": true,
+          "mrkdwn": false
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        384,
+        288
+      ],
+      "id": "2b45544a-71fd-4f88-b965-53754add6101",
+      "name": "Send a message2",
+      "webhookId": "e71655c6-2f72-400e-b596-20fa708e8560",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "L5UlPvRjDTzH9fsS",
+          "mode": "list",
+          "cachedResultName": "[CLO] DE-PARA Closers",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/L5UlPvRjDTzH9fsS"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $('Consulta tabela de leads').item.json.closer_email }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        384,
+        96
+      ],
+      "id": "b7482609-568a-4c65-aecc-c524050916ad",
+      "name": "Pega o ID do Closer do Slack"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "={{ $json.user_slack }}",
+          "mode": "username"
+        },
+        "text": "=## Atenção, Lead da Clara IA está esperando na reunião\n\nNome: {{ $('Consulta tabela de leads').item.json.name }}\nWhatsapp: {{ $('When Executed by Another Workflow').item.json.whatsapp }}\nLink reunião: {{ $('Consulta tabela de leads').item.json.link_reuniao }}\n",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "link_names": true,
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        608,
+        96
+      ],
+      "id": "ea18f1f6-aac4-4362-97be-ec598c9e3f9f",
+      "name": "Avisa do lead no privado da Beatriz1",
+      "webhookId": "e71655c6-2f72-400e-b596-20fa708e8560",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "whatsapp": "5585996547619",
+          "resumo": "- Tópico do transbordo: reunião atrasada\n- Dor principal: Lead aguardando o especialista na sala da reunião e ninguém apareceu.\n- Solução atual: Não informado.\n- Plano indicado (Plano Meses, Delivery ou Premium): Delivery\n- BANT: Hot",
+          "nome": "Alexandre",
+          "email": "adfgdfhgjhfgfngsrdbeafvwrddgt@gmail.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Consulta tabela de leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procura lead na Meetime": {
+      "main": [
+        []
+      ]
+    },
+    "define vez da roleta": {
+      "main": [
+        [
+          {
+            "node": "Escolher SDR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "definir número da roleta": {
+      "main": [
+        [
+          {
+            "node": "define vez da roleta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta tabela de leads": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escolher SDR": {
+      "main": [
+        [
+          {
+            "node": "Cria na Meetime - cadencia T5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria na Meetime - cadencia T5": {
+      "main": [
+        [
+          {
+            "node": "Update leads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pausar atendimento": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza vez da roleta": {
+      "main": [
+        [
+          {
+            "node": "Pausar atendimento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update leads": {
+      "main": [
+        [
+          {
+            "node": "adicionar nota de resumo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variaveis_globais": {
+      "main": [
+        [
+          {
+            "node": "definir número da roleta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Add na planilha de agendados pela IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Escolher SDR1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message1": {
+      "main": [
+        [
+          {
+            "node": "adicionar nota de resumo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualiza vez da roleta1": {
+      "main": [
+        [
+          {
+            "node": "Pausar atendimento1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "adicionar nota de resumo": {
+      "main": [
+        [
+          {
+            "node": "atualiza vez da roleta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "adicionar nota de resumo1": {
+      "main": [
+        [
+          {
+            "node": "atualiza vez da roleta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pausar atendimento1": {
+      "main": [
+        [
+          {
+            "node": "Add na planilha de agendados pela IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add na planilha de agendados pela IA": {
+      "main": [
+        []
+      ]
+    },
+    "Escolher SDR1": {
+      "main": [
+        [
+          {
+            "node": "Get information about a user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Normalizar Tipos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Pausar atendimento2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pausar atendimento3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pega o ID do Closer do Slack",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "variaveis_globais",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "variaveis_globais",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "variaveis_globais",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "variaveis_globais",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "variaveis_globais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pausar atendimento2": {
+      "main": [
+        [
+          {
+            "node": "Avisa do lead no #passagens-de-bastao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalizar Tipos": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a row": {
+      "main": [
+        [
+          {
+            "node": "Add na planilha de agendados pela IA1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pausar atendimento3": {
+      "main": [
+        [
+          {
+            "node": "Update a row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a row1": {
+      "main": [
+        [
+          {
+            "node": "Add na planilha de agendados pela IA2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add na planilha de agendados pela IA2": {
+      "main": [
+        [
+          {
+            "node": "Preencher planilha de CQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preencher planilha de CQL": {
+      "main": [
+        [
+          {
+            "node": "Avisa do lead no privado da Beatriz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Avisa do lead no #passagens-de-bastao": {
+      "main": [
+        [
+          {
+            "node": "Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pausar atendimento4": {
+      "main": [
+        [
+          {
+            "node": "Add na planilha de agendados pela IA3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message2": {
+      "main": [
+        [
+          {
+            "node": "Pausar atendimento4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega o ID do Closer do Slack": {
+      "main": [
+        [
+          {
+            "node": "Avisa do lead no privado da Beatriz1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": -1,
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "versionId": "2fd10289-b08a-4a1b-a02f-9218269a4ec4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  },
+  "id": "wKZtbQ1rW9CpQqA5",
+  "tags": [
+    {
+      "updatedAt": "2026-01-28T13:06:04.030Z",
+      "createdAt": "2026-01-28T13:06:04.030Z",
+      "id": "S9pHNUEkQXTRXQgw",
+      "name": "agente_ia"
+    }
+  ]
+}

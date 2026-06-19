@@ -1,0 +1,1637 @@
+{
+  "name": "[SDR] Tool consulta_agenda",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "data e hora"
+            },
+            {
+              "name": "whatsapp"
+            }
+          ]
+        }
+      },
+      "id": "3e65e394-1a09-47ee-944e-5cc0a36168fb",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -912,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "={{ $('Pega apenas os Closers disponíveis').item.json.EMAIL }}",
+          "mode": "id"
+        },
+        "returnAll": true,
+        "timeMin": "={{ $today.toDateTime() }}",
+        "timeMax": "={{ $today.toDateTime().format('cccc') == \"Friday\" | \"Thursday\" ? $today.toDateTime().plus(5, 'days') : $today.toDateTime().plus(3, 'days') }}",
+        "options": {
+          "orderBy": "startTime"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        48,
+        400
+      ],
+      "id": "5448db5d-d4e0-4acb-8474-24202fc34222",
+      "name": "Pegar todos os eventos ",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "6bA2n40mFWUPqQA7",
+          "name": "Google Calendar - Operações"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        256,
+        192
+      ],
+      "id": "54c34e14-bb65-4293-96c6-27b8facd0573",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1uwjlsuidxghkRDXPIEWOpbR0Py1W4PJe1i39DlbOK8I",
+          "mode": "list",
+          "cachedResultName": "Dados dos closers",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1uwjlsuidxghkRDXPIEWOpbR0Py1W4PJe1i39DlbOK8I/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 855330803,
+          "mode": "list",
+          "cachedResultName": "Página3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1uwjlsuidxghkRDXPIEWOpbR0Py1W4PJe1i39DlbOK8I/edit#gid=855330803"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "ESTÁ RECEBENDO REUNIÃO?",
+              "lookupValue": "SIM"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -240,
+        208
+      ],
+      "id": "28d51a76-5a4c-450c-9c95-0107e0e55da0",
+      "name": "Pega apenas os Closers disponíveis",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Sf357rOfdJLgmQHd",
+          "name": "Operações - Google Sheets (geral)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "06002169-44ed-4b9b-a401-5f1a8f803e0d",
+              "leftValue": "={{ $json.fallback }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1104,
+        112
+      ],
+      "id": "a754efa9-4d5f-44ee-ab4b-8e200d5b69d4",
+      "name": "Sem horários"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9b292b02-c6f2-472b-8868-5ed3d3d6c4eb",
+              "name": "Resposta",
+              "value": "Não há nenhum horário disponível",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1328,
+        0
+      ],
+      "id": "92abc97a-6897-4063-b157-7a0a44b81569",
+      "name": "Output - Nenhum horário"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        656
+      ],
+      "id": "b7d8ff48-82dc-4a7e-9401-44b0a1d8514f",
+      "name": "Output padrão"
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        448,
+        96
+      ],
+      "id": "1d84118f-0676-4105-ad8f-0970fd687fab",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "path": "009675cc-ca92-437a-98ee-b201bf136f9e",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -912,
+        16
+      ],
+      "id": "f03a8565-6fc4-4664-b1bb-b54c118ecf55",
+      "name": "Webhook",
+      "webhookId": "009675cc-ca92-437a-98ee-b201bf136f9e",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c787e0f7-8524-43b9-95c4-0ad08fa1ad8b",
+              "name": "data",
+              "value": "={{ $json['data e hora']}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": true
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -688,
+        112
+      ],
+      "id": "a8cc4efc-1d9e-478d-9883-6cc2922b9f4d",
+      "name": "data para verificar os horarios"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8f035894-aa77-47ea-83a9-95bf1a328b85",
+              "leftValue": "={{ $('data para verificar os horarios').item.json.data.toDateTime().set({hour: 23}) }}",
+              "rightValue": "={{ $now.set({hour: 0}) }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -464,
+        112
+      ],
+      "id": "9b131318-10d4-4408-829c-1a41d8f22889",
+      "name": "Data passada"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9b292b02-c6f2-472b-8868-5ed3d3d6c4eb",
+              "name": "Resposta",
+              "value": "=Uma data anterior ao dia de hoje foi selecionada. Pode-se apenas verificar horários disponíveis para uma data futura ou para hoje ({{ $now.format('dd/MM/yyyy') }}).",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -240,
+        16
+      ],
+      "id": "f33d68e8-d848-4bbb-9cd1-501c94f9e3bd",
+      "name": "Output - Data antiga"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "data",
+              "value": "={{ $json.data.slice(0, 10) }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -464,
+        -80
+      ],
+      "id": "73d49658-1d80-4c57-b3de-5b0ce22c59be",
+      "name": "data"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Config\nconst TZ = 'America/Fortaleza';\nconst operadores = items.map(i => i.json);\n\n// Data/horário de referência (vem de outro workflow)\n// Pode ser \"2025-12-13T00:00:00.000-03:00\" ou null\nconst dataTexto = (() => {\n  try { return $('data para verificar os horarios').first().json.data; }\n  catch (e) { return null; }\n})();\n\n// targetDate (YYYY-MM-DD) — se vier dataTexto usa ela, senão usa hoje no TZ\nconst eventDate = dataTexto ? String(dataTexto).split('T')[0] : null;\nconst todayTZ = new Date().toLocaleDateString('en-CA', { timeZone: TZ });\nconst targetDate = eventDate || todayTZ;\n\n// Hora/minuto ATUAL em America/Fortaleza (sempre agora, nunca da dataTexto)\nconst [horaAtual, minutoAtual] = (() => {\n  const partsNow = new Date().toLocaleTimeString('en-GB', { timeZone: TZ, hour12: false }).split(':');\n  return [Number(partsNow[0]), Number(partsNow[1])];\n})();\n\n// limite mínimo: agora + 45 minutos — só se targetDate for hoje\nconst limiteMin = (targetDate === todayTZ)\n  ? (horaAtual * 60 + minutoAtual + 45)\n  : -Infinity;\n\n// Pega eventos do Google Calendar passado pelo Aggregate\nlet rawGoogle = [];\ntry {\n  rawGoogle = $('Aggregate').first().json.data;\n} catch (e) {\n  rawGoogle = [];\n}\n\n// Normaliza flatten: rawGoogle pode ser [ { data: [ ...events ] } ] ou já ser array de events\nlet googleEvents = [];\nif (Array.isArray(rawGoogle) && rawGoogle.length > 0 && rawGoogle[0] && Array.isArray(rawGoogle[0].data)) {\n  googleEvents = rawGoogle.flatMap(obj => obj.data || []);\n} else if (Array.isArray(rawGoogle)) {\n  googleEvents = rawGoogle;\n} else {\n  googleEvents = [];\n}\n\n// util: parse \"HH:MM\" -> minutos desde 00:00\nfunction parseHHMMToMin(s) {\n  if (!s || typeof s !== 'string') return NaN;\n  const parts = s.trim().split(':').map(p => Number(p));\n  if (parts.length < 2 || Number.isNaN(parts[0]) || Number.isNaN(parts[1])) return NaN;\n  return parts[0] * 60 + parts[1];\n}\n\n// util: extrai \"YYYY-MM-DD\" de uma dateTime string considerando TZ\nfunction dateStringInTZ(dateTimeStr) {\n  // dateTimeStr pode ser \"2025-12-13\" (all-day) ou \"2025-12-13T08:00:00-03:00\"\n  const d = new Date(dateTimeStr);\n  return d.toLocaleDateString('en-CA', { timeZone: TZ });\n}\n\n// util: extrai minutos desde 00:00 no TZ para uma dateTime string\nfunction minutesInDayFromDateTime(dateTimeStr) {\n  // se date-only (YYYY-MM-DD) -> tratar como full-day start 00:00\n  if (!dateTimeStr) return NaN;\n  // dateTimeStr might be \"2025-12-13\" or ISO with offset\n  const d = new Date(dateTimeStr);\n  const parts = d.toLocaleTimeString('en-GB', { timeZone: TZ, hour12: false }).split(':');\n  return Number(parts[0]) * 60 + Number(parts[1]);\n}\n\n// Constrói um map de busy intervals por email para a targetDate\n// cada intervalo: { startMin, endMin }\nconst busyByEmail = {};\n\n// percorre googleEvents, filtra por evento na targetDate e popula busyByEmail\nfor (const ev of googleEvents) {\n  if (!ev) continue;\n\n  // ignore cancelled\n  if (ev.status === 'cancelled') continue;\n\n  // if event explicitly transparent -> skip (não bloqueia)\n  if (ev.transparency && String(ev.transparency).toLowerCase() === 'transparent') continue;\n\n  // Start/End podem ser dateTime ou date (all-day)\n  const startRaw = ev.start ? (ev.start.dateTime || ev.start.date) : null;\n  const endRaw   = ev.end   ? (ev.end.dateTime   || ev.end.date)   : null;\n  if (!startRaw || !endRaw) continue;\n\n  // Determina data do evento no TZ; se for diferente do targetDate pula\n  const evDate = dateStringInTZ(startRaw);\n  if (evDate !== targetDate) continue;\n\n  // Se for all-day (start.date presente), considerar como ocupando o dia inteiro\n  // Observação: O Google normalmente usa end.date sendo o dia seguinte para all-day events.\n  // Para segurança, se a string vier no formato YYYY-MM-DD, consideramos full-day bloqueado.\n  let startMin, endMin;\n  if (/^\\d{4}-\\d{2}-\\d{2}$/.test(startRaw) && /^\\d{4}-\\d{2}-\\d{2}$/.test(endRaw)) {\n    // marcar full day (00:00 - 24:00)\n    startMin = 0;\n    endMin = 24 * 60;\n  } else {\n    startMin = minutesInDayFromDateTime(startRaw);\n    endMin = minutesInDayFromDateTime(endRaw);\n    // segurança: se endMin==startMin (evento de 0min) ou endMin < startMin -> tratar como full day\n    if (Number.isNaN(startMin) || Number.isNaN(endMin) || endMin <= startMin) {\n      startMin = 0;\n      endMin = 24 * 60;\n    }\n  }\n\n  // Decide quem marcar: se houver attendees -> marcar todos; senão marcar creator\n  if (Array.isArray(ev.attendees) && ev.attendees.length > 0) {\n    for (const at of ev.attendees) {\n      if (!at || !at.email) continue;\n      const email = String(at.email).toLowerCase();\n      busyByEmail[email] = busyByEmail[email] || [];\n      busyByEmail[email].push({ startMin, endMin });\n    }\n  } else if (ev.creator && ev.creator.email) {\n    const email = String(ev.creator.email).toLowerCase();\n    busyByEmail[email] = busyByEmail[email] || [];\n    busyByEmail[email].push({ startMin, endMin });\n  }\n  // IGNORA organizer como pedido\n}\n\n// Função para checar se um slot [s, e) colide com alguma busy interval\nfunction collidesWithBusy(emailLower, slotStart, slotEnd) {\n  const busys = busyByEmail[emailLower];\n  if (!busys) return false;\n  for (const b of busys) {\n    // overlap if b.start < slotEnd && b.end > slotStart\n    if (b.startMin < slotEnd && b.endMin > slotStart) return true;\n  }\n  return false;\n}\n\n// Geração dos resultados\nconst resultado = [];\n\nfor (const op of operadores) {\n  const nome = op[\"NOME\"];\n  const emailRaw = op[\"EMAIL\"];\n  if (!emailRaw) continue;\n  const email = String(emailRaw).toLowerCase();\n\n  // parse horários do operador (strings \"HH:MM\")\n  const inicioHorarioMin = parseHHMMToMin(String(op[\"HORARIO DE INICIO\"] || '').trim());\n  const fimHorarioMin    = parseHHMMToMin(String(op[\"HORARIO FIM\"] || '').trim());\n  const inicioAlmMin     = parseHHMMToMin(String(op[\"INÍCIO ALMOÇO\"] || op[\"INICIO ALMOÇO\"] || '').trim());\n  const fimAlmMin        = parseHHMMToMin(String(op[\"FIM ALMOÇO\"]   || op[\"FIM ALMOCO\"]   || '').trim());\n  const horaOuroInicio   = parseHHMMToMin(String(op[\"HORA DE OURO INÍCIO\"] || op[\"HORA DE OURO INICIO\"] || '').trim());\n  const horaOuroFim      = parseHHMMToMin(String(op[\"HORA DE OURO FIM\"] || op[\"HORA DE OURO FIM\"] || '').trim());\n  const dur              = Number(op[\"TEMPO PARA CADA REUNIÃO (MINUTOS)\"]);\n\n  const estaLivre = String(op[\"ESTÁ RECEBENDO REUNIÃO?\"] || op[\"ESTÁ LIVRE?\"] || '').toUpperCase() === \"SIM\";\n\n  if (!estaLivre) continue;\n  if ([inicioHorarioMin, fimHorarioMin, inicioAlmMin, fimAlmMin, dur].some(v => Number.isNaN(v))) continue;\n  if (!(dur > 0)) continue;\n\n  const horarios = [];\n\n  // ---------- 1) MANHÃ: desde HORARIO DE INICIO, passo = dur, até que slot termine <= min(horaOuroInicio, inicioAlmMin, fimHorarioMin) ----------\n  const morningLimit = Math.min(\n    Number.isFinite(horaOuroInicio) ? horaOuroInicio : Infinity,\n    Number.isFinite(inicioAlmMin) ? inicioAlmMin : Infinity,\n    fimHorarioMin\n  );\n  if (inicioHorarioMin < morningLimit) {\n    for (let t = inicioHorarioMin; t + dur <= morningLimit; t += dur) {\n      // se for hoje, só considera slots depois de agora+45\n      if (targetDate === todayTZ && t < limiteMin) continue;\n      // se colide com busy, pula\n      if (collidesWithBusy(email, t, t + dur)) continue;\n      horarios.push(`${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`);\n    }\n  }\n\n  // ---------- 2) PÓS-HORA-DE-OURO: começar em HORA_DE_OURO_FIM e avançar por dur até INÍCIO_ALMOÇO (ou fimHorario) ----------\n  if (Number.isFinite(horaOuroFim)) {\n    const postGoldLimit = Math.min(Number.isFinite(inicioAlmMin) ? inicioAlmMin : Infinity, fimHorarioMin);\n    for (let t = horaOuroFim; t + dur <= postGoldLimit; t += dur) {\n      if (targetDate === todayTZ && t < limiteMin) continue;\n      if (collidesWithBusy(email, t, t + dur)) continue;\n      horarios.push(`${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`);\n    }\n  }\n\n  // ---------- 3) TARDE: desde FIM_ALMOÇO até HORARIO_FIM ----------\n  if (fimAlmMin < fimHorarioMin) {\n    for (let t = fimAlmMin; t + dur <= fimHorarioMin; t += dur) {\n      if (targetDate === todayTZ && t < limiteMin) continue;\n      if (collidesWithBusy(email, t, t + dur)) continue;\n      horarios.push(`${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`);\n    }\n  }\n\n  // Remover duplicatas e ordenar (só por limpeza)\n  const unique = Array.from(new Set(horarios)).sort((a, b) => {\n    const pa = a.split(':').map(Number), pb = b.split(':').map(Number);\n    return pa[0] - pb[0] || pa[1] - pb[1];\n  });\n\n  if (unique.length === 0) continue;\n\n  resultado.push({\n    nome,\n    email: emailRaw,\n    horarios: unique,\n    duracao_reuniao: dur\n  });\n}\n\n// retorna no formato esperado pelo n8n\nreturn resultado.map(r => ({ json: r }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        352,
+        -432
+      ],
+      "id": "608cd897-f2b5-4e37-88fe-ccb6f31407d6",
+      "name": "Separa os horários livres",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "eq",
+              "keyValue": "={{ $('When Executed by Another Workflow').first().json.whatsapp }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "closer",
+              "fieldValue": "={{ $('Gerar horários_2').item.json.nome }}"
+            },
+            {
+              "fieldId": "closer_email",
+              "fieldValue": "={{ $('Gerar horários_2').item.json.email }}"
+            },
+            {
+              "fieldId": "slot_closer",
+              "fieldValue": "={{ $json.duracao_reuniao }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1328,
+        192
+      ],
+      "id": "fb763826-c0f8-4574-b23e-6ee56139d288",
+      "name": "Update a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH d AS (\n  SELECT cd.id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('When Executed by Another Workflow').first().json.whatsapp }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n)\nUPDATE commercial_deals cd\nSET closer_user_id = COALESCE(\n      (SELECT id FROM users WHERE lower(email) = lower('{{ $('Gerar horários_2').item.json.email }}')),\n      cd.closer_user_id),\n    custom_properties = COALESCE(cd.custom_properties, '{}'::jsonb) || jsonb_build_object(\n      'closer', '{{ $('Gerar horários_2').item.json.nome.replaceAll(\"'\", \"''\") }}',\n      'closer_email', '{{ $('Gerar horários_2').item.json.email }}',\n      'slot_closer', '{{ $('Gerar horários_2').item.json.duracao_reuniao }}'\n    ),\n    updated_at = now()\nFROM d\nWHERE cd.id = d.id;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1328,
+        400
+      ],
+      "id": "cdp-pg-cons-0001-aaaa-bbbbbbbbbbbb",
+      "name": "CDP - Update a row",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=## Erro ao espelhar lead no banco novo (CDP) — node *Update a row* (consulta_agenda)\n\nWhatsapp: {{ $('When Executed by Another Workflow').first().json.whatsapp }}\nCloser: {{ $('Gerar horários_2').item.json.nome }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1508,
+        560
+      ],
+      "id": "cdp-slk-cons-0002-aaaa-bbbbbbbbbbbb",
+      "name": "Erro CDP - Update a row",
+      "webhookId": "e71655c6-2f72-400e-b596-20fa708e8560",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9adc273f-695d-44ab-94e5-0837465126ab",
+              "name": "fallback",
+              "value": "={{ $('Sem horários').item.json.fallback }}",
+              "type": "boolean"
+            },
+            {
+              "id": "f1b979bf-8f33-478b-ae68-0b1ae8a4301a",
+              "name": "nome",
+              "value": "={{ $('Sem horários').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "0f257c0e-1858-4071-8b4a-ab6bddd999d1",
+              "name": "email",
+              "value": "={{ $('Sem horários').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "eb7b9eba-f909-437f-b8b0-d1e4ceff9121",
+              "name": "total_horarios_disponiveis",
+              "value": "={{ $('Sem horários').item.json.total_horarios_disponiveis }}",
+              "type": "number"
+            },
+            {
+              "id": "fafe3cff-1457-417b-8577-cc597e8e5c0e",
+              "name": "horarios",
+              "value": "={{ $('Sem horários').item.json.horarios }}",
+              "type": "array"
+            },
+            {
+              "id": "b5739bf6-79e5-453b-8b72-c9c7a87f558c",
+              "name": "duracao_reuniao",
+              "value": "={{ $('Sem horários').item.json.duracao_reuniao }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2064,
+        192
+      ],
+      "id": "287cdcb2-d2de-4b7e-b921-4f27f676bb93",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U0A6VKTSC1X",
+          "mode": "list",
+          "cachedResultName": "gerardo.mesquita"
+        },
+        "text": "=Atenção que o lead **{{ $json.name }}** tá querendo agendar. \n\nWhatsapp: {{ $json.whatsapp }}\npipedrive_id: {{ $json.pipedrive_id }}\nhttps://n8n.cardapioweb.com/workflow/HvI38Wr29BZMxQ2e/executions/{{ $execution.id }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1536,
+        192
+      ],
+      "id": "9265e7e0-c862-426f-bd56-87d0a47e4381",
+      "name": "Send a message",
+      "webhookId": "6acfb870-f6ce-4744-98c9-e61f3b476f9e",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "=gustavo.duarte@cardapioweb.com",
+          "mode": "id"
+        },
+        "timeMax": "={{ $now.plus({ day: 1 }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -64,
+        -272
+      ],
+      "id": "17ec7e79-3cd3-486d-8985-fc09cd7a42ff",
+      "name": "Pegar todos os eventos 1",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "6bA2n40mFWUPqQA7",
+          "name": "Google Calendar - Operações"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        -464
+      ],
+      "id": "c2d27f17-f086-46b3-bcca-e2df775ca289",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "c_7ddd6e69f8c191e8bd609b8d16f544703216a8ef77716d246d3dc8823ec08f69@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Reuniões com Closers"
+        },
+        "eventId": "rg97je73s63eetgv42sa08rll8",
+        "updateFields": {
+          "end": "=2026-03-24T17:30:00"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -32,
+        -576
+      ],
+      "id": "b203f5cb-35a5-4557-ae88-ebe19c101466",
+      "name": "Pegar todos os eventos 2",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "6bA2n40mFWUPqQA7",
+          "name": "Google Calendar - Operações"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.cardapioweb.com/webhook/verificacao-agendamento-ia",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "whatsapp",
+              "value": "={{ $('Update a row').item.json.whatsapp }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1856,
+        192
+      ],
+      "id": "3a596911-19e0-4cbb-8c20-775053ae1806",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "={{ $('Pega apenas os Closers disponíveis').item.json.EMAIL }}",
+          "mode": "id"
+        },
+        "returnAll": true,
+        "timeMin": "={{ $today.toDateTime() }}",
+        "timeMax": "={{ $today.toDateTime().format('cccc') == \"Friday\" | \"Thursday\" ? $today.toDateTime().plus(5, 'days') : $today.toDateTime().plus(3, 'days') }}",
+        "options": {
+          "orderBy": "startTime"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -64,
+        608
+      ],
+      "id": "a66ae48e-786e-43e4-9fbc-e3726213346c",
+      "name": "Pegar todos os eventos 3",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "6bA2n40mFWUPqQA7",
+          "name": "Google Calendar - Operações"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const closers = $input.all();\nconst googleEvents = $('Aggregate').first().json.data || [];\n\nfunction minutosParaHora(minutos) {\n  const h = Math.floor(minutos / 60).toString().padStart(2, '0');\n  const m = (minutos % 60).toString().padStart(2, '0');\n  return `${h}:${m}`;\n}\n\n// Converte dateTime do Google para horário de Brasília \"HH:mm\"\nfunction formatarHoraBrasilia(dateTimeStr) {\n  const data = new Date(dateTimeStr);\n  const utcMs = data.getTime();\n  const brasiliaMs = utcMs - (3 * 60 * 60 * 1000);\n  const brasiliaDate = new Date(brasiliaMs);\n  const h = brasiliaDate.getUTCHours().toString().padStart(2, '0');\n  const m = brasiliaDate.getUTCMinutes().toString().padStart(2, '0');\n  return `${h}:${m}`;\n}\n\n// Extrai a data \"DD/MM\" de um dateTime no fuso Brasília (UTC-3)\nfunction extrairDataBrasilia(dateTimeStr) {\n  const data = new Date(dateTimeStr);\n  const brasiliaMs = data.getTime() - (3 * 60 * 60 * 1000);\n  const brasiliaDate = new Date(brasiliaMs);\n  const dia = brasiliaDate.getUTCDate().toString().padStart(2, '0');\n  const mes = (brasiliaDate.getUTCMonth() + 1).toString().padStart(2, '0');\n  return `${dia}/${mes}`;\n}\n\nfunction gerarIntervalosOcupados(closer) {\n  const ocupado = [];\n  if (closer[\"INÍCIO ALMOÇO\"] && closer[\"FIM ALMOÇO\"]) {\n    ocupado.push({ inicio: closer[\"INÍCIO ALMOÇO\"], fim: closer[\"FIM ALMOÇO\"] });\n  }\n  if (closer[\"HORA DE OURO INÍCIO\"] && closer[\"HORA DE OURO FIM\"]) {\n    ocupado.push({ inicio: closer[\"HORA DE OURO INÍCIO\"], fim: closer[\"HORA DE OURO FIM\"] });\n  }\n  for (let i = 1; i <= 4; i++) {\n    const inicio = closer[`Intervalo ${i} inicio`];\n    const fim = closer[`Intervalo ${i} fim`];\n    if (inicio && fim) ocupado.push({ inicio, fim });\n  }\n  return ocupado;\n}\n\nfunction removerDuplicados(horarios) {\n  const set = new Set();\n  return horarios\n    .filter(h => h.inicio && h.fim)\n    .filter(h => {\n      const chave = `${h.inicio}-${h.fim}`;\n      if (set.has(chave)) return false;\n      set.add(chave);\n      return true;\n    });\n}\n\n// ------------------------------------------------------------\n// Gera os próximos 3 dias úteis (hoje + 2), ignorando sab/dom\n// Esses são os dias que sempre devem aparecer no output,\n// independente de ter eventos no Google Calendar\n// ------------------------------------------------------------\nfunction gerarDiasUteis() {\n  const dias = [];\n  const cursor = new Date();\n  while (dias.length < 3) {\n    const diaSemana = cursor.getDay();\n    if (diaSemana !== 0 && diaSemana !== 6) {\n      const dd = cursor.getDate().toString().padStart(2, '0');\n      const mm = (cursor.getMonth() + 1).toString().padStart(2, '0');\n      dias.push(`${dd}/${mm}`);\n    }\n    cursor.setDate(cursor.getDate() + 1);\n  }\n  return dias;\n}\n\nconst diasValidos = gerarDiasUteis();\n\nconst resultado = closers.map(({ json: closer }) => {\n  const email = closer.EMAIL;\n\n  // ------------------------------------------------------------\n  // Agrupa os eventos do Google por dia (DD/MM)\n  // Ignora eventos de dia inteiro (sem dateTime)\n  // ------------------------------------------------------------\n  const eventosPorDia = {};\n  googleEvents\n    .filter(ev => ev.start?.dateTime)\n    .filter(ev => ev.attendees?.some(a => a.email === email) || ev.creator?.email === email)\n    .forEach(ev => {\n      const dia = extrairDataBrasilia(ev.start.dateTime);\n      if (!eventosPorDia[dia]) eventosPorDia[dia] = [];\n      eventosPorDia[dia].push({\n        inicio: formatarHoraBrasilia(ev.start.dateTime),\n        fim: formatarHoraBrasilia(ev.end.dateTime)\n      });\n    });\n\n  // Intervalos fixos da planilha (almoço, hora de ouro, intervalos)\n  // Esses se aplicam em TODOS os dias\n  const horariosPlanilha = gerarIntervalosOcupados(closer);\n\n  // ------------------------------------------------------------\n  // Monta o array de dias usando diasValidos como base\n  // Garante que dias sem eventos também aparecem (com só os fixos)\n  // ------------------------------------------------------------\n  const diasComOcupados = diasValidos.map(dia => ({\n    dia,\n    horarios_ocupados: removerDuplicados([\n      ...(eventosPorDia[dia] || []), // eventos do Google (pode ser vazio)\n      ...horariosPlanilha             // fixos valem pra todo dia\n    ])\n  }));\n  \nreturn {\n    nome: closer.NOME,\n    email,\n    horario_inicio: closer[\"HORARIO DE INICIO\"],\n    horario_fim: closer[\"HORARIO FIM\"],\n    duracao_reuniao: Number(closer[\"TEMPO PARA CADA REUNIÃO (MINUTOS)\"]),\n    ultima_reuniao: closer[\"ÚLTIMA REUNIÃO RECEBIDA\"] || \"2000-01-01T00:00:00\", // 👈\n    dias: diasComOcupados\n};\n});\n\nreturn resultado.map(item => ({ json: item }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        656,
+        96
+      ],
+      "id": "539c836f-08db-4653-8ded-720142a6bf40",
+      "name": "horarios_ocupados_2"
+    },
+    {
+      "parameters": {
+        "jsCode": "function horaParaMinutos(hora) {\n    if (!hora || hora === \"NaN:NaN\") return null;\n    const partes = String(hora).split(':').map(Number);\n    return partes[0] * 60 + partes[1];\n}\n\nfunction minutosParaHora(min) {\n    const h = Math.floor(min / 60);\n    const m = min % 60;\n    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;\n}\n\nfunction getDiaSemana(dataStr) {\n    const [dd, mm] = dataStr.split('/').map(Number);\n    const ano = new Date().getFullYear();\n    const data = new Date(Date.UTC(ano, mm - 1, dd));\n\n    const dias = [\n        \"Domingo\",\n        \"Segunda\",\n        \"Terça\",\n        \"Quarta\",\n        \"Quinta\",\n        \"Sexta\",\n        \"Sábado\"\n    ];\n\n    return dias[data.getUTCDay()];\n}\n\nfunction mergeHorarios(horarios) {\n    if (!horarios.length) return [];\n    horarios.sort((a, b) => a.inicio - b.inicio);\n    const result = [horarios[0]];\n\n    for (let i = 1; i < horarios.length; i++) {\n        const last = result[result.length - 1];\n        const current = horarios[i];\n\n        if (current.inicio <= last.fim) {\n            last.fim = Math.max(last.fim, current.fim);\n        } else {\n            result.push(current);\n        }\n    }\n\n    return result;\n}\n\nfunction getHorariosLivres(inicioDia, fimDia, duracao, horariosOcupados, minimoMin) {\n    const inicioMin = horaParaMinutos(inicioDia);\n    const fimMin = horaParaMinutos(fimDia);\n\n    if (inicioMin === null || fimMin === null || !duracao) return [];\n\n    let ocupadosMin = (horariosOcupados || [])\n        .map(h => ({\n            inicio: horaParaMinutos(h.inicio),\n            fim: horaParaMinutos(h.fim)\n        }))\n        .filter(h => h.inicio !== null && h.fim !== null);\n\n    ocupadosMin = mergeHorarios(ocupadosMin);\n\n    const blocos = [];\n    let cursor = inicioMin;\n\n    for (const h of ocupadosMin) {\n        if (cursor < h.inicio) {\n            blocos.push({ inicio: cursor, fim: h.inicio });\n        }\n        cursor = Math.max(cursor, h.fim);\n    }\n\n    if (cursor < fimMin) {\n        blocos.push({ inicio: cursor, fim: fimMin });\n    }\n\n    const livres = [];\n\n    for (const bloco of blocos) {\n        const primeiroSlot = Math.ceil(bloco.inicio / 15) * 15;\n        let s = primeiroSlot;\n\n        while (s + duracao <= bloco.fim) {\n            if (minimoMin === undefined || s >= minimoMin) {\n                livres.push(minutosParaHora(s));\n            }\n            s += duracao;\n        }\n    }\n\n    return livres;\n}\n\n// ------------------------------------------------------------\n// ETAPA 1: Hora atual de Brasília + próximos 3 dias úteis\n// ------------------------------------------------------------\n\nconst agora = new Date();\nconst brasiliaMsOffset = 3 * 60 * 60 * 1000;\nconst agoraBrasilia = new Date(agora.getTime() - brasiliaMsOffset);\n\nconst horaAtualMin =\n    agoraBrasilia.getUTCHours() * 60 + agoraBrasilia.getUTCMinutes();\n\nconst minimoComAntecedencia = horaAtualMin + 30;\n\nconst hojeDD = agoraBrasilia.getUTCDate().toString().padStart(2, '0');\nconst hojeMM = (agoraBrasilia.getUTCMonth() + 1)\n    .toString()\n    .padStart(2, '0');\n\nconst hojeStr = `${hojeDD}/${hojeMM}`;\n\nconst datasPermitidas = [];\nconst cursorData = new Date(agoraBrasilia);\n\nwhile (datasPermitidas.length < 3) {\n    const diaSemana = cursorData.getUTCDay();\n\n    if (diaSemana !== 0 && diaSemana !== 6) {\n        const dd = cursorData.getUTCDate().toString().padStart(2, '0');\n        const mm = (cursorData.getUTCMonth() + 1)\n            .toString()\n            .padStart(2, '0');\n\n        datasPermitidas.push(`${dd}/${mm}`);\n    }\n\n    cursorData.setUTCDate(cursorData.getUTCDate() + 1);\n}\n\n// ------------------------------------------------------------\n// ETAPA 2: Calcula horários livres\n// ------------------------------------------------------------\n\nconst todosClosers = items.map(item => {\n    const op = item.json;\n\n    const horariosFormatados = (op.dias || [])\n        .filter(({ dia }) => {\n            const diaFormatado = dia.substring(0, 5);\n            return datasPermitidas.includes(diaFormatado);\n        })\n        .flatMap(({ dia, horarios_ocupados }) => {\n\n            const diaFormatado = dia.substring(0, 5);\n\n            const minimo =\n                diaFormatado === hojeStr\n                    ? minimoComAntecedencia\n                    : undefined;\n\n            const livres = getHorariosLivres(\n                op.horario_inicio,\n                op.horario_fim,\n                Number(op.duracao_reuniao),\n                horarios_ocupados,\n                minimo\n            );\n\n            const diaSemana = getDiaSemana(diaFormatado);\n\n            return livres.map(\n                hora => `${diaSemana} (${diaFormatado}) às ${hora}`\n            );\n        });\n\n    return {\n        nome: op.nome,\n        email: op.email,\n        duracao_reuniao: Number(op.duracao_reuniao),\n        horarios: horariosFormatados,\n        total: horariosFormatados.length\n    };\n});\n\n// ------------------------------------------------------------\n// ETAPA 3: Fallback se não houver horários\n// ------------------------------------------------------------\n\nconst totalGeral = todosClosers.reduce(\n    (soma, c) => soma + c.total,\n    0\n);\n\nif (totalGeral === 0) {\n    return [\n        {\n            json: {\n                fallback: true,\n                mensagem:\n                    \"Nenhum closer possui horários disponíveis no momento. Por favor, informe ao lead que entraremos em contato para agendar manualmente.\",\n                closers: todosClosers.map(c => ({\n                    nome: c.nome,\n                    email: c.email,\n                    total_horarios_disponiveis: 0\n                }))\n            }\n        }\n    ];\n}\n\n// ------------------------------------------------------------\n// ETAPA 4: prioriza closer com disponibilidade no MESMO DIA (antes das 12h)\n// ------------------------------------------------------------\n\nconst hora = agoraBrasilia.getUTCHours();\nconst comHoje = todosClosers.filter(c =>\n  c.horarios.some(h => h.includes(`(${hojeStr})`))\n);\nconst pool = (hora < 12 && comHoje.length > 0) ? comHoje : todosClosers;\nconst melhorCloser = pool.reduce(\n  (melhor, atual) => (atual.total > melhor.total ? atual : melhor),\n  pool[0]\n);\n\n\n\n// ------------------------------------------------------------\n// ETAPA 5: Retorno final\n// ------------------------------------------------------------\n\nreturn [\n    {\n        json: {\n            fallback: false,\n            nome: melhorCloser.nome,\n            email: melhorCloser.email,\n            duracao_reuniao: melhorCloser.duracao_reuniao,\n            total_horarios_disponiveis: melhorCloser.total,\n            horarios: melhorCloser.horarios,\n            ultima_reuniao: melhorCloser.ultima_reuniao, // 👈 adiciona isso\n            outros_closers: todosClosers\n                .filter(c => c.email !== melhorCloser.email)\n                .map(c => ({\n                    nome: c.nome,\n                    email: c.email,\n                    total_horarios_disponiveis: c.total\n                }))\n        }\n    }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        96
+      ],
+      "id": "ae60f78e-aba8-4f86-8f15-50f8fd39e3e0",
+      "name": "Gerar horários_2"
+    },
+    {
+      "parameters": {
+        "jsCode": "function horaParaMinutos(hora) {\n    if (!hora || hora === \"NaN:NaN\") return null;\n    const partes = hora.split(':').map(Number);\n    if (partes.length !== 2 || partes.some(isNaN)) return null;\n    return partes[0] * 60 + partes[1];\n}\n\nfunction minutosParaHora(min) {\n    const h = Math.floor(min / 60);\n    const m = min % 60;\n    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;\n}\n\nfunction getDiaSemana(dataStr) {\n    const [dd, mm] = dataStr.split('/').map(Number);\n    const ano = new Date().getFullYear();\n    const data = new Date(Date.UTC(ano, mm - 1, dd));\n\n    const dias = [\n        \"Domingo\",\n        \"Segunda\",\n        \"Terça\",\n        \"Quarta\",\n        \"Quinta\",\n        \"Sexta\",\n        \"Sábado\"\n    ];\n\n    return dias[data.getUTCDay()];\n}\n\nfunction mergeHorarios(horarios) {\n    if (!horarios.length) return [];\n    horarios.sort((a, b) => a.inicio - b.inicio);\n    const result = [horarios[0]];\n\n    for (let i = 1; i < horarios.length; i++) {\n        const last = result[result.length - 1];\n        const current = horarios[i];\n\n        if (current.inicio <= last.fim) {\n            last.fim = Math.max(last.fim, current.fim);\n        } else {\n            result.push(current);\n        }\n    }\n\n    return result;\n}\n\nfunction getHorariosLivres(inicioDia, fimDia, duracao, horariosOcupados, minimoMin) {\n    const inicioMin = horaParaMinutos(inicioDia);\n    const fimMin = horaParaMinutos(fimDia);\n\n    if (inicioMin === null || fimMin === null || !duracao) return [];\n\n    let ocupadosMin = (horariosOcupados || [])\n        .map(h => ({\n            inicio: horaParaMinutos(h.inicio),\n            fim: horaParaMinutos(h.fim)\n        }))\n        .filter(h => h.inicio !== null && h.fim !== null);\n\n    ocupadosMin = mergeHorarios(ocupadosMin);\n\n    const blocos = [];\n    let cursor = inicioMin;\n\n    for (const h of ocupadosMin) {\n        if (cursor < h.inicio) {\n            blocos.push({ inicio: cursor, fim: h.inicio });\n        }\n        cursor = Math.max(cursor, h.fim);\n    }\n\n    if (cursor < fimMin) {\n        blocos.push({ inicio: cursor, fim: fimMin });\n    }\n\n    const livres = [];\n\n    for (const bloco of blocos) {\n        const primeiroSlot = Math.ceil(bloco.inicio / 15) * 15;\n        let s = primeiroSlot;\n\n        while (s + duracao <= bloco.fim) {\n            if (minimoMin === undefined || s >= minimoMin) {\n                livres.push(minutosParaHora(s));\n            }\n            s += duracao;\n        }\n    }\n\n    return livres;\n}\n\n// ------------------------------------------------------------\n// ETAPA 1: Hora atual de Brasília + próximos 3 dias úteis\n// ------------------------------------------------------------\n\nconst agora = new Date();\nconst brasiliaMsOffset = 3 * 60 * 60 * 1000;\nconst agoraBrasilia = new Date(agora.getTime() - brasiliaMsOffset);\n\nconst horaAtualMin =\n    agoraBrasilia.getUTCHours() * 60 + agoraBrasilia.getUTCMinutes();\n\nconst minimoComAntecedencia = horaAtualMin + 30;\n\nconst hojeDD = agoraBrasilia.getUTCDate().toString().padStart(2, '0');\nconst hojeMM = (agoraBrasilia.getUTCMonth() + 1)\n    .toString()\n    .padStart(2, '0');\n\nconst hojeStr = `${hojeDD}/${hojeMM}`;\n\nconst datasPermitidas = [];\nconst cursorData = new Date(agoraBrasilia);\n\nwhile (datasPermitidas.length < 4) {\n    const diaSemana = cursorData.getUTCDay();\n\n    if (diaSemana !== 0 && diaSemana !== 6) {\n        const dd = cursorData.getUTCDate().toString().padStart(2, '0');\n        const mm = (cursorData.getUTCMonth() + 1)\n            .toString()\n            .padStart(2, '0');\n\n        datasPermitidas.push(`${dd}/${mm}`);\n    }\n\n    cursorData.setUTCDate(cursorData.getUTCDate() + 1);\n}\n\n// ------------------------------------------------------------\n// ETAPA 2: Calcula horários livres\n// ------------------------------------------------------------\n\nconst todosClosers = items.map(item => {\n    const op = item.json;\n\n    const horariosFormatados = (op.dias || [])\n        .filter(({ dia }) => {\n            const diaFormatado = dia.substring(0, 5);\n            return datasPermitidas.includes(diaFormatado);\n        })\n        .flatMap(({ dia, horarios_ocupados }) => {\n\n            const diaFormatado = dia.substring(0, 5);\n\n            const minimo =\n                diaFormatado === hojeStr\n                    ? minimoComAntecedencia\n                    : undefined;\n\n            const livres = getHorariosLivres(\n                op.horario_inicio,\n                op.horario_fim,\n                Number(op.duracao_reuniao),\n                horarios_ocupados,\n                minimo\n            );\n\n            const diaSemana = getDiaSemana(diaFormatado);\n\n            return livres.map(\n                hora => `${diaSemana} (${diaFormatado}) às ${hora}`\n            );\n        });\n\n    return {\n        nome: op.nome,\n        email: op.email,\n        duracao_reuniao: Number(op.duracao_reuniao),\n        horarios: horariosFormatados,\n        total: horariosFormatados.length\n    };\n});\n\n// ------------------------------------------------------------\n// ETAPA 3: Fallback se não houver horários\n// ------------------------------------------------------------\n\nconst totalGeral = todosClosers.reduce(\n    (soma, c) => soma + c.total,\n    0\n);\n\nif (totalGeral === 0) {\n    return [\n        {\n            json: {\n                fallback: true,\n                mensagem:\n                    \"Nenhum closer possui horários disponíveis no momento. Por favor, informe ao lead que entraremos em contato para agendar manualmente.\",\n                closers: todosClosers.map(c => ({\n                    nome: c.nome,\n                    email: c.email,\n                    total_horarios_disponiveis: 0\n                }))\n            }\n        }\n    ];\n}\n\n// ------------------------------------------------------------\n// ETAPA 4: Escolhe o closer com mais horários\n// ------------------------------------------------------------\n\nconst melhorCloser = todosClosers.reduce(\n    (melhor, atual) =>\n        atual.total > melhor.total ? atual : melhor,\n    todosClosers[0]\n);\n\n// ------------------------------------------------------------\n// ETAPA 5: Retorno final\n// ------------------------------------------------------------\n\nreturn [\n    {\n        json: {\n            fallback: false,\n            nome: melhorCloser.nome,\n            email: melhorCloser.email,\n            duracao_reuniao: melhorCloser.duracao_reuniao,\n            total_horarios_disponiveis: melhorCloser.total,\n            horarios: melhorCloser.horarios,\n            outros_closers: todosClosers\n                .filter(c => c.email !== melhorCloser.email)\n                .map(c => ({\n                    nome: c.nome,\n                    email: c.email,\n                    total_horarios_disponiveis: c.total\n                }))\n        }\n    }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -144
+      ],
+      "id": "015af7b7-f948-4b7d-923a-65e38989c45f",
+      "name": "Gerar horários"
+    },
+    {
+      "parameters": {
+        "jsCode": "const closers = $input.all();\nconst googleEvents = $('Aggregate').first().json.data || [];\n\nfunction minutosParaHora(minutos) {\n  const h = Math.floor(minutos / 60).toString().padStart(2, '0');\n  const m = (minutos % 60).toString().padStart(2, '0');\n  return `${h}:${m}`;\n}\n\n// Converte dateTime do Google para horário de Brasília \"HH:mm\"\nfunction formatarHoraBrasilia(dateTimeStr) {\n  const data = new Date(dateTimeStr);\n  const utcMs = data.getTime();\n  const brasiliaMs = utcMs - (3 * 60 * 60 * 1000);\n  const brasiliaDate = new Date(brasiliaMs);\n  const h = brasiliaDate.getUTCHours().toString().padStart(2, '0');\n  const m = brasiliaDate.getUTCMinutes().toString().padStart(2, '0');\n  return `${h}:${m}`;\n}\n\n// Extrai a data \"DD/MM\" de um dateTime no fuso Brasília (UTC-3)\nfunction extrairDataBrasilia(dateTimeStr) {\n  const data = new Date(dateTimeStr);\n  const brasiliaMs = data.getTime() - (3 * 60 * 60 * 1000);\n  const brasiliaDate = new Date(brasiliaMs);\n  const dia = brasiliaDate.getUTCDate().toString().padStart(2, '0');\n  const mes = (brasiliaDate.getUTCMonth() + 1).toString().padStart(2, '0');\n  return `${dia}/${mes}`;\n}\n\nfunction gerarIntervalosOcupados(closer) {\n  const ocupado = [];\n  if (closer[\"INÍCIO ALMOÇO\"] && closer[\"FIM ALMOÇO\"]) {\n    ocupado.push({ inicio: closer[\"INÍCIO ALMOÇO\"], fim: closer[\"FIM ALMOÇO\"] });\n  }\n  if (closer[\"HORA DE OURO INÍCIO\"] && closer[\"HORA DE OURO FIM\"]) {\n    ocupado.push({ inicio: closer[\"HORA DE OURO INÍCIO\"], fim: closer[\"HORA DE OURO FIM\"] });\n  }\n  for (let i = 1; i <= 4; i++) {\n    const inicio = closer[`Intervalo ${i} inicio`];\n    const fim = closer[`Intervalo ${i} fim`];\n    if (inicio && fim) ocupado.push({ inicio, fim });\n  }\n  return ocupado;\n}\n\nfunction removerDuplicados(horarios) {\n  const set = new Set();\n  return horarios\n    .filter(h => h.inicio && h.fim)\n    .filter(h => {\n      const chave = `${h.inicio}-${h.fim}`;\n      if (set.has(chave)) return false;\n      set.add(chave);\n      return true;\n    });\n}\n\n// ------------------------------------------------------------\n// Gera os próximos 3 dias úteis (hoje + 2), ignorando sab/dom\n// Esses são os dias que sempre devem aparecer no output,\n// independente de ter eventos no Google Calendar\n// ------------------------------------------------------------\nfunction gerarDiasUteis() {\n  const dias = [];\n  const cursor = new Date();\n  while (dias.length < 4) {\n    const diaSemana = cursor.getDay();\n    if (diaSemana !== 0 && diaSemana !== 6) {\n      const dd = cursor.getDate().toString().padStart(2, '0');\n      const mm = (cursor.getMonth() + 1).toString().padStart(2, '0');\n      dias.push(`${dd}/${mm}`);\n    }\n    cursor.setDate(cursor.getDate() + 1);\n  }\n  return dias;\n}\n\nconst diasValidos = gerarDiasUteis();\n\nconst resultado = closers.map(({ json: closer }) => {\n  const email = closer.EMAIL;\n\n  // ------------------------------------------------------------\n  // Agrupa os eventos do Google por dia (DD/MM)\n  // Ignora eventos de dia inteiro (sem dateTime)\n  // ------------------------------------------------------------\n  const eventosPorDia = {};\n  googleEvents\n    .filter(ev => ev.start?.dateTime)\n    .filter(ev => ev.attendees?.some(a => a.email === email) || ev.creator?.email === email)\n    .forEach(ev => {\n      const dia = extrairDataBrasilia(ev.start.dateTime);\n      if (!eventosPorDia[dia]) eventosPorDia[dia] = [];\n      eventosPorDia[dia].push({\n        inicio: formatarHoraBrasilia(ev.start.dateTime),\n        fim: formatarHoraBrasilia(ev.end.dateTime)\n      });\n    });\n\n  // Intervalos fixos da planilha (almoço, hora de ouro, intervalos)\n  // Esses se aplicam em TODOS os dias\n  const horariosPlanilha = gerarIntervalosOcupados(closer);\n\n  // ------------------------------------------------------------\n  // Monta o array de dias usando diasValidos como base\n  // Garante que dias sem eventos também aparecem (com só os fixos)\n  // ------------------------------------------------------------\n  const diasComOcupados = diasValidos.map(dia => ({\n    dia,\n    horarios_ocupados: removerDuplicados([\n      ...(eventosPorDia[dia] || []), // eventos do Google (pode ser vazio)\n      ...horariosPlanilha             // fixos valem pra todo dia\n    ])\n  }));\n\n  return {\n    nome: closer.NOME,\n    email,\n    horario_inicio: closer[\"HORARIO DE INICIO\"],\n    horario_fim: closer[\"HORARIO FIM\"],\n    duracao_reuniao: Number(closer[\"TEMPO PARA CADA REUNIÃO (MINUTOS)\"]),\n    dias: diasComOcupados\n  };\n});\n\nreturn resultado.map(item => ({ json: item }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        -144
+      ],
+      "id": "04098ce2-d050-442e-ace3-74ffa94d2263",
+      "name": "horarios_ocupados"
+    },
+    {
+      "parameters": {
+        "content": "## Escolhe reunião com base em roleta de closers\n",
+        "height": 240,
+        "width": 448
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        592,
+        16
+      ],
+      "typeVersion": 1,
+      "id": "68e88127-9491-43cb-925f-9d15a8d76d4f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Escolhe reunião com base no closer com mais slots disponíveis.",
+        "height": 240,
+        "width": 448,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        592,
+        -240
+      ],
+      "typeVersion": 1,
+      "id": "5722b485-c47c-4e25-9f64-dba648933fa3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const closers = $input.all();\nconst googleEvents = $('Aggregate').first().json.data || [];\n\nfunction minutosParaHora(minutos) {\n  const h = Math.floor(minutos / 60).toString().padStart(2, '0');\n  const m = (minutos % 60).toString().padStart(2, '0');\n  return `${h}:${m}`;\n}\n\n// Converte dateTime do Google para horário de Brasília \"HH:mm\"\nfunction formatarHoraBrasilia(dateTimeStr) {\n  const data = new Date(dateTimeStr);\n  const utcMs = data.getTime();\n  const brasiliaMs = utcMs - (3 * 60 * 60 * 1000);\n  const brasiliaDate = new Date(brasiliaMs);\n  const h = brasiliaDate.getUTCHours().toString().padStart(2, '0');\n  const m = brasiliaDate.getUTCMinutes().toString().padStart(2, '0');\n  return `${h}:${m}`;\n}\n\n// Extrai a data \"DD/MM\" de um dateTime no fuso Brasília (UTC-3)\nfunction extrairDataBrasilia(dateTimeStr) {\n  const data = new Date(dateTimeStr);\n  const brasiliaMs = data.getTime() - (3 * 60 * 60 * 1000);\n  const brasiliaDate = new Date(brasiliaMs);\n  const dia = brasiliaDate.getUTCDate().toString().padStart(2, '0');\n  const mes = (brasiliaDate.getUTCMonth() + 1).toString().padStart(2, '0');\n  return `${dia}/${mes}`;\n}\n\nfunction gerarIntervalosOcupados(closer) {\n  const ocupado = [];\n  if (closer[\"INÍCIO ALMOÇO\"] && closer[\"FIM ALMOÇO\"]) {\n    ocupado.push({ inicio: closer[\"INÍCIO ALMOÇO\"], fim: closer[\"FIM ALMOÇO\"] });\n  }\n  if (closer[\"HORA DE OURO INÍCIO\"] && closer[\"HORA DE OURO FIM\"]) {\n    ocupado.push({ inicio: closer[\"HORA DE OURO INÍCIO\"], fim: closer[\"HORA DE OURO FIM\"] });\n  }\n  for (let i = 1; i <= 4; i++) {\n    const inicio = closer[`Intervalo ${i} inicio`];\n    const fim = closer[`Intervalo ${i} fim`];\n    if (inicio && fim) ocupado.push({ inicio, fim });\n  }\n  return ocupado;\n}\n\nfunction removerDuplicados(horarios) {\n  const set = new Set();\n  return horarios\n    .filter(h => h.inicio && h.fim)\n    .filter(h => {\n      const chave = `${h.inicio}-${h.fim}`;\n      if (set.has(chave)) return false;\n      set.add(chave);\n      return true;\n    });\n}\n\n// ------------------------------------------------------------\n// Gera os próximos 3 dias úteis (hoje + 2), ignorando sab/dom\n// Esses são os dias que sempre devem aparecer no output,\n// independente de ter eventos no Google Calendar\n// ------------------------------------------------------------\nfunction gerarDiasUteis() {\n  const dias = [];\n  const cursor = new Date();\n  while (dias.length < 3) {\n    const diaSemana = cursor.getDay();\n    if (diaSemana !== 0 && diaSemana !== 6) {\n      const dd = cursor.getDate().toString().padStart(2, '0');\n      const mm = (cursor.getMonth() + 1).toString().padStart(2, '0');\n      dias.push(`${dd}/${mm}`);\n    }\n    cursor.setDate(cursor.getDate() + 1);\n  }\n  return dias;\n}\n\nconst diasValidos = gerarDiasUteis();\n\nconst resultado = closers.map(({ json: closer }) => {\n  const email = closer.EMAIL;\n\n  // ------------------------------------------------------------\n  // Agrupa os eventos do Google por dia (DD/MM)\n  // Ignora eventos de dia inteiro (sem dateTime)\n  // ------------------------------------------------------------\n  const eventosPorDia = {};\n  googleEvents\n    .filter(ev => ev.start?.dateTime)\n    .filter(ev => ev.attendees?.some(a => a.email === email) || ev.creator?.email === email)\n    .forEach(ev => {\n      const dia = extrairDataBrasilia(ev.start.dateTime);\n      if (!eventosPorDia[dia]) eventosPorDia[dia] = [];\n      eventosPorDia[dia].push({\n        inicio: formatarHoraBrasilia(ev.start.dateTime),\n        fim: formatarHoraBrasilia(ev.end.dateTime)\n      });\n    });\n\n  // Intervalos fixos da planilha (almoço, hora de ouro, intervalos)\n  // Esses se aplicam em TODOS os dias\n  const horariosPlanilha = gerarIntervalosOcupados(closer);\n\n  // ------------------------------------------------------------\n  // Monta o array de dias usando diasValidos como base\n  // Garante que dias sem eventos também aparecem (com só os fixos)\n  // ------------------------------------------------------------\n  const diasComOcupados = diasValidos.map(dia => ({\n    dia,\n    horarios_ocupados: removerDuplicados([\n      ...(eventosPorDia[dia] || []), // eventos do Google (pode ser vazio)\n      ...horariosPlanilha             // fixos valem pra todo dia\n    ])\n  }));\n  \nreturn {\n    nome: closer.NOME,\n    email,\n    horario_inicio: closer[\"HORARIO DE INICIO\"],\n    horario_fim: closer[\"HORARIO FIM\"],\n    duracao_reuniao: Number(closer[\"TEMPO PARA CADA REUNIÃO (MINUTOS)\"]),\n    ultima_reuniao: closer[\"ÚLTIMA REUNIÃO RECEBIDA\"] || \"2000-01-01T00:00:00\", // 👈\n    dias: diasComOcupados\n};\n});\n\nreturn resultado.map(item => ({ json: item }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        -512
+      ],
+      "id": "006cea66-3b50-4c56-9baa-a63ebdb7ee6f",
+      "name": "horarios_ocupados_"
+    },
+    {
+      "parameters": {
+        "jsCode": "function horaParaMinutos(hora) {\n    if (!hora || hora === \"NaN:NaN\") return null;\n    const partes = String(hora).split(':').map(Number);\n    return partes[0] * 60 + partes[1];\n}\n\nfunction minutosParaHora(min) {\n    const h = Math.floor(min / 60);\n    const m = min % 60;\n    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;\n}\n\nfunction getDiaSemana(dataStr) {\n    const [dd, mm] = dataStr.split('/').map(Number);\n    const ano = new Date().getFullYear();\n    const data = new Date(Date.UTC(ano, mm - 1, dd));\n\n    const dias = [\n        \"Domingo\",\n        \"Segunda\",\n        \"Terça\",\n        \"Quarta\",\n        \"Quinta\",\n        \"Sexta\",\n        \"Sábado\"\n    ];\n\n    return dias[data.getUTCDay()];\n}\n\nfunction mergeHorarios(horarios) {\n    if (!horarios.length) return [];\n    horarios.sort((a, b) => a.inicio - b.inicio);\n    const result = [horarios[0]];\n\n    for (let i = 1; i < horarios.length; i++) {\n        const last = result[result.length - 1];\n        const current = horarios[i];\n\n        if (current.inicio <= last.fim) {\n            last.fim = Math.max(last.fim, current.fim);\n        } else {\n            result.push(current);\n        }\n    }\n\n    return result;\n}\n\nfunction getHorariosLivres(inicioDia, fimDia, duracao, horariosOcupados, minimoMin) {\n    const inicioMin = horaParaMinutos(inicioDia);\n    const fimMin = horaParaMinutos(fimDia);\n\n    if (inicioMin === null || fimMin === null || !duracao) return [];\n\n    let ocupadosMin = (horariosOcupados || [])\n        .map(h => ({\n            inicio: horaParaMinutos(h.inicio),\n            fim: horaParaMinutos(h.fim)\n        }))\n        .filter(h => h.inicio !== null && h.fim !== null);\n\n    ocupadosMin = mergeHorarios(ocupadosMin);\n\n    const blocos = [];\n    let cursor = inicioMin;\n\n    for (const h of ocupadosMin) {\n        if (cursor < h.inicio) {\n            blocos.push({ inicio: cursor, fim: h.inicio });\n        }\n        cursor = Math.max(cursor, h.fim);\n    }\n\n    if (cursor < fimMin) {\n        blocos.push({ inicio: cursor, fim: fimMin });\n    }\n\n    const livres = [];\n\n    for (const bloco of blocos) {\n        const primeiroSlot = Math.ceil(bloco.inicio / 15) * 15;\n        let s = primeiroSlot;\n\n        while (s + duracao <= bloco.fim) {\n            if (minimoMin === undefined || s >= minimoMin) {\n                livres.push(minutosParaHora(s));\n            }\n            s += duracao;\n        }\n    }\n\n    return livres;\n}\n\n// ------------------------------------------------------------\n// ETAPA 1: Hora atual de Brasília + próximos 3 dias úteis\n// ------------------------------------------------------------\n\nconst agora = new Date();\nconst brasiliaMsOffset = 3 * 60 * 60 * 1000;\nconst agoraBrasilia = new Date(agora.getTime() - brasiliaMsOffset);\n\nconst horaAtualMin =\n    agoraBrasilia.getUTCHours() * 60 + agoraBrasilia.getUTCMinutes();\n\nconst minimoComAntecedencia = horaAtualMin + 30;\n\nconst hojeDD = agoraBrasilia.getUTCDate().toString().padStart(2, '0');\nconst hojeMM = (agoraBrasilia.getUTCMonth() + 1)\n    .toString()\n    .padStart(2, '0');\n\nconst hojeStr = `${hojeDD}/${hojeMM}`;\n\nconst datasPermitidas = [];\nconst cursorData = new Date(agoraBrasilia);\n\nwhile (datasPermitidas.length < 3) {\n    const diaSemana = cursorData.getUTCDay();\n\n    if (diaSemana !== 0 && diaSemana !== 6) {\n        const dd = cursorData.getUTCDate().toString().padStart(2, '0');\n        const mm = (cursorData.getUTCMonth() + 1)\n            .toString()\n            .padStart(2, '0');\n\n        datasPermitidas.push(`${dd}/${mm}`);\n    }\n\n    cursorData.setUTCDate(cursorData.getUTCDate() + 1);\n}\n\n// ------------------------------------------------------------\n// ETAPA 2: Calcula horários livres\n// ------------------------------------------------------------\n\nconst todosClosers = items.map(item => {\n    const op = item.json;\n\n    const horariosFormatados = (op.dias || [])\n        .filter(({ dia }) => {\n            const diaFormatado = dia.substring(0, 5);\n            return datasPermitidas.includes(diaFormatado);\n        })\n        .flatMap(({ dia, horarios_ocupados }) => {\n\n            const diaFormatado = dia.substring(0, 5);\n\n            const minimo =\n                diaFormatado === hojeStr\n                    ? minimoComAntecedencia\n                    : undefined;\n\n            const livres = getHorariosLivres(\n                op.horario_inicio,\n                op.horario_fim,\n                Number(op.duracao_reuniao),\n                horarios_ocupados,\n                minimo\n            );\n\n            const diaSemana = getDiaSemana(diaFormatado);\n\n            return livres.map(\n                hora => `${diaSemana} (${diaFormatado}) às ${hora}`\n            );\n        });\n\n    return {\n        nome: op.nome,\n        email: op.email,\n        duracao_reuniao: Number(op.duracao_reuniao),\n        horarios: horariosFormatados,\n        total: horariosFormatados.length\n    };\n});\n\n// ------------------------------------------------------------\n// ETAPA 3: Fallback se não houver horários\n// ------------------------------------------------------------\n\nconst totalGeral = todosClosers.reduce(\n    (soma, c) => soma + c.total,\n    0\n);\n\nif (totalGeral === 0) {\n    return [\n        {\n            json: {\n                fallback: true,\n                mensagem:\n                    \"Nenhum closer possui horários disponíveis no momento. Por favor, informe ao lead que entraremos em contato para agendar manualmente.\",\n                closers: todosClosers.map(c => ({\n                    nome: c.nome,\n                    email: c.email,\n                    total_horarios_disponiveis: 0\n                }))\n            }\n        }\n    ];\n}\n\n// ------------------------------------------------------------\n// ETAPA 4: Escolhe o closer com mais horários\n// ------------------------------------------------------------\n\nconst melhorCloser = todosClosers.reduce(\n    (melhor, atual) =>\n        atual.total > melhor.total ? atual : melhor,\n    todosClosers[0]\n);\n\n// ------------------------------------------------------------\n// ETAPA 5: Retorno final\n// ------------------------------------------------------------\n\nreturn [\n    {\n        json: {\n            fallback: false,\n            nome: melhorCloser.nome,\n            email: melhorCloser.email,\n            duracao_reuniao: melhorCloser.duracao_reuniao,\n            total_horarios_disponiveis: melhorCloser.total,\n            horarios: melhorCloser.horarios,\n            ultima_reuniao: melhorCloser.ultima_reuniao, // 👈 adiciona isso\n            outros_closers: todosClosers\n                .filter(c => c.email !== melhorCloser.email)\n                .map(c => ({\n                    nome: c.nome,\n                    email: c.email,\n                    total_horarios_disponiveis: c.total\n                }))\n        }\n    }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        -512
+      ],
+      "id": "45752faa-8a96-4798-8ba6-771cbcd2019f",
+      "name": "Gerar horários_"
+    },
+    {
+      "parameters": {
+        "content": "## Backup do Code",
+        "height": 240,
+        "width": 608
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        -608
+      ],
+      "id": "1c7c16b8-f613-40dc-a6b2-2bb23b3b4aa5",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {
+    "Separa os horários livres": [
+      {
+        "json": {
+          "nome": "Gregory Lavor",
+          "email": "gregory.lavor@cardapioweb.com",
+          "horarios": [
+            "09:15",
+            "09:45",
+            "10:45",
+            "13:15",
+            "13:45",
+            "14:15",
+            "14:45",
+            "15:45",
+            "16:15",
+            "17:15"
+          ],
+          "duracao_reuniao": 30
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "nome": "Leandro dos Santos",
+          "email": "leandro.santos@cardapioweb.com",
+          "horarios": [
+            "09:15",
+            "09:45",
+            "10:45",
+            "13:15",
+            "13:45",
+            "14:15",
+            "14:45",
+            "15:45",
+            "16:15",
+            "16:45",
+            "17:15"
+          ],
+          "duracao_reuniao": 30
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "nome": "Gustavo Duarte",
+          "email": "gustavo.duarte@cardapioweb.com",
+          "horarios": [
+            "09:15",
+            "09:45",
+            "10:45",
+            "13:15",
+            "13:45",
+            "14:15",
+            "14:45",
+            "15:45",
+            "16:15",
+            "16:45",
+            "17:15"
+          ],
+          "duracao_reuniao": 30
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      },
+      {
+        "json": {
+          "nome": "Marcos Tulio",
+          "email": "marcos.tulio@cardapioweb.com",
+          "horarios": [
+            "09:15",
+            "09:45",
+            "10:45",
+            "13:15",
+            "13:45",
+            "14:15",
+            "14:45",
+            "15:45",
+            "16:15",
+            "17:15"
+          ],
+          "duracao_reuniao": 30
+        },
+        "pairedItem": {
+          "item": 3
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "177.22.33.182",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.cardapioweb.com",
+            "x-amzn-trace-id": "Root=1-699f53af-22a687be554efb9463f581dc",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+            "sec-ch-ua": "\"Not:A-Brand\";v=\"99\", \"Google Chrome\";v=\"145\", \"Chromium\";v=\"145\"",
+            "sec-ch-ua-mobile": "?0",
+            "accept": "*/*",
+            "origin": "https://agendar-reunioes-closer.vercel.app",
+            "sec-fetch-site": "cross-site",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": "https://agendar-reunioes-closer.vercel.app/",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "if-none-match": "W/\"174-mQYf4nJY8++0GjNp6yNh+i6jdF4\"",
+            "priority": "u=1, i"
+          },
+          "params": {},
+          "query": {
+            "data_e_hora": "2026-02-26T00:00:00.000-03:00"
+          },
+          "body": {},
+          "webhookUrl": "https://n8n.cardapioweb.com/webhook/2f358b28-a24d-4b65-8d11-71f3749e815c",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "data e hora": "2026-05-27T00:00:00.000-03:00",
+          "whatsapp": "5516996026941"
+        }
+      }
+    ],
+    "horarios_ocupados": [
+      {
+        "json": {
+          "nome": "Ranier Oliveira",
+          "email": "johnathan.oliveira@cardapioweb.com",
+          "horario_inicio": "09:00",
+          "horario_fim": "18:45",
+          "duracao_reuniao": 60,
+          "dias": [
+            {
+              "dia": "19/05",
+              "horarios_ocupados": [
+                {
+                  "inicio": "09:00",
+                  "fim": "09:00"
+                },
+                {
+                  "inicio": "09:00",
+                  "fim": "10:00"
+                },
+                {
+                  "inicio": "09:11",
+                  "fim": "09:11"
+                },
+                {
+                  "inicio": "10:00",
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "10:00",
+                  "fim": "10:00"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "13:00",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": "13:30",
+                  "fim": "14:30"
+                },
+                {
+                  "inicio": "13:30",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": "14:00",
+                  "fim": "14:00"
+                },
+                {
+                  "inicio": "14:24",
+                  "fim": "14:24"
+                },
+                {
+                  "inicio": "14:25",
+                  "fim": "14:25"
+                },
+                {
+                  "inicio": "14:30",
+                  "fim": "15:30"
+                },
+                {
+                  "inicio": "14:30",
+                  "fim": "14:30"
+                },
+                {
+                  "inicio": "15:30",
+                  "fim": "16:30"
+                },
+                {
+                  "inicio": "16:30",
+                  "fim": "16:30"
+                },
+                {
+                  "inicio": "16:30",
+                  "fim": "17:30"
+                },
+                {
+                  "inicio": "17:15",
+                  "fim": "17:15"
+                },
+                {
+                  "inicio": "17:30",
+                  "fim": "17:30"
+                },
+                {
+                  "inicio": "17:30",
+                  "fim": "18:30"
+                },
+                {
+                  "inicio": "12:00",
+                  "fim": "13:30"
+                }
+              ]
+            },
+            {
+              "dia": "20/05",
+              "horarios_ocupados": [
+                {
+                  "inicio": "09:00",
+                  "fim": "09:00"
+                },
+                {
+                  "inicio": "09:00",
+                  "fim": "10:00"
+                },
+                {
+                  "inicio": "10:00",
+                  "fim": "10:00"
+                },
+                {
+                  "inicio": "10:00",
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "12:00"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "13:00",
+                  "fim": "14:00"
+                },
+                {
+                  "inicio": "14:00",
+                  "fim": "15:00"
+                },
+                {
+                  "inicio": "14:00",
+                  "fim": "14:00"
+                },
+                {
+                  "inicio": "15:30",
+                  "fim": "16:30"
+                },
+                {
+                  "inicio": "16:30",
+                  "fim": "17:30"
+                },
+                {
+                  "inicio": "16:30",
+                  "fim": "16:30"
+                },
+                {
+                  "inicio": "17:30",
+                  "fim": "18:30"
+                },
+                {
+                  "inicio": "17:30",
+                  "fim": "17:30"
+                },
+                {
+                  "inicio": "12:00",
+                  "fim": "13:30"
+                }
+              ]
+            },
+            {
+              "dia": "21/05",
+              "horarios_ocupados": [
+                {
+                  "inicio": "09:00",
+                  "fim": "09:00"
+                },
+                {
+                  "inicio": "09:00",
+                  "fim": "10:00"
+                },
+                {
+                  "inicio": "10:00",
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "12:00"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "11:45",
+                  "fim": "11:45"
+                },
+                {
+                  "inicio": "13:00",
+                  "fim": "14:00"
+                },
+                {
+                  "inicio": "14:00",
+                  "fim": "14:00"
+                },
+                {
+                  "inicio": "14:00",
+                  "fim": "15:00"
+                },
+                {
+                  "inicio": "15:30",
+                  "fim": "16:30"
+                },
+                {
+                  "inicio": "17:30",
+                  "fim": "17:30"
+                },
+                {
+                  "inicio": "17:30",
+                  "fim": "18:30"
+                },
+                {
+                  "inicio": "12:00",
+                  "fim": "13:30"
+                }
+              ]
+            },
+            {
+              "dia": "22/05",
+              "horarios_ocupados": [
+                {
+                  "inicio": "13:00",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": "13:30",
+                  "fim": "14:30"
+                },
+                {
+                  "inicio": "13:30",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": "14:30",
+                  "fim": "15:30"
+                },
+                {
+                  "inicio": "14:30",
+                  "fim": "14:30"
+                },
+                {
+                  "inicio": "15:30",
+                  "fim": "16:30"
+                },
+                {
+                  "inicio": "16:45",
+                  "fim": "17:15"
+                },
+                {
+                  "inicio": "12:00",
+                  "fim": "13:30"
+                }
+              ]
+            }
+          ]
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "nome": "Gustavo Duarte",
+          "email": "gustavo.duarte@cardapioweb.com",
+          "horario_inicio": "09:30",
+          "horario_fim": "18:45",
+          "duracao_reuniao": 30,
+          "dias": [
+            {
+              "dia": "19/05",
+              "horarios_ocupados": [
+                {
+                  "inicio": "13:00",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": "09:00",
+                  "fim": "09:30"
+                },
+                {
+                  "inicio": "09:30",
+                  "fim": "10:00"
+                },
+                {
+                  "inicio": "10:00",
+                  "fim": "10:30"
+                },
+                {
+                  "inicio": "10:30",
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "11:30"
+                },
+                {
+                  "inicio": "11:30",
+                  "fim": "11:59"
+                },
+                {
+                  "inicio": "13:30",
+                  "fim": "14:00"
+                },
+                {
+                  "inicio": "14:00",
+                  "fim": "14:30"
+                },
+                {
+                  "inicio": "14:30",
+                  "fim": "15:00"
+                },
+                {
+                  "inicio": "15:00",
+                  "fim": "15:10"
+                },
+                {
+                  "inicio": "15:00",
+                  "fim": "15:45"
+                },
+                {
+                  "inicio": "15:45",
+                  "fim": "16:15"
+                },
+                {
+                  "inicio": "16:15",
+                  "fim": "16:45"
+                },
+                {
+                  "inicio": "16:45",
+                  "fim": "17:15"
+                },
+                {
+                  "inicio": "17:45",
+                  "fim": "18:15"
+                },
+                {
+                  "inicio": "18:15",
+                  "fim": "18:45"
+                },
+                {
+                  "inicio": "18:45",
+                  "fim": "19:15"
+                },
+                {
+                  "inicio": "12:00",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": 1,
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "11:30",
+                  "fim": "16:45"
+                }
+              ]
+            },
+            {
+              "dia": "20/05",
+              "horarios_ocupados": [
+                {
+                  "inicio": "09:00",
+                  "fim": "09:30"
+                },
+                {
+                  "inicio": "10:00",
+                  "fim": "10:30"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "11:30"
+                },
+                {
+                  "inicio": "15:00",
+                  "fim": "15:45"
+                },
+                {
+                  "inicio": "16:45",
+                  "fim": "17:15"
+                },
+                {
+                  "inicio": "18:15",
+                  "fim": "18:45"
+                },
+                {
+                  "inicio": "19:00",
+                  "fim": "20:00"
+                },
+                {
+                  "inicio": "12:00",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": 1,
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "11:30",
+                  "fim": "16:45"
+                }
+              ]
+            },
+            {
+              "dia": "21/05",
+              "horarios_ocupados": [
+                {
+                  "inicio": "13:00",
+                  "fim": "14:00"
+                },
+                {
+                  "inicio": "09:00",
+                  "fim": "09:30"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "11:30"
+                },
+                {
+                  "inicio": "15:00",
+                  "fim": "15:45"
+                },
+                {
+                  "inicio": "16:45",
+                  "fim": "17:15"
+                },
+                {
+                  "inicio": "12:00",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": 1,
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "11:30",
+                  "fim": "16:45"
+                }
+              ]
+            },
+            {
+              "dia": "22/05",
+              "horarios_ocupados": [
+                {
+                  "inicio": "13:00",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": "09:00",
+                  "fim": "09:30"
+                },
+                {
+                  "inicio": "11:00",
+                  "fim": "11:30"
+                },
+                {
+                  "inicio": "15:00",
+                  "fim": "15:45"
+                },
+                {
+                  "inicio": "12:00",
+                  "fim": "13:30"
+                },
+                {
+                  "inicio": 1,
+                  "fim": "11:00"
+                },
+                {
+                  "inicio": "11:30",
+                  "fim": "16:45"
+                }
+              ]
+            }
+          ]
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "data para verificar os horarios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pegar todos os eventos ": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Pega apenas os Closers disponíveis": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Pegar todos os eventos ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sem horários": {
+      "main": [
+        [
+          {
+            "node": "Output - Nenhum horário",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "horarios_ocupados_2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data para verificar os horarios": {
+      "main": [
+        [
+          {
+            "node": "Data passada",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "data para verificar os horarios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data passada": {
+      "main": [
+        [
+          {
+            "node": "Output - Data antiga",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pega apenas os Closers disponíveis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Separa os horários livres": {
+      "main": [
+        []
+      ]
+    },
+    "Update a row": {
+      "main": [
+        [
+          {
+            "node": "CDP - Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Update a row": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Erro CDP - Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Erro CDP - Update a row": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Pegar todos os eventos 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "horarios_ocupados_2": {
+      "main": [
+        [
+          {
+            "node": "Gerar horários_2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar horários_2": {
+      "main": [
+        [
+          {
+            "node": "Sem horários",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "horarios_ocupados": {
+      "main": [
+        [
+          {
+            "node": "Gerar horários",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "horarios_ocupados_": {
+      "main": [
+        [
+          {
+            "node": "Gerar horários_",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "binaryMode": "separate",
+    "availableInMCP": true
+  },
+  "versionId": "0247d742-147d-460a-ba87-5ac786e1a220",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  },
+  "id": "HvI38Wr29BZMxQ2e",
+  "tags": []
+}

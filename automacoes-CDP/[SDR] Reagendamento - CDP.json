@@ -1,0 +1,449 @@
+{
+  "name": "[SDR] Reagendamento",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "whatsapp"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "keyValue": "={{ $json.whatsapp }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        480,
+        352
+      ],
+      "id": "4de9794f-ab22-48eb-8beb-09a780fd13d4",
+      "name": "Get a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "c_7ddd6e69f8c191e8bd609b8d16f544703216a8ef77716d246d3dc8823ec08f69@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "Reuniões com Closers"
+        },
+        "eventId": "={{ $json.id_agendamento }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        688,
+        352
+      ],
+      "id": "4ca019b4-a520-495e-9bf7-e4fb64f7b623",
+      "name": "Delete an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "6bA2n40mFWUPqQA7",
+          "name": "Google Calendar - Operações"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "mode": "username",
+          "value": "={{ $json.user_slack }}"
+        },
+        "text": "=Atenção, o lead {{ $('Get a row').item.json.name }} acabou de informar que não irá participar da reunião.\n\nHorário da reunião: {{ $('Get a row').item.json.data_agendamento.toDateTime().format('dd/MM/yyyy HH:mm') }}\nhttps://cardapioweb.pipedrive.com/deal/{{ $('Get a row').item.json.pipedrive_id2 }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1088,
+        352
+      ],
+      "id": "5619e4a6-9e6b-442f-9e7f-293bece2c3ea",
+      "name": "Avisar closer",
+      "webhookId": "d021b930-08cf-4bd4-a448-cdd91c330752",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dealId": "={{ $('Get a row').item.json.pipedrive_id2 }}",
+        "updateFields": {
+          "lost_reason": "[IS] No-show",
+          "status": "lost"
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        352
+      ],
+      "id": "eade6fc4-37d9-47da-9e24-5ab1f0ae14da",
+      "name": "Dar perdido por no-show",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Get a row').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "closer"
+            },
+            {
+              "fieldId": "closer_email"
+            },
+            {
+              "fieldId": "etapa_conversa",
+              "fieldValue": "agendamento"
+            },
+            {
+              "fieldId": "em_atendimento",
+              "fieldValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        352
+      ],
+      "id": "c713301a-fa9e-4108-a856-6eea6e13689a",
+      "name": "Update a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH d AS (\n  SELECT cd.id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('When Executed by Another Workflow').item.json.whatsapp }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n)\nUPDATE commercial_deals cd\nSET stage = 'agendamento',\n    ai_enabled = true,\n    closer_user_id = NULL,\n    custom_properties = (COALESCE(cd.custom_properties, '{}'::jsonb) - 'closer' - 'closer_email'),\n    updated_at = now()\nFROM d\nWHERE cd.id = d.id;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1712,
+        560
+      ],
+      "id": "cdp-pg-reag-0001-aaaa-bbbbbbbbbbbb",
+      "name": "CDP - Update a row",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=## Erro ao espelhar lead no banco novo (CDP) — node *Update a row* (Reagendamento)\n\nWhatsapp: {{ $('When Executed by Another Workflow').item.json.whatsapp }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1892,
+        720
+      ],
+      "id": "cdp-slk-reag-0002-aaaa-bbbbbbbbbbbb",
+      "name": "Erro CDP - Update a row",
+      "webhookId": "e71655c6-2f72-400e-b596-20fa708e8560",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "L5UlPvRjDTzH9fsS",
+          "mode": "list",
+          "cachedResultName": "[CLO] DE-PARA Closers",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/L5UlPvRjDTzH9fsS"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $('Get a row').item.json.closer_email }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        896,
+        352
+      ],
+      "id": "9969006d-a0d5-4bc2-ba26-6726b6f1eaff",
+      "name": "Get row(s)"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f4293e62-e84c-4cf6-9c24-2a3e15edf2b5",
+              "name": "resposta",
+              "value": "Evento desmarcado. Seguir processo para oferecer novas datas para o lead com a tool 'propor_horarios'",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1920,
+        352
+      ],
+      "id": "89bb4436-3c66-48fa-beee-1d47ed2e1f81",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0AFAM3R3EU",
+          "mode": "list",
+          "cachedResultName": "acompanhamento_ia"
+        },
+        "text": "=Atenção, o lead {{ $('Get a row').item.json.name }} acabou de informar que não irá participar da reunião.\n\nHorário da reunião: {{ $('Get a row').item.json.data_agendamento.toDateTime().format('dd/MM/yyyy HH:mm') }}\nhttps://cardapioweb.pipedrive.com/deal/{{ $('Get a row').item.json.pipedrive_id2 }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1280,
+        352
+      ],
+      "id": "712c9873-376e-4a56-b3c0-853c5d72646e",
+      "name": "Avisar canal",
+      "webhookId": "d021b930-08cf-4bd4-a448-cdd91c330752",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "whatsapp": "558598527861"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "Delete an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete an event": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Avisar closer": {
+      "main": [
+        [
+          {
+            "node": "Avisar canal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dar perdido por no-show": {
+      "main": [
+        [
+          {
+            "node": "Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)": {
+      "main": [
+        [
+          {
+            "node": "Avisar closer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a row": {
+      "main": [
+        [
+          {
+            "node": "CDP - Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Update a row": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Erro CDP - Update a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Erro CDP - Update a row": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Avisar canal": {
+      "main": [
+        [
+          {
+            "node": "Dar perdido por no-show",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "9064c77a-269b-4131-9d82-01a802c1bdbd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  },
+  "id": "pWziTXSrzJcMx4YR",
+  "tags": []
+}

@@ -1,0 +1,183 @@
+{
+  "name": "[GWT] Notificação diária experimentos ativos",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "a1000000-0000-4000-8000-000000000001",
+      "name": "Todo dia 09:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        272,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1v8dDnjwihOFBGwcDhYSTV0rnorlUxXPnT5JGPUrjk64",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "168394971",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000002",
+      "name": "Ler experimentos",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        480,
+        352
+      ],
+      "notes": "Selecione no UI a credencial Google Sheets e confirme a aba (gid 168394971).",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "TROCAR_CREDENCIAL_SHEETS",
+          "name": "Google Sheets - Growth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f1000000-0000-4000-8000-000000000001",
+              "leftValue": "={{ $json['Status'] }}",
+              "rightValue": "Rodando",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1000000-0000-4000-8000-000000000003",
+      "name": "Só status Rodando",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        688,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Monta UMA mensagem única com todos os experimentos rodando.\nconst items = $input.all();\nconst planilhaUrl = 'https://docs.google.com/spreadsheets/d/1v8dDnjwihOFBGwcDhYSTV0rnorlUxXPnT5JGPUrjk64/edit?gid=168394971';\nconst hoje = $now.toFormat('dd/MM/yyyy');\n\n// Mapa: Responsável (como aparece na planilha) -> Slack member ID (U...).\n// Pegue o ID no Slack: perfil da pessoa -> ⋯ (More) -> Copy member ID.\nconst SLACK_IDS = {\n  'alexandre': 'U05NBR6D2MV',     // alexandre.magno\n  'gabriel': 'U0A3Q0YQD97',       // gabriel.santos\n  'joao paulo': 'U08B2PT8W95',    // joao.paulo\n  'antonio carlos': 'U06AG7DQLHW', // antonio.carlos\n};\n\n// normaliza: minúsculo, sem acento, sem espaços nas pontas\nconst norm = (s) => (s || '').toString().trim().toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');\nconst mencao = (resp) => {\n  const id = SLACK_IDS[norm(resp)];\n  return (id && !id.startsWith('U_TROCAR')) ? `<@${id}>` : (resp || '—');\n};\n\nconst linhas = [];\nfor (const it of items) {\n  const j = it.json;\n  const id = (j['ID'] || '').toString().trim();\n  const nome = (j['Nome curto'] || '').toString().trim();\n  const resp = (j['Responsável'] || '—').toString().trim();\n  const metrica = (j['Métrica'] || '—').toString().trim();\n  const termino = (j['Data término'] || '').toString().trim();\n  const jira = (j['Link Jira'] || '').toString().trim();\n\n  const prazo = termino ? ` · 🏁 termina ${termino}` : '';\n  const jiraTxt = jira ? ` · <${jira}|Jira>` : '';\n  const titulo = id ? `*${id}* — ${nome}` : `*${nome}*`;\n  linhas.push(`• ${titulo}\\n     👤 ${mencao(resp)} · 📈 ${metrica}${prazo}${jiraTxt}`);\n}\n\nlet texto;\nif (linhas.length === 0) {\n  texto = `📊 *Experimentos ativos* — ${hoje}\\n\\nNenhum experimento com status *Rodando* hoje. 🎉`;\n} else {\n  texto = `📊 *Experimentos rodando hoje* — ${hoje} (${linhas.length})\\n\\nLembrem de preencher a métrica do dia na planilha 👇\\n\\n${linhas.join('\\n\\n\\n')}\\n\\n🔗 <${planilhaUrl}|Abrir planilha de experimentos>`;\n}\n\nreturn [{ json: { texto, total: linhas.length } }];"
+      },
+      "id": "a1000000-0000-4000-8000-000000000004",
+      "name": "Montar mensagem",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C08HQ7SJRBP",
+          "mode": "list",
+          "cachedResultName": "growth"
+        },
+        "text": "={{ $json.texto }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": false
+        }
+      },
+      "id": "a1000000-0000-4000-8000-000000000005",
+      "name": "Enviar no #growth",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1104,
+        352
+      ],
+      "webhookId": "exp-daily-growth-0001",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Todo dia 09:00": {
+      "main": [
+        [
+          {
+            "node": "Ler experimentos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler experimentos": {
+      "main": [
+        [
+          {
+            "node": "Só status Rodando",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Só status Rodando": {
+      "main": [
+        [
+          {
+            "node": "Montar mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar mensagem": {
+      "main": [
+        [
+          {
+            "node": "Enviar no #growth",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

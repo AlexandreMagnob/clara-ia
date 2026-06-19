@@ -1983,5 +1983,5713 @@
    "o": "pendente",
    "lt": 63.12
   }
- ]
+ ],
+ "leads_clara": [
+  {
+   "dc": "2026-04-03",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-04-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-04-09",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-04-09",
+   "seg": "Outro",
+   "ag": 1
+  },
+  {
+   "dc": "2026-04-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-04-12",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-04-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-04-22",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-04-27",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-03",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-03",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-04",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-04",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-09",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-10",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-11",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-18",
+   "seg": "Outro",
+   "ag": 1
+  },
+  {
+   "dc": "2026-05-19",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-21",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-21",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-22",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-23",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-23",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-25",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-29",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-05-30",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-01",
+   "seg": "Confeitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-02",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-02",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-02",
+   "seg": "Confeitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-03",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-03",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-04",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-04",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-04",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-04",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-04",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-04",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-05",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-06",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pastelaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-07",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-08",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Marmitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-09",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "(vazio)",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Restaurante",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-10",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Marmitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Lanchonete",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-11",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-12",
+   "seg": "Marmitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Restaurante",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-13",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "(vazio)",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pizzaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-14",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "(vazio)",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-15",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Marmitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 1
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-16",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pastelaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Sushi",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Outro",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Marmitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Confeitaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-17",
+   "seg": "Pizzaria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Hamburgueria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Açaiteria",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Restaurante",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Lanchonete",
+   "ag": 0
+  },
+  {
+   "dc": "2026-06-18",
+   "seg": "Marmitaria",
+   "ag": 0
+  }
+ ],
+ "leads_clara_def": "tier>3 + usuario=clara (atribuicao nova); ag=1 se data_agendamento preenchido; dc=data_created local SP"
 }

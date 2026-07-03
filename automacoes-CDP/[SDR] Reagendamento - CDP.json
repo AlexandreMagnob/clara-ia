@@ -176,7 +176,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "WITH d AS (\n  SELECT cd.id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('When Executed by Another Workflow').item.json.whatsapp }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n)\nUPDATE commercial_deals cd\nSET stage = 'agendamento',\n    ai_enabled = true,\n    closer_user_id = NULL,\n    custom_properties = (COALESCE(cd.custom_properties, '{}'::jsonb) - 'closer' - 'closer_email'),\n    updated_at = now()\nFROM d\nWHERE cd.id = d.id;",
+        "query": "WITH d AS (\n  SELECT cd.id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('When Executed by Another Workflow').item.json.whatsapp }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n),\nupd AS (\n  UPDATE commercial_deals cd\n  SET stage = 'agendamento',\n      ai_enabled = true,\n      closer_user_id = NULL,\n      custom_properties = (COALESCE(cd.custom_properties, '{}'::jsonb) - 'closer' - 'closer_email' - 'slot_closer'),\n      updated_at = now()\n  FROM d WHERE cd.id = d.id\n  RETURNING cd.id\n)\nUPDATE commercial_activities a\nSET status = 'cancelled', updated_at = now()\nFROM d\nWHERE a.commercial_deal_id = d.id\n  AND a.activity_type = 'meeting'\n  AND a.status = 'scheduled';",
         "options": {}
       },
       "type": "n8n-nodes-base.postgres",

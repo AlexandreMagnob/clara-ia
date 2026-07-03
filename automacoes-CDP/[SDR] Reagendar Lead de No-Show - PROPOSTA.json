@@ -1,0 +1,472 @@
+{
+  "name": "[SDR] Reagendar Lead de No-Show",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ia-lead-noshow/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -64,
+        -160
+      ],
+      "id": "21a38607-7a3a-4f3a-a4f1-62507e938b37",
+      "name": "Webhook",
+      "webhookId": "ecfe4176-c7a3-466a-aa07-5cc54c97646d"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "email",
+              "keyValue": "={{ $json.body['Email-Pessoa'] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        144,
+        -160
+      ],
+      "id": "ef6041ec-57bc-4774-87a5-f3312c5f7993",
+      "name": "Get a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "DzFqCj1kEJGFCIRb",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/DzFqCj1kEJGFCIRb",
+          "cachedResultName": "[REVOPS] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        336,
+        -160
+      ],
+      "id": "273a83fe-8822-40a5-9f77-d828d8793836",
+      "name": "variaveis_globais1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Próximo dia útil a partir de hoje (Brasília). Sex->Seg; pula sáb/dom.\nconst OFF = 3 * 60 * 60 * 1000; // BRT = UTC-3\nconst nowBRT = new Date(Date.now() - OFF);\n\nlet d = new Date(nowBRT);\nd.setUTCDate(d.getUTCDate() + 1);\nwhile (d.getUTCDay() === 0 || d.getUTCDay() === 6) {\n  d.setUTCDate(d.getUTCDate() + 1);\n}\n\nconst dd = String(d.getUTCDate()).padStart(2, '0');\nconst mm = String(d.getUTCMonth() + 1).padStart(2, '0');\nconst yyyy = d.getUTCFullYear();\nconst data_alvo = `${yyyy}-${mm}-${dd}`;\nconst data_e_hora = `${data_alvo}T09:00:00-03:00`; // tem 'T' p/ o split interno da consulta_agenda\n\n// label: \"amanhã\" se for +1 civil, senão o nome do dia\nconst amanha = new Date(nowBRT); amanha.setUTCDate(amanha.getUTCDate() + 1);\nconst ehAmanha = (d.getUTCDate() === amanha.getUTCDate() && d.getUTCMonth() === amanha.getUTCMonth());\nconst dias = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];\nconst dia_label = ehAmanha ? 'amanhã' : dias[d.getUTCDay()];\n\nreturn [{ json: {\n  data_alvo,\n  data_e_hora,\n  dia_label,\n  whatsapp: $('Get a row').first().json.whatsapp\n}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        -160
+      ],
+      "id": "aa11bb22-cc33-dd44-ee55-000000000001",
+      "name": "Calcular dia seguinte"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "HvI38Wr29BZMxQ2e",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/HvI38Wr29BZMxQ2e",
+          "cachedResultName": "[SDR] Tool consulta_agenda"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data e hora": "={{ $json.data_e_hora }}",
+            "whatsapp": "={{ $json.whatsapp }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data e hora",
+              "displayName": "data e hora",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "whatsapp",
+              "displayName": "whatsapp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        720,
+        -160
+      ],
+      "id": "aa11bb22-cc33-dd44-ee55-000000000002",
+      "name": "consulta_agenda"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Seleciona 2 slots (1 manhã + 1 tarde). Fallback A: só um turno -> 1º e último desse turno.\nconst items = $input.all().map(i => i.json);\n\n// defensivo: acha o item que traz os horários do closer (Edit Fields da consulta_agenda)\nconst src = items.find(j => Array.isArray(j.horarios) && j.horarios.length)\n         || items.find(j => Array.isArray(j.horarios))\n         || {};\nconst fallback = items.some(j => j && j.fallback === true);\n\n// os horários vêm formatados: \"Quinta (02/07) às 10:00\" e abrangem vários dias úteis\nconst horarios = Array.isArray(src.horarios) ? src.horarios : [];\n\n// dia alvo (dia seguinte) vindo do nó anterior: \"YYYY-MM-DD\"\nconst alvo = $('Calcular dia seguinte').first().json.data_alvo;\nconst [, alvoMM, alvoDD] = alvo.split('-');\n\n// parse \"DiaSemana (DD/MM) às HH:MM\" e filtra só o dia alvo\nconst re = /\\((\\d{2})\\/(\\d{2})\\)\\s*às\\s*(\\d{2}):(\\d{2})/;\nconst doDia = [];\nfor (const h of horarios) {\n  const m = String(h).match(re);\n  if (!m) continue;\n  const [, dd, mm, HH, MM] = m;\n  if (dd === alvoDD && mm === alvoMM) {\n    doDia.push({ txt: h, hour: parseInt(HH, 10), min: parseInt(MM, 10) });\n  }\n}\ndoDia.sort((a, b) => a.hour - b.hour || a.min - b.min);\n\nconst manha = doDia.filter(p => p.hour < 12);\nconst tarde = doDia.filter(p => p.hour >= 12);\n\nlet slot1, slot2;\nif (!fallback && manha.length >= 1 && tarde.length >= 1) {\n  slot1 = manha[0].txt; slot2 = tarde[0].txt;                 // regra principal: 1 manhã + 1 tarde\n} else if (!fallback && manha.length >= 2) {\n  slot1 = manha[0].txt; slot2 = manha[manha.length - 1].txt;  // fallback A: só manhã\n} else if (!fallback && tarde.length >= 2) {\n  slot1 = tarde[0].txt; slot2 = tarde[tarde.length - 1].txt;  // fallback A: só tarde\n}\n\nconst ok = !!(slot1 && slot2);\nconst g = $('Get a row').first().json;\n\nreturn [{ json: {\n  ok,\n  slot1_txt: slot1 || null,   // já vem \"Quinta (02/07) às 10:00\"\n  slot2_txt: slot2 || null,\n  closer_nome: src.nome || null,\n  name_first: String(g.name || '').split(' ')[0],\n  whatsapp: g.whatsapp,\n  lead_id: g.lead_id,\n  conversa_atual: g.conversa\n}}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        912,
+        -160
+      ],
+      "id": "aa11bb22-cc33-dd44-ee55-000000000003",
+      "name": "Selecionar 2 slots"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "cond-ok-2h",
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1104,
+        -160
+      ],
+      "id": "aa11bb22-cc33-dd44-ee55-000000000004",
+      "name": "Achou 2 slots?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variaveis_globais1').item.json.token_whatsapp }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.whatsapp }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"reagendamento_2horarios\",\n    \"language\": { \"code\": \"pt_BR\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          { \"type\": \"text\", \"parameter_name\": \"name\", \"text\": \"{{ $json.name_first }}\" },\n          { \"type\": \"text\", \"parameter_name\": \"slot1\", \"text\": \"{{ $json.slot1_txt }}\" },\n          { \"type\": \"text\", \"parameter_name\": \"slot2\", \"text\": \"{{ $json.slot2_txt }}\" }\n        ]\n      }\n    ]\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1328,
+        -272
+      ],
+      "id": "aa11bb22-cc33-dd44-ee55-000000000005",
+      "name": "Enviar reagendamento_2horarios"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Selecionar 2 slots').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "conversa",
+              "fieldValue": "={{ $('Selecionar 2 slots').item.json.conversa_atual + \"\\n\\n[\" + new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', hour12: false }) + \"] Comercial: \" + \"Oi, \" + $('Selecionar 2 slots').item.json.name_first + \"! Tudo bem? 😊\\n\" + \"Como a gente já havia alinhado, a nossa ferramenta tem muito a contribuir com a sua operação. Acredito que tenha surgido algum imprevisto que te impediu de comparecer à nossa reunião, já que você havia se comprometido comigo.\\n\" + \"Pra facilitar, já deixei dois horários separados pra remarcarmos:\\n\" + \"✅ \" + $('Selecionar 2 slots').item.json.slot1_txt + \"\\n\" + \"✅ \" + $('Selecionar 2 slots').item.json.slot2_txt + \"\\n\" + \"Qual desses encaixa melhor pra você?\" }}"
+            },
+            {
+              "fieldId": "reagendamento",
+              "fieldValue": "true"
+            },
+            {
+              "fieldId": "motivo_perda",
+              "fieldValue": "No-show"
+            },
+            {
+              "fieldId": "status",
+              "fieldValue": "lost"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        -272
+      ],
+      "id": "aa11bb22-cc33-dd44-ee55-000000000006",
+      "name": "Update a row (2 horários)",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variaveis_globais1').item.json.token_whatsapp }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('Get a row').item.json.whatsapp }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"reagendamento_1\",\n    \"language\": { \"code\": \"pt_BR\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"name\",\n            \"text\": \"{{ $('Get a row').item.json.name.split(' ')[0] }}\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1328,
+        -48
+      ],
+      "id": "7e248f6c-29a8-4ad2-9180-ecf8c26fae53",
+      "name": "Mensagem inicial Whatsapp1 (fallback)"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Get a row').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "conversa",
+              "fieldValue": "={{ \n  $('Get a row').item.json.conversa \n  + \"\\n\\n[\" \n  + new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', hour12: false }) \n  + \"] Comercial: Olá, \" \n  + $('Get a row').item.json.name \n  + \"! Tudo certo por aí? Como a gente já havia alinhado, a nossa ferramenta tem muito a contribuir com a sua operação, acredito que tenha surgido algum imprevisto que impediu você de comparecer à nossa reunião, já que você havia se comprometido comigo. Assim que tiver um tempinho, já me responde essa mensagem para remarcarmos essa conversa. Qual dia você prefere?\"\n}}"
+            },
+            {
+              "fieldId": "reagendamento",
+              "fieldValue": "true"
+            },
+            {
+              "fieldId": "motivo_perda",
+              "fieldValue": "No-show"
+            },
+            {
+              "fieldId": "status",
+              "fieldValue": "lost"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1536,
+        -48
+      ],
+      "id": "03a37aca-166b-4ebc-a5b2-ad064a0a904a",
+      "name": "Update a row (fallback)",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "### GWT-2863 — No-show com 2 horários\\n\\nRamo de cima = fluxo novo (template `reagendamento_2horarios`).\\nRamo de baixo = fallback (zero slot) usa o `reagendamento_1` antigo.\\n\\n⚠️ `consulta_agenda` (HvI38Wr29BZMxQ2e) tem efeitos colaterais:\\n- grava closer/closer_email/slot_closer no lead (OK, desejado)\\n- manda DM Slack pro Gerardo ('lead tá querendo agendar') — decidir se tolera.",
+        "height": 260,
+        "width": 420,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        500,
+        -460
+      ],
+      "id": "aa11bb22-cc33-dd44-ee55-000000000099",
+      "name": "Sticky Note"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "variaveis_globais1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variaveis_globais1": {
+      "main": [
+        [
+          {
+            "node": "Calcular dia seguinte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular dia seguinte": {
+      "main": [
+        [
+          {
+            "node": "consulta_agenda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consulta_agenda": {
+      "main": [
+        [
+          {
+            "node": "Selecionar 2 slots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Selecionar 2 slots": {
+      "main": [
+        [
+          {
+            "node": "Achou 2 slots?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Achou 2 slots?": {
+      "main": [
+        [
+          {
+            "node": "Enviar reagendamento_2horarios",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem inicial Whatsapp1 (fallback)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar reagendamento_2horarios": {
+      "main": [
+        [
+          {
+            "node": "Update a row (2 horários)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem inicial Whatsapp1 (fallback)": {
+      "main": [
+        [
+          {
+            "node": "Update a row (fallback)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  }
+}

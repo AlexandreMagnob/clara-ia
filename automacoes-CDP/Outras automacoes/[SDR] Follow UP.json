@@ -1,0 +1,3947 @@
+{
+  "name": "[SDR] Follow UP",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Loop').last().json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "followup_count",
+              "fieldValue": "={{ $('Loop').item.json.followup_count + 1 }}"
+            },
+            {
+              "fieldId": "last_assistant_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "date_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "conversa",
+              "fieldValue": "={{ $('Loop').item.json.conversa }}\n[{{ $now.format('dd/MM/yyyy HH:mm:ss') }}] Comercial (Fup): {{ $('AI Agent').item.json.output }}"
+            },
+            {
+              "fieldId": "date_next_fup",
+              "fieldValue": "={{ $now.toDateTime().plus( $('Consultar cadencia1').item.json['Intervalo (dia)'], \"minutes\") }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        -80
+      ],
+      "id": "e5695c03-b3fc-4339-8aca-37747df2b44d",
+      "name": "Atualiza base de leads",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "941ed903-006d-4abd-9370-fa7cf01a2d5e",
+              "name": "instancia",
+              "value": "gerardo",
+              "type": "string"
+            },
+            {
+              "id": "0dde70e5-f975-4e61-aeb4-3ddd60a27409",
+              "name": "dia_semana",
+              "value": "={{ $('Filtro de horário de disparo').item.json['Day of week'] }}",
+              "type": "string"
+            },
+            {
+              "id": "9a7771fc-f5b4-440e-8746-a9fe419b9579",
+              "name": "telefone de teste",
+              "value": "558598527861",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2464,
+        0
+      ],
+      "id": "310e8382-b14f-401c-8e87-85cb062949ca",
+      "name": "Declarar variáveis",
+      "notesInFlow": true,
+      "notes": "Atualizar credencial EVO do cliente"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -720,
+        -144
+      ],
+      "id": "255d0b95-f36d-4121-b104-cfa28b3c9647",
+      "name": "Loop"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().filter(item => {\n    const horaAtual = Number(item.json.Hour || 0);       // pega a hora do input\n    const diaSemana = Number(item.json[\"Day of week num\"] ?? null) \n        || new Date(item.json.timestamp).getDay();       // se tiver dia como número, usa, senão converte do timestamp\n\n    // Permite apenas se não for domingo (0) e hora entre 9h e 20h\n    return diaSemana !== 0 && horaAtual >= 8 && horaAtual <= 22});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2848,
+        0
+      ],
+      "id": "b36e7b03-43f2-45b5-8e78-498a5bf96859",
+      "name": "Filtro de horário de disparo"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "swwlueWgkTrcCm44",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/swwlueWgkTrcCm44",
+          "cachedResultName": "[SDR] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2656,
+        0
+      ],
+      "id": "17b71764-fb84-4f5e-b56b-89a6c56788dc",
+      "name": "variáveis globais"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "follow",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "cadencia",
+              "condition": "eq",
+              "keyValue": "={{ $json.followup_count }}"
+            },
+            {
+              "keyName": "respondeu",
+              "condition": "eq",
+              "keyValue": "TRUE"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -512,
+        -128
+      ],
+      "id": "f991c084-eed6-48a3-b561-0b5f8e80399c",
+      "name": "Consultar cadencia1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variáveis globais').item.json.token_permanente }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('Loop').item.json.whatsapp }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"preview_url\": false,\n    \"body\": {{ JSON.stringify($json.output) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1120,
+        -144
+      ],
+      "id": "da0569d7-2902-4937-bc78-47b1174fb111",
+      "name": "Envio de mensagens"
+    },
+    {
+      "parameters": {
+        "description": "Essa tool deve ser executada antes de toda resposta. Use esse tool para garantir que está respondendo conforme o service flow, evitando repetições desnecessárias, respeitando todos os guardrails e usando as tools corretamente. \n\nNunca envie o feedback gerado nessa tool no output final do agente."
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1,
+      "position": [
+        784,
+        176
+      ],
+      "id": "26ee3101-42d5-45b2-a909-b1378da36133",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Envie um follow up para o nosso lead com seguindo a instrução a seguir e mantendo-a em uma única frase:\n\n{{ $json.Prompt }}\n\n##Analise o histórico da conversa e a última mensagem, analisando frase a frase para garantir o entendimento claro sobre o contexto atual da conversa dentro do contexto do seu serviceflow, para só então iniciar a criação da resposta.\n\n##SEMPRE utilize a tool 'Think' para revisar se está seguindo corretamente o processo antes de enviar a resposta final.\n\n## Informações do lead\nnome: {{ $('Loop').item.json.name }}\nempresa: {{ $('Loop').item.json.empresa }}\nsegmento: {{ $('Loop').item.json.segmento }}\n\nHistórico da conversa: {{ $('Loop').item.json.conversa }}\n",
+        "options": {
+          "systemMessage": "=# Prompt do Agente SDR IA (WhatsApp) — Cardápio Web (v2.8)\n\n## Objetivo\nQualificar o lead no WhatsApp e agendar diretamente a reunião com o Closer, sem repasse para SDR humano.\n\n---\n\n## Persona e Tom\n- **Nome:** Clara, da Cardápio Web.\n- **Personalidade:** Consultiva, focada em produtividade e parceira do dono de restaurante.\n- **Variabilidade:** Proibido ser repetitiva. Varie as confirmações entre \"Entendi\", \"Faz sentido\", \"Compreendo\", \"Show\", \"Perfeito\".\n- Após a primeira mensagem, nunca repita saudações, boas-vindas ou seu nome. Siga a conversa de forma fluida.\n\n---\n\n## Regras de Interação\n1. Uma pergunta por vez — nunca envie dois ganchos na mesma mensagem.\n2. Máximo de 300 caracteres por mensagem (Etapa de Apresentação permite 400).\n3. Se o lead já deu uma informação em mensagens anteriores, não pergunte de novo — faça um comentário de confirmação.\n4. Data e hora atual: {{ $now.weekdayLong }}, {{ $now.format('dd/MM/yyyy') }}, {{ $now.hour.toString().padStart(2, '0') }}:{{ $now.minute.toString().padStart(2, '0') }}.\n5. Se o lead perguntar sobre valores antes da Sondagem estar concluída, explique que precisamos entender o contexto dele primeiro para indicar o plano certo.\n6. Para qualquer objeção, tente contornar no máximo 1 vez. Se o lead mantiver a objeção → encerre educadamente e coloque-se à disposição para quando tiver uma necessidade mais imediata.\n7. Todos os horários de reunião devem vir exclusivamente da tool `agent_agendamento`. Nunca sugira horários por conta própria.\n\n---\n\n## Ferramentas\n\n### `base_conhecimento`\nAcionar obrigatoriamente quando:\n- Chegar na etapa de explicar benefícios, funcionalidades ou planos.\n- O lead fizer qualquer pergunta sobre produto, preço, planos, integrações, funcionamento ou prazos.\n\nResponda somente com o que estiver na `base_conhecimento`. Se não encontrar, informe que vai verificar e retoma em seguida.\nPriorize os valores dos planos anuais, que costumam ser os mais acessíveis.\n\n### `atend_humano`\nAcionar quando:\n- O lead pedir atendimento humano explicitamente.\n- Surgir pergunta específica não coberta pela `base_conhecimento`.\n- O subagente `agent_agendamento` retornar flag `atend_humano`.\n- Identificar que o lead é uma agência de marketing, gestor de tráfego ou outro segmento que deseja indicar clientes ou revender a plataforma.\n- É um cliente ativo que seja suporte.\n\nAo acionar, envie um resumo estruturado do contexto do lead para o humano.\n\n### `agent_agendamento`\nAcionar quando:\n- O lead informar o turno de preferência na Etapa 5 (após o gatilho de escassez e a pergunta de turno).\n- Se o lead sugerir um horário específico, passá-lo como input prioritário para o subagente, junto com o turno informado.\n- Se o lead chegar com `etapa_conversa = agendado` e mencionar que não poderá participar da reunião ou que deseja remarcar.\n\nAo acionar, envie um resumo estruturado do contexto do lead, incluindo a temperatura BANT:\n- **Hot**: preenche todos os critérios BANT 100%.\n- **Warm**: tem budget e necessidade, mas não pretende fechar de imediato ou não é decisor.\n- **Cold**: tem necessidade e budget próximo, mas ainda vai abrir operação ou implementar em mais de 30 dias.\n\n---\n\n## Fluxo de Atendimento\n\n### Etapa 1 — Abertura\nContextualize o cadastro e inicie a conversa. Se não tiver o nome, peça uma única vez.\n\n### Etapa 2 — Sondagem\nColete as 4 informações abaixo, uma por vez, na ordem:\n1. **Origem:** Como conheceu a Cardápio Web?\n2. **Dor:** O que motivou a busca por automação agora?\n3. **Modelo:** Opera com Delivery, Salão ou ambos?\n4. **Sistema atual:** Já usa alguma plataforma de cardápio digital ou está no WhatsApp/papel manual?\n\n### Etapa 3 — Apresentação\n- Acionar `base_conhecimento`.\n- Conecte a dor do lead a uma funcionalidade específica.\n- Apresente o plano mais adequado e valide se atende à necessidade dele.\n\n### Etapa 4 — Qualificação\nValide os 3 critérios abaixo, nesta ordem:\n\n**Budget:**\n1. Informe que o próximo passo é uma videochamada com um especialista.\n2. Apresente a faixa de preço: R$179,99 até R$524,94 (todos os módulos).\n3. Valide se cabe no orçamento.\n   - Objeção de preço → argumente sobre ROI (ex: 2 pedidos perdidos/semana já pagam o plano).\n   - Após 1 contorno sem o lead considerar pagar o valor mínimo → encerre educadamente.\n\n**Autoridade:**\n- \"Além de você, mais alguém decide sobre a contratação?\"\n- Se houver outros decisores → informar que precisamos de todos os decisores presentes na reunião.\n- Se o lead não conseguir garantir a presença de todos os decisores → encerre educadamente.\n\n**Prioridade — script fixo e inegociável:**\n- \"Se ao final da reunião com o especialista você estiver convencido que conseguimos resolver sua necessidade, você está disposto a iniciar a implementação de imediato?\"\n\nFallbacks em sequência:\n1. Se não topar de imediato → perguntar qual é a previsão.\n2. Se deixar a previsão em aberto → perguntar diretamente se a previsão é implementar nos próximos 30 dias.\n3. Se a previsão for superior a 30 dias → não qualificado. Encerrar educadamente.\n\n### Etapa 5 — Agendamento\n\n**Passo 1 — Gatilho de escassez e compromisso (script fixo e inegociável):**\n\nAssim que o lead confirmar o último critério BANT, reproduzir exatamente:\n\n> \"[NOME], antes de te passar os horários disponíveis, preciso ser honesta: nossa agenda de especialistas é muito concorrida e os horários disponíveis são disputados. Antes de reservar um pra você, preciso que você me confirme que vai realmente comparecer na reunião. Posso contar com esse compromisso?\"\n\nTratamento da resposta:\n- **Confirmação (\"sim\", \"pode contar\", \"claro\", etc.)** → avançar para o Passo 2.\n- **Dúvida ou resistência** → esclarecer uma vez. Se persistir → encerrar educadamente.\n\n**Passo 2 — Perguntar turno de preferência:**\n\nApós a confirmação do compromisso, perguntar:\n\n> \"Ótimo! E qual turno encaixa melhor pra você: manhã ou tarde?\"\n\n- Manhã = horários antes das 12h.\n- Tarde = horários a partir das 12h.\n- Aguardar resposta antes de acionar `agent_agendamento`.\n\n**Passo 3 — Buscar e apresentar horários:**\n\nAcionar `agent_agendamento` passando o turno informado pelo lead. Apresentar os 2 horários retornados exatamente como recebidos — nunca sugerir horários por conta própria.\n\nAo confirmar o agendamento, reforce que o horário é no **horário de Brasília**.\n\n### Etapa 6 — Compromisso\n\n**Mensagem 1 — Script fixo e inegociável. Reproduzir exatamente, substituindo apenas os campos entre colchetes:**\n\n> \"Perfeito, [NOME_DO_LEAD]! Antes de confirmar: tem alguma coisa que te impeça de participar da reunião no [DIA] às [HORÁRIO], horário de Brasília?\"\n\nTratamento da resposta:\n- **Sem impedimento** → fazer dupla verificação (`etapa_conversa = agendado` + `Data de agendamento` preenchida). Se confirmado, enviar Mensagem 2 e encerrar. Se não confirmado, acionar `agent_agendamento` novamente.\n- **Com impedimento ou dúvida** → perguntar horário de preferência, acionar `agent_agendamento` para remarcar e só então enviar Mensagem 2.\n- **Negativa clara** → acionar `agent_agendamento` para remarcar. Não avançar para Mensagem 2 sem confirmação explícita.\n\n**Mensagem 2 — Script fixo e inegociável. Reproduzir exatamente, substituindo apenas os campos entre colchetes:**\n\n> \"Show de bola, [NOME_DO_LEAD]! Tá marcado aqui na agenda. Se surgir qualquer imprevisto, me avisa com antecedência para a gente conseguir liberar o horário para outro cliente. Posso contar com você?\"\n\nApós confirmação do lead, encerrar com:\n\n> \"Fechado então, [NOME_DO_LEAD]! Sua reunião está confirmada para [DIA] às [HORÁRIO], horário de Brasília, com [NOME_DO_CLOSER / \"um dos nossos especialistas\"]. Qualquer dúvida até lá, é só chamar aqui. Até mais!\"\n\nA conversa está encerrada. Não enviar mais nenhuma mensagem.\n\n---\n\n## Exemplo de Atendimento Ideal\n\n**Clara:** Oi, Marcos! Aqui é a Clara da Cardápio Web. Vi seu interesse no nosso sistema e queria te entender melhor. Tudo bem seguirmos por aqui?\n**Lead:** Opa, tudo bem.\n**Clara:** Show! Para começar, como você nos conheceu? Foi por anúncio ou indicação?\n**Lead:** Vi no Instagram.\n**Clara:** Legal! E me conta: o que te fez buscar uma solução de cardápio digital justo agora?\n**Lead:** Meu WhatsApp está um caos, muita gente chamando e eu demoro a responder.\n**Clara:** Nossa, eu imagino a correria. No delivery, demora é sinônimo de cliente indo pro concorrente, né? E hoje você foca só em delivery, salão ou atende os 2?\n**Lead:** Só delivery.\n**Clara:** E você já usou ou usa alguma outra plataforma de cardápio digital ou está tocando tudo mais manualmente mesmo, usando WhatsApp?\n**Lead:** Só no WhatsApp.\n**Clara:** Entendi. Marcos, pelo que você disse, o Plano Delivery é perfeito. Ele tem o Robô de IA que atende e anota o pedido sozinho no WhatsApp. Assim você não perde nenhuma venda por demora. Essas funcionalidades te atendem?\n**Lead:** Sim.\n**Clara:** Perfeito, Marcos. O próximo passo é uma videochamada para um dos nossos especialistas apresentar a plataforma, mas antes de agendarmos é importante você já saber que o valor do Plano Delivery inicia em R$179,99/mês e pode chegar até R$524,54 (incluindo todos os módulos extra). Esse valor cabe no seu orçamento?\n**Lead:** Achei meio caro por mês.\n**Clara:** Compreendo seu ponto, Marcos. Mas pensa comigo: se esse robô evitar que você perca apenas 2 pedidos por semana por causa daquela demora que você citou, ele já se pagou e ainda trouxe lucro, concorda? Olhando por esse lado, faz sentido seguir em frente?\n**Lead:** É, visto assim faz sentido.\n**Clara:** Ótimo! Além de você, tem mais algum sócio que decide sobre o sistema ou é só com você?\n**Lead:** Só eu mesmo.\n**Clara:** Boa. Se ao final da reunião com o especialista você estiver convencido que conseguimos resolver sua necessidade, você está disposto a iniciar a implementação de imediato?\n**Lead:** Sim, preciso disso pra ontem.\n**Clara:** Marcos, antes de te passar os horários disponíveis, preciso ser honesta: nossa agenda de especialistas é muito concorrida e os horários disponíveis são disputados. Antes de reservar um pra você, preciso que você me confirme que vai realmente comparecer na reunião. Posso contar com esse compromisso?\n**Lead:** Pode contar sim!\n**Clara:** Ótimo! E qual turno encaixa melhor pra você: manhã ou tarde?\n**Lead:** Manhã.\n**Clara:** *[aciona `agent_agendamento` com turno: manhã]* Temos hoje às 10h e amanhã às 11h30. Qual prefere?\n**Lead:** Amanhã às 11h30.\n**Clara:** *[aciona `agent_agendamento` para confirmar e agendar]* Perfeito, Marcos! Antes de confirmar: tem alguma coisa que te impeça de participar da reunião amanhã às 11h30, horário de Brasília?\n**Lead:** Não, amanhã às 11h30 tá ótimo pra mim.\n**Clara:** *[dupla verificação: etapa_conversa = agendado + Data de agendamento preenchida]* Show de bola, Marcos! Tá marcado aqui na agenda. Se surgir qualquer imprevisto, me avisa com antecedência para a gente conseguir liberar o horário para outro cliente. Posso contar com você?\n**Lead:** Pode contar!\n**Clara:** Fechado então, Marcos! Sua reunião está confirmada para amanhã às 11h30, horário de Brasília, com um dos nossos especialistas. Qualquer dúvida até lá, é só chamar aqui. Até mais!\n*[conversa encerrada]*\n\n---\n\n## Guard-Rails\n- Uma pergunta por vez — sem exceção.\n- Nunca perguntar informação que o lead já respondeu — analisar o histórico antes de cada mensagem.\n- Nunca sugerir horários sem que tenham sido retornados pela tool `agent_agendamento`.\n- Nunca responder dúvidas de produto sem acionar `base_conhecimento`.\n- Nunca se apresentar mais de uma vez.\n- Nunca agendar um lead com `etapa_conversa` que já é `agendado`.\n- Nunca mencionar SDR humano para leads qualificados.\n- Nunca alterar o script fixo dos gatilhos da Etapa 5 e das Mensagens 1 e 2 da Etapa 6 — substituir apenas os campos entre colchetes.\n- Nunca acionar `agent_agendamento` antes de receber o turno de preferência do lead.\n- Nunca avançar para a Mensagem 2 sem fazer a dupla verificação (`etapa_conversa = agendado` + `Data de agendamento` preenchida).\n- Sempre informar que o horário da reunião é no horário de Brasília.\n- Máximo de 1 contorno por objeção — sem exceção.\n- Não avançar para a Mensagem 2 do Compromisso sem confirmação explícita do lead.\n- Após encerramento, não enviar mais nenhuma mensagem."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        640,
+        -80
+      ],
+      "id": "83d4ca5a-bd9e-4362-9ab0-86e9602dd82f",
+      "name": "AI Agent",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.4-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5.4-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        640,
+        176
+      ],
+      "id": "8c3a0cae-d57c-471e-9fbe-e49c8e7b77c7",
+      "name": "gpt-5.1",
+      "credentials": {
+        "openAiApi": {
+          "id": "dHuX6sDGGxT4BmcJ",
+          "name": "OpenAI - ClarIA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        496,
+        128
+      ],
+      "id": "ef738b5a-9d01-4f98-84d9-c05b36519b1b",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "qEp5ZRjwG7mTAuud",
+          "name": "Google Gemini - Comercial"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const N = 10; // quantos itens quer processar\nreturn $input.all().slice(0, N);\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1232,
+        768
+      ],
+      "id": "887ce3fd-99e0-46f9-a0af-a598531ed370",
+      "name": "Limitador de n° de envios"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Loop1').last().json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "followup_count",
+              "fieldValue": "={{ $('define quando encerrar os FUP\\'s1').item.json.followup_count }}"
+            },
+            {
+              "fieldId": "last_assistant_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "date_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "conversa",
+              "fieldValue": "={{ $('Loop1').item.json.conversa }}\n[{{ $now.format('dd/MM/yyyy HH:mm:ss') }}] Comercial (Fup): {{  $('Consultar cadencia3').item.json.mensagem.replace('{nome}', $('Loop1').item.json.name ? $('Loop1').item.json.name.split(\" \")[0]: $('Loop1').item.json.procedimento ) }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        368,
+        768
+      ],
+      "id": "fb135bec-8a29-44ee-8432-627de10aad07",
+      "name": "Atualiza base de leads1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "941ed903-006d-4abd-9370-fa7cf01a2d5e",
+              "name": "instancia",
+              "value": "gerardo",
+              "type": "string"
+            },
+            {
+              "id": "0dde70e5-f975-4e61-aeb4-3ddd60a27409",
+              "name": "dia_semana",
+              "value": "={{ $('Filtro de horário de disparo1').item.json['Day of week'] }}",
+              "type": "string"
+            },
+            {
+              "id": "9a7771fc-f5b4-440e-8746-a9fe419b9579",
+              "name": "telefone de teste",
+              "value": "558598527861",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2528,
+        768
+      ],
+      "id": "e2041fa5-25d2-47d1-8a32-53663c31b582",
+      "name": "Declarar variáveis1",
+      "notesInFlow": true,
+      "notes": "Atualizar credencial EVO do cliente"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Sort1').item.json.lead_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1024,
+        768
+      ],
+      "id": "b1a4e6cf-353c-43c5-8f17-601ce77fed0d",
+      "name": "Levar dados do lead pro Loop1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getTimeBetweenDates",
+        "startDate": "={{ $('Sort1').item.json.date_updated.toDateTime() }}",
+        "endDate": "={{ $now }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        768
+      ],
+      "id": "dec4504d-66a7-4125-a185-613ea3a72097",
+      "name": "Calcular prazo do FUP1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "349f251b-d96e-444f-86ac-e2aab28fa870",
+              "leftValue": "={{ $json.timeDifference.days }}",
+              "rightValue": "={{ $('Consultar cadencia2').item.json['Intervalo (dia)'] }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "2aa547df-c6f9-45d7-9a51-0ce9c6771bae",
+              "leftValue": "={{ $('Declarar variáveis1').item.json.dia_semana }}",
+              "rightValue": "Sunday",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1456,
+        768
+      ],
+      "id": "60472dc1-996e-4e8e-9b35-5e4e690697f5",
+      "name": "Analisar critérios de tempo1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -848,
+        768
+      ],
+      "id": "b78c5968-ea70-40dd-9534-5efe67a65965",
+      "name": "Loop1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().filter(item => {\n    const horaAtual = Number(item.json.Hour || 0);       // pega a hora do input\n    const diaSemana = Number(item.json[\"Day of week num\"] ?? null) \n        || new Date(item.json.timestamp).getDay();       // se tiver dia como número, usa, senão converte do timestamp\n\n    // Permite apenas se não for domingo (0) e hora entre 9h e 20h\n    return diaSemana !== 0 && horaAtual >= 8 && horaAtual <= 22;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2992,
+        768
+      ],
+      "id": "67051079-e94c-4170-90c3-4bdc7c764f45",
+      "name": "Filtro de horário de disparo1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Inputs\nconst count = $('Loop1').item.json.followup_count;\n\n// Limite depende da etapa\nconst limite = 8;\n\n// Lógica de avanço ou reset\nlet novoCount;\nif (count < limite) {\n  novoCount = count + 1;\n} else {\n  novoCount = 0;\n}\n\n// Output\nreturn {\n  followup_count: novoCount\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -16,
+        768
+      ],
+      "id": "1905cd42-1bf4-4388-98db-20bdb8c87801",
+      "name": "define quando encerrar os FUP's1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "swwlueWgkTrcCm44",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/swwlueWgkTrcCm44",
+          "cachedResultName": "[SDR] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2752,
+        768
+      ],
+      "id": "b3157aad-12fe-4524-b8ee-c5ef5112a929",
+      "name": "variáveis globais1"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "follow",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "cadencia",
+              "condition": "eq",
+              "keyValue": "={{ $json.followup_count }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -624,
+        768
+      ],
+      "id": "204400a3-fe9e-48ca-b8ba-0446e1d5e712",
+      "name": "Consultar cadencia3",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "follow",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "cadencia",
+              "condition": "eq",
+              "keyValue": "={{ $json.followup_count }}"
+            },
+            {
+              "keyName": "respondeu",
+              "condition": "eq",
+              "keyValue": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1920,
+        768
+      ],
+      "id": "1767e607-45fc-4b11-8489-90969d2a04a4",
+      "name": "Consultar cadencia2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo",
+          "mode": "list",
+          "cachedResultName": "[CW] AGENTE IA - SDR",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1104097587,
+          "mode": "list",
+          "cachedResultName": "Follow",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo/edit#gid=1104097587"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
+            "Lead": "={{ $('Loop1').item.json.name }}",
+            "telefone": "={{ $('Loop1').item.json.whatsapp }}",
+            "email": "={{ $('Loop1').item.json.email }}",
+            "cadência": "={{ $('Consultar cadencia3').item.json.cadencia }}",
+            "message_id": "={{ $('Send template').item.json.messages[0].id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead",
+              "displayName": "Lead",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cadência",
+              "displayName": "cadência",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_id",
+              "displayName": "message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status de envio",
+              "displayName": "status de envio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resposta",
+              "displayName": "resposta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        576,
+        768
+      ],
+      "id": "b8f12262-490e-4472-a060-05c42b6deb18",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Follow >24h\nFollow feito apenas utilizando templates de mensagens aprovados pela Meta.",
+        "height": 384,
+        "width": 3904,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3088,
+        688
+      ],
+      "typeVersion": 1,
+      "id": "0144d772-e9fb-4cc6-98d4-646641bd8937",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Follow < 24h\nEsse follow é mais personalizado, pois acontece ainda dentro da janela de conversação (24h após a resposta do lead)\n",
+        "height": 1040,
+        "width": 5216,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3008,
+        -560
+      ],
+      "typeVersion": 1,
+      "id": "517d29d8-68db-42f4-9b02-7b431ca8f747",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo",
+          "mode": "list",
+          "cachedResultName": "[CW] AGENTE IA - SDR",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1104097587,
+          "mode": "list",
+          "cachedResultName": "Follow",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo/edit#gid=1104097587"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
+            "Lead": "={{ $('Loop').item.json.name }}",
+            "telefone": "={{ $('Loop').item.json.whatsapp }}",
+            "email": "={{ $('Loop').item.json.email }}",
+            "cadência": "={{ $('Consultar cadencia1').item.json.cadencia }}",
+            "message_id": "={{ $('Envio de mensagens').item.json.messages[0].id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead",
+              "displayName": "Lead",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cadência",
+              "displayName": "cadência",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_id",
+              "displayName": "message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status de envio",
+              "displayName": "status de envio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resposta",
+              "displayName": "resposta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2016,
+        -80
+      ],
+      "id": "2981cb1a-9dac-4cae-96e4-c110ee890838",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "=date_created",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -2128,
+        768
+      ],
+      "id": "0bd1b0d2-480f-4690-9cb5-4dcf10fdd847",
+      "name": "Sort1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -3376,
+        768
+      ],
+      "id": "34517e68-20f4-4d2b-b646-38eb29dbd5d4",
+      "name": "Aciona a cada 15m"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -3040,
+        0
+      ],
+      "id": "a0e1e7d8-7eda-4363-a57b-f7669a05f830",
+      "name": "Aciona a cada 10m"
+    },
+    {
+      "parameters": {
+        "resource": "activity",
+        "subject": "=Follow up {{ $('Loop1').item.json.followup_count }}",
+        "done": "1",
+        "type": "Mensagem no WhatsApp",
+        "additionalFields": {
+          "deal_id": "={{ $('Loop1').item.json.pipedrive_id }}",
+          "note": "={{  $('Consultar cadencia3').item.json.mensagem.replace('{nome}', $('Loop1').item.json.name ? $('Loop1').item.json.name.split(\" \")[0]: $('Loop1').item.json.procedimento ) }}"
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        176,
+        768
+      ],
+      "id": "50ca9f7e-e60a-4e1a-8859-29a24e98265e",
+      "name": "Create an activity",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "activity",
+        "subject": "=Follow up {{ $('Loop').item.json.followup_count }}",
+        "done": "1",
+        "type": "Mensagem no WhatsApp",
+        "additionalFields": {
+          "deal_id": "={{ $('Loop').item.json.pipedrive_id }}",
+          "note": "={{ $('AI Agent').item.json.output }}"
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        1632,
+        -80
+      ],
+      "id": "b223528a-cfe5-4275-a182-644ee3f95f68",
+      "name": "Create an activity1",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM leads\nWHERE\n  followup_count <= 2\n  AND followup_count != 0\n  AND em_atendimento = true\n  AND etapa_conversa != 'agendado'\n  AND break = false\n  AND tier::numeric >= 4\n  AND conversa ILIKE '%Lead %:%'\n  AND date_created >= NOW() - INTERVAL '23 hours'\n  AND status IS DISTINCT FROM 'lost'\nORDER BY date_created ASC\nLIMIT 200;",
+        "options": {
+          "replaceEmptyStrings": false
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -2272,
+        0
+      ],
+      "id": "ee529885-ddc1-49e0-a483-1f631b5f7758",
+      "name": "Execute a SQL query",
+      "credentials": {
+        "postgres": {
+          "id": "XOYeTIMfsvkaFsZd",
+          "name": "Postgres - RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.followup_count }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    },
+                    "id": "67235684-7e85-4b9d-809e-6635965544ee"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f5276943-1a4b-4c05-8ee6-799571af33b8",
+                    "leftValue": "={{ $json.followup_count }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2b4adc35-56b1-43fc-b392-73dcee894989",
+                    "leftValue": "={{ $json.followup_count }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "a8c33cfa-fecd-4c04-88a4-f675a6cf1fee",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -2080,
+        -32
+      ],
+      "id": "93727159-1de9-4c63-bf0f-61a53e76abf7",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "getTimeBetweenDates",
+        "startDate": "={{ $('Sort2').item.json.date_updated.toDateTime() }}",
+        "endDate": "={{ $now }}",
+        "units": [
+          "minute"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -1712,
+        176
+      ],
+      "id": "c0b12f42-068e-4bbd-8d3e-d3bbe036ba90",
+      "name": "Calcular prazo do FUP2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "349f251b-d96e-444f-86ac-e2aab28fa870",
+              "leftValue": "={{ $('Calcular prazo do FUP2').item.json.timeDifference.minutes }}",
+              "rightValue": "=240",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1520,
+        176
+      ],
+      "id": "eed3ca0c-1887-4fdd-badd-e5d1f859b078",
+      "name": "Analisar critérios de tempo2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const N = 10;\n\nreturn $input.all().slice(0, N);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1344,
+        176
+      ],
+      "id": "3f00eaaf-afc3-41d8-98d9-1b4fb875998e",
+      "name": "limite X fups por vez1"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "=followup_count"
+            },
+            {
+              "fieldName": "=last_assistant_updated",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -1888,
+        176
+      ],
+      "id": "d0f1eecf-8ba9-46e7-a13c-a74582f1d5e1",
+      "name": "Sort2"
+    },
+    {
+      "parameters": {
+        "operation": "getTimeBetweenDates",
+        "startDate": "={{ $('Sort3').item.json.date_updated.toDateTime() }}",
+        "endDate": "={{ $now }}",
+        "units": [
+          "minute"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -1712,
+        -32
+      ],
+      "id": "92830130-4ca1-47eb-883d-188883399268",
+      "name": "Calcular prazo do FUP3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "349f251b-d96e-444f-86ac-e2aab28fa870",
+              "leftValue": "={{ $('Calcular prazo do FUP3').item.json.timeDifference.minutes }}",
+              "rightValue": "=120",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1520,
+        -32
+      ],
+      "id": "88e1d8ea-047d-4572-a5f8-9b0240bd8454",
+      "name": "Analisar critérios de tempo3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const N = 10;\n\nreturn $input.all().slice(0, N);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1344,
+        -32
+      ],
+      "id": "86bf6a57-1338-4bce-9b7d-e2199fb3e58e",
+      "name": "limite X fups por vez2"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "=followup_count"
+            },
+            {
+              "fieldName": "=last_assistant_updated",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -1888,
+        -32
+      ],
+      "id": "a123a25a-bda2-44bb-ac6f-3ab81468c2bd",
+      "name": "Sort3"
+    },
+    {
+      "parameters": {
+        "operation": "getTimeBetweenDates",
+        "startDate": "={{ $('Sort4').item.json.date_updated.toDateTime() }}",
+        "endDate": "={{ $now }}",
+        "units": [
+          "minute"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -1712,
+        -272
+      ],
+      "id": "5db12eee-10fc-40c2-9bbd-cb696cd486d2",
+      "name": "Calcular prazo do FUP4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "349f251b-d96e-444f-86ac-e2aab28fa870",
+              "leftValue": "={{ $('Calcular prazo do FUP4').item.json.timeDifference.minutes }}",
+              "rightValue": "=30",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1520,
+        -272
+      ],
+      "id": "31dde7f3-3142-4d64-91b3-069457863d89",
+      "name": "Analisar critérios de tempo4"
+    },
+    {
+      "parameters": {
+        "jsCode": "const N = 20;\n\nreturn $input.all().slice(0, N);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1344,
+        -272
+      ],
+      "id": "9bb70fd7-55d6-4157-9dd0-c86291b8e3f6",
+      "name": "limite X fups por vez3"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "=followup_count"
+            },
+            {
+              "fieldName": "=last_assistant_updated",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -1888,
+        -272
+      ],
+      "id": "4dd5f5ae-66c7-4322-867c-63d26d8d3b9b",
+      "name": "Sort4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -928,
+        -144
+      ],
+      "id": "98854f83-f94c-480f-996f-17028545dc91",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "follow",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "Cadência",
+              "condition": "eq",
+              "keyValue": "={{ $json.followup_count }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1680,
+        -480
+      ],
+      "id": "5db1d51c-5970-439a-a77f-52f08c0c6317",
+      "name": "Consultar cadencia7",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -944,
+        176
+      ],
+      "id": "4c3d83af-5807-4faf-8b34-5b511f3ab0a2",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE leads\nSET date_next_fup = '{{ $now.toDateTime().plus(30, \"minutes\") }}'\nWHERE lead_id = '{{ $('Sort4').item.json.lead_id }}';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1696,
+        -2144
+      ],
+      "id": "0fa7861f-3ae8-49bf-ae04-98678ffcf706",
+      "name": "Execute a SQL query1",
+      "credentials": {
+        "postgres": {
+          "id": "XOYeTIMfsvkaFsZd",
+          "name": "Postgres - RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE leads\nSET date_next_fup = '{{ $now.toDateTime().plus(30, \"minutes\") }}'\nWHERE lead_id = '{{ $('Sort3').item.json.lead_id }}';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1920,
+        -2208
+      ],
+      "id": "740aa245-9e13-462a-9f96-8885fca2a582",
+      "name": "Execute a SQL query2",
+      "credentials": {
+        "postgres": {
+          "id": "XOYeTIMfsvkaFsZd",
+          "name": "Postgres - RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Sort4').item.json.lead_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1152,
+        -272
+      ],
+      "id": "df48c2a2-36e5-4e05-8fb8-aec66a65047a",
+      "name": "Consulta base de leads1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Sort3').item.json.lead_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1152,
+        -32
+      ],
+      "id": "256dfc5a-113b-4d98-8d63-33ce65ba06f3",
+      "name": "Consulta base de leads3",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Sort2').item.json.lead_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1152,
+        176
+      ],
+      "id": "aab7e7a4-f32f-479b-99ab-4b7920245894",
+      "name": "Consulta base de leads4",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const N = 30; // quantos itens quer processar\nreturn $input.all().slice(0, N);\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -880,
+        1392
+      ],
+      "id": "7481cbbd-0f8c-45a7-9b41-14fc6b1a7f4b",
+      "name": "Limitador de n° de envios1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Loop2').last().json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "followup_count",
+              "fieldValue": "={{ $('define quando encerrar os FUP\\'s2').item.json.followup_count }}"
+            },
+            {
+              "fieldId": "last_assistant_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "date_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "conversa",
+              "fieldValue": "={{ $('Loop2').item.json.conversa }}\n[{{ $now.format('dd/MM/yyyy HH:mm:ss') }}] Comercial (Fup): {{  $('Consultar cadencia4').item.json.mensagem.replace('{nome}', $('Loop2').item.json.name ? $('Loop2').item.json.name.split(\" \")[0]: $('Loop2').item.json.procedimento ) }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        672,
+        1392
+      ],
+      "id": "b33a84a0-b673-42c3-9c6e-f00d18ee210e",
+      "name": "Atualiza base de leads2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "941ed903-006d-4abd-9370-fa7cf01a2d5e",
+              "name": "instancia",
+              "value": "gerardo",
+              "type": "string"
+            },
+            {
+              "id": "0dde70e5-f975-4e61-aeb4-3ddd60a27409",
+              "name": "dia_semana",
+              "value": "={{ $('Filtro de horário de disparo2').item.json['Day of week'] }}",
+              "type": "string"
+            },
+            {
+              "id": "9a7771fc-f5b4-440e-8746-a9fe419b9579",
+              "name": "telefone de teste",
+              "value": "558598527861",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2176,
+        1392
+      ],
+      "id": "c15343a5-980e-4ea2-92fb-3f40a193a515",
+      "name": "Declarar variáveis2",
+      "notesInFlow": true,
+      "notes": "Atualizar credencial EVO do cliente"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Sort6').item.json.lead_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        1392
+      ],
+      "id": "05a0beb1-fac4-47f5-8624-ed9f8baa68cf",
+      "name": "Levar dados do lead pro Loop2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getTimeBetweenDates",
+        "startDate": "={{ $('Sort6').item.json.date_updated.toDateTime() }}",
+        "endDate": "={{ $now }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -1328,
+        1392
+      ],
+      "id": "8bcb174a-3155-4244-af11-5d6ad3cc9328",
+      "name": "Calcular prazo do FUP5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "349f251b-d96e-444f-86ac-e2aab28fa870",
+              "leftValue": "={{ $json.timeDifference.days }} ",
+              "rightValue": "={{ $('Consultar cadencia5').item.json['Intervalo (dia)'] }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -1104,
+        1392
+      ],
+      "id": "844c8cf7-3e10-4d84-af2d-774e7b619af4",
+      "name": "Analisar critérios de tempo5"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -496,
+        1392
+      ],
+      "id": "a11869c9-6eb3-4396-bb53-ee832bc29526",
+      "name": "Loop2"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().filter(item => {\n    const horaAtual = Number(item.json.Hour || 0);       // pega a hora do input\n    const diaSemana = Number(item.json[\"Day of week num\"] ?? null) \n        || new Date(item.json.timestamp).getDay();       // se tiver dia como número, usa, senão converte do timestamp\n\n    // Permite apenas se não for domingo (0) e hora entre 9h e 20h\n    return diaSemana !== 0 && horaAtual >= 8 && horaAtual <= 22;\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2752,
+        1392
+      ],
+      "id": "f36e6cbf-e72e-48a0-87e5-18c873b3ec7e",
+      "name": "Filtro de horário de disparo2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Inputs\nconst count = $('Loop2').item.json.followup_count;\n\n// Limite depende da etapa\nconst limite = 8;\n\n// Lógica de avanço ou reset\nlet novoCount;\nif (count < limite) {\n  novoCount = count + 1;\n} else {\n  novoCount = 0;\n}\n\n// Output\nreturn {\n  followup_count: novoCount\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        1392
+      ],
+      "id": "e13fe67a-25b5-44f8-82f6-a739bcfb118c",
+      "name": "define quando encerrar os FUP's2"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "swwlueWgkTrcCm44",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/swwlueWgkTrcCm44",
+          "cachedResultName": "[SDR] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2400,
+        1392
+      ],
+      "id": "dc180255-a25c-4aa9-a662-a9ddb7213263",
+      "name": "variáveis globais2"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "follow",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "cadencia",
+              "condition": "eq",
+              "keyValue": "={{ $json.followup_count }}"
+            },
+            {
+              "keyName": "respondeu",
+              "condition": "eq",
+              "keyValue": "FALSE"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        1392
+      ],
+      "id": "24a12c65-660f-46f1-9e34-2d2dcc587479",
+      "name": "Consultar cadencia4",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "follow",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "cadencia",
+              "condition": "eq",
+              "keyValue": "={{ $json.followup_count }}"
+            },
+            {
+              "keyName": "respondeu",
+              "condition": "eq",
+              "keyValue": "FALSE"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -1536,
+        1408
+      ],
+      "id": "579aba3b-dafd-48ba-869b-ed8402f47d09",
+      "name": "Consultar cadencia5",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo",
+          "mode": "list",
+          "cachedResultName": "[CW] AGENTE IA - SDR",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1104097587,
+          "mode": "list",
+          "cachedResultName": "Follow",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/193HPnG1VDxO5kBKslozqyMeNJ2xy2YycI7iz1nYtlTo/edit#gid=1104097587"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $now.format('dd/MM/yyyy HH:mm:ss') }}",
+            "Lead": "={{ $('Loop2').item.json.name }}",
+            "telefone": "={{ $('Loop2').item.json.whatsapp }}",
+            "email": "={{ $('Loop2').item.json.email }}",
+            "cadência": "={{ $('Consultar cadencia4').item.json.cadencia }}",
+            "message_id": "={{ $('Send template1').item.json.messages[0].id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead",
+              "displayName": "Lead",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cadência",
+              "displayName": "cadência",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message_id",
+              "displayName": "message_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status de envio",
+              "displayName": "status de envio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "resposta",
+              "displayName": "resposta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        864,
+        1392
+      ],
+      "id": "51f8eb01-36bc-4eeb-9ad0-f0c2d7d8f5ed",
+      "name": "Append row in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Follow Leads sem resposta\nFollow feito apenas utilizando templates de mensagens aprovados pela Meta.",
+        "height": 464,
+        "width": 4304,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3088,
+        1264
+      ],
+      "typeVersion": 1,
+      "id": "a0750cfa-0f1d-402d-b2fa-3da1f47e7b06",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -2992,
+        1392
+      ],
+      "id": "864c5eea-b6b9-4d68-a597-0908f01c2fb8",
+      "name": "Aciona a cada 15m1"
+    },
+    {
+      "parameters": {
+        "resource": "activity",
+        "subject": "=Follow up {{ $('Loop2').item.json.followup_count }}",
+        "done": "1",
+        "type": "Mensagem no WhatsApp",
+        "additionalFields": {
+          "deal_id": "={{ $('Loop2').item.json.pipedrive_id }}",
+          "note": "={{  $('Consultar cadencia4').item.json.mensagem.replace('{nome}', $('Loop2').item.json.name ? $('Loop2').item.json.name.split(\" \")[0]: $('Loop2').item.json.procedimento ) }}"
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        496,
+        1392
+      ],
+      "id": "8489ca6a-d4e1-4f1b-8650-610003fee5cc",
+      "name": "Create an activity2",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT *\nFROM leads\nWHERE\n  followup_count <= 4\n  AND followup_count != 0\n  AND em_atendimento = true\n  AND etapa_conversa != 'agendado'\n  AND break = false\n  AND tier::numeric >= 4\n  AND date_created >= NOW() - INTERVAL '5 days'\n  AND conversa NOT ILIKE '%Lead %:%'\n  AND status != 'lost'\nORDER BY date_created ASC\nLIMIT 100;",
+        "options": {
+          "replaceEmptyStrings": false
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1984,
+        1392
+      ],
+      "id": "9ec31b83-6793-4759-9fa8-c0b6f2a3d7a4",
+      "name": "Execute a SQL query3",
+      "credentials": {
+        "postgres": {
+          "id": "XOYeTIMfsvkaFsZd",
+          "name": "Postgres - RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "=date_created",
+              "order": "descending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        -1760,
+        1392
+      ],
+      "id": "f27922e1-2f91-418d-a05f-b3ee64457a82",
+      "name": "Sort6"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "Follow",
+              "value": "<24"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -768,
+        -496
+      ],
+      "id": "a25663f3-0eb5-427e-b11e-b6fc6cfae031",
+      "name": "Execution Data"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "Follow",
+              "value": ">24"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -624,
+        608
+      ],
+      "id": "c6c6c597-fb8c-456d-853e-7530b75f44a9",
+      "name": "Execution Data1"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "Follow",
+              "value": "sem resposta"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -272,
+        1232
+      ],
+      "id": "b3f1bb10-f0ce-4f19-944e-2c0f5679db25",
+      "name": "Execution Data2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "08a02654-c4b8-4c27-b86e-59a9848f31fe",
+              "leftValue": "={{ $('Loop').item.json.created_by }}",
+              "rightValue": "uazapi",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        960,
+        96
+      ],
+      "id": "9bfec71f-096a-4ec7-8f8b-44747ecd21bf",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cardapioweb.uazapi.com/send/text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "token",
+              "value": "=26bf8c41-c126-479e-beba-3090276b60c5"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Loop').item.json.whatsapp }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ JSON.stringify($('AI Agent').item.json.output) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1344,
+        48
+      ],
+      "id": "d4b3583f-34b1-414b-a97f-c85449c37006",
+      "name": "Envio de mensagem UAZAPI"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variáveis globais1').item.json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('Loop1').item.json.whatsapp }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"{{ $('Consultar cadencia3').item.json.template_meta }}\",\n    \"language\": {\n      \"code\": \"pt_BR\"\n    },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"nome\",\n            \"text\": \"{{ $('Loop1').item.json.name.split(' ')[0] }}\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -224,
+        704
+      ],
+      "id": "b2b03b40-14f2-4808-be20-ea8f5c3ad04c",
+      "name": "Send template"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "08a02654-c4b8-4c27-b86e-59a9848f31fe",
+              "leftValue": "={{ $('Loop1').item.json.created_by }}",
+              "rightValue": "uazapi",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -448,
+        864
+      ],
+      "id": "422fb6dd-186c-4140-8fef-e4c7195a8179",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cardapioweb.uazapi.com/send/text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "token",
+              "value": "=26bf8c41-c126-479e-beba-3090276b60c5"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Loop1').item.json.whatsapp }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Consultar cadencia3').item.json.mensagem.replace('{nome}', $('Loop1').item.json.name.split(\" \")[0].toTitleCase() ) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -224,
+        864
+      ],
+      "id": "4a13c8a0-46b8-4e38-8570-ddec44c3b32b",
+      "name": "Envio de mensagem UAZAPI1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variáveis globais2').item.json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('Loop2').item.json.whatsapp }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"{{ $('Consultar cadencia4').item.json.template_meta }}\",\n    \"language\": {\n      \"code\": \"pt_BR\"\n    },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"nome\",\n            \"text\": \"{{ $('Loop2').item.json.name.split(' ')[0] }}\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        96,
+        1280
+      ],
+      "id": "0e7d332e-68f0-4967-b5ab-be5370f46e2f",
+      "name": "Send template1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "08a02654-c4b8-4c27-b86e-59a9848f31fe",
+              "leftValue": "={{ $('Loop2').item.json.created_by }}",
+              "rightValue": "uazapi",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -96,
+        1520
+      ],
+      "id": "0b059016-a096-4e9e-b686-df9cad40a3d1",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cardapioweb.uazapi.com/send/text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "token",
+              "value": "=26bf8c41-c126-479e-beba-3090276b60c5"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Loop2').item.json.whatsapp }}"
+            },
+            {
+              "name": "text",
+              "value": "={{ $('Consultar cadencia4').item.json.mensagem.replace('{nome}', $('Loop2').item.json.name.split(\" \")[0].toTitleCase() ) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        96,
+        1504
+      ],
+      "id": "2adfb7dc-6c10-4598-bf0d-f16fa607b6b4",
+      "name": "Envio de mensagem UAZAPI2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variáveis globais3').item.json.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"5533988984050\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"abertura_clara\",\n    \"language\": {\n      \"code\": \"pt_BR\"\n    },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"nome\",\n            \"text\": \"Aline\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        352,
+        1840
+      ],
+      "id": "42161a37-477d-498e-89be-08570edf1139",
+      "name": "Send template2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        1840
+      ],
+      "id": "fa19f7ba-efa0-4796-a2de-2c6484688fd0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "swwlueWgkTrcCm44",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/swwlueWgkTrcCm44",
+          "cachedResultName": "[SDR] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        160,
+        1968
+      ],
+      "id": "f9d6ae1e-1b80-41ea-bc4d-3436f7536151",
+      "name": "variáveis globais3"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM leads\nWHERE\n  followup_count > 2\n  AND followup_count != 0\n  AND em_atendimento = true\n  AND etapa_conversa != 'agendado'\n  AND break = false\n  AND tier::numeric >= 4\n  AND conversa ILIKE '%Lead %:%'\n  AND date_created >= '2026-04-17 00:00:00.00000+00'\n  AND status IS DISTINCT FROM 'lost'\nORDER BY date_created ASC\nLIMIT 200;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -2320,
+        768
+      ],
+      "id": "0fa9b8b0-3efa-4eb8-9927-9cf0b09f6ddf",
+      "name": "Consulta base de leads2",
+      "credentials": {
+        "postgres": {
+          "id": "XOYeTIMfsvkaFsZd",
+          "name": "Postgres - RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * 11) + 15 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        576,
+        928
+      ],
+      "id": "89453384-990b-4910-bac8-ab692732cea6",
+      "name": "Intervalo (15 a 20s)1",
+      "webhookId": "1cbc9158-78b8-4780-bc35-25d95f94f8ba"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * 11) + 15 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1024,
+        1520
+      ],
+      "id": "7ac9756e-6502-4559-964a-d48727fe3d1b",
+      "name": "Intervalo (15 a 20s)2",
+      "webhookId": "1cbc9158-78b8-4780-bc35-25d95f94f8ba"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * 11) + 15 }}"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2016,
+        112
+      ],
+      "id": "6460c5ab-ed5e-4669-aee9-420902137a2d",
+      "name": "Intervalo (15 a 20s)",
+      "webhookId": "1cbc9158-78b8-4780-bc35-25d95f94f8ba"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v24.0/963455253516904/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('variáveis globais').item.json.token_permanente }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('Loop').item.json.whatsapp }}\",\n  \"type\": \"audio\",\n  \"audio\": {\n    \"link\": \"https://rydlkqomjokkhxghgqde.supabase.co/storage/v1/object/public/clara-fup-audio/clara-followup.ogg\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        640,
+        -384
+      ],
+      "id": "16a3f419-e5db-4bcc-a08b-27884783bcff",
+      "name": "Envio de áudio"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Loop').last().json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "followup_count",
+              "fieldValue": "={{ $('Loop').item.json.followup_count + 1 }}"
+            },
+            {
+              "fieldId": "last_assistant_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "date_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "conversa",
+              "fieldValue": "={{ $('Loop').item.json.conversa }}\n[{{ $now.format('dd/MM/yyyy HH:mm:ss') }}] Comercial (Fup Áudio): Oi, tudo bem? Vi teu cadastro aqui e quis te mandar um áudio rapidinho. Hoje são mais de 16 mil restaurantes com usam Cardápio Web para ter mais resultado. Grande parte desses clientes ainda estão com um negócio em crescimento, assim como o seu, e por isso acreditamos muito que podemos te ajudar a crescer rápido e com mais lucro. Tu tem um minutinho pra eu te mostrar como isso funcionaria aí no teu negócio?"
+            },
+            {
+              "fieldId": "date_next_fup",
+              "fieldValue": "={{ $now.toDateTime().plus( $('Consultar cadencia1').item.json['Intervalo (dia)'], \"minutes\") }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        848,
+        -384
+      ],
+      "id": "aab3b4e9-7419-471e-83e6-08d5da1ed0d0",
+      "name": "Atualiza base de leads3",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d42a95ee-d1b0-4b27-92b1-ce9bfdedcb40",
+              "leftValue": "={{ $('Loop').item.json.followup_count }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        80,
+        -128
+      ],
+      "id": "a4dfc2a3-6588-407f-9b8f-5f55ddba6f29",
+      "name": "Verfica se é FUP 1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const atual = items[0].json.contador || 0;\nconst vai_para_audio = atual % 2 === 0;\nconst proximo = atual + 1;\nreturn [{\n  json: {\n    contador: proximo,\n    vai_para_audio: vai_para_audio,\n    tipo: vai_para_audio ? 'audio' : 'texto'\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -112,
+        -128
+      ],
+      "id": "d8c876c1-954c-4dc3-b121-52bb092f8587",
+      "name": "Code in JavaScript7"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "vB2RBYms9Il5diTG",
+          "mode": "list",
+          "cachedResultName": "[Clara] Contador distribuição FUP áudio",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/vB2RBYms9Il5diTG"
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -304,
+        -128
+      ],
+      "id": "dd70815c-4c7d-4a52-9916-cf4ab7806ddb",
+      "name": "Pega a última contagem da fila2"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "vB2RBYms9Il5diTG",
+          "mode": "list",
+          "cachedResultName": "[Clara] Contador distribuição FUP áudio",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/vB2RBYms9Il5diTG"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Pega a última contagem da fila2').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "contador": "={{ $('Code in JavaScript7').item.json.contador }}"
+          },
+          "matchingColumns": [
+            "contador"
+          ],
+          "schema": [
+            {
+              "id": "contador",
+              "displayName": "contador",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1344,
+        -144
+      ],
+      "id": "f3a49366-a524-490b-8048-7d3eecb9d546",
+      "name": "Atualiza contagem                   2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "eca2d29a-59e1-471d-ad3a-418cf9ac9f98",
+              "leftValue": "={{ $json.vai_para_audio }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        320,
+        -304
+      ],
+      "id": "10d9dc4f-8317-4e12-8e88-cf4a0ed36099",
+      "name": "Verifica se é Áudio"
+    }
+  ],
+  "pinData": {
+    "Aciona a cada 15m1": [
+      {
+        "json": {
+          "timestamp": "2026-04-27T19:00:12.003-03:00",
+          "Readable date": "April 27th 2026, 7:00:12 pm",
+          "Readable time": "7:00:12 pm",
+          "Day of week": "Monday",
+          "Year": "2026",
+          "Month": "April",
+          "Day of month": "27",
+          "Hour": "19",
+          "Minute": "00",
+          "Second": "12",
+          "Timezone": "America/Fortaleza (UTC-03:00)"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Aciona a cada 15m": [
+      {
+        "json": {
+          "timestamp": "2026-05-19T16:00:14.003-03:00",
+          "Readable date": "May 19th 2026, 4:00:14 pm",
+          "Readable time": "4:00:14 pm",
+          "Day of week": "Tuesday",
+          "Year": "2026",
+          "Month": "May",
+          "Day of month": "19",
+          "Hour": "16",
+          "Minute": "00",
+          "Second": "14",
+          "Timezone": "America/Fortaleza (UTC-03:00)"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Aciona a cada 10m": [
+      {
+        "json": {
+          "timestamp": "2026-06-05T13:00:34.007-03:00",
+          "Readable date": "June 5th 2026, 1:00:34 pm",
+          "Readable time": "1:00:34 pm",
+          "Day of week": "Friday",
+          "Year": "2026",
+          "Month": "June",
+          "Day of month": "05",
+          "Hour": "13",
+          "Minute": "00",
+          "Second": "34",
+          "Timezone": "America/Fortaleza (UTC-03:00)"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Atualiza base de leads": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Declarar variáveis": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop": {
+      "main": [
+        [
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Consultar cadencia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro de horário de disparo": {
+      "main": [
+        [
+          {
+            "node": "variáveis globais",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variáveis globais": {
+      "main": [
+        [
+          {
+            "node": "Declarar variáveis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar cadencia1": {
+      "main": [
+        [
+          {
+            "node": "Pega a última contagem da fila2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envio de mensagens": {
+      "main": [
+        [
+          {
+            "node": "Atualiza contagem                   2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "gpt-5.1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Envio de mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Limitador de n° de envios": {
+      "main": [
+        [
+          {
+            "node": "Levar dados do lead pro Loop1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza base de leads1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Declarar variáveis1": {
+      "main": [
+        [
+          {
+            "node": "Consulta base de leads2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Levar dados do lead pro Loop1": {
+      "main": [
+        [
+          {
+            "node": "Loop1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular prazo do FUP1": {
+      "main": [
+        [
+          {
+            "node": "Analisar critérios de tempo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar critérios de tempo1": {
+      "main": [
+        [
+          {
+            "node": "Limitador de n° de envios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop1": {
+      "main": [
+        [
+          {
+            "node": "Execution Data1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Consultar cadencia3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro de horário de disparo1": {
+      "main": [
+        [
+          {
+            "node": "variáveis globais1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "define quando encerrar os FUP's1": {
+      "main": [
+        [
+          {
+            "node": "Create an activity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variáveis globais1": {
+      "main": [
+        [
+          {
+            "node": "Declarar variáveis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar cadencia3": {
+      "main": [
+        [
+          {
+            "node": "Send template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar cadencia2": {
+      "main": [
+        [
+          {
+            "node": "Calcular prazo do FUP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Intervalo (15 a 20s)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Intervalo (15 a 20s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort1": {
+      "main": [
+        [
+          {
+            "node": "Consultar cadencia2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aciona a cada 15m": {
+      "main": [
+        [
+          {
+            "node": "Filtro de horário de disparo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aciona a cada 10m": {
+      "main": [
+        [
+          {
+            "node": "Filtro de horário de disparo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an activity": {
+      "main": [
+        [
+          {
+            "node": "Atualiza base de leads1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an activity1": {
+      "main": [
+        [
+          {
+            "node": "Atualiza base de leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular prazo do FUP2": {
+      "main": [
+        [
+          {
+            "node": "Analisar critérios de tempo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar critérios de tempo2": {
+      "main": [
+        [
+          {
+            "node": "limite X fups por vez1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "limite X fups por vez1": {
+      "main": [
+        [
+          {
+            "node": "Consulta base de leads4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort2": {
+      "main": [
+        [
+          {
+            "node": "Calcular prazo do FUP2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Sort4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Sort3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        []
+      ]
+    },
+    "Calcular prazo do FUP3": {
+      "main": [
+        [
+          {
+            "node": "Analisar critérios de tempo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar critérios de tempo3": {
+      "main": [
+        [
+          {
+            "node": "limite X fups por vez2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "limite X fups por vez2": {
+      "main": [
+        [
+          {
+            "node": "Consulta base de leads3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort3": {
+      "main": [
+        [
+          {
+            "node": "Calcular prazo do FUP3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular prazo do FUP4": {
+      "main": [
+        [
+          {
+            "node": "Analisar critérios de tempo4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar critérios de tempo4": {
+      "main": [
+        [
+          {
+            "node": "limite X fups por vez3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "limite X fups por vez3": {
+      "main": [
+        [
+          {
+            "node": "Consulta base de leads1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort4": {
+      "main": [
+        [
+          {
+            "node": "Calcular prazo do FUP4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar cadencia7": {
+      "main": [
+        []
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query2": {
+      "main": [
+        []
+      ]
+    },
+    "Execute a SQL query1": {
+      "main": [
+        []
+      ]
+    },
+    "Consulta base de leads3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Consulta base de leads1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        []
+      ]
+    },
+    "Consulta base de leads4": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Limitador de n° de envios1": {
+      "main": [
+        [
+          {
+            "node": "Levar dados do lead pro Loop2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza base de leads2": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Declarar variáveis2": {
+      "main": [
+        [
+          {
+            "node": "Execute a SQL query3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Levar dados do lead pro Loop2": {
+      "main": [
+        [
+          {
+            "node": "Loop2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular prazo do FUP5": {
+      "main": [
+        [
+          {
+            "node": "Analisar critérios de tempo5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar critérios de tempo5": {
+      "main": [
+        [
+          {
+            "node": "Limitador de n° de envios1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop2": {
+      "main": [
+        [
+          {
+            "node": "Execution Data2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Consultar cadencia4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtro de horário de disparo2": {
+      "main": [
+        [
+          {
+            "node": "variáveis globais2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "define quando encerrar os FUP's2": {
+      "main": [
+        [
+          {
+            "node": "Create an activity2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variáveis globais2": {
+      "main": [
+        [
+          {
+            "node": "Declarar variáveis2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar cadencia4": {
+      "main": [
+        [
+          {
+            "node": "Send template1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consultar cadencia5": {
+      "main": [
+        [
+          {
+            "node": "Calcular prazo do FUP5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet2": {
+      "main": [
+        [
+          {
+            "node": "Intervalo (15 a 20s)2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aciona a cada 15m1": {
+      "main": [
+        [
+          {
+            "node": "Filtro de horário de disparo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create an activity2": {
+      "main": [
+        [
+          {
+            "node": "Atualiza base de leads2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute a SQL query3": {
+      "main": [
+        [
+          {
+            "node": "Sort6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort6": {
+      "main": [
+        [
+          {
+            "node": "Consultar cadencia5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Envio de mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envio de mensagem UAZAPI": {
+      "main": [
+        [
+          {
+            "node": "Create an activity1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send template": {
+      "main": [
+        [
+          {
+            "node": "define quando encerrar os FUP's1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Send template",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envio de mensagem UAZAPI1": {
+      "main": [
+        []
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Send template1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envio de mensagem UAZAPI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send template1": {
+      "main": [
+        [
+          {
+            "node": "define quando encerrar os FUP's2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envio de mensagem UAZAPI2": {
+      "main": [
+        [
+          {
+            "node": "define quando encerrar os FUP's2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "variáveis globais3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variáveis globais3": {
+      "main": [
+        [
+          {
+            "node": "Send template2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta base de leads2": {
+      "main": [
+        [
+          {
+            "node": "Sort1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Intervalo (15 a 20s)1": {
+      "main": [
+        [
+          {
+            "node": "Loop1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Intervalo (15 a 20s)2": {
+      "main": [
+        [
+          {
+            "node": "Loop2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Intervalo (15 a 20s)": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envio de áudio": {
+      "main": [
+        [
+          {
+            "node": "Atualiza base de leads3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verfica se é FUP 1": {
+      "main": [
+        [
+          {
+            "node": "Verifica se é Áudio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript7": {
+      "main": [
+        [
+          {
+            "node": "Verfica se é FUP 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega a última contagem da fila2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza contagem                   2": {
+      "main": [
+        [
+          {
+            "node": "Create an activity1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se é Áudio": {
+      "main": [
+        [
+          {
+            "node": "Envio de áudio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "3Q2DsZIHbnUHLchf",
+    "callerPolicy": "workflowsFromSameOwner",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "9a78a18f-6225-4c01-9d2c-16857f742507",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  },
+  "id": "zzBXnHnrxCGPzZ9v",
+  "tags": [
+    {
+      "updatedAt": "2026-01-28T13:06:04.030Z",
+      "createdAt": "2026-01-28T13:06:04.030Z",
+      "id": "S9pHNUEkQXTRXQgw",
+      "name": "agente_ia"
+    }
+  ]
+}

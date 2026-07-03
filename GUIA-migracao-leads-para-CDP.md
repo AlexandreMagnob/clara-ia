@@ -99,8 +99,11 @@ commercial_activities (id uuid, commercial_deal_id, commercial_conversation_id, 
 - `id_start_message` → `external_message_id`.
 - A data da mensagem fica no `created_at` (não precisa concatenar o `[dd/MM...]` no texto).
 
-### → `commercial_activities`
-- `data_agendamento`, `link_reuniao`, `id_agendamento`, `reagendamento`, `slot_closer` → atividade de reunião (`activity_type = 'meeting'`).
+### → `commercial_activities`  ⭐ DECISÃO (líder, 19/06): a reunião é uma ATIVIDADE, não custom_properties do deal
+- A reunião agendada vira **1 linha** em `commercial_activities` com `activity_type='meeting'`, `origin='ia'`, `status='scheduled'`, `start_at`/`end_at` (do Google Calendar), `user_id` = closer (`closer_user_id` do deal), e `custom_properties = {id_agendamento, link_reuniao}`.
+- Status da atividade: **`scheduled`** (criada) → **`cancelled`** (reagendou) → futuramente `done`/`no_show`. Isso dá **histórico de reuniões** pra análise de no-show.
+- O que continua no **deal** (são colunas dele): `stage`, `status`, `scheduled_meeting_at` (cópia "próxima reunião" por conveniência), `pipedrive_deal_id`, `closer_user_id`.
+- O `closer` (nome/email/slot_closer) é atribuído **antes** da reunião existir → fica em `commercial_deals.custom_properties` como holding até o Agendar Reuniao criar a atividade. `closer_user_id` é a fonte de verdade.
 
 ### Campos SEM coluna no banco novo → vão para jsonb
 - **`raw_payload`** (tracking): `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_ad` (vem de `utm_term`), `utm_adset`, `utm_platform` (vem de `utm_placement`), `fbclid`, `gclid`, `ctwaclid`, `utm_id`.
@@ -316,8 +319,8 @@ SELECT
   cd.segment                       AS segmento,
   cd.stage                         AS etapa_conversa,
   cd.status                        AS status,
-  cd.scheduled_meeting_at          AS data_agendamento,
-  COALESCE(cd.custom_properties->>'link_reuniao', act.link_reuniao) AS link_reuniao,
+  COALESCE(act.start_at, cd.scheduled_meeting_at)              AS data_agendamento,
+  COALESCE(act.link_reuniao, cd.custom_properties->>'link_reuniao') AS link_reuniao,
   conv.conversa                    AS conversa,
   cd.id                            AS deal_id,
   pe.id                            AS person_id,
@@ -336,15 +339,72 @@ LEFT JOIN LATERAL (
   WHERE c.commercial_deal_id = cd.id
 ) conv ON true
 LEFT JOIN LATERAL (
-  SELECT a.custom_properties->>'link_reuniao' AS link_reuniao
+  SELECT a.start_at, a.custom_properties->>'link_reuniao' AS link_reuniao
   FROM commercial_activities a
-  WHERE a.commercial_deal_id = cd.id AND a.activity_type = 'meeting'
-  ORDER BY a.created_at DESC LIMIT 1
+  WHERE a.commercial_deal_id = cd.id AND a.activity_type = 'meeting' AND a.status = 'scheduled'
+  ORDER BY a.start_at DESC LIMIT 1
 ) act ON true
 WHERE pe.telephone = '{{ $('Variáveis').item.json.telefone }}'
   AND cd.discarded_at IS NULL
 ORDER BY cd.created_at DESC
 LIMIT 1;
+```
+
+### 5.5. AGENDAR reunião → cria atividade em `commercial_activities` (decisão B)
+Atualiza o deal (stage/status/scheduled_meeting_at/pipedrive) **e insere** a reunião como atividade. `link_reuniao` em dollar-quote (`$lk$`) por ser URL.
+```sql
+WITH d AS (
+  SELECT cd.id, cd.person_id, cd.closer_user_id
+  FROM commercial_deals cd
+  JOIN persons pe ON pe.id = cd.person_id
+  WHERE pe.telephone = '{{ $('When Executed by Another Workflow').item.json.whatsapp }}'
+    AND cd.discarded_at IS NULL
+  ORDER BY cd.created_at DESC LIMIT 1
+),
+upd AS (
+  UPDATE commercial_deals cd
+  SET stage = 'agendado', status = 'open',
+      scheduled_meeting_at = NULLIF('{{ $('Create an event').item.json.start.dateTime }}', '')::timestamptz,
+      pipedrive_deal_id = NULLIF(NULLIF('{{ $('Duplica lead').item.json.id }}', ''), 'undefined'),
+      updated_at = now()
+  FROM d WHERE cd.id = d.id RETURNING cd.id
+)
+INSERT INTO commercial_activities (
+  commercial_deal_id, person_id, user_id, activity_type, origin, status,
+  subject, start_at, end_at, custom_properties, created_at, updated_at
+)
+SELECT d.id, d.person_id, d.closer_user_id,
+       'meeting', 'ia', 'scheduled', 'Reunião agendada',
+       NULLIF('{{ $('Create an event').item.json.start.dateTime }}', '')::timestamptz,
+       NULLIF('{{ $('Create an event').item.json.end.dateTime }}', '')::timestamptz,
+       jsonb_build_object(
+         'id_agendamento', NULLIF('{{ $('Create an event').item.json.id }}', ''),
+         'link_reuniao', NULLIF($lk${{ $('Create an event').item.json.conferenceData.entryPoints[0].uri }}$lk$, '')
+       ),
+       now(), now()
+FROM d;
+```
+
+### 5.6. REAGENDAR → limpa closer no deal + cancela a atividade
+```sql
+WITH d AS (
+  SELECT cd.id FROM commercial_deals cd
+  JOIN persons pe ON pe.id = cd.person_id
+  WHERE pe.telephone = '{{ $('When Executed by Another Workflow').item.json.whatsapp }}'
+    AND cd.discarded_at IS NULL
+  ORDER BY cd.created_at DESC LIMIT 1
+),
+upd AS (
+  UPDATE commercial_deals cd
+  SET stage = 'agendamento', ai_enabled = true, closer_user_id = NULL,
+      custom_properties = (COALESCE(cd.custom_properties, '{}'::jsonb) - 'closer' - 'closer_email' - 'slot_closer'),
+      updated_at = now()
+  FROM d WHERE cd.id = d.id RETURNING cd.id
+)
+UPDATE commercial_activities a
+SET status = 'cancelled', updated_at = now()
+FROM d
+WHERE a.commercial_deal_id = d.id AND a.activity_type = 'meeting' AND a.status = 'scheduled';
 ```
 
 ---
@@ -453,3 +513,5 @@ O node de **leitura** (`get`/`Consulta tabela de leads`) NÃO precisa de espelho
 - **`persons.telephone` fica SEM unique** (CDP permite telefone repetido); dedup é por "deal aberto" no nível de aplicação, não por constraint.
 - **Match sempre por telefone** (não há `lead_id` no banco novo).
 - **Slack de erro** vai por DM pro `alexandre.magno` (`U05NBR6D2MV`).
+- **Reunião = atividade** (decisão do líder, 19/06): a reunião agendada vai pra `commercial_activities` (`activity_type='meeting'`, status `scheduled`→`cancelled`), NÃO no `custom_properties`. O closer é atribuído antes (deal `closer_user_id`); a leitura do `Get a row` lê `data_agendamento`/`link_reuniao` da atividade com fallback pro deal. Ver 5.5/5.6.
+- **Mensagens de FUP/lembrete**: o subtipo (fup, fup_audio, lembrete, lembrete_video, lembrete_10min) vai em `commercial_conversation_messages.metadata` (`{"tipo":...}`), não no texto. A métrica de FUP passa a ler `metadata->>'tipo'`. Content em **dollar-quoting** (`$cwmsg$`) por ser texto rico (emoji/aspas).

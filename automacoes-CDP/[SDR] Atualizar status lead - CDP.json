@@ -1,0 +1,1282 @@
+{
+  "name": "[SDR] Atualizar status do lead (CDP)",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "a58f1414",
+                    "leftValue": "={{ $json.body.event }}",
+                    "rightValue": "LEAD.LOST",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Lead Perdido Meetime"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "d14b3d80",
+                    "leftValue": "={{ $json.body.event }}",
+                    "rightValue": "LEAD.WON",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Lead Ganho Meetime"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "5baeea55",
+                    "leftValue": "={{ $json.body.Status }}",
+                    "rightValue": "Ganho",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Lead Ganho Pipedrive"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "754d6b85",
+                    "leftValue": "={{ $json.body.Status }}",
+                    "rightValue": "Perdido",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Lead Perdido Pipedrive"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ],
+      "id": "switch1",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "url": "https://api.pipedrive.com/v1/users?api_token=b3f0e4930cd82dd921597c19d422a495833201a4",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        -60
+      ],
+      "id": "pipe-users-won",
+      "name": "Pipedrive users (WON)"
+    },
+    {
+      "parameters": {
+        "jsCode": "const users = ($input.first().json.data) || [];\nconst b = ($('Webhook').first().json.body) || {};\nconst ms = (b.prospection && b.prospection.meetings) || [];\nconst email = (ms[0] && ms[0].ownerEmail) || '';\nconst norm = s => (s || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();\nconst alvo = norm(email);\nconst user = alvo ? users.find(u => norm(u.email) === alvo) : null;\nreturn [{ json: { owner_id: user ? user.id : null, closer_name: user ? user.name : null, closer_email: email || null } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        -60
+      ],
+      "id": "closer-por-email",
+      "name": "Closer por email"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DO $do$\nDECLARE v_deal uuid;\nBEGIN\n  SELECT cd.id INTO v_deal\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE (pe.telephone = '{{ $('Webhook').item.json.body.prospection.lead.phones[0].phone.replace(/\\D/g,'') }}'\n         OR cd.meetime_lead_id = '{{ $('Webhook').item.json.body.prospection.lead.id }}')\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1;\n\n  IF v_deal IS NULL THEN\n    RAISE EXCEPTION 'Lead nao cadastrado no CDP (Meetime LOST) - tel: %, meetime_id: %',\n      '{{ $('Webhook').item.json.body.prospection.lead.phones[0].phone.replace(/\\D/g,'') }}',\n      '{{ $('Webhook').item.json.body.prospection.lead.id }}';\n  END IF;\n\n  UPDATE commercial_deals SET\n    status = 'lost',\n    lost_at = COALESCE(NULLIF('{{ $('Webhook').item.json.body.prospection.endDate }}', '')::timestamptz, now()),\n    loss_reason = NULLIF($lr${{ $('Webhook').item.json.body.prospection.lostReason.name }}$lr$, ''),\n    meetime_lead_id = COALESCE(meetime_lead_id, NULLIF('{{ $('Webhook').item.json.body.prospection.lead.id }}', '')),\n    updated_at = now()\n  WHERE id = v_deal;\nEND\n$do$;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        500,
+        -320
+      ],
+      "id": "cdp-meetime-lost",
+      "name": "CDP - Meetime LOST",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DO $do$\nDECLARE v_deal uuid;\nBEGIN\n  SELECT cd.id INTO v_deal\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE (pe.telephone = '{{ $('Webhook').item.json.body.prospection.lead.phones[0].phone.replace(/\\D/g,'') }}'\n         OR cd.meetime_lead_id = '{{ $('Webhook').item.json.body.prospection.lead.id }}')\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1;\n\n  IF v_deal IS NULL THEN\n    RAISE EXCEPTION 'Lead nao cadastrado no CDP (Meetime WON) - tel: %, meetime_id: %',\n      '{{ $('Webhook').item.json.body.prospection.lead.phones[0].phone.replace(/\\D/g,'') }}',\n      '{{ $('Webhook').item.json.body.prospection.lead.id }}';\n  END IF;\n\n  UPDATE commercial_deals SET\n    stage = 'oportunidade',\n    status = 'open',\n    scheduled_meeting_at = NULLIF('{{ $('Webhook').item.json.body.prospection.meetings?.[0]?.startDate || '' }}', '')::timestamptz,\n    closer_user_id = COALESCE(\n      (SELECT id FROM users WHERE lower(email) = lower('{{ $('Webhook').item.json.body.prospection.meetings?.[0]?.ownerEmail || '' }}')),\n      closer_user_id),\n    meetime_lead_id = COALESCE(meetime_lead_id, NULLIF('{{ $('Webhook').item.json.body.prospection.lead.id }}', '')),\n    custom_properties = COALESCE(custom_properties, '{}'::jsonb) || jsonb_build_object(\n      'oportunidade_at', COALESCE(NULLIF('{{ $('Webhook').item.json.body.prospection.endDate }}', ''), now()::text),\n      'closer', NULLIF($cn${{ $('Closer por email').item.json.closer_name || '' }}$cn$, ''),\n      'closer_email', NULLIF('{{ $('Webhook').item.json.body.prospection.meetings?.[0]?.ownerEmail || '' }}', '')\n    ),\n    updated_at = now()\n  WHERE id = v_deal;\nEND\n$do$;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        920,
+        -60
+      ],
+      "id": "cdp-meetime-won",
+      "name": "CDP - Meetime WON",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DO $do$\nDECLARE v_deal uuid;\nBEGIN\n  SELECT cd.id INTO v_deal\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE (lower(pe.email) = lower('{{ $('Webhook').item.json.body.Email }}')\n         OR pe.telephone = '{{ (() => { const t=($('Webhook').item.json.body.Telefone||'').replace(/\\D/g,''); return t ? (t.startsWith('55') ? t : '55'+t) : ''; })() }}')\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1;\n\n  IF v_deal IS NULL THEN\n    RAISE EXCEPTION 'Lead nao cadastrado no CDP (Pipedrive Ganho) - email: %, tel: %',\n      '{{ $('Webhook').item.json.body.Email }}',\n      '{{ $('Webhook').item.json.body.Telefone }}';\n  END IF;\n\n  UPDATE commercial_deals SET\n    status = 'won',\n    won_at = now(),\n    stage = 'cliente',\n    closer_user_id = COALESCE(\n      (SELECT id FROM users WHERE lower(name) = lower('{{ $('Webhook').item.json.body.Closer }}')),\n      closer_user_id),\n    custom_properties = COALESCE(custom_properties, '{}'::jsonb) || jsonb_build_object(\n      'closer', NULLIF($cn${{ $('Webhook').item.json.body.Closer }}$cn$, '')\n    ),\n    updated_at = now()\n  WHERE id = v_deal;\nEND\n$do$;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        500,
+        160
+      ],
+      "id": "cdp-pipedrive-ganho",
+      "name": "CDP - Pipedrive Ganho",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DO $do$\nDECLARE v_deal uuid;\nBEGIN\n  SELECT cd.id INTO v_deal\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE (lower(pe.email) = lower('{{ $('Webhook').item.json.body.Email }}')\n         OR pe.telephone = '{{ (() => { const t=($('Webhook').item.json.body.Telefone||'').replace(/\\D/g,''); return t ? (t.startsWith('55') ? t : '55'+t) : ''; })() }}')\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1;\n\n  IF v_deal IS NULL THEN\n    RAISE EXCEPTION 'Lead nao cadastrado no CDP (Pipedrive Perdido) - email: %, tel: %',\n      '{{ $('Webhook').item.json.body.Email }}',\n      '{{ $('Webhook').item.json.body.Telefone }}';\n  END IF;\n\n  UPDATE commercial_deals SET\n    status = 'lost',\n    lost_at = now(),\n    loss_reason = NULLIF($lr${{ $('Webhook').item.json.body['Motivo de Perda'] }}$lr$, ''),\n    closer_user_id = COALESCE(\n      (SELECT id FROM users WHERE lower(name) = lower('{{ $('Webhook').item.json.body.Closer }}')),\n      closer_user_id),\n    custom_properties = COALESCE(custom_properties, '{}'::jsonb) || jsonb_build_object(\n      'closer', NULLIF($cn${{ $('Webhook').item.json.body.Closer }}$cn$, '')\n    ),\n    updated_at = now()\n  WHERE id = v_deal;\nEND\n$do$;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        500,
+        400
+      ],
+      "id": "cdp-pipedrive-perdido",
+      "name": "CDP - Pipedrive Perdido",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=🔴 Erro CDP — Perda Meetime\nLead: {{ $('Webhook').item.json.body.prospection.lead.name }}\n\nMotivo: {{ $json.error?.message || $json.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        740,
+        -240
+      ],
+      "id": "erro-meetime-lost",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "name": "Erro - Meetime LOST",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=🔴 Erro CDP — Ganho Meetime (oportunidade)\nLead: {{ $('Webhook').item.json.body.prospection.lead.name }}\n\nMotivo: {{ $json.error?.message || $json.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        1140,
+        40
+      ],
+      "id": "erro-meetime-won",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "name": "Erro - Meetime WON",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=🔴 Erro CDP — Ganho Pipedrive (cliente)\nLead: {{ $('Webhook').item.json.body.Nome }}\n\nMotivo: {{ $json.error?.message || $json.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        740,
+        240
+      ],
+      "id": "erro-pipedrive-ganho",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "name": "Erro - Pipedrive Ganho",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=🔴 Erro CDP — Perda Pipedrive\nLead: {{ $('Webhook').item.json.body.Nome }}\n\nMotivo: {{ $json.error?.message || $json.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        740,
+        480
+      ],
+      "id": "erro-pipedrive-perdido",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "name": "Erro - Pipedrive Perdido",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  pe.name                              AS \"Nome\",\n  pe.telephone                         AS \"Telefone\",\n  pe.email                             AS \"Email\",\n  d.custom_properties->>'empresa'      AS \"Empresa\",\n  d.segment                            AS \"Segmento\",\n  d.tier                               AS \"Tier\",\n  d.status                             AS \"Status\",\n  d.stage                              AS \"Etapa\",\n  COALESCE(u.name, d.custom_properties->>'closer') AS \"Closer\",\n  d.created_at                         AS \"Data criação\",\n  d.scheduled_meeting_at               AS \"Data reunião\",\n  d.custom_properties->>'oportunidade_at' AS \"Data oportunidade\",\n  d.won_at                             AS \"Data ganho\",\n  d.lost_at                            AS \"Data perda\",\n  d.loss_reason                        AS \"Motivo perda\",\n  d.raw_payload->>'utm_source'         AS \"Origem\",\n  d.raw_payload->>'utm_medium'         AS \"utm_medium\",\n  d.raw_payload->>'utm_campaign'       AS \"utm_campaign\",\n  d.raw_payload->>'utm_content'        AS \"utm_content\",\n  d.raw_payload->>'utm_ad'             AS \"utm_term\",\n  d.raw_payload->>'utm_platform'       AS \"utm_placement\",\n  d.deal_value                         AS \"deal_value\"\nFROM commercial_deals d\nJOIN persons pe ON pe.id = d.person_id\nLEFT JOIN users u ON u.id = d.closer_user_id\nWHERE (pe.telephone = '{{ $('Webhook').item.json.body.prospection.lead.phones[0].phone.replace(/\\D/g,'') }}'\n       OR d.meetime_lead_id = '{{ $('Webhook').item.json.body.prospection.lead.id }}')\n  AND d.discarded_at IS NULL\nORDER BY d.updated_at DESC\nLIMIT 1;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1360,
+        -160
+      ],
+      "id": "leitor-meetime-planilha-",
+      "name": "Leitor Meetime (planilha)",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n  pe.name                              AS \"Nome\",\n  pe.telephone                         AS \"Telefone\",\n  pe.email                             AS \"Email\",\n  d.custom_properties->>'empresa'      AS \"Empresa\",\n  d.segment                            AS \"Segmento\",\n  d.tier                               AS \"Tier\",\n  d.status                             AS \"Status\",\n  d.stage                              AS \"Etapa\",\n  COALESCE(u.name, d.custom_properties->>'closer') AS \"Closer\",\n  d.created_at                         AS \"Data criação\",\n  d.scheduled_meeting_at               AS \"Data reunião\",\n  d.custom_properties->>'oportunidade_at' AS \"Data oportunidade\",\n  d.won_at                             AS \"Data ganho\",\n  d.lost_at                            AS \"Data perda\",\n  d.loss_reason                        AS \"Motivo perda\",\n  d.raw_payload->>'utm_source'         AS \"Origem\",\n  d.raw_payload->>'utm_medium'         AS \"utm_medium\",\n  d.raw_payload->>'utm_campaign'       AS \"utm_campaign\",\n  d.raw_payload->>'utm_content'        AS \"utm_content\",\n  d.raw_payload->>'utm_ad'             AS \"utm_term\",\n  d.raw_payload->>'utm_platform'       AS \"utm_placement\",\n  d.deal_value                         AS \"deal_value\"\nFROM commercial_deals d\nJOIN persons pe ON pe.id = d.person_id\nLEFT JOIN users u ON u.id = d.closer_user_id\nWHERE (lower(pe.email) = lower('{{ $('Webhook').item.json.body.Email }}')\n       OR pe.telephone = '{{ (() => { const t=($('Webhook').item.json.body.Telefone||'').replace(/\\D/g,''); return t ? (t.startsWith('55') ? t : '55'+t) : ''; })() }}')\n  AND d.discarded_at IS NULL\nORDER BY d.updated_at DESC\nLIMIT 1;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        1360,
+        300
+      ],
+      "id": "leitor-pipedrive-planilha-",
+      "name": "Leitor Pipedrive (planilha)",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Z3PHa2u_r5r6vKTbzRjrXX8N2XaBZpEiNDlc8WLwCHo",
+          "mode": "list",
+          "cachedResultName": "[CW] Análises dados"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 847603604,
+          "mode": "list",
+          "cachedResultName": "Status Lead"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $json[\"Nome\"] }}",
+            "Telefone": "={{ $json[\"Telefone\"] }}",
+            "Email": "={{ $json[\"Email\"] }}",
+            "Empresa": "={{ $json[\"Empresa\"] }}",
+            "Segmento": "={{ $json[\"Segmento\"] }}",
+            "Tier": "={{ $json[\"Tier\"] }}",
+            "Status": "={{ $json[\"Status\"] }}",
+            "Etapa": "={{ $json[\"Etapa\"] }}",
+            "Closer": "={{ $json[\"Closer\"] }}",
+            "Data criação": "={{ $json[\"Data criação\"] }}",
+            "Data reunião": "={{ $json[\"Data reunião\"] }}",
+            "Data oportunidade": "={{ $json[\"Data oportunidade\"] }}",
+            "Data ganho": "={{ $json[\"Data ganho\"] }}",
+            "Data perda": "={{ $json[\"Data perda\"] }}",
+            "Motivo perda": "={{ $json[\"Motivo perda\"] }}",
+            "Origem": "={{ $json[\"Origem\"] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Empresa",
+              "displayName": "Empresa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Segmento",
+              "displayName": "Segmento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Tier",
+              "displayName": "Tier",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Etapa",
+              "displayName": "Etapa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Closer",
+              "displayName": "Closer",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data criação",
+              "displayName": "Data criação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data reunião",
+              "displayName": "Data reunião",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data oportunidade",
+              "displayName": "Data oportunidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data ganho",
+              "displayName": "Data ganho",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data perda",
+              "displayName": "Data perda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Motivo perda",
+              "displayName": "Motivo perda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Origem",
+              "displayName": "Origem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1900,
+        120
+      ],
+      "id": "append-row-in-sheet",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Z3PHa2u_r5r6vKTbzRjrXX8N2XaBZpEiNDlc8WLwCHo",
+          "mode": "list",
+          "cachedResultName": "[CW] Análises dados"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1100511598,
+          "mode": "list",
+          "cachedResultName": "Vendas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email": "={{ $json.Email }}",
+            "Proprietário": "={{ $json.Closer }}",
+            "Negócio criado em": "={{ $json['Data criação'] }}",
+            "Motivo da perda": "={{ $json['Motivo perda'] }}",
+            "Status": "={{ $('Webhook').item.json.body.Status || ($('Webhook').item.json.body.event === 'LEAD.WON' ? 'Ganho' : 'Perdido') }}",
+            "Etapa": "={{ $json.Etapa }}",
+            "Ganho em": "={{ $json['Data ganho'] }}",
+            "Pessoa de contato": "={{ $json.Nome }}",
+            "Telefone - Celular": "={{ $json.Telefone }}",
+            "Valor": "={{ $json.deal_value }}",
+            "Data de perda": "={{ $json['Data perda'] }}",
+            "[TRACK] utm_medium": "={{ $json.utm_medium }}",
+            "[TRACK] utm_placement": "={{ $json.utm_placement }}",
+            "[TRACK] utm_source": "={{ $json.Origem }}",
+            "[TRACK][ON] utm_campaign": "={{ $json.utm_campaign }}",
+            "[TRACK][ON] utm_content": "={{ $json.utm_content }}",
+            "[TRACK][ON] utm_term": "={{ $json.utm_term }}",
+            "Tipo de tier": "={{ $json.Tier }}",
+            "[QUAL] Qual o seu segmento?": "={{ $json.Segmento }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Título",
+              "displayName": "Título",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Proprietário",
+              "displayName": "Proprietário",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Negócio criado em",
+              "displayName": "Negócio criado em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Motivo da perda",
+              "displayName": "Motivo da perda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Funil",
+              "displayName": "Funil",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Etapa",
+              "displayName": "Etapa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Última alteração de etapa",
+              "displayName": "Última alteração de etapa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Ganho em",
+              "displayName": "Ganho em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[TRACK] Passou por IA?",
+              "displayName": "[TRACK] Passou por IA?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Pessoa de contato",
+              "displayName": "Pessoa de contato",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone - Trabalho",
+              "displayName": "Telefone - Trabalho",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone - Residencial",
+              "displayName": "Telefone - Residencial",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone - Celular",
+              "displayName": "Telefone - Celular",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone - Outros",
+              "displayName": "Telefone - Outros",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Valor",
+              "displayName": "Valor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[QUAL] SDR/BDR",
+              "displayName": "[QUAL] SDR/BDR",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data de perda",
+              "displayName": "Data de perda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[QUAL] Análise do lead pelo SDR",
+              "displayName": "[QUAL] Análise do lead pelo SDR",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[TRACK] utm_medium",
+              "displayName": "[TRACK] utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[TRACK] utm_placement",
+              "displayName": "[TRACK] utm_placement",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[TRACK] utm_source",
+              "displayName": "[TRACK] utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[TRACK][ON] utm_campaign",
+              "displayName": "[TRACK][ON] utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[TRACK][ON] utm_content",
+              "displayName": "[TRACK][ON] utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[TRACK][ON] utm_term",
+              "displayName": "[TRACK][ON] utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Tipo de tier",
+              "displayName": "Tipo de tier",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[QUAL] Faturamento do último mês",
+              "displayName": "[QUAL] Faturamento do último mês",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "[QUAL] Qual o seu segmento?",
+              "displayName": "[QUAL] Qual o seu segmento?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome do produto",
+              "displayName": "Nome do produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1900,
+        320
+      ],
+      "id": "append-vendas",
+      "name": "Append Vendas",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Z3PHa2u_r5r6vKTbzRjrXX8N2XaBZpEiNDlc8WLwCHo",
+          "mode": "list",
+          "cachedResultName": "[CW] Análises dados"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1563320092,
+          "mode": "list",
+          "cachedResultName": "Pré-vendas"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data_de_entrada_na_cadencia": "={{ $('Webhook').item.json.body.prospection.startDate }}",
+            "nome": "={{ $json.Nome }}",
+            "email": "={{ $json.Email }}",
+            "telefones": "={{ $json.Telefone }}",
+            "empresa": "={{ $json.Empresa }}",
+            "status": "={{ $('Webhook').item.json.body.event === 'LEAD.WON' ? 'Ganho' : 'Perdido' }}",
+            "motivo_de_perda": "={{ $json['Motivo perda'] }}",
+            "nome_do_responsavel": "={{ $('Webhook').item.json.body.prospection.salesman.name }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data_de_entrada_na_cadencia",
+              "displayName": "data_de_entrada_na_cadencia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "telefones",
+              "displayName": "telefones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "empresa",
+              "displayName": "empresa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "motivo_de_perda",
+              "displayName": "motivo_de_perda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nome_do_responsavel",
+              "displayName": "nome_do_responsavel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1900,
+        520
+      ],
+      "id": "append-pre-vendas",
+      "name": "Append Pré-vendas",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Lg2juoyAS0U91fQs",
+          "name": "Google Sheets RevOps"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "CDP - Meetime LOST",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pipedrive users (WON)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CDP - Pipedrive Ganho",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CDP - Pipedrive Perdido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pipedrive users (WON)": {
+      "main": [
+        [
+          {
+            "node": "Closer por email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Closer por email": {
+      "main": [
+        [
+          {
+            "node": "CDP - Meetime WON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Meetime LOST": {
+      "main": [
+        [
+          {
+            "node": "Leitor Meetime (planilha)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Erro - Meetime LOST",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Meetime WON": {
+      "main": [
+        [
+          {
+            "node": "Leitor Meetime (planilha)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Erro - Meetime WON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Pipedrive Ganho": {
+      "main": [
+        [
+          {
+            "node": "Leitor Pipedrive (planilha)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Erro - Pipedrive Ganho",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Pipedrive Perdido": {
+      "main": [
+        [
+          {
+            "node": "Leitor Pipedrive (planilha)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Erro - Pipedrive Perdido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leitor Meetime (planilha)": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append Vendas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append Pré-vendas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leitor Pipedrive (planilha)": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append Vendas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  }
+}

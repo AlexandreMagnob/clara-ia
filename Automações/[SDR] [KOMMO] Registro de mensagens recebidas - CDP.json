@@ -1,0 +1,864 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4979c957-35de-44fc-94bb-1cb31369d1fa",
+              "name": "whatsapp",
+              "value": "={{ $('Adiciona 9 digito').item.json.numero_normalizado }}",
+              "type": "string"
+            },
+            {
+              "id": "d484433c-b93a-487f-b1c2-ad5caa0603f8",
+              "name": "mensagem",
+              "value": "={{ $json.mensagem }}{{ $json.text }}{{ $json.content }}{{ $json.content.parts[0].text }}",
+              "type": "string"
+            },
+            {
+              "id": "9537bcb9-af72-4882-bb07-a50cc740c970",
+              "name": "type_message",
+              "value": "={{ $('Webhook1').item.json.body['message[add][0][text]'] }}",
+              "type": "string"
+            },
+            {
+              "id": "0930e6b0-2cbf-4caf-ba80-fc0f832b8fec",
+              "name": "lead_id",
+              "value": "={{ $('Get list of contacts2').item.json._embedded.contacts[0]._embedded.leads[0].id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e9034e42-4b43-4f81-9954-06b3ba01d03d",
+      "name": "Definir variáveis1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2048,
+        -16
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "keyValue": "={{ $('Adiciona 9 digito').item.json.numero_original }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2272,
+        -16
+      ],
+      "id": "81d3c366-179e-46b9-ba54-5d3953a56c2e",
+      "name": "Consulta base de leads",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook1').item.json.body['message[add][0][attachment][type]'] }}",
+                    "rightValue": "voice",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "0b4d9e31-0325-4a56-8e80-aa9d7e273e97"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "c0e434dd-1268-421d-b81b-3a5e90ed9550",
+                    "leftValue": "={{ $('Webhook1').item.json.body['message[add][0][attachment][type]'] }}",
+                    "rightValue": "picture",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "image"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "fdfa1a70-7d7c-4874-8e59-3142515ae3bb",
+                    "leftValue": "={{ $('Webhook1').item.json.body['message[add][0][attachment][file_name]'] }}",
+                    "rightValue": "pdf",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "documento"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "52aaf749-fe4f-44e4-880e-15b2bfc027f1",
+                    "leftValue": "={{ $('Webhook1').item.json.body['message[add][0][text]'] }}",
+                    "rightValue": "ExtendedTextMessage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            }
+          ]
+        },
+        "options": {
+          "looseTypeValidation": true,
+          "allMatchingOutputs": false
+        }
+      },
+      "id": "3454f637-e397-4df9-b1c0-d489bb97f6f4",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        -48
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Identificar tipo de mensagem\n",
+        "height": 860,
+        "width": 1064,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1104,
+        -384
+      ],
+      "typeVersion": 1,
+      "id": "04417cc2-17d5-4940-b578-f3d55dd650e5",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "50cebc66-2dbc-4c7a-a09e-83ffb0f52991",
+              "name": "mensagem",
+              "value": "={{ $('Webhook1').item.json.body['message[add][0][text]'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4a2ae73b-cd56-4445-b707-c1dfae3be9f6",
+      "name": "mensagem de texto",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1648,
+        176
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Function Node — Normalizar nono dígito (Brasil) a partir de item.json.numero\nreturn $input.all().map((item) => {\n  const raw = $input.first().json?._embedded.contacts[0].custom_fields_values[0].values[0].value ?? '';\n  // mantém apenas dígitos\n  let numero = String(raw).replace(/\\D+/g, '');\n\n  const out = {\n    raw,\n    numero_original: numero,\n    numero_normalizado: null,\n    ddd: null,\n    teve_mudanca: false,\n    motivo: null,\n    valido_brasil: false,\n  };\n\n  // Se não começar com 55, não tenta \"adivinhar\" país\n  if (!numero.startsWith('55')) {\n    out.motivo = 'nao_comeca_com_55';\n    out.numero_normalizado = numero;\n    return { json: out };\n  }\n\n  // Precisa ter pelo menos 55 + DDD (4 dígitos)\n  if (numero.length < 4) {\n    out.motivo = 'curto_demais_para_ddd';\n    out.numero_normalizado = numero;\n    return { json: out };\n  }\n\n  const dddStr = numero.slice(2, 4);\n  const ddd = parseInt(dddStr, 10);\n  out.ddd = Number.isNaN(ddd) ? null : ddd;\n\n  if (Number.isNaN(ddd) || ddd < 11 || ddd > 99) {\n    out.motivo = 'ddd_invalido';\n    out.numero_normalizado = numero;\n    return { json: out };\n  }\n\n  // Parte local depois de 55 + DDD\n  const idxLocal = 4;\n  const local = numero.slice(idxLocal);\n\n  // Celular esperado: 9 dígitos locais (com nono dígito '9')\n  // Sem nono dígito: 8 dígitos locais (insere '9' no início)\n  if (local.length === 8) {\n    // adiciona nono dígito\n    numero = numero.slice(0, idxLocal) + '9' + numero.slice(idxLocal);\n    out.teve_mudanca = true;\n    out.motivo = 'adicionou_nono_digito';\n  } else if (local.length === 9) {\n    // já tem 9 dígitos locais; NÃO força que o primeiro seja 9 (pra não quebrar casos estranhos)\n    out.motivo = 'ja_tem_9_digitos_locais';\n  } else {\n    // tamanhos inesperados: não mexe\n    out.motivo = `tamanho_local_inesperado_${local.length}`;\n  }\n\n  out.numero_normalizado = numero;\n  out.valido_brasil = true;\n\n  return { json: out };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1088,
+        -16
+      ],
+      "id": "464702b0-7751-48b5-8573-6ff27f91dd08",
+      "name": "Adiciona 9 digito"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Webhook1').item.json.body['message[add][0][attachment][link]'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1552,
+        -208
+      ],
+      "id": "9dd3c3b4-bf59-401d-990d-4eb335e5293d",
+      "name": "baixar áudio"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Webhook1').item.json.body['message[add][0][attachment][link]'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1552,
+        -32
+      ],
+      "id": "61bceba0-dcb3-4805-901e-1075754fc085",
+      "name": "baixar imagem"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Descreva todo o conteudo da imagem entendendo que foi enviado para uma clínica de estética e cirurgia plástica. O texto enviado junto foi: {{ $('Webhook1').item.json.body['message[add][0][text]'] }}",
+        "inputType": "base64",
+        "options": {
+          "maxTokens": 300
+        }
+      },
+      "id": "f1f3564c-240c-4a47-bfd8-54b0c25bbb30",
+      "name": "Analisar imagem",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.6,
+      "position": [
+        1760,
+        -32
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "openAiApi": {
+          "id": "z5sdMKuz4ev8Qulo",
+          "name": "OpenAi - Token de uso geral no n8n"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "id": "eea55edb-a357-48db-913c-d703b9920fc6",
+      "name": "Transcrever áudio",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.6,
+      "position": [
+        1760,
+        -208
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 2,
+      "credentials": {
+        "openAiApi": {
+          "id": "z5sdMKuz4ev8Qulo",
+          "name": "OpenAi - Token de uso geral no n8n"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b027d2a3-17bd-4c71-b1b1-9e3883be7ca3",
+              "leftValue": "={{ $json.body['message[add][0][origin]'] || $json.body[\"talk[add][0][origin]\"]}}",
+              "rightValue": "waba",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        720,
+        -16
+      ],
+      "id": "c8818bf9-7f4d-4aaa-a548-ba1f1609b761",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "tableId": "leads",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "whatsapp",
+              "fieldValue": "={{ $('Definir variáveis1').item.json.whatsapp }}"
+            },
+            {
+              "fieldId": "etapa_conversa",
+              "fieldValue": "atendido"
+            },
+            {
+              "fieldId": "count_messages",
+              "fieldValue": "=1"
+            },
+            {
+              "fieldId": "followup_count",
+              "fieldValue": "=1"
+            },
+            {
+              "fieldId": "created_by",
+              "fieldValue": "=Agent"
+            },
+            {
+              "fieldId": "conversa",
+              "fieldValue": "=[{{ $now.format('dd/MM/yyyy HH:mm:ss') }}] Lead: {{ $('Definir variáveis1').item.json.mensagem }}"
+            },
+            {
+              "fieldId": "kommo_id",
+              "fieldValue": "={{ $('Webhook1').item.json.body[\"message[add][0][entity_id]\"] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        80
+      ],
+      "id": "bb738ee0-061b-4550-8d06-8eacd1c0d869",
+      "name": "Registro em tabela 'leads'",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "de9b8da4-65da-49e1-9cee-47d8381306ad",
+              "leftValue": "={{$json}}",
+              "rightValue": "={{0}}",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "74f0c270-a0f6-4f98-b785-3201812d72f8",
+      "name": "Lead já está na base?1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2496,
+        -16
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Consulta base de leads').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "date_updated",
+              "fieldValue": "={{ $now }}"
+            },
+            {
+              "fieldId": "count_messages",
+              "fieldValue": "={{ $('Consulta base de leads').item.json.count_messages + 1}} "
+            },
+            {
+              "fieldId": "conversa",
+              "fieldValue": "={{ $('Consulta base de leads').item.json.conversa }}\n[{{ $now.format('dd/MM/yyyy HH:mm:ss') }}] Lead: {{ $('Definir variáveis1').item.json.mensagem }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        -128
+      ],
+      "id": "2de1790a-5ddd-4678-8146-a244d5cd6732",
+      "name": "Atualizar planilha de leads",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://marketingcardapiowebcom.kommo.com/api/v4/contacts",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "filter[id]",
+              "value": "={{ $('Webhook1').item.json.body['message[add][0][contact_id]'] }}"
+            },
+            {
+              "name": "with",
+              "value": "leads"
+            },
+            {
+              "name": "limit",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjFkZDk2ZWJiYzIxMzQwZGI1YzRjMjI3NDk4MTQ3YTRhZDQ5M2YxMDg3MmI0MGFmNjkwMWQ5ZTlkYTJlMTJkN2JlNWJkZGVlNjU5ZWM0ZWY1In0.eyJhdWQiOiI1MWE2ZTBkYi1jNWU1LTQxYWUtYjZkZS1jZjE4YzA2ODVhZGIiLCJqdGkiOiIxZGQ5NmViYmMyMTM0MGRiNWM0YzIyNzQ5ODE0N2E0YWQ0OTNmMTA4NzJiNDBhZjY5MDFkOWU5ZGEyZTEyZDdiZTViZGRlZTY1OWVjNGVmNSIsImlhdCI6MTc2OTAyNzczOCwibmJmIjoxNzY5MDI3NzM4LCJleHAiOjE5MjY3MjAwMDAsInN1YiI6IjEyNzA3MDcxIiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0MTY0MjQ3LCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJjcm0iLCJmaWxlcyIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiLCJwdXNoX25vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiNDJkYmJiM2UtMjRkNy00YzUzLWIzZmUtOTdlMDcyZWI1YTQzIiwidXNlcl9mbGFncyI6MCwiYXBpX2RvbWFpbiI6ImFwaS1jLmtvbW1vLmNvbSJ9.S3uEIShn_ELrVKSScxjNjRG51T9zNQ-95K75jn_GRF35QbLnlS8kqhgZ3ee7uUblMM-2dtCpdBgrKc1a2pC8HEeWb9PzQClwW9nLH9FBgFH8TNQSGg_i01HSCNd3UU2wIEso6osZx4M-Bu7ngt9S1o5lMKwiWa6-oYMKszb94XR08tXc5Dq46-Q8d6SGoyVQ3S4K3-Hk9dFfGp1FuTdu6kb0wnT-DZoRLHDmq_u6AvSC5_VvaG7DEYMPeW6xXGZAx4fTL17iwd_UllmmRLO_VT3JG-0THc16QJlJjYNnC8_PnHwMJmXfPkG1MsgWBKyaiHtH6kzqvPCdvNwAslrc3w"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        912,
+        -16
+      ],
+      "id": "ad32ba56-ba2d-45a5-ad22-d750e26c4d22",
+      "name": "Get list of contacts2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH p AS (\n  INSERT INTO persons (name, telephone, created_at, updated_at)\n  VALUES ('', '{{ $('Definir variáveis1').item.json.whatsapp }}', now(), now())\n  RETURNING id\n),\nd AS (\n  INSERT INTO commercial_deals (\n    person_id, status, stage, kommo_lead_id, ai_enabled, custom_properties, created_at, updated_at\n  )\n  SELECT p.id, 'open', 'atendido',\n    NULLIF(NULLIF('{{ $('Webhook1').item.json.body[\"message[add][0][entity_id]\"] }}', ''), 'undefined'),\n    true,\n    jsonb_build_object('created_by', 'Agent', 'followup_count', 1),\n    now(), now()\n  FROM p\n  RETURNING id, person_id\n),\nc AS (\n  INSERT INTO commercial_conversations (\n    commercial_deal_id, person_id, channel, origin, conversation_type, status,\n    message_count, last_message_at, started_at, created_at, updated_at\n  )\n  SELECT d.id, d.person_id, 'whatsapp', 'ia', 'ia', 'open', 1, now(), now(), now(), now()\n  FROM d\n  RETURNING id, person_id\n)\nINSERT INTO commercial_conversation_messages (\n  commercial_conversation_id, person_id, content, message_type, message_from, created_at, updated_at\n)\nSELECT c.id, c.person_id,\n  $cwmsg${{ $('Definir variáveis1').item.json.mensagem }}$cwmsg$,\n  'text', 'person', now(), now()\nFROM c;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        2760,
+        300
+      ],
+      "id": "cdpk-pg-0001",
+      "name": "CDP - Registro em tabela 'leads'",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=🔴 Erro CDP — Registro msg lead (create)\nRef: {{ $('Definir variáveis1').item.json.whatsapp }}\n\nMotivo: {{ $json.error?.message || $json.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        2960,
+        440
+      ],
+      "id": "cdpk-sl-0002",
+      "name": "Erro CDP - Registro em tabela 'leads'",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH d AS (\n  SELECT cd.id, cd.person_id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('Definir variáveis1').item.json.whatsapp }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n),\nconv AS (\n  SELECT c.id, c.person_id\n  FROM commercial_conversations c, d\n  WHERE c.commercial_deal_id = d.id AND c.channel = 'whatsapp'\n  ORDER BY c.created_at DESC\n  LIMIT 1\n),\nbump AS (\n  UPDATE commercial_conversations c\n  SET last_message_at = now(), message_count = COALESCE(c.message_count, 0) + 1, updated_at = now()\n  FROM conv WHERE c.id = conv.id\n  RETURNING c.id\n)\nINSERT INTO commercial_conversation_messages (\n  commercial_conversation_id, person_id, content, message_type, message_from, created_at, updated_at\n)\nSELECT conv.id, conv.person_id,\n  $cwmsg${{ $('Definir variáveis1').item.json.mensagem }}$cwmsg$,\n  'text', 'person', now(), now()\nFROM conv;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        2760,
+        92
+      ],
+      "id": "cdpk-pg-0003",
+      "name": "CDP - Atualizar planilha de leads",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=🔴 Erro CDP — Registro msg lead (update)\nRef: {{ $('Definir variáveis1').item.json.whatsapp }}\n\nMotivo: {{ $json.error?.message || $json.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        2960,
+        232
+      ],
+      "id": "cdpk-sl-0004",
+      "name": "Erro CDP - Atualizar planilha de leads",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Definir variáveis1": {
+      "main": [
+        [
+          {
+            "node": "Consulta base de leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta base de leads": {
+      "main": [
+        [
+          {
+            "node": "Lead já está na base?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "baixar áudio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "baixar imagem",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Definir variáveis1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "mensagem de texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "mensagem de texto": {
+      "main": [
+        [
+          {
+            "node": "Definir variáveis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona 9 digito": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixar áudio": {
+      "main": [
+        [
+          {
+            "node": "Transcrever áudio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "baixar imagem": {
+      "main": [
+        [
+          {
+            "node": "Analisar imagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar imagem": {
+      "main": [
+        [
+          {
+            "node": "Definir variáveis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcrever áudio": {
+      "main": [
+        [
+          {
+            "node": "Definir variáveis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Get list of contacts2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead já está na base?1": {
+      "main": [
+        [
+          {
+            "node": "Atualizar planilha de leads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Registro em tabela 'leads'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get list of contacts2": {
+      "main": [
+        [
+          {
+            "node": "Adiciona 9 digito",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registro em tabela 'leads'": {
+      "main": [
+        [
+          {
+            "node": "CDP - Registro em tabela 'leads'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Registro em tabela 'leads'": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Erro CDP - Registro em tabela 'leads'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Erro CDP - Registro em tabela 'leads'": {
+      "main": [
+        []
+      ]
+    },
+    "Atualizar planilha de leads": {
+      "main": [
+        [
+          {
+            "node": "CDP - Atualizar planilha de leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Atualizar planilha de leads": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Erro CDP - Atualizar planilha de leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Erro CDP - Atualizar planilha de leads": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  }
+}

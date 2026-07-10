@@ -1,0 +1,1089 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://marketingcardapiowebcom.kommo.com/api/v4/leads/{{ $('Get list of leads').item.json.id }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "with",
+              "value": "contacts"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "=Bearer {{ $('Call \\'[REVOPS] Credenciais\\'1').item.json.token_kommo }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        6096,
+        672
+      ],
+      "id": "556f1edf-dc35-4202-9550-8ccf363cf1c4",
+      "name": "Busca lead c/ contato"
+    },
+    {
+      "parameters": {
+        "url": "=https://marketingcardapiowebcom.kommo.com/api/v4/contacts/{{ $('Busca lead c/ contato').item.json._embedded.contacts[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "=Bearer {{ $('Call \\'[REVOPS] Credenciais\\'1').item.json.token_kommo }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        6304,
+        672
+      ],
+      "id": "b6394707-fc68-4324-9a89-0e36f38c55c7",
+      "name": "Busca contato"
+    },
+    {
+      "parameters": {
+        "jsCode": "function normalizeBR(raw){ if(!raw) return null; let d=String(raw).replace(/\\D/g,'');\n  if(d.length===13&&d.startsWith('55')) return d;\n  if(d.length===12&&d.startsWith('55')) return d.slice(0,4)+'9'+d.slice(4);\n  if(d.startsWith('55')&&d.length>11) d=d.slice(2);\n  if(d.length===11) return '55'+d;\n  if(d.length===10) return '55'+d.slice(0,2)+'9'+d.slice(2);\n  return d.startsWith('55')?d:'55'+d; }\nconst c = $('Busca contato').first().json;\nconst cf = c.custom_fields_values || [];\nconst phoneField = cf.find(f => f.field_code === 'PHONE');\nconst rawPhone = (phoneField && phoneField.values && phoneField.values[0] && phoneField.values[0].value) || null;\nreturn [{ json: {\n  whatsapp: normalizeBR(rawPhone),\n  whatsapp_raw: rawPhone,\n  kommo_id_novo: $('Get list of leads').first().json.id\n} }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6512,
+        672
+      ],
+      "id": "2c60b4f9-5bed-43ff-8fec-dd072541b70f",
+      "name": "Extrai telefone"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "keyValue": "={{ $('Extrai telefone').item.json.whatsapp }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        6720,
+        672
+      ],
+      "id": "50b60e84-2df8-4171-a7c3-d1eb63647f57",
+      "name": "Busca lead por telefone",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Busca lead por telefone').item.json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "kommo_id",
+              "fieldValue": "={{ $('Get list of leads').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        6928,
+        672
+      ],
+      "id": "90707510-bbd6-4634-bb0c-1ffabbc8671f",
+      "name": "Atualiza kommo_id",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        7264,
+        592
+      ],
+      "id": "43c9c8b5-99e8-43e1-b9f2-4531a19137dc",
+      "name": "Dados do lead"
+    },
+    {
+      "parameters": {
+        "url": "=https://{{$json.url_kommo}}.kommo.com/api/v4/leads/{{ $('Webhook').item.json.body['leads[add][0][id]'] }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1"
+            },
+            {
+              "name": "with",
+              "value": "custom_fields_values"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$json.token_kommo}}"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        5248,
+        496
+      ],
+      "id": "30fb1810-2ce6-4dad-b972-9fc100dababf",
+      "name": "Get list of leads",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "DzFqCj1kEJGFCIRb",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/DzFqCj1kEJGFCIRb",
+          "cachedResultName": "[REVOPS] Credenciais"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        4816,
+        496
+      ],
+      "id": "8c426961-2992-4db0-b309-3aedf5da4e99",
+      "name": "Call '[REVOPS] Credenciais'1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "template_kommo",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "nome_template",
+              "keyValue": "={{ $json.custom_fields_values[0].values[0].value }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        5472,
+        496
+      ],
+      "id": "477fae71-c132-4b9f-b187-6c76ee40e55a",
+      "name": "Consulta template1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "kommo_id",
+              "keyValue": "={{ $('Get list of leads').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        8960,
+        0
+      ],
+      "id": "e1fb268d-3f66-4582-b0d1-b37a060a2010",
+      "name": "Puxa conversa atual1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "leads",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "lead_id",
+              "condition": "eq",
+              "keyValue": "={{ $json.lead_id }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "conversa",
+              "fieldValue": "={{ $json.conversa + \"\\n[\" + $now.toFormat(\"dd/MM/yyyy HH:mm:ss\") + \"] Comercial: \" + $('Consulta template1').item.json.mensagem }}"
+            },
+            {
+              "fieldId": "id_start_message",
+              "fieldValue": "={{ $('Coleta do MessageID1').item.json.messageId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        9168,
+        0
+      ],
+      "id": "d1f89465-6a67-4588-ae0d-72b2ca01e6c5",
+      "name": "Atualiza conversa 1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "kommo_id",
+              "keyValue": "={{ $('Get list of leads').item.json.id}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        5680,
+        496
+      ],
+      "id": "4af76a8c-0ca5-4ddd-9161-566afa72c9d1",
+      "name": "Puxa dados do lead1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "23af5aee-2fd0-41f6-93ce-6e9905383dfe",
+              "leftValue": "={{ $('Consulta template1').item.json.var_template_1 }}",
+              "rightValue": "33223",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "0ca39546-43d7-418d-b4d3-e62eb0333e4c",
+              "leftValue": "={{ $('Consulta template1').item.json.var_template_2 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        8112,
+        0
+      ],
+      "id": "2423450d-ad0a-4fe6-b684-c9f01fd0b653",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5024,
+        496
+      ],
+      "id": "ac659003-5b9d-4ab2-95dd-926a28c6cff5",
+      "name": "Wait1",
+      "webhookId": "7eac59f8-b8ed-42a5-a02c-e90596e3bbec"
+    },
+    {
+      "parameters": {
+        "url": "=https://marketingcardapiowebcom.kommo.com/api/v4/users/{{ $('Get list of leads').item.json.responsible_user_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "=Bearer {{ $('Call \\'[REVOPS] Credenciais\\'1').item.json.token_kommo }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        7552,
+        384
+      ],
+      "id": "9f9c4b18-9fcb-4590-9971-98858a0ecc67",
+      "name": "Pega nome do Usuário1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4441a93a-7b72-48cd-8c34-5e0a79aec896",
+              "name": "lead_id",
+              "value": "={{ $('Get list of leads').item.json.id }}",
+              "type": "number"
+            },
+            {
+              "id": "77e324d8-13b1-4136-99da-9142ba644f72",
+              "name": "nome_lead",
+              "value": "={{ $('Dados do lead').item.json.name || $('Get list of leads').item.json.name}}",
+              "type": "string"
+            },
+            {
+              "id": "20daaa47-9ca7-4e28-bf7a-adf5b868a35f",
+              "name": "numero_lead",
+              "value": "={{ $('Dados do lead').item.json.whatsapp }}",
+              "type": "string"
+            },
+            {
+              "id": "2cae24b0-6ad1-4c6d-9776-2199d7253d39",
+              "name": "nome_user",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "9126b4ab-10d0-4d4e-be2a-cd915d78476b",
+              "name": "template",
+              "value": "={{ $('Consulta template1').item.json.nome_template }}",
+              "type": "string"
+            },
+            {
+              "id": "fbb5f9a3-0d7d-4907-9ac3-57841dbbc66e",
+              "name": "mensagem",
+              "value": "={{ $('Consulta template1').item.json.mensagem }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        7776,
+        384
+      ],
+      "id": "0bc84b3d-62ac-4428-a671-37562c3e4ca4",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\n\nconst mensagem = item.mensagem;\nconst nome = item.nome_lead;\nconst user = item.nome_user;\n\nconst mensagemFormatada = mensagem\n  .replace(/\\{nome\\}/gi, nome || '')\n  .replace(/\\{user\\}/gi, user || '');\n\nreturn [{\n  json: {\n    ...item,\n    mensagem_formatada: mensagemFormatada\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8112,
+        560
+      ],
+      "id": "2bbf66eb-211b-476e-9ff7-9c89a898741e",
+      "name": "Formatar Template com as variaveis1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v24.0/567465706453207/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer EAAMZBuNX3pJ0BRPf8ddZCDj8dDUzdoQOlUfZADzMZCoeXxQUxtUoGpCwP21UGvBQIKufaOZAh23XawmqpKQu1hPQ5cTwt6XmfvGdiIjyEk6COz34bdTwZAl5VdBQUSU56H5S9ehmHNC471bI70MJq0TD2w3aZAA8rDHwVb8wfJKg29QGDuDhdWHFPpGSLZAXGAZDZD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.numero_lead }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"{{ $('Edit Fields1').item.json.template }}\",\n    \"language\": { \"code\": \"pt_BR\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"nome\",\n            \"text\": \"{{ $('Edit Fields1').item.json.nome_lead }}\"\n          },\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"user\",\n            \"text\": \"{{ $('Edit Fields1').item.json.nome_user }}\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        8368,
+        -96
+      ],
+      "id": "42e4fc68-f925-49b4-a9d8-7814a48df823",
+      "name": "Envio de Template Meta com Nome e User1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v24.0/567465706453207/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer EAAMZBuNX3pJ0BRPf8ddZCDj8dDUzdoQOlUfZADzMZCoeXxQUxtUoGpCwP21UGvBQIKufaOZAh23XawmqpKQu1hPQ5cTwt6XmfvGdiIjyEk6COz34bdTwZAl5VdBQUSU56H5S9ehmHNC471bI70MJq0TD2w3aZAA8rDHwVb8wfJKg29QGDuDhdWHFPpGSLZAXGAZDZD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('Edit Fields1').item.json.numero_lead }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"{{ $('Edit Fields1').item.json.template }}\",\n    \"language\": { \"code\": \"pt_BR\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          {\n            \"type\": \"text\",\n            \"parameter_name\": \"nome\",\n            \"text\": \"{{ $('Edit Fields1').item.json.nome_lead }}\"\n          }\n        ]\n      }\n    ]\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        8368,
+        96
+      ],
+      "id": "6cdd7780-b83c-4fa4-bb56-650dc40ad3cc",
+      "name": "Envio de Template Meta com Nome1"
+    },
+    {
+      "parameters": {
+        "jsCode": "let id1 = null;\nlet id2 = null;\n\ntry { id1 = $('Envio de Template Meta com Nome e User1').item.json.messages[0].id; } catch(e) {}\ntry { id2 = $('Envio de Template Meta com Nome1').item.json.messages[0].id; } catch(e) {}\n\nconst messageId = id1 || id2;\n\nreturn [{ json: { messageId } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8752,
+        0
+      ],
+      "id": "f167fdc6-50fe-415b-b558-a1b997ab60d5",
+      "name": "Coleta do MessageID1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://marketingcardapiowebcom.kommo.com/api/v4/leads/{{ $json._lead_id }}/notes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json._token }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json._body }}",
+        "options": {}
+      },
+      "id": "084fdf9d-364e-455f-a211-b22c93003b90",
+      "name": "HTTP Request: Nota no Kommo1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        8624,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const mensagem = $('Formatar Template com as variaveis1').first().json.mensagem_formatada;\nconst lead_id  = $('Edit Fields1').first().json.lead_id;\nconst token    = $(\"Call '[REVOPS] Credenciais'1\").first().json.token_kommo;\n\nconst body = JSON.stringify([{\n  note_type: 'common',\n  params: { text: '\\u{1F4E4} Canal de Growth:\\n\\n' + mensagem }\n}]);\n\nreturn [{ json: { _body: body, _lead_id: lead_id, _token: token } }];"
+      },
+      "id": "f6c1682b-f0ef-447c-94b3-a2d530fa771e",
+      "name": "Code: Prepara nota1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8368,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "78a1cdea-311a-4845-8f52-f4338b73ad4c",
+              "leftValue": "={{$json}}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        5840,
+        496
+      ],
+      "id": "e86b5c6c-9d22-4106-b2ce-ff4b994d27f2",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH d AS (\n  SELECT cd.id\n  FROM commercial_deals cd\n  JOIN persons pe ON pe.id = cd.person_id\n  WHERE pe.telephone = '{{ $('Extrai telefone').item.json.whatsapp }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n)\nUPDATE commercial_deals cd\nSET kommo_lead_id = NULLIF(NULLIF('{{ $('Get list of leads').item.json.id }}', ''), 'undefined'),\n    updated_at = now()\nFROM d\nWHERE cd.id = d.id;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        6968,
+        892
+      ],
+      "id": "cdpk-pg-0005",
+      "name": "CDP - Atualiza kommo_id",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=🔴 Erro CDP — Atualiza kommo_id\nRef: {{ $('Extrai telefone').item.json.whatsapp }}\n\nMotivo: {{ $json.error?.message || $json.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        7168,
+        1032
+      ],
+      "id": "cdpk-sl-0006",
+      "name": "Erro CDP - Atualiza kommo_id",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "WITH d AS (\n  SELECT cd.id\n  FROM commercial_deals cd\n  WHERE cd.kommo_lead_id = '{{ $('Get list of leads').item.json.id }}'\n    AND cd.discarded_at IS NULL\n  ORDER BY cd.created_at DESC\n  LIMIT 1\n),\nconv AS (\n  SELECT c.id\n  FROM commercial_conversations c, d\n  WHERE c.commercial_deal_id = d.id AND c.channel = 'whatsapp'\n  ORDER BY c.created_at DESC\n  LIMIT 1\n),\nbump AS (\n  UPDATE commercial_conversations c\n  SET last_message_at = now(), message_count = COALESCE(c.message_count, 0) + 1, updated_at = now()\n  FROM conv WHERE c.id = conv.id\n  RETURNING c.id\n)\nINSERT INTO commercial_conversation_messages (\n  commercial_conversation_id, external_message_id, content,\n  message_type, message_from, metadata, created_at, updated_at\n)\nSELECT conv.id,\n  '{{ $('Coleta do MessageID1').item.json.messageId }}',\n  $cwmsg${{ $('Consulta template1').item.json.mensagem }}$cwmsg$,\n  'text', 'user', jsonb_build_object('tipo', 'template'), now(), now()\nFROM conv;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        9208,
+        220
+      ],
+      "id": "cdpk-pg-0007",
+      "name": "CDP - Atualiza conversa 1",
+      "credentials": {
+        "postgres": {
+          "id": "dPKD2OwfrvkkDT2q",
+          "name": "CDP - Postgres"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U05NBR6D2MV",
+          "mode": "list",
+          "cachedResultName": "alexandre.magno"
+        },
+        "text": "=🔴 Erro CDP — Registro template enviado\nRef: {{ $('Get list of leads').item.json.id }}\n\nMotivo: {{ $json.error?.message || $json.message }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        9408,
+        360
+      ],
+      "id": "cdpk-sl-0008",
+      "name": "Erro CDP - Atualiza conversa 1",
+      "webhookId": "bac068e6-8555-4546-b73d-f345737e0217",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Busca lead c/ contato": {
+      "main": [
+        [
+          {
+            "node": "Busca contato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca contato": {
+      "main": [
+        [
+          {
+            "node": "Extrai telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrai telefone": {
+      "main": [
+        [
+          {
+            "node": "Busca lead por telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca lead por telefone": {
+      "main": [
+        [
+          {
+            "node": "Atualiza kommo_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza kommo_id": {
+      "main": [
+        [
+          {
+            "node": "CDP - Atualiza kommo_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados do lead": {
+      "main": [
+        [
+          {
+            "node": "Pega nome do Usuário1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get list of leads": {
+      "main": [
+        [
+          {
+            "node": "Consulta template1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call '[REVOPS] Credenciais'1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulta template1": {
+      "main": [
+        [
+          {
+            "node": "Puxa dados do lead1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Puxa conversa atual1": {
+      "main": [
+        [
+          {
+            "node": "Atualiza conversa 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Puxa dados do lead1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Envio de Template Meta com Nome e User1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envio de Template Meta com Nome1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Get list of leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega nome do Usuário1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Formatar Template com as variaveis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatar Template com as variaveis1": {
+      "main": [
+        [
+          {
+            "node": "Code: Prepara nota1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envio de Template Meta com Nome e User1": {
+      "main": [
+        [
+          {
+            "node": "Coleta do MessageID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envio de Template Meta com Nome1": {
+      "main": [
+        [
+          {
+            "node": "Coleta do MessageID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Coleta do MessageID1": {
+      "main": [
+        [
+          {
+            "node": "Puxa conversa atual1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code: Prepara nota1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Nota no Kommo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Dados do lead",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Busca lead c/ contato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Atualiza kommo_id": {
+      "main": [
+        [
+          {
+            "node": "Dados do lead",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Erro CDP - Atualiza kommo_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Erro CDP - Atualiza kommo_id": {
+      "main": [
+        [
+          {
+            "node": "Dados do lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza conversa 1": {
+      "main": [
+        [
+          {
+            "node": "CDP - Atualiza conversa 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CDP - Atualiza conversa 1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Erro CDP - Atualiza conversa 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Erro CDP - Atualiza conversa 1": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  }
+}

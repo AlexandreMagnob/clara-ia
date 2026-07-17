@@ -1,0 +1,1333 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "quebra_de_atividades",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -32,
+        0
+      ],
+      "id": "2f78a84b-7a84-4a73-a766-87f6e40032e7",
+      "name": "Webhook",
+      "webhookId": "f4baf704-2bdb-4005-91b1-364dc621ccc4"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-5.4",
+          "mode": "list",
+          "cachedResultName": "GPT-5.4"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "=Você é um assistente do time de Marketing da Cardapinho. Sua tarefa é interpretar uma lista de atividades e retornar um JSON estruturado com o plano de criação no Jira.\n\n## FORMATOS DE MENSAGEM RECEBIDA\n\n### FORMATO 1 — Atividade simples (1 linha após o time)\nQuando há apenas UMA atividade depois do nome do time, criar DUAS issues:\n- A História de Usuário mãe: mesmo summary da linha, issueTypeId de HU, mesmo responsável, storyPoints SEMPRE null\n- A issue filha: mesmo summary da linha, issueTypeId pelo tipo detectado, mesmo responsável, story points da linha\n\nExemplo:\n```\nGrowth\n[SM23][AUT] Automação da IA(Alexandre)(4)\n→ HU:    summary \"[SM23][AUT] Automação da IA\" | issueTypeId 10484 | Alexandre Magno | storyPoints null\n→ Filha: summary \"[SM23][AUT] Automação da IA\" | issueTypeId 10477 | Alexandre Magno | storyPoints 4\n```\n\n### FORMATO 2 — Com sub-tarefas (múltiplas linhas)\nLinha 1: time (growth ou content)\nLinha 2: História de Usuário mãe (storyPoints sempre null na HU)\nLinhas seguintes: sub-tarefas filhas\n\nExemplo:\n```\ngrowth\n[SM23][LP] Mentoria Matheus Lessa(Alexandre)\n[SM23][LP] Criar Design da Página(João Paulo)(2)\n[SM23][LP] Criar Copy para Página(Antonio Carlos)(1)\n[SM23][LP] Implementar Design no Wordpress(Alexandre Magno)(2)\n```\n\n---\n\n## PADRÃO DE CADA LINHA\n\n```\n[SPRINT][TAG1][TAG2]... Nome da Atividade(Responsável)(StoryPoints?)\n```\n\nOnde:\n- `[SM23]` = código da sprint (obrigatório)\n- `[TAG1][TAG2]...` = tags livres e opcionais em qualquer quantidade e ordem — qualquer rótulo é aceito (`[CW]`, `[LKD]`, `[IG]`, `[DES]`, `[COPY]`, `[LP]`, etc.). Elas são preservadas no summary exatamente como vieram e nunca geram erro de validação\n- `(Nome)` = responsável\n- `(número)` = story points — sempre o ÚLTIMO parênteses quando for só número\n\n---\n\n## REGRA CRÍTICA DE SUMMARY\n\nO summary de TODAS as issues (mãe e filhas) deve preservar exatamente o texto da linha SEM os parênteses de nome e story points, mas MANTENDO TODAS as tags presentes, como `[SM23]`, `[CW]`, `[LKD]`, `[DES]`, `[COPY]` etc. Uma linha pode ter múltiplas tags encadeadas — todas devem ser preservadas.\n\n| | Exemplo |\n|---|---|\n| ✅ Correto | `[SM27][CW][LKD][DES] Caneta E-commerce` |\n| ❌ Incorreto | `[SM27] Caneta E-commerce` |\n| ✅ Correto | `[SM25][ADS][COPY] Criação da Copy do PAF - Copy 1` |\n\n---\n\n## MAPEAMENTO DE RESPONSÁVEIS — GROWTH\n\n| Aliases aceitos | accountId | Nome resolvido |\n|---|---|---|\n| Alexandre, Alexandre Magno, Alex, Ale, Alexsandre, Alexsandro, Alexand, Alexandr | `712020:8f3294aa-7c87-46d8-bd1d-036d306a1270` | Alexandre Magno |\n| João Paulo, JP, Jota, Joao, Joao Paulo, Jão, Joãoo, Joaoo, Jota Paulo, Joao Palo, Joao Pulo, Joãopalo | `712020:cde30452-7b4a-4c2e-8157-db30922c0784` | João Paulo |\n| Antonio Carlos, Antônio Carlos, Antonio, Antônio, Tonhao, Tonhão, Tonhãoo, Tony, Toinho, Tônio, Antonyo, Antnio, Antônyo | `712020:ea09c087-43cc-4fc9-a933-a0ee84fa2a20` | Antonio Carlos |\n| Gabriel, Gabriel Santos, Gab, Gabiel, Gabriell, Gabriell Santos, Gabril, Gabriels | `712020:f2a70006-3b35-49fb-8944-bcbd7887b32f` | Gabriel Santos |\n\n---\n\n## MAPEAMENTO DE RESPONSÁVEIS — CONTENT\n\n| Aliases aceitos | accountId | Nome resolvido |\n|---|---|---|\n| Breno, Brenão, Brenho, Breno Santos, Bren, Brenu | `712020:6791d341-e96a-43f0-a03b-60ff583aee6e` | Breno |\n| Laysla, Layla, Laisla, Layisla, Laysa, Laisa, Layslla, Laysla Santos, Layza | `712020:73a4ce85-f63a-4b8a-b623-fd368eb1a36b` | Laysla |\n| Filipe, Felipe, Filipi | `712020:e74dc53a-6c5b-42b4-a850-eb9f3910e962` | Filipe |\n| Fabiano, Fabi, Fabian, Fabião, Fabio, Fábio, Fabianu, Fabiano Santos | `712020:543f11c1-c412-40dd-9ece-174ed0dd3e44` | Fabiano |\n| Maria, Mari, maria, MARIA | `712020:5911f90c-964b-4690-b8c0-7a5f2f894605` | Maria |\n\n---\n\n## REGRA DE CORRESPONDÊNCIA APROXIMADA DE NOMES\n\nSe o nome encontrado na atividade NÃO corresponder exatamente a nenhum alias listado acima, aplique as seguintes etapas em ordem:\n\n1. **USE O TIME COMO FILTRO:** considere apenas os membros do time identificado (Growth ou Content).\n2. **APLIQUE CORRESPONDÊNCIA APROXIMADA:** escolha o membro cujo nome ou apelido for visualmente ou foneticamente mais similar ao texto encontrado. Critérios, em ordem de prioridade:\n   - a. Começa com as mesmas letras (ex: \"Joo\" → João Paulo)\n   - b. Contém a sequência principal do nome (ex: \"Tonhao\" → Antonio Carlos)\n   - c. Erro de digitação com 1–2 letras trocadas, faltando ou duplicadas (ex: \"Gabriell\" → Gabriel)\n   - d. Variação de acento ou capitalização (ex: \"joao\" → João Paulo)\n3. O time é pequeno e sem nomes duplicados: sempre haverá um candidato mais provável — **nunca retorne assigneeId null por causa de erro de digitação ou apelido não listado.**\n4. Quando o nome foi resolvido por correspondência aproximada (e não era exato), adicione ao campo `preview` uma marcação ⚠️ indicando o nome original e o nome resolvido. Exemplo: `⚠️ \"Joo\" → João Paulo`\n5. SOMENTE retorne `assigneeId null` se o texto for completamente irreconhecível e sem nenhuma similaridade com qualquer membro do time.\n\n---\n\n## MAPEAMENTO DE TIPOS DE ISSUE\n\n### DETECÇÃO DO TIPO — 2 etapas em ordem de prioridade\n\n**Etapa 1 — Varrer TODAS as tags da linha** (qualquer posição após `[SMxx]`):\n\nSe qualquer uma das tags abaixo for encontrada, o tipo é definido imediatamente e a Etapa 2 é ignorada. Tags não listadas abaixo (`[CW]`, `[LKD]`, `[IG]`, etc.) são rótulos livres — ignoradas para fins de detecção de tipo.\n\n| Tag encontrada | Tipo detectado |\n|---|---|\n| `[DES]` | Design |\n| `[COPY]` | Texto |\n| `[VID]` | Vídeo |\n| `[LP]` ou `[AUT]` | Tarefa |\n\n**Etapa 2 — Se nenhuma tag da Etapa 1 foi encontrada, analisar o nome da atividade:**\n\n| Palavras encontradas no nome | Tipo detectado |\n|---|---|\n| design, layout, banner, criativo | Design |\n| copy, texto, e-mail | Texto |\n| vídeo, video | Vídeo |\n| lp, landing, automação, wordpress, implementar, fluxo, disparo, campanha | Tarefa |\n| *(nenhuma das anteriores)* | **Tarefa (fallback padrão)** |\n\n### issueTypeIds por tipo e time\n\n**GROWTH (projeto GWT):**\n\n| Tipo | issueTypeId | label |\n|---|---|---|\n| História de Usuário (mãe) | `10484` | — |\n| Texto | `10472` | Texto |\n| Design | `10530` | Design |\n| Vídeo | `10482` | Vídeo |\n| Tarefa | `10477` | Tarefa |\n\n**CONTENT (projeto CONT):**\n\n| Tipo | issueTypeId | label |\n|---|---|---|\n| História de Usuário (mãe) | `10460` | — |\n| Texto | `10475` | Texto |\n| Design | `10473` | Design |\n| Vídeo | `10478` | Vídeo |\n| Tarefa | `10458` | Tarefa |\n\n---\n\n## REGRAS IMPORTANTES\n\n1. A primeira atividade listada é SEMPRE a História de Usuário mãe\n2. Todas as demais são filhas vinculadas a ela\n3. `storyPoints` da HU é SEMPRE `null`, independente do que vier na linha\n4. Se um responsável não for reconhecido mesmo após correspondência aproximada, colocar `assigneeId: null` e `assigneeName` com o texto encontrado\n5. Aceitar variações de grafia: maiúsculas, minúsculas, com ou sem acento\n\n---\n\n## RETORNO ESPERADO\n\nRetorne SOMENTE o JSON abaixo, sem texto adicional, sem markdown:\n\n```json\n{\n  \"valido\": true,\n  \"time\": \"Growth\",\n  \"projeto\": \"GWT\",\n  \"sprintCode\": \"[SM23]\",\n  \"preview\": \"📋 *[SM23][LP] Mentoria Matheus Lessa*\\n  ↳ [SM23][LP] Criar Design da Página — João Paulo (Design) · 2 SP\\n  ↳ [SM23][LP] Criar Copy para Página — Antonio Carlos (Texto) · 1 SP\\n  ↳ [SM23][LP] Implementar Design no Wordpress — Alexandre Magno (Tarefa) · 2 SP\",\n  \"mae\": {\n    \"summary\": \"[SM23][LP] Mentoria Matheus Lessa\",\n    \"issueTypeId\": \"10484\",\n    \"assigneeId\": \"712020:8f3294aa-7c87-46d8-bd1d-036d306a1270\",\n    \"assigneeName\": \"Alexandre Magno\",\n    \"storyPoints\": null\n  },\n  \"filhas\": [\n    {\n      \"summary\": \"[SM23][LP] Criar Design da Página\",\n      \"issueTypeId\": \"10530\",\n      \"assigneeId\": \"712020:cde30452-7b4a-4c2e-8157-db30922c0784\",\n      \"assigneeName\": \"João Paulo\",\n      \"storyPoints\": 2,\n      \"tipoLabel\": \"Design\"\n    }\n  ]\n}\n```\n\nSe a mensagem não puder ser interpretada:\n```json\n{\"valido\": false, \"erro\": \"descrição do problema\"}\n```\n\n---\n\n## VALIDAÇÃO OBRIGATÓRIA — EXECUTE ANTES DE PROCESSAR\n\nAntes de gerar qualquer JSON, valide os seguintes pontos em ordem. Se qualquer um falhar, retorne IMEDIATAMENTE o JSON de erro sem tentar processar o restante.\n\n### 1. TIME IDENTIFICÁVEL\nA primeira linha deve conter \"growth\" ou \"content\" (sem distinção de maiúsculas/minúsculas).\n> ❌ Erro: `\"time não identificado. A primeira linha deve ser 'growth' ou 'content'.\"`\n\n### 2. CÓDIGO DE SPRINT OBRIGATÓRIO\nToda atividade deve conter um código de sprint no formato `[SMxx]` (ex: `[SM23]`, `[SM24]`). Se qualquer linha de atividade não contiver esse código, retorne erro.\n> ❌ Erro: `\"código de sprint ausente. Todas as atividades devem conter o código no formato [SM23].\"`\n\n### 3. AO MENOS UMA ATIVIDADE\nDeve existir ao menos uma linha de atividade além do nome do time.\n> ❌ Erro: `\"nenhuma atividade encontrada. Envie ao menos uma atividade após o nome do time.\"`\n\n### 4. RESPONSÁVEL PRESENTE\nToda atividade deve conter um responsável entre parênteses.\n> ❌ Erro: `\"responsável ausente em uma ou mais atividades. Verifique se todos os nomes estão entre parênteses.\"`\n\n### 5. MENSAGEM FORA DO FORMATO\nEsta validação só se aplica se a mensagem não apresentar NENHUMA estrutura reconhecível\ndo padrão esperado — por exemplo: texto livre, pergunta, saudação, ou mensagem que não\ncomeça com \"growth\" ou \"content\" seguido de linhas com [SMxx].\n\nSe as validações 1 a 4 foram aprovadas, esta validação é automaticamente aprovada\ntambém. Nunca rejeite uma mensagem com base no conteúdo, comprimento ou aparência\ndos nomes das atividades ou dos valores de story points.\n\n❌ Erro: \"mensagem fora do formato esperado. Envie as atividades seguindo o padrão:\n[SM23][TAG] Nome da Atividade(Responsável)(StoryPoints).\"\n\n### IMPORTANTE\n- Valide TODOS os pontos antes de processar\n- Se mais de um erro for encontrado, retorne o erro do primeiro problema identificado\n- Nunca tente \"adivinhar\" um sprint code ausente ou inventar dados faltantes"
+            },
+            {
+              "content": "={{ $('Webhook').item.json.body[\"json da mensagem do slack\"].text }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "a1047d0b-6c18-48ae-8b05-e7fa464fa573",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "z5sdMKuz4ev8Qulo",
+          "name": "OpenAi - Token de uso geral no n8n"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e2b8ee6d-8c20-4f61-ad3a-bb570494232c",
+              "name": "output[0].content[0].text",
+              "value": "={{ $json.output[0].content[0].text }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        544,
+        0
+      ],
+      "id": "d3a41e2c-8bbd-4900-ace8-732caf3013a0",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2880,
+        288
+      ],
+      "id": "8d425409-d0ad-40cc-8fc5-dd5bc41d1cd4",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $('Edit Fields').first().json.output[0].content[0].text;\n\nreturn data.filhas.map(filha => {\n  return {\n    json: {\n      summary: filha.summary,\n      issueTypeId: filha.issueTypeId,\n      assigneeId: filha.assigneeId,\n      assigneeName: filha.assigneeName,\n      storyPoints: filha.storyPoints,\n      tipoLabel: filha.tipoLabel,\n      projeto: data.projeto,\n      sprintCode: data.sprintCode\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2688,
+        288
+      ],
+      "id": "872d33c2-4595-478d-8916-64d47eef129b",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0AQEL9F7HA",
+          "mode": "list",
+          "cachedResultName": "ia-quebra-de-atividades"
+        },
+        "text": "Sua atividade foi quebrada com sucesso!",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "thread_ts": {
+            "replyValues": {
+              "thread_ts": "={{ $('Webhook').item.json.body['json da mensagem do slack'].event_ts,  $('Webhook').item.json.body['json da mensagem do slack'].ts}}"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        3408,
+        192
+      ],
+      "id": "7d6a951f-aac6-402f-8f6b-3444fe7cdd22",
+      "name": "Send a message",
+      "webhookId": "e69111dd-9041-4664-b6c7-4c98b4b6f964",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        3216,
+        192
+      ],
+      "id": "289d23ee-8a44-466e-908c-d31dd7e205b0",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output[0].content[0].text.time }}",
+                    "rightValue": "Growth",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "1334f153-deef-4890-9edc-f4d2c7cc4db5"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "a2507156-db4e-46b4-afa6-02ecd747aa55",
+                    "leftValue": "={{ $json.output[0].content[0].text.time }}",
+                    "rightValue": "Content",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1296,
+        576
+      ],
+      "id": "82e1eb46-18ec-431e-840c-eb3ee83a08cf",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e2b8ee6d-8c20-4f61-ad3a-bb570494232c",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1760,
+        288
+      ],
+      "id": "c5184fef-0f3e-4def-a7fc-acfb1b4a594a",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e2b8ee6d-8c20-4f61-ad3a-bb570494232c",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2192,
+        288
+      ],
+      "id": "8fdce802-3884-49e8-ae50-8b060ae3ae88",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "url": "=https://cardapio-web.atlassian.net/rest/agile/1.0/board?projectKeyOrId={{ $('Edit Fields').item.json.output[0].content[0].text.projeto.toLowerCase().includes('content') ? 'CONT' : 'GWT' }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic {{ATLASSIAN_TOKEN_NO_N8N}}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1536,
+        288
+      ],
+      "id": "dc3fab57-f5d8-4c4d-9236-12867096b1a7",
+      "name": "Pesquisa Board no Jira",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://cardapio-web.atlassian.net/rest/agile/1.0/board/{{ $json.data.values[0].id }}/sprint?state=active,future",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic {{ATLASSIAN_TOKEN_NO_N8N}}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1952,
+        288
+      ],
+      "id": "a66d66c8-616c-4cdb-ae95-817fdf9e7ae9",
+      "name": "Busca Sprint ativa",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "10215",
+          "mode": "list",
+          "cachedResultName": "Squad de Growth"
+        },
+        "issueType": {
+          "__rl": true,
+          "value": "={{ $('Switch').item.json.output[0].content[0].text.mae.issueTypeId }}",
+          "mode": "id"
+        },
+        "summary": "={{ $('Switch').item.json.output[0].content[0].text.mae.summary }}",
+        "additionalFields": {
+          "assignee": {
+            "__rl": true,
+            "value": "={{ $('Switch').item.json.output[0].content[0].text.mae.assigneeId }}",
+            "mode": "id"
+          },
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": {
+                  "__rl": true,
+                  "value": "customfield_10016",
+                  "mode": "list",
+                  "cachedResultName": "Story point estimate"
+                },
+                "fieldValue": "={{ $('Switch').item.json.output[0].content[0].text.mae.storyPoints }}"
+              },
+              {
+                "fieldId": {
+                  "__rl": true,
+                  "value": "customfield_10020",
+                  "mode": "list",
+                  "cachedResultName": "Sprint"
+                },
+                "fieldValue": "={{ Number($json.data.values[0].id) }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.jira",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        288
+      ],
+      "id": "fbcabc5e-f700-4742-8da5-73acee48725d",
+      "name": "Cria historia de usuario",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "10215",
+          "mode": "list",
+          "cachedResultName": "Squad de Growth"
+        },
+        "issueType": {
+          "__rl": true,
+          "value": "={{ $json.issueTypeId }}",
+          "mode": "id"
+        },
+        "summary": "={{ $json.summary }}",
+        "additionalFields": {
+          "assignee": {
+            "__rl": true,
+            "value": "={{ $json.assigneeId }}",
+            "mode": "id"
+          },
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": {
+                  "__rl": true,
+                  "value": "customfield_10016",
+                  "mode": "list",
+                  "cachedResultName": "Story point estimate"
+                },
+                "fieldValue": "={{ $json.storyPoints }}"
+              },
+              {
+                "fieldId": {
+                  "__rl": true,
+                  "value": "customfield_10020",
+                  "mode": "list",
+                  "cachedResultName": "Sprint"
+                },
+                "fieldValue": "={{ Number($('Edit Fields2').item.json.data.values[0].id) }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.jira",
+      "typeVersion": 1,
+      "position": [
+        3216,
+        352
+      ],
+      "id": "e9bf7994-ad00-4e98-bed2-bf15ccb6a33b",
+      "name": "Cria atividades \"Filhas\"",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cardapio-web.atlassian.net/rest/api/3/issueLink",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic {{ATLASSIAN_TOKEN_NO_N8N}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"inwardIssue\": {\n    \"key\": \"{{ $('Cria historia de usuario').item.json.key }}\"\n  },\n  \"outwardIssue\": {\n    \"key\": \"{{ $json.key }}\"\n  },\n  \"type\": {\n    \"name\": \"Work item split\"\n  }\n}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3408,
+        352
+      ],
+      "id": "ea9b76b2-8e36-425f-b04c-972fce78c0d9",
+      "name": "Linka as atividades",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2880,
+        848
+      ],
+      "id": "bd1ff5fc-2c53-41dd-a2ce-a54ce3602efc",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $('Edit Fields').first().json.output[0].content[0].text;\n\nreturn data.filhas.map(filha => {\n  return {\n    json: {\n      summary: filha.summary,\n      issueTypeId: filha.issueTypeId,\n      assigneeId: filha.assigneeId,\n      assigneeName: filha.assigneeName,\n      storyPoints: filha.storyPoints,\n      tipoLabel: filha.tipoLabel,\n      projeto: data.projeto,\n      sprintCode: data.sprintCode\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2688,
+        848
+      ],
+      "id": "e700b30c-d832-4b58-8ca6-1a1062cc8210",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0AQEL9F7HA",
+          "mode": "list",
+          "cachedResultName": "ia-quebra-de-atividades"
+        },
+        "text": "Sua atividade foi quebrada com sucesso!",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "thread_ts": {
+            "replyValues": {
+              "thread_ts": "={{ $('Webhook').item.json.body['json da mensagem do slack'].event_ts,  $('Webhook').item.json.body['json da mensagem do slack'].ts}}"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        3408,
+        752
+      ],
+      "id": "412116c5-e29f-4adc-b696-460e7388c380",
+      "name": "Send a message1",
+      "webhookId": "e69111dd-9041-4664-b6c7-4c98b4b6f964",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        3216,
+        752
+      ],
+      "id": "0e5fbf10-fabf-47aa-88f5-736ba051708e",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e2b8ee6d-8c20-4f61-ad3a-bb570494232c",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1760,
+        848
+      ],
+      "id": "ff8303c0-0769-49c8-8b4e-e5abd3c89ae8",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e2b8ee6d-8c20-4f61-ad3a-bb570494232c",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2192,
+        848
+      ],
+      "id": "c82c9702-546c-4836-a73f-9c61af4ef88e",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "url": "=https://cardapio-web.atlassian.net/rest/agile/1.0/board?projectKeyOrId={{ $json.output[0].content[0].text.projeto }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic {{ATLASSIAN_TOKEN_NO_N8N}}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1536,
+        848
+      ],
+      "id": "404cdd2b-37bb-416b-bfb9-206b436ebc9b",
+      "name": "Pesquisa Board no Jira1",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://cardapio-web.atlassian.net/rest/agile/1.0/board/{{ $json.data.values[0].id }}/sprint?state=active",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic {{ATLASSIAN_TOKEN_NO_N8N}}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1952,
+        848
+      ],
+      "id": "f14fa994-8a69-4d8c-a3cc-c93ccc13df4e",
+      "name": "Busca Sprint ativa1",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "10281",
+          "mode": "list",
+          "cachedResultName": "Squad de Content"
+        },
+        "issueType": {
+          "__rl": true,
+          "value": "={{ $('Switch').item.json.output[0].content[0].text.mae.issueTypeId }}",
+          "mode": "id"
+        },
+        "summary": "={{ $('Switch').item.json.output[0].content[0].text.mae.summary }}",
+        "additionalFields": {
+          "assignee": {
+            "__rl": true,
+            "value": "={{ $('Switch').item.json.output[0].content[0].text.mae.assigneeId }}",
+            "mode": "id"
+          },
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": {
+                  "__rl": true,
+                  "value": "customfield_10016",
+                  "mode": "list",
+                  "cachedResultName": "Story point estimate"
+                },
+                "fieldValue": "={{ $('Switch').item.json.output[0].content[0].text.mae.storyPoints }}"
+              },
+              {
+                "fieldId": {
+                  "__rl": true,
+                  "value": "customfield_10020",
+                  "mode": "list",
+                  "cachedResultName": "Sprint"
+                },
+                "fieldValue": "={{ Number($json.data.values[0].id) }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.jira",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        848
+      ],
+      "id": "40f947b3-9212-46c3-b809-27ee68efaf53",
+      "name": "Cria historia de usuario1",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "project": {
+          "__rl": true,
+          "value": "10281",
+          "mode": "list",
+          "cachedResultName": "Squad de Content"
+        },
+        "issueType": {
+          "__rl": true,
+          "value": "={{ $json.issueTypeId }}",
+          "mode": "id"
+        },
+        "summary": "={{ $json.summary }}",
+        "additionalFields": {
+          "assignee": {
+            "__rl": true,
+            "value": "={{ $json.assigneeId }}",
+            "mode": "id"
+          },
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": {
+                  "__rl": true,
+                  "value": "customfield_10016",
+                  "mode": "list",
+                  "cachedResultName": "Story point estimate"
+                },
+                "fieldValue": "={{ $json.storyPoints }}"
+              },
+              {
+                "fieldId": {
+                  "__rl": true,
+                  "value": "customfield_10020",
+                  "mode": "list",
+                  "cachedResultName": "Sprint"
+                },
+                "fieldValue": "={{ Number($('Edit Fields4').item.json.data.values[0].id) }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.jira",
+      "typeVersion": 1,
+      "position": [
+        3216,
+        912
+      ],
+      "id": "be507d46-989b-4ff4-9cce-3e2878461575",
+      "name": "Cria atividades \"Filhas\"1",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cardapio-web.atlassian.net/rest/api/3/issueLink",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "jiraSoftwareCloudApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic {{ATLASSIAN_TOKEN_NO_N8N}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"inwardIssue\": {\n    \"key\": \"{{ $('Cria historia de usuario1').item.json.key }}\"\n  },\n  \"outwardIssue\": {\n    \"key\": \"{{ $json.key }}\"\n  },\n  \"type\": {\n    \"name\": \"Work item split\"\n  }\n}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        3408,
+        912
+      ],
+      "id": "6204bef2-6a7c-42b4-8a0f-19f519978f8c",
+      "name": "Linka as atividades1",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "wYV0OP3ik31MhYeb",
+          "name": "Jira SW Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Time de Growth \n",
+        "height": 448,
+        "width": 2304,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        128
+      ],
+      "id": "a5ebb8fb-09a9-405b-bb40-e2c7b12fbbfd",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Time de Content",
+        "height": 448,
+        "width": 2304,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        704
+      ],
+      "id": "badc79f1-d3ae-434b-8835-12b00d0726cb",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "468d161a-7e4b-4816-8474-145b37dc1dee",
+              "leftValue": "={{ $json.output[0].content[0].text.valido }}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        752,
+        0
+      ],
+      "id": "9e5b0dfd-014c-4158-b0dc-eec4b6fec8da",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0AQEL9F7HA",
+          "mode": "list",
+          "cachedResultName": "ia-quebra-de-atividades"
+        },
+        "text": "=❌ *Não consegui processar sua atividade*\n\n*Motivo:* {{ $json.output[0].content[0].text.erro }}\n\n*Corrija e envie novamente no formato:*\n\nNome do Time\n[SM23][TAG] Nome da Atividade(Responsável)(StoryPoints)\n\n_Exemplo correto:_\ngrowth\n[SM23][LP] Página de Vendas(João Paulo)\n[SM23][DES] Criar banner(Gabriel)(2)\n[SM23][COPY] Escrever copy(Antonio Carlos)(1)",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "thread_ts": {
+            "replyValues": {
+              "thread_ts": "={{ $('Webhook').item.json.body[\"json da mensagem do slack\"].event_ts, $('Webhook').item.json.body[\"json da mensagem do slack\"].ts }}"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [
+        960,
+        -96
+      ],
+      "id": "fb4d5437-6c32-4f17-8124-d9c58c530d9b",
+      "name": "Send a message2",
+      "webhookId": "ce1f4f27-bbf3-471f-90f6-ac19e41d896e",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cria atividades \"Filhas\"",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Pesquisa Board no Jira",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pesquisa Board no Jira1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Busca Sprint ativa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Cria historia de usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pesquisa Board no Jira": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Sprint ativa": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria historia de usuario": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria atividades \"Filhas\"": {
+      "main": [
+        [
+          {
+            "node": "Linka as atividades",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Linka as atividades": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cria atividades \"Filhas\"1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Busca Sprint ativa1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Cria historia de usuario1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pesquisa Board no Jira1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Sprint ativa1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria historia de usuario1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria atividades \"Filhas\"1": {
+      "main": [
+        [
+          {
+            "node": "Linka as atividades1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Linka as atividades1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "Webhook": [
+      {
+        "headers": {
+          "x-forwarded-for": "18.205.243.19",
+          "x-forwarded-proto": "https",
+          "x-forwarded-port": "443",
+          "host": "n8n.cardapioweb.com",
+          "x-amzn-trace-id": "Root=1-6a0c74bf-5465926b32da865e53491be0",
+          "content-length": "634",
+          "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+          "content-type": "application/json",
+          "user-agent": "axios/1.13.5",
+          "accept-encoding": "gzip, compress, deflate, br"
+        },
+        "params": {},
+        "query": {},
+        "body": {
+          "json da mensagem do slack": {
+            "type": "message",
+            "user": "U05NBR6D2MV",
+            "ts": "1779201215.371019",
+            "client_msg_id": "4e9b01a3-e6ff-404b-8014-ffd286016aae",
+            "text": "Content\n[SM27][DES][CW] Caneta E-commerceettretet(Laysla)\n[SM27][DES][CW] Caneta E-rteteterttteeetetet(Laysla)(20000000)",
+            "team": "T01D2UKG68M",
+            "blocks": [
+              {
+                "type": "rich_text",
+                "block_id": "VINEA",
+                "elements": [
+                  {
+                    "type": "rich_text_section",
+                    "elements": [
+                      {
+                        "type": "text",
+                        "text": "Content\n[SM27][DES][CW] Caneta E-commerceettretet(Laysla)\n[SM27][DES][CW] Caneta E-rteteterttteeetetet(Laysla)(20000000)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "channel": "C0AQEL9F7HA",
+            "event_ts": "1779201215.371019",
+            "channel_type": "group"
+          }
+        },
+        "webhookUrl": "https://n8n.cardapioweb.com/webhook/quebra_de_atividades",
+        "executionMode": "production"
+      }
+    ]
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  }
+}

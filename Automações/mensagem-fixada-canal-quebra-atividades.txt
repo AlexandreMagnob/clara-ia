@@ -1,0 +1,74 @@
+:pushpin: *Como criar atividades neste canal*
+
+Manda a mensagem no formato abaixo e eu crio tudo no Jira automaticamente!
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+:white_check_mark: *Atividade simples* (cria HU + tarefa filha)
+
+Seu time
+[SPRINT][TAG] Nome da Atividade(Responsável)(Story Points)
+
+Exemplo:
+Growth
+[SM23][AUT] Automação da IA(Alexandre)(4)
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+:white_check_mark: *Atividade com sub-tarefas*
+
+Seu time
+[SPRINT][TAG] Nome da História de Usuário(Responsável)
+[SPRINT][TAG] Sub-tarefa 1(Responsável)(Story Points)
+[SPRINT][TAG] Sub-tarefa 2(Responsável)(Story Points)
+
+Exemplo (Growth):
+Growth
+[SM23][LP] Mentoria Matheus Lessa(Alexandre)
+[SM23][LP] Criar Design da Página(João Paulo)(2)
+[SM23][COPY] Criar Copy para Página(Antonio Carlos)(1)
+[SM23][LP] Implementar no Wordpress(Alexandre Magno)(2)
+
+Exemplo (CW Studios):
+CW Studios
+[SCC06] Cobertura Podcast EP12(Augusto)
+[SCC06][CAP] Captação do episódio(Augusto)(3)
+[SCC06][EDIÇÃO] Edição do vídeo(Fabiano)(5)
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+:label: *Tags*
+As tags são livres! Use qualquer rótulo entre colchetes pra identificar o tipo ou contexto da atividade.
+Ex: [LP]  [AUT]  [COPY]  [DES]  [VID]  [CRM]  [EMAIL]  [SEO]  [CAP]  [EDIÇÃO] — o que fizer sentido pra você.
+
+:clapper: *Regra especial do CW Studios* (só desse time)
+• Tag ou nome com *CAPTAÇÃO / CAP* → entra como *Tarefa* :white_check_mark:
+• Tag ou nome com *EDIÇÃO* → entra como *Problema (bug)* :beetle:
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+:busts_in_silhouette: *Times* (sempre na primeira linha)
+Growth · Content · CW Studios · Branding
+
+:bust_in_silhouette: *Responsáveis (Growth)*
+Alexandre · João Paulo · Antonio Carlos · Gabriel
+
+:bust_in_silhouette: *Responsáveis (Content)*
+Laysla · Filipe · Breno · Fabiano
+
+:bust_in_silhouette: *Responsáveis (CW Studios)*
+Augusto (Martelo) · Daniel · Fabiano (Bessa)
+
+:bust_in_silhouette: *Responsáveis (Branding)*
+Maria Eduarda
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+:memo: *Regras rápidas*
+
+• Primeira linha = nome do time
+• Segunda linha = sempre a História de Usuário (sem Story Points)
+• Story Points = número entre parênteses no final (2)
+• O código da sprint é obrigatório em todas as linhas:
+   Growth/Content → [SM23]  ·  CW Studios → [SCC06]  ·  Branding → [SB32]
+• Após enviar, eu respondo com um resumo pra você confirmar antes de criar :white_check_mark:

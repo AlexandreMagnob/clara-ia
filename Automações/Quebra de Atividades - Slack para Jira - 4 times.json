@@ -1,0 +1,496 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.body && $json.body.challenge ? { challenge: $json.body.challenge } : { ok: true }) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "node-respond-002",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        464,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json.body || $input.first().json;\n\nif (body.type === 'url_verification') {\n  return [{ json: { valid: false, error: 'URL verification' } }];\n}\n\nconst event = body.event || body;\nconst messageText = (event.text || '').trim();\nconst channelId = event.channel || '';\nconst messageTs = event.ts || '';\n\nif (event.bot_id || event.subtype === 'bot_message') {\n  return [{ json: { valid: false, error: 'Bot message ignorado' } }];\n}\n\n// ================== CONFIG DOS TIMES / SQUADS ==================\n// Todos os projetos sao team-managed (boards \"simple\"); por isso o boardId\n// e fixo aqui (nao da pra achar por type=scrum).\nconst CONFIG = {\n  boards:   { Growth: 176, Content: 209, Studios: 506, Branding: 573 },\n  projects: { Growth: 'GWT', Content: 'CONT', Studios: 'SCC', Branding: 'BRAND' },\n  // prefixo do codigo de sprint no summary -> [SM23], [SCC06], [SB32]\n  sprintPrefix: { Growth: 'SM', Content: 'SM', Studios: 'SCC', Branding: 'SB' },\n\n  issueTypes: {\n    Growth:  { 'Historia de Usuario': '10484', Design: '10530', Texto: '10472', Tarefa: '10477', Video: '10482' },\n    Content: { 'Historia de Usuario': '10460', Design: '10473', Texto: '10475', Tarefa: '10458', Video: '10478' },\n    // SCC e BRAND (team-managed) so tem tipos genericos: pai = Historia, filha = Tarefa\n    Studios:  { 'Historia de Usuario': '10971', Tarefa: '10969' },\n    Branding: { 'Historia de Usuario': '11050', Tarefa: '11049' }\n  },\n\n  // Growth/Content: roteamento por PALAVRA-CHAVE (skill)\n  assignees: {\n    Growth: {\n      copy:   '712020:ea09c087-43cc-4fc9-a933-a0ee84fa2a20',\n      design: '712020:cde30452-7b4a-4c2e-8157-db30922c0784',\n      lp:     '712020:8f3294aa-7c87-46d8-bd1d-036d306a1270',\n      outros: '712020:f2a70006-3b35-49fb-8944-bcbd7887b32f'\n    },\n    Content: {\n      copy:   '712020:6791d341-e96a-43f0-a03b-60ff583aee6e',\n      laysla: '712020:73a4ce85-f63a-4b8a-b623-fd368eb1a36b',\n      filipe: '712020:e74dc53a-6c5b-42b4-a850-eb9f3910e962',\n      video:  '712020:543f11c1-c412-40dd-9ece-174ed0dd3e44'\n    }\n  },\n\n  // Studios/Branding: roteamento por NOME citado na atividade (variacoes lowercase, sem acento)\n  squadMembers: {\n    Studios: [\n      { accountId: '712020:c4f6e3b2-45e8-4ff9-90c5-c0ebd69e2455', names: ['augusto', 'martelo'] },                       // Augusto Martelo\n      { accountId: '712020:25695784-d35b-4697-9e8b-17e132241848', names: ['daniel', 'oliveira'] },                       // Daniel Da Silva Oliveira\n      { accountId: '712020:543f11c1-c412-40dd-9ece-174ed0dd3e44', names: ['fabiano', 'bessa', 'diogenes', 'junior'] }    // Fabiano Junior Diogenes Carneiro Bessa\n    ],\n    Branding: [\n      { accountId: '712020:3618017a-f9d6-4b65-ae3a-066e8d014106', names: ['maria eduarda', 'eduarda', 'maria', 'meryl', 'duda'] } // Maria Eduarda Costa da Silva\n    ]\n  },\n  // fallback quando nenhum nome bate\n  squadDefault: {\n    Studios:  null,                                              // deixa sem responsavel (triagem)\n    Branding: '712020:3618017a-f9d6-4b65-ae3a-066e8d014106'      // squad de 1 pessoa -> sempre ela\n  },\n\n  linkTypeId: '10006'\n};\n\n// aliases digitados no Slack -> nome canonico do time\nconst TEAM_ALIASES = {\n  'growth': 'Growth',\n  'content': 'Content', 'conteudo': 'Content',\n  'studios': 'Studios', 'cw studios': 'Studios', 'cwstudios': 'Studios', 'scc': 'Studios',\n  'branding': 'Branding', 'brand': 'Branding', 'marca': 'Branding'\n};\n\nfunction norm(s) {\n  return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();\n}\n\nfunction isNameRouted(team) {\n  return !!CONFIG.squadMembers[team];\n}\n\nfunction getIssueType(team, taskName) {\n  const types = CONFIG.issueTypes[team];\n  if (isNameRouted(team)) return types.Tarefa;   // Studios/Branding: filha sempre = Tarefa\n  const l = norm(taskName);\n  if (/design|layout|banner|criativo/.test(l)) return types.Design;\n  if (/video/.test(l)) return types.Video;\n  if (/copy|texto|e.?mail/.test(l)) return types.Texto;\n  return types.Tarefa;\n}\n\nfunction getAssignee(team, taskName) {\n  const l = norm(taskName);\n  if (isNameRouted(team)) {\n    for (const m of CONFIG.squadMembers[team]) {\n      if (m.names.some(n => l.includes(n))) return m.accountId;\n    }\n    return CONFIG.squadDefault[team];\n  }\n  if (team === 'Growth') {\n    if (/design|layout|banner|criativo/.test(l)) return CONFIG.assignees.Growth.design;\n    if (/copy|texto|e.?mail/.test(l)) return CONFIG.assignees.Growth.copy;\n    if (/lp|landing|automac|fluxo|disparo/.test(l)) return CONFIG.assignees.Growth.lp;\n    return CONFIG.assignees.Growth.outros;\n  }\n  if (team === 'Content') {\n    if (/video/.test(l)) return CONFIG.assignees.Content.video;\n    if (/copy|texto/.test(l)) return CONFIG.assignees.Content.copy;\n    if (/filipe/.test(l)) return CONFIG.assignees.Content.filipe;\n    if (/design|layout/.test(l)) return CONFIG.assignees.Content.laysla;\n    return null;\n  }\n  return null;\n}\n\n// 1a coisa da mensagem = time. Ex: \"CW Studios - ...\", \"Branding - ...\", \"Growth - ...\"\nconst aliasKeys = Object.keys(TEAM_ALIASES).sort((a, b) => b.length - a.length);\nconst teamPattern = new RegExp('^(' + aliasKeys.join('|') + ')\\\\s*-\\\\s*', 'i');\n\nconst teamMatch = messageText.match(teamPattern);\nif (!teamMatch) {\n  return [{ json: { valid: false, error: 'Formato invalido. Use: <Time> - Nome da Atividade', originalText: messageText, channelId, messageTs } }];\n}\n\nconst team = TEAM_ALIASES[norm(teamMatch[1])];\nconst afterTeam = messageText.slice(teamMatch[0].length).trim();\nconst cleanAfterTeam = afterTeam.replace(/\\[?\\s*(sm|scc|sb)\\s*\\d+\\s*\\]?\\s*/i, '').trim();\n\nconst dashIdx = cleanAfterTeam.indexOf(' - ');\nconst activityName = dashIdx !== -1 ? cleanAfterTeam.slice(0, dashIdx).trim() : cleanAfterTeam.trim();\nconst subtasksRaw = dashIdx !== -1 ? cleanAfterTeam.slice(dashIdx + 3).trim() : null;\nconst project = CONFIG.projects[team];\nconst boardId = CONFIG.boards[team];\n\nconst subtasks = subtasksRaw\n  ? subtasksRaw.split(',').map(s => s.trim()).filter(Boolean).map(st => {\n      const cleanSt = st.replace(/\\s*\\(.*?\\)/g, '').trim();\n      return {\n        description: st,\n        issueTypeId: getIssueType(team, cleanSt),\n        assigneeId:  getAssignee(team, st)\n      };\n    })\n  : [{\n      description: activityName,\n      issueTypeId: CONFIG.issueTypes[team].Tarefa,\n      assigneeId:  isNameRouted(team)\n        ? getAssignee(team, activityName)\n        : (team === 'Growth' ? CONFIG.assignees.Growth.outros : null)\n    }];\n\nreturn [{\n  json: {\n    valid: true,\n    team,\n    project,\n    boardId,\n    activityName,\n    parentIssueTypeId: CONFIG.issueTypes[team]['Historia de Usuario'],\n    sprintPrefix: CONFIG.sprintPrefix[team],\n    subtasks,\n    channelId,\n    messageTs,\n    linkTypeId: CONFIG.linkTypeId,\n    jiraBase: 'https://cardapio-web.atlassian.net'\n  }\n}];"
+      },
+      "id": "node-parser-003",
+      "name": "Parser - Extrair Dados da Mensagem",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        352
+      ],
+      "notes": "Faz o parsing da mensagem do Slack: extrai time, nome da atividade e sub-tarefas com tipos e responsaveis. A sprint e detectada automaticamente nos nos seguintes."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "cond-valid-001",
+              "leftValue": "={{ $json.valid }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "node-if-004",
+      "name": "IF: Formato Valido?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        912,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nconst errorMsg = input.error || 'Erro desconhecido ao processar a mensagem.';\nconst originalText = input.originalText || '';\nconst channelId = input.channelId || '';\n\nconst message = ':x: *Nao consegui processar sua mensagem.*\\n\\nMotivo: ' + errorMsg +\n  '\\n\\nMensagem recebida:\\n> ' + originalText +\n  '\\n\\nFormato esperado:\\n> <Time> - Nome da Atividade\\n> <Time> - Nome - Subtarefa1, Subtarefa2' +\n  '\\n\\nTimes disponiveis: Growth, Content, CW Studios, Branding';\n\nreturn [{ json: { slackMessage: message, channelId } }];"
+      },
+      "id": "node-erro-code-005",
+      "name": "Montar Mensagem de Erro",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        512
+      ],
+      "notes": "Monta a mensagem de erro para o Slack quando o formato da mensagem e invalido."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://slack.com/api/chat.postMessage",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.SLACK_BOT_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ channel: $json.channelId, text: $json.slackMessage, mrkdwn: true }) }}",
+        "options": {}
+      },
+      "id": "node-erro-slack-006",
+      "name": "Post Erro no Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1344,
+        512
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://cardapio-web.atlassian.net/rest/agile/1.0/board/{{ $json.boardId }}/sprint?state=active",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic bWFya2V0aW5nQGNhcmRhcGlvd2ViLmNvbTpBVEFUVDN4RmZHRjBpODUzVzVIU1hFY3UyTGNaQmU1YnNZaEp4dW4wbHdONVRJNlpUaVZfUk91MXp4QUNhcXUzSTRGSmUyenkxeDBzUHdQVnFQcE1DdDdGNjNyOEV1SmI5U000WDREczhmdEoyQjQ2Sjl2bHVIYnlwZmN4TXV6bWo2RndlOHhOLWszc1RCelY3cndBQ0lYRk93UUo5MXFfRW1MWmY5RnBnblZMSm9HcXFOaHV3PTFGMJAYODY="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "node-sprint-008",
+      "name": "Buscar Sprint Ativa",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1344,
+        352
+      ],
+      "notes": "Busca a sprint ativa pelo boardId (fixo no Parser, pois os boards sao team-managed/simple). Se nao houver sprint ativa, values vem vazio e o fluxo cria sem sprint."
+    },
+    {
+      "parameters": {
+        "jsCode": "const sprintData = $input.first().json;\nconst parsed = $('Parser - Extrair Dados da Mensagem').first().json;\nconst prefix = parsed.sprintPrefix || 'SM';\n\n// pode nao haver sprint ativa (ex: squad entre sprints) -> cria sem sprint (backlog)\nconst sv = (sprintData.values && sprintData.values.length) ? sprintData.values[0] : null;\n\nlet sprintId = null;\nlet sprintCode = '';\nif (sv) {\n  const nums = String(sv.name).match(/\\d+/g);          // pega todos os numeros do nome da sprint\n  const sprintNum = nums ? nums[nums.length - 1] : '00'; // usa o ultimo (funciona p/ \"SCC 06\", \"Sprint SB32\", \"Sprint Marketing 23\")\n  sprintCode = '[' + prefix + sprintNum + ']';\n  sprintId = sv.id;\n}\n\nconst codePart = sprintCode ? sprintCode + ' ' : '';\n\nreturn [{\n  json: {\n    ...parsed,\n    sprintCode,\n    sprintId,\n    fullName: codePart + parsed.activityName,\n    subtasks: parsed.subtasks.map(st => ({\n      ...st,\n      summary: codePart + parsed.activityName + ' - ' + st.description\n    }))\n  }\n}];"
+      },
+      "id": "node-sprint-code-009",
+      "name": "Sprint Extraida",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        352
+      ],
+      "notes": "Extrai o numero da sprint (ex: 23) do nome 'Sprint Marketing 23' e monta o codigo [SM23]. Reconstroi os summaries das subtarefas com o prefixo correto."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cardapio-web.atlassian.net/rest/api/3/issue",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic bWFya2V0aW5nQGNhcmRhcGlvd2ViLmNvbTpBVEFUVDN4RmZHRjBpODUzVzVIU1hFY3UyTGNaQmU1YnNZaEp4dW4wbHdONVRJNlpUaVZfUk91MXp4QUNhcXUzSTRGSmUyenkxeDBzUHdQVnFQcE1DdDdGNjNyOEV1SmI5U000WDREczhmdEoyQjQ2Sjl2bHVIYnlwZmN4TXV6bWo2RndlOHhOLWszc1RCelY3cndBQ0lYRk93UUo5MXFfRW1MWmY5RnBnblZMSm9HcXFOaHV3PTFGMJAYODY="
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ (() => { const fields = { project: { key: $json.project }, summary: $json.fullName, issuetype: { id: $json.parentIssueTypeId } }; if ($json.sprintId) { fields.customfield_10020 = $json.sprintId; } return JSON.stringify({ fields }); })() }}",
+        "options": {}
+      },
+      "id": "node-hu-010",
+      "name": "Criar Historia de Usuario",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1792,
+        352
+      ],
+      "notes": "Cria a Historia (pai) no Jira. Se houver sprint ativa, ja atribui via customfield_10020; senao, cria no backlog."
+    },
+    {
+      "parameters": {
+        "jsCode": "const sprint    = $('Sprint Extraida').first().json;\nconst parentKey = $('Criar Historia de Usuario').first().json.key;\n\nreturn sprint.subtasks.map(st => ({\n  json: {\n    summary:     st.summary,\n    issueTypeId: st.issueTypeId,\n    assigneeId:  st.assigneeId,\n    project:     sprint.project,\n    sprintId:    sprint.sprintId,\n    parentKey:   parentKey,\n    channelId:   sprint.channelId,\n    messageTs:   sprint.messageTs,\n    fullName:    sprint.fullName,\n    jiraBase:    sprint.jiraBase\n  }\n}));"
+      },
+      "id": "node-prep-011",
+      "name": "Preparar Sub-tarefas",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        352
+      ],
+      "notes": "Transforma o array de subtarefas em items separados para o loop. Cada item tem todos os dados necessarios para criar a issue e o link."
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "node-loop-012",
+      "name": "Loop Sub-tarefas",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2224,
+        352
+      ],
+      "notes": "Processa uma subtarefa por vez. Output 0 = loop (cada item). Output 1 = done (todos processados)."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cardapio-web.atlassian.net/rest/api/3/issue",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic bWFya2V0aW5nQGNhcmRhcGlvd2ViLmNvbTpBVEFUVDN4RmZHRjBpODUzVzVIU1hFY3UyTGNaQmU1YnNZaEp4dW4wbHdONVRJNlpUaVZfUk91MXp4QUNhcXUzSTRGSmUyenkxeDBzUHdQVnFQcE1DdDdGNjNyOEV1SmI5U000WDREczhmdEoyQjQ2Sjl2bHVIYnlwZmN4TXV6bWo2RndlOHhOLWszc1RCelY3cndBQ0lYRk93UUo5MXFfRW1MWmY5RnBnblZMSm9HcXFOaHV3PTFGMJAYODY="
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ (() => { const fields = { project: { key: $json.project }, summary: $json.summary, issuetype: { id: $json.issueTypeId } }; if ($json.sprintId) { fields.customfield_10020 = $json.sprintId; } if ($json.assigneeId) { fields.assignee = { accountId: $json.assigneeId }; } return JSON.stringify({ fields }); })() }}",
+        "options": {}
+      },
+      "id": "node-filha-013",
+      "name": "Criar Issue Filha",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2448,
+        352
+      ],
+      "notes": "Cria a issue filha. customfield_10020 (sprint) e assignee sao omitidos quando nao existem (ex: Studios sem nome citado, ou squad sem sprint ativa)."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cardapio-web.atlassian.net/rest/api/3/issueLink",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic bWFya2V0aW5nQGNhcmRhcGlvd2ViLmNvbTpBVEFUVDN4RmZHRjBpODUzVzVIU1hFY3UyTGNaQmU1YnNZaEp4dW4wbHdONVRJNlpUaVZfUk91MXp4QUNhcXUzSTRGSmUyenkxeDBzUHdQVnFQcE1DdDdGNjNyOEV1SmI5U000WDREczhmdEoyQjQ2Sjl2bHVIYnlwZmN4TXV6bWo2RndlOHhOLWszc1RCelY3cndBQ0lYRk93UUo5MXFfRW1MWmY5RnBnblZMSm9HcXFOaHV3PTFGMJAYODY="
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ type: { id: '10006' }, inwardIssue: { key: $json.key }, outwardIssue: { key: $('Criar Historia de Usuario').first().json.key } }) }}",
+        "options": {}
+      },
+      "id": "node-link-014",
+      "name": "Criar Link Split",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2672,
+        352
+      ],
+      "notes": "Cria o link 'Work item split': inwardIssue (split from) = filha, outwardIssue (split to) = Historia de Usuario mae."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://slack.com/api/reactions.add",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.SLACK_BOT_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ channel: $('Parser - Extrair Dados da Mensagem').first().json.channelId, timestamp: $('Parser - Extrair Dados da Mensagem').first().json.messageTs, name: 'white_check_mark' }) }}",
+        "options": {}
+      },
+      "id": "node-reacao-015",
+      "name": "Adicionar Reacao Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2448,
+        512
+      ],
+      "notes": "Adiciona a reacao check na mensagem original do Slack. Serve tambem como marcador de idempotencia (mensagem ja processada)."
+    },
+    {
+      "parameters": {
+        "jsCode": "const parser    = $('Parser - Extrair Dados da Mensagem').first().json;\nconst sprint    = $('Sprint Extraida').first().json;\nconst parentKey = $('Criar Historia de Usuario').first().json.key;\nconst jiraBase  = 'https://cardapio-web.atlassian.net/browse';\n\nconst childItems = $('Criar Issue Filha').all().map(item => {\n  const key     = item.json.key;\n  const summary = (item.json.fields && item.json.fields.summary) ? item.json.fields.summary : '';\n  return '  :arrow_right: <' + jiraBase + '/' + key + '|' + key + '> - ' + summary;\n}).join('\\n');\n\nconst message = ':white_check_mark: Atividades criadas para *' + sprint.fullName + '*!\\n\\n:clipboard: *Historia de Usuario:* <' + jiraBase + '/' + parentKey + '|' + parentKey + '>\\n' + childItems;\n\nreturn [{ json: { slackMessage: message, channelId: parser.channelId } }];"
+      },
+      "id": "node-confirm-code-016",
+      "name": "Montar Mensagem Confirmacao",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2672,
+        512
+      ],
+      "notes": "Monta a mensagem de confirmacao com links de todas as issues criadas no loop."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://slack.com/api/chat.postMessage",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.SLACK_BOT_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ channel: $json.channelId, text: $json.slackMessage, mrkdwn: true }) }}",
+        "options": {}
+      },
+      "id": "node-confirm-slack-017",
+      "name": "Post Confirmacao no Slack",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2880,
+        512
+      ]
+    }
+  ],
+  "connections": {
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Parser - Extrair Dados da Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parser - Extrair Dados da Mensagem": {
+      "main": [
+        [
+          {
+            "node": "IF: Formato Valido?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF: Formato Valido?": {
+      "main": [
+        [
+          {
+            "node": "Buscar Sprint Ativa",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Montar Mensagem de Erro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar Mensagem de Erro": {
+      "main": [
+        [
+          {
+            "node": "Post Erro no Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Sprint Ativa": {
+      "main": [
+        [
+          {
+            "node": "Sprint Extraida",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sprint Extraida": {
+      "main": [
+        [
+          {
+            "node": "Criar Historia de Usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Historia de Usuario": {
+      "main": [
+        [
+          {
+            "node": "Preparar Sub-tarefas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Sub-tarefas": {
+      "main": [
+        [
+          {
+            "node": "Loop Sub-tarefas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Sub-tarefas": {
+      "main": [
+        [
+          {
+            "node": "Criar Issue Filha",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Adicionar Reacao Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Issue Filha": {
+      "main": [
+        [
+          {
+            "node": "Criar Link Split",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Link Split": {
+      "main": [
+        [
+          {
+            "node": "Loop Sub-tarefas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adicionar Reacao Slack": {
+      "main": [
+        [
+          {
+            "node": "Montar Mensagem Confirmacao",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar Mensagem Confirmacao": {
+      "main": [
+        [
+          {
+            "node": "Post Confirmacao no Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "0293ff1ff011ce8ea41e9d040273ebd6f5e9c120990cafd13007cb78e66df92b"
+  }
+}

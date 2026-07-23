@@ -1,8 +1,7 @@
 # Clara IA — Agente SDR da CardápioWeb
 
-Clara é a agente de inteligência artificial responsável pela prospecção de leads de **tier 4 e 5** da CardápioWeb. Seu objetivo é prospectar, engajar e converter esses leads, marcando reuniões para os closers fecharem.
-
-## Como funciona o fluxo
+Clara é a agente de IA responsável pela prospecção dos leads de **tier 4 e 5** da CardápioWeb:
+prospecta, engaja, contorna objeção e agenda reunião para o closer fechar.
 
 ```
 Lead preenche formulário
@@ -17,25 +16,73 @@ Clara prospecta e converte
 Reunião agendada → Closer fecha
 ```
 
-## Stack
-
 | Componente | Tecnologia |
 |---|---|
 | Orquestração / Workflows | N8N |
-| Banco de dados / Leads | Supabase |
+| Banco de leads (atual) | Supabase |
+| Banco de leads (migração) | CDP / Postgres |
+| CRM | Kommo · Pipedrive · Meetime · RD Station |
 | Inteligência | Agente AI (via N8N) |
 
-## Estrutura deste repositório
+---
 
+## Mapa do repositório
+
+| Pasta | O que vive aqui |
+|---|---|
+| [contexto-cardapioweb/](contexto-cardapioweb/) | **Leia primeiro.** Contexto da empresa e do meu papel. |
+| [automacoes/](automacoes/) | Todos os workflows exportados do N8N + salesbots do Kommo. |
+| [prompts/](prompts/) | System prompts da Clara e dos subagentes, versionados. |
+| [experimentos/](experimentos/) | Specs e planos de experimento (GWT-xxxx, EXP-xx, SM30Hx). |
+| [analises/](analises/) | Investigações e relatórios de métricas — o **resultado**. |
+| [dashboards/](dashboards/) | Painéis HTML standalone. |
+| [docs/](docs/) | Arquitetura, integrações, processos, guias e referências. |
+| [planejamento/](planejamento/) | Roadmap e backlog de ideias. |
+| [estudos/](estudos/) | Notas de podcasts, cursos e material de estudo. |
+| [scripts/](scripts/) | Scripts utilitários avulsos (Python / PowerShell). |
+| [assets/](assets/) | Mídia: imagens, áudios e vídeos de lembrete. |
+
+---
+
+## Onde eu coloco uma coisa nova?
+
+Regra de bolso — **se a resposta for "sei lá", é `docs/`**.
+
+| Se é… | Vai em… | Nome |
+|---|---|---|
+| um workflow exportado do N8N | `automacoes/<área>/` | `<área>_<slug>.json` |
+| um salesbot do Kommo | `automacoes/salesbots/<sdr>/` | nome do estágio (`followup-1.json`) |
+| um system prompt novo | `prompts/<agente>/` | `AAAA-MM-DD_system-prompt-<agente>-vX.Y.md` |
+| o **plano** de um experimento | `experimentos/` | `<codigo>_<slug>.md` |
+| o **resultado** de uma investigação | `analises/` | `AAAA-MM-DD_<slug>.md` |
+| CSV / XLSX / SQL que embasa uma análise | `analises/dados/` | `AAAA-MM-DD_<slug>.csv` |
+| um passo a passo repetível | `docs/guias/` | `<slug>.md` |
+| doc de API de terceiro | `docs/referencias/<produto>/` | `<slug>.md` |
+| uma ideia solta, ainda não validada | `planejamento/backlog-de-ideias.md` | — |
+| **qualquer coisa com senha/token** | **fora do repo** | veja abaixo |
+
+### Convenções de nome
+
+- **Sem acento, sem espaço, sem colchete.** `kebab-case`, minúsculo.
+- **Data primeiro** (`AAAA-MM-DD_`) em tudo que é retrato de um momento — análise,
+  relatório, versão de prompt. Faz o `ls` ordenar cronologicamente sozinho.
+- **Sem data** no que é vivo e vai sendo editado — guia, referência, workflow, roadmap.
+- Nos JSON do N8N, o prefixo antes do `_` é a área (`sdr_`, `jira_`, `sql_`), espelhando
+  o `[SDR]` / `[JIRA]` do nome do workflow no N8N.
+- Pasta ou arquivo começando com `_` é material interno/bruto que não precisa ser lido
+  (ex: `analises/_pipeline/`, `automacoes/_versoes-antigas/`).
+
+---
+
+## Segurança
+
+Credenciais **nunca** entram no repositório. O `.gitignore` já bloqueia `.env`,
+`CONEXAO.md` e arquivos `*-credenciais.md`, mas o filtro é burro — confira antes de commitar:
+
+```bash
+git status --short          # olhe se entrou algo que não devia
+git diff --cached           # antes de todo commit
 ```
-├── docs/
-│   ├── arquitetura/     # Visão geral do sistema, diagramas, decisões técnicas
-│   ├── processos/       # Processos de vendas, tiers, SLAs
-│   └── integracoes/     # Documentação de Supabase, N8N, APIs externas
-├── prompts/
-│   ├── atual/           # System prompts em produção
-│   └── historico/       # Versões anteriores dos prompts
-├── ideias/              # Brainstorms e sugestões de melhoria
-├── roadmap/             # Planejamento de features
-└── analises/            # Análises de métricas e relatórios do Supabase
-```
+
+Se um segredo já foi commitado, rotacione a senha — remover do histórico não basta,
+ela já esteve exposta.

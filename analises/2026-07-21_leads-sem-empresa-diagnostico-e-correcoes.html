@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leads sem empresa — Diagnóstico e correções | Clara IA</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --roxo: #6C3FC5; --roxo-esc: #4a2d8a; --tinta: #1a1a2e;
+    --cinza: #5b5b6e; --linha: #e6e3ef; --bg: #faf9fd;
+    --verde: #1f9d6b; --verde-bg: #e9f7f0;
+    --azul: #2f6df0; --azul-bg: #eaf0fe;
+    --vermelho: #c8354b; --vermelho-bg: #fdecef;
+    --amarelo-bg: #fff7e6; --amarelo-bd: #f0c36b;
+  }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--tinta); background: #fff; font-size: 13.5px; line-height: 1.62; }
+
+  .cover {
+    background: linear-gradient(135deg, var(--roxo) 0%, var(--roxo-esc) 100%);
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 90px 80px; page-break-after: always; color: #fff;
+  }
+  .cover-tag {
+    background: rgba(255,255,255,.16); font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; padding: 7px 15px;
+    border-radius: 20px; margin-bottom: 36px; align-self: flex-start;
+  }
+  .cover h1 { font-size: 46px; font-weight: 800; line-height: 1.12; margin-bottom: 22px; max-width: 760px; }
+  .cover .sub { font-size: 18px; color: rgba(255,255,255,.82); max-width: 640px; margin-bottom: 56px; }
+  .cover-meta { display: flex; gap: 48px; flex-wrap: wrap; }
+  .cover-meta .lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 4px; }
+  .cover-meta .val { font-size: 15px; font-weight: 600; }
+
+  .page { padding: 48px 60px 60px; max-width: 980px; margin: 0 auto; }
+  h2 { font-size: 22px; font-weight: 800; color: var(--roxo); margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--linha); page-break-after: avoid; }
+  h2:first-child { margin-top: 0; }
+  h3 { font-size: 15.5px; font-weight: 700; color: var(--tinta); margin: 26px 0 8px; page-break-after: avoid; }
+  p { margin-bottom: 12px; }
+  ul, ol { margin: 0 0 14px 22px; }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 700; }
+  code { font-family: 'Consolas', monospace; font-size: 12px; background: var(--bg); padding: 1px 5px; border-radius: 3px; border: 1px solid var(--linha); }
+
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: 12.5px; page-break-inside: avoid; }
+  th { background: var(--bg); text-align: left; padding: 9px 11px; font-weight: 700; border-bottom: 2px solid var(--linha); font-size: 11.5px; text-transform: uppercase; letter-spacing: .5px; color: var(--cinza); }
+  td { padding: 9px 11px; border-bottom: 1px solid var(--linha); vertical-align: top; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .kpis { display: flex; gap: 14px; margin: 20px 0 26px; flex-wrap: wrap; }
+  .kpi { flex: 1; min-width: 150px; border: 1px solid var(--linha); border-radius: 9px; padding: 15px 17px; background: #fff; }
+  .kpi .v { font-size: 27px; font-weight: 800; color: var(--roxo); line-height: 1.1; }
+  .kpi .l { font-size: 11px; color: var(--cinza); margin-top: 5px; line-height: 1.4; }
+
+  .box { border-left: 4px solid var(--azul); background: var(--azul-bg); padding: 13px 17px; border-radius: 0 7px 7px 0; margin: 16px 0; page-break-inside: avoid; }
+  .box.ok { border-color: var(--verde); background: var(--verde-bg); }
+  .box.warn { border-color: var(--amarelo-bd); background: var(--amarelo-bg); }
+  .box.bad { border-color: var(--vermelho); background: var(--vermelho-bg); }
+  .box .t { font-weight: 700; margin-bottom: 4px; }
+
+  .prova { background: #1e1e2e; color: #e6e6f0; padding: 14px 18px; border-radius: 7px; font-family: 'Consolas', monospace; font-size: 12px; line-height: 1.7; margin: 14px 0; page-break-inside: avoid; }
+  .prova .k { color: #8ab4f8; }
+  .prova .v { color: #a5d6a7; }
+  .prova .e { color: #ef9a9a; }
+
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 11px; text-transform: uppercase; letter-spacing: .6px; }
+  .tag.ok { background: var(--verde-bg); color: var(--verde); }
+
+  .foot { margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--linha); font-size: 11.5px; color: var(--cinza); }
+  @page { size: A4; margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-tag">Diagnóstico · RevOps / Growth</div>
+  <h1>Leads entrando sem o campo empresa</h1>
+  <div class="sub">Investigação de causa raiz e correções aplicadas em produção.</div>
+  <div class="cover-meta">
+    <div><div class="lbl">Data</div><div class="val">21 de julho de 2026</div></div>
+    <div><div class="lbl">Período</div><div class="val">Julho / 2026</div></div>
+    <div><div class="lbl">Base oficial</div><div class="val">RD Station — <code style="color:#fff;background:rgba(255,255,255,.14);border:0">[AUT][GROWTH] SQL total</code></div></div>
+  </div>
+</div>
+
+<div class="page">
+
+<h2>1. Resumo executivo</h2>
+
+<p>O problema era real e tinha <strong>duas causas independentes</strong>, não uma. Ambas foram
+corrigidas em produção e verificadas.</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">475</div><div class="l">leads de julho sem empresa<br>na RD Station</div></div>
+  <div class="kpi"><div class="v">6,4%</div><div class="l">da base do mês<br>(7.366 leads)</div></div>
+  <div class="kpi"><div class="v">2 de 2</div><div class="l">causas identificadas<br>e corrigidas</div></div>
+  <div class="kpi"><div class="v">9</div><div class="l">origens que passaram<br>a coletar empresa</div></div>
+</div>
+
+<div class="box ok">
+  <div class="t">O que mudou na prática</div>
+  A partir de 20/07, leads cuja empresa a RD já conhecia deixaram de perder o dado no caminho até
+  o SDR, e nove origens de captação que não perguntavam empresa passaram a perguntar — incluindo o
+  botão de WhatsApp, que era o maior volume isolado.
+</div>
+
+<h2>2. O tamanho do problema</h2>
+
+<table>
+  <tr><th>Situação (RD Station, julho/2026)</th><th class="num">Leads</th><th class="num">% da base</th></tr>
+  <tr><td>Campo <code>Empresa</code> preenchido</td><td class="num">6.891</td><td class="num">93,6%</td></tr>
+  <tr><td><strong>Campo <code>Empresa</code> não preenchido</strong></td><td class="num"><strong>475</strong></td><td class="num"><strong>6,4%</strong></td></tr>
+  <tr><td>Total</td><td class="num">7.366</td><td class="num">100%</td></tr>
+</table>
+
+<p>Filtro: segmentação <code>[AUT][GROWTH] SQL total</code> — entrada no fluxo
+<code>[CONV][INTEGRAÇÃO]</code> a partir de 01/07/2026, excluindo leads com cupom de parceiro.</p>
+
+<div class="box warn">
+  <div class="t">Por que o número do banco operacional é diferente</div>
+  No Supabase, a mesma janela mostra <strong>671</strong> registros sem empresa. Os números medem
+  coisas distintas e ambos estão corretos: a <strong>RD conta contato</strong> (uma pessoa, com o
+  melhor valor já conhecido dela), enquanto o <strong>Supabase conta entrada de lead</strong> (cada
+  conversão vira uma linha). Deduplicar por pessoa e considerar empresa vinda de conversões
+  anteriores reduz 671 → 621; o restante vem dos filtros da segmentação (cupom e fluxo), que não
+  existem no banco operacional. Ao comparar, sempre dizer qual base está sendo usada.
+</div>
+
+<h2>3. Causa 1 — o dado chegava e era descartado no n8n <span class="tag ok">corrigida</span></h2>
+
+<p>No workflow <code>[SQL] Automação para definir tier</code> (<code>GADrDhIEi1NvOJn9</code>), o nó
+<code>Verifica se veio do botão de WPP</code> roteia pelo <em>user-agent</em>: quando é
+<code>Typhoeus</code> — o cliente HTTP da própria RD Station — o lead cai em
+<code>Seta os campos3</code>.</p>
+
+<p>Esse nó tinha <strong>24 campos e nenhum deles era <code>Empresa</code></strong>. Os nós irmãos
+(<code>campos5</code>, <code>campos6</code>) tinham. Auditoria dos 7 nós <code>Seta os campos*</code>:
+<strong>2 estavam furados</strong> — <code>campos1</code> e <code>campos3</code>. Omissão de cópia.</p>
+
+<p>O erro ficava <strong>silencioso</strong> por causa do <code>|| ""</code> no nó de envio, que
+convertia o campo ausente em string vazia em vez de falhar.</p>
+
+<h3>Prova end-to-end</h3>
+
+<div class="prova">
+  <span class="k">Execução n8n 105542184</span> — payload recebido da RD Station:<br>
+  &nbsp;&nbsp;<span class="k">"leads[0].name"</span>: <span class="v">"Eliza Vieira dos Santos"</span><br>
+  &nbsp;&nbsp;<span class="k">"leads[0].company"</span>: <span class="v">"Dolce bolos e doces"</span><br><br>
+  <span class="k">Registro gravado no banco</span> (2026-07-20 14:20):<br>
+  &nbsp;&nbsp;<span class="k">name</span>: <span class="v">'Eliza Vieira dos Santos'</span><br>
+  &nbsp;&nbsp;<span class="k">empresa</span>: <span class="e">''</span> &nbsp;&larr; dado perdido
+</div>
+
+<p>Outros casos capturados no mesmo período: <em>Limone</em>, <em>Point da sardinha</em>,
+<em>Encantos da Batata</em>, <em>EdyPizzas</em>, <em>Nakoa poke e sushi</em>.</p>
+
+<h3>Quantificação</h3>
+
+<p>Duas medições independentes, ambas sobre as <strong>entradas de lead do banco operacional</strong>
+(não sobre a base da RD):</p>
+
+<table>
+  <tr><th>Método</th><th>Resultado</th></tr>
+  <tr><td>Contagem direta em 600 execuções do n8n (18–20/07)</td><td>8% do volume passava pelo branch quebrado; 40% deles traziam empresa real → <strong>237 leads/mês</strong></td></tr>
+  <tr><td>Censo de 668 entradas validadas contra a API da RD Station</td><td><strong>244 leads/mês</strong> em que a empresa existia e foi descartada</td></tr>
+</table>
+
+<p>O volume do branch quebrado (8%) bate com a taxa de registros sem empresa no banco (9%) —
+corroboração de que praticamente todo lead que passava por ali saía sem empresa. O estrato mais
+crítico era o <strong><code>utm_medium = cpc</code>, com 88% de perda real</strong>: o tráfego pago
+de busca, o mais caro da casa, chegando ao SDR sem o nome do estabelecimento.</p>
+
+<h3>Correção aplicada</h3>
+
+<p>Em <strong>20/07/2026, 17:21</strong>, adicionado o campo nos dois nós furados:</p>
+
+<div class="prova">
+Empresa = <span class="v">{{ $json.leads?.[0]?.company || '' }}</span>
+</div>
+
+<p>Verificado na primeira execução, 33 segundos depois: a RD enviou
+<code>company = 'Paixão Caseira'</code> e o valor chegou íntegro ao nó, ao corpo da Meetime e ao
+fluxo de integração inicial. Os nós <code>campos2/5/6</code> não foram tocados.</p>
+
+<div class="box">
+  <div class="t">Impacto</div>
+  Dos 244 casos medidos, <strong>177 (72,5%)</strong> eram do tipo em que a empresa vinha no payload
+  do mesmo dia — esses <strong>deixam de se perder</strong>. Os outros 67 só existem em conversão
+  anterior do lead e exigiriam consulta ao histórico da RD antes de gravar.
+</div>
+
+<h2>4. Causa 2 — formulários que não coletavam empresa <span class="tag ok">corrigida</span></h2>
+
+<p>O maior ofensor isolado era o <strong>widget de botão de WhatsApp</strong>
+(<code>botao-whatsapp-geral</code>), presente no site e no blog. O payload de conversão dele não
+tinha campo de empresa: <code>name</code>, <code>email</code>, <code>personal_phone</code>,
+<code>segmento</code>, <code>faturamento</code> e UTMs, mais nada. Sozinho respondia por
+<strong>63,7%</strong> dos leads cuja empresa nunca existiu em nenhuma conversão.</p>
+
+<p>Sinal secundário coerente: os nomes desses leads viravam <code>"thiaGO ."</code>,
+<code>"Daniela ."</code>, <code>"Dhullyanna ."</code> — o ponto no sobrenome é artefato de formulário
+curto que só pede o primeiro nome.</p>
+
+<h3>Origens corrigidas</h3>
+
+<table>
+  <tr><th>Página / origem</th><th>Data</th><th>Status</th></tr>
+  <tr><td><code>botao-whatsapp-geral</code> (widget do site e blog)</td><td>20/07</td><td><span class="tag ok">verificado</span></td></tr>
+  <tr><td><code>/sistema-para-restaurante/</code></td><td>21/07</td><td><span class="tag ok">verificado</span></td></tr>
+  <tr><td><code>/sistema-para-delivery-cw/</code></td><td>21/07</td><td><span class="tag ok">verificado</span></td></tr>
+  <tr><td><code>/crm/</code></td><td>21/07</td><td><span class="tag ok">verificado</span></td></tr>
+  <tr><td><code>/controle-de-caixa/</code></td><td>21/07</td><td><span class="tag ok">verificado</span></td></tr>
+  <tr><td><code>/controle-de-fiado/</code></td><td>21/07</td><td><span class="tag ok">verificado</span></td></tr>
+  <tr><td><code>/cardapio-digital-para-balcao/</code></td><td>21/07</td><td><span class="tag ok">verificado</span></td></tr>
+  <tr><td><code>/sistema-de-avaliacao/</code></td><td>21/07</td><td><span class="tag ok">verificado</span></td></tr>
+  <tr><td><code>/automacao/</code></td><td>21/07</td><td><span class="tag ok">verificado</span></td></tr>
+</table>
+
+<p>Cada página recebeu um campo <code>Empresa</code> obrigatório, na segunda posição do formulário,
+com backup do estado anterior mantido no banco.</p>
+
+<div class="box ok">
+  <div class="t">Por que não foi preciso mexer em mais nada</div>
+  A camada de captação do site lê os campos <strong>por rótulo</strong>: qualquer campo cujo label
+  contenha "empresa" é capturado automaticamente e segue para RD, Meetime e banco. Não há registro
+  ou configuração por formulário — adicionar o campo já basta.
+</div>
+
+<h2>5. Validação end-to-end</h2>
+
+<p>Em 21/07 foi submetido um lead de teste pelo formulário real de
+<code>/sistema-para-restaurante/</code>, percorrendo todo o caminho:</p>
+
+<table>
+  <tr><th>Destino</th><th>Resultado</th></tr>
+  <tr><td>n8n — roteamento</td><td>Branch correto; <code>Empresa</code> preenchido; tier e porte calculados</td></tr>
+  <tr><td>RD Station</td><td><code>company_name</code> presente na conversão</td></tr>
+  <tr><td>Meetime</td><td>Lead criado <strong>com</strong> <code>company</code></td></tr>
+  <tr><td>Banco operacional</td><td>Registro com <code>empresa</code> preenchida</td></tr>
+</table>
+
+<h2>6. Ressalvas metodológicas</h2>
+
+<p>Duas conclusões intermediárias desta investigação estavam <strong>erradas</strong> e foram
+corrigidas com evidência. Ficam registradas porque o erro é reincidente:</p>
+
+<div class="box bad">
+  <div class="t">Inferir coleta a partir da ausência do dado na API</div>
+  Concluir "o formulário não coleta empresa" a partir de 0% de <code>company_name</code> na RD é
+  inválido: não distingue <em>não coleta</em> de <em>coleta e perde na integração</em>. Das ~255
+  conversões classificadas assim, pelo menos 214 eram perda de integração. <strong>Sempre conferir
+  o HTML do formulário antes de concluir.</strong>
+</div>
+
+<div class="box bad">
+  <div class="t">Analisar um período que atravessa uma mudança de sistema</div>
+  A camada de captação do site entrou em 14/07. Uma análise cobrindo o mês inteiro mistura antes e
+  depois, e faz parecer estrutural um problema que já estava sendo resolvido. <strong>Verificar
+  datas de implantação antes de caracterizar um problema como crônico.</strong>
+</div>
+
+<p>Outras ressalvas úteis para quem for remedir:</p>
+<ul>
+  <li>Sempre declarar a base e o filtro junto do número. RD e banco operacional respondem perguntas diferentes e não batem entre si por construção.</li>
+  <li>O log de execuções do n8n retém apenas ~4 dias — provar comportamento passado pelo efeito no banco, nunca pela ausência de execuções.</li>
+  <li><code>''</code> e <code>'(não informado)'</code> são valores distintos; o segundo é gravado pela própria automação e chega a sobrescrever empresa válida na RD.</li>
+  <li>O export do workflow no repositório está defasado (108 nós) frente ao ativo (139). Usar sempre a fonte viva.</li>
+</ul>
+
+<div class="foot">
+  <strong>Documento de apoio:</strong> <code>analises/2026-07-20_leads-sem-empresa.md</code> ·
+  <strong>Dados do backfill:</strong> <code>analises/leads/2026-07-20_backfill-empresa-julho.csv</code><br>
+  Fontes: RD Station (segmentação <code>[AUT][GROWTH] SQL total</code> + API, 668 contatos em
+  1.336 chamadas de leitura), n8n API (600 execuções com dados), banco operacional
+  (39.394 registros históricos), Meetime API, WordPress (130 páginas varridas).
+</div>
+
+</div>
+</body>
+</html>

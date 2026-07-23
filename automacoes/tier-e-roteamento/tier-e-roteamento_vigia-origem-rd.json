@@ -1,0 +1,573 @@
+{
+  "name": "[SDR][WORKER] Vigia de origem - enriquece UTM dos deals via RD Station",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7 * * *"
+            }
+          ]
+        }
+      },
+      "id": "02c8a303-c034-48f2-8ebb-8334e455c41b",
+      "name": "Todo dia 07h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -608,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cELdAgFAnojseUQJ",
+          "mode": "list",
+          "cachedResultName": "[UTIL] Obter credenciais da RD Station"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {}
+        },
+        "options": {}
+      },
+      "id": "0dff307e-0576-4acf-bc85-e8439eeca4f9",
+      "name": "Credenciais RD",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -400,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.pipedrive.com/api/v2/deals?sort_by=add_time&sort_direction=desc&limit=200&custom_fields=babc9dc70b0254caf284ed9ac6904531bdd2247b,fbef9289bf09467ab894d55a0da0785f7d131c92,1c61ffb7c5c72afcda0aa03ec34a699098fa82a3,ce55f714284ac86b8463c672880636db6568e5f8,a75682beeaee346f25771516d2f23cdaf4b7745c,921ee7657991cd504cd859f5b8fd0b47bb8b2ff6,4d61e8db7772570f774c6ba67cd8c3d42ebf74e6,346353ade45adcb68850667587de1da11b3bdadd,b603f8b2476b87146d418bd7692ca4d2a41f71a1,5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda&api_token=b3f0e4930cd82dd921597c19d422a495833201a4",
+        "options": {}
+      },
+      "id": "8c899e90-5459-4a9c-93c1-1bfb4d13cfde",
+      "name": "Deals p1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -208,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.pipedrive.com/api/v2/deals?sort_by=add_time&sort_direction=desc&limit=200&custom_fields=babc9dc70b0254caf284ed9ac6904531bdd2247b,fbef9289bf09467ab894d55a0da0785f7d131c92,1c61ffb7c5c72afcda0aa03ec34a699098fa82a3,ce55f714284ac86b8463c672880636db6568e5f8,a75682beeaee346f25771516d2f23cdaf4b7745c,921ee7657991cd504cd859f5b8fd0b47bb8b2ff6,4d61e8db7772570f774c6ba67cd8c3d42ebf74e6,346353ade45adcb68850667587de1da11b3bdadd,b603f8b2476b87146d418bd7692ca4d2a41f71a1,5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda&api_token=b3f0e4930cd82dd921597c19d422a495833201a4&cursor={{ $json.additional_data.next_cursor }}",
+        "options": {}
+      },
+      "id": "cdc3ea75-9329-4109-864f-43c38d0a978b",
+      "name": "Deals p2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// junta as 2 paginas, dedupe, filtra: pipeline 2, ultimos 3 dias, e (rastreio 100% vazio OU tier vazio)\n// resolve tier por REGRA aqui mesmo: agente de parcerias/indicacao -> Agentes; criacao manual -> Adicao manual\nconst p1 = $('Deals p1').first().json.data || [];\nlet p2 = [];\ntry { p2 = $('Deals p2').first().json.data || []; } catch (e) {}\nconst TRACK = [\"babc9dc70b0254caf284ed9ac6904531bdd2247b\", \"fbef9289bf09467ab894d55a0da0785f7d131c92\", \"1c61ffb7c5c72afcda0aa03ec34a699098fa82a3\", \"ce55f714284ac86b8463c672880636db6568e5f8\", \"a75682beeaee346f25771516d2f23cdaf4b7745c\", \"921ee7657991cd504cd859f5b8fd0b47bb8b2ff6\"];\nconst seen = new Set(); const corte = Date.now() - 3*24*60*60*1000;\nconst vazio = v => v === null || v === undefined || v === '';\nconst out = [];\nfor (const d of [...p1, ...p2]) {\n  if (seen.has(d.id)) continue; seen.add(d.id);\n  if (d.pipeline_id !== 2) continue;\n  if (new Date(d.add_time).getTime() < corte) continue;\n  const cf = d.custom_fields || {};\n  const falta_utm = TRACK.every(k => vazio(cf[k]));\n  const falta_tier = vazio(cf['346353ade45adcb68850667587de1da11b3bdadd']);\n  if (!falta_utm && !falta_tier) continue;\n  let tier_regra = '';\n  if (falta_tier) {\n    if (!vazio(cf['b603f8b2476b87146d418bd7692ca4d2a41f71a1']) || cf['5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda'] === 1582) tier_regra = 'Agentes';\n    else if (d.origin === 'ManuallyCreated') tier_regra = 'Adição manual';\n  }\n  if (!d.person_id && !(falta_tier && tier_regra)) continue;\n  out.push({ json: { deal_id: d.id, person_id: d.person_id || '', falta_utm, falta_tier, tier_regra } });\n}\nreturn out;\n"
+      },
+      "id": "804f9cff-b049-46f3-bdc0-9d2529eebc7c",
+      "name": "Filtra sem origem",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "person",
+        "operation": "get",
+        "personId": "={{ $json.person_id }}"
+      },
+      "id": "28c71996-43d6-4660-82a5-e8c83422e5b9",
+      "name": "Pessoa",
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        400,
+        0
+      ],
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// pareia por indice com o filtro e extrai email/fone\nconst base = $('Filtra sem origem').all();\nconst out = [];\nfor (let i = 0; i < items.length; i++) {\n  const b = base[i].json;\n  const resp = items[i].json.data || items[i].json || {};\n  const emails = resp.emails || resp.email || [];\n  const em = ((emails.find && emails.find(e => e && e.primary)) || emails[0] || {}).value || '';\n  const email = (em && em.includes('@')) ? em.trim().toLowerCase() : '';\n  const phones = resp.phones || resp.phone || [];\n  const ph = ((phones.find && phones.find(p => p && p.primary)) || phones[0] || {}).value || '';\n  const fone8 = String(ph).replace(/\\D/g, '').slice(-8);\n  if (!email && fone8.length < 8 && !(b.falta_tier && b.tier_regra)) continue;\n  out.push({ json: { ...b, email, fone8 } });\n}\nreturn out;\n"
+      },
+      "id": "367bf1d1-5553-46f1-8398-ec7d8f8d6bbe",
+      "name": "Extrai email",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        608,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.rd.services/platform/contacts/email:{{ encodeURIComponent($('Extrai email').item.json.email || 'sem_email@nao.existe') }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Credenciais RD').first().json.access_token }}"
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 400
+            }
+          },
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "2586d159-81a2-4026-bf5e-d0d2f8133514",
+      "name": "RD contato",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// UTM via RD (como antes) + tier: regra > RD cf_tier_atual; o que sobrar vai pro desvio do Supabase\nconst SRC_OK = ['direto','google','outros','meta','cardapioweb_com','bing','chatgpt','seo','portal_cardapioweb','brave','yahoo','claude','wpp','youtube','ig','tiktok','rd_station_link_na_bio','fb','an'];\nconst MED_OK = ['direct','organic','paid','paidsearch','referral','social'];\nconst DERIVA = {direto:'direct', bing:'organic', brave:'organic', yahoo:'organic', seo:'organic',\n  meta:'paid', chatgpt:'referral', claude:'referral', cardapioweb_com:'referral', portal_cardapioweb:'referral'};\nconst MAPA = {'direto':'direto','meta':'meta','facebook':'meta','fb':'fb','ig':'ig','instagram':'ig',\n  'www.bing.com':'bing','bing':'bing','search.brave.com':'brave','br.search.yahoo.com':'yahoo',\n  'chatgpt.com':'chatgpt','claude.ai':'claude','cardapioweb.com':'cardapioweb_com',\n  'www.cardapioweb.com':'cardapioweb_com','lp.cardapioweb.com':'cardapioweb_com',\n  'portal.cardapioweb.com':'portal_cardapioweb','rd_station_link_na_bio':'rd_station_link_na_bio',\n  'wpp':'wpp','whatsapp':'wpp','www.youtube.com':'youtube','youtube':'youtube','tiktok':'tiktok','seo':'seo'};\nconst TIER_MAP = {'1':'Tier 1','2':'Tier 2','3.1':'Tier 3.1','3.2':'Tier 3.2','4':'Tier 4','5':'Tier 5'};\nconst base = $('Extrai email').all();\nconst out = [];\nfor (let i = 0; i < items.length; i++) {\n  const b = base[i].json;\n  const r = items[i].json; const status = r.statusCode || (r.body ? 200 : 0);\n  const c = (status === 200) ? (r.body || r) : {};\n  let fonte = '', med = '';\n  if (b.falta_utm && status === 200) {\n    const raw = String(c.cf_utm_source || '').toLowerCase().trim();\n    const gclid = c.cf_gclid || ''; const fbclid = c.cf_fbclid || '';\n    const tags = (c.tags || []).map(t => String(t).toLowerCase());\n    if (raw) {\n      if (/^[0-9]{12,}$/.test(raw)) fonte = 'meta';\n      else if (raw.includes('google')) fonte = 'google';\n      else fonte = MAPA[raw] || 'outros';\n    } else if (fbclid) fonte = 'meta';\n    else if (gclid) fonte = 'google';\n    else if (tags.some(t => t.includes('origem seo'))) fonte = 'seo';\n    else if (tags.some(t => t.includes('origem google'))) fonte = 'google';\n    if (fonte && !SRC_OK.includes(fonte)) fonte = '';\n    if (fonte) {\n      med = String(c.cf_utm_medium || '').trim();\n      if (!(med && MED_OK.includes(med))) { med = DERIVA[fonte] || ''; if (!med && fonte === 'google' && (c.cf_gclid||'')) med = 'paidsearch'; }\n    }\n  }\n  let tier = '';\n  if (b.falta_tier) {\n    tier = b.tier_regra || '';\n    if (!tier && status === 200) {\n      const rt = String(c.cf_tier_atual || '').trim();\n      if (TIER_MAP[rt]) tier = TIER_MAP[rt];\n    }\n  }\n  const precisa_supa = !!(b.falta_tier && !tier && b.fone8 && b.fone8.length === 8);\n  const escreve_utm = !!(b.falta_utm && fonte);\n  if (!escreve_utm && !tier && !precisa_supa) continue;\n  out.push({ json: { deal_id: b.deal_id, escreve_utm, fonte, med,\n    camp: escreve_utm ? String(c.cf_utm_campaign || '').slice(0, 250) : '',\n    cont: escreve_utm ? String(c.cf_utm_content || '').slice(0, 250) : '',\n    gclid: escreve_utm ? String(c.cf_gclid || '').slice(0, 250) : '',\n    fbclid: escreve_utm ? String(c.cf_fbclid || '').slice(0, 250) : '',\n    tier, precisa_supa, fone8: b.fone8 } });\n}\nreturn out;\n"
+      },
+      "id": "5edf358b-fc4e-4acd-8f26-9e7d404c03de",
+      "name": "Deriva origem",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1248,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dealId": "={{ $json.deal_id }}",
+        "updateFields": {
+          "customProperties": {
+            "property": [
+              {
+                "name": "babc9dc70b0254caf284ed9ac6904531bdd2247b",
+                "value": "={{ $json.fonte }}"
+              },
+              {
+                "name": "fbef9289bf09467ab894d55a0da0785f7d131c92",
+                "value": "={{ $json.med }}"
+              },
+              {
+                "name": "1c61ffb7c5c72afcda0aa03ec34a699098fa82a3",
+                "value": "={{ $json.camp }}"
+              },
+              {
+                "name": "ce55f714284ac86b8463c672880636db6568e5f8",
+                "value": "={{ $json.cont }}"
+              },
+              {
+                "name": "a75682beeaee346f25771516d2f23cdaf4b7745c",
+                "value": "={{ $json.gclid }}"
+              },
+              {
+                "name": "921ee7657991cd504cd859f5b8fd0b47bb8b2ff6",
+                "value": "={{ $json.fbclid }}"
+              },
+              {
+                "name": "4d61e8db7772570f774c6ba67cd8c3d42ebf74e6",
+                "value": "RD retroativo"
+              }
+            ]
+          }
+        }
+      },
+      "id": "a0143df2-6f88-4b3e-b07e-d55df4722877",
+      "name": "Atualiza UTM",
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        -80
+      ],
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e46aad92-ba1f-47b8-8d28-6cdcdc9a3c0e",
+              "leftValue": "={{ $json.escreve_utm }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9e95e60a-65fa-4d2f-96fa-4401a07b1d90",
+      "name": "Escreve UTM?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dealId": "={{ $json.deal_id }}",
+        "updateFields": {
+          "customProperties": {
+            "property": [
+              {
+                "name": "346353ade45adcb68850667587de1da11b3bdadd",
+                "value": "={{ $json.tier }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "7ddf909f-ca31-4ee2-bfb2-c13e95b2f2a4",
+      "name": "Atualiza tier",
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        40
+      ],
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "86a8c308-06eb-4ab8-bf49-91af749064e5",
+      "name": "Contexto tier",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const d = $('Deriva origem').item.json;\nreturn { json: { deal_id: d.deal_id, tier: d.tier, precisa_supa: d.precisa_supa, fone8: d.fone8 } };"
+      }
+    },
+    {
+      "id": "56658ba2-930a-4dfc-84e3-72513da6cb16",
+      "name": "Tier via base?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1660,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "724b8714-94e9-473c-8882-ca4407d11ecc",
+              "leftValue": "={{ $json.precisa_supa }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "42fc4a4a-97c3-483d-95d6-32f8f2996336",
+      "name": "Supabase lead",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        -100
+      ],
+      "parameters": {
+        "operation": "get",
+        "tableId": "leads",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "whatsapp",
+              "condition": "like",
+              "keyValue": "={{ '*' + $json.fone8 }}"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "supabaseApi": {
+          "id": "kRKH2lDi70K6YQIf",
+          "name": "Supabase - Revenue"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "32438282-1987-467c-bfc0-3740bcf31cb6",
+      "name": "Tier da base",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        -100
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const TIER_MAP = {'1':'Tier 1','2':'Tier 2','3.1':'Tier 3.1','3.2':'Tier 3.2','4':'Tier 4','5':'Tier 5'};\nconst t = TIER_MAP[String($json.tier || '').trim()] || '';\nreturn { json: { deal_id: $('Contexto tier').item.json.deal_id, tier: t } };"
+      }
+    }
+  ],
+  "connections": {
+    "Todo dia 07h": {
+      "main": [
+        [
+          {
+            "node": "Credenciais RD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Credenciais RD": {
+      "main": [
+        [
+          {
+            "node": "Deals p1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deals p1": {
+      "main": [
+        [
+          {
+            "node": "Deals p2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deals p2": {
+      "main": [
+        [
+          {
+            "node": "Filtra sem origem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtra sem origem": {
+      "main": [
+        [
+          {
+            "node": "Pessoa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pessoa": {
+      "main": [
+        [
+          {
+            "node": "Extrai email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrai email": {
+      "main": [
+        [
+          {
+            "node": "RD contato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RD contato": {
+      "main": [
+        [
+          {
+            "node": "Deriva origem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Deriva origem": {
+      "main": [
+        [
+          {
+            "node": "Escreve UTM?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escreve UTM?": {
+      "main": [
+        [
+          {
+            "node": "Atualiza UTM",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Contexto tier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza UTM": {
+      "main": [
+        [
+          {
+            "node": "Contexto tier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contexto tier": {
+      "main": [
+        [
+          {
+            "node": "Tier via base?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tier via base?": {
+      "main": [
+        [
+          {
+            "node": "Supabase lead",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Atualiza tier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase lead": {
+      "main": [
+        [
+          {
+            "node": "Tier da base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tier da base": {
+      "main": [
+        [
+          {
+            "node": "Atualiza tier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "errorWorkflow": "3Q2DsZIHbnUHLchf",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  }
+}

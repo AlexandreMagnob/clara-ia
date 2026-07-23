@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório — Token RD sem Baserow e set-tier com RD por último</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f7; color: #1a1a2e; }
+
+  .cover {
+    background: linear-gradient(135deg, #6C3FC5 0%, #4a2d8a 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    page-break-after: always;
+  }
+  .cover-tag {
+    background: rgba(255,255,255,0.15); color: #fff; font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 40px; display: inline-block;
+  }
+  .cover h1 { font-size: 44px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 20px; max-width: 720px; }
+  .cover-sub { font-size: 18px; color: rgba(255,255,255,0.75); margin-bottom: 60px; max-width: 640px; line-height: 1.6; }
+  .cover-meta { display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; width: 100%; }
+  .cover-meta-item { color: rgba(255,255,255,0.6); font-size: 13px; }
+  .cover-meta-item strong { color: #fff; display: block; font-size: 15px; margin-bottom: 4px; }
+
+  .page { padding: 42px 62px; page-break-after: always; background: #fff; }
+  .page:last-child { page-break-after: avoid; }
+
+  .section-tag { font-size: 9.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #6C3FC5; margin-bottom: 8px; }
+  h2 { font-size: 24px; font-weight: 800; color: #1a1a2e; margin-bottom: 18px; }
+  h3 { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; margin-top: 20px; }
+  p { font-size: 12.5px; line-height: 1.65; color: #444; margin-bottom: 10px; }
+  li { font-size: 12.5px; line-height: 1.65; color: #444; margin-bottom: 6px; }
+  ul { margin: 0 0 10px 18px; }
+  code { background: #F0EAFA; color: #4a2d8a; padding: 1px 5px; border-radius: 4px; font-size: 11px; font-family: Consolas, monospace; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 18px 0; }
+  .stat-box { background: #F0EAFA; border-radius: 12px; padding: 16px; text-align: center; }
+  .stat-box .num { font-size: 30px; font-weight: 800; color: #6C3FC5; }
+  .stat-box .label { font-size: 11px; color: #666; margin-top: 5px; line-height: 1.35; }
+
+  .card { border-left: 4px solid #3182ce; background: #ebf8ff; border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 12px 0; }
+  .card.alert { border-color: #dd6b20; background: #fffaf0; }
+  .card.ok { border-color: #2f855a; background: #f0fff4; }
+  .card .tag { font-size: 9.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; color: #3182ce; }
+  .card.alert .tag { color: #dd6b20; }
+  .card.ok .tag { color: #2f855a; }
+  .card p, .card li { margin-bottom: 5px; font-size: 12px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 12px; }
+  th { background: #6C3FC5; color: #fff; text-align: left; padding: 8px 10px; font-weight: 700; }
+  td { padding: 7px 10px; border-bottom: 1px solid #eee; color: #444; vertical-align: top; }
+  tr:nth-child(even) td { background: #faf8fd; }
+
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+  .flow .box { background: #F0EAFA; border: 1.5px solid #c9b3ee; border-radius: 8px; padding: 6px 11px; font-size: 11px; font-weight: 600; color: #4a2d8a; }
+  .flow .box.rd { background: #fff5f5; border-color: #f3b1b1; color: #9b2c2c; }
+  .flow .box.mt { background: #f0fff4; border-color: #9fd7b4; color: #276749; }
+  .flow .arrow { color: #999; font-weight: 700; font-size: 14px; }
+  .flow-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #888; margin-top: 14px; margin-bottom: 2px; }
+
+  .fonte { font-size: 10.5px; color: #777; background: #f5f5f7; border-radius: 8px; padding: 10px 14px; margin-top: 8px; line-height: 1.6; }
+  .fonte strong { color: #444; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <div class="cover-tag">Infraestrutura de integrações — RD Station</div>
+  <h1>Token da RD sem Baserow e conversão RD por último no set-tier</h1>
+  <div class="cover-sub">Duas mudanças aplicadas em produção no n8n: o armazém do access_token da RD Station saiu do Baserow e virou Data Table nativa, e a automação de tier foi reordenada para que nenhum lead deixe de chegar ao vendedor por instabilidade da RD.</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>22/07/2026</strong>Data da aplicação</div>
+    <div class="cover-meta-item"><strong>Growth — RevOps</strong>Área</div>
+    <div class="cover-meta-item"><strong>n8n.cardapioweb.com</strong>Ambiente</div>
+  </div>
+</div>
+
+<!-- PAGINA 1: CONTEXTO -->
+<div class="page">
+  <div class="section-tag">Contexto</div>
+  <h2>O problema em duas frentes</h2>
+
+  <h3>1. O token da RD morava numa ferramenta de terceiro</h3>
+  <p>Toda automação que fala com a RD Station precisa de um access_token OAuth que expira em ~24h. Esse token ficava guardado numa tabela do <strong>Baserow</strong> (ferramenta externa): o workflow <code>[UTIL] Refresh token Rd Station</code> validava/renovava o token e gravava lá, e cada automação lia essa tabela antes de chamar a RD. Isso criava uma dependência externa no caminho crítico de <strong>todas</strong> as integrações com a RD — indisponibilidade do Baserow = automação parada.</p>
+
+  <h3>2. No set-tier, a RD ficava na frente do vendedor</h3>
+  <p>Na automação que define tier e envia leads para a Meetime (<code>[SQL] Automação para definir tier...</code>), a conversão na RD rodava <strong>antes</strong> do envio à Meetime. Qualquer erro da RD (instabilidade ou payload rejeitado) interrompia a execução — e o lead não chegava ao vendedor por causa de uma etapa que é só registro de marketing.</p>
+
+  <div class="card alert">
+    <div class="tag">Evidência que motivou a reordenação</div>
+    <p>Das execuções com erro do set-tier no período de 20 a 22/07 (7 execuções), <strong>7 de 7 falharam no trecho token/RD</strong>, todas antes do envio à Meetime: 4 no Execute Workflow do token ("Service unavailable"), 1 na leitura do token, e 2 na conversão RD com "Bad request" — estas últimas são erro de payload, que <strong>nenhum retry resolve</strong>; só tirar a RD do caminho do lead protege a entrega.</p>
+  </div>
+
+  <div class="fonte"><strong>Fonte:</strong> API pública do n8n — <code>GET /api/v1/executions?workflowId=GADrDhIEi1NvOJn9&amp;status=error</code>, últimas 25 execuções com erro, nó de falha extraído de <code>resultData.lastNodeExecuted</code>. Janela citada: 20–22/07, horários em Brasília.</div>
+</div>
+
+<!-- PAGINA 2: MISSAO 1 -->
+<div class="page">
+  <div class="section-tag">Mudança 1 — Baserow → Data Table</div>
+  <h2>Migração do armazém do token</h2>
+
+  <p>Foi criada a Data Table nativa do n8n <code>rd_station_token</code> (id <code>n4sEAnrMqvG70nHp</code>) com uma única coluna, <code>Access_token</code> — <strong>mesmo nome do campo que existia no Baserow</strong>, de propósito: as expressões <code>$json.Access_token</code> dos workflows continuaram funcionando sem nenhuma edição. A troca em cada workflow foi só do nó (Baserow → Data Table), preservando nome, posição e conexões.</p>
+
+  <div class="stats-grid">
+    <div class="stat-box"><div class="num">766</div><div class="label">workflows varridos na instância para mapear quem usava o token</div></div>
+    <div class="stat-box"><div class="num">22</div><div class="label">workflows ativos migrados (21 consumidores + o UTIL que renova)</div></div>
+    <div class="stat-box"><div class="num">30</div><div class="label">nós Baserow substituídos por Data Table</div></div>
+  </div>
+
+  <h3>Ordem de aplicação (piloto antes do lote)</h3>
+  <ul>
+    <li><strong>Piloto:</strong> <code>[PAR] Criar conversão Cw Apps</code> — aplicado, inspecionado e aprovado antes do restante.</li>
+    <li><strong>Dupla crítica:</strong> <code>[UTIL] Refresh token Rd Station</code> (leitura e gravação do token) + set-tier, em sequência imediata para não abrir janela de inconsistência.</li>
+    <li><strong>Lote final:</strong> os 19 demais (Etapas 1–5 reopen, Associação de Etapa, CQL Meetime/RD, TQL, LP de parcerias, indicação/adição manuais, clientes ganhos, compras futuras SIM/NÃO, reopen frios, Reopen SDR AI) — 19/19 verificados.</li>
+  </ul>
+
+  <h3>Um detalhe de arquitetura descoberto no mapeamento</h3>
+  <p>Existem <strong>dois sistemas independentes de token RD</strong> na instância, com apps RD distintos: o do Baserow (alvo desta migração) e o <code>[UTIL] Obter credenciais da RD Station</code>, que grava no Postgres do CDP e atende [IMP], [PAR] ganhos e [REV] reajuste. O segundo <strong>não foi tocado</strong>.</p>
+
+  <div class="card ok">
+    <div class="tag">Validações executadas</div>
+    <ul>
+      <li>Formato dos nós Data Table (get, update e delete) validado <strong>empiricamente</strong> em workflows de teste descartáveis, contra linha sandbox — nunca contra a linha de produção. Testes apagados em seguida.</li>
+      <li>Prova end-to-end: workflow de teste chamou o UTIL real pós-troca (do mesmo jeito que os consumidores chamam) e recebeu o token válido de 670 caracteres lido da Data Table.</li>
+      <li>Varredura final: <strong>zero</strong> workflows ativos lendo a tabela antiga do Baserow; <strong>zero</strong> execuções com erro na instância no pós-troca imediato.</li>
+      <li>Backup do JSON original dos 22 workflows guardado antes de cada alteração.</li>
+    </ul>
+  </div>
+
+  <div class="fonte"><strong>Fonte:</strong> API pública do n8n — varredura por <code>GET /api/v1/workflows</code> (nós do tipo <code>baserow</code> com <code>tableId 559701</code>), verificação pós-write por releitura de cada workflow e comparação de nós/conexões contra o backup.</div>
+</div>
+
+<!-- PAGINA 3: MISSAO 2 -->
+<div class="page">
+  <div class="section-tag">Mudança 2 — set-tier</div>
+  <h2>Conversão RD movida para o fim</h2>
+
+  <p>A reordenação foi aplicada nos dois braços do set-tier (leads de formulário e leads de WhatsApp). O trio token + chamada RD foi movido em bloco para <strong>depois</strong> do último passo da cadeia de entrega. Nenhum nó pós-RD dependia da resposta da RD (todas as referências são nomeadas), o que tornou a mudança segura.</p>
+
+  <div class="flow-label">Antes</div>
+  <div class="flow">
+    <div class="box">Define tier</div><div class="arrow">→</div>
+    <div class="box rd">Token + Conversão RD</div><div class="arrow">→</div>
+    <div class="box">Planilha + evento Ads</div><div class="arrow">→</div>
+    <div class="box mt">Cria na Meetime</div><div class="arrow">→</div>
+    <div class="box">Integração inicial</div>
+  </div>
+  <p style="font-size:13px; color:#9b2c2c;">RD falhou → execução para → lead não chega à Meetime.</p>
+
+  <div class="flow-label">Depois</div>
+  <div class="flow">
+    <div class="box">Define tier</div><div class="arrow">→</div>
+    <div class="box">Planilha + evento Ads</div><div class="arrow">→</div>
+    <div class="box mt">Cria na Meetime</div><div class="arrow">→</div>
+    <div class="box">Integração inicial</div><div class="arrow">→</div>
+    <div class="box rd">Token + Conversão RD</div>
+  </div>
+  <p style="font-size:13px; color:#276749;">RD falhou → lead já está com o vendedor; o erro fica visível no log para recuperar a conversão depois.</p>
+
+  <h3>Decisões tomadas junto com a reordenação</h3>
+  <ul>
+    <li><strong>Retry automático (3 tentativas, 5s de espera)</strong> nos 6 nós de token — os 3 nós de chamada RD já tinham retry configurado. Cobre a instabilidade transitória ("Service unavailable").</li>
+    <li><strong>Erro continua visível:</strong> optou-se por manter a falha da RD como erro de execução (em vez de "engolir" com continue-on-fail), para que conversões perdidas sejam auditáveis e recuperáveis em lote.</li>
+    <li><strong>Sem desvio para o form EUA:</strong> o lead do formulário "LP - GOOGLE - PAGO EUA" só recebia a conversão RD (era barrado da Meetime pelos filtros). Com o novo desenho, esse lead deixa de gerar conversão na RD — decisão consciente de simplificar o fluxo.</li>
+    <li><strong>Braço do botão de WhatsApp</strong> (terceira chamada RD) já era terminal no desenho antigo e não foi movido; ganhou o mesmo retry.</li>
+  </ul>
+
+  <p>O desenho foi validado primeiro numa <strong>cópia de teste inativa</strong>, revisada e ajustada manualmente antes da réplica no principal. Na réplica, dois pontos foram corrigidos de volta: o nó Webhook de entrada (removido por engano na edição do teste) foi preservado no principal, e o filtro dos nós de token manteve a chave <code>id = 1</code> que o editor visual havia descartado ao salvar.</p>
+
+  <div class="fonte"><strong>Fonte:</strong> workflow <code>GADrDhIEi1NvOJn9</code> ao vivo, diff completo teste × principal por nó e por conexão antes da aplicação; verificação pós-write com releitura (109 nós, webhook <code>set-tier</code> intacto, novas conexões conferidas uma a uma).</div>
+</div>
+
+<!-- PAGINA 4: RESULTADO -->
+<div class="page">
+  <div class="section-tag">Resultado</div>
+  <h2>Como o sistema fica depois das duas mudanças</h2>
+
+  <table>
+    <tr><th>Dimensão</th><th>Antes</th><th>Depois</th></tr>
+    <tr>
+      <td><strong>Armazém do token RD</strong></td>
+      <td>Tabela no Baserow (serviço externo, credencial própria, ponto único de falha fora de casa)</td>
+      <td>Data Table nativa do n8n <code>rd_station_token</code> — sem dependência externa, mesma infraestrutura dos workflows</td>
+    </tr>
+    <tr>
+      <td><strong>Falha da RD no set-tier</strong></td>
+      <td>Interrompia a execução antes da Meetime — lead não chegava ao vendedor</td>
+      <td>Lead entregue primeiro; conversão RD é o último elo e falha isolada, visível no log</td>
+    </tr>
+    <tr>
+      <td><strong>Instabilidade transitória</strong></td>
+      <td>Erro na primeira tentativa derrubava o fluxo</td>
+      <td>Retry automático 3× com 5s nos nós de token e RD</td>
+    </tr>
+    <tr>
+      <td><strong>Auditoria</strong></td>
+      <td>—</td>
+      <td>Backups JSON de todos os workflows alterados; testes descartáveis documentaram cada formato de nó antes do uso em produção</td>
+    </tr>
+  </table>
+
+  <h3>O que observar nos próximos dias</h3>
+  <ul>
+    <li><strong>Primeira renovação automática do token</strong> na Data Table (o token vive ~24h; a primeira renovação pós-migração confirma o ciclo completo de escrita).</li>
+    <li><strong>Primeiras execuções reais do set-tier reordenado</strong> — conferir leads chegando à Meetime e conversões RD registradas na sequência.</li>
+    <li>Se aparecer erro de conversão RD, o lead <strong>não é impactado</strong> — a execução com erro fica no log com os dados necessários para reenviar a conversão.</li>
+  </ul>
+
+  <div class="card">
+    <div class="tag">Inventário das alterações</div>
+    <p><strong>Data Table:</strong> <code>rd_station_token</code> (id <code>n4sEAnrMqvG70nHp</code>) · <strong>22 workflows migrados</strong> do Baserow, incluindo <code>[UTIL] Refresh token Rd Station</code> · <strong>set-tier</strong> (<code>GADrDhIEi1NvOJn9</code>) reordenado com RD por último nos braços de formulário e WhatsApp · Sistema de token do CDP (<code>[UTIL] Obter credenciais da RD Station</code>) intacto · Workflows inativos que liam o Baserow (13) não foram alterados.</p>
+  </div>
+</div>
+
+</body>
+</html>

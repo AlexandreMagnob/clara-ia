@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origem e tier dos leads — correções aplicadas</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f7; color: #1a1a2e; }
+  .cover {
+    background: linear-gradient(135deg, #6C3FC5 0%, #4a2d8a 100%);
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    align-items: flex-start; padding: 80px; page-break-after: always;
+  }
+  .cover-tag {
+    background: rgba(255,255,255,0.15); color: #fff; font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 40px; display: inline-block;
+  }
+  .cover h1 { font-size: 42px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 20px; max-width: 740px; }
+  .cover-sub { font-size: 18px; color: rgba(255,255,255,0.75); margin-bottom: 60px; max-width: 660px; line-height: 1.6; }
+  .cover-meta { display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; width: 100%; }
+  .cover-meta-item { color: rgba(255,255,255,0.6); font-size: 13px; }
+  .cover-meta-item strong { color: #fff; display: block; font-size: 15px; margin-bottom: 4px; }
+  .page { padding: 56px 76px; page-break-after: always; background: #fff; }
+  .page:last-child { page-break-after: avoid; }
+  .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #6C3FC5; margin-bottom: 10px; }
+  h2 { font-size: 28px; font-weight: 800; color: #1a1a2e; margin-bottom: 26px; }
+  h3 { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; margin-top: 30px; }
+  p { font-size: 13.5px; line-height: 1.75; color: #444; margin-bottom: 13px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 26px 0; }
+  .stat-box { background: #F0EAFA; border-radius: 12px; padding: 22px; text-align: center; }
+  .stat-box .num { font-size: 32px; font-weight: 800; color: #6C3FC5; }
+  .stat-box .label { font-size: 11.5px; color: #666; margin-top: 6px; line-height: 1.4; }
+  table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 12.5px; }
+  th { background: #6C3FC5; color: #fff; text-align: left; padding: 9px 13px; font-size: 11.5px; letter-spacing: 0.4px; }
+  td { padding: 9px 13px; border-bottom: 1px solid #eee; color: #444; vertical-align: top; }
+  tr:nth-child(even) td { background: #faf8fd; }
+  .card { border-left: 4px solid #3182ce; background: #ebf8ff; border-radius: 0 10px 10px 0; padding: 18px 22px; margin-bottom: 14px; }
+  .card .tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #3182ce; margin-bottom: 6px; }
+  .card h4 { font-size: 14.5px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+  .card p { font-size: 12.5px; margin: 0; color: #555; }
+  .card.fix { border-color: #38a169; background: #f0fff4; }
+  .card.fix .tag { color: #38a169; }
+  .card.warning { border-color: #dd6b20; background: #fffaf0; }
+  .card.warning .tag { color: #dd6b20; }
+  .flow {
+    background: #1a1a2e; color: #d9d2ea; border-radius: 12px; padding: 20px 24px;
+    font-family: Consolas, monospace; font-size: 12px; line-height: 1.9; margin: 18px 0;
+    white-space: pre; overflow-x: auto;
+  }
+  .flow b { color: #ffb700; font-weight: 700; }
+  .footnote { font-size: 11px; color: #999; margin-top: 36px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 14px; }
+  @media print { body { background: #fff; } .page { padding: 48px 60px; } }
+  @page { size: A4; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <div class="cover-tag">Registro de Execução · RevOps</div>
+  <h1>Origem e tier dos leads: correções aplicadas de ponta a ponta</h1>
+  <div class="cover-sub">Como o funil saiu de 1 em cada 4 vendas sem atribuição para origem e tier preenchidos automaticamente — três correções estruturais, um vigia diário e quatro retroativos, com 921 deals recuperados sem um erro.</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>22–23/07/2026</strong>Execução</div>
+    <div class="cover-meta-item"><strong>n8n · Pipedrive · RD · Supabase</strong>Sistemas</div>
+    <div class="cover-meta-item"><strong>Em produção</strong>Status</div>
+    <div class="cover-meta-item"><strong>Alexandre Magno</strong>Growth</div>
+  </div>
+</div>
+
+<!-- PÁGINA 1 — PROBLEMA E RESULTADO -->
+<div class="page">
+  <div class="section-tag">O problema e o resultado</div>
+  <h2>De funil cego a atribuição automática</h2>
+
+  <p>O diagnóstico de 22/07 (relatório próprio) mostrou que <strong>20% dos deals de julho nasciam sem
+  nenhum rastreio de origem</strong> — e ganhavam o rótulo enganoso "Site / Contratação" por um carimbo
+  automático do Pipedrive. Nas vendas, o buraco era maior: <strong>27% dos ganhos do mês sem atribuição</strong>.
+  Em paralelo, parte dos clientes fechava sem tier, e a liderança de closers levantou uma lista de 36
+  ganhos de junho cuja origem ninguém sabia explicar.</p>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="num">921</div>
+      <div class="label">deals enriquecidos retroativamente<br>(jun + jul, UTM + tier, 0 erros)</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">45% → 90%</div>
+      <div class="label">atribuição das vendas de julho<br>(618 ganhos no mês)</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">36/36</div>
+      <div class="label">tier fechado na lista<br>da liderança de closers</div>
+    </div>
+  </div>
+
+  <h3>As três causas atacadas</h3>
+  <table>
+    <tr><th>Causa</th><th>Efeito</th></tr>
+    <tr><td>Regressão de abril/2026 no n8n: o fluxo que cria o deal no agendamento da Clara deixou de copiar as UTMs que já estavam no banco</td><td>Lead de mídia paga contabilizado como "contratação espontânea"</td></tr>
+    <tr><td>Carimbo automático do Pipedrive em deal criado via API com campos vazios</td><td>"Site / Contratação" virou rótulo default, não origem real</td></tr>
+    <tr><td>Portas de entrada sem classificação (adição manual de parcerias, criação manual por closer)</td><td>Clientes fechando sem tier</td></tr>
+  </table>
+</div>
+
+<!-- PÁGINA 2 — CORREÇÕES ESTRUTURAIS + VIGIA -->
+<div class="page">
+  <div class="section-tag">Correções estruturais</div>
+  <h2>Deal novo nasce preenchido</h2>
+
+  <div class="card fix">
+    <div class="tag">n8n · agendamento da Clara · 22/07 16h10</div>
+    <h4>Mapeamento de UTM e tier reativado na criação do deal</h4>
+    <p>O subworkflow de agendamento voltou a copiar utm_source/medium/campaign/content, gclid, fbclid,
+    tier, faturamento e segmento da linha do lead no Supabase — dados que o fluxo já consultava e
+    descartava desde a refatoração de abril. A duplicata enviada ao pipe do closer herda tudo.</p>
+  </div>
+  <div class="card fix">
+    <div class="tag">n8n · adição manual de parcerias · 23/07</div>
+    <h4>Tier automático na entrada de parcerias</h4>
+    <p>Os dois nós de criação de deal passaram a gravar tier na hora: Agente de Parcerias preenchido →
+    "Agentes"; sem agente → "Adição manual". Essa porta era a origem dos clientes sem tier via API.</p>
+  </div>
+  <div class="card fix">
+    <div class="tag">Pipedrive · campos · 22/07</div>
+    <h4>12 opções novas + marca de auditoria</h4>
+    <p>utm_source ganhou as fontes reais que a RD conhece (direto, meta, bing, chatgpt, seo…) e o
+    Identificador de origem ganhou "RD retroativo" — todo dado enriquecido fica marcado e filtrável,
+    separando dado original de dado recuperado.</p>
+  </div>
+
+  <div class="section-tag" style="margin-top:34px">Automação contínua</div>
+  <h2>O vigia diário</h2>
+  <p>Workflow novo rodando todo dia às 07h. Cada deal do funil de vendas criado nos últimos 3 dias sem
+  rastreio ou sem tier passa pela esteira — 3 chances antes de ficar pra trás:</p>
+
+  <div class="flow">Deals (3 dias, sem UTM <b>ou</b> sem tier)
+   → busca contato na RD por email → <b>UTM</b>: fonte, medium, campanha, gclid/fbclid
+   → <b>tier em 3 camadas</b>: regra de negócio → RD (tier atual) → Supabase (base da Clara)
+   → grava em nós separados (quem só falta tier nunca tem a UTM tocada)</div>
+
+  <p><strong>Estreia validada em 23/07:</strong> 88 deals sem origem processados → 39 enriquecidos
+  (meta 15, google 12, direto 6…) — auditoria individual dos 39: 100% corretos. Construído com os
+  nodes oficiais e as credenciais centrais da casa; export versionado no repositório.</p>
+</div>
+
+<!-- PÁGINA 3 — RETROATIVOS -->
+<div class="page">
+  <div class="section-tag">Retroativos</div>
+  <h2>O estoque de junho e julho, consertado</h2>
+
+  <table>
+    <tr><th>Rodada</th><th>Universo</th><th>Gravados</th><th>Erros</th></tr>
+    <tr><td>UTM julho (22/07)</td><td>305 deals cegos de 01–22/07</td><td><strong>209</strong> (68,5% de recuperação)</td><td>0</td></tr>
+    <tr><td>Tier julho (23/07)</td><td>129 sem tier com pessoa vinculada</td><td><strong>129</strong> (100%)</td><td>0</td></tr>
+    <tr><td>Junho completo (23/07)</td><td>1.003 deals com lacuna, de 2.447 do mês</td><td><strong>579</strong> (378 UTM + 238 tier)</td><td>0</td></tr>
+    <tr><td>Avulsos da lista da liderança</td><td>4 deals de set/25 a mai/26</td><td><strong>4</strong> tiers</td><td>0</td></tr>
+  </table>
+
+  <p>Regras seguidas em todas as rodadas: simulação prévia aprovada, releitura de cada deal no momento
+  da gravação, <strong>escrita apenas em campo vazio</strong> (nenhum dado existente foi sobrescrito),
+  intervalo entre chamadas e log deal a deal.</p>
+
+  <h3>Fonte real recuperada (julho, 209 deals)</h3>
+  <table>
+    <tr><th>Fonte</th><th>Deals</th><th>Leitura</th></tr>
+    <tr><td>Tráfego direto</td><td>62 (30%)</td><td>Pessoa digitou o site — inclui link da bio do Instagram</td></tr>
+    <tr><td>Google</td><td>59 (28%)</td><td>Converte acima da média entre os recuperados</td></tr>
+    <tr><td>Site próprio / portal</td><td>22 (11%)</td><td>Navegação interna e página de indicação</td></tr>
+    <tr><td>Meta Ads</td><td>16 (8%)</td><td>Forms nativo: a RD sabia, o site não — por isso o deal nascia cego</td></tr>
+    <tr><td>Bing / Brave / Yahoo</td><td>12 (6%)</td><td>Busca orgânica fora do Google</td></tr>
+    <tr><td>ChatGPT / Claude</td><td>10 (5%)</td><td>Assistentes de IA já aparecem como canal de aquisição</td></tr>
+  </table>
+
+  <h3>A lista dos 36 da liderança de closers</h3>
+  <p><strong>Tier: 36/36 preenchido · Origem: 24/36 recuperada.</strong> Os 12 restantes não existem em
+  RD, Meetime nem Supabase — entraram por WhatsApp/contato direto sem registro. Não há dado a
+  recuperar; é o ponto que depende de processo na criação manual (abaixo).</p>
+</div>
+
+<!-- PÁGINA 4 — O QUE FALTA -->
+<div class="page">
+  <div class="section-tag">Fora do alcance da automação</div>
+  <h2>O que depende de decisão</h2>
+
+  <div class="card warning">
+    <div class="tag">Processo comercial</div>
+    <h4>Criação manual por closer sem registro de canal</h4>
+    <p>Única fonte de "escuro" que restou — lead de WhatsApp/balcão criado na mão não deixa rastro em
+    nenhuma base (12 dos 36 da lista são isso). Proposta: canal e tier obrigatórios no formulário de
+    criação. Muda rotina do time, decisão da gestão comercial.</p>
+  </div>
+  <div class="card warning">
+    <div class="tag">Higiene do funil</div>
+    <h4>Deals-esqueleto</h4>
+    <p>~400 deals/mês criados via API sem pessoa vinculada, abandonados em "Reunião Marcada" — não são
+    leads reais e distorcem qualquer taxa por etapa. A causa está em investigação em frente separada.</p>
+  </div>
+  <div class="card warning">
+    <div class="tag">Mídia paga</div>
+    <h4>Template de UTM do Meta Ads</h4>
+    <p>Parte das campanhas envia a macro <span style="font-family:Consolas,monospace">{campaignname}</span>
+    sem resolver e omite utm_source. Corrigir o template no gerenciador elimina a dependência do
+    enriquecimento para o tráfego Meta daqui pra frente.</p>
+  </div>
+
+  <div class="footnote">
+    Fontes e método: censo via API do Pipedrive (jun: 2.447 deals; jul: 1.524 até 22/07, funil de vendas);
+    enriquecimento via RD Station (contato por email) e Supabase (base da Clara, match por telefone);
+    regras de tier definidas pela operação (parceria → Agentes; manual → Adição manual). Todo dado
+    enriquecido é filtrável no Pipedrive por Identificador de origem = "RD retroativo". Backups dos
+    3 workflows alterados e logs completos das 4 rodadas arquivados. Diagnóstico completo em
+    2026-07-22_mapeamento-origem-leads.md; dados brutos em analises/dados/. Horários em Brasília.
+  </div>
+</div>
+
+</body>
+</html>

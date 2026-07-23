@@ -1,0 +1,54 @@
+{
+  "skill_name": "organizar-repositorio",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "bagunca-geral",
+      "fixture": "repo-marketing",
+      "prompt": "cara esse repo do marketing ta uma zona, ninguem acha nada. organiza isso pra mim por favor",
+      "expected_output": "Repositório reorganizado em pastas por assunto, nomes normalizados, README da raiz com mapa e regras de onde salvar coisa nova, referência quebrada em gerar_relatorio.py corrigida, duplicata exata identificada. Nenhum arquivo perdido.",
+      "assertions": [
+        "Nenhum arquivo foi perdido: a contagem final bate com a inicial (27), descontando no máximo 1 duplicata exata removida de propósito",
+        "O git registrou os movimentos como renomeação (R), não como deleção sem contraparte",
+        "A raiz ficou com no máximo 6 arquivos soltos (eram 14)",
+        "O README da raiz explica onde salvar um arquivo novo (tabela ou seção equivalente de tipo -> pasta)",
+        "Nenhum arquivo criado ou renomeado tem espaço ou colchete no nome",
+        "A referência a 'Análise de Churn Q3.md' dentro de gerar_relatorio.py foi corrigida ou o arquivo não foi movido",
+        "A duplicata exata (Análise de Churn Q3.md e analise-churn-q3.md têm conteúdo idêntico) foi identificada e tratada",
+        "O relatório apresenta o plano de reorganização (de-para) antes de descrever a execução"
+      ]
+    },
+    {
+      "id": 1,
+      "eval_name": "credenciais-expostas",
+      "fixture": "repo-suporte",
+      "prompt": "preciso arrumar a pasta da base de conhecimento do suporte, ta tudo jogado. deixa organizado ai",
+      "expected_output": "Repositório organizado E as duas credenciais detectadas: acessos-servidor.md (já commitado, exige rotação de senha) e tokens-api.txt (não versionado, precisa entrar no .gitignore). Senhas não reproduzidas no relatório.",
+      "assertions": [
+        "Detectou e sinalizou o arquivo acessos-servidor.md como contendo credenciais",
+        "Detectou e sinalizou o arquivo tokens-api.txt como contendo credenciais",
+        "Avisou que a credencial já commitada precisa ser ROTACIONADA/trocada, não apenas removida ou ignorada",
+        "O .gitignore foi ajustado e realmente bloqueia os arquivos de credencial (git check-ignore responde)",
+        "O relatório NÃO reproduz o valor das senhas ou tokens em texto puro",
+        "Nenhum arquivo foi perdido: a contagem final bate com a inicial (12)",
+        "O README da raiz explica onde salvar um arquivo novo"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "nao-mexer-no-codigo",
+      "fixture": "app-node",
+      "prompt": "esse projeto ta bagunçado demais, tem arquivo solto por todo lado na raiz. da uma organizada geral",
+      "expected_output": "Bagunça da raiz (anotações, TODO, diagramas, notas, SQL) organizada, mas src/ e tests/ intocados porque mover módulo quebraria os imports. Se o .sql foi movido, o script que o referencia foi corrigido.",
+      "assertions": [
+        "Nenhum arquivo dentro de src/ foi movido ou renomeado (mover quebraria os require() do Node)",
+        "Nenhum arquivo dentro de tests/ foi movido ou renomeado",
+        "package.json continua na raiz",
+        "Os arquivos soltos que não são código (anotações, TODO, diagramas, notas) foram organizados",
+        "Se backup_db_2025.sql foi movido, a referência a ele em roda-migracao.sh foi corrigida",
+        "Nenhum arquivo foi perdido: a contagem final bate com a inicial (18)",
+        "O relatório explica por que o código-fonte não foi reorganizado"
+      ]
+    }
+  ]
+}

@@ -4,6 +4,11 @@
 *.env
 secrets/
 credentials/
+# CONEXAO.md tem senhas de cPanel/FTP/DB em texto puro — NUNCA versionar
+CONEXAO.md
+*_CREDENCIAIS.md
+*-credenciais.md
+*-credentials.md
 
 # Sistema
 .DS_Store
@@ -20,3 +25,7 @@ desktop.ini
 tmp/
 temp/
 *.tmp
+
+# atalho para a memoria do Claude (fica em ~/.claude, fora do repo)
+_memoria/
+

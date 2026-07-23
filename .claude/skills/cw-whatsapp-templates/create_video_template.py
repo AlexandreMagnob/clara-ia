@@ -20,7 +20,7 @@ WABA  = os.environ["CW_SDR_WABA_ID"]
 GRAPH = "https://graph.facebook.com/v21.0"
 
 # vídeo de exemplo p/ aprovação (qualquer um dos closers serve; o real entra por envio)
-VIDEO = Path(r"C:\Users\alexa\Desktop\Clara IA\videos-lembrete\converted\ranier.mp4")
+VIDEO = Path(r"C:\Users\alexa\Desktop\Clara IA\assets\videos-lembrete\convertidos\ranier.mp4")
 
 NAME = "lembrete_video_30min"
 BODY = ("Opa {{nome}}, tudo bem? Passando para te enviar o link da sua reunião "

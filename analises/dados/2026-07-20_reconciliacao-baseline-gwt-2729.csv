@@ -1,0 +1,43 @@
+bloco,universo,janela,grupo,definicao,numerador,denominador,taxa_pct
+reproducao_lado_A,tier > '3',2026-05-01..2026-05-31,pizzaria,A_parse_conversa,118,423,27.9
+reproducao_lado_A,tier > '3',2026-05-01..2026-05-31,hamburgueria,A_parse_conversa,301,769,39.1
+reproducao_lado_A,tier > '3',2026-05-01..2026-05-31,restaurante,A_parse_conversa,118,445,26.5
+reproducao_lado_A,tier > '3',2026-05-01..2026-05-31,TOTAL 3 nichos,A_parse_conversa,537,1637,32.8
+reproducao_lado_B,tier IN ('4'&'5'),2026-05-01..2026-05-31,TESTE 3 nichos,B_count_messages_gt1,563,734,76.7
+reproducao_lado_B,tier IN ('4'&'5'),2026-05-01..2026-05-31,CONTROLE outros,B_count_messages_gt1,1524,1989,76.6
+cobertura_abertura,tier 3.1/3.2,2026-05-01..2026-05-31,todos,receberam_abertura,168,3187,5.3
+cobertura_abertura,tier 4-5,2026-05-01..2026-05-31,todos,receberam_abertura,2713,2723,99.6
+grid_2x2,tier IN ('4'&'5'),2026-05-01..2026-05-31,TESTE 3 nichos,A_parse_conversa,520,734,70.8
+grid_2x2,tier IN ('4'&'5'),2026-06-16..2026-06-22,TESTE 3 nichos,A_parse_conversa,89,184,48.4
+grid_2x2,tier IN ('4'&'5'),2026-05-01..2026-05-31,TESTE 3 nichos,B_count_messages_gt1,563,734,76.7
+grid_2x2,tier IN ('4'&'5'),2026-06-16..2026-06-22,TESTE 3 nichos,B_count_messages_gt1,103,184,56.0
+grid_2x2_universo_errado,tier > '3',2026-06-16..2026-06-22,TESTE 3 nichos,A_parse_conversa,111,530,20.9
+grid_2x2_universo_errado,tier > '3',2026-06-16..2026-06-22,TESTE 3 nichos,B_count_messages_gt1,228,530,43.0
+did,tier IN ('4'&'5'),2026-05-01..2026-05-31,TRATADO hamb+rest,A_parse_conversa,407,549,74.1
+did,tier IN ('4'&'5'),2026-06-16..2026-06-22,TRATADO hamb+rest,A_parse_conversa,65,130,50.0
+did,tier IN ('4'&'5'),2026-05-01..2026-05-31,CONTROLE outros,A_parse_conversa,1427,1989,71.7
+did,tier IN ('4'&'5'),2026-06-16..2026-06-22,CONTROLE outros,A_parse_conversa,206,360,57.2
+did,tier IN ('4'&'5'),2026-05-01..2026-05-31,PIZZARIA placebo,A_parse_conversa,113,185,61.1
+did,tier IN ('4'&'5'),2026-06-16..2026-06-22,PIZZARIA placebo,A_parse_conversa,24,54,44.4
+did,tier IN ('4'&'5'),2026-05-01..2026-05-31,TRATADO hamb+rest,B_count_messages_gt1,439,549,80.0
+did,tier IN ('4'&'5'),2026-06-16..2026-06-22,TRATADO hamb+rest,B_count_messages_gt1,75,130,57.7
+did,tier IN ('4'&'5'),2026-05-01..2026-05-31,CONTROLE outros,B_count_messages_gt1,1524,1989,76.6
+did,tier IN ('4'&'5'),2026-06-16..2026-06-22,CONTROLE outros,B_count_messages_gt1,230,360,63.9
+did,tier IN ('4'&'5'),2026-05-01..2026-05-31,PIZZARIA placebo,B_count_messages_gt1,124,185,67.0
+did,tier IN ('4'&'5'),2026-06-16..2026-06-22,PIZZARIA placebo,B_count_messages_gt1,28,54,51.9
+entrega_por_braco,tier 4-5 usuario=clara,2026-06-16..2026-06-22,SEGMENTADA,A_parse_conversa,63,128,49.2
+entrega_por_braco,tier 4-5 usuario=clara,2026-06-16..2026-06-22,GENERICA NOVA,A_parse_conversa,199,343,58.0
+entrega_por_braco,tier 4-5 usuario=clara,2026-06-16..2026-06-22,GENERICA ANTIGA,A_parse_conversa,27,59,45.8
+entrega_por_braco,tier 4-5 usuario=clara,2026-06-16..2026-06-22,SEGMENTADA,B_count_messages_gt1,73,128,57.0
+entrega_por_braco,tier 4-5 usuario=clara,2026-06-16..2026-06-22,GENERICA NOVA,B_count_messages_gt1,216,343,63.0
+entrega_por_braco,tier 4-5 usuario=clara,2026-06-16..2026-06-22,GENERICA ANTIGA,B_count_messages_gt1,33,59,55.9
+entrega_por_nicho,tier 4-5 usuario=clara,2026-06-16..2026-06-22,hamburgueria SEGMENTADA,leads,77,77,100.0
+entrega_por_nicho,tier 4-5 usuario=clara,2026-06-16..2026-06-22,restaurante SEGMENTADA,leads,51,51,100.0
+entrega_por_nicho,tier 4-5 usuario=clara,2026-06-16..2026-06-22,pizzaria GENERICA (nunca tratada),leads,52,52,100.0
+guarda_agendamento,tier IN ('4'&'5'),2026-05-01..2026-05-31,TRATADO hamb+rest,data_agendamento_not_null,35,549,6.4
+guarda_agendamento,tier IN ('4'&'5'),2026-06-16..2026-06-22,TRATADO hamb+rest,data_agendamento_not_null,4,130,3.1
+guarda_agendamento,tier IN ('4'&'5'),2026-05-01..2026-05-31,CONTROLE outros,data_agendamento_not_null,53,1989,2.7
+guarda_agendamento,tier IN ('4'&'5'),2026-06-16..2026-06-22,CONTROLE outros,data_agendamento_not_null,5,360,1.4
+roteamento,tier IN ('4'&'5'),2026-06-22,usuario<>clara,leads_sdr,5,85,5.9
+roteamento,tier IN ('4'&'5'),2026-06-23,usuario<>clara,leads_sdr,13,97,13.4
+roteamento,tier IN ('4'&'5'),2026-06-24,usuario<>clara,leads_sdr,40,123,32.5

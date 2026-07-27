@@ -29,3 +29,5 @@ temp/
 # atalho para a memoria do Claude (fica em ~/.claude, fora do repo)
 _memoria/
 
+# Mega Brain do Marketing — repo git proprio (remoto: mega-brain), aninhado aqui
+mega-brain/

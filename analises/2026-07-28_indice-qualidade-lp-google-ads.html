@@ -39,7 +39,8 @@
   footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid #e5def0; color: var(--cinza); font-size: .82rem; }
   .sim { color: #157347; font-weight: 800; }
   .nao { color: #b02a37; font-weight: 800; }
-  @media print { body { background: #fff; } .page { padding: 0; } h2 { page-break-after: avoid; } table, .colar, .destaque { page-break-inside: avoid; } }
+  .chk { font-size: 1.15rem; text-align: center; color: var(--roxo); line-height: 1.2; }
+  @media print { body { background: #fff; } .page { padding: 0; } h2 { page-break-after: avoid; } h3 { page-break-after: avoid; } table, .colar, .destaque { page-break-inside: avoid; } .checklist-inicio { page-break-before: always; } }
 </style>
 </head>
 <body>
@@ -56,7 +57,7 @@
 <div class="resumo">
   <p><strong>O problema:</strong> o critério "Experiência na página de destino" do Índice de qualidade precisa chegar à nota máxima nas keywords "cardápio web" e "cardápio digital".</p>
   <p><strong>O que foi feito:</strong> levantamento dos critérios na documentação oficial do Google, trace real da página no Chrome (mobile, Slow 4G, CPU 4×), medição de TTFB por <code>curl</code> e benchmark contra o site principal e 3 concorrentes diretos.</p>
-  <p><strong>O resultado medido:</strong> a LP responde em <strong>1,273 s</strong> de TTFB contra <strong>0,200 s</strong> do próprio site principal e 0,15–0,17 s dos concorrentes. <strong>80% do LCP é espera de servidor.</strong> No conteúdo, "cardápio digital" está bem coberto e <strong>"cardápio web" só aparece como nome de marca</strong>, nunca como termo explicado.</p>
+  <p><strong>O resultado medido:</strong> a LP responde em <strong>1,273 s</strong> de TTFB contra <strong>0,200 s</strong> do próprio site principal e 0,15–0,17 s dos concorrentes. <strong>80% do LCP é espera de servidor.</strong> No conteúdo, "cardápio digital" está bem coberto e "cardápio web" aparece 9× como nome da marca, que é o uso correto: <strong>Cardápio Web é a empresa, não um termo a ser explicado.</strong></p>
 </div>
 
 <h2>Fazendo essas alterações a qualidade melhora?</h2>
@@ -84,16 +85,20 @@
 
 <h2>Como a página está hoje para cada palavra</h2>
 
+<div class="destaque">
+  <p style="margin-bottom:0"><strong>Premissa fechada:</strong> Cardápio Web é o nome da empresa. A página não vai explicar o que é "um cardápio web", porque isso trata a marca como substantivo comum e enfraquece ela. Quem busca "cardápio web" na maioria das vezes está procurando a empresa, e a página da empresa já é a resposta certa para essa busca. O termo genérico do mercado é <strong>cardápio digital</strong>, e é esse que a página explica.</p>
+</div>
+
 <table>
   <tr><th>Onde</th><th>"cardápio digital"</th><th>"cardápio web"</th></tr>
-  <tr><td>No <code>&lt;h1&gt;</code></td><td>✔ match exato</td><td>✘ ausente</td></tr>
-  <tr><td>No corpo do texto</td><td>9× como termo</td><td>9× <strong>só como nome da marca</strong></td></tr>
+  <tr><td>No <code>&lt;h1&gt;</code></td><td>✔ match exato</td><td>— aparece como marca</td></tr>
+  <tr><td>No corpo do texto</td><td>9× como termo</td><td>9× como marca ✔</td></tr>
   <tr><td>No <code>&lt;title&gt;</code></td><td>✘ ausente</td><td>2× duplicado, junto de "LP – Google Ads"</td></tr>
-  <tr><td>No alt das imagens</td><td><strong>0×</strong></td><td>4×, só marca</td></tr>
+  <tr><td>No alt das imagens</td><td><strong>0×</strong></td><td>4× como marca ✔</td></tr>
   <tr><td>No FAQ</td><td>✘ ausente</td><td>✘ ausente</td></tr>
 </table>
 
-<p>Para <strong>"cardápio digital"</strong> o conteúdo principal já responde bem e falta cobertura nas bordas. Para <strong>"cardápio web"</strong> a página nunca explica o que o termo significa, ela só assina embaixo.</p>
+<p>Para <strong>"cardápio digital"</strong> o conteúdo principal já responde bem e falta cobertura nas bordas: title, alt de imagem e FAQ. Para <strong>"cardápio web"</strong> a cobertura no corpo já está correta e o buraco real é o <code>&lt;title&gt;</code>, que hoje traz o nome da empresa duplicado dentro de um rascunho interno.</p>
 
 <h2>O que fazer na página</h2>
 
@@ -108,25 +113,25 @@
 </div>
 
 <h3>2. Três perguntas novas no FAQ · 30 min · maior ganho pelo esforço</h3>
-<p>O FAQ tem 5 perguntas e nenhuma usa os dois termos. É onde a palavra entra com naturalidade, porque é o formato em que a pessoa realmente pergunta. Acrescentar no topo do bloco.</p>
+<p>O FAQ tem 5 perguntas e nenhuma usa os termos. É onde a palavra entra com naturalidade, porque é o formato em que a pessoa realmente pergunta. Nas três abaixo o nome da empresa aparece como empresa, nunca como definição. Acrescentar no topo do bloco.</p>
 <div class="colar">
   <div class="rot">Pronto para colar</div>
   <p class="q">O que é um cardápio digital?</p>
   <p>É o cardápio do seu restaurante em um link próprio, que o cliente abre no celular e usa para fechar o pedido sozinho. Ele escolhe os itens, define entrega ou retirada e paga online. O pedido cai direto no seu sistema, sem ninguém digitar nada.</p>
-  <p class="q">Qual a diferença entre cardápio web e cardápio digital em PDF?</p>
-  <p>O PDF só mostra o preço. O cardápio web recebe o pedido. Com o PDF o cliente ainda precisa mandar mensagem descrevendo o que quer, e é aí que nasce erro de anotação. No cardápio web ele fecha a compra sozinho.</p>
-  <p class="q">Preciso instalar algum aplicativo para usar o cardápio web?</p>
-  <p style="margin-bottom:0">Não. Ele funciona no navegador do celular, do tablet e do computador. Seu cliente abre o link e pede. Você gerencia de onde estiver.</p>
+  <p class="q">Qual a diferença entre o cardápio digital da Cardápio Web e um cardápio em PDF?</p>
+  <p>O PDF só mostra o preço. O cardápio digital da Cardápio Web recebe o pedido. Com o PDF o cliente ainda precisa mandar mensagem descrevendo o que quer, e é aí que nasce erro de anotação. Na Cardápio Web ele fecha a compra sozinho e o pedido já entra no sistema.</p>
+  <p class="q">Preciso instalar algum aplicativo para usar a Cardápio Web?</p>
+  <p style="margin-bottom:0">Não. Funciona no navegador do celular, do tablet e do computador. Seu cliente abre o link e pede. Você gerencia de onde estiver.</p>
 </div>
 
-<h3>3. Bloco "O que é um cardápio web" · 30 min</h3>
-<p>A página tem 742 palavras, enxuto para o Google avaliar "conteúdo relevante e original". Este bloco resolve isso e ataca o único ponto fraco real de "cardápio web". Posição sugerida: entre "Sistema de gestão" e "Aumente vendas com estratégia".</p>
+<h3>3. Aprofundar um bloco de produto que já existe · 30 min</h3>
+<p>A página tem 742 palavras, enxuto para o Google avaliar "conteúdo relevante e original". A correção é dar substância a uma seção que já existe, e não criar um bloco explicando o nome da empresa. Posição sugerida: dentro de "Sistema de gestão", que hoje é a seção mais rasa da página.</p>
 <div class="colar">
   <div class="rot">Pronto para colar</div>
-  <p class="q">O que é um cardápio web</p>
-  <p>Um cardápio web é o cardápio do seu restaurante publicado em um link próprio, que o cliente abre no navegador do celular sem instalar nada. Ele monta o pedido, escolhe entrega ou retirada, paga online, e o pedido cai direto no seu sistema de gestão.</p>
-  <p>A diferença para um cardápio digital em imagem ou PDF é que o cardápio web recebe pedido. Seu cliente não descreve o que quer por mensagem, ele fecha a compra sozinho. Você para de perder pedido por erro de anotação e para de pagar comissão de marketplace no pedido que já era seu.</p>
-  <p style="margin-bottom:0">Na Cardápio Web o cardápio web vem junto com o chatbot de WhatsApp, o programa de fidelidade e o sistema de gestão. São mais de 17 mil restaurantes usando hoje, com R$ 12 bilhões em pedidos processados.</p>
+  <p class="q">Do pedido no cardápio digital até a cozinha, sem ninguém digitar nada</p>
+  <p>Seu cliente abre o cardápio digital pelo link, monta o pedido e paga online. O pedido entra no sistema de gestão já com o item, o endereço, a forma de pagamento e a observação que ele escreveu. A cozinha recebe a comanda impressa e o entregador sai com a rota. Ninguém reescreve pedido, ninguém confere print de conversa.</p>
+  <p>O chatbot de WhatsApp responde quem chama fora do link, envia o cardápio digital e devolve a pessoa para o mesmo fluxo de pedido. O programa de fidelidade reconhece o cliente que já comprou e devolve ele para o seu canal em vez do marketplace.</p>
+  <p style="margin-bottom:0">São mais de 17 mil restaurantes na Cardápio Web hoje, com R$ 12 bilhões em pedidos processados.</p>
 </div>
 
 <h3>4. Alt das imagens · 15 min</h3>
@@ -135,7 +140,7 @@
   <tr><th>Alt atual</th><th>Trocar por</th></tr>
   <tr><td><code>Cardápio Web</code> (hero)</td><td>Cardápio digital da Cardápio Web aberto no celular</td></tr>
   <tr><td><code>Automação de atendimento - ChatBot WhatsApp</code></td><td>Chatbot de WhatsApp integrado ao cardápio digital</td></tr>
-  <tr><td><code>Ferramenta de vendas</code></td><td>Ferramenta de vendas do cardápio web</td></tr>
+  <tr><td><code>Ferramenta de vendas</code></td><td>Ferramenta de vendas da Cardápio Web</td></tr>
   <tr><td><code>Sistema de gestão</code></td><td>Sistema de gestão integrado ao cardápio digital</td></tr>
 </table>
 
@@ -143,7 +148,7 @@
 <p>Não mexer no H1, ele já é match exato de "cardápio digital". Ajustar só a linha de baixo, hoje <em>"Cardápio digital, sistema de gestão e integrações com Whatsapp, tudo isso num só lugar!"</em>.</p>
 <div class="colar">
   <div class="rot">Pronto para colar</div>
-  <p style="margin-bottom:0">Cardápio web próprio, chatbot de WhatsApp e sistema de gestão em uma só plataforma. Seu cliente pede pelo link, você recebe direto no sistema.</p>
+  <p style="margin-bottom:0">Cardápio digital próprio, chatbot de WhatsApp e sistema de gestão em uma só plataforma. Seu cliente pede pelo link, você recebe direto no sistema.</p>
 </div>
 
 <h3>6. Bloco de contato no rodapé · depende de você</h3>
@@ -151,7 +156,7 @@
 <p class="fonte">Falta definir qual telefone e e-mail públicos podem entrar. Nenhum número foi inventado aqui.</p>
 
 <div class="destaque">
-  <p style="margin-bottom:0"><strong>Não empilhe a palavra.</strong> O critério do Google é utilidade e relevância, não densidade. As mudanças acima colocam os termos onde a pessoa naturalmente leria. Repetir "cardápio web" 30 vezes piora a experiência e não compra nota.</p>
+  <p style="margin-bottom:0"><strong>Não empilhe a palavra.</strong> O critério do Google é utilidade e relevância, não densidade. As mudanças acima colocam os termos onde a pessoa naturalmente leria. Repetir o nome da empresa 30 vezes piora a leitura e não compra nota.</p>
 </div>
 
 <h2>O item que vale mais que todos os anteriores</h2>
@@ -207,6 +212,52 @@
 
 <h2>Critérios oficiais usados como régua</h2>
 <p>O Google não publica checklist fechada. O que existe são os fatores citados nominalmente: utilidade e relevância da informação, facilidade de navegação, quantidade de links na página, e alinhamento com a expectativa criada pelo anúncio clicado. As recomendações práticas acrescentam consistência entre anúncio e página, otimização mobile e velocidade de carregamento. O Google declara que <strong>não</strong> entram no Índice: dispositivo, localização do usuário, horário do dia e assets do anúncio.</p>
+
+<h2 class="checklist-inicio">Checklist do que temos que fazer</h2>
+
+<p class="fonte">Sem ordem de prioridade embutida. Agrupado por onde o trabalho acontece, porque são responsáveis diferentes e podem correr em paralelo.</p>
+
+<h3>Na página (WordPress)</h3>
+<table>
+  <tr><th style="width:6%"></th><th>O que fazer</th><th style="width:16%">Tempo</th></tr>
+  <tr><td class="chk">☐</td><td>Trocar o <code>&lt;title&gt;</code>, hoje com rascunho interno e o nome da empresa duplicado</td><td>10 min</td></tr>
+  <tr><td class="chk">☐</td><td>Criar a <code>meta description</code>, que hoje não existe</td><td>junto</td></tr>
+  <tr><td class="chk">☐</td><td>Acrescentar as 3 perguntas novas no topo do FAQ</td><td>30 min</td></tr>
+  <tr><td class="chk">☐</td><td>Aprofundar a seção "Sistema de gestão" com o bloco pronto</td><td>30 min</td></tr>
+  <tr><td class="chk">☐</td><td>Reescrever o alt das 4 imagens listadas, incluindo "cardápio digital"</td><td>15 min</td></tr>
+  <tr><td class="chk">☐</td><td>Trocar o subtítulo abaixo do H1. <strong>Não mexer no H1.</strong></td><td>5 min</td></tr>
+  <tr><td class="chk">☐</td><td>Publicar telefone e e-mail de contato no rodapé <span class="fonte">(depende de definirmos quais)</span></td><td>15 min</td></tr>
+  <tr><td class="chk">☐</td><td>Publicar Política de Privacidade e Termos como página, e não como PDF</td><td>a estimar</td></tr>
+</table>
+
+<h3>No servidor · nesta ordem, ela importa</h3>
+<table>
+  <tr><th style="width:6%"></th><th>O que fazer</th><th style="width:16%">Tempo</th></tr>
+  <tr><td class="chk">☐</td><td>Mover a geração do <code>cw_ext_id</code> do PHP para JavaScript no navegador</td><td>a estimar</td></tr>
+  <tr><td class="chk">☐</td><td>Descobrir qual mecanismo de cache o site principal usa para responder em 0,200 s</td><td>1 h</td></tr>
+  <tr><td class="chk">☐</td><td>Ligar cache de página no subdomínio <code>lp.</code>, replicando o do site principal</td><td>a estimar</td></tr>
+  <tr><td class="chk">☐</td><td>Trocar o header <code>Cache-Control: public, max-age=0</code></td><td>15 min</td></tr>
+</table>
+
+<h3>Na conta do Google Ads · só o Alexandre enxerga</h3>
+<table>
+  <tr><th style="width:6%"></th><th>O que fazer</th><th style="width:16%">Tempo</th></tr>
+  <tr><td class="chk">☐</td><td>Conferir o Índice atual e o status dos 3 componentes das duas keywords. <strong>Se vier "—", nada na página resolve</strong> e o resto do checklist muda de sentido.</td><td>10 min</td></tr>
+  <tr><td class="chk">☐</td><td>Levantar os textos dos anúncios que apontam para esta URL e cruzar com o que a página entrega</td><td>20 min</td></tr>
+  <tr><td class="chk">☐</td><td>Verificar se as duas keywords estão no mesmo grupo de anúncios</td><td>5 min</td></tr>
+</table>
+
+<h3>Depois de aplicar</h3>
+<table>
+  <tr><th style="width:6%"></th><th>O que fazer</th><th style="width:16%">Quando</th></tr>
+  <tr><td class="chk">☐</td><td>Rodar <code>curl -s -o /dev/null -w "%{time_starttransfer}\n" &lt;url&gt;</code> 3 vezes. <strong>Meta abaixo de 0,3 s.</strong></td><td>no mesmo dia</td></tr>
+  <tr><td class="chk">☐</td><td>Conferir se a página segue abrindo certo com o cache ligado, principalmente o formulário</td><td>no mesmo dia</td></tr>
+  <tr><td class="chk">☐</td><td>Olhar a coluna "Índice de qualidade (hist.)" das duas keywords</td><td>2 a 4 semanas</td></tr>
+</table>
+
+<div class="destaque">
+  <p style="margin-bottom:0">Antes de riscar tudo, vale rodar primeiro a linha do Google Ads sobre o status atual. Se o Índice das duas keywords estiver como <strong>"—"</strong>, é falta de volume de busca e nenhum item da lista da página muda esse resultado.</p>
+</div>
 
 <footer>
   <p><strong>Fontes.</strong> support.google.com/google-ads/answer/6167118 (Índice de qualidade) · answer/6167130 (5 formas de melhorar) · support.google.com/sa360/answer/9351020 (landing page experience) · support.google.com/adspolicy/answer/16427615 (destination experience) · answer/6368661 (destination requirements) · developers.google.com/search/docs/crawling-indexing/robots-meta-tag · developer.chrome.com/docs/performance/insights/document-latency</p>

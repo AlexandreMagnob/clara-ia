@@ -181,7 +181,7 @@ mostra que a lentidão é **processamento no servidor**, não rede.
 | Termo | Ocorrências | Onde aparece |
 |---|---|---|
 | "cardápio digital" | 9 | **No `<h1>` exato** + corpo |
-| "cardápio web" | 9 | **Só como nome da marca** — nunca como termo genérico |
+| "cardápio web" | 9 | Como nome da marca — que é o uso correto, ver decisão abaixo |
 | "cardápio" (geral) | 18 | — |
 | "restaurante" | 3 | — |
 | "delivery" | 1 | — |
@@ -189,8 +189,15 @@ mostra que a lentidão é **processamento no servidor**, não rede.
 `<h1>` atual: **"O Cardápio Digital mais completo do Brasil"**
 
 Para **"cardápio digital"** a correspondência é forte: o termo exato está no H1.
-Para **"cardápio web"** a página só responde pela marca — o que funciona se a keyword for
-branded, mas é fraco se estiver capturando intenção genérica.
+Para **"cardápio web"** a página responde pela marca, e essa é a decisão fechada
+(ver "Decisão do líder" abaixo).
+
+> **Decisão do líder (29/07/2026).** Cardápio Web é o nome da empresa. A página **não vai
+> explicar o que é "um cardápio web"** — isso trataria a marca como substantivo comum e
+> enfraqueceria ela. Quem busca "cardápio web" na maioria das vezes procura a empresa, e a
+> página da empresa já é a resposta certa para essa busca. O termo genérico do mercado é
+> **cardápio digital**, e é esse que a página explica. Todas as recomendações de conteúdo
+> abaixo foram reescritas sob essa premissa.
 
 Total: **742 palavras**. Enxuto para uma LP que precisa demonstrar "conteúdo relevante e
 original" ao crawler.
@@ -310,33 +317,31 @@ a política de Destination Experience desaconselha links que levam a arquivos, e
 
 ---
 
-### 🟠 P1 — Reforçar "cardápio web" como termo (🟡 Consenso)
+### 🟠 P1 — Aprofundar um bloco de produto que já existe (🟡 Consenso)
 
-**Problema:** a página responde a "cardápio digital" no H1, mas "cardápio web" só aparece
-como marca. Se essa keyword captura intenção genérica, a correspondência é fraca.
+**Problema:** a página tem 742 palavras, enxuto para o Google avaliar "conteúdo relevante e
+original".
 
-**Aplicar:** um bloco curto de conteúdo (150–250 palavras) que responda literalmente a
-pergunta que a busca faz. Isso ataca ao mesmo tempo o "conteúdo relevante e original" e a
-contagem de 742 palavras, que é enxuta.
-
-Sugestão de posição: entre a seção "Sistema de gestão" e "Aumente vendas com estratégia".
+**Aplicar:** dar substância a uma seção que já existe, e **não** criar um bloco explicando o
+nome da empresa (ver "Decisão do líder" acima — a versão anterior desta recomendação foi
+descartada por isso). Posição: dentro de "Sistema de gestão", a seção mais rasa da página.
 
 ```
-O que é um cardápio web?
+Do pedido no cardápio digital até a cozinha, sem ninguém digitar nada
 
-Um cardápio web é o cardápio do seu restaurante publicado em um link próprio,
-que o cliente abre no navegador do celular sem instalar nada. Ele monta o
-pedido, escolhe entrega ou retirada e paga online — e o pedido cai direto no
-seu sistema de gestão, sem ninguém digitar nada.
+Seu cliente abre o cardápio digital pelo link, monta o pedido e paga online.
+O pedido entra no sistema de gestão já com o item, o endereço, a forma de
+pagamento e a observação que ele escreveu. A cozinha recebe a comanda
+impressa e o entregador sai com a rota. Ninguém reescreve pedido, ninguém
+confere print de conversa.
 
-A diferença para um cardápio digital em PDF ou imagem é que o cardápio web
-recebe pedido. O cliente não precisa mandar mensagem descrevendo o que quer:
-ele fecha a compra sozinho. Você para de perder pedido por erro de anotação
-e para de pagar comissão de marketplace no pedido que já era seu.
+O chatbot de WhatsApp responde quem chama fora do link, envia o cardápio
+digital e devolve a pessoa para o mesmo fluxo de pedido. O programa de
+fidelidade reconhece o cliente que já comprou e devolve ele para o seu canal
+em vez do marketplace.
 
-Na Cardápio Web, o cardápio web vem junto com o chatbot de WhatsApp, o
-programa de fidelidade e o sistema de gestão. São mais de 17 mil restaurantes
-usando hoje, com R$ 12 bilhões em pedidos processados.
+São mais de 17 mil restaurantes na Cardápio Web hoje, com R$ 12 bilhões em
+pedidos processados.
 ```
 
 Escrevi seguindo a linha da página (afirmativo, sem travessão, número sempre com contexto).
@@ -398,7 +403,7 @@ conta do Google Ads:
 | 2 | Title + meta description | Você / WP Admin | 10 min |
 | 3 | Cache de página + resolver o `Set-Cookie` | Dev / host | 2–4 h |
 | 4 | Bloco de contato no rodapé + política em HTML | Dev / WP | 1–2 h |
-| 5 | Bloco "O que é um cardápio web?" | Você / WP | 30 min |
+| 5 | Aprofundar o bloco "Sistema de gestão" + 3 perguntas no FAQ | Você / WP | 1 h |
 | 6 | `nofollow` → `follow` | Dev | 2 min |
 
 **Sobre o prazo até a nota mudar:** o Índice de qualidade é recalculado com o acúmulo de

@@ -1,0 +1,1324 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Máquina de Experimentos</title>
+<style>
+  :root{
+    /* paleta do produto CardápioWeb (gestor): fundo lavanda claro, cards brancos,
+       roxo vivo do botão NOVO PEDIDO, chips pastel de status, dourado do logo */
+    --bg:#F4EDF7; --surface:#ffffff; --surface2:rgba(89,50,122,.06);
+    --ink:#59327A; --ink2:rgba(89,50,122,.72); --muted:rgba(89,50,122,.45);
+    --line:rgba(89,50,122,.15); --accent:#A543FA; --accent-ink:#59327A; --accent-soft:#F4EDF7;
+    --gold:#FFB600; --gold-ink:#59327A; --gold-soft:rgba(255,182,0,.16);
+    --good:#12A594; --good-soft:rgba(18,165,148,.14); --bad:#FF5959; --bad-soft:rgba(255,89,89,.12); --warn-soft:rgba(255,182,0,.16);
+    --s1:#A543FA; --s2:#FF5959; --s3:#FFB600;
+    --shadow:0 1px 3px rgba(89,50,122,.08),0 8px 24px rgba(89,50,122,.10);
+    --r:14px;
+  }
+  /* identidade do produto CardápioWeb = tema CLARO sempre por padrão.
+     O escuro só entra se o usuário escolher explicitamente (toggle do artifact → data-theme="dark"). */
+  :root[data-theme="dark"]{
+    --bg:#59327A; --surface:#6B4989; --surface2:#7A5998;
+    --ink:#F4EDF7; --ink2:rgba(244,237,247,.75); --muted:rgba(244,237,247,.48);
+    --line:rgba(244,237,247,.18); --accent:#A543FA; --accent-ink:#A543FA; --accent-soft:rgba(165,67,250,.22);
+    --gold:#FFB600; --gold-ink:#59327A; --gold-soft:rgba(255,182,0,.24);
+    --good:#12A594; --good-soft:rgba(18,165,148,.24); --bad:#FF5959; --bad-soft:rgba(255,89,89,.22); --warn-soft:rgba(255,182,0,.24);
+    --s1:#A543FA; --s2:#FF5959; --s3:#FFB600;
+    --shadow:0 1px 3px rgba(0,0,0,.35),0 8px 24px rgba(0,0,0,.25);
+  }
+  :root[data-theme="light"]{
+    --bg:#F4EDF7; --surface:#ffffff; --surface2:rgba(89,50,122,.06);
+    --ink:#59327A; --ink2:rgba(89,50,122,.72); --muted:rgba(89,50,122,.45);
+    --line:rgba(89,50,122,.15); --accent:#A543FA; --accent-ink:#59327A; --accent-soft:#F4EDF7;
+    --gold:#FFB600; --gold-ink:#59327A; --gold-soft:rgba(255,182,0,.16);
+    --good:#12A594; --good-soft:rgba(18,165,148,.14); --bad:#FF5959; --bad-soft:rgba(255,89,89,.12); --warn-soft:rgba(255,182,0,.16);
+    --s1:#A543FA; --s2:#FF5959; --s3:#FFB600;
+    --shadow:0 1px 3px rgba(89,50,122,.08),0 8px 24px rgba(89,50,122,.10);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Nunito','Quicksand','Segoe UI',system-ui,-apple-system,sans-serif;
+    font-weight:500;font-size:15px;line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+  header.app{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line);margin-bottom:24px}
+  .bar{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px}
+  .logo{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
+  .logo .dot{display:flex;align-items:center}
+  .logo .dot img{height:26px;width:auto;display:block}
+  .logo b{font-size:16px;letter-spacing:-.01em}
+  .logo span{color:var(--muted);font-size:12px;display:block;margin-top:-3px}
+  .spacer{flex:1}
+  .userchip{display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);
+    border-radius:99px;padding:5px 6px 5px 13px;font-size:13px;font-weight:700}
+  .userchip small{color:var(--muted);font-weight:600}
+  .btn{border:0;border-radius:8px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer;
+    background:var(--gold);color:var(--gold-ink);transition:filter .15s}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--accent-ink);border:1.5px solid var(--line)}
+  .btn.ghost:hover{background:var(--accent-soft);filter:none}
+  .btn.small{padding:5px 11px;font-size:13px;border-radius:7px}
+  .btn.danger{background:transparent;color:var(--accent-ink);border:1.5px solid var(--line)}
+  .btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  /* toast */
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:var(--bg);font-weight:800;font-size:14px;border-radius:10px;
+    padding:11px 22px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:99;box-shadow:var(--shadow)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* modal de confirmação */
+  .m-overlay{position:fixed;inset:0;background:rgba(18,12,28,.55);backdrop-filter:blur(3px);
+    display:flex;align-items:center;justify-content:center;z-index:80;padding:20px;
+    opacity:0;transition:opacity .16s}
+  .m-overlay.show{opacity:1}
+  .m-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);
+    max-width:400px;width:100%;padding:24px;transform:translateY(10px) scale(.97);transition:transform .16s}
+  .m-overlay.show .m-card{transform:none}
+  .m-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:20px;margin-bottom:14px}
+  .m-icon.danger{background:var(--bad-soft)}
+  .m-icon.normal{background:var(--accent-soft)}
+  .m-card h3{margin:0 0 6px;font-size:16.5px;letter-spacing:-.01em}
+  .m-card p{margin:0 0 20px;font-size:13.5px;color:var(--ink2);line-height:1.55}
+  .m-actions{display:flex;gap:8px;justify-content:flex-end}
+  .btn.confirm-danger{background:var(--bad);color:var(--gold-ink)}
+  @media (prefers-reduced-motion: reduce){.m-overlay,.m-card{transition:none}}
+  /* login */
+  .loginwrap{max-width:420px;margin:8vh auto 0;padding:0 20px}
+  .loginwrap .card{padding:28px}
+  .loginwrap h1{margin-top:0}
+  .loginwrap .f{margin-bottom:14px}
+  .rolepick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .rolepick button{border:1.5px solid var(--line);background:var(--surface);border-radius:8px;padding:10px;
+    font:inherit;font-weight:700;color:var(--ink2);cursor:pointer}
+  .rolepick button.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink)}
+  .loginnote{font-size:12px;color:var(--muted);margin-top:14px}
+  /* tabs */
+  .tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1.5px solid var(--line);margin-bottom:18px}
+  .tab{border:0;background:none;font:inherit;font-weight:700;color:var(--muted);cursor:pointer;
+    padding:8px 14px;border-radius:8px 8px 0 0;border-bottom:2.5px solid transparent;margin-bottom:-1.5px}
+  .tab.on{color:var(--accent-ink);border-bottom-color:var(--accent)}
+  .tab:hover{color:var(--ink)}
+  /* list */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+  .filters input[type=search]{flex:1;min-width:200px}
+  input,select,textarea{background:var(--surface);color:var(--ink);border:1.5px solid var(--line);
+    border-radius:8px;padding:8px 11px;font:inherit}
+  textarea{width:100%;resize:vertical;min-height:64px}
+  .setorhead{display:flex;align-items:center;gap:10px;margin:30px 0 12px;font-size:13px;font-weight:800;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);cursor:pointer;user-select:none}
+  .setorhead:first-child{margin-top:0}
+  .setorhead::after{content:'';flex:1;height:1.5px;background:var(--line)}
+  .setorhead .chev{font-size:11px;width:12px}
+  .setorhead .foldcount{color:var(--muted);font-size:12px;letter-spacing:0}
+  .setorhead:hover{color:var(--accent)}
+  .stgroup{margin-bottom:18px}
+  .sthead{display:flex;align-items:center;gap:9px;margin-bottom:8px;cursor:pointer;user-select:none;width:fit-content}
+  .sthead .chev{font-size:10px;color:var(--muted);width:10px}
+  .sthead:hover .pill{filter:brightness(.96)}
+  .stcount{font-size:12px;font-weight:800;color:var(--muted)}
+  .stempty{font-size:12.5px;color:var(--muted);padding:2px 4px 4px}
+  /* container de setor (aba Todos): o setor abraça seus grupos */
+  .setorbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:14px 18px 8px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .sethead{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;
+    padding:2px 0 10px;font-size:13px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink)}
+  .sethead:hover{color:var(--accent)}
+  .sethead .chev{font-size:11px;width:12px}
+  .sethead .foldcount{color:var(--muted);letter-spacing:0;font-size:12px}
+  .sethead .spacer{flex:1}
+  .sethead .resumo{color:var(--muted);font-size:11.5px;font-weight:700;letter-spacing:.02em;text-transform:none}
+  .setorbox .stgroup{margin:0 0 10px}
+  .setorbox .cards{gap:6px}
+  .setorbox .card{box-shadow:none;background:var(--bg)}
+  .setorbox .exp-row{padding:10px 16px}
+  .rail-rodando{border-left:3px solid var(--accent)!important}
+  .rail-em_analise{border-left:3px solid var(--gold)!important}
+  .rail-concluido{border-left:3px solid var(--good)!important}
+  .rail-desenhado{border-left:3px solid var(--muted)!important}
+  /* tour de boas-vindas (1ª visita) */
+  .tour-hole{position:fixed;z-index:95;border-radius:12px;pointer-events:none;
+    box-shadow:0 0 0 9999px rgba(20,14,30,.62);transition:all .25s}
+  .tour-dim{position:fixed;inset:0;background:rgba(20,14,30,.62);z-index:95}
+  .tour-card{position:fixed;z-index:96;background:var(--surface);border:1px solid var(--line);
+    border-radius:14px;padding:16px 18px;width:min(340px,calc(100vw - 24px));box-shadow:0 12px 40px rgba(0,0,0,.28)}
+  .tour-card h4{margin:0 0 6px;font-size:15px}
+  .tour-card p{margin:0 0 14px;font-size:13px;color:var(--ink2);line-height:1.55}
+  .tour-foot{display:flex;align-items:center;gap:10px;justify-content:space-between}
+  .tour-dots{display:flex;gap:5px}
+  .tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);display:inline-block}
+  .tour-dots i.on{background:var(--accent)}
+  .cards{display:flex;flex-direction:column;gap:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+  .exp-row{display:grid;grid-template-columns:110px 1fr auto;gap:14px;align-items:center;
+    padding:12px 18px;cursor:pointer;transition:border-color .15s}
+  .exp-row:hover{border-color:var(--accent)}
+  .exp-code{font-weight:800;color:var(--accent-ink);font-size:13.5px}
+  .exp-sector{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+  .exp-title{font-weight:700}
+  .exp-meta{font-size:12.5px;color:var(--muted);margin-top:2px;font-variant-numeric:tabular-nums}
+  .badges{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+  .assignee{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--ink2)}
+  .avatar{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:9.5px;font-weight:800;flex:none;letter-spacing:0}
+  .pill{font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:99px}
+  .st-desenhado{background:var(--surface2);color:var(--ink2)}
+  .st-rodando{background:var(--accent-soft);color:var(--accent-ink)}
+  .st-em_analise{background:var(--gold-soft);color:var(--gold-ink)}
+  .st-concluido{background:var(--good-soft);color:var(--good)}
+  .rs-validada{background:var(--good-soft);color:var(--good)}
+  .rs-refutada{background:var(--bad-soft);color:var(--accent-ink)}
+  .rs-inconclusivo{background:var(--surface2);color:var(--ink2)}
+  .pill.clicavel{cursor:pointer}
+  .pill.clicavel:hover{filter:brightness(.95)}
+  /* select de status estilizado como pill */
+  select.statuspick{appearance:none;-webkit-appearance:none;border:0;border-radius:99px;
+    padding:4px 26px 4px 12px;font:inherit;font-size:11.5px;font-weight:800;letter-spacing:.04em;
+    text-transform:uppercase;cursor:pointer;
+    background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6"><path d="M0 0l4 6 4-6z" fill="%238f8ba1"/></svg>');
+    background-repeat:no-repeat;background-position:right 10px center}
+  .aprend{display:flex;gap:12px;align-items:flex-start;background:var(--good-soft);
+    border-left:3px solid var(--good);border-radius:0 var(--r) var(--r) 0;
+    padding:10px 16px;margin:0 0 10px}
+  .aprend .eyebrow{white-space:nowrap;padding-top:1px;color:var(--good)}
+  .aprend p{margin:0;font-size:13px;color:var(--ink2)}
+  .m-card label.f{margin-bottom:12px}
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+  h1{font-size:24px;font-weight:900;letter-spacing:-.02em;margin:0 0 4px;text-wrap:balance}
+  h2{font-size:17px;font-weight:800;margin:26px 0 10px}
+  .sub{color:var(--muted);font-size:13.5px;margin:0 0 20px}
+  .eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink)}
+  /* form */
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+  .fgrid .full{grid-column:1/-1}
+  label.f{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:700;color:var(--ink2)}
+  label.f small{font-weight:400;color:var(--muted)}
+  .section{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
+  .section>h3{margin:0 0 14px;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-ink)}
+  .braco-row{display:flex;gap:8px;margin-bottom:8px}
+  .braco-row input{flex:1}
+  .err{background:var(--bad-soft);color:var(--accent-ink);border-radius:8px;padding:10px 14px;font-weight:700;font-size:13.5px;margin-bottom:14px}
+  /* wizard do formulário */
+  .steps{display:flex;gap:8px;margin:0 0 18px;flex-wrap:wrap}
+  .step-pill{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--surface);
+    border-radius:99px;padding:6px 15px 6px 7px;font:inherit;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer}
+  .step-pill .n{width:22px;height:22px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+  .step-pill.on{border-color:var(--accent);color:var(--accent-ink)}
+  .step-pill.on .n{background:var(--accent);color:#fff}
+  .fstep{display:none}.fstep.on{display:block}
+  .fnav{display:flex;gap:8px;justify-content:space-between;margin-top:4px}
+  /* detail */
+  .ancora{display:flex;gap:12px;align-items:flex-start;background:var(--accent-soft);
+    border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;
+    padding:10px 16px;margin:16px 0 10px}
+  .ancora .eyebrow{white-space:nowrap;padding-top:1px}
+  .ancora p{margin:0;font-size:13px;color:var(--ink2)}
+  details.defs{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    margin:0 0 6px;box-shadow:var(--shadow)}
+  details.defs summary{cursor:pointer;list-style:none;padding:11px 16px;font-size:12.5px;
+    font-weight:800;color:var(--accent-ink);user-select:none}
+  details.defs summary::before{content:'▸ ';transition:none}
+  details.defs[open] summary::before{content:'▾ '}
+  details.defs summary:hover{background:var(--surface2);border-radius:var(--r)}
+  .defs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:4px 16px 16px}
+  .defs-grid .eyebrow{display:block;margin-bottom:4px}
+  .defs-grid p{margin:0;font-size:13px;color:var(--ink2)}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:16px 0}
+  .kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
+  .kpi.geral{border-color:var(--gold)}
+  .kpi .name{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;color:var(--ink2)}
+  .kpi .swatch{width:10px;height:10px;border-radius:3px}
+  .kpi .val{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 0;font-variant-numeric:tabular-nums}
+  .kpi .det{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .delta{font-size:12.5px;font-weight:800;border-radius:6px;padding:1px 7px;display:inline-block;margin-top:5px}
+  .delta.good{background:var(--good-soft);color:var(--good)}
+  .delta.bad{background:var(--bad-soft);color:var(--accent-ink)}
+  .delta.neutral{background:var(--surface2);color:var(--ink2)}
+  .chartbox{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:6px;font-size:12.5px;font-weight:700;color:var(--ink2)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+  .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);border-radius:7px;
+    padding:6px 10px;font-size:12.5px;font-weight:700;opacity:0;transition:opacity .1s;white-space:nowrap;z-index:5;font-variant-numeric:tabular-nums}
+  table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  th{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line)}
+  td{padding:8px 10px;border-bottom:1px solid var(--line);font-size:13.5px}
+  tr:last-child td{border-bottom:0}
+  .tnum{text-align:right}
+  th.tnum{text-align:right}
+  .bdot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:7px;vertical-align:1px}
+  .sit-ok{color:var(--good);font-weight:700}
+  .obsbtn{background:none;border:0;cursor:pointer;font-size:14px;padding:2px 6px;border-radius:6px}
+  .obsbtn:hover{background:var(--gold-soft)}
+  .obsrow td{background:var(--surface2);color:var(--ink2);font-size:12.5px;padding:7px 14px}
+  .sit-inv{font-size:11px;font-weight:800;background:var(--warn-soft);color:var(--gold-ink);border-radius:6px;padding:2px 7px}
+  .sit-sem{color:var(--muted)}
+  .obscol{color:var(--muted);font-size:12.5px;max-width:260px}
+  tfoot td{border-top:2px solid var(--line);font-weight:800;background:var(--surface2)}
+  tfoot td.geral{color:var(--gold-ink)}
+  .addres{background:var(--surface2);border-radius:var(--r);padding:14px 16px 16px;
+    display:grid;gap:10px 12px;align-items:end;margin-bottom:16px;
+    grid-template-columns:170px 1.3fr 1fr 1fr;
+    grid-template-areas:'data braco taxa leads' 'obs obs valido lancar'}
+  .addres label.f{font-size:11.5px}
+  .a-data{grid-area:data}.a-braco{grid-area:braco}.a-taxa{grid-area:taxa}.a-leads{grid-area:leads}
+  .a-obs{grid-area:obs}.a-valido{grid-area:valido;justify-self:end}.a-lancar{grid-area:lancar;height:40px}
+  /* toggle de dia válido */
+  .switch{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--ink2);cursor:pointer;padding:8px 0}
+  .switch input{appearance:none;-webkit-appearance:none;width:38px;height:22px;border-radius:99px;
+    background:var(--muted);position:relative;cursor:pointer;transition:background .15s;margin:0;flex:none}
+  .switch input::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;
+    background:#fff;transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+  .switch input:checked{background:var(--good)}
+  .switch input:checked::after{left:19px}
+  .obswrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .obswrap table{min-width:620px}
+  /* tabela de resultados agrupada por dia */
+  .tabtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 8px;
+    font-size:12px;color:var(--muted)}
+  .tabtop button{margin-left:auto}
+  .restab td,.restab th{padding:9px 12px}
+  .restab .cdata{white-space:nowrap;width:1%}
+  /* linha do dia: e um cabecalho, nao um dado */
+  tr.diahead{cursor:pointer;user-select:none}
+  tr.diahead td{background:var(--surface2);border-bottom:0;font-weight:800;padding-top:11px;padding-bottom:11px}
+  tr.diahead.aberto td{border-radius:0}
+  tr.diahead:first-child td:first-child{border-top-left-radius:8px}
+  tr.diahead:hover td{background:var(--accent-soft)}
+  tr.diahead .chev{display:inline-block;width:15px;font-size:10px;color:var(--accent-ink)}
+  tr.diahead .diaresumo{font-size:12px;font-weight:600;color:var(--muted)}
+  /* bracos dentro do dia: trilho lateral + recuo */
+  tr.linha-braco td{border-bottom:1px solid var(--line);background:var(--surface)}
+  tr.linha-braco td.cdata{padding:0;width:1%}
+  tr.linha-braco .cbraco{padding-left:30px;position:relative}
+  tr.linha-braco .cbraco::before{content:'';position:absolute;left:14px;top:-1px;bottom:-1px;
+    width:2px;background:var(--line)}
+  tr.linha-braco:last-of-type .cbraco::before{bottom:50%}
+  .restab tfoot td{background:var(--surface2);border-top:0;font-weight:800}
+  .restab tfoot tr.acumsep td{border-top:2px solid var(--line);padding:9px 12px 4px;
+    font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--accent-ink);background:var(--surface2)}
+  .restab tfoot tr.acumrow td,.restab tfoot tr.geralrow td{padding-top:6px;padding-bottom:6px}
+  .restab tfoot tr.geralrow td{border-top:1px solid var(--line)}
+  .restab tfoot .cbraco small{display:block;font-weight:600;font-size:11.5px;
+    color:var(--muted);letter-spacing:0;margin-top:1px}
+  .restab tfoot td.geral{color:var(--gold-ink)}
+  .restab tfoot .delta{font-size:12px;white-space:nowrap}
+  .del{background:none;border:0;color:var(--muted);cursor:pointer;font-size:15px;padding:2px 6px;border-radius:6px}
+  .del:hover{color:var(--accent-ink);background:var(--bad-soft)}
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;gap:14px;align-items:center;color:var(--muted);font-size:12.5px}
+  .linklike{background:none;border:0;color:var(--accent-ink);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;padding:0;text-decoration:underline}
+  .back{background:none;border:0;color:var(--muted);font:inherit;font-weight:700;cursor:pointer;padding:0;margin-bottom:14px;display:inline-block}
+  .back:hover{color:var(--accent-ink)}
+  .headrow{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .headrow .grow{flex:1;min-width:260px}
+  @media (max-width:760px){
+    .fgrid{grid-template-columns:1fr}
+    .defs-grid{grid-template-columns:1fr}
+    .exp-row{grid-template-columns:1fr;gap:6px}
+    .badges{justify-content:flex-start}
+    .addres{grid-template-columns:1fr 1fr;
+      grid-template-areas:'data braco' 'taxa leads' 'obs obs' 'valido lancar'}
+    .a-valido{justify-self:start}
+    .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+    .rules,.ancora{margin:12px 0 8px}
+  }
+  @media (max-width:640px){
+    .bar{flex-wrap:wrap;gap:8px;padding:10px 14px}
+    .logo span{display:none}
+    .userchip{padding:4px 5px 4px 10px;font-size:12px}
+    .userchip small{display:none}
+    .bar>.btn{padding:8px 12px;font-size:13.5px}
+    .wrap{padding:0 14px 50px}
+    h1{font-size:21px}
+    .headrow .badges{width:100%}
+    .fnav{flex-wrap:wrap}
+    .m-card{padding:18px}
+  }
+  @media (max-width:480px){
+    .addres{grid-template-columns:1fr;
+      grid-template-areas:'data' 'braco' 'taxa' 'leads' 'obs' 'valido' 'lancar'}
+    .a-lancar{width:100%}
+    .steps{gap:6px}
+    .step-pill{padding:5px 11px 5px 6px;font-size:12px}
+    .tabs{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+    .tab{white-space:nowrap}
+  }
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<header class="app" id="apphead" style="display:none"><div class="bar">
+  <div class="logo" onclick="go('list')">
+    <div class="dot" id="logo-head"></div>
+    <div><b>Máquina de Experimentos</b><span>CardápioWeb · Growth &amp; Ops</span></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="userchip" id="userchip"></div>
+  <button class="btn" onclick="go('form')">+ Novo experimento</button>
+</div></header>
+
+<div class="wrap" id="appwrap" style="display:none">
+  <div id="v-list"></div>
+  <div id="v-form" style="display:none"></div>
+  <div id="v-detail" style="display:none"></div>
+  <div id="v-users" style="display:none"></div>
+  <footer>
+    <span>CardápioWeb · Growth &amp; Ops</span>
+    <span class="spacer"></span>
+    <button class="linklike" id="lnk-users" style="display:none" onclick="go('users')">Gerenciar usuários</button>
+    <button class="linklike" onclick="startTour()">rever tour</button>
+  </footer>
+</div>
+
+<div id="v-login"></div>
+<div class="toast" id="toast"></div>
+<div id="modal"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ================= backend ================= */
+const SB_URL='https://xmturuedgldjxoidyfnl.supabase.co';
+const SB_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhtdHVydWVkZ2xkanhvaWR5Zm5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU0MzQ2MjMsImV4cCI6MjEwMTAxMDYyM30.FPhUYh04S__KHxH2AUYndyfv1itTEySi7gy5oXAsTQc';
+const sb=window.supabase.createClient(SB_URL,SB_ANON);
+
+/* ================= dados ================= */
+const SETORES=['Growth','Comercial','CS','Marketing','Produto'];
+const STATUS={desenhado:'Desenhado',rodando:'Rodando',em_analise:'Em análise',concluido:'Concluído'};
+const ST_ORDER=['rodando','em_analise','concluido','desenhado'];
+const RESULT={validada:'Validada',refutada:'Refutada',inconclusivo:'Inconclusivo'};
+const SERIES=['s1','s2','s3'];
+
+
+const LOGO_IMG_H='<img src="logo-h.png" alt="Cardapio Web">';
+const LOGO_IMG_STACK='<img src="logo-stack.png" alt="Cardapio Web">';
+const _lh=document.getElementById('logo-head');if(_lh)_lh.innerHTML=LOGO_IMG_H;
+
+let DB=[],USER=null,USERS=[];
+
+function userName(id){if(!id)return '\u2014';const u=USERS.find(x=>x.id===id);return u?u.nome:'(removido)'}
+function emailValida(v){return /^[^\s@]+@cardapioweb\.com$/i.test((v||'').trim())}
+const AVATAR_TONS=[['var(--accent-soft)','var(--accent-ink)'],['var(--gold-soft)','var(--gold-ink)'],
+  ['var(--good-soft)','var(--good)'],['var(--bad-soft)','var(--accent-ink)']];
+function avatarTom(nome){let h=0;for(let i=0;i<nome.length;i++)h=(h*31+nome.charCodeAt(i))>>>0;return AVATAR_TONS[h%AVATAR_TONS.length]}
+function iniciais(nome){return (nome||'?').trim().split(/\s+/).slice(0,2).map(w=>w[0]||'').join('').toUpperCase()}
+
+/* ---- Supabase: leitura ---- */
+function hidratar(row){
+  return {id:row.id,codigo:row.codigo,titulo:row.titulo,setor:row.setor,
+    responsavel:row.responsavel_id,status:row.status,resultado:row.resultado,
+    direcao:row.direcao||'maior',data_inicio:row.data_inicio||'',data_fim:row.data_fim||'',
+    hipotese:row.hipotese||'',predicao:row.predicao||'',
+    metrica_primaria:row.metrica_primaria||'',metrica_ancora:row.metrica_ancora||'',
+    baseline_valor:row.baseline_valor==null?'':Number(row.baseline_valor),
+    baseline_desc:row.baseline_desc||'',metrica_guarda:row.metrica_guarda||'',
+    aprendizado:row.aprendizado||'',link_posmortem:row.link_posmortem||'',
+    tipo_metrica:row.tipo_metrica||'percentual',agregacao:row.agregacao||'media',
+    bracos:(row.bracos||[]).slice().sort((a,b)=>(a.ordem||0)-(b.ordem||0)).map(b=>({id:b.id,nome:b.nome})),
+    resultados:(row.resultados||[]).map(r=>({data:r.data,braco:r.braco_id,
+      taxa:r.taxa==null?null:Number(r.taxa),vol:r.vol==null?0:Number(r.vol),
+      valido:r.valido!==false,obs:r.obs||''}))};
+}
+function erroSb(e,ctx){console.error(ctx||'',e);toast('Erro: '+((e&&e.message)||e));}
+
+async function carregarUsuarios(){
+  const {data,error}=await sb.from('profiles').select('*').order('nome');
+  if(error){erroSb(error,'perfis');return}
+  USERS=data||[];
+}
+async function carregarExperimentos(){
+  const {data,error}=await sb.from('experimentos').select('*,bracos(*),resultados(*)').order('codigo');
+  if(error){erroSb(error,'experimentos');return}
+  DB=(data||[]).map(hidratar);
+}
+async function recarregar(){await carregarUsuarios();await carregarExperimentos()}
+
+
+/* ================= helpers ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>(s??'').toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtD=iso=>iso?iso.slice(8,10)+'/'+iso.slice(5,7)+'/'+iso.slice(2,4):'—';
+const fmtPct=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+const fmtPP=v=>(v>0?'+':'')+v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+' pp';
+function parseTaxa(v){
+  if(v===''||v==null)return null;
+  let s=(''+v).replace(/[Rr]\$|%|\s|\u00a0/g,'');
+  if(s==='')return null;
+  if(s.indexOf(',')>=0){s=s.replace(/\./g,'').replace(',','.');}          /* 1.234,50 -> 1234.50 */
+  else if(/^-?\d{1,3}(\.\d{3})+$/.test(s)){s=s.replace(/\./g,'');}         /* 1.234 -> 1234 */
+  if(!/^-?\d*\.?\d+$/.test(s))return NaN;                                 /* "12abc" agora e erro */
+  const n=parseFloat(s);return isNaN(n)?NaN:n;
+}
+/* formatação por tipo de métrica do experimento */
+function fmtVal(e,v){if(v==null)return '—';
+  if(e.tipo_metrica==='moeda')return 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  if(e.tipo_metrica==='numero')return v.toLocaleString('pt-BR',{maximumFractionDigits:1});
+  return fmtPct(v)}
+function fmtDelta(e,v){if(e.tipo_metrica!=='moeda'&&e.tipo_metrica!=='numero')return fmtPP(v);
+  const a=Math.abs(v),s=v>0?'+':(v<0?'−':'');
+  return s+(e.tipo_metrica==='moeda'?'R$ '+a.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}):a.toLocaleString('pt-BR',{maximumFractionDigits:1}))}
+function valLabel(e){return e.tipo_metrica==='moeda'?'Valor do dia (R$)':e.tipo_metrica==='numero'?'Valor do dia':'Taxa do dia (%)'}
+function niceCeil(v){if(v<=0)return 1;const p=Math.pow(10,Math.floor(Math.log10(v)));const m=v/p;return (m<=1?1:m<=2?2:m<=5?5:10)*p}
+let toastT=null;
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200)}
+
+/* modal de confirmação bonito (substitui o confirm() nativo) */
+let _mOk=null,_mCancel=null;
+function askConfirm(o){ /* {titulo,msg,okLabel,danger,onOk,onCancel} */
+  _mOk=o.onOk;_mCancel=o.onCancel||null;
+  $('#modal').innerHTML=`<div class="m-overlay" id="m-ov" onclick="if(event.target===this)closeModal()">
+    <div class="m-card" role="dialog" aria-modal="true" aria-labelledby="m-titulo">
+      <div class="m-icon ${o.danger?'danger':'normal'}">${o.danger?'🗑️':'❓'}</div>
+      <h3 id="m-titulo">${esc(o.titulo)}</h3>
+      <p>${esc(o.msg)}</p>
+      <div class="m-actions">
+        <button class="btn ghost" onclick="closeModal()">Cancelar</button>
+        <button class="btn ${o.danger?'confirm-danger':''}" id="m-okbtn" onclick="okModal()">${esc(o.okLabel||'Confirmar')}</button>
+      </div></div></div>`;
+  requestAnimationFrame(()=>{$('#m-ov').classList.add('show');$('#m-okbtn').focus()});
+  document.addEventListener('keydown',escModal);
+}
+function escModal(ev){if(ev.key==='Escape')closeModal()}
+function closeModal(){const ov=$('#m-ov');if(!ov)return;
+  ov.classList.remove('show');document.removeEventListener('keydown',escModal);
+  setTimeout(()=>{$('#modal').innerHTML=''},160);
+  const c=_mCancel;_mOk=null;_mCancel=null;if(c)c()}
+function okModal(){const fn=_mOk;_mCancel=null;closeModal();if(fn)fn()}
+
+function acum(exp,bid){
+  const rs=exp.resultados.filter(r=>r.braco===bid&&r.valido&&r.taxa!=null);
+  if(!rs.length)return{taxa:null,n:0,pond:false};
+  if(exp.agregacao==='soma')return{taxa:rs.reduce((a,r)=>a+r.taxa,0),n:rs.length,pond:false,soma:true};
+  const com=rs.filter(r=>r.vol>0), sem=rs.length-com.length;
+  /* pondera os dias que TEM volume; os sem volume nao derrubam o metodo, sao sinalizados */
+  if(com.length){let s=0,v=0;com.forEach(r=>{s+=r.taxa*r.vol;v+=r.vol});
+    return{taxa:s/v,n:com.length,vol:v,pond:true,semVol:sem}}
+  return{taxa:rs.reduce((a,r)=>a+r.taxa,0)/rs.length,n:rs.length,pond:false,semVol:sem}
+}
+function geralAcum(exp){
+  const rs=exp.resultados.filter(r=>r.valido&&r.taxa!=null);
+  if(!rs.length)return null;
+  if(exp.agregacao==='soma')return rs.reduce((a,r)=>a+r.taxa,0);
+  const temVol=rs.every(r=>r.vol>0);
+  if(temVol){let s=0,v=0;rs.forEach(r=>{s+=r.taxa*r.vol;v+=r.vol});return s/v}
+  return rs.reduce((a,r)=>a+r.taxa,0)/rs.length
+}
+function uid(){return 'tmp'+Math.floor(performance.now()*1000).toString(36)}
+
+/* ================= login ================= */
+let loginMode='entrar';
+function toggleLoginMode(){loginMode=loginMode==='entrar'?'cadastrar':'entrar';renderLogin()}
+function renderLogin(){
+  $('#apphead').style.display='none';$('#appwrap').style.display='none';
+  const head=`<div class="logo" style="margin-bottom:18px"><div class="dot" style="width:auto">${LOGO_IMG_STACK}</div>
+      <div><b>M\u00e1quina de Experimentos</b><span>Card\u00e1pioWeb</span></div></div>`;
+  if(loginMode==='cadastrar'){
+    $('#v-login').innerHTML=`<div class="loginwrap"><div class="card" style="box-shadow:var(--shadow)">
+      ${head}
+      <h1 style="font-size:20px">Criar seu cadastro</h1>
+      <p class="sub">Qualquer pessoa da Card\u00e1pioWeb pode se cadastrar. Voc\u00ea entra como Membro do seu setor \u2014 pra virar L\u00edder, pe\u00e7a pra quem j\u00e1 \u00e9 l\u00edder te promover em "Gerenciar usu\u00e1rios".</p>
+      <label class="f">Seu nome <input id="s-nome" placeholder="Nome completo"></label>
+      <label class="f" style="margin-top:12px">Seu setor <select id="s-setor">${SETORES.map(s=>`<option>${s}</option>`).join('')}</select></label>
+      <label class="f" style="margin-top:12px">Seu e-mail <input id="s-email" type="email" placeholder="voce@cardapioweb.com"></label>
+      <label class="f" style="margin-top:12px">Senha <small>m\u00ednimo 6 caracteres</small>
+        <input id="s-senha" type="password" placeholder="crie uma senha" onkeydown="if(event.key==='Enter')doSignup()"></label>
+      <div id="loginerr"></div>
+      <button class="btn" style="width:100%;margin-top:16px" id="s-btn" onclick="doSignup()">Cadastrar e entrar</button>
+      <p class="loginnote">J\u00e1 tem cadastro? <button class="linklike" onclick="toggleLoginMode()">Entrar</button></p>
+    </div></div>`;
+  }else{
+    $('#v-login').innerHTML=`<div class="loginwrap"><div class="card" style="box-shadow:var(--shadow)">
+      ${head}
+      <h1 style="font-size:20px">Entrar</h1>
+      <p class="sub">Entre com seu e-mail da Card\u00e1pioWeb.</p>
+      <label class="f">Seu e-mail <input id="l-email" type="email" placeholder="voce@cardapioweb.com"></label>
+      <label class="f" style="margin-top:12px">Senha <input id="l-senha" type="password"
+        onkeydown="if(event.key==='Enter')doLogin()"></label>
+      <div id="loginerr"></div>
+      <button class="btn" style="width:100%;margin-top:16px" id="l-btn" onclick="doLogin()">Entrar</button>
+      <p class="loginnote">Ainda n\u00e3o tem cadastro? <button class="linklike" onclick="toggleLoginMode()">Cadastre-se</button></p>
+    </div></div>`;
+  }
+}
+function loginErro(msgs){$('#loginerr').innerHTML=`<div class="err" style="margin-top:10px">${Array.isArray(msgs)?msgs.join('<br>'):msgs}</div>`}
+
+async function doSignup(){
+  const nome=$('#s-nome').value.trim(),email=$('#s-email').value.trim(),
+        setor=$('#s-setor').value,senha=$('#s-senha').value;
+  const errs=[];
+  if(!nome)errs.push('Digite seu nome.');
+  if(!emailValida(email))errs.push('E-mail precisa ser @cardapioweb.com.');
+  if((senha||'').length<6)errs.push('A senha precisa ter pelo menos 6 caracteres.');
+  if(errs.length){loginErro(errs);return}
+  const btn=$('#s-btn');btn.disabled=true;btn.textContent='Cadastrando\u2026';
+  const {data,error}=await sb.auth.signUp({email:email.toLowerCase(),password:senha,
+    options:{data:{nome,setor}}});
+  btn.disabled=false;btn.textContent='Cadastrar e entrar';
+  if(error){loginErro(/already/i.test(error.message)?'Esse e-mail j\u00e1 tem cadastro \u2014 tente entrar.':error.message);return}
+  if(!data.session){loginErro('Cadastro criado. Confirme o e-mail que a Supabase enviou e depois entre.');loginMode='entrar';setTimeout(renderLogin,2500);return}
+  await iniciarSessao();
+}
+async function doLogin(){
+  const email=$('#l-email').value.trim(),senha=$('#l-senha').value;
+  if(!email||!senha){loginErro('Preencha e-mail e senha.');return}
+  const btn=$('#l-btn');btn.disabled=true;btn.textContent='Entrando\u2026';
+  const {error}=await sb.auth.signInWithPassword({email:email.toLowerCase(),password:senha});
+  btn.disabled=false;btn.textContent='Entrar';
+  if(error){loginErro(/Invalid login/i.test(error.message)?'E-mail ou senha incorretos.':error.message);return}
+  await iniciarSessao();
+}
+async function logout(){await sb.auth.signOut();USER=null;DB=[];USERS=[];loginMode='entrar';renderLogin()}
+
+/* pega a sessao ativa, carrega o perfil e entra no app.
+   Qualquer falha aqui devolve pra tela de login \u2014 nunca deixa tela em branco. */
+async function voltarPraLogin(msg){
+  try{await sb.auth.signOut()}catch(e){}
+  USER=null;DB=[];USERS=[];loginMode='entrar';
+  $('#apphead').style.display='none';$('#appwrap').style.display='none';
+  renderLogin();
+  if(msg)loginErro(msg);
+  return false;
+}
+async function iniciarSessao(){
+  try{
+    const {data:{session}}=await sb.auth.getSession();
+    if(!session){renderLogin();return false}
+    await carregarUsuarios();
+    let perfil=USERS.find(u=>u.id===session.user.id);
+    if(!perfil){ /* rede de seguran\u00e7a: perfil n\u00e3o criado pelo gatilho */
+      const md=session.user.user_metadata||{};
+      const {error}=await sb.from('profiles').insert({id:session.user.id,
+        nome:md.nome||session.user.email.split('@')[0],setor:md.setor||'Growth',
+        email:session.user.email,papel:'membro'});
+      if(error)return voltarPraLogin('Sua sess\u00e3o expirou. Entre de novo.');
+      await carregarUsuarios();
+      perfil=USERS.find(u=>u.id===session.user.id);
+    }
+    if(!perfil)return voltarPraLogin('N\u00e3o consegui carregar seu perfil. Entre de novo.');
+    USER=perfil;
+    $('#v-login').innerHTML='';
+    await carregarExperimentos();
+    boot();
+    return true;
+  }catch(err){
+    console.error('iniciarSessao',err);
+    return voltarPraLogin('N\u00e3o consegui abrir sua sess\u00e3o. Entre de novo.');
+  }
+}
+
+
+/* ================= usuários (líder gerencia quem pode logar) ================= */
+function renderUsers(){
+  $('#v-users').style.display='block';
+  const rows=USERS.map(u=>`<tr>
+     <td><span class="assignee"><span class="avatar" style="background:${avatarTom(u.nome)[0]};color:${avatarTom(u.nome)[1]}">${esc(iniciais(u.nome))}</span>${esc(u.nome)}</span></td>
+     <td>${esc(u.setor)}</td><td>${esc(u.email)}</td>
+     <td><select onchange="mudarPapel('${u.id}',this.value)" ${u.id===USER.id?'disabled title="Voc\u00ea n\u00e3o pode mudar seu pr\u00f3prio papel"':''}>
+        <option value="membro" ${u.papel==='membro'?'selected':''}>Membro</option>
+        <option value="lider" ${u.papel==='lider'?'selected':''}>L\u00edder</option>
+     </select></td>
+     <td class="tnum">${u.id===USER.id?'':`<button class="del" title="Excluir usu\u00e1rio" onclick="delUser('${u.id}')">\u2715</button>`}</td>
+   </tr>`).join('');
+  $('#v-users').innerHTML=`
+   <button class="back" onclick="go('list')">\u2190 experimentos</button>
+   <h1>Usu\u00e1rios</h1>
+   <p class="sub">Quem se cadastra entra como Membro e enxerga s\u00f3 o pr\u00f3prio setor. L\u00edder enxerga todos os setores e gerencia esta lista.</p>
+   <div class="card" style="padding:6px 0"><div class="obswrap"><table>
+     <thead><tr><th>Nome</th><th>Setor</th><th>E-mail</th><th>Papel</th><th></th></tr></thead>
+     <tbody>${rows||`<tr><td colspan="5" class="empty">Ningu\u00e9m cadastrado ainda.</td></tr>`}</tbody>
+   </table></div></div>
+   <p class="sub" style="margin-top:14px">Novas pessoas entram sozinhas pela tela de cadastro, com e-mail @cardapioweb.com.</p>`;
+}
+async function mudarPapel(id,papel){
+  const u=USERS.find(x=>x.id===id);if(!u)return;
+  if(u.papel==='lider'&&papel==='membro'&&USERS.filter(x=>x.papel==='lider').length===1){
+    toast('N\u00e3o d\u00e1 pra tirar o \u00faltimo l\u00edder.');renderUsers();return}
+  const {error}=await sb.from('profiles').update({papel}).eq('id',id);
+  if(error){erroSb(error,'mudar papel');renderUsers();return}
+  u.papel=papel;toast(u.nome+' agora \u00e9 '+(papel==='lider'?'L\u00edder':'Membro')+' \u2713');renderUsers();
+}
+function delUser(id){
+  const u=USERS.find(x=>x.id===id);if(!u)return;
+  if(u.id===USER.id){toast('Voc\u00ea n\u00e3o pode excluir seu pr\u00f3prio usu\u00e1rio.');return}
+  if(u.papel==='lider'&&USERS.filter(x=>x.papel==='lider').length===1){toast('N\u00e3o d\u00e1 pra excluir o \u00fanico l\u00edder.');return}
+  askConfirm({titulo:'Excluir usu\u00e1rio?',danger:true,okLabel:'Excluir',
+    msg:u.nome+' perde o acesso \u00e0 plataforma e os experimentos dele(a) ficam sem respons\u00e1vel. O hist\u00f3rico de lan\u00e7amentos \u00e9 preservado.',
+    onOk:async()=>{
+      const {error}=await sb.from('profiles').delete().eq('id',id);
+      if(error){erroSb(error,'excluir usu\u00e1rio');return}
+      await recarregar();toast('Usu\u00e1rio exclu\u00eddo');renderUsers();
+    }});
+}
+
+/* ================= router ================= */
+let cur={view:'list',id:null};
+let tabSetor=null;
+function go(view,id,keepScroll){cur={view,id};
+  const sy=window.scrollY;                       /* ANTES de esconder: esconder encolhe a pagina e zera o scroll */
+  ['v-list','v-form','v-detail','v-users'].forEach(v=>$('#'+v).style.display='none');
+  if(view==='list'){renderList()} else if(view==='form'){renderForm(id)} else if(view==='users'){renderUsers()} else {renderDetail(id)}
+  window.scrollTo({top:keepScroll?sy:0})}
+function boot(){
+  $('#apphead').style.display='block';$('#appwrap').style.display='block';
+  $('#userchip').innerHTML=`👤 ${esc(USER.nome)} <small title="${esc(USER.email||'')}">· ${esc(USER.setor)} · ${USER.papel==='lider'?'Líder':'Membro'}</small>
+    <button class="btn ghost small" onclick="logout()">sair</button>`;
+  $('#lnk-users').style.display=USER.papel==='lider'?'':'none';
+  tabSetor=USER.papel==='lider'?(tabSetor||'Todos'):USER.setor;
+  go('list');
+  if(!localStorage.getItem(TOURKEY))setTimeout(startTour,400); /* tour só na 1ª visita */
+}
+
+/* ================= LISTA ================= */
+let flt={q:'',resp:''};
+function visiveis(){
+  let rows=DB;
+  if(USER.papel!=='lider')rows=rows.filter(e=>e.setor===USER.setor);
+  else if(tabSetor&&tabSetor!=='Todos')rows=rows.filter(e=>e.setor===tabSetor);
+  if(flt.q)rows=rows.filter(e=>(e.codigo+' '+e.titulo).toLowerCase().includes(flt.q.toLowerCase()));
+  if(flt.resp)rows=rows.filter(e=>e.responsavel===flt.resp);
+  return rows;
+}
+function cardRow(e){
+  const nome=userName(e.responsavel);
+  const [abg,aink]=avatarTom(nome);
+  return `<div class="card exp-row rail-${e.status}" onclick="go('detail','${e.id}')" tabindex="0"
+     onkeydown="if(event.key==='Enter')go('detail','${e.id}')">
+    <div><div class="exp-code">${esc(e.codigo)}</div></div>
+    <div><div class="exp-title">${esc(e.titulo)}</div>
+      <div class="exp-meta">${fmtD(e.data_inicio)} → ${e.data_fim?fmtD(e.data_fim):'em aberto'}</div></div>
+    <div class="badges">
+      <span class="assignee" title="Responsável: ${esc(nome)}">
+        <span class="avatar" style="background:${abg};color:${aink}">${esc(iniciais(nome))}</span>${esc(nome)}</span>
+      ${e.resultado?`<span class="pill rs-${e.resultado}">${RESULT[e.resultado]}</span>`:''}
+    </div></div>`;
+}
+/* seções por status, estilo ClickUp — recolhíveis */
+function toggleStGroup(k){FOLD.has(k)?FOLD.delete(k):FOLD.add(k);
+  localStorage.setItem('mq-fold-v1',JSON.stringify([...FOLD]));renderListBody()}
+function statusGroups(rows,scope){
+  const html=ST_ORDER.map(st=>{
+    const rs=rows.filter(e=>e.status===st)
+      .sort((a,b)=>(b.data_inicio||'').localeCompare(a.data_inicio||''));
+    /* "Desenhado" aparece SEMPRE — é a fila de ideias, mesmo vazia precisa ser visível */
+    if(!rs.length&&st!=='desenhado')return '';
+    const key='st:'+(scope||'')+'|'+st;
+    const fechado=FOLD.has(key);
+    return `<div class="stgroup">
+      <div class="sthead" role="button" tabindex="0" onclick="toggleStGroup('${key}')"
+        onkeydown="if(event.key==='Enter')toggleStGroup('${key}')">
+        <span class="chev">${fechado?'▸':'▾'}</span>
+        <span class="pill st-${st}">${STATUS[st]}</span><span class="stcount">${rs.length}</span></div>
+      ${fechado?'':(rs.length?`<div class="cards">${rs.map(cardRow).join('')}</div>`
+        :`<div class="stempty">Nenhuma ideia em desenho por aqui — experimentos que ainda não dá pra rodar ficam neste grupo.</div>`)}</div>`;
+  }).join('');
+  return html||`<div class="card empty">Nenhum experimento aqui.</div>`;
+}
+function renderList(){
+  $('#v-list').style.display='block';
+  const tabs=USER.papel==='lider'
+    ?`<div class="tabs">${['Todos',...SETORES].map(s=>
+       `<button class="tab ${tabSetor===s?'on':''}" onclick="tabSetor='${s}';renderList()">${s}</button>`).join('')}</div>`
+    :`<div class="tabs"><button class="tab on">${esc(USER.setor)}</button></div>`;
+  $('#v-list').innerHTML=`
+   <h1>Experimentos</h1>
+   <p class="sub">Cadastre a hipótese com a regra de medição travada, lance a taxa do dia e leia o acumulado do jeito certo.</p>
+   ${tabs}
+   <div class="filters">
+     <input type="search" placeholder="Buscar por código ou título…" value="${esc(flt.q)}"
+       oninput="flt.q=this.value;renderListBody()">
+     <select onchange="flt.resp=this.value;renderListBody()">
+       <option value="">Responsável: todos</option>
+       ${USERS.map(u=>`<option value="${u.id}" ${flt.resp===u.id?'selected':''}>${esc(u.nome)}</option>`).join('')}
+     </select>
+   </div>
+   <div id="listbody"></div>`;
+  renderListBody();
+}
+let FOLD=new Set();try{FOLD=new Set(JSON.parse(localStorage.getItem('mq-fold-v1'))||[])}catch(e){}
+function toggleSetor(s){FOLD.has(s)?FOLD.delete(s):FOLD.add(s);
+  localStorage.setItem('mq-fold-v1',JSON.stringify([...FOLD]));renderListBody()}
+function toggleObs(k){const r=document.getElementById('obs_'+k);
+  if(r)r.style.display=r.style.display==='none'?'':'none'}
+function renderListBody(){
+  const rows=visiveis();
+  const todosLider=USER.papel==='lider'&&tabSetor==='Todos';
+  if(todosLider){
+    /* cartão-container por setor (recolhível), com os grupos de status dentro */
+    $('#listbody').innerHTML=SETORES.map(s=>{
+      const rs=rows.filter(e=>e.setor===s);
+      if(!rs.length)return '';
+      const fechado=FOLD.has(s);
+      const resumo=ST_ORDER.map(st=>{const n=rs.filter(e=>e.status===st).length;
+        return n?`${n} ${STATUS[st].toLowerCase()}`:null}).filter(Boolean).join(' · ');
+      return `<div class="setorbox">
+        <div class="sethead" role="button" tabindex="0" onclick="toggleSetor('${s}')"
+          onkeydown="if(event.key==='Enter')toggleSetor('${s}')">
+          <span class="chev">${fechado?'▸':'▾'}</span>${s}<span class="foldcount">${rs.length}</span>
+          <span class="spacer"></span><span class="resumo">${fechado?resumo:''}</span></div>
+        ${fechado?'':statusGroups(rs,s)}</div>`;
+    }).join('')||`<div class="card empty">Nenhum experimento nesse filtro.</div>`;
+  }else{
+    $('#listbody').innerHTML=statusGroups(rows,tabSetor||USER.setor);
+  }
+}
+
+/* ================= FORM ================= */
+function renderForm(id){
+  $('#v-form').style.display='block';
+  const e=id?DB.find(x=>x.id===id):{codigo:'',titulo:'',setor:USER.setor,responsavel:USER.id,status:'desenhado',
+    direcao:'maior',data_inicio:'',data_fim:'',hipotese:'',predicao:'',metrica_primaria:'',metrica_ancora:'',
+    baseline_valor:'',baseline_desc:'',metrica_guarda:'',bracos:[{id:'b1',nome:'Variante'}],resultados:[],aprendizado:'',resultado:null};
+  const podeSetor=USER.papel==='lider';
+  const bracosHtml=e.bracos.map(b=>
+    `<div class="braco-row"><input value="${esc(b.nome)}" data-bid="${b.id}" placeholder="Nome do braço">
+     ${e.bracos.length>1?`<button type="button" class="btn small danger" onclick="this.parentElement.remove()">remover</button>`:''}</div>`).join('');
+  $('#v-form').innerHTML=`
+   <button class="back" onclick="go(${id?`'detail','${id}'`:`'list'`})">← voltar</button>
+   <h1>${id?'Editar experimento':'Novo experimento'}</h1>
+   <p class="sub">A regra de ouro: defina <b>como medir</b> antes de rodar. O formulário trava status "Rodando" sem âncora e baseline.</p>
+   <div id="formerr"></div>
+   <div class="steps">
+     <button type="button" class="step-pill on" id="sp1" onclick="fstepGo(1)"><span class="n">1</span>Identificação</button>
+     <button type="button" class="step-pill" id="sp2" onclick="fstepGo(2)"><span class="n">2</span>Hipótese</button>
+     <button type="button" class="step-pill" id="sp3" onclick="fstepGo(3)"><span class="n">3</span>Métrica &amp; braços</button>
+   </div>
+   <div class="fstep on" id="fs1"><div class="section"><h3>Identificação</h3><div class="fgrid">
+     <label class="f">Código <input id="f-codigo" value="${esc(e.codigo)}" placeholder="EXP-51"></label>
+     <label class="f">Título <input id="f-titulo" value="${esc(e.titulo)}"></label>
+     <label class="f">Setor <select id="f-setor" ${podeSetor?'':'disabled'}>${SETORES.map(s=>`<option ${e.setor===s?'selected':''}>${s}</option>`).join('')}</select>
+       ${podeSetor?'':'<small>Membro cria no próprio setor</small>'}</label>
+     <label class="f">Responsável <select id="f-resp">${USERS.map(u=>`<option value="${u.id}" ${e.responsavel===u.id?'selected':''}>${esc(u.nome)}</option>`).join('')}</select></label>
+     <label class="f">Status <select id="f-status">${Object.entries(STATUS).map(([k,v])=>`<option value="${k}" ${e.status===k?'selected':''} ${k==='concluido'&&e.status!=='concluido'?'disabled':''}>${v}</option>`).join('')}</select>
+       ${e.status==='concluido'?'':'<small>Concluir é pelo botão de status na tela do experimento — lá entra o pós-mortem</small>'}</label>
+     <label class="f">Início <input id="f-ini" type="date" value="${esc(e.data_inicio)}"></label>
+     <label class="f">Fim (vazio = em aberto) <input id="f-fim" type="date" value="${esc(e.data_fim)}"></label>
+   </div></div></div>
+   <div class="fstep" id="fs2"><div class="section"><h3>Hipótese</h3><div class="fgrid">
+     <label class="f full">Hipótese <small>Acreditamos que… porque…</small><textarea id="f-hip">${esc(e.hipotese)}</textarea></label>
+     <label class="f full">Predição <small>Se for verdade, veremos…</small><textarea id="f-pred" style="min-height:44px">${esc(e.predicao)}</textarea></label>
+   </div></div></div>
+   <div class="fstep" id="fs3"><div class="section"><h3>Métrica — trava de qualidade</h3><div class="fgrid">
+     <label class="f">Métrica primária <input id="f-met" value="${esc(e.metrica_primaria)}" placeholder="Taxa de resposta ao 1º follow-up"></label>
+     <label class="f">Tipo da métrica <select id="f-tipo" onchange="tipoChange()">
+        <option value="percentual" ${e.tipo_metrica!=='moeda'&&e.tipo_metrica!=='numero'?'selected':''}>Percentual (%)</option>
+        <option value="moeda" ${e.tipo_metrica==='moeda'?'selected':''}>Valor em R$ (custo, NMRR…)</option>
+        <option value="numero" ${e.tipo_metrica==='numero'?'selected':''}>Número (contagem)</option></select></label>
+     <label class="f">Acumulado do período <select id="f-agreg" ${e.tipo_metrica!=='moeda'&&e.tipo_metrica!=='numero'?'disabled':''}>
+        <option value="media" ${e.agregacao!=='soma'?'selected':''}>Média dos dias</option>
+        <option value="soma" ${e.agregacao==='soma'?'selected':''}>Soma dos dias</option></select>
+        <small>Percentual usa sempre média (ponderada quando houver volume)</small></label>
+     <label class="f">Direção da métrica <select id="f-direcao">
+        <option value="maior" ${e.direcao!=='menor'?'selected':''}>Maior é melhor (resposta, agendamento…)</option>
+        <option value="menor" ${e.direcao==='menor'?'selected':''}>Menor é melhor (no-show, churn…)</option></select></label>
+     <label class="f">Métrica de guarda <input id="f-guarda" value="${esc(e.metrica_guarda)}" placeholder="O que não pode piorar"></label>
+     <label class="f full">Âncora da métrica <small>COMO contar: qual data ancora o dia, o que entra na conta, o que fica fora.</small>
+       <textarea id="f-ancora">${esc(e.metrica_ancora)}</textarea></label>
+     <label class="f">Baseline (na unidade da métrica) <input id="f-basev" inputmode="decimal" value="${e.baseline_valor===''?'':esc(e.baseline_valor)}" placeholder="20,5"></label>
+     <label class="f">Origem do baseline <input id="f-based" value="${esc(e.baseline_desc)}" placeholder="FUP de texto, maio/2026 (método janela)"></label>
+   </div></div>
+   <div class="section"><h3>Braços (variantes comparadas — as sub-linhas da planilha)</h3>
+     <div id="bracos">${bracosHtml}</div>
+     <button type="button" class="btn ghost small" onclick="addBraco()">+ adicionar braço</button>
+   </div></div>
+   <div class="fnav">
+     <button type="button" class="btn ghost" id="fnav-prev" style="visibility:hidden" onclick="fstepPrev()">← Voltar</button>
+     <span>
+       <button type="button" class="btn" id="fnav-next" onclick="fstepNext()">Continuar →</button>
+       <button class="btn" id="fnav-save" style="display:none" onclick="saveForm('${id||''}')">${id?'Salvar alterações':'Criar experimento'}</button>
+     </span>
+   </div>`;
+  window._fstep=1;
+}
+function tipoChange(){const t=$('#f-tipo').value,a=$('#f-agreg');
+  if(t==='percentual'){a.value='media';a.disabled=true}else{a.disabled=false}}
+function fstepGo(n){window._fstep=n;
+  for(let i=1;i<=3;i++){$('#fs'+i).classList.toggle('on',i===n);$('#sp'+i).classList.toggle('on',i===n)}
+  $('#fnav-prev').style.visibility=n>1?'visible':'hidden';
+  $('#fnav-next').style.display=n<3?'':'none';
+  $('#fnav-save').style.display=n===3?'':'none';
+  window.scrollTo({top:0})}
+function fstepNext(){fstepGo(Math.min(3,(window._fstep||1)+1))}
+function fstepPrev(){fstepGo(Math.max(1,(window._fstep||1)-1))}
+function addBraco(){const d=document.createElement('div');d.className='braco-row';
+  d.innerHTML=`<input placeholder="Nome do braço" data-bid="${uid()}">
+   <button type="button" class="btn small danger" onclick="this.parentElement.remove()">remover</button>`;
+  $('#bracos').appendChild(d)}
+async function saveForm(id){
+  const g=i=>$(i).value.trim();
+  const status=$('#f-status').value;
+  const bracos=[...document.querySelectorAll('#bracos input')].map(i=>({id:i.dataset.bid,nome:i.value.trim()})).filter(b=>b.nome);
+  const bl=parseTaxa(g('#f-basev'));
+  const errs=[];
+  if(!g('#f-codigo'))errs.push('C\u00f3digo \u00e9 obrigat\u00f3rio.');
+  if(!g('#f-titulo'))errs.push('T\u00edtulo \u00e9 obrigat\u00f3rio.');
+  if(!bracos.length)errs.push('Defina pelo menos 1 bra\u00e7o.');
+  if(isNaN(bl))errs.push('Baseline inv\u00e1lido \u2014 use n\u00famero, ex.: 20,5');
+  if(status!=='desenhado'){
+    if(!g('#f-ancora'))errs.push('Para sair de "Desenhado", escreva a \u00c2NCORA da m\u00e9trica (como contar).');
+    if(bl===null)errs.push('Para sair de "Desenhado", registre o BASELINE.');
+  }
+  if(errs.length){$('#formerr').innerHTML=`<div class="err">${errs.join('<br>')}</div>`;
+    const t=errs.join(' ');
+    fstepGo(/C\u00f3digo|T\u00edtulo/.test(t)?1:3);
+    return}
+  const dados={codigo:g('#f-codigo'),titulo:g('#f-titulo'),setor:$('#f-setor').value,
+    responsavel_id:$('#f-resp').value||null,
+    status,direcao:$('#f-direcao').value,
+    data_inicio:$('#f-ini').value||null,data_fim:$('#f-fim').value||null,
+    hipotese:g('#f-hip'),predicao:g('#f-pred'),metrica_primaria:g('#f-met'),metrica_guarda:g('#f-guarda'),
+    metrica_ancora:g('#f-ancora'),baseline_valor:bl===null?null:bl,baseline_desc:g('#f-based'),
+    tipo_metrica:$('#f-tipo').value,
+    agregacao:$('#f-tipo').value==='percentual'?'media':$('#f-agreg').value};
+
+  const ehUuid=v=>/^[0-9a-f]{8}-[0-9a-f]{4}-/i.test(v||'');
+  if(id){
+    const {error}=await sb.from('experimentos').update(dados).eq('id',id);
+    if(error)return erroSb(error,'salvar experimento');
+    const exp0=DB.find(x=>x.id===id)||{};
+    const antes=exp0.bracos||[];
+    const mantidos=bracos.filter(b=>ehUuid(b.id)).map(b=>b.id);
+    const remover=antes.filter(b=>mantidos.indexOf(b.id)<0);
+    if(remover.length){
+      const perdidos=(exp0.resultados||[]).filter(r=>remover.some(b=>b.id===r.braco)).length;
+      if(perdidos>0){
+        const nomes=remover.map(b=>'"'+b.nome+'"').join(', ');
+        const segue=await new Promise(res=>askConfirm({titulo:'Apagar bra\u00e7o com hist\u00f3rico?',danger:true,
+          okLabel:'Apagar mesmo assim',
+          msg:`Remover ${nomes} vai apagar tamb\u00e9m ${perdidos} lan\u00e7amento${perdidos>1?'s':''} di\u00e1rio${perdidos>1?'s':''}. Essa a\u00e7\u00e3o n\u00e3o tem desfazer.`,
+          onOk:()=>res(true),onCancel:()=>res(false)}));
+        if(!segue){go('detail',id);return}
+      }
+      const {error:e1}=await sb.from('bracos').delete().in('id',remover.map(b=>b.id));
+      if(e1)return erroSb(e1,'remover bra\u00e7os');
+    }
+    for(let i=0;i<bracos.length;i++){
+      const b=bracos[i];
+      if(ehUuid(b.id)){
+        const {error:e2}=await sb.from('bracos').update({nome:b.nome,ordem:i}).eq('id',b.id);
+        if(e2)return erroSb(e2,'atualizar bra\u00e7o');
+      }else{
+        const {error:e3}=await sb.from('bracos').insert({experimento_id:id,nome:b.nome,ordem:i});
+        if(e3)return erroSb(e3,'criar bra\u00e7o');
+      }
+    }
+    await recarregar();go('detail',id);toast('Altera\u00e7\u00f5es salvas \u2713');
+  }else{
+    dados.created_by=USER.id;
+    const {data,error}=await sb.from('experimentos').insert(dados).select().single();
+    if(error)return erroSb(error,/duplicate|unique/i.test(error.message||'')?'J\u00e1 existe experimento com esse c\u00f3digo':'criar experimento');
+    const novos=bracos.map((b,i)=>({experimento_id:data.id,nome:b.nome,ordem:i}));
+    const {error:e4}=await sb.from('bracos').insert(novos);
+    if(e4)return erroSb(e4,'criar bra\u00e7os');
+    await recarregar();go('detail',data.id);toast('Experimento criado \u2713');
+  }
+}
+
+/* ================= DETALHE ================= */
+function renderDetail(id){
+  const e=DB.find(x=>x.id===id);if(!e){go('list');return}
+  if(USER.papel!=='lider'&&e.setor!==USER.setor){go('list');return}
+  $('#v-detail').style.display='block';
+  const kpis=e.bracos.map((b,i)=>{
+    const a=acum(e,b.id);
+    let delta='';
+    if(a.taxa!==null&&e.baseline_valor!==''&&e.baseline_valor!==null){
+      const d=a.taxa-e.baseline_valor;
+      const good=e.direcao==='menor'?d<0:d>0;
+      const cls=Math.abs(d)<0.05?'neutral':(good?'good':'bad');
+      delta=`<span class="delta ${cls}">${fmtDelta(e,d)} vs baseline</span>`;}
+    let det=a.taxa===null?'sem dados válidos':
+      (a.soma?`soma de ${a.n} dias`:(a.pond?`acumulado ponderado · ${a.vol} leads`:`média de ${a.n} dias (sem volume)`));
+    if(a.semVol>0&&!a.soma)det+=` · ⚠ ${a.semVol} dia${a.semVol>1?'s':''} sem volume fora da conta`;
+    return `<div class="kpi"><div class="name"><span class="swatch" style="background:var(--${SERIES[i%3]})"></span>${esc(b.nome)}</div>
+      <div class="val">${a.taxa===null?'—':fmtVal(e,a.taxa)}</div>
+      <div class="det">${det}</div>${delta}</div>`}).join('');
+  const g=geralAcum(e);
+  const gKpi=e.bracos.length>1&&g!=null?`<div class="kpi geral"><div class="name">Geral (todos os braços)</div>
+      <div class="val">${fmtVal(e,g)}</div><div class="det">calculado automaticamente</div></div>`:'';
+  const baseKpi=(e.baseline_valor!==''&&e.baseline_valor!==null)?
+    `<div class="kpi"><div class="name">Baseline</div><div class="val" style="color:var(--muted)">${fmtVal(e,e.baseline_valor)}</div>
+     <div class="det">${esc(e.baseline_desc||'')}</div></div>`:'';
+  $('#v-detail').innerHTML=`
+   <button class="back" onclick="go('list')">← experimentos</button>
+   <div class="headrow">
+     <div class="grow">
+       <span class="eyebrow">${esc(e.codigo)} · ${esc(e.setor)} · ${esc(userName(e.responsavel))}</span>
+       <h1>${esc(e.titulo)}</h1>
+       <p class="sub" style="margin-bottom:0">${fmtD(e.data_inicio)} → ${e.data_fim?fmtD(e.data_fim):'em aberto'} · ${esc(e.metrica_primaria||'—')} · ${e.direcao==='menor'?'menor é melhor':'maior é melhor'}</p>
+     </div>
+     <div class="badges" style="align-items:flex-start">
+       <select class="statuspick st-${e.status}" title="Mudar status" onchange="statusChange('${e.id}',this.value)">
+         ${Object.entries(STATUS).map(([k,v])=>`<option value="${k}" ${e.status===k?'selected':''}>${v}</option>`).join('')}
+       </select>
+       ${e.resultado?`<span class="pill clicavel rs-${e.resultado}" title="Editar conclusão" onclick="concluirModal('${e.id}')">${RESULT[e.resultado]}</span>`:''}
+       ${/^https?:\/\//i.test(e.link_posmortem||'')?`<a class="btn ghost small" href="${esc(e.link_posmortem)}" target="_blank" rel="noopener noreferrer">pós-mortem ↗</a>`:''}
+       <button class="btn ghost small" onclick="go('form','${e.id}')">editar</button>
+       <button class="btn small danger" onclick="delExp('${e.id}')">excluir</button>
+     </div>
+   </div>
+   <div class="ancora"><span class="eyebrow">⚓ Como contar</span><p>${esc(e.metrica_ancora||'Não definida')}</p></div>
+   ${e.status==='concluido'&&e.aprendizado?`<div class="aprend"><span class="eyebrow">📚 Aprendizado</span><p>${esc(e.aprendizado)}</p></div>`:''}
+   <details class="defs"><summary>Hipótese, predição e métrica de guarda</summary>
+     <div class="defs-grid">
+       <div><span class="eyebrow">Hipótese</span><p>${esc(e.hipotese||'—')}</p></div>
+       <div><span class="eyebrow">Predição</span><p>${esc(e.predicao||'—')}</p></div>
+       <div><span class="eyebrow">🛡️ Métrica de guarda</span><p>${esc(e.metrica_guarda||'Não definida')}</p></div>
+     </div></details>
+   <div class="kpis">${kpis}${gKpi}${baseKpi}</div>
+   <h2>Série diária</h2>
+   <div class="chartbox">
+     ${e.bracos.length>1?`<div class="legend">${e.bracos.map((b,i)=>`<span><i style="background:var(--${SERIES[i%3]})"></i>${esc(b.nome)}</span>`).join('')}</div>`:''}
+     <div id="chart"></div><div class="tip" id="tip"></div>
+   </div>
+   <h2>Lançar resultado do dia</h2>
+   <div class="section">
+     <div class="addres">
+       <label class="f a-data">Data <input type="date" id="r-data"></label>
+       <label class="f a-braco">Braço <select id="r-braco">${e.bracos.map(b=>`<option value="${b.id}">${esc(b.nome)}</option>`).join('')}</select></label>
+       <label class="f a-taxa">${valLabel(e)} <input id="r-taxa" inputmode="decimal" placeholder="${e.tipo_metrica==='moeda'?'ex. 299,90':e.tipo_metrica==='numero'?'ex. 12':'ex. 39,1'}"></label>
+       <label class="f a-leads">Leads (opcional) <input id="r-vol" type="number" min="0" placeholder="volume"></label>
+       <label class="f a-obs">Observação <input id="r-obs" placeholder="bug, sem amostra, dia parcial…"></label>
+       <label class="switch a-valido" title="Desligue para registrar um dia que NÃO entra no acumulado (bug, dado ruim)">
+         <input type="checkbox" id="r-valido" checked> Dia válido</label>
+       <button class="btn a-lancar" onclick="addRes('${e.id}')">Lançar</button>
+     </div>
+     <div id="reserr"></div>
+     <div id="restabwrap">${resultTable(e)}</div>
+     <p class="sub" style="margin:10px 0 0;font-size:12px">Linha "inválido" fica fora do acumulado e do gráfico. ${e.agregacao==='soma'?'O acumulado desta métrica é a SOMA dos dias válidos.':'Informando os leads do dia, o Geral e o acumulado saem ponderados pelo volume (mais precisos); sem volume, saem por média simples.'}</p>
+   </div>
+   `;
+  drawChart(e);
+}
+/* consolidado de UM dia entre os braços — mesma regra do acumulado do experimento */
+function acumDia(e,linhas){
+  const rs=linhas.filter(r=>r.valido&&r.taxa!=null);
+  if(!rs.length)return{taxa:null,vol:0,pond:false,semVol:0};
+  const vol=rs.reduce((a,r)=>a+(r.vol>0?r.vol:0),0);
+  if(e.agregacao==='soma')return{taxa:rs.reduce((a,r)=>a+r.taxa,0),vol,pond:false,soma:true,semVol:0};
+  const com=rs.filter(r=>r.vol>0), sem=rs.length-com.length;
+  if(com.length){let s=0,v=0;com.forEach(r=>{s+=r.taxa*r.vol;v+=r.vol});
+    return{taxa:s/v,vol:v,pond:true,semVol:sem}}
+  return{taxa:rs.reduce((a,r)=>a+r.taxa,0)/rs.length,vol:0,pond:false,semVol:sem};
+}
+/* dias recolhidos da tabela de resultados (por experimento) */
+let DIAS=new Set();try{DIAS=new Set(JSON.parse(localStorage.getItem('mq-dias-v1'))||[])}catch(e){}
+function pintaTabela(expId){
+  const e=DB.find(x=>x.id===expId),alvo=document.getElementById('restabwrap');
+  if(e&&alvo)alvo.innerHTML=resultTable(e);           /* troca so a tabela: zero pulo */
+  else go('detail',expId,true);
+}
+function toggleDia(expId,data){const k=expId+'|'+data;
+  DIAS.has(k)?DIAS.delete(k):DIAS.add(k);
+  localStorage.setItem('mq-dias-v1',JSON.stringify([...DIAS]));
+  pintaTabela(expId)}
+function todosOsDias(expId,recolher){
+  const e=DB.find(x=>x.id===expId);if(!e)return;
+  [...new Set(e.resultados.map(r=>r.data))].forEach(d=>{
+    const k=expId+'|'+d;recolher?DIAS.add(k):DIAS.delete(k)});
+  localStorage.setItem('mq-dias-v1',JSON.stringify([...DIAS]));
+  pintaTabela(expId)}
+
+/* tabela de resultados: só mostra coluna que carrega informação, e agrupa
+   por dia apenas quando o dia realmente tem mais de um braço lançado. */
+function resultTable(e){
+  if(!e.resultados.length)return '<div class="empty">Nenhum resultado lançado ainda.</div>';
+  const bIdx={};e.bracos.forEach((b,i)=>bIdx[b.id]=i);
+  const ord=id=>bIdx[id]==null?99:bIdx[id];
+  const rows=e.resultados.slice().sort((a,b)=>b.data.localeCompare(a.data)||ord(a.braco)-ord(b.braco));
+
+  const temVol=rows.some(r=>r.vol>0);
+  const temSit=rows.some(r=>!r.valido||r.taxa==null);
+  const temObs=rows.some(r=>r.obs);
+  const extras=(temSit?1:0)+(temObs?1:0);
+  const nCols=3+(temVol?1:0)+extras+1;
+  const colVal=e.tipo_metrica==='moeda'||e.tipo_metrica==='numero'?'Valor':'Taxa';
+  const chaveObs=r=>(r.data+'_'+r.braco).replace(/[^a-zA-Z0-9_-]/g,'');
+
+  const celulas=r=>{
+    const b=e.bracos.find(x=>x.id===r.braco);
+    let s=`<td class="cbraco"><span class="bdot" style="background:var(--${SERIES[(bIdx[r.braco]||0)%3]})"></span>${esc(b?b.nome:'?')}</td>`
+        +`<td class="tnum"><b>${r.taxa==null?'\u2014':fmtVal(e,r.taxa)}</b></td>`;
+    if(temVol)s+=`<td class="tnum">${r.vol>0?r.vol:'\u2014'}</td>`;
+    if(temSit)s+=`<td>${!r.valido?'<span class="sit-inv">inv\u00e1lido</span>':(r.taxa==null?'<span class="sit-sem">sem amostra</span>':'')}</td>`;
+    if(temObs)s+=`<td style="text-align:center">${r.obs?`<button class="obsbtn" title="Ver observa\u00e7\u00e3o" onclick="event.stopPropagation();toggleObs('${chaveObs(r)}')">\ud83d\udcac</button>`:''}</td>`;
+    s+=`<td><button class="del" title="Excluir lan\u00e7amento" onclick="event.stopPropagation();delRes('${e.id}','${r.data}','${r.braco}')">\u2715</button></td>`;
+    return s;
+  };
+  const linhaObs=r=>r.obs
+    ? `<tr class="obsrow" id="obs_${chaveObs(r)}" style="display:none"><td colspan="${nCols}">\ud83d\udcdd ${esc(r.obs)}</td></tr>`
+    : '';
+
+  const porDia=new Map();
+  rows.forEach(r=>{if(!porDia.has(r.data))porDia.set(r.data,[]);porDia.get(r.data).push(r)});
+
+  const body=[...porDia.entries()].map(([data,linhas])=>{
+    /* um lan\u00e7amento no dia: cabe\u00e7alho s\u00f3 repetiria o mesmo n\u00famero */
+    if(linhas.length===1)
+      return `<tr><td class="cdata"><b>${fmtD(data)}</b></td>${celulas(linhas[0])}</tr>${linhaObs(linhas[0])}`;
+
+    const fechado=DIAS.has(e.id+'|'+data);
+    const a=acumDia(e,linhas);
+    const fora=linhas.filter(r=>!r.valido).length;
+    let s=`<tr class="diahead${fechado?'':' aberto'}" onclick="toggleDia('${e.id}','${data}')" title="${fechado?'Abrir':'Recolher'} este dia">
+        <td class="cdata"><span class="chev">${fechado?'\u25b8':'\u25be'}</span><b>${fmtD(data)}</b></td>
+        <td class="cbraco"><span class="diaresumo">${linhas.length} bra\u00e7os${fora?` \u00b7 ${fora} fora da conta`:''}</span></td>
+        <td class="tnum"><b>${a.taxa==null?'\u2014':fmtVal(e,a.taxa)}</b></td>`;
+    if(temVol)s+=`<td class="tnum">${a.vol>0?a.vol:'\u2014'}</td>`;
+    s+=`<td colspan="${1+extras}"></td></tr>`;
+    if(!fechado)s+=linhas.map(r=>`<tr class="linha-braco"><td class="cdata"></td>${celulas(r)}</tr>${linhaObs(r)}`).join('');
+    return s;
+  }).join('');
+
+  /* rodap\u00e9: s\u00f3 bra\u00e7o que tem dado \u2014 bra\u00e7o vazio virava linha de "\u2014" */
+  const comDado=e.bracos.filter(b=>e.resultados.some(r=>r.braco===b.id&&r.valido&&r.taxa!=null));
+  const temBase=e.baseline_valor!==''&&e.baseline_valor!=null;
+  const chip=v=>{                                   /* delta vs baseline, a leitura que importa */
+    if(v==null||!temBase)return '';
+    const d=v-e.baseline_valor, bom=e.direcao==='menor'?d<0:d>0;
+    return `<span class="delta ${Math.abs(d)<0.05?'neutral':(bom?'good':'bad')}">${fmtDelta(e,d)}</span>`;
+  };
+  const diasDe=bid=>new Set(e.resultados.filter(r=>r.braco===bid&&r.valido&&r.taxa!=null).map(r=>r.data)).size;
+
+  let foot=`<tr class="acumsep"><td colspan="${nCols}">Acumulado do per\u00edodo${temBase?' \u00b7 comparado ao baseline de '+fmtVal(e,e.baseline_valor):''}</td></tr>`;
+  foot+=comDado.map(b=>{const a=acum(e,b.id),nd=diasDe(b.id);
+    let s=`<tr class="acumrow"><td class="cdata"></td>
+      <td class="cbraco"><span class="bdot" style="background:var(--${SERIES[bIdx[b.id]%3]})"></span>${esc(b.nome)}
+        <small>${nd} dia${nd>1?'s':''}${a.soma?' \u00b7 soma':''}</small></td>
+      <td class="tnum"><b>${a.taxa==null?'\u2014':fmtVal(e,a.taxa)}</b></td>`;
+    if(temVol)s+=`<td class="tnum">${a.pond?a.vol:'\u2014'}</td>`;
+    return s+`<td colspan="${1+extras}">${chip(a.taxa)}</td></tr>`}).join('');
+  if(comDado.length>1){
+    const g=geralAcum(e);
+    const volTotal=e.resultados.filter(r=>r.valido&&r.taxa!=null).reduce((s,r)=>s+(r.vol>0?r.vol:0),0);
+    let s=`<tr class="geralrow"><td class="cdata"></td>
+      <td class="cbraco geral">Geral <small>todos os bra\u00e7os</small></td>
+      <td class="tnum geral"><b>${g==null?'\u2014':fmtVal(e,g)}</b></td>`;
+    if(temVol)s+=`<td class="tnum geral">${volTotal||'\u2014'}</td>`;
+    foot+=s+`<td colspan="${1+extras}">${chip(g)}</td></tr>`;
+  }
+
+  let thead=`<tr><th>Data</th><th>Bra\u00e7o</th><th class="tnum">${colVal}</th>`;
+  if(temVol)thead+='<th class="tnum">Leads</th>';
+  if(temSit)thead+='<th>Situa\u00e7\u00e3o</th>';
+  if(temObs)thead+='<th style="text-align:center">Obs</th>';
+  thead+='<th></th></tr>';
+
+  const diasAgrupados=[...porDia.keys()].filter(d=>porDia.get(d).length>1);
+  const algumAberto=diasAgrupados.some(d=>!DIAS.has(e.id+'|'+d));
+  const atalho=diasAgrupados.length>1?`<div class="tabtop">
+      <span>Agrupado por dia \u2014 clique no dia pra abrir os bra\u00e7os</span>
+      <button class="linklike" onclick="todosOsDias('${e.id}',${algumAberto})">${algumAberto?'recolher todos':'expandir todos'}</button>
+    </div>`:'';
+
+  return `${atalho}<div class="obswrap"><table class="restab" style="min-width:${Math.max(340,118*nCols)}px">
+    <thead>${thead}</thead><tbody>${body}</tbody><tfoot>${foot}</tfoot></table></div>`;
+}
+function delExp(id){
+  const e=DB.find(x=>x.id===id);
+  askConfirm({titulo:'Excluir experimento?',danger:true,okLabel:'Excluir tudo',
+    msg:(e?e.codigo+' \u2014 '+e.titulo:'Este experimento')+' e todos os resultados lan\u00e7ados ser\u00e3o apagados. Essa a\u00e7\u00e3o n\u00e3o tem desfazer.',
+    onOk:async()=>{
+      const {error}=await sb.from('experimentos').delete().eq('id',id);
+      if(error)return erroSb(error,'excluir experimento');
+      await carregarExperimentos();go('list');toast('Experimento exclu\u00eddo');
+    }});
+}
+async function addRes(id){
+  const e=DB.find(x=>x.id===id);
+  const data=$('#r-data').value,braco=$('#r-braco').value,
+        taxa=parseTaxa($('#r-taxa').value),
+        vol=$('#r-vol').value===''?0:parseInt($('#r-vol').value,10),
+        valido=$('#r-valido').checked,obs=$('#r-obs').value.trim();
+  const errs=[];
+  if(!data)errs.push('Informe a data.');
+  else{
+    const hoje=new Date().toISOString().slice(0,10);
+    if(data>hoje)errs.push('Data no futuro ('+fmtD(data)+') \u2014 confira o ano.');
+    else if(e.data_inicio&&data<e.data_inicio)errs.push('Data antes do in\u00edcio do experimento ('+fmtD(e.data_inicio)+').');
+    else if(e.data_fim&&data>e.data_fim)errs.push('Data depois do fim do experimento ('+fmtD(e.data_fim)+').');
+  }
+  if(isNaN(taxa))errs.push('Valor inv\u00e1lido \u2014 use n\u00famero, ex.: 39,1');
+  const ehPct=e.tipo_metrica!=='moeda'&&e.tipo_metrica!=='numero';
+  if(ehPct&&taxa!=null&&!isNaN(taxa)&&(taxa<0||taxa>100))errs.push('Percentual deve estar entre 0 e 100%.');
+  if(taxa==null&&!obs)errs.push('Sem valor? Explique na observa\u00e7\u00e3o (ex.: sem amostra).');
+  if(errs.length){$('#reserr').innerHTML=`<div class="err">${errs.join(' ')}</div>`;return}
+  const gravar=async()=>{
+    const {error}=await sb.from('resultados').upsert(
+      {experimento_id:id,braco_id:braco,data,taxa,vol,valido,obs,created_by:USER.id},
+      {onConflict:'braco_id,data'});
+    if(error)return erroSb(error,'lan\u00e7ar resultado');
+    await carregarExperimentos();go('detail',id,true);toast('Resultado lan\u00e7ado \u2713');
+  };
+  const dup=e.resultados.findIndex(r=>r.data===data&&r.braco===braco);
+  if(dup>=0){askConfirm({titulo:'Substituir lan\u00e7amento?',okLabel:'Substituir',
+    msg:'J\u00e1 existe um lan\u00e7amento em '+fmtD(data)+' pra esse bra\u00e7o. Quer substituir pelo novo valor?',
+    onOk:gravar});return}
+  gravar();
+}
+function delRes(id,data,braco){
+  const e=DB.find(x=>x.id===id);
+  const b=e.bracos.find(x=>x.id===braco);
+  askConfirm({titulo:'Excluir lan\u00e7amento?',danger:true,okLabel:'Excluir',
+    msg:'O lan\u00e7amento de '+fmtD(data)+' ('+(b?b.nome:'?')+') ser\u00e1 apagado. Essa a\u00e7\u00e3o n\u00e3o tem desfazer.',
+    onOk:async()=>{
+      const {error}=await sb.from('resultados').delete().eq('braco_id',braco).eq('data',data);
+      if(error)return erroSb(error,'excluir lan\u00e7amento');
+      await carregarExperimentos();go('detail',id,true);toast('Lan\u00e7amento exclu\u00eddo');
+    }});
+}
+/* status no topo: mudar pra Conclu\u00eddo abre o ritual de conclus\u00e3o */
+async function statusChange(id,novo){
+  if(novo==='concluido'){concluirModal(id);return}
+  const e0=DB.find(x=>x.id===id);
+  if(novo!=='desenhado'&&e0){ /* mesma trava do formulário, agora também aqui */
+    const faltando=[];
+    if(!(e0.metrica_ancora||'').trim())faltando.push('a ÂNCORA (como contar)');
+    if(e0.baseline_valor===''||e0.baseline_valor==null)faltando.push('o BASELINE');
+    if(faltando.length){
+      toast('Para sair de "Desenhado" falta '+faltando.join(' e ')+'.');
+      go('detail',id,true);return;
+    }
+  }
+  const {error}=await sb.from('experimentos').update({status:novo}).eq('id',id);
+  if(error)return erroSb(error,'mudar status');
+  const e=DB.find(x=>x.id===id);if(e)e.status=novo;
+  go('detail',id,true);toast('Status atualizado \u2713');
+}
+function concluirModal(id){
+  const e=DB.find(x=>x.id===id);
+  $('#modal').innerHTML=`<div class="m-overlay" id="m-ov" onclick="if(event.target===this)cancelConcluir('${id}')">
+    <div class="m-card" role="dialog" aria-modal="true" aria-labelledby="m-titulo">
+      <div class="m-icon normal">🏁</div>
+      <h3 id="m-titulo">Concluir experimento</h3>
+      <p>Feche o ciclo do ${esc(e.codigo)}: qual foi o veredito e o que fica de aprendizado?</p>
+      <label class="f">Resultado <select id="mc-res">
+        <option value="">— escolha —</option>
+        ${Object.entries(RESULT).map(([k,v])=>`<option value="${k}" ${e.resultado===k?'selected':''}>${v}</option>`).join('')}
+      </select></label>
+      <label class="f">Link do pós-mortem <input id="mc-link" value="${esc(e.link_posmortem||'')}" placeholder="https://cardapio-web.atlassian.net/wiki/..."></label>
+      <label class="f">Aprendizado <small>O que alguém que buscar "o que já tentamos" precisa saber</small>
+        <textarea id="mc-apr" style="min-height:70px">${esc(e.aprendizado||'')}</textarea></label>
+      <div id="mc-err"></div>
+      <div class="m-actions">
+        <button class="btn ghost" onclick="cancelConcluir('${id}')">Cancelar</button>
+        <button class="btn" onclick="salvarConclusao('${id}')">Concluir ✓</button>
+      </div></div></div>`;
+  requestAnimationFrame(()=>{$('#m-ov').classList.add('show');$('#mc-res').focus()});
+}
+function cancelConcluir(id){closeModal();go('detail',id,true)}
+async function salvarConclusao(id){
+  const res=$('#mc-res').value;
+  const link=$('#mc-link').value.trim();
+  const errs=[];
+  if(!res)errs.push('Escolha o resultado: validada, refutada ou inconclusiva.');
+  if(!link)errs.push('O link do p\u00f3s-mortem \u00e9 obrigat\u00f3rio \u2014 documente antes de concluir.');
+  else if(!/^https?:\/\/.+/i.test(link))errs.push('Link do p\u00f3s-mortem inv\u00e1lido \u2014 cole a URL completa (https://...).');
+  if(errs.length){$('#mc-err').innerHTML=`<div class="err" style="margin:0 0 12px">${errs.join('<br>')}</div>`;return}
+  const {error}=await sb.from('experimentos').update({status:'concluido',resultado:res,
+    link_posmortem:link,aprendizado:$('#mc-apr').value.trim()}).eq('id',id);
+  if(error)return erroSb(error,'concluir experimento');
+  await carregarExperimentos();closeModal();go('detail',id,true);toast('Experimento conclu\u00eddo \u2713');
+}
+
+/* ================= CHART ================= */
+function drawChart(e){
+  const box=$('#chart');
+  const pts={};let dates=new Set();
+  e.bracos.forEach(b=>{pts[b.id]=e.resultados
+    .filter(r=>r.braco===b.id&&r.valido&&r.taxa!=null)
+    .sort((a,b2)=>a.data.localeCompare(b2.data))
+    .map(r=>({data:r.data,taxa:r.taxa,vol:r.vol}));
+    pts[b.id].forEach(p=>dates.add(p.data))});
+  dates=[...dates].sort();
+  if(!dates.length){box.innerHTML='<div class="empty">Sem dias válidos pra plotar ainda.</div>';return}
+  const W=920,H=280,padL=54,padR=70,padT=14,padB=30;
+  const ehPct=e.tipo_metrica!=='moeda'&&e.tipo_metrica!=='numero';
+  let maxY=Math.max(ehPct?10:0,...Object.values(pts).flat().map(p=>p.taxa));
+  if(e.baseline_valor!==''&&e.baseline_valor!==null)maxY=Math.max(maxY,e.baseline_valor);
+  maxY=ehPct?Math.ceil(maxY/10)*10:niceCeil(maxY);
+  const fmtAxis=v=>ehPct?Math.round(v)+'%':(e.tipo_metrica==='moeda'?'R$':'')+v.toLocaleString('pt-BR',{maximumFractionDigits:1});
+  const x=d=>padL+(dates.indexOf(d))*((W-padL-padR)/Math.max(1,dates.length-1));
+  const y=v=>padT+(H-padT-padB)*(1-v/maxY);
+  let g='';
+  for(let v=0;v<=maxY;v+=maxY/5){
+    g+=`<line x1="${padL}" y1="${y(v)}" x2="${W-padR}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/>
+        <text x="${padL-8}" y="${y(v)+4}" text-anchor="end" font-size="10.5" fill="var(--muted)">${fmtAxis(v)}</text>`;}
+  const step=Math.ceil(dates.length/9);
+  dates.forEach((d,i)=>{if(i%step===0||i===dates.length-1)
+    g+=`<text x="${x(d)}" y="${H-8}" text-anchor="middle" font-size="10.5" fill="var(--muted)">${fmtD(d)}</text>`;});
+  if(e.baseline_valor!==''&&e.baseline_valor!==null){
+    g+=`<line x1="${padL}" y1="${y(e.baseline_valor)}" x2="${W-padR}" y2="${y(e.baseline_valor)}"
+        stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="${W-padR+6}" y="${y(e.baseline_valor)+4}" font-size="10.5" font-weight="700" fill="var(--muted)">baseline ${fmtVal(e,e.baseline_valor)}</text>`;}
+  let hits='';
+  e.bracos.forEach((b,i)=>{
+    const col=`var(--${SERIES[i%3]})`,P=pts[b.id];if(!P.length)return;
+    g+=`<polyline fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+        points="${P.map(p=>x(p.data)+','+y(p.taxa)).join(' ')}"/>`;
+    P.forEach(p=>{g+=`<circle cx="${x(p.data)}" cy="${y(p.taxa)}" r="3.6" fill="${col}" stroke="var(--surface)" stroke-width="2"/>`;
+      hits+=`<circle cx="${x(p.data)}" cy="${y(p.taxa)}" r="13" fill="transparent" style="cursor:pointer"
+        data-tip="${esc(b.nome)} · ${fmtD(p.data)} — ${fmtVal(e,p.taxa)}${p.vol>0?' ('+p.vol+' leads)':''}"/>`;});
+    const last=P[P.length-1];
+    if(e.bracos.length>1&&e.bracos.length<=4)
+      g+=`<text x="${x(last.data)+9}" y="${y(last.taxa)+4}" font-size="11" font-weight="800" fill="${col}">${esc(b.nome)}</text>`;
+  });
+  box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto" role="img"
+    aria-label="Série diária da métrica por braço">${g}${hits}</svg>`;
+  const tip=$('#tip'),cb=box.closest('.chartbox');
+  box.querySelectorAll('circle[data-tip]').forEach(c=>{
+    c.addEventListener('mouseenter',()=>{tip.textContent=c.dataset.tip;tip.style.opacity=1;});
+    c.addEventListener('mousemove',ev=>{const r=cb.getBoundingClientRect();
+      tip.style.left=(ev.clientX-r.left+14)+'px';tip.style.top=(ev.clientY-r.top-10)+'px';});
+    c.addEventListener('mouseleave',()=>tip.style.opacity=0);});
+}
+
+/* ================= tour de boas-vindas (só na 1ª visita) ================= */
+const TOURKEY='mq-tour-v1';
+const TOUR=[
+ {t:'Bem-vindo à Máquina de Experimentos! 🧪',d:'Aqui o time cadastra hipóteses, lança os resultados por dia e fecha cada experimento com aprendizado e pós-mortem documentados. Vem que o tour é rápido.'},
+ {t:'Abas por setor',d:'Líder navega por todos os setores; membro vê só o do time dele. Cada setor é um cartão que você pode recolher clicando no nome.',sel:'.tabs'},
+ {t:'Grupos por status',d:'Dentro do setor, os experimentos ficam agrupados: Rodando, Em análise, Concluído e Desenhado — a fila de ideias que ainda não deu pra rodar. Os cabeçalhos também recolhem.',sel:'#listbody'},
+ {t:'Busca rápida',d:'Ache qualquer experimento por código ou título.',sel:'.filters input'},
+ {t:'Criar experimento',d:'Formulário em 3 passos, com trava de qualidade: não deixa colocar pra Rodar sem definir COMO medir (a âncora) e o baseline.',sel:'.bar>.btn'},
+ {t:'Dentro do experimento',d:'Lance o valor do dia, acompanhe o gráfico contra o baseline e, ao mover pra Concluído, o sistema pede o veredito e o link do pós-mortem. Bons testes! 🚀'}
+];
+let tourI=0;
+function startTour(){go('list');tourI=0;
+  document.addEventListener('keydown',tourEsc);
+  setTimeout(showTourStep,150)}
+function tourEsc(ev){if(ev.key==='Escape')endTour()}
+function showTourStep(){
+  try{
+    const s=TOUR[tourI];
+    const alvo=s.sel?document.querySelector(s.sel):null;
+    let hr=null;
+    if(alvo){alvo.scrollIntoView({block:'center'});hr=alvo.getBoundingClientRect();
+      if(!hr.width&&!hr.height)hr=null}
+    /* com alvo: recorte de spotlight; sem alvo: véu simples — o card centrado SEMPRE aparece */
+    const overlay=hr
+      ?`<div class="tour-hole" style="left:${hr.left-6}px;top:${hr.top-6}px;width:${hr.width+12}px;height:${Math.min(hr.height,340)+12}px"></div>`
+      :`<div class="tour-dim"></div>`;
+    let cardStyle='left:50%;top:50%;transform:translate(-50%,-50%)';
+    if(hr){const cw=Math.min(340,window.innerWidth-24);
+      const left=Math.min(Math.max(12,hr.left),window.innerWidth-cw-12);
+      const below=hr.top+Math.min(hr.height,340)+18;
+      cardStyle=(below+220<window.innerHeight)?`left:${left}px;top:${below}px`:`left:${left}px;top:${Math.max(12,hr.top-210)}px`;}
+    $('#modal').innerHTML=overlay+`
+     <div class="tour-card" style="${cardStyle}">
+       <h4>${s.t}</h4><p>${s.d}</p>
+       <div class="tour-foot">
+         <button class="linklike" onclick="endTour()">pular</button>
+         <span class="tour-dots">${TOUR.map((_,i)=>`<i class="${i===tourI?'on':''}"></i>`).join('')}</span>
+         <button class="btn small" onclick="nextTour()">${tourI<TOUR.length-1?'Próximo →':'Começar 🚀'}</button>
+       </div></div>`;
+  }catch(err){endTour()} /* nunca deixa o usuário preso numa tela escura */
+}
+function nextTour(){tourI++;if(tourI>=TOUR.length){endTour();return}showTourStep()}
+function endTour(){localStorage.setItem(TOURKEY,'1');$('#modal').innerHTML='';
+  document.removeEventListener('keydown',tourEsc)}
+
+/* ================= boot ================= */
+(async function(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(session){await iniciarSessao()}else{renderLogin()}
+  sb.auth.onAuthStateChange((ev)=>{ if(ev==='SIGNED_OUT'){USER=null;renderLogin()} });
+})();
+</script>

@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+		<link rel="preload" as="font" type="font/woff2" crossorigin href="https://lp.cardapioweb.com/wp-content/uploads/cw-fonts/museosansrounded-700.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://lp.cardapioweb.com/wp-content/uploads/cw-fonts/museosansrounded-900.woff2">
+<title>LP – Google Ads – Cardápio Web &#8211; Cardápio Web</title>
+<meta name='robots' content='noindex, nofollow' />
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '449188583954617', {"external_id":"89458843bc68f15f089c4bbd5bdd8114a71778edddc27f9057b25901ebe7c1d4"});
+</script>
+<noscript><img loading="lazy" alt="" aria-hidden="true" height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=449188583954617&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- GA4 — gtag.js LAZY LOADED (após LCP) pra não bloquear render inicial.
+     Stub gtag() é setado imediato (enfileira chamadas); o script real (~178 KB)
+     carrega só após window.load + 1500ms OU primeira interação do usuário
+     (scroll/click/touch/mouse). Quando carrega, processa a queue automaticamente.
+     Eventos custom não dependem dele — vão via /wp-json/cw/v1/ga (server-side). -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TDTBJ862SK', {
+    send_page_view: true,
+    debug_mode: false
+});
+gtag('config', 'AW-10836483755', { allow_enhanced_conversions: true });
+// Mapping Google Ads Conversion Actions (17 labels) + helper de cálculo de value (replica server)
+window.cwGadsAwId  = 'AW-10836483755';
+window.cwGadsLabels = {"Lead":"LwzjCO3J7LMcEKu9nq8o","Contact":"28bTCMeT98QaEKu9nq8o","Lead_Tier1":"83ECCJTN7LMcEKu9nq8o","Lead_Tier2":"W82QCJfN7LMcEKu9nq8o","Lead_Tier3_1":"XOIACJ_27LMcEKu9nq8o","Lead_Tier3_2":"yI9fCKL27LMcEKu9nq8o","Lead_Tier4":"saLtCKX27LMcEKu9nq8o","Lead_Tier5":"R_vjCKj27LMcEKu9nq8o","Lead_Fat_NaoTem":"76blCKv27LMcEKu9nq8o","Lead_Fat_NaoSei":"trnRCK727LMcEKu9nq8o","Lead_Fat_Ate1k":"wjpACLH27LMcEKu9nq8o","Lead_Fat_1a5k":"J4KiCPyh7bMcEKu9nq8o","Lead_Fat_5a10k":"lQfSCP-h7bMcEKu9nq8o","Lead_Fat_10a20k":"QsZWCIKi7bMcEKu9nq8o","Lead_Fat_20a30k":"FEBdCIik1rMcEKu9nq8o","Lead_Fat_30a50k":"TVCTCIuk1rMcEKu9nq8o","Lead_Fat_50a100k":"EaWnCI6k1rMcEKu9nq8o","Lead_Fat_100kMais":"7g4CCJGk1rMcEKu9nq8o"};
+window.cwValueUseTier = false;
+window.cwCalculateValueClient = function(tier, fatBucket) {
+    // v2.1 13/07: valor POR LEAD CRU (P_médio 21,4% × ratio do bucket × fech% × ticket × 22m).
+    // ESPELHA cw_lead_calculate_value() no PHP — manter em sincronia.
+    var ltv = { '100kMais':7100, '50a100k':5600, '30a50k':4150, '20a30k':3550, '10a20k':2550,
+                '5a10k':1450, '1a5k':550, 'Ate1k':200, 'NaoTem':550, 'NaoSei':550 };
+    var base = ltv[String(fatBucket)] || 550;
+    if (!window.cwValueUseTier) return base;
+    // matriz tier×faturamento (CW_VALUE_USE_TIER) — ESPELHA cw_lead_tier_multiplier() no PHP
+    var mult = { '1':1.15, '2':1.05, '3.1':1.00, '3.2':0.90, '4':0.80, '5':0.70 };
+    return Math.round(base * (mult[String(tier)] || 1));
+};
+(function() {
+    var loaded = false;
+    function cwLoadGtag() {
+        if (loaded) return; loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-TDTBJ862SK';
+        document.head.appendChild(s);
+    }
+    // Triggers: 1500ms após window.load OU primeira interação (scroll/click/touch/mouse)
+    function cwScheduleGtag() { setTimeout(cwLoadGtag, 1500); }
+    if (document.readyState === 'complete') cwScheduleGtag();
+    else window.addEventListener('load', cwScheduleGtag);
+    ['scroll', 'click', 'touchstart', 'mousemove', 'keydown'].forEach(function(ev) {
+        window.addEventListener(ev, cwLoadGtag, { once: true, passive: true });
+    });
+})();
+</script>
+<!-- End GA4 -->
+    
+<!-- Performance Fixes: Preconnect hints -->
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+<!-- /Performance Fixes: Preconnect hints -->
+
+<link rel="alternate" type="application/rss+xml" title="Feed para Cardápio Web &raquo;" href="https://lp.cardapioweb.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Cardápio Web &raquo;" href="https://lp.cardapioweb.com/comments/feed/" />
+
+<style id="cw-lp-styles">
+@font-face {
+    font-family: 'museoSansRounded';
+    src: url('/wp-content/uploads/cw-fonts/museosansrounded-500.woff2') format('woff2');
+    font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+    font-family: 'museoSansRounded';
+    src: url('/wp-content/uploads/cw-fonts/museosansrounded-700.woff2') format('woff2');
+    font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+    font-family: 'museoSansRounded';
+    src: url('/wp-content/uploads/cw-fonts/museosansrounded-900.woff2') format('woff2');
+    font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+    font-family: 'museoSansRounded';
+    src: url('/wp-content/uploads/cw-fonts/museosansrounded-1000.woff2') format('woff2');
+    font-weight: 1000; font-style: normal; font-display: swap;
+}
+html { scroll-behavior: smooth; }
+body, .cw-lp-section, .cw-lp-section *, .cw-lp-hero, .cw-lp-hero *, .cw-lp-cta, .cw-lp-cta *, .cw-lp-footer, .cw-lp-footer *, .cw-lp-faq, .cw-lp-faq *, .cw-lp-social, .cw-lp-social *, .cw-lp-form-card * {
+    font-family: 'museoSansRounded', ui-sans-serif, system-ui, sans-serif !important;
+}
+.cw-lp-hero {
+    background: linear-gradient(266deg, #a543fb 43%, #59327a 86%) !important;
+    padding: 84px 24px 164px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+@media (max-width: 1024px) and (min-width: 769px) { .cw-lp-hero { padding: 92px 24px 172px; } }
+@media (max-width: 768px) { .cw-lp-hero { padding: 60px 20px 112px; } }
+.cw-lp-hero-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding-right: 58px;
+    display: flex; gap: 48px; align-items: center;
+    position: relative; z-index: 2;
+}
+@media (max-width: 1024px) { .cw-lp-hero-inner { padding-right: 0; } }
+.cw-lp-hero-inner > :first-child { flex: 1 1 0; min-width: 0; }
+.cw-lp-hero-inner > :last-child { flex: 0 0 533px; max-width: 533px; }
+@media (max-width: 1024px) and (min-width: 769px) {
+    .cw-lp-hero-inner > :last-child { flex: 0 0 400px; max-width: 400px; }
+}
+@media (max-width: 768px) {
+    .cw-lp-hero-inner { flex-direction: column; gap: 32px; }
+    .cw-lp-hero-inner > :last-child { flex: 1 1 100%; width: 100%; max-width: 100%; }
+}
+.cw-lp-hero-logo { width: 190px; height: auto; margin: 0 0 40px; display: block; }
+@media (max-width: 1024px) and (min-width: 769px) { .cw-lp-hero-logo { width: 150px; margin-bottom: 28px; } }
+@media (max-width: 768px) { .cw-lp-hero-logo { width: 140px; margin-bottom: 24px; } }
+.cw-lp-hero h1 {
+    color: #fff; font-size: 60px; font-weight: 800; line-height: 57px;
+    margin: 0 0 24px; letter-spacing: normal; max-width: 600px;
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+    .cw-lp-hero h1 { font-size: 42px; line-height: 1.05; }
+    .cw-lp-hero p.cw-lead { font-size: 20px; line-height: 1.35; }
+}
+@media (max-width: 768px) { .cw-lp-hero h1 { font-size: 44px; line-height: 1.04; max-width: 100%; } }
+.cw-lp-hero p.cw-lead {
+    color: #fff; font-size: 25px; line-height: 30px;
+    margin: 0 0 32px; max-width: 480px; font-weight: 500;
+}
+@media (max-width: 768px) { .cw-lp-hero p.cw-lead { font-size: 18px; line-height: 1.4; } }
+.cw-lp-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+.cw-lp-badge {
+    background: #ff5959; color: #fff; padding: 8px 22px; border-radius: 9999px;
+    font-size: 14px; font-weight: 700; display: inline-block;
+}
+.cw-lp-form-card {
+    background: transparent; padding: 0; border-radius: 0; box-shadow: none;
+    max-width: 427px; width: 100%; margin: 0 auto;
+    scroll-margin-top: 60px;
+}
+.cw-lp-form-card h3 { display: none; }
+.cw-lp-form {
+    background: #fff !important; border-radius: 18px !important; padding: 32px !important;
+    box-shadow: 0 14px 44px rgba(0,0,0,0.16);
+}
+.cw-lp-form-row { margin-bottom: 12px; }
+.cw-lp-form-row label {
+    display: block; font-size: 14px; font-weight: 500; color: #421a64;
+    line-height: 20px; margin: 0 0 4px;
+}
+.cw-lp-form .cw-lp-form-row input[type="text"],
+.cw-lp-form .cw-lp-form-row input[type="email"],
+.cw-lp-form .cw-lp-form-row input[type="tel"],
+.cw-lp-form .cw-lp-form-row select {
+    width: 100% !important;
+    height: 44px !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+    border: 2px solid #9c95b3 !important;
+    border-radius: 10px !important;
+    font-size: 14px !important; line-height: 20px !important;
+    color: #421a64 !important;
+    background: #fff !important; outline: none !important; transition: border 0.15s;
+    font-family: inherit !important; display: block !important;
+    -webkit-appearance: none; appearance: none;
+    box-shadow: none !important; margin: 0 !important;
+}
+.cw-lp-form .cw-lp-form-row select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%239c95b3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 2 6 7 11 2'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 14px center !important;
+    background-size: 11px !important;
+    padding-right: 36px !important;
+}
+.cw-lp-form .cw-lp-form-row input:focus,
+.cw-lp-form .cw-lp-form-row select:focus { border-color: #a543fb !important; }
+.cw-lp-form-row input::placeholder { color: #b3a8bf; }
+.cw-lp-form-check { display: flex; align-items: flex-start; gap: 8px; margin: 12px 0 14px; }
+.cw-lp-form-check input { margin-top: 3px; flex-shrink: 0; }
+.cw-lp-form-check label { font-size: 11px; color: #4a4250; line-height: 1.4; font-weight: 500; }
+.cw-lp-form-check a { color: #a543fb; text-decoration: underline; }
+.cw-lp-form-submit {
+    background: #ff5959; color: #fff !important; width: 100%; padding: 14px 24px;
+    border: 0; border-radius: 10px; font-size: 15px; font-weight: 700;
+    line-height: 22.5px; letter-spacing: 0.75px; text-transform: uppercase; cursor: pointer;
+    font-family: inherit; transition: background 0.15s;
+}
+.cw-lp-form-submit:hover { background: #ef4848; }
+
+.cw-lp-wave {
+    position: absolute; bottom: -1px; left: 0; right: 0; width: 100%;
+    height: 110px; pointer-events: none; z-index: 1; display: block;
+}
+@media (max-width: 768px) { .cw-lp-wave { height: 70px; } }
+
+.cw-lp-section {
+    /* gap entre subseções no "grupo features": 80px total = 40 + 40 */
+    padding: 40px 24px;
+    background: #fff;
+}
+.cw-lp-section.alt { background: #fff; }
+/* "grupo features" (Atendimento + Vendas + Gestão): borda externa do grupo tem 80px */
+.cw-lp-section.feature-group-start { padding-top: 80px; }
+.cw-lp-section.feature-group-end   { padding-bottom: 80px; }
+/* Section RFV (Aumente vendas com estratégia): bg lavanda próprio + padding 80px + cor cinza */
+.cw-lp-section.rfv-section {
+    background: #f4edf7;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.cw-lp-section.rfv-section h2 {
+    color: #4b5563;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.cw-lp-section.rfv-section p.cw-body {
+    color: #4b5563;
+    margin-bottom: 16px;
+}
+.cw-lp-section.rfv-section p.cw-body:nth-of-type(2) {
+    margin-bottom: 32px;
+}
+.cw-lp-section-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 0;
+    display: flex; gap: 64px; align-items: center;
+}
+.cw-lp-section-inner > * { flex: 1 1 0; min-width: 0; }
+.cw-lp-section.reverse .cw-lp-section-inner { flex-direction: row-reverse; }
+@media (max-width: 1024px) {
+    .cw-lp-section-inner,
+    .cw-lp-section.reverse .cw-lp-section-inner { flex-direction: column !important; }
+}
+.cw-lp-pre {
+    display: inline-block; background: #f4edf7; color: #59327a;
+    font-size: 14px; font-weight: 500;
+    padding: 6px 16px; border-radius: 9999px;
+    margin: 0 0 16px;
+}
+/* pill sempre lavanda, mesmo em alt sections */
+.cw-lp-section h2 {
+    color: #59327a; font-size: 44px; font-weight: 700; line-height: 52.8px;
+    margin: 0 0 14px;
+}
+.cw-lp-section p.cw-body {
+    color: #59327a; font-size: 18px; line-height: 28.8px; font-weight: 400;
+    margin: 0 0 20px;
+}
+.cw-lp-bullets { list-style: none; padding: 0; margin: 0 0 24px; }
+.cw-lp-bullets li {
+    padding-left: 30px; position: relative; font-size: 17px; color: #59327a;
+    margin-bottom: 8px; line-height: 1.5; font-weight: 500;
+}
+.cw-lp-bullets li::before {
+    content: '✓'; position: absolute; left: 0; top: 0;
+    color: #ff5959; font-weight: 800; font-size: 18px; line-height: 1.5;
+}
+.cw-lp-cta-btn {
+    display: inline-block; background: #ff5959; color: #fff !important;
+    padding: 12px 28px; border-radius: 5px; font-weight: 800; font-size: 16px;
+    line-height: 24px; text-decoration: none; transition: all 0.2s;
+}
+.cw-lp-cta-btn:hover { background: #ef4848; transform: translateY(-1px); }
+.cw-lp-section img { border-radius: 0; width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto; }
+
+.cw-lp-social {
+    padding: 80px 24px; background: #fff; text-align: center;
+}
+.cw-lp-social-inner { max-width: 1280px; margin: 0 auto; }
+.cw-lp-social h2 {
+    color: #4b5563; font-size: 36px; font-weight: 700;
+    max-width: 1100px; margin: 0 auto 12px; line-height: 1.25;
+}
+@media (max-width: 1024px) and (min-width: 769px) { .cw-lp-social h2 { font-size: 32px; } }
+@media (max-width: 768px) { .cw-lp-social h2 { font-size: 26px; } }
+.cw-lp-social h2 strong { color: #ff5959; font-weight: 700; }
+.cw-lp-social p { color: #4b5563; font-size: 18px; margin: 0 0 40px; }
+.cw-lp-clients {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px;
+    max-width: 1280px; margin: 0 auto 40px; align-items: center;
+}
+@media (max-width: 1024px) and (min-width: 769px) { .cw-lp-clients { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+    .cw-lp-clients { grid-template-columns: 1fr; gap: 16px; max-width: 280px; }
+    .cw-lp-client-card { height: 130px !important; padding: 16px 12px !important; }
+    .cw-lp-client-card img { max-width: 110px !important; max-height: 60px !important; }
+}
+.cw-lp-client-card {
+    background: #fff; border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(89,50,122,0.08);
+    padding: 12px;
+    display: flex; align-items: center; justify-content: center;
+    height: 130px;
+}
+.cw-lp-client-card img {
+    max-width: 100%; max-height: 100px; height: auto; width: auto;
+    display: block; object-fit: contain;
+}
+.cw-lp-social-cta {
+    display: inline-block; background: #ff5959; color: #fff !important;
+    padding: 12px 28px; border-radius: 5px;
+    font-size: 16px; font-weight: 800; line-height: 24px;
+    text-decoration: none; transition: all 0.2s;
+}
+.cw-lp-social-cta:hover { background: #ef4848; transform: translateY(-1px); }
+
+.cw-lp-cta {
+    background: linear-gradient(266deg, #a543fb 43%, #59327a 86%);
+    padding: 80px 24px; color: #fff;
+}
+.cw-lp-cta-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; gap: 48px; align-items: center;
+}
+.cw-lp-cta-inner > :first-child { flex: 1 1 0; min-width: 0; max-width: 647px; }
+.cw-lp-cta-inner > :last-child { flex: 1 1 0; min-width: 0; }
+@media (max-width: 1024px) { .cw-lp-cta-inner { flex-direction: column; } }
+.cw-lp-cta h2 {
+    color: #fff; font-size: 46px; font-weight: 700; line-height: 55.2px;
+    margin: 0 0 20px; max-width: 647px;
+}
+@media (max-width: 768px) { .cw-lp-cta h2 { font-size: 32px; line-height: 1.2; } }
+.cw-lp-cta p {
+    color: #fff; font-size: 19px; line-height: 30.4px;
+    margin: 0 0 32px; max-width: 420px;
+}
+.cw-lp-cta-button {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #ff5959; color: #fff !important;
+    padding: 12px 28px; border-radius: 5px;
+    font-weight: 800; font-size: 16px; line-height: 24px;
+    text-decoration: none;
+}
+.cw-lp-cta-button:hover { background: #ef4848; transform: translateY(-1px); }
+.cw-lp-cta-inner img { max-width: 100%; height: auto; }
+
+/* Segunda CTA — card lavanda dentro de bg roxo */
+.cw-lp-cta-card-section {
+    background: #59327a;
+    padding: 80px 24px;
+}
+.cw-lp-cta-card {
+    max-width: 1280px; margin: 0 auto;
+    background: #f4edf7;
+    border-radius: 24px;
+    padding: 56px 32px;
+    text-align: center;
+}
+.cw-lp-cta-card h2 {
+    color: #4b5563; font-size: 40px; font-weight: 700; line-height: 1.2;
+    margin: 0 auto 16px; max-width: 800px;
+}
+@media (max-width: 768px) { .cw-lp-cta-card h2 { font-size: 28px; } }
+.cw-lp-cta-card p {
+    color: #4b5563; font-size: 17px; line-height: 1.6;
+    margin: 0 auto 28px; max-width: 720px;
+}
+.cw-lp-cta-card-btn {
+    display: inline-block; background: #ff5959; color: #fff !important;
+    padding: 12px 28px; border-radius: 5px;
+    font-weight: 800; font-size: 16px; line-height: 24px;
+    text-decoration: none;
+}
+.cw-lp-cta-card-btn:hover { background: #ef4848; }
+
+.cw-lp-faq { padding: 80px 24px; background: #fff; }
+.cw-lp-faq-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; gap: 40px; align-items: flex-start;
+}
+@media (max-width: 1024px) {
+    .cw-lp-faq-inner { flex-direction: column; gap: 32px; }
+}
+.cw-lp-faq-left { flex: 0 0 580px; }
+@media (max-width: 1024px) { .cw-lp-faq-left { flex: 1 1 100%; } }
+.cw-lp-faq-right { flex: 0 0 660px; min-width: 0; }
+@media (max-width: 1024px) { .cw-lp-faq-right { flex: 1 1 100%; } }
+.cw-lp-faq-pre {
+    display: block; color: #59327a; font-size: 16px; font-weight: 500;
+    margin: 0 0 10px;
+}
+.cw-lp-faq h2 {
+    color: #2a1640; font-size: 40px; font-weight: 700; line-height: 1.15;
+    margin: 0 0 28px;
+}
+.cw-lp-faq-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #ff5959; color: #fff !important;
+    padding: 12px 28px; border-radius: 5px;
+    font-size: 16px; font-weight: 800; line-height: 24px;
+    text-decoration: none; transition: all 0.2s;
+}
+.cw-lp-faq-cta:hover { background: #ef4848; transform: translateY(-1px); }
+.cw-lp-faq details {
+    border: 1px solid #e5e0eb; border-radius: 8px; margin-bottom: 12px;
+    cursor: pointer; transition: border 0.2s; background: #fff;
+}
+.cw-lp-faq details summary {
+    list-style: none; font-weight: 600; color: #2a1640; font-size: 16px;
+    display: flex; align-items: center; padding: 16px 20px;
+    line-height: 1.4; gap: 8px;
+}
+.cw-lp-faq details summary::-webkit-details-marker { display: none; }
+.cw-lp-faq details summary .num { font-weight: 600; color: #2a1640; flex-shrink: 0; }
+.cw-lp-faq details summary > span:nth-of-type(2),
+.cw-lp-faq details summary { flex: 1; }
+.cw-lp-faq details summary::after {
+    content: ''; width: 16px; height: 16px;
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%23a543fb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4 6 8 10 12 6'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    transition: transform 0.2s;
+    flex-shrink: 0; margin-left: auto;
+}
+.cw-lp-faq details[open] summary::after { transform: rotate(180deg); }
+.cw-lp-faq details p {
+    margin: 0; padding: 0 20px 16px;
+    color: #4a4250; font-size: 14px; line-height: 1.6;
+    font-weight: 400;
+}
+
+.cw-lp-footer {
+    background: #59327a; color: #fff;
+    padding: 56px 24px 56px;
+    text-align: center;
+}
+.cw-lp-footer-inner { max-width: 800px; margin: 0 auto; }
+.cw-lp-footer-logo {
+    width: 140px; height: auto; display: block; margin: 0 auto 32px;
+}
+.cw-lp-footer p {
+    margin: 0 0 6px;
+    font-size: 14px; line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+}
+.cw-lp-footer-links {
+    margin: 20px 0 24px !important;
+    display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+}
+.cw-lp-footer-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: underline;
+    font-size: 14px;
+}
+.cw-lp-footer-links a:hover { color: #fff; }
+.cw-lp-footer-copyright {
+    font-size: 13px !important;
+    color: rgba(255,255,255,0.6) !important;
+}
+
+/* ── CTA fixo no mobile (26/jul/2026) ─────────────────────────────
+   No desktop o form já é primeira dobra (card ao lado do hero);
+   no mobile ele empilha abaixo, então a barra leva direto pro #form. */
+.cw-sticky-cta { display: none; }
+@media (max-width: 781px) {
+  .cw-sticky-cta {
+    display: block; position: fixed; left: 12px; right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 9999;
+    background: #6C36D9; color: #fff; text-align: center;
+    font-weight: 700; font-size: 16px; padding: 14px 16px;
+    border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.25);
+    text-decoration: none;
+  }
+  .cw-sticky-cta:hover, .cw-sticky-cta:focus { color: #fff; text-decoration: none; }
+  html { scroll-behavior: smooth; }
+  body { padding-bottom: 78px; } /* não deixa a barra cobrir o rodapé */
+}
+
+
+/* ══ Blocos de prova — fiéis ao padrão da home (cardapioweb.com) ══════════
+   Correções após comparação visual dos screenshots home × preview:
+   · fonte museoSansRounded herdada (antes caía em system-ui)
+   · nome/negócio em linhas separadas (antes colavam)
+   · cards de altura igual, número alinhado no rodapé
+   · aspas decorativas removidas (não existem na home)
+   · integrações com LOGO real em card branco (antes era texto)
+   · paleta alternada como a home faz: roxo → lilás → branco (sem gradiente
+     colidindo com a seção vizinha)
+   Cores: roxo #59327A · coral #FF5959 · lilás #F4EDF7 · texto #4B5563      */
+
+.cw-nums,.cw-depo-sec,.cw-int,.cw-sup{font-family:'museoSansRounded',ui-sans-serif,system-ui,sans-serif}
+
+/* 1. Números — wrapper único com o gradiente do hero, então não há emenda.
+   Hero e faixa ficam transparentes dentro dele; container alinhado (1280px
+   + padding-right 58px, igual ao .cw-lp-hero-inner). */
+.cw-hero-wrap{background:linear-gradient(266deg,#a543fb 43%,#59327a 86%)}
+.cw-hero-wrap .cw-lp-hero{background:transparent !important;padding-bottom:56px !important}
+.cw-hero-wrap .cw-lp-wave{display:none !important}
+.cw-nums{background:transparent;padding:0 24px 56px}
+.cw-nums-in{max-width:1280px;margin:0 auto;padding-right:58px;display:flex;flex-wrap:wrap;
+  gap:24px;align-items:center}
+.cw-num{flex:1 1 210px;max-width:300px;display:flex;align-items:center;gap:13px}
+.cw-num-ic{flex:none;width:48px;height:48px;border-radius:14px;background:#FF5959;
+  display:flex;align-items:center;justify-content:center}
+.cw-num-ic svg{width:26px;height:26px;fill:#fff}
+.cw-num-tx b{display:block;font-size:32px;font-weight:700;color:#fff;line-height:1.05;
+  letter-spacing:-.027em;font-variant-numeric:tabular-nums}
+.cw-num-tx i{display:block;font-style:normal;font-size:13px;font-weight:500;color:#F4EDF7;
+  margin-top:2px;line-height:1.3;opacity:.92}
+
+/* 2. Depoimentos — roxo sólido + cards glass, igual à home */
+.cw-depo-sec{background:#59327A;padding:72px 20px}
+.cw-depo-head{max-width:881px;margin:0 auto 34px;text-align:center}
+.cw-depo-eyebrow{display:inline-block;background:#FFFFFF1A;color:#fff;border-radius:2rem;
+  padding:5px 26px;font-size:12.5px;font-weight:600;margin-bottom:14px}
+.cw-depo-h2{color:#fff;font-size:40px;font-weight:700;letter-spacing:-.02em;margin:0 0 10px;line-height:1.15}
+.cw-depo-sub{color:#FFFFFFE6;font-size:17px;font-weight:500;max-width:750px;margin:0 auto}
+.cw-depo-row{max-width:1180px;margin:0 auto;display:flex;gap:24px;align-items:stretch}
+.cw-depo-card{flex:1 1 0;background:#FFFFFF14;border-radius:16px;padding:28px;
+  display:flex;flex-direction:column}
+.cw-depo-quote{color:#fff;font-size:15.5px;font-weight:400;line-height:1.55;margin:0 0 auto;padding-bottom:22px}
+.cw-depo-who{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.cw-depo-who img{width:56px;height:56px;border-radius:100%;object-fit:cover;flex:none;background:#FFFFFF22}
+.cw-depo-nome{display:block;color:#fff;font-weight:600;font-size:15px;line-height:1.35}
+.cw-depo-neg{display:block;color:#F4EDF7;font-size:13px;font-weight:400;line-height:1.35;opacity:.85}
+.cw-depo-div{height:1px;background:#FFFFFF33;margin:0 0 14px}
+.cw-depo-val{color:#fff;font-size:26px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.cw-depo-val-lb{color:#F4EDF7;font-size:13px;font-weight:500;margin-top:3px;opacity:.85}
+
+/* 3. Integrações — fundo lilás com cards brancos (contraste, como na home:
+   card branco só "existe" sobre fundo colorido). Logo grande, pouco padding. */
+.cw-int{background:#F4EDF7;padding:66px 20px}
+.cw-int-in{max-width:1180px;margin:0 auto;text-align:center}
+.cw-int-eyebrow{display:inline-block;background:#fff;color:#59327A;border-radius:2rem;
+  padding:5px 26px;font-size:12.5px;font-weight:700;margin-bottom:14px}
+.cw-int-h2{color:#4B5563;font-size:36px;font-weight:700;letter-spacing:-.02em;margin:0 0 10px;line-height:1.2}
+.cw-int-h2 span{color:#FF5959}
+.cw-int-sub{color:#6B6478;font-size:17px;font-weight:500;max-width:640px;margin:0 auto 34px}
+.cw-int-linha{display:flex;align-items:center;gap:20px;padding:14px 0;
+  border-top:1px solid #E4D9EF;text-align:left}
+.cw-int-linha:first-of-type{border-top:none}
+.cw-int-cat{flex:0 0 160px;font-size:14px;font-weight:700;color:#59327A}
+.cw-int-logos{flex:1;display:flex;flex-wrap:wrap;gap:12px}
+.cw-int-card{box-sizing:border-box;background:#fff;border-radius:16px;width:174px;height:104px;
+  display:flex;align-items:center;justify-content:center;padding:16px 20px;
+  box-shadow:0 1px 3px rgba(89,50,122,.06);
+  transition:box-shadow .15s ease,transform .15s ease}
+.cw-int-card:hover{box-shadow:0 8px 22px rgba(89,50,122,.14);transform:translateY(-2px)}
+.cw-int-card img{max-width:68%;max-height:52%;object-fit:contain}
+.cw-int-api{color:#4B5563;font-size:16px;font-weight:600;margin-top:28px}
+.cw-int-api b{color:#59327A}
+
+/* 4. Suporte — uma frase forte, sem grade de horários */
+.cw-sup{background:#fff;padding:64px 20px}
+.cw-sup-in{max-width:900px;margin:0 auto;text-align:center}
+.cw-sup-eyebrow{display:inline-block;background:#F4EDF7;color:#59327A;border-radius:2rem;
+  padding:5px 26px;font-size:12.5px;font-weight:700;margin-bottom:16px}
+.cw-sup-h2{color:#4B5563;font-size:34px;font-weight:700;letter-spacing:-.02em;margin:0 0 14px;line-height:1.25}
+.cw-sup-h2 span{color:#59327A}
+.cw-sup-sub{color:#6B6478;font-size:18px;font-weight:500;margin:0 auto;max-width:700px;line-height:1.5}
+
+@media(max-width:1024px){
+  .cw-depo-row{flex-wrap:wrap}
+  .cw-depo-card{flex:1 1 300px}
+  .cw-depo-h2{font-size:32px}
+  .cw-int-h2{font-size:29px}
+}
+@media(max-width:781px){
+  .cw-nums{padding:32px 16px}
+  .cw-num{flex:1 1 100%;max-width:none}
+  .cw-num-tx b{font-size:28px}
+  .cw-depo-sec,.cw-int{padding:46px 16px}
+  .cw-depo-h2{font-size:25px}
+  .cw-int-h2{font-size:23px}
+  .cw-depo-sub,.cw-int-sub{font-size:15.5px}
+  .cw-depo-row{flex-direction:column;gap:16px}
+  .cw-int-card{width:calc((100% - 16px)/3);min-width:0;height:66px;padding:8px 10px;border-radius:12px}
+  .cw-int-card img{max-width:84%;max-height:64%;width:auto !important}
+  .cw-int-logos{gap:8px}
+  .cw-int-linha{padding:12px 0;gap:6px}
+  .cw-int-cat{font-size:13px}
+  .cw-int-linha{flex-direction:column;align-items:flex-start;gap:8px}
+  .cw-int-cat{flex:none}
+  .cw-int-logos{justify-content:flex-start}
+  .cw-sup-h2{font-size:24px}
+  .cw-sup-sub{font-size:16px}
+  .cw-int-grid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+}
+
+/* Linhas com poucos logos: no mobile os cards dividem a largura toda em vez
+   de deixarem um terço vazio (Marketplaces e Pagamento têm 2 cada). */
+@media(max-width:781px){
+  /* a linha vira coluna com align-items:flex-start, o que encolhe o container
+     dos logos até o conteúdo — sem isto, o width:33% dos cards vira 33% de nada */
+  .cw-int-linha .cw-int-logos{width:100%}
+  .cw-int-logos[data-n="2"] .cw-int-card{width:calc((100% - 8px)/2)}
+  /* card mais largo => % menor, para o logo ocupar a mesma área óptica
+     das linhas de 3 e nenhuma marca parecer maior que as outras */
+  .cw-int-logos[data-n="2"] .cw-int-card img{max-width:52%}
+}
+
+/* 6. Funcionalidades — réplica compacta da seção da home (texto verbatim, aprovado).
+   Server-side: o AdsBot lê nomes de funcionalidade que compramos em C2/C4 (PDV,
+   disparo, nota fiscal, estoque). Sem JS, sem imagem: só custa ~10KB de HTML. */
+.cw-func{background:#fff;padding:64px 20px}
+.cw-func-in{max-width:1120px;margin:0 auto}
+.cw-func-eyebrow{display:inline-block;background:#F4EDF7;color:#59327A;border-radius:2rem;
+  padding:5px 16px;font-size:13px;font-weight:700}
+.cw-func-h2{color:#59327A;font-size:34px;font-weight:900;margin:14px 0 6px;line-height:1.2}
+.cw-func-h2 span{color:#FF5959}
+.cw-func-sub{color:#4B5563;font-size:17px;margin:0 0 10px;max-width:640px}
+.cw-func-cat{color:#59327A;font-size:15px;font-weight:900;text-transform:uppercase;
+  letter-spacing:.06em;margin:34px 0 4px;padding-bottom:8px;border-bottom:2px solid #F4EDF7}
+.cw-func-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 34px;margin-top:18px}
+.cw-func-item h4{color:#1F2937;font-size:16.5px;font-weight:700;margin:0 0 4px;
+  padding-left:26px;position:relative}
+.cw-func-item h4::before{content:"";position:absolute;left:0;top:3px;width:16px;height:16px;
+  border-radius:50%;background:#FF5959;
+  -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="black" d="M6.4 12.3 2.5 8.4l1.4-1.4 2.5 2.5 5.7-5.7 1.4 1.4z"/></svg>') center/contain no-repeat;
+  mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="black" d="M6.4 12.3 2.5 8.4l1.4-1.4 2.5 2.5 5.7-5.7 1.4 1.4z"/></svg>') center/contain no-repeat}
+.cw-func-item p{color:#6B7280;font-size:14px;line-height:1.55;margin:0;padding-left:26px}
+@media(max-width:900px){.cw-func-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .cw-func{padding:48px 20px}
+  .cw-func-h2{font-size:27px}
+  .cw-func-grid{grid-template-columns:1fr;gap:18px}
+}
+
+</style>
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://lp.cardapioweb.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flp.cardapioweb.com%2Flp-google-ads-3%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://lp.cardapioweb.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flp.cardapioweb.com%2Flp-google-ads-3%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://lp.cardapioweb.com/wp-includes/css/dist/block-library/style.min.css?ver=1076b8fefcdc1380570bfccb4d8600c7' media='all' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:root :where(.wp-block-icon svg){width: 24px;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<style id="kadence-blocks-global-variables-inline-css">
+:root {--global-kb-font-size-sm:clamp(0.8rem, 0.73rem + 0.217vw, 0.9rem);--global-kb-font-size-md:clamp(1.1rem, 0.995rem + 0.326vw, 1.25rem);--global-kb-font-size-lg:clamp(1.75rem, 1.576rem + 0.543vw, 2rem);--global-kb-font-size-xl:clamp(2.25rem, 1.728rem + 1.63vw, 3rem);--global-kb-font-size-xxl:clamp(2.5rem, 1.456rem + 3.26vw, 4rem);--global-kb-font-size-xxxl:clamp(2.75rem, 0.489rem + 7.065vw, 6rem);}:root {--global-palette1: #3182CE;--global-palette2: #2B6CB0;--global-palette3: #1A202C;--global-palette4: #2D3748;--global-palette5: #4A5568;--global-palette6: #718096;--global-palette7: #EDF2F7;--global-palette8: #F7FAFC;--global-palette9: #ffffff;}
+/*# sourceURL=kadence-blocks-global-variables-inline-css */
+</style>
+<script type='text/javascript'>
+		var elementskit = {
+			resturl: 'https://lp.cardapioweb.com/wp-json/elementskit/v1/',
+		}
+
+		</script><link rel="https://api.w.org/" href="https://lp.cardapioweb.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://lp.cardapioweb.com/wp-json/wp/v2/pages/39429" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lp.cardapioweb.com/xmlrpc.php?rsd" />
+<link rel="canonical" href="https://lp.cardapioweb.com/lp-google-ads-3/" />
+<meta name="generator" content="Elementor 4.0.8; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+<style>
+
+.input-error {
+    border: 2px solid red;
+}
+
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const telefone = document.querySelector('#form-field-telefone'); 
+    const form = document.querySelector('.elementor-form'); 
+
+    if (telefone && form) {
+        telefone.addEventListener('blur', function () {
+            const valorTelefone = telefone.value.trim();
+            const regex = /^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$/;
+
+            // Verifica se o número é válido
+            if (!regex.test(valorTelefone)) {
+                telefone.classList.add('input-error'); 
+                // Exibe a mensagem de erro abaixo do campo
+                if (!telefone.nextElementSibling || !telefone.nextElementSibling.classList.contains('error-message')) {
+                    const errorMessage = document.createElement('span');
+                    errorMessage.classList.add('error-message');
+                    errorMessage.innerText = 'Número incompleto';
+                    telefone.parentNode.insertBefore(errorMessage, telefone.nextSibling);
+                }
+
+                // Limpa o campo após 2 segundos
+                setTimeout(function () {
+                    telefone.value = ''; 
+                    telefone.classList.remove('input-error'); 
+                    if (telefone.nextElementSibling && telefone.nextElementSibling.classList.contains('error-message')) {
+                        telefone.nextElementSibling.remove(); 
+                    }
+                }, 2000);
+            } else {
+                telefone.classList.remove('input-error'); // Remove borda vermelha se o número for válido
+                if (telefone.nextElementSibling && telefone.nextElementSibling.classList.contains('error-message')) {
+                    telefone.nextElementSibling.remove(); // Remove a mensagem de erro
+                }
+            }
+        });
+
+        // Limpa a mensagem de erro enquanto o usuário digita
+        telefone.addEventListener('input', function () {
+            if (telefone.classList.contains('input-error')) {
+                telefone.classList.remove('input-error');
+                if (telefone.nextElementSibling && telefone.nextElementSibling.classList.contains('error-message')) {
+                    telefone.nextElementSibling.remove();
+                }
+            }
+        });
+    }
+});
+</script>
+
+<!-- [cw] GTM removed -->
+ <style>
+	 #rd-select_field-Pd4VaTiHhoMvbrX9fAxy6g  {
+		 height:40px !important;
+	 }
+ </style>
+<!-- [cw] Clarity removed -->
+<script>
+  // Código de captura UTM com localStorage do repositório
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const utms = {
+      utm_source: params.get('utm_source'),
+      utm_medium: params.get('utm_medium'),
+      utm_campaign: params.get('utm_campaign'),
+      utm_term: params.get('utm_term'),
+      utm_content: params.get('utm_content')
+    };
+    localStorage.setItem('rd_utms', JSON.stringify(utms));
+    // Preenche campos hidden no form RD
+    document.addEventListener('DOMContentLoaded', function() {
+      const fields = document.querySelectorAll('input[name^="utm_"]');
+      Object.keys(utms).forEach(key => {
+        const field = document.querySelector(`input[name="${key}"]`);
+        if (field && utms[key]) field.value = utms[key];
+      });
+    });
+  })();
+</script>
+
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<link rel="icon" href="https://lp.cardapioweb.com/wp-content/uploads/2023/09/Design-sem-nome-10-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://lp.cardapioweb.com/wp-content/uploads/2023/09/Design-sem-nome-10-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://lp.cardapioweb.com/wp-content/uploads/2023/09/Design-sem-nome-10-300x300.png" />
+<meta name="msapplication-TileImage" content="https://lp.cardapioweb.com/wp-content/uploads/2023/09/Design-sem-nome-10-300x300.png" />
+<style id="wp-custom-css">
+/* Estiliza o WPForms */
+
+.wpforms-field-medium{
+    max-width: 100% !important;
+    border-radius:6px !important;
+}
+
+.wpforms-field-label{
+    font-family: "Museo Sans Rounded",     Sans-serif;
+    font-weight: 500!important;
+}
+
+.wpforms-field-select {
+    max-width: 100%!important; border-radius:6px!important;
+}
+
+.wpforms-submit {
+       width: 100% !important;
+       margin-top: -20px !important;
+}
+.wpforms-submit:hover {
+    background-color:#a543fa!important;
+    color:#fff!important;
+}
+
+.wpforms-field-label{
+    margin: -1px !important;
+	  font-family: "Museo Sans Rounded",     Sans-serif;
+    font-weight: 500!important;
+}
+
+.wpforms-field{
+    padding-top: 2px !important;
+}
+
+/* Fim do código - Estiliza o WPForms */
+
+/* Ajeitar campos select form */
+select {
+	height:auto!important;
+}
+
+
+</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /><style id="cw-form-validation">.cw-lp-form .cw-field-invalid{border-color:#d33!important;box-shadow:0 0 0 2px rgba(221,51,51,0.15)!important;}.cw-lp-form .cw-field-error{color:#d33;font-size:12px;margin-top:4px;font-weight:600;}</style></head>
+<body data-rsssl=1 class="wp-singular page-template page page-id-39429 wp-custom-logo wp-embed-responsive">
+	<script>
+// Função para esconder campos
+document.addEventListener("DOMContentLoaded", function () {
+  const interval = setInterval(() => {
+    const fields = [
+      'cf_utm_source',
+      'cf_utm_medium',
+      'cf_utm_campaign',
+      'cf_gclid',
+      'cf_fbclid',
+      'cf_utm_term',
+      'cf_utm_content',
+      'cf_utm_placement',
+      'cf_origem_campanha',
+      'cf_track_publico',
+      'cf_track_foco_do_lead',
+      'form_fields[track_publico]',
+      'form_fields[track_foco_do_lead]'
+    ];
+
+    let allFound = true;
+
+    fields.forEach((fieldName) => {
+      const field = document.querySelector(`[name="${fieldName}"]`);
+      if (field) {
+        const wrapper = field.closest('.elementor-field-group') || field.parentElement;
+        if (wrapper) wrapper.style.display = 'none';
+      } else {
+        allFound = false;
+      }
+    });
+
+    if (allFound) {
+      clearInterval(interval);
+    }
+  }, 300);
+});
+</script>
+
+<script>
+// Função para preencher campos de UTMs do formulário
+(function observarCliqueBotaoWhatsappETentarPreencherUTMs() {
+  const utmCampos = [
+    'cf_utm_source',
+    'cf_utm_medium',
+    'cf_utm_campaign',
+    'cf_gclid',
+    'cf_fbclid',
+    'cf_utm_term',
+    'cf_utm_content',
+    'cf_utm_placement',
+    'cf_origem_campanha',
+    'cf_track_publico',
+		'cf_track_foco_do_lead',
+    'form_fields[track_publico]',
+    'form_fields[track_foco_do_lead]'
+  ];
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlParamsReferrer = new URLSearchParams(document.referrer.split('?')[1] || '');
+
+  function preencherCampos() {
+    utmCampos.forEach(campo => {
+      const nomeUTM = campo.includes('[')
+        ? campo.match(/\[(.*?)\]/)[1]
+        : campo.replace(/^cf_/, '').replace(/^form_fields\[/, '').replace(/\]$/, '');
+
+      const input = document.querySelector(`[name="${campo}"]`);
+      if (input) {
+        let valor = urlParams.get(nomeUTM) ??
+                    urlParamsReferrer.get(nomeUTM) ??
+                    ((campo === 'cf_utm_source' || campo === 'cf_origem_campanha') && document.referrer ? new URL(document.referrer).hostname : '');
+
+        if ((campo === 'cf_utm_source' || campo === 'cf_origem_campanha') && !valor) {
+          valor = 'direto';
+        }
+
+        // Se for um campo SELECT, tenta selecionar a opção correspondente
+        if (input.tagName === 'SELECT') {
+          for (const option of input.options) {
+            if (option.value.startsWith(valor)) {
+              option.selected = true;
+              break;
+            }
+          }
+        } else {
+          input.value = valor;
+        }
+
+        console.log(`[UTM] ${campo} preenchido:`, valor);
+      }
+    });
+
+    const slug = window.location.pathname.split('/')[1];
+    const campoSlug = document.querySelector('[name="cf_pagina_captura"]');
+    if (campoSlug) {
+      campoSlug.value = slug;
+      console.log('[UTM] cf_pagina_captura preenchido:', slug);
+    }
+  }
+
+  function aguardarFormulario() {
+    const formPresente = utmCampos.some(campo => document.querySelector(`[name="${campo}"]`));
+    if (formPresente) {
+      preencherCampos();
+    } else {
+      setTimeout(aguardarFormulario, 500);
+    }
+  }
+
+  function observarBotao() {
+    const botao = document.querySelector('#rd-floating_button-mab6bbxp');
+    if (botao) {
+      console.log('[UTM] Botão encontrado. Aguardando clique...');
+      botao.addEventListener('click', () => {
+        console.log('[UTM] Clique detectado. Esperando formulário...');
+        setTimeout(aguardarFormulario, 1000);
+      });
+    } else {
+      setTimeout(observarBotao, 500);
+    }
+  }
+
+  observarBotao();
+})();
+</script>
+
+<!-- [cw] GTM removed -->
+
+<!-- ==== CW NAVBAR (CSS puro, sem depender de JS) — bloco HTML no TOPO da página ==== -->
+<nav class="cwnav" id="cwnav">
+  <input type="checkbox" id="cwnav-check" class="cwnav-check" aria-hidden="true">
+  <div class="cwnav-inner">
+    <a href="#cw-inicio" class="cwnav-logo" aria-label="Cardápio Web - início">
+      <img loading="lazy" src="/wp-content/uploads/cw-logos/cw-logo-topo.webp" alt="Cardápio Web" width="110" height="71" decoding="async" fetchpriority="high">
+    </a>
+
+    <div class="cwnav-menu" id="cwnav-menu">
+      <a href="#cw-automacao" class="cwnav-link">Automação de atendimento</a>
+      <a href="#cw-vendas" class="cwnav-link">Ferramenta de vendas</a>
+      <a href="#cw-gestao" class="cwnav-link">Sistema de gestão</a>
+      <a href="#cw-estrategia" class="cwnav-link">Estratégia</a>
+      <a href="#cw-clientes" class="cwnav-link">Clientes</a>
+      <a href="#cw-faq" class="cwnav-link">FAQ</a>
+    </div>
+
+    <div class="cwnav-actions">
+      <a href="#form" class="cwnav-cta">Fale com um consultor</a>
+      <label for="cwnav-check" class="cwnav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+  </div>
+  <label for="cwnav-check" class="cwnav-overlay" aria-hidden="true"></label>
+</nav>
+
+<style>
+  body{--cwnav-h:90px}
+  .cwnav{position:sticky;top:0;left:0;width:100%;z-index:9999;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.05),0 6px 24px rgba(89,50,122,.07);font-family:inherit}
+  .cwnav *{box-sizing:border-box}
+  /* quando o admin bar do WordPress está visível (usuário logado), desce o navbar pra não ser cortado */
+  body.admin-bar .cwnav{top:32px}
+  @media screen and (max-width:782px){body.admin-bar .cwnav{top:46px}}
+  .cwnav-check{position:absolute;width:0;height:0;opacity:0;margin:0;pointer-events:none}
+  .cwnav-inner{position:relative;z-index:3;max-width:1400px;margin:0 auto;min-height:var(--cwnav-h);display:flex;align-items:center;gap:24px;padding:0 24px}
+  .cwnav-logo{display:flex;align-items:center;flex-shrink:0}
+  .cwnav-logo img{height:62px;width:auto;display:block}
+  .cwnav-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
+  .cwnav-link{display:inline-flex;align-items:center;padding:9px 12px;border-radius:8px;color:#2a1640;font-weight:500;font-size:15px;text-decoration:none;line-height:1.1;transition:color .15s;white-space:nowrap}
+  .cwnav-link:hover{color:#a543fb}
+  .cwnav-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .cwnav-cta{display:inline-flex;align-items:center;padding:12px 24px;border-radius:8px;background:#ff5959;color:#fff;font-weight:800;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .15s,transform .05s}
+  .cwnav-cta:hover{background:#ef4848}
+  .cwnav-cta:active{transform:translateY(1px)}
+  .cwnav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:0;cursor:pointer;padding:10px;flex-shrink:0}
+  .cwnav-toggle span{display:block;height:2.5px;width:100%;background:#2a1640;border-radius:2px;transition:transform .2s,opacity .2s}
+  .cwnav-overlay{display:none}
+  /* alvos de âncora não ficam escondidos sob a barra fixa */
+  #cw-inicio,#cw-automacao,#cw-vendas,#cw-gestao,#cw-estrategia,#cw-clientes,#cw-faq{scroll-margin-top:calc(var(--cwnav-h) + 12px)}
+  html{scroll-behavior:smooth}
+
+  @media (max-width:1080px){
+    body{--cwnav-h:76px}
+    .cwnav-logo img{height:48px}
+    .cwnav-toggle{display:flex}
+    .cwnav-menu{position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:8px 16px 18px;box-shadow:0 14px 24px rgba(42,22,64,.16);transform:translateY(-8px);opacity:0;visibility:hidden;transition:transform .18s ease,opacity .18s ease;max-height:calc(100vh - var(--cwnav-h) - 46px);overflow-y:auto;z-index:2}
+    .cwnav-link{padding:14px 12px;font-size:16px;border-bottom:1px solid #f4f1f7}
+    .cwnav-link:last-child{border-bottom:0}
+    .cwnav-cta{padding:11px 18px;font-size:14px}
+    .cwnav-overlay{display:block;position:fixed;inset:0;background:rgba(42,22,64,.35);opacity:0;visibility:hidden;transition:opacity .18s ease;z-index:1}
+    /* aberto (checkbox marcado) */
+    .cwnav-check:checked ~ .cwnav-inner .cwnav-menu{transform:translateY(0);opacity:1;visibility:visible}
+    .cwnav-check:checked ~ .cwnav-overlay{opacity:1;visibility:visible}
+    .cwnav-check:checked ~ .cwnav-inner .cwnav-toggle span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+    .cwnav-check:checked ~ .cwnav-inner .cwnav-toggle span:nth-child(2){opacity:0}
+    .cwnav-check:checked ~ .cwnav-inner .cwnav-toggle span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  }
+  @media (max-width:420px){
+    .cwnav-cta{padding:10px 14px;font-size:13px}
+    .cwnav-logo img{height:42px}
+  }
+</style>
+
+<script>
+/* Melhoria progressiva: fecha o menu mobile ao clicar num link. O navbar já
+   funciona 100% sem este script (âncoras por id + toggle via CSS/checkbox). */
+(function(){
+  function wire(){
+    var chk=document.getElementById('cwnav-check');
+    var menu=document.getElementById('cwnav-menu');
+    if(!chk||!menu) return;
+    menu.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click',function(){ chk.checked=false; });
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',wire);}else{wire();}
+})();
+</script>
+<!-- ==== /CW NAVBAR ==== -->
+
+
+<!-- v: 2026-05-17-sync14 -->
+
+
+<div class="cw-hero-wrap"><section id="cw-inicio" class="cw-lp-hero">
+<div class="cw-lp-hero-inner">
+  <div>
+    <img decoding="async" class="cw-lp-hero-logo" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/cardapio-web-branca-300_c-768x284.png.webp" alt="Cardápio Web" />
+    <h1>O Cardápio Digital<br>mais completo do Brasil</h1>
+    <p class="cw-lead">Cardápio digital, sistema de gestão e integrações com Whatsapp, tudo isso num só lugar!</p>
+    <div class="cw-lp-badges">
+      <span class="cw-lp-badge">Gestão</span>
+      <span class="cw-lp-badge">Automação</span>
+      <span class="cw-lp-badge">+ Vendas</span>
+    </div>
+  </div>
+  <div>
+    <div class="cw-lp-form-card" id="form">
+      <h3>Fale com um consultor</h3>
+      <form class="cw-lp-form" method="post" action="/wp-json/cw/v1/submit">
+        <!-- Honeypot anti-bot (oculto) -->
+        <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+          <label>Website (não preencha)</label>
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="cw-lp-form-row">
+          <label for="cw-nome">Nome</label>
+          <input type="text" id="cw-nome" name="nome" placeholder="Nome" required pattern="^\S+\s+\S+.*$" title="Digite nome e sobrenome">
+        </div>
+        <div class="cw-lp-form-row">
+          <label for="cw-empresa">Empresa</label>
+          <input type="text" id="cw-empresa" name="empresa" placeholder="Empresa" required>
+        </div>
+        <div class="cw-lp-form-row">
+          <label for="cw-email">Email</label>
+          <input type="email" id="cw-email" name="email" placeholder="Email" required pattern="[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}" title="Digite um email válido">
+        </div>
+        <div class="cw-lp-form-row">
+          <label for="cw-telefone">Telefone</label>
+          <input type="tel" id="cw-telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required maxlength="15" inputmode="numeric" pattern="\(\d{2}\)\s\d{4,5}-\d{4}" title="Formato: (XX) XXXXX-XXXX">
+        </div>
+        <div class="cw-lp-form-row">
+          <label for="cw-faturamento">Faturamento mensal</label>
+          <select id="cw-faturamento" name="faturamento" required>
+            <option value="" disabled selected>Selecionar</option>
+            <option value="Não sei">Não sei</option>
+            <option value="Não tem faturamento">Não tem faturamento</option>
+            <option value="Menos de R$1000">Menos de R$1000</option>
+            <option value="R$1.001 à R$5.000">R$1.001 à R$5.000</option>
+            <option value="R$5.001 à R$10.000">R$5.001 à R$10.000</option>
+            <option value="R$10.001 à R$20.000">R$10.001 à R$20.000</option>
+            <option value="R$20.001 à R$30.000">R$20.001 à R$30.000</option>
+            <option value="R$30.001 à R$50.000">R$30.001 à R$50.000</option>
+            <option value="R$50.001 à R$100.000">R$50.001 à R$100.000</option>
+            <option value="Acima de R$100.000">Acima de R$100.000</option>
+          </select>
+        </div>
+        <div class="cw-lp-form-row">
+          <label for="cw-segmento">Qual o seu segmento?</label>
+          <select id="cw-segmento" name="segmento" required>
+            <option value="" disabled selected>Selecionar</option>
+            <option value="Pizzaria">Pizzaria</option>
+            <option value="Hamburgueria">Hamburgueria</option>
+            <option value="Restaurante">Restaurante</option>
+            <option value="Lanchonete">Lanchonete</option>
+            <option value="Confeitaria">Confeitaria</option>
+            <option value="Açaiteria">Açaiteria</option>
+            <option value="Sushi">Sushi</option>
+            <option value="Marmitaria">Marmitaria</option>
+            <option value="Pastelaria">Pastelaria</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
+        <div class="cw-lp-form-check">
+          <input type="checkbox" id="cw-aceita" name="aceitaPolitica" value="on" required>
+          <label for="cw-aceita">Declaro que li e aceito a <a href="https://cardapioweb.com/politica-de-privacidade.pdf" target="_blank">Política de privacidade</a></label>
+        </div>
+
+        <!-- Hidden fields (preenchidos pelo plugin de tracking via JS) -->
+        <input type="hidden" name="lead_event_id" value="">
+        <input type="hidden" name="engagement_score" value="0">
+        <input type="hidden" name="_fbp" value="">
+        <input type="hidden" name="_fbc" value="">
+        <input type="hidden" name="cw_ext_id" value="">
+        <input type="hidden" name="utm_source" value="">
+        <input type="hidden" name="utm_medium" value="">
+        <input type="hidden" name="utm_campaign" value="">
+        <input type="hidden" name="utm_content" value="">
+        <input type="hidden" name="utm_term" value="">
+        <input type="hidden" name="utm_placement" value="">
+        <input type="hidden" name="fbclid" value="">
+        <input type="hidden" name="gclid" value="">
+        <input type="hidden" name="audience" value="">
+        <input type="hidden" name="cupom" value="">
+        <input type="hidden" name="referrer" value="">
+
+        <button type="submit" class="cw-lp-form-submit">Solicitar atendimento</button>
+      </form>
+    </div>
+  </div>
+</div>
+<svg class="cw-lp-wave" viewBox="0 0 1440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path fill="#ffffff" fill-opacity="0.18" d="M0,30 C260,90 460,15 720,50 C980,90 1180,15 1440,55 L1440,110 L0,110 Z"></path>
+  <path fill="#ffffff" fill-opacity="0.35" d="M0,55 C260,100 460,40 720,70 C980,105 1180,40 1440,80 L1440,110 L0,110 Z"></path>
+  <path fill="#ffffff" d="M0,80 C240,115 480,55 720,90 C960,120 1200,55 1440,92 L1440,110 L0,110 Z"></path>
+</svg>
+</section><section class="cw-nums"><div class="cw-nums-in"><div class="cw-num"><span class="cw-num-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4zM3 8h18l-1.5 4.5A2 2 0 0 1 17.6 14H6.4a2 2 0 0 1-1.9-1.5L3 8zm2 8h14v4H5z"/></svg></span><span class="cw-num-tx"><b>+ 17 mil</b><i>restaurantes usando</i></span></div><div class="cw-num"><span class="cw-num-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h20v3H2zm0 5h20v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-7zm3 4h6v2H5z"/></svg></span><span class="cw-num-tx"><b>12 bi</b><i>de reais em pedidos</i></span></div><div class="cw-num"><span class="cw-num-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 5v3h16v-3c0-3-4-5-8-5z"/></svg></span><span class="cw-num-tx"><b>70 M</b><i>de pessoas já pediram</i></span></div><div class="cw-num"><span class="cw-num-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h3v-7H4v7zm6.5 0h3V4h-3v16zM17 20h3v-11h-3v11z"/></svg></span><span class="cw-num-tx"><b>até 30%</b><i>de aumento nas vendas</i></span></div></div></section></div>
+
+
+
+<section id="cw-automacao" class="cw-lp-section feature-group-start">
+<div class="cw-lp-section-inner">
+  <div>
+    <span class="cw-lp-pre">Atendimento automatizado</span>
+    <h2>Automação de atendimento</h2>
+    <p class="cw-body">Ferramentas de cardápio digital e chatbot de WhatsApp, para aumentar suas vendas reduzindo erros de atendimento.</p>
+    <ul class="cw-lp-bullets">
+      <li>Chatbot de WhatsApp</li>
+      <li>Cardápio Digital</li>
+      <li>Pagamento online</li>
+      <li>Agendamento de pedidos</li>
+    </ul>
+    <a href="#form" class="cw-lp-cta-btn cw-cta">Veja todas as funcionalidades</a>
+  </div>
+  <div>
+    <img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/Automacao@4x-scaled.webp" alt="Automação de atendimento - ChatBot WhatsApp" />
+  </div>
+</div>
+</section>
+
+
+
+<section id="cw-vendas" class="cw-lp-section alt reverse">
+<div class="cw-lp-section-inner">
+  <div>
+    <span class="cw-lp-pre">Aumente suas vendas</span>
+    <h2>Ferramenta de vendas</h2>
+    <p class="cw-body">Soluções de disparo de mensagem no WhatsApp, programa de fidelidade e integrações com anúncios para crescer seu negócio mais rápido.</p>
+    <ul class="cw-lp-bullets">
+      <li>Integrações com ferramentas de anúncios</li>
+      <li>Disparador de mensagem no WhatsApp</li>
+      <li>Programa de fidelidade</li>
+      <li>Recuperador de carrinho</li>
+    </ul>
+    <a href="#form" class="cw-lp-cta-btn cw-cta">Veja todas as funcionalidades</a>
+  </div>
+  <div>
+    <img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/Aumento-de-vendas_1@4x-scaled.webp" alt="Ferramenta de vendas" />
+  </div>
+</div>
+</section>
+
+
+
+<section id="cw-gestao" class="cw-lp-section feature-group-end">
+<div class="cw-lp-section-inner">
+  <div>
+    <span class="cw-lp-pre">Gerencie seu negócio</span>
+    <h2>Sistema de gestão</h2>
+    <p class="cw-body">Tudo isso de forma simples e integrada à outras plataformas do mercado, como o iFood. Através do nosso sistema de gestão, você é capaz de profissionalizar todo seu negócio, tendo uma operação eficiente e pronta para escalar.</p>
+    <ul class="cw-lp-bullets">
+      <li>Controle seu caixa</li>
+      <li>Gerencie seu estoque</li>
+      <li>Controle de fiado</li>
+      <li>Emita notas fiscais</li>
+    </ul>
+    <a href="#form" class="cw-lp-cta-btn cw-cta">Veja todas as funcionalidades</a>
+  </div>
+  <div>
+    <img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/Gestao@4x-scaled.webp" alt="Sistema de gestão" />
+  </div>
+</div>
+</section>
+
+
+
+<section id="cw-estrategia" class="cw-lp-section rfv-section">
+<div class="cw-lp-section-inner">
+  <div>
+    <h2>Aumente vendas com estratégia</h2>
+    <p class="cw-body">O segredo dos que vendem todos os dias? Relacionamento. Com o Programa de Fidelidade e a matriz RFV, você sabe exatamente quem compra mais, quem sumiu e quem pode voltar a comprar.</p>
+    <p class="cw-body">Transforme dados em ações reais: dispare cupons, mensagens personalizadas e reconquiste clientes automaticamente.</p>
+    <a href="#form" class="cw-lp-cta-btn cw-cta">Veja todas as funcionalidades</a>
+  </div>
+  <div>
+    <img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/RFV-2048x1565.png.webp" alt="Matriz RFV" />
+  </div>
+</div>
+</section>
+
+
+
+<section class="cw-func"><div class="cw-func-in">
+<span class="cw-func-eyebrow">Funcionalidades</span>
+<h2 class="cw-func-h2">Conheça as funcionalidades <span>da Cardápio Web</span></h2>
+<p class="cw-func-sub">Veja todas as funcionalidades disponíveis nas soluções de automação, vendas e gestão no sistema da Cardápio Web.</p>
+<h3 class="cw-func-cat">Automatize seus pedidos</h3><div class="cw-func-grid">
+<div class="cw-func-item"><h4>ChatBot com Inteligência Artificial</h4><p>Robozinho de WhatsApp com Inteligência Artificial para atendimento humanizado de delivery.</p></div>
+<div class="cw-func-item"><h4>Cardápio digital (delivery, mesa, balcão)</h4><p>Pelo cardápio digital você tem acesso a um site para receber pedidos online para delivery, mesas e balcão.</p></div>
+<div class="cw-func-item"><h4>Sistema PDV dentro do WhatsApp</h4><p>Um sistema de gestão dentro do próprio WhatsApp para você atender clientes e adicionar pedidos ao mesmo tempo.</p></div>
+<div class="cw-func-item"><h4>Cardápio rápido e fácil de usar</h4><p>Focamos em oferecer um cardápio digital super simples de ser usado, sem forçar o seu cliente a criar uma conta ou ter que baixar aplicativo</p></div>
+<div class="cw-func-item"><h4>Pagamento online com cartão e pix</h4><p>Permita que seus clientes paguem direto pelo cardápio da forma que preferirem, tanto pelo cartão quanto pelo pix.</p></div>
+<div class="cw-func-item"><h4>Agendamento de pedidos</h4><p>Se você trabalha com pedidos agendados, trazemos uma série de personalizações para que o seu cliente escolha uma data e horário para receber o pedido.</p></div>
+</div>
+<h3 class="cw-func-cat">Aumente suas vendas</h3><div class="cw-func-grid">
+<div class="cw-func-item"><h4>Envio de mensagens em massa no WhatsApp</h4><p>Envie mensagens em massa e personalizadas no WhatsApp dos seus clientes, aumentando suas vendas e seu faturamento de forma previsível.</p></div>
+<div class="cw-func-item"><h4>Integração com as ferramentas de anúncio</h4><p>Integre seu Cardápio Web com as principais ferramentas de marketing digital, como Meta Ads, Google Ads, Google Analytics, GTM, dentre outras.</p></div>
+<div class="cw-func-item"><h4>Programa de fidelidade com pontuação</h4><p>Fidelize seus clientes através de um programa de fidelidade que permite que os seus clientes acumulem pontos e troquem por benefícios.</p></div>
+<div class="cw-func-item"><h4>Cupons e descontos para o cliente</h4><p>Crie cupons e ofertas personalizadas para atrair seus clientes de forma estratégica e persuasiva.</p></div>
+<div class="cw-func-item"><h4>Filtros avançados de clientes</h4><p>Filtre e veja quais dos seus clientes mais pedem com você, quanto tempo faz desde o último pedido, dentre outras informações.</p></div>
+<div class="cw-func-item"><h4>Relatórios de vendas e conversões</h4><p>Analise suas métricas de forma estratégica, avaliando a taxa de conversão do cardápio, seu ticket médio, dentre outras coisas.</p></div>
+</div>
+<h3 class="cw-func-cat">Gerencie seu negócio</h3><div class="cw-func-grid">
+<div class="cw-func-item"><h4>PDV (Sistema de Ponto de Venda)</h4><p>Receba seus pedidos da forma profissional e organizada, registrando todos os seus pedidos para não perder o controle do seu negócio</p></div>
+<div class="cw-func-item"><h4>Controle de Estoque (simples e avançado)</h4><p>Gerencie seu estoque e suas fichas técnicas, evitando desperdícios e sendo notificado sempre que precisar repor seu estoque.</p></div>
+<div class="cw-func-item"><h4>Controle de Caixa com histórico</h4><p>Controle as movimentações financeiras da sua empresa, incluindo suas vendas, suprimentos e sangrias com o nosso controle de caixa.</p></div>
+<div class="cw-func-item"><h4>Gestão de múltiplas impressoras</h4><p>Imprima as comandas do seu delivery ou restaurante em uma ou mais impressoras de forma simples e rápida, pelo celular ou computador.</p></div>
+<div class="cw-func-item"><h4>Emissão e gestão de Nota Fiscal</h4><p>Emita as notas fiscais do seu delivery ou restaurante usando a nossa solução, tudo integrado ao seu sistema de gestão e cardápio digital.</p></div>
+<div class="cw-func-item"><h4>Gestão de entregadores e rotas de entrega</h4><p>Gerencie seus entregadores e suas rotas de entrega em tempo real, entregando mais rápido os pedidos dos seus clientes.</p></div>
+<div class="cw-func-item"><h4>Gestão financeira pela F360</h4><p>Tenha todo o controle financeiro do seu restaurante através de um sistema integrado à Cardápio Web, que te permite controlar todas as finanças do negócio de forma super completa.</p></div>
+<div class="cw-func-item"><h4>Integração com iFood e Entrega Fácil iFood</h4><p>Receba seus pedidos do iFood dentro do nosso gestor de pedidos. Além disso, com o Entrega Fácil você pode usar entregadores do iFood para entregarem seus pedidos.</p></div>
+<div class="cw-func-item"><h4>Controle de pagamentos de Fiado</h4><p>Use nosso sistema de fiado para controlar as dívidas dos seus clientes e ter todo o controle do quanto estão lhe devendo, para que você receba tudo que antecipou com fiado.</p></div>
+<div class="cw-func-item"><h4>KDS (Kitchen Display System)</h4><p>Use nosso sistema de KDS para gerenciar seus pedidos e a sua produção em tempo real de forma organizada, substituindo suas comandas impressas por uma visualização dos pedidos por ordem de prioridade.</p></div>
+<div class="cw-func-item"><h4>Gestão de mesas e comandas</h4><p>Gerencie as mesas e comandas do seu espaço físico em tempo real, permitindo um controle completo de mesas e comandas abertas, fechadas, em etapa de pagamento, dentre outras coisas.</p></div>
+<div class="cw-func-item"><h4>Controle de clientes da empresa</h4><p>Rastreie preferências, histórico de pedidos e ofereça programas de fidelidade personalizados, aumentando a fidelidade e vendas através de estratégias de marketing direcionadas.</p></div>
+<div class="cw-func-item"><h4>Gestão de avaliações</h4><p>Recebe avaliações e feedbacks dos seus clientes de forma contínua e integrada dentro do seu sistema, para estar sempre atento com a qualidade do seu serviço de forma automática.</p></div>
+<div class="cw-func-item"><h4>Histórico de pedidos</h4><p>Acesse relatórios dos pedidos realizados na sua operação, seja delivery ou presencial, podendo analisar tudo que houve na sua empresa ao longo dos anos.</p></div>
+<div class="cw-func-item"><h4>Dashboards de gestão</h4><p>Através dos nossos Dashboards, você acessa gráficos e tabelas que trazem clareza para tudo que acontece na sua operação, permitindo tomadas de decisões mais assertivas.</p></div>
+</div>
+</div></section>
+<section class="cw-int"><div class="cw-int-in"><span class="cw-int-eyebrow">Confira Nossas Integrações</span><h2 class="cw-int-h2">Funciona com <span>o que você já usa</span></h2><p class="cw-int-sub">Seu marketplace, sua maquininha, seu entregador e seu sistema atual continuam funcionando.</p><div class="cw-int-linha"><span class="cw-int-cat">Marketplaces</span><div class="cw-int-logos" data-n="2"><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/ifood.webp" alt="Integração com iFood" title="iFood" loading="lazy" decoding="async" style="width:80px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/99-food.webp" alt="Integração com 99 Food" title="99 Food" loading="lazy" decoding="async" style="width:58px"></div></div></div><div class="cw-int-linha"><span class="cw-int-cat">Pagamento</span><div class="cw-int-logos" data-n="2"><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/mercado-pago.webp" alt="Integração com Mercado Pago" title="Mercado Pago" loading="lazy" decoding="async" style="width:60px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/cielo.webp" alt="Integração com Cielo" title="Cielo" loading="lazy" decoding="async" style="width:99px"></div></div></div><div class="cw-int-linha"><span class="cw-int-cat">Sistemas de gestão</span><div class="cw-int-logos" data-n="6"><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/saipos.webp" alt="Integração com Saipos" title="Saipos" loading="lazy" decoding="async" style="width:49px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/sischef.webp" alt="Integração com Sischef" title="Sischef" loading="lazy" decoding="async" style="width:50px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/ecletica.webp" alt="Integração com Eclética" title="Eclética" loading="lazy" decoding="async" style="width:66px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/f360.webp" alt="Integração com F360" title="F360" loading="lazy" decoding="async" style="width:58px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/glow.webp" alt="Integração com Glow" title="Glow" loading="lazy" decoding="async" style="width:47px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/izzyway.webp" alt="Integração com IzzyWay" title="IzzyWay" loading="lazy" decoding="async" style="width:45px"></div></div></div><div class="cw-int-linha"><span class="cw-int-cat">Entrega e logística</span><div class="cw-int-logos" data-n="9"><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/mottu.webp" alt="Integração com Mottu" title="Mottu" loading="lazy" decoding="async" style="width:51px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/bee-delivery.webp" alt="Integração com Bee Delivery" title="Bee Delivery" loading="lazy" decoding="async" style="width:58px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/husky.webp" alt="Integração com Husky" title="Husky" loading="lazy" decoding="async" style="width:58px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/ifood-sob-demanda.webp" alt="Integração com iFood sob demanda" title="iFood sob demanda" loading="lazy" decoding="async" style="width:74px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/food-delivery.webp" alt="Integração com Food Delivery" title="Food Delivery" loading="lazy" decoding="async" style="width:100px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/let-s--express.webp" alt="Integração com Let&#x27;s! Express" title="Let&#x27;s! Express" loading="lazy" decoding="async" style="width:51px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/pick-and-go.webp" alt="Integração com Pick and Go" title="Pick and Go" loading="lazy" decoding="async" style="width:124px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/jaxbus.webp" alt="Integração com JAXBus" title="JAXBus" loading="lazy" decoding="async" style="width:45px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/machine.webp" alt="Integração com Machine" title="Machine" loading="lazy" decoding="async" style="width:118px"></div></div></div><div class="cw-int-linha"><span class="cw-int-cat">Marketing e vendas</span><div class="cw-int-logos" data-n="5"><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/google-analytics.webp" alt="Integração com Google Analytics" title="Google Analytics" loading="lazy" decoding="async" style="width:69px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/google-tag-manager.webp" alt="Integração com Google Tag Manager" title="Google Tag Manager" loading="lazy" decoding="async" style="width:77px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/catalogo-do-facebook.webp" alt="Integração com Catálogo do Facebook" title="Catálogo do Facebook" loading="lazy" decoding="async" style="width:77px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/repediu.webp" alt="Integração com Repediu" title="Repediu" loading="lazy" decoding="async" style="width:66px"></div><div class="cw-int-card"><img src="/wp-content/uploads/cw-logos/retorne-app.webp" alt="Integração com Retorne App" title="Retorne App" loading="lazy" decoding="async" style="width:102px"></div></div></div><p class="cw-int-api">Não está na lista? Temos <b>API aberta e Open Delivery</b>.</p></div></section><section class="cw-depo-sec"><div class="cw-depo-head"><span class="cw-depo-eyebrow">Cases de Sucesso</span><h2 class="cw-depo-h2">Marcas que cresceram com a Cardápio Web</h2><p class="cw-depo-sub">Histórias reais de restaurantes que passaram a vender pelo canal próprio.</p></div><div class="cw-depo-row"><article class="cw-depo-card"><p class="cw-depo-quote">Hoje é R$ 100 mil por mês só pelo cardápio digital. É 1 reclamação para cada 1000 pedidos.</p><div class="cw-depo-who"><img src="/wp-content/uploads/cw-logos/depo-julio.webp" alt="Julio Martins, Pão de alho do Julio" loading="lazy" decoding="async" width="56" height="56"><span><span class="cw-depo-nome">Julio Martins</span><span class="cw-depo-neg">Pão de alho do Julio</span></span></div><div class="cw-depo-div"></div><div class="cw-depo-val">+ R$ 100 Mil</div><div class="cw-depo-val-lb">por mês só com cardápio digital</div></article><article class="cw-depo-card"><p class="cw-depo-quote">Até então, 100% dos meus pedidos são feitos pelo Cardápio Web, não faço pedidos por WhatsApp, a mão ou bloquinho de notas, nada disso, sempre uso o cardápio digital.</p><div class="cw-depo-who"><img src="/wp-content/uploads/cw-logos/depo-patrick.webp" alt="Patrick Bartholazi, Dono do B3X Burger" loading="lazy" decoding="async" width="56" height="56"><span><span class="cw-depo-nome">Patrick Bartholazi</span><span class="cw-depo-neg">Dono do B3X Burger</span></span></div><div class="cw-depo-div"></div><div class="cw-depo-val">+ R$ 60 Mil</div><div class="cw-depo-val-lb">por mês só com cardápio digital</div></article><article class="cw-depo-card"><p class="cw-depo-quote">De uma noite de 40 pedidos, 3 são manuais, eu tenho apenas 10% de pedidos ainda manuais, são pessoas idosas que têm dificuldade com tecnologia.</p><div class="cw-depo-who"><img src="/wp-content/uploads/cw-logos/depo-bruno.webp" alt="Bruno Felipe, Oxen Burguer" loading="lazy" decoding="async" width="56" height="56"><span><span class="cw-depo-nome">Bruno Felipe</span><span class="cw-depo-neg">Oxen Burguer</span></span></div><div class="cw-depo-div"></div><div class="cw-depo-val">+ R$ 30 Mil</div><div class="cw-depo-val-lb">por mês só com cardápio digital</div></article></div></section><section id="cw-clientes" class="cw-lp-social">
+<div class="cw-lp-social-inner">
+<h2>Mais de <strong>17 mil empresas</strong> estão usando Cardápio Web</h2>
+<p>Automatize, aumente e gerencie suas vendas com a gente!</p>
+<div class="cw-lp-clients">
+  <div class="cw-lp-client-card"><img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/clientes/logo-yozenn-original.webp" alt="Yozenn" /></div>
+  <div class="cw-lp-client-card"><img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/clientes/logo-acai-beat-original.webp" alt="Açaí Beat" /></div>
+  <div class="cw-lp-client-card"><img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/clientes/logo-porta-da-horta-original.webp" alt="Porta da Horta" /></div>
+  <div class="cw-lp-client-card"><img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/clientes/logo-onze-onze-original.webp" alt="Onze Onze" /></div>
+  <div class="cw-lp-client-card"><img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/clientes/logo-carol-coxinhas-original.webp" alt="Carol Coxinhas" /></div>
+  <div class="cw-lp-client-card"><img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/clientes/logo-puro-acai-original.webp" alt="Puro Açaí" /></div>
+</div>
+<a href="#form" class="cw-lp-social-cta cw-cta">Fale com um consultor →</a>
+</div>
+</section>
+
+
+
+<section class="cw-lp-cta">
+<div class="cw-lp-cta-inner">
+  <div>
+    <h2>Preparado para vender mais? Fale com um consultor Cardápio Web</h2>
+    <p>Experimente a ferramenta que vai automatizar seus pedidos de WhatsApp, aumentar suas vendas com marketing e profissionalizar a gestão do seu negócio de uma vez por todas.</p>
+    <a href="#form" class="cw-lp-cta-button cw-cta">Fale com um consultor <span>→</span></a>
+  </div>
+  <div>
+    <img loading="lazy" decoding="async" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/Computador.png.webp" alt="Cardápio Web no computador e celular" style="max-width:100%;height:auto;" />
+  </div>
+</div>
+</section>
+
+
+
+<section class="cw-sup"><div class="cw-sup-in"><span class="cw-sup-eyebrow">Suporte de verdade</span><h2 class="cw-sup-h2">Alguém atende <span>quando você mais vende</span></h2><p class="cw-sup-sub">O suporte da Cardápio Web funciona de domingo a domingo, de manhã, tarde e noite. Sexta lotada, sábado no pico, almoço de domingo — tem gente de verdade do outro lado.</p></div></section>
+<section class="cw-sup" id="cw-cardapio-digital"><div class="cw-sup-in"><span class="cw-sup-eyebrow">Cardápio digital</span><h2 class="cw-sup-h2">Cardápio digital completo <span>para restaurantes e deliveries</span></h2><p class="cw-sup-sub">O Cardápio Web é o cardápio digital do seu restaurante: QR code na mesa, link próprio para divulgar no Instagram e no WhatsApp, fotos e preços atualizados em segundos — sem taxa por pedido. Funciona como menu digital no salão e como cardápio online no delivery, com os pedidos caindo direto no seu WhatsApp.</p><p class="cw-sup-sub">Criar o seu cardápio digital leva minutos: monte as categorias, suba as fotos e compartilhe o link. Serve para pizzaria, hamburgueria, restaurante, açaí e qualquer delivery — com atendimento por inteligência artificial nativa, que responde seus clientes e registra pedidos mesmo fora do horário.</p></div></section><section id="cw-faq" class="cw-lp-faq">
+<div class="cw-lp-faq-inner">
+  <div class="cw-lp-faq-left">
+    <span class="cw-lp-faq-pre">Ficou com dúvidas?</span>
+    <h2>Perguntas frequentes</h2>
+    <a href="#form" class="cw-lp-faq-cta cw-cta">Fale com um consultor →</a>
+  </div>
+  <div class="cw-lp-faq-right">
+    <details open><summary><span class="num">1.</span> Como funciona o suporte?</summary><p>O suporte da Cardápio Web funciona de domingo a domingo, de manhã, tarde e noite.</p></details>
+    <details><summary><span class="num">2.</span> O sistema pode ser usado só no celular?</summary><p>Pode sim, o Cardápio Web funciona tanto pelo celular quanto pelo computador, você pode controlar tudo da palma da mão.</p></details>
+    <details><summary><span class="num">3.</span> Consigo imprimir comanda com o sistema?</summary><p>Sim, é possível imprimir comandas de delivery, retirada e cozinha, inclusive consegue destinar setores de impressão para cada tipo de comanda.</p></details>
+    <details><summary><span class="num">4.</span> Posso lançar meus pedidos recebidos no telefone?</summary><p>Claro! Uma das nossas vantagens é ser uma plataforma acessível em qualquer dispositivo, sendo celular, tablet ou computador.</p></details>
+    <details><summary><span class="num">5.</span> Meu cliente pode pagar online?</summary><p>Hoje nós já temos algumas formas de pagamento online, sendo elas: Mercado Pago, Cielo e Pix Automático.</p></details>
+  </div>
+</div>
+</section>
+
+
+
+<section class="cw-lp-cta-card-section">
+<div class="cw-lp-cta-card">
+  <h2>Preparado para vender mais? Fale com um consultor Cardápio Web!</h2>
+  <p>Experimente a ferramenta que vai automatizar seus pedidos de WhatsApp, aumentar suas vendas com marketing e profissionalizar a gestão do seu negócio de uma vez por todas.</p>
+  <a href="#form" class="cw-lp-cta-card-btn cw-cta">Receber atendimento</a>
+</div>
+</section>
+
+
+
+<footer class="cw-lp-footer">
+<div class="cw-lp-footer-inner">
+  <img loading="lazy" decoding="async" class="cw-lp-footer-logo" src="https://lp.cardapioweb.com/lp-meta-ads-2/images/cardapio-web-branca-300_c-768x284.png.webp" alt="Cardápio Web" />
+  <p class="cw-lp-footer-company">Cardápio Web Servicos de Tecnologia LTDA –</p>
+  <p class="cw-lp-footer-cnpj">CNPJ: 40.834.981/0001-97</p>
+  <p class="cw-lp-footer-address">Av. Dom Luís, 300 – Meireles, Fortaleza – CE, 60160-230</p>
+  <p class="cw-lp-footer-links">
+    <a href="https://cardapioweb.com/termos-de-uso.pdf">Termos de uso</a>
+    <a href="https://cardapioweb.com/politica-de-privacidade.pdf">Política de privacidade</a>
+  </p>
+  <p class="cw-lp-footer-copyright">© 2024 Cardápio Web. Todos os direitos reservados.</p>
+</div>
+</footer>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/hello-elementor/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+			<script>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<script id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"/lp-meta-ads-3/|/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/lp-meta-ads-3/|/lp-meta-ads-3/?$|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://lp.cardapioweb.com","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+</script>
+<script id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+</script>
+<script id="cw-lp-page">
+/* cw-lp-page.js — comportamento DA PÁGINA (LPs cw). 27/jul/2026
+   Só o que depende de runtime fica aqui: a mensagem dinâmica varia por
+   parâmetro de URL, então não pode ser estática. Os blocos de conteúdo e o
+   CTA fixo agora são HTML renderizado no servidor (cw-lp-blocos.html),
+   para que o AdsBot/Googlebot leia sem depender de JavaScript. */
+(function () {
+  'use strict';
+
+  var H1_CAMPANHA = {
+    '23147545820': 'Cardápio Web: migre sem dor do seu sistema atual',
+    '24030042631': 'Cardápio Web: seu canal próprio, sem comissão por pedido',
+    '24030044314': 'Cardápio Web: dispare ofertas e lote seu delivery',
+    '24016216230': 'Cardápio Web: cardápio digital com taxa zero por pedido',
+    '21507007384': 'Cardápio Web: o sistema completo para seu delivery',
+    '24040469429': 'Cardápio Web: o sistema completo para seu delivery'
+  };
+  var H1_GRUPO = {
+    '197053649726': 'Cardápio Web: pare de pagar comissão ao marketplace',
+    '197335165134': 'Cardápio Web: troque de sistema sem parar a operação',
+    '202445801207': 'Cardápio Web: antes de logar de novo, compare',
+    '192293869892': 'Cardápio Web: compare antes de assinar',
+    '200290423084': 'Cardápio Web: migração assistida do seu sistema'
+  };
+  var SUB_CAMPANHA = {
+    '23147545820': 'Migração assistida, taxa zero por pedido e IA de atendimento nativa. Troque sem parar a operação.',
+    '24030042631': 'Cardápio digital, pedidos no WhatsApp e gestão completa — 100% da venda é sua.',
+    '24030044314': 'Disparo em massa nativo + IA que atende e fecha pedidos no WhatsApp.',
+    '24016216230': 'Pedidos no WhatsApp, gestão completa e migração assistida — 100% da venda é sua.',
+    '21507007384': 'Cardápio digital, PDV, disparo no WhatsApp e IA de atendimento nativa num sistema só.',
+    '24040469429': 'Cardápio digital, PDV, disparo no WhatsApp e IA de atendimento nativa num sistema só.'
+  };
+  var SUB_GRUPO = {
+    '197053649726': 'Cada pedido no marketplace leva sua margem. Tenha canal próprio com taxa zero.',
+    '197335165134': 'PDV, gestão e cardápio num sistema só — migração assistida, sem parar a operação.',
+    '202445801207': 'Antes de entrar de novo no seu painel: compare com quem não cai na sexta.',
+    '192293869892': 'Migração assistida do seu cardápio, taxa zero por pedido e IA de atendimento nativa.',
+    '200290423084': 'Suporte de domingo a domingo, taxa zero por pedido e IA de atendimento nativa.'
+  };
+
+  /* Só aceita valor 100% numérico: em C1/C2/C4/C6 o utm_campaign carrega o NOME
+     da campanha e extrair dígitos dele daria um ID falso ("4326"). O ID puro
+     vem em utm_id/cid (campanha) e utm_content/agid (grupo). */
+  function puroId(v) { return /^\d+$/.test(v || '') ? v : ''; }
+
+  function mensagemDinamica() {
+    var q = new URLSearchParams(location.search);
+    var camp = puroId(q.get('utm_campaign')) || puroId(q.get('utm_id')) || puroId(q.get('cid'));
+    var grupo = puroId(q.get('utm_content')) || puroId(q.get('agid'));
+    try {
+      if (camp) sessionStorage.setItem('cwCamp', camp); else camp = sessionStorage.getItem('cwCamp') || '';
+      if (grupo) sessionStorage.setItem('cwGrupo', grupo); else grupo = sessionStorage.getItem('cwGrupo') || '';
+    } catch (e) {}
+
+    var h1 = H1_GRUPO[grupo] || H1_CAMPANHA[camp];
+    var sub = SUB_GRUPO[grupo] || SUB_CAMPANHA[camp];
+    if (h1) {
+      var el = document.querySelector('.cw-lp-hero h1') || document.querySelector('h1');
+      if (el) el.textContent = h1;
+      document.title = h1;
+    }
+    if (sub) {
+      var s = document.querySelector('.cw-lp-hero p.cw-lead') || document.querySelector('p.cw-lead');
+      if (s) s.textContent = sub;
+    }
+  }
+
+  function init() { try { mensagemDinamica(); } catch (e) {} }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+</script>
+<script>(function(){try{
+  function ck(n){var m=document.cookie.match('(?:^|; )'+n.replace(/([.$?*|{}()\[\]\\\/\+^])/g,'\\$1')+'=([^;]*)');return m?decodeURIComponent(m[1]):'';}
+  function setck(n,v,d){try{document.cookie=n+'='+encodeURIComponent(v)+';path=/;max-age='+(d||63072000)+';domain=.cardapioweb.com;SameSite=Lax;Secure';}catch(e){}}
+  var qs=new URLSearchParams(location.search);
+  var r=document.referrer||'';
+  var hasSignal=!!(qs.get('gclid')||qs.get('gbraid')||qs.get('wbraid')||qs.get('fbclid')||qs.get('ttclid')||qs.get('utm_source')||qs.get('utm_medium'));
+  // navegação interna (referrer *.cardapioweb.com) sem novo sinal de aquisição NÃO é um toque novo → não grava
+  var internal=false;try{internal=r&&new URL(r).host.indexOf('cardapioweb.com')>=0;}catch(e){}
+  if(internal&&!hasSignal) return;
+  var vid=ck('cw_ext_id');
+  if(!vid){vid=Date.now().toString(36)+Math.random().toString(36).slice(2,10);setck('cw_ext_id',vid);}
+  function detect(){
+    if(qs.get('gclid')||qs.get('gbraid')||qs.get('wbraid'))return'Google Ads';
+    if(qs.get('fbclid'))return'Meta Ads';
+    if(qs.get('ttclid'))return'TikTok Ads';
+    var m=(qs.get('utm_medium')||'').toLowerCase(),s=(qs.get('utm_source')||'').toLowerCase();
+    if(['cpc','ppc','paid','paidsearch','paid_search','paid-search'].indexOf(m)>=0)return s.indexOf('google')>=0?'Google Ads':((s.indexOf('face')>=0||s.indexOf('insta')>=0||s.indexOf('meta')>=0)?'Meta Ads':'Outros Ads');
+    if(m==='email'||s.indexOf('newsletter')>=0||s.indexOf('rd')>=0)return'Email Marketing';
+    if(/google\./.test(r))return'Google SEO';
+    if(/bing\./.test(r))return'Bing SEO';
+    if(/duckduckgo|yahoo\./.test(r))return'Outros SEO';
+    if(/facebook\.com|fb\.com|l\.facebook|lm\.facebook/.test(r))return'Facebook Orgânico';
+    if(/instagram\.com|l\.instagram/.test(r))return'Instagram Orgânico';
+    if(/youtube\.com|youtu\.be/.test(r))return'YouTube Orgânico';
+    if(/linkedin\.com|lnkd\.in/.test(r))return'LinkedIn Orgânico';
+    if(/tiktok\.com/.test(r))return'TikTok Orgânico';
+    if(/whatsapp|wa\.me/.test(r))return'WhatsApp';
+    if(r){try{if(new URL(r).host.indexOf('cardapioweb.com')<0)return'Referral';}catch(e){}}
+    if(!r&&!s&&!m)return'Direct';
+    return'Outros';
+  }
+  var canal=detect();
+  var lastRaw=ck('cw_tping'),parts=lastRaw.split('|'),lastCh=parts[0]||'',lastTs=parseInt(parts[1]||'0',10);
+  if(lastCh===canal && (Date.now()-lastTs)<30*60*1000) return;
+  setck('cw_tping',canal+'|'+Date.now(),63072000);
+  var body=JSON.stringify({visitor:vid,channel:canal,utm_source:qs.get('utm_source')||'',utm_campaign:qs.get('utm_campaign')||'',landing:location.pathname,referrer:r.slice(0,255),host:location.host});
+  var url="https:\/\/lp.cardapioweb.com\/wp-json\/cw\/v1\/touch";
+  var blob=new Blob([body],{type:'text/plain'});
+  if(navigator.sendBeacon){navigator.sendBeacon(url,blob);}
+  else{fetch(url,{method:'POST',body:body,headers:{'Content-Type':'text/plain'},keepalive:true,mode:'no-cors'});}
+}catch(e){}})();</script>
+    <script id="cw-client-js">
+(function() {
+    window.dataLayer = window.dataLayer || [];
+
+    function getCookie(name) {
+        var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
+        return m ? m[1] : null;
+    }
+    function setCookie(name, value, days) {
+        var d = new Date(); d.setTime(d.getTime() + days * 86400000);
+        document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;domain=.cardapioweb.com;Secure;SameSite=Lax';
+    }
+    function uuidV4() {
+        if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = (crypto.getRandomValues(new Uint8Array(1))[0]) & 15;
+            return (c === 'x' ? r : (r & 3 | 8)).toString(16);
+        });
+    }
+
+    // Click ID Restorer (client) — antes de capturar UTMs
+    try {
+        var url = new URL(window.location.href);
+        ['fbclid','gclid','ttclid','msclkid'].forEach(function(clid) {
+            if (!url.searchParams.get(clid) && url.searchParams.get(clid + '_backup')) {
+                url.searchParams.set(clid, url.searchParams.get(clid + '_backup'));
+                window.history.replaceState(null, '', url.toString());
+            }
+        });
+    } catch(e) {}
+
+    // Cookie Keeper (client) — fallback + renovação (cache hit do WP Rocket = PHP não rodou)
+    var existingExt = getCookie('cw_ext_id');
+    setCookie('cw_ext_id', existingExt || uuidV4(), 365); // renova expiry sempre
+
+    if (!getCookie('cw_attr')) {
+        var params = new URLSearchParams(window.location.search);
+        var attr = {};
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_placement','fbclid','gclid','audience','cupom','crid','cid','agid','mt','dev','loc'].forEach(function(k) {
+            var v = params.get(k);
+            if (v) attr[k] = v;
+        });
+        if (document.referrer && document.referrer.indexOf(location.hostname) === -1) {
+            attr.referrer = document.referrer;
+        }
+        if (Object.keys(attr).length > 0) {
+            attr.entry_time = Math.floor(Date.now() / 1000);
+            attr.entry_url = location.href;
+            setCookie('cw_attr', encodeURIComponent(JSON.stringify(attr)), 90);
+        }
+    } else {
+        // first-touch preserva valor, mas renova expires
+        setCookie('cw_attr', getCookie('cw_attr'), 90);
+    }
+
+    // _fbp_persist e _fbc_persist — renova sempre
+    ['_fbp', '_fbc'].forEach(function(name) {
+        var native = getCookie(name);
+        var persist = getCookie(name + '_persist');
+        if (native) setCookie(name + '_persist', native, 365);          // renova com valor atual
+        else if (persist) setCookie(name + '_persist', persist, 365);   // sobrevive sem o nativo
+    });
+
+    function genId(prefix) {
+        return prefix + '_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // GA4 client_id helper: lê do cookie _ga (formato GA1.1.<part1>.<part2>) ou usa cw_ext_id como fallback
+    function cwGAClientId() {
+        var ga = getCookie('_ga');
+        if (ga) {
+            var parts = ga.split('.');
+            if (parts.length >= 4) return parts[2] + '.' + parts[3];
+        }
+        return getCookie('cw_ext_id') || '';
+    }
+    window.cwGAClientId = cwGAClientId;
+
+    // cwTrack — dispara Meta Pixel (Browser) + Meta CAPI (Server) + GA4 (Server) com event_id compartilhado
+    function cwTrack(eventName, customData, isCustom) {
+        var id = genId(eventName.toLowerCase());
+        var method = isCustom ? 'trackCustom' : 'track';
+
+        // 1. Meta Pixel (Browser)
+        if (typeof fbq === 'function') {
+            fbq(method, eventName, customData || {}, { eventID: id });
+        }
+
+        // 2. Meta CAPI (Server)
+        try {
+            fetch('/wp-json/cw/v1/capi', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    event: eventName,
+                    event_id: id,
+                    custom_data: customData || {},
+                    source_url: window.location.href
+                }),
+                keepalive: true
+            }).catch(function(){});
+        } catch(e) {}
+
+        // 3. GA4 Measurement Protocol (Server). NÃO mandamos 'PageView' aqui — gtag.js já dispara page_view automático.
+        if (eventName !== 'PageView') {
+            try {
+                fetch('/wp-json/cw/v1/ga', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        event: eventName,
+                        params: customData || {},
+                        client_id: cwGAClientId()
+                    }),
+                    keepalive: true
+                }).catch(function(){});
+            } catch(e) {}
+        }
+
+        window.dataLayer.push({ event: 'cw_' + eventName.toLowerCase(), event_id: id, data: customData });
+        return id;
+    }
+    window.cwTrack = cwTrack;
+
+    // PageView + ViewContent (no client = funciona até em cache hit)
+    cwTrack('PageView', {}, false);
+    cwTrack('ViewContent', {
+        content_name: 'LP CardápioWeb — ' + (location.pathname.indexOf('google-ads') > -1 ? 'Google Ads' : 'Meta Ads'),
+        content_category: 'B2B SaaS Restaurantes',
+        content_type: 'landing_page'
+    }, false);
+
+    // Engagement score (0-100)
+    var eng = window.cwEngagement = {
+        score: 0, scrollPts: 0, timePts: 0, ctaPts: 0, formPts: 0,
+        formStarted: false, formCompleted: false, ctaClicks: 0,
+        scrollMaxPct: 0, formSubmitInFlight: false, abandonFired: false
+    };
+    function recalcEngagement() {
+        eng.score = Math.min(100, eng.scrollPts + eng.timePts + eng.ctaPts + eng.formPts);
+        document.querySelectorAll('input[name="engagement_score"]').forEach(function(i) { i.value = eng.score; });
+    }
+
+    // Lead event_id pré-gerado (mesmo no fbq do Pixel e no submit que vai pro mu-plugin)
+    var leadEventId = genId('lead');
+    window.cwLeadEventId = leadEventId;
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Injetar hidden fields nos forms WPForms
+        document.querySelectorAll('form.cw-lp-form, form.wpforms-form').forEach(function(form) {
+            // lead_event_id
+            if (!form.querySelector('input[name="lead_event_id"]')) {
+                var h = document.createElement('input');
+                h.type = 'hidden'; h.name = 'lead_event_id'; h.value = leadEventId;
+                form.appendChild(h);
+            }
+            // engagement_score
+            if (!form.querySelector('input[name="engagement_score"]')) {
+                var hs = document.createElement('input');
+                hs.type = 'hidden'; hs.name = 'engagement_score'; hs.value = '0';
+                form.appendChild(hs);
+            }
+            // _fbp, _fbc, cw_ext_id pra ir no payload do webhook
+            ['_fbp', '_fbc', 'cw_ext_id'].forEach(function(cname) {
+                if (!form.querySelector('input[name="' + cname + '"]')) {
+                    var hf = document.createElement('input');
+                    hf.type = 'hidden'; hf.name = cname;
+                    hf.value = getCookie(cname) || getCookie(cname + '_persist') || '';
+                    form.appendChild(hf);
+                }
+            });
+        });
+
+        // Atributos UTM/first-touch nos forms
+        var attrFields = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_placement','fbclid','gclid','audience','cupom','crid','cid','agid','mt','dev','loc','referrer'];
+        var urlAttrs = {}, cookieAttrs = {};
+        try {
+            var urlParams = new URLSearchParams(window.location.search);
+            attrFields.forEach(function(k) {
+                var v = urlParams.get(k);
+                if (v) urlAttrs[k] = v;
+            });
+            var rawCookie = (document.cookie.match(/(?:^|;\s*)cw_attr=([^;]+)/) || [])[1];
+            if (rawCookie) {
+                var attr = JSON.parse(decodeURIComponent(rawCookie));
+                attrFields.forEach(function(k) { if (attr[k]) cookieAttrs[k] = attr[k]; });
+            }
+            document.querySelectorAll('form.cw-lp-form, form.wpforms-form').forEach(function(form) {
+                attrFields.forEach(function(k) {
+                    var input = form.querySelector('input[name="' + k + '"]');
+                    if (!input) {
+                        input = document.createElement('input');
+                        input.type = 'hidden'; input.name = k;
+                        form.appendChild(input);
+                    }
+                    if (urlAttrs[k]) input.value = urlAttrs[k];
+                    else if (!input.value && cookieAttrs[k]) input.value = cookieAttrs[k];
+                });
+            });
+        } catch(e) {}
+
+        // Propagação de UTMs em <a href> internos
+        try {
+            var propagateFields = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_placement','fbclid','gclid','crid','cid','agid','mt','dev','loc'];
+            var propagate = {};
+            propagateFields.forEach(function(k) {
+                if (urlAttrs[k]) propagate[k] = urlAttrs[k];
+                else if (cookieAttrs[k]) propagate[k] = cookieAttrs[k];
+            });
+            if (Object.keys(propagate).length > 0) {
+                document.querySelectorAll('a[href]').forEach(function(a) {
+                    var raw = a.getAttribute('href');
+                    if (!raw || /^(mailto:|tel:|javascript:|whatsapp:|sms:)/i.test(raw)) return;
+                    var url;
+                    try { url = new URL(raw, window.location.href); } catch(e) { return; }
+                    if (url.origin !== window.location.origin) return;
+                    var changed = false;
+                    Object.keys(propagate).forEach(function(k) {
+                        if (!url.searchParams.has(k)) { url.searchParams.set(k, propagate[k]); changed = true; }
+                    });
+                    if (!changed) return;
+                    if (raw.charAt(0) === '#')      a.setAttribute('href', url.search + url.hash);
+                    else if (raw.charAt(0) === '/') a.setAttribute('href', url.pathname + url.search + url.hash);
+                    else                            a.setAttribute('href', url.toString());
+                });
+            }
+        } catch(e) {}
+
+        // CTAClick + Contact em botões/links de CTA
+        var ctaSelectors = 'a[href*="#form"], .wp-block-button__link, .kb-button, .cw-cta, a[href*="wa.me"], a[href*="whatsapp"]';
+        document.querySelectorAll(ctaSelectors).forEach(function(el) {
+            el.addEventListener('click', function() {
+                var label = (el.textContent || '').trim().substring(0, 60);
+                var href  = el.getAttribute('href') || '';
+                var isContact = /wa\.me|whatsapp|tel:/i.test(href);
+                var src = el.closest('section')?.id || el.closest('.kb-section')?.id || 'unknown';
+
+                if (isContact) {
+                    cwTrack('Contact', { content_name: label, cta_source: src, cta_url: href }, false);
+                    // Google Ads: clique no WhatsApp = conversão 'btn RD WhatsApp' (lead do trio de lance)
+                    if (window.cwGadsAwId && window.cwGadsLabels && window.cwGadsLabels['Contact'] && typeof gtag === 'function') {
+                        gtag('event', 'conversion', { send_to: window.cwGadsAwId + '/' + window.cwGadsLabels['Contact'] });
+                    }
+                } else {
+                    cwTrack('CTAClick', { cta_label: label, cta_source: src, click_count_in_session: ++eng.ctaClicks }, true);
+                }
+                eng.ctaPts = Math.min(20, eng.ctaClicks * 10);
+                recalcEngagement();
+            });
+        });
+
+        // Scroll depth
+        var scrollTracked = {};
+        window.addEventListener('scroll', function() {
+            var pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+            eng.scrollMaxPct = Math.max(eng.scrollMaxPct, Math.floor(pct));
+            [25, 50, 75, 90].forEach(function(t) {
+                if (pct >= t && !scrollTracked[t]) {
+                    scrollTracked[t] = true;
+                    cwTrack('Scroll_' + t, { depth_pct: t, page_path: location.pathname }, true);
+                    eng.scrollPts = Math.max(eng.scrollPts, { 25: 10, 50: 20, 75: 30, 90: 40 }[t]);
+                    recalcEngagement();
+                }
+            });
+        }, { passive: true });
+
+        // Time on page
+        eng.startTs = Date.now();
+        [[10000, 5], [30000, 15], [60000, 25], [120000, 30]].forEach(function(pair) {
+            setTimeout(function() {
+                eng.timePts = Math.max(eng.timePts, pair[1]);
+                recalcEngagement();
+            }, pair[0]);
+        });
+        setTimeout(function() {
+            cwTrack('TimeOnPage_60s', { seconds: 60, engagement_score_at_moment: eng.score }, true);
+        }, 60000);
+
+        // FormStart / FormAbandon
+        document.querySelectorAll('form.cw-lp-form, form.wpforms-form').forEach(function(form) {
+            form.addEventListener('focusin', function(e) {
+                if (eng.formStarted) return;
+                eng.formStarted = true;
+                eng.formPts = 10;
+                recalcEngagement();
+                cwTrack('FormStart', {
+                    form_name: 'lp-meta-ads-3',
+                    first_field_focused: e.target?.name || 'unknown',
+                    engagement_score_at_moment: eng.score
+                }, true);
+            }, { once: true });
+
+            form.addEventListener('submit', function() {
+                eng.formSubmitInFlight = true;
+                setTimeout(function() { eng.formSubmitInFlight = false; }, 10000);
+            });
+        });
+
+        function fireAbandon() {
+            if (!eng.formStarted || eng.formCompleted || eng.abandonFired || eng.formSubmitInFlight) return;
+            eng.abandonFired = true;
+            var filled = [];
+            document.querySelectorAll('form.cw-lp-form input, form.cw-lp-form select, form.cw-lp-form textarea, form.wpforms-form input, form.wpforms-form select, form.wpforms-form textarea').forEach(function(el) {
+                if (el.type === 'hidden' || el.type === 'submit') return;
+                if (el.value && el.value.trim() !== '') filled.push(el.name);
+            });
+            cwTrack('FormAbandon', {
+                form_name: 'lp-meta-ads-3',
+                fields_filled_count: filled.length,
+                time_in_form_s: Math.floor((Date.now() - eng.startTs) / 1000),
+                engagement_score_at_moment: eng.score
+            }, true);
+        }
+        window.addEventListener('pagehide', fireAbandon);
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') fireAbandon();
+        });
+
+        // ─── Helpers client-side: classificação tier/porte/faturamento (replica server) ───
+        function cwPorteClient(faturamento) {
+            var map = {
+                'Não tem faturamento': 'Não tem',
+                'Não sei': 'Não sei',
+                'Menos de R$1000': 'Pequeno',
+                'R$1.001 à R$5.000': 'Pequeno',
+                'R$5.001 à R$10.000': 'Pequeno',
+                'R$10.001 à R$20.000': 'Médio',
+                'R$20.001 à R$30.000': 'Médio',
+                'R$30.001 à R$50.000': 'Médio',
+                'R$50.001 à R$100.000': 'Grande',
+                'Acima de R$100.000': 'Grande'
+            };
+            return map[(faturamento || '').trim()] || 'Pequeno';
+        }
+        function cwClassifyCanalClient(p) {
+            var u = (p.utm_source || '').toLowerCase();
+            var m = (p.utm_medium || '').toLowerCase();
+            var path = (location.pathname || '').toLowerCase();
+            var isGoogle = u === 'google' || m === 'paidsearch' || path.indexOf('lp-google') >= 0;
+            var isMeta = m === 'paid' || path.indexOf('lp-meta-ads') >= 0 || path.indexOf('lp-fb-ads') >= 0;
+            var hasUtm = m || p.utm_campaign || p.utm_term || p.utm_content || p.utm_placement;
+            var isSeo = (u === 'www.google.com' || u === 'www.bing.com' || u === 'br.search.yahoo.com') && !hasUtm;
+            var isLinkBio = u.indexOf('rd_station_link_na_bio') >= 0 || u.indexOf('cardapio-web-link-na-bio') >= 0 || u.indexOf('linktree') >= 0 || path.indexOf('lp-instagram') >= 0;
+            if (isGoogle) return 'Google Ads';
+            if (isMeta) return 'Meta Ads';
+            if (isSeo) return 'SEO';
+            if (isLinkBio) return 'Link da Bio';
+            return 'Outros';
+        }
+        function cwClassifyTierClient(p) {
+            var porte = cwPorteClient(p.faturamento);
+            var canal = cwClassifyCanalClient(p);
+            var t1 = [['Não tem','SEO'],['Médio','SEO'],['Grande','SEO'],['Médio','Link da Bio'],['Grande','Link da Bio'],['Médio','Google Ads'],['Grande','Google Ads'],['Médio','Outros'],['Grande','Outros']];
+            var t2 = [['Pequeno','SEO'],['Não tem','Link da Bio'],['Pequeno','Link da Bio'],['Grande','Meta Ads'],['Não sei','Link da Bio']];
+            var t31 = [['Não tem','Google Ads'],['Pequeno','Google Ads'],['Não sei','SEO']];
+            var t32 = [['Pequeno','Outros'],['Médio','Meta Ads']];
+            var t4 = [['Não tem','Outros'],['Não sei','Google Ads'],['Não sei','Outros']];
+            var t5 = [['Não sei','Meta Ads']];
+            function has(list) { for (var i=0;i<list.length;i++) if (list[i][0]===porte && list[i][1]===canal) return true; return false; }
+            if (has(t1)) return '1';
+            if (has(t2)) return '2';
+            if (has(t31)) return '3.1';
+            if (has(t32)) return '3.2';
+            if (has(t4)) return '4';
+            if (has(t5)) return '5';
+            return '5';
+        }
+        function cwFatEventNameClient(faturamento) {
+            var map = {
+                'Não tem faturamento': 'Lead_Fat_NaoTem',
+                'Não sei': 'Lead_Fat_NaoSei',
+                'Menos de R$1000': 'Lead_Fat_Ate1k',
+                'R$1.001 à R$5.000': 'Lead_Fat_1a5k',
+                'R$5.001 à R$10.000': 'Lead_Fat_5a10k',
+                'R$10.001 à R$20.000': 'Lead_Fat_10a20k',
+                'R$20.001 à R$30.000': 'Lead_Fat_20a30k',
+                'R$30.001 à R$50.000': 'Lead_Fat_30a50k',
+                'R$50.001 à R$100.000': 'Lead_Fat_50a100k',
+                'Acima de R$100.000': 'Lead_Fat_100kMais'
+            };
+            return map[(faturamento || '').trim()] || 'Lead_Fat_NaoSei';
+        }
+
+        // ─── Submit handler: captura TUDO, POST pra /cw/v1/submit, redirect ───
+        // Máscara de telefone (XX) XXXXX-XXXX em tempo real
+        document.querySelectorAll('form.cw-lp-form input[name="telefone"]').forEach(function(inp) {
+            inp.addEventListener('input', function(e) {
+                var v = e.target.value.replace(/\D/g, '').slice(0, 11);
+                if (v.length === 0) { e.target.value = ''; return; }
+                if (v.length <= 2) e.target.value = '(' + v;
+                else if (v.length <= 6) e.target.value = '(' + v.slice(0,2) + ') ' + v.slice(2);
+                else if (v.length <= 10) e.target.value = '(' + v.slice(0,2) + ') ' + v.slice(2,6) + '-' + v.slice(6);
+                else e.target.value = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+            });
+        });
+
+        // Helper: valida e normaliza telefone BR pra E.164 (+55 DDD 9 NNNN NNNN).
+        // Se vier com 10 dígitos (DDD + 8), insere "9" pra mobile padrão.
+        function cwNormalizePhoneBR(raw) {
+            var d = (raw || '').replace(/\D/g, '');
+            if (d.length === 11) return '+55' + d;
+            if (d.length === 10) return '+55' + d.slice(0,2) + '9' + d.slice(2);
+            return ''; // inválido
+        }
+
+        // ─── Autocorreção de email (espelho de cw_email_autocorrect no server) ───
+        // Conservadora: acentos→ascii, espaços, vírgula→ponto no domínio, typos EXATOS
+        // de domínio conhecido e TLD inexistente (.con/.combr). NUNCA mexe em domínio
+        // fora do mapa. Retorna { email, corrigido }.
+        function cwAutocorrectEmail(raw) {
+            var e = String(raw == null ? '' : raw).trim().toLowerCase();
+            if (!e) return { email: e, corrigido: false };
+            var antes = e;
+            // espaços internos
+            e = e.replace(/\s+/g, '');
+            // acentos/cedilha → ascii
+            var acc = { 'á':'a','à':'a','â':'a','ã':'a','ä':'a','é':'e','è':'e','ê':'e','ë':'e',
+                        'í':'i','ì':'i','î':'i','ï':'i','ó':'o','ò':'o','ô':'o','õ':'o','ö':'o',
+                        'ú':'u','ù':'u','û':'u','ü':'u','ç':'c','ñ':'n' };
+            e = e.replace(/[áàâãäéèêëíìîïóòôõöúùûüçñ]/g, function(ch){ return acc[ch] || ch; });
+            // múltiplos @: mantém o último como separador só se resolver
+            var nAt = (e.match(/@/g) || []).length;
+            if (nAt > 1) {
+                var at0 = e.lastIndexOf('@');
+                var loc0 = e.slice(0, at0).replace(/@/g, ''), dom0 = e.slice(at0 + 1);
+                if (loc0 && dom0 && dom0.indexOf('.') !== -1) e = loc0 + '@' + dom0;
+                else {
+                    var t = e.replace(/@+$/, '');
+                    if ((t.match(/@/g) || []).length === 1) e = t;
+                }
+            }
+            // vírgula → ponto no domínio
+            var at1 = e.lastIndexOf('@');
+            if (at1 > 0) e = e.slice(0, at1 + 1) + e.slice(at1 + 1).replace(/,/g, '.');
+            // remove chars fora de [a-z0-9._%+-@]
+            e = e.replace(/[^a-z0-9._%+\-@]/g, '');
+            // domínio: mapa exato de typos + TLD faltante/inexistente
+            var at = e.lastIndexOf('@');
+            if (at > 0 && at < e.length - 1) {
+                var local = e.slice(0, at), d = e.slice(at + 1);
+                var typos = {
+                    'gmial.com':'gmail.com','gmal.com':'gmail.com','gamil.com':'gmail.com',
+                    'gmaill.com':'gmail.com','gmali.com':'gmail.com','gmail.co':'gmail.com',
+                    'gmail.con':'gmail.com','gmail.cm':'gmail.com','gmail.comm':'gmail.com',
+                    'hotmial.com':'hotmail.com','hotmal.com':'hotmail.com','hotmil.com':'hotmail.com',
+                    'hotmai.com':'hotmail.com','hotmail.co':'hotmail.com','hotmail.con':'hotmail.com',
+                    'outlok.com':'outlook.com','outllok.com':'outlook.com','outlook.co':'outlook.com',
+                    'yahho.com':'yahoo.com','yahho.com.br':'yahoo.com.br',
+                    'yaho.com':'yahoo.com','yaho.com.br':'yahoo.com.br','yahoo.co':'yahoo.com',
+                    'icloud.co':'icloud.com','iclod.com':'icloud.com',
+                    'uol.com.b':'uol.com.br','uol.combr':'uol.com.br','bol.com.b':'bol.com.br'
+                };
+                var semTld = { 'gmail':'gmail.com','hotmail':'hotmail.com','outlook':'outlook.com',
+                               'yahoo':'yahoo.com','icloud':'icloud.com','uol':'uol.com.br',
+                               'bol':'bol.com.br','terra':'terra.com.br','live':'live.com' };
+                if (typos[d]) d = typos[d];
+                else if (semTld[d]) d = semTld[d];
+                else if (/\.con$/.test(d)) d = d.slice(0, -4) + '.com';
+                else if (/\.combr$/.test(d)) d = d.slice(0, -6) + '.com.br';
+                e = local + '@' + d;
+            }
+            return { email: e, corrigido: e !== antes };
+        }
+
+        // Autocorreção no blur do campo email — corrige o typo ANTES da validação
+        // HTML5 (pattern) e da validação manual; o usuário vê o email corrigido.
+        // Defensivo: try/catch, nunca quebra o form.
+        document.querySelectorAll('form.cw-lp-form input[name="email"], form.wpforms-form input[name="email"]').forEach(function(inp) {
+            inp.addEventListener('blur', function() {
+                try {
+                    var typed = (inp.value || '').trim();
+                    if (!typed) return;
+                    var fx = cwAutocorrectEmail(typed);
+                    if (fx.corrigido && /^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(fx.email)) {
+                        inp.dataset.cwEmailOriginal = typed; // digitado, p/ auditoria no server
+                        inp.value = fx.email;
+                    }
+                } catch (err) {}
+            });
+        });
+
+        // Validação manual (robusta) — não confia só em HTML5 required/pattern
+        function cwValidateLeadForm(form) {
+            var errors = [];
+            var fields = {};
+            form.querySelectorAll('input, select').forEach(function(el) { fields[el.name] = el; });
+
+            var nome = (fields.nome?.value || '').trim();
+            if (!/^\S+\s+\S+/.test(nome)) errors.push({ field: 'nome', msg: 'Digite nome e sobrenome' });
+
+            var email = (fields.email?.value || '').trim();
+            // Autocorreção conservadora ANTES de validar (typo de domínio, acento, vírgula) —
+            // escreve o corrigido de volta no campo e guarda o digitado p/ auditoria
+            try {
+                var emFix = cwAutocorrectEmail(email);
+                if (emFix.corrigido && /^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(emFix.email)) {
+                    if (fields.email) {
+                        fields.email.dataset.cwEmailOriginal = email;
+                        fields.email.value = emFix.email;
+                    }
+                    email = emFix.email;
+                }
+            } catch (errFix) {}
+            if (!/^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(email)) errors.push({ field: 'email', msg: 'Email inválido' });
+
+            var telDigits = (fields.telefone?.value || '').replace(/\D/g,'');
+            if (telDigits.length !== 10 && telDigits.length !== 11) errors.push({ field: 'telefone', msg: 'Telefone com DDD (10 ou 11 dígitos)' });
+
+            var empresa = (fields.empresa?.value || '').trim();
+            if (empresa.length < 2) errors.push({ field: 'empresa', msg: 'Empresa é obrigatória' });
+
+            if (!fields.faturamento || !fields.faturamento.value) errors.push({ field: 'faturamento', msg: 'Selecione o faturamento' });
+            if (!fields.segmento || !fields.segmento.value) errors.push({ field: 'segmento', msg: 'Selecione o segmento' });
+            if (fields.aceitaPolitica && !fields.aceitaPolitica.checked) errors.push({ field: 'aceitaPolitica', msg: 'Aceite a política de privacidade' });
+
+            // Honeypot: campo "website" deve estar vazio (anti-bot)
+            if (fields.website && fields.website.value.trim() !== '') errors.push({ field: 'website', msg: 'Detecção de bot' });
+
+            return errors;
+        }
+
+        function cwShowValidationErrors(form, errors) {
+            // Remove erros anteriores
+            form.querySelectorAll('.cw-field-error').forEach(function(e){ e.remove(); });
+            form.querySelectorAll('.cw-field-invalid').forEach(function(e){ e.classList.remove('cw-field-invalid'); });
+            errors.forEach(function(err) {
+                var el = form.querySelector('[name="' + err.field + '"]');
+                if (!el) return;
+                el.classList.add('cw-field-invalid');
+                var msg = document.createElement('div');
+                msg.className = 'cw-field-error';
+                msg.textContent = err.msg;
+                msg.style.cssText = 'color:#d33;font-size:12px;margin-top:4px;font-weight:600;';
+                (el.closest('.cw-lp-form-row') || el.parentNode).appendChild(msg);
+            });
+            // Foca primeiro inválido
+            var first = form.querySelector('.cw-field-invalid');
+            if (first) first.focus();
+        }
+
+        document.querySelectorAll('form.cw-lp-form, form.wpforms-form').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (eng.formCompleted) return;
+
+                // ─── Validação robusta antes de qualquer dispatch ───
+                var errors = cwValidateLeadForm(form);
+                if (errors.length > 0) {
+                    cwShowValidationErrors(form, errors);
+                    return;
+                }
+
+                eng.formCompleted = true;
+
+                var fd = new FormData(form);
+                var payload = {};
+                fd.forEach(function(v, k) { payload[k] = v; });
+
+                // Normaliza telefone pra E.164 (+55 DDD 9 NNNN NNNN — padrão Kommo/RD/Pipedrive/Meetime)
+                payload.telefone_raw = payload.telefone;            // mantém com máscara pra auditoria
+                payload.telefone     = cwNormalizePhoneBR(payload.telefone);
+
+                // ─── Autocorreção de email ANTES de enviar/hashear (espelho do server) ───
+                // Garante que gtag user_data, dataLayer e o POST já saem com o email certo.
+                // O digitado vai em email_original → server salva como meta de auditoria.
+                try {
+                    var emEl = form.querySelector('input[name="email"]');
+                    var emTyped = (emEl && emEl.dataset && emEl.dataset.cwEmailOriginal) || '';
+                    var emFx = cwAutocorrectEmail(payload.email);
+                    if (emFx.corrigido && /^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(emFx.email)) {
+                        payload.email_original = emTyped || payload.email;
+                        payload.email = emFx.email;
+                    } else if (emTyped && emTyped !== payload.email &&
+                               cwAutocorrectEmail(emTyped).email === String(payload.email || '').toLowerCase()) {
+                        // campo já foi corrigido no blur/validação — só repassa o digitado
+                        payload.email_original = emTyped;
+                    }
+                } catch (errEmail) { /* defensivo: nunca quebra o form */ }
+
+                // ─── Enriquecer com TODOS os dados de browser/device ───
+                payload.user_agent     = navigator.userAgent;
+                payload.screen_w       = window.screen.width;
+                payload.screen_h       = window.screen.height;
+                payload.viewport_w     = window.innerWidth;
+                payload.viewport_h     = window.innerHeight;
+                payload.dpr            = window.devicePixelRatio || 1;
+                payload.touch_support  = ('ontouchstart' in window || navigator.maxTouchPoints > 0) ? '1' : '0';
+                payload.color_depth    = window.screen.colorDepth || '';
+                payload.language       = navigator.language || '';
+                payload.languages      = (navigator.languages || []).join(',');
+                payload.timezone       = (Intl.DateTimeFormat().resolvedOptions().timeZone) || '';
+                payload.timezone_offset= new Date().getTimezoneOffset();
+                payload.connection_type= (navigator.connection && navigator.connection.effectiveType) || '';
+                payload.cookies_enabled= navigator.cookieEnabled ? '1' : '0';
+                payload.is_headless    = navigator.webdriver ? '1' : '0';
+                payload.is_adblock     = (window._gaq || window.adblock || false) ? '1' : '0';
+
+                // ─── Engagement ───
+                payload.engagement_score    = eng.score;
+                payload.scroll_max_pct      = eng.scrollMaxPct || 0;
+                payload.time_on_page_seconds= Math.floor((Date.now() - (eng.startTs || Date.now()))/1000);
+                payload.cta_clicks_count    = eng.ctaClicks || 0;
+                payload.form_fill_seconds   = eng.formStartTs ? ((Date.now() - eng.formStartTs)/1000).toFixed(2) : '';
+                payload.form_retries        = eng.formRetries || 0;
+                payload.cta_clicks_labels   = JSON.stringify(eng.ctaLabels || []);
+                payload.form_fields_focused = JSON.stringify(eng.fieldsFocused || []);
+
+                // ─── Click IDs + UTMs + IDs de anúncio (relê da URL no submit — robusto, independe do hidden input) ───
+                // Superset multi-canal; só grava o que vier na URL. Server persiste todos (cw-lead-submit save array).
+                var urlParams = new URLSearchParams(window.location.search);
+                ['gclid','gbraid','wbraid','gad_source','gclsrc','fbclid','ttclid','msclkid','li_fat_id','rdt_cid','tblci','epik','mc_cid','mc_eid','utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_placement','ad_id','adset_id','campaign_id','creative_id','crid','cid','agid','mt','dev','loc','audience','cupom','keyword'].forEach(function(k) {
+                    var v = urlParams.get(k);
+                    if (v) payload[k] = v;
+                });
+                ['_fbp','_fbc','_ga','_gid','_ttp','_uetvid','_uetsid','_rdt_uuid','bcookie','lidc','_scid','cw_ext_id'].forEach(function(c) {
+                    var v = getCookie(c) || getCookie(c + '_persist');
+                    if (v) payload[c] = v;
+                });
+
+                // GA4 client_id (derivado do cookie _ga, ou fallback cw_ext_id)
+                payload.ga_client_id = cwGAClientId();
+
+                // ─── Página / Sessão ───
+                payload.page_url    = window.location.href;
+                payload.page_path   = window.location.pathname;
+                payload.page_query  = window.location.search;
+                payload.page_title  = document.title;
+                payload.referrer    = document.referrer;
+                try {
+                    var attr = JSON.parse(decodeURIComponent(getCookie('cw_attr') || '{}'));
+                    payload.entry_url     = attr.entry_url || window.location.href;
+                    payload.first_seen_at = attr.entry_time ? new Date(attr.entry_time*1000).toISOString() : '';
+                } catch(e) {}
+
+                // ─── Multi-touch ───
+                try {
+                    var touches = JSON.parse(decodeURIComponent(getCookie('cw_touches') || '[]'));
+                    if (touches.length) {
+                        payload.first_touch_channel = touches[0].channel;
+                        payload.first_touch_at      = touches[0].at;
+                        payload.last_touch_channel  = touches[touches.length - 1].channel;
+                        payload.touch_history       = JSON.stringify(touches);
+                        payload.time_since_first_touch_hours = ((Date.now() - new Date(touches[0].at).getTime()) / 3600000).toFixed(2);
+                    }
+                } catch(e) {}
+
+                // ─── lead_event_id ───
+                payload.lead_event_id = leadEventId;
+
+                // ─── Sessão REAL da conversão (canal-da-sessão vs canal-de-atribuição) ───
+                // O cookie cw_attr é pegajoso (last non-direct): reconversão via direct
+                // herda UTM antiga. Aqui lemos SÓ a URL da página atual (sem cookie),
+                // MESMO VAZIA — direct fica direct de verdade. Persistido no server
+                // via save_post_cw_lead (cw-attr-report.php) como metas session_*.
+                var sessionParams = new URLSearchParams(location.search);
+                payload.session_utm_source   = sessionParams.get('utm_source') || '';
+                payload.session_utm_medium   = sessionParams.get('utm_medium') || '';
+                payload.session_utm_campaign = sessionParams.get('utm_campaign') || '';
+                payload.session_referrer     = document.referrer;
+                payload.session_landing      = location.pathname;
+
+                // ─── Classificação client-side + valor do lead (compartilhados por Meta E Google) ───
+                // Fora do bloco fbq de propósito: se o Pixel for bloqueado (adblock),
+                // o gtag abaixo continua com tier/fat/value válidos.
+                var tierClient = cwClassifyTierClient(payload);
+                var fatEventName = cwFatEventNameClient(payload.faturamento);
+                var fatBucket = fatEventName.replace('Lead_Fat_', '');
+                var cwLeadValue = (typeof cwCalculateValueClient === 'function')
+                    ? cwCalculateValueClient(tierClient, fatBucket) : 550;
+
+                // ─── Pixel client: dispara Lead + Lead_TierX + Lead_FatX ───
+                // Mesmo event_id format que o server-side usa (em cw_lead_dispatch_capi)
+                // pra Meta deduplicar Pixel ↔ CAPI. value = mesmo do server (dedup preservada);
+                // as custom conversions [CW] Lead_Tier*/Fat* herdam esse value.
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Lead', {
+                        content_name: 'LP CardápioWeb Form',
+                        content_category: 'Demo Request',
+                        value: cwLeadValue,
+                        currency: 'BRL',
+                        faturamento: payload.faturamento,
+                        segmento: payload.segmento,
+                        engagement_score: eng.score,
+                        tier: tierClient
+                    }, { eventID: leadEventId });
+
+                    fbq('trackCustom', 'Lead_Tier' + tierClient.replace('.', '_'), {
+                        value: cwLeadValue,
+                        currency: 'BRL',
+                        tier: tierClient,
+                        canal: payload.utm_medium === 'paid' && payload.utm_source ? payload.utm_source : '',
+                        porte: cwPorteClient(payload.faturamento),
+                        faturamento: payload.faturamento,
+                        segmento: payload.segmento
+                    }, { eventID: leadEventId + '_tier' + tierClient.replace('.', '_') });
+
+                    fbq('trackCustom', fatEventName, {
+                        value: cwLeadValue,
+                        currency: 'BRL',
+                        faturamento_bucket: fatBucket,
+                        faturamento: payload.faturamento,
+                        porte: cwPorteClient(payload.faturamento)
+                    }, { eventID: leadEventId + '_fat' });
+                }
+
+                // ─── Google Ads Conversion Tracking (gtag direto, real-time) ───
+                // Dispara 3 conversions: Lead + Lead_TierX + Lead_FatX. Cada uma com
+                // value calculado (mesma fórmula do server) e Enhanced Conversions
+                // (user_data plain — Google hashea automaticamente).
+                if (typeof gtag === 'function' && window.cwGadsAwId && window.cwGadsLabels) {
+                    var gadsValue = cwLeadValue; // mesmo valor do Pixel/CAPI/GA4
+                    var tierKey = 'Lead_Tier' + tierClient.replace('.', '_');
+                    var fatKey  = fatEventName; // Lead_Fat_<bucket>
+
+                    // Enhanced Conversions for Leads — user-provided data
+                    var nameParts = (payload.nome || '').trim().split(/\s+/);
+                    gtag('set', 'user_data', {
+                        email_address: (payload.email || '').toLowerCase(),
+                        phone_number:  payload.telefone || '',
+                        address: {
+                            first_name: nameParts[0] || '',
+                            last_name:  nameParts.slice(1).join(' ') || ''
+                        }
+                    });
+
+                    var fireGads = function(eventKey, txid) {
+                        var label = window.cwGadsLabels[eventKey];
+                        if (!label) return;
+                        gtag('event', 'conversion', {
+                            send_to: window.cwGadsAwId + '/' + label,
+                            value: gadsValue,
+                            currency: 'BRL',
+                            transaction_id: txid
+                        });
+                    };
+                    fireGads('Lead',   leadEventId);
+                    fireGads(tierKey,  leadEventId + '_tier' + tierClient.replace('.', '_'));
+                    fireGads(fatKey,   leadEventId + '_fat');
+                }
+
+                window.dataLayer.push({
+                    event: 'cw_lead', event_id: leadEventId, data: payload
+                });
+
+                // ─── POST pro endpoint /cw/v1/submit ───
+                fetch('/wp-json/cw/v1/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    keepalive: true
+                }).then(function(r) { return r.json(); })
+                  .then(function(j) {
+                      if (j && j.redirect_url) {
+                          window.location.href = j.redirect_url;
+                      } else {
+                          window.location.href = 'https://lp.cardapioweb.com/agradecimento/';
+                      }
+                  })
+                  .catch(function() {
+                      window.location.href = 'https://lp.cardapioweb.com/agradecimento/';
+                  });
+            });
+        });
+
+        // ─── Multi-touch tracking: registra cada visita única (canal + timestamp) ───
+        (function trackTouch() {
+            var current = {};
+            ['utm_source','utm_medium','utm_campaign','fbclid','gclid','ttclid','msclkid','li_fat_id','rdt_cid','tblci','epik'].forEach(function(k) {
+                var v = urlParams.get(k);
+                if (v) current[k] = v;
+            });
+            var touch = {
+                at: new Date().toISOString(),
+                channel: detectChannel(current, document.referrer),
+                utm_source: current.utm_source || '',
+                utm_campaign: current.utm_campaign || '',
+                landing: location.pathname,
+            };
+            try {
+                var existing = JSON.parse(decodeURIComponent(getCookie('cw_touches') || '[]'));
+                // só adiciona se canal mudou OU mais de 30 min do último touch
+                var last = existing[existing.length - 1];
+                var shouldAdd = !last || last.channel !== touch.channel ||
+                    (Date.now() - new Date(last.at).getTime() > 30*60*1000);
+                if (shouldAdd) {
+                    existing.push(touch);
+                    if (existing.length > 5) existing = existing.slice(-5); // mantém últimos 5
+                    setCookie('cw_touches', encodeURIComponent(JSON.stringify(existing)), 90);
+                }
+            } catch(e) {
+                setCookie('cw_touches', encodeURIComponent(JSON.stringify([touch])), 90);
+            }
+        })();
+
+        function detectChannel(p, ref) {
+            if (p.gclid || p.gbraid || p.wbraid) return 'Google Ads';
+            if (p.fbclid) return 'Meta Ads';
+            if (p.ttclid) return 'TikTok Ads';
+            if (p.msclkid) return 'Bing Ads';
+            if (p.li_fat_id) return 'LinkedIn Ads';
+            if (p.rdt_cid) return 'Reddit Ads';
+            if (p.tblci) return 'Taboola';
+            if (p.epik) return 'Pinterest Ads';
+            if (p.utm_medium === 'paid') return 'Outros Ads';
+            if (p.utm_medium === 'email') return 'Email Marketing';
+            if (ref) {
+                if (/google\./.test(ref)) return 'Google SEO';
+                if (/bing\./.test(ref)) return 'Bing SEO';
+                if (/facebook\.|fb\./.test(ref)) return 'Facebook Orgânico';
+                if (/instagram\./.test(ref)) return 'Instagram Orgânico';
+                if (/tiktok\./.test(ref)) return 'TikTok Orgânico';
+                if (/linkedin\./.test(ref)) return 'LinkedIn Orgânico';
+                if (/twitter\.|x\.com/.test(ref)) return 'Twitter/X Orgânico';
+                if (/youtube\.|youtu\.be/.test(ref)) return 'YouTube Orgânico';
+            }
+            if (!ref && !p.utm_source) return 'Direct';
+            return 'Outros';
+        }
+    });
+})();
+</script>
+    	<a class="cw-sticky-cta cw-cta" href="#form">Peça uma demonstração</a></body>
+</html>

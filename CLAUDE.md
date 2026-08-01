@@ -17,6 +17,13 @@ mas ele estiver em `fontes/`, consulte a fonte e proponha atualizar o CONTEXTO.m
 Atenção: dados com data (métricas, versões de prompt, projeções) podem ficar
 desatualizados — sempre prefira a informação mais recente e confirme antes de afirmar.
 
+## Números que saem para fora
+Antes de entregar qualquer número que vai circular — reporte ao Gerardo, veredito
+VALIDADA/REFUTADA de experimento, slide, PDF, dashboard — acione o agente
+`cetico-de-numero` com a afirmação pronta e espere o veredito. Ele é read-only e refaz a
+conta por rota independente. Se voltar DIVERGENTE, o número não sai antes de reconciliar.
+Acione também sempre que eu estranhar um resultado.
+
 ## Organização do repositório
 O `README.md` da raiz tem o mapa completo e a tabela "onde eu coloco uma coisa nova".
 Siga a convenção existente ao criar arquivo — não invente pasta nova sem necessidade:

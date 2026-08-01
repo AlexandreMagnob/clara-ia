@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiência na página de destino — LP Google Ads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --roxo: #a442fa; --dourado: #ffb700; --ink: #2b2338; --cinza: #6d6579; --fundo: #faf8fd; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', 'Segoe UI', sans-serif; color: var(--ink); background: var(--fundo); line-height: 1.55; }
+  .page { max-width: 860px; margin: 0 auto; padding: 40px 32px 64px; }
+  header { border-bottom: 4px solid var(--roxo); padding-bottom: 18px; margin-bottom: 28px; }
+  .kicker { color: var(--dourado); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; }
+  h1 { font-size: 1.7rem; font-weight: 800; color: var(--ink); margin-top: 4px; }
+  .meta { color: var(--cinza); font-size: .9rem; margin-top: 8px; }
+  .badge { display: inline-block; background: #e9fbf0; color: #157347; border: 1px solid #b7e4c7; border-radius: 20px; padding: 2px 12px; font-size: .82rem; font-weight: 700; margin: 10px 6px 0 0; }
+  .badge.alerta { background: #fff7e0; color: #8a6100; border-color: #ffe1a1; }
+  h2 { color: var(--roxo); font-size: 1.15rem; font-weight: 800; margin: 30px 0 10px; }
+  h3 { font-size: 1rem; font-weight: 800; margin: 20px 0 8px; }
+  p { margin-bottom: 10px; }
+  strong { font-weight: 700; }
+  .resumo { background: #fff; border-left: 5px solid var(--dourado); border-radius: 8px; padding: 16px 20px; box-shadow: 0 1px 4px rgba(43,35,56,.07); margin-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(43,35,56,.07); margin: 12px 0 16px; font-size: .92rem; }
+  th { background: var(--roxo); color: #fff; text-align: left; padding: 9px 12px; font-weight: 700; }
+  td { padding: 8px 12px; border-top: 1px solid #efeaf6; vertical-align: top; }
+  tr:nth-child(even) td { background: #fbf9fe; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  ul, ol { margin: 0 0 12px 22px; }
+  li { margin-bottom: 6px; }
+  .fonte { color: var(--cinza); font-size: .82rem; }
+  .destaque { background: #fff7e0; border: 1px solid #ffe1a1; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+  code { background: #f1ecf8; border-radius: 4px; padding: 1px 6px; font-size: .88em; }
+  .colar { background: #fff; border: 1px solid #e5def0; border-left: 4px solid var(--roxo); border-radius: 8px; padding: 14px 18px; margin: 10px 0 16px; }
+  .colar .rot { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--cinza); font-weight: 800; margin-bottom: 8px; }
+  pre { background: #f7f3fc; border: 1px solid #e5def0; border-radius: 6px; padding: 12px 14px; font-size: .8rem; overflow-x: auto; white-space: pre-wrap; word-break: break-word; font-family: 'Consolas','Menlo',monospace; }
+  .q { font-weight: 800; margin-top: 10px; }
+  footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid #e5def0; color: var(--cinza); font-size: .82rem; }
+  .sim { color: #157347; font-weight: 800; }
+  .nao { color: #b02a37; font-weight: 800; }
+  .chk { font-size: 1.15rem; text-align: center; color: var(--roxo); line-height: 1.2; }
+  @media print { body { background: #fff; } .page { padding: 0; } h2 { page-break-after: avoid; } h3 { page-break-after: avoid; } table, .colar, .destaque { page-break-inside: avoid; } .checklist-inicio { page-break-before: always; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="kicker">CardápioWeb · Growth / Mídia paga</div>
+  <h1>Experiência na página de destino — LP de Google Ads</h1>
+  <div class="meta">28/07/2026 · <code>lp.cardapioweb.com/lp-google-ads-3/</code> · keywords "cardápio web" e "cardápio digital"</div>
+  <span class="badge">✔ Benchmark medido em trace real do Chrome</span>
+  <span class="badge alerta">⚠ 3 dados ainda travados na conta do Google Ads</span>
+</header>
+
+<div class="resumo">
+  <p><strong>O problema:</strong> o critério "Experiência na página de destino" do Índice de qualidade precisa chegar à nota máxima nas keywords "cardápio web" e "cardápio digital".</p>
+  <p><strong>O que foi feito:</strong> levantamento dos critérios na documentação oficial do Google, trace real da página no Chrome (mobile, Slow 4G, CPU 4×), medição de TTFB por <code>curl</code> e benchmark contra o site principal e 3 concorrentes diretos.</p>
+  <p><strong>O resultado medido:</strong> a LP responde em <strong>1,273 s</strong> de TTFB contra <strong>0,200 s</strong> do próprio site principal e 0,15–0,17 s dos concorrentes. <strong>80% do LCP é espera de servidor.</strong> No conteúdo, "cardápio digital" está bem coberto e "cardápio web" aparece 9× como nome da marca, que é o uso correto: <strong>Cardápio Web é a empresa, não um termo a ser explicado.</strong></p>
+</div>
+
+<h2>Fazendo essas alterações a qualidade melhora?</h2>
+
+<p>Separei em duas perguntas porque a resposta é diferente para cada uma.</p>
+
+<table>
+  <tr><th>Pergunta</th><th style="width:22%">Resposta</th><th>Por quê</th></tr>
+  <tr>
+    <td>As mudanças melhoram a página de forma objetiva e medível?</td>
+    <td class="sim">SIM</td>
+    <td>O ganho de velocidade é mensurável antes/depois. O próprio Chrome estima <strong>1.054 ms de economia de LCP</strong> só corrigindo a latência do documento. Isso leva o LCP de 1,45 s para cerca de 0,4 s, e dá para conferir com um comando.</td>
+  </tr>
+  <tr>
+    <td>As mudanças garantem nota "Acima da média" no Google Ads?</td>
+    <td class="nao">NÃO</td>
+    <td>O status não é nota absoluta. O Google compara com <em>"outros anunciantes que tiveram publicidade veiculada para a mesma palavra-chave nos últimos 90 dias"</em>. É ranking relativo. Dá para corrigir tudo e continuar "Na média" se o leilão inteiro estiver bom.</td>
+  </tr>
+</table>
+
+<div class="destaque">
+  <p><strong>O que dá para afirmar com segurança:</strong> as mudanças abaixo removem os pontos em que a página <strong>falha objetivamente em critério que o Google confirma oficialmente que avalia</strong>. Isso é a maior probabilidade disponível. Não é um contrato, e quem prometer 100% está inventando.</p>
+  <p style="margin-bottom:0"><strong>Prazo:</strong> o Índice recalcula com acúmulo de impressões contra 90 dias de histórico. Contar <strong>2 a 4 semanas de veiculação</strong> depois das mudanças antes de julgar, comparando pela coluna "Índice de qualidade (hist.)".</p>
+</div>
+
+<h2>Como a página está hoje para cada palavra</h2>
+
+<div class="destaque">
+  <p style="margin-bottom:0"><strong>Premissa fechada:</strong> Cardápio Web é o nome da empresa. A página não vai explicar o que é "um cardápio web", porque isso trata a marca como substantivo comum e enfraquece ela. Quem busca "cardápio web" na maioria das vezes está procurando a empresa, e a página da empresa já é a resposta certa para essa busca. O termo genérico do mercado é <strong>cardápio digital</strong>, e é esse que a página explica.</p>
+</div>
+
+<table>
+  <tr><th>Onde</th><th>"cardápio digital"</th><th>"cardápio web"</th></tr>
+  <tr><td>No <code>&lt;h1&gt;</code></td><td>✔ match exato</td><td>— aparece como marca</td></tr>
+  <tr><td>No corpo do texto</td><td>9× como termo</td><td>9× como marca ✔</td></tr>
+  <tr><td>No <code>&lt;title&gt;</code></td><td>✘ ausente</td><td>2× duplicado, junto de "LP – Google Ads"</td></tr>
+  <tr><td>No alt das imagens</td><td><strong>0×</strong></td><td>4× como marca ✔</td></tr>
+  <tr><td>No FAQ</td><td>✘ ausente</td><td>✘ ausente</td></tr>
+</table>
+
+<p>Para <strong>"cardápio digital"</strong> o conteúdo principal já responde bem e falta cobertura nas bordas: title, alt de imagem e FAQ. Para <strong>"cardápio web"</strong> a cobertura no corpo já está correta e o buraco real é o <code>&lt;title&gt;</code>, que hoje traz o nome da empresa duplicado dentro de um rascunho interno.</p>
+
+<h2>O que fazer na página</h2>
+
+<p class="fonte">Ordem recomendada por retorno sobre esforço. É recomendação, não decisão fechada.</p>
+
+<h3>1. Title e meta description · 10 min · cobre as duas palavras</h3>
+<p>Hoje o title é <code>LP – Google Ads – Cardápio Web – Cardápio Web</code>. É rascunho interno em produção e desperdiça o campo textual mais forte da página. Não existe meta description.</p>
+<div class="colar">
+  <div class="rot">Pronto para colar</div>
+<pre>&lt;title&gt;Cardápio Digital para Restaurantes e Delivery | Cardápio Web&lt;/title&gt;
+&lt;meta name="description" content="Cardápio digital com chatbot de WhatsApp, pagamento online e sistema de gestão em uma só plataforma. Mais de 17 mil restaurantes já vendem pelo canal próprio. Fale com um consultor."&gt;</pre>
+</div>
+
+<h3>2. Três perguntas novas no FAQ · 30 min · maior ganho pelo esforço</h3>
+<p>O FAQ tem 5 perguntas e nenhuma usa os termos. É onde a palavra entra com naturalidade, porque é o formato em que a pessoa realmente pergunta. Nas três abaixo o nome da empresa aparece como empresa, nunca como definição. Acrescentar no topo do bloco.</p>
+<div class="colar">
+  <div class="rot">Pronto para colar</div>
+  <p class="q">O que é um cardápio digital?</p>
+  <p>É o cardápio do seu restaurante em um link próprio, que o cliente abre no celular e usa para fechar o pedido sozinho. Ele escolhe os itens, define entrega ou retirada e paga online. O pedido cai direto no seu sistema, sem ninguém digitar nada.</p>
+  <p class="q">Qual a diferença entre o cardápio digital da Cardápio Web e um cardápio em PDF?</p>
+  <p>O PDF só mostra o preço. O cardápio digital da Cardápio Web recebe o pedido. Com o PDF o cliente ainda precisa mandar mensagem descrevendo o que quer, e é aí que nasce erro de anotação. Na Cardápio Web ele fecha a compra sozinho e o pedido já entra no sistema.</p>
+  <p class="q">Preciso instalar algum aplicativo para usar a Cardápio Web?</p>
+  <p style="margin-bottom:0">Não. Funciona no navegador do celular, do tablet e do computador. Seu cliente abre o link e pede. Você gerencia de onde estiver.</p>
+</div>
+
+<h3>3. Aprofundar um bloco de produto que já existe · 30 min</h3>
+<p>A página tem 742 palavras, enxuto para o Google avaliar "conteúdo relevante e original". A correção é dar substância a uma seção que já existe, e não criar um bloco explicando o nome da empresa. Posição sugerida: dentro de "Sistema de gestão", que hoje é a seção mais rasa da página.</p>
+<div class="colar">
+  <div class="rot">Pronto para colar</div>
+  <p class="q">Do pedido no cardápio digital até a cozinha, sem ninguém digitar nada</p>
+  <p>Seu cliente abre o cardápio digital pelo link, monta o pedido e paga online. O pedido entra no sistema de gestão já com o item, o endereço, a forma de pagamento e a observação que ele escreveu. A cozinha recebe a comanda impressa e o entregador sai com a rota. Ninguém reescreve pedido, ninguém confere print de conversa.</p>
+  <p>O chatbot de WhatsApp responde quem chama fora do link, envia o cardápio digital e devolve a pessoa para o mesmo fluxo de pedido. O programa de fidelidade reconhece o cliente que já comprou e devolve ele para o seu canal em vez do marketplace.</p>
+  <p style="margin-bottom:0">São mais de 17 mil restaurantes na Cardápio Web hoje, com R$ 12 bilhões em pedidos processados.</p>
+</div>
+
+<h3>4. Alt das imagens · 15 min</h3>
+<p>As 42 imagens têm alt, o que é bom, mas <strong>"cardápio digital" aparece zero vezes neles</strong>. Três imagens têm alt genérico <code>Cardápio Web</code>.</p>
+<table>
+  <tr><th>Alt atual</th><th>Trocar por</th></tr>
+  <tr><td><code>Cardápio Web</code> (hero)</td><td>Cardápio digital da Cardápio Web aberto no celular</td></tr>
+  <tr><td><code>Automação de atendimento - ChatBot WhatsApp</code></td><td>Chatbot de WhatsApp integrado ao cardápio digital</td></tr>
+  <tr><td><code>Ferramenta de vendas</code></td><td>Ferramenta de vendas da Cardápio Web</td></tr>
+  <tr><td><code>Sistema de gestão</code></td><td>Sistema de gestão integrado ao cardápio digital</td></tr>
+</table>
+
+<h3>5. Subtítulo do H1 · 5 min</h3>
+<p>Não mexer no H1, ele já é match exato de "cardápio digital". Ajustar só a linha de baixo, hoje <em>"Cardápio digital, sistema de gestão e integrações com Whatsapp, tudo isso num só lugar!"</em>.</p>
+<div class="colar">
+  <div class="rot">Pronto para colar</div>
+  <p style="margin-bottom:0">Cardápio digital próprio, chatbot de WhatsApp e sistema de gestão em uma só plataforma. Seu cliente pede pelo link, você recebe direto no sistema.</p>
+</div>
+
+<h3>6. Bloco de contato no rodapé · depende de você</h3>
+<p>"Facilidade de encontrar contato" é critério do Google e a página <strong>não tem telefone, e-mail nem WhatsApp em lugar nenhum</strong>. Tem CNPJ e endereço, o que ajuda, mas não fecha. Política de privacidade e Termos são PDFs de 97 KB e 250 KB, e a política de destino do Google desaconselha link que leva a arquivo.</p>
+<p class="fonte">Falta definir qual telefone e e-mail públicos podem entrar. Nenhum número foi inventado aqui.</p>
+
+<div class="destaque">
+  <p style="margin-bottom:0"><strong>Não empilhe a palavra.</strong> O critério do Google é utilidade e relevância, não densidade. As mudanças acima colocam os termos onde a pessoa naturalmente leria. Repetir o nome da empresa 30 vezes piora a leitura e não compra nota.</p>
+</div>
+
+<h2>O item que vale mais que todos os anteriores</h2>
+
+<p>A página responde em <strong>1,273 s</strong> contra <strong>0,200 s</strong> do nosso próprio site principal. Velocidade de carregamento é fator que o Google confirma oficialmente, e é onde estamos objetivamente piores que os concorrentes do mesmo leilão.</p>
+
+<table>
+  <tr><th>Site</th><th class="num">TTFB (melhor de 3)</th><th class="num">vs. nossa LP</th></tr>
+  <tr><td><strong>lp.cardapioweb.com/lp-google-ads-3/</strong></td><td class="num"><strong>1,273 s</strong></td><td class="num">—</td></tr>
+  <tr><td>cardapioweb.com (nosso site principal)</td><td class="num">0,200 s</td><td class="num">6,4× mais rápido</td></tr>
+  <tr><td>saipos.com</td><td class="num">0,153 s</td><td class="num">8,3× mais rápido</td></tr>
+  <tr><td>goomer.com.br</td><td class="num">0,165 s</td><td class="num">7,7× mais rápido</td></tr>
+  <tr><td>anota.ai</td><td class="num">0,167 s</td><td class="num">7,6× mais rápido</td></tr>
+</table>
+<p class="fonte">Medição por <code>curl -w "%{time_starttransfer}"</code>, 3 execuções por site, melhor tempo de cada. 28/07/2026, das 14h30 às 14h50 (Brasília).</p>
+
+<p><strong>A causa está identificada.</strong> A resposta da página vem com <code>Cache-Control: public, max-age=0</code>, ou seja sem cache de página, <strong>e</strong> com <code>Set-Cookie: cw_ext_id</code> gravado pelo PHP. Resposta que traz <code>Set-Cookie</code> desliga o cache em praticamente qualquer CDN ou plugin de cache. Confirmado: a segunda chamada consecutiva também levou 1,89 s.</p>
+
+<p><strong>Consequência prática:</strong> ligar cache sem antes mover a geração do <code>cw_ext_id</code> para o lado do navegador não resolve nada. A ordem importa.</p>
+
+<ol>
+  <li>Mover a geração do <code>cw_ext_id</code> para JavaScript no navegador. O formulário já envia esse campo, então muda só a origem do valor.</li>
+  <li>Ligar cache de página no subdomínio. O site principal já responde em 0,200 s, vale descobrir o mecanismo dele e replicar em vez de montar um novo.</li>
+  <li>Trocar o header para algo como <code>public, max-age=300, s-maxage=3600, stale-while-revalidate=86400</code>.</li>
+</ol>
+
+<p><strong>Como validar:</strong> <code>curl -s -o /dev/null -w "%{time_starttransfer}\n" &lt;url&gt;</code> em 3 execuções. Meta abaixo de 0,3 s.</p>
+
+<h2>O que já está bom e não deve ser mexido</h2>
+<p>CLS 0,00 sem deslocamento de layout, 41 de 42 imagens em WebP, zero script bloqueando renderização no <code>&lt;head&gt;</code>, Brotli e HTTP/3 ativos, <code>robots.txt</code> não bloqueia o AdsBot, viewport mobile correto, e apenas 20 links na página. O Google cita "quantidade de links" como fator e aqui está enxuto, o que joga a favor. O front-end já foi otimizado por alguém, o gargalo é servidor.</p>
+
+<p>O <code>noindex, nofollow</code> presente na página foi investigado e <strong>descartado como suspeito</strong>. A documentação do Google Search Central é explícita: a regra genérica vale para crawlers de busca, e para bloquear o AdsBot seria preciso nomear o bot em <code>&lt;meta name="AdsBot-Google"&gt;</code>, o que não existe ali.</p>
+
+<h2>O que falta para fechar o diagnóstico</h2>
+
+<p>Três dados que só aparecem dentro da conta do Google Ads, e um deles pode valer mais que tudo acima.</p>
+
+<table>
+  <tr><th style="width:34%">Dado</th><th>Por que muda a conclusão</th></tr>
+  <tr>
+    <td>Índice atual e status dos 3 componentes</td>
+    <td>Se estiver <strong>"—"</strong>, é falta de volume de busca e nenhuma mudança na página resolve. Se "Experiência na página" já estiver "Na média" e os outros dois "Abaixo", o gargalo é outro.</td>
+  </tr>
+  <tr>
+    <td>Texto dos anúncios que apontam para esta URL</td>
+    <td>O Google manda manter consistência entre a mensagem do anúncio e a página. Se o anúncio promete algo que a página não entrega, e ela só oferece "Fale com um consultor", <strong>essa seria a correção de maior impacto de todo o documento</strong>.</td>
+  </tr>
+  <tr>
+    <td>Se as duas keywords estão no mesmo grupo de anúncios</td>
+    <td>"cardápio web" é semi-branded e "cardápio digital" é genérica. O Google recomenda separar grupos com keywords muito diferentes. Juntas com o mesmo anúncio, nenhuma das duas tem correspondência ideal.</td>
+  </tr>
+</table>
+
+<h2>Critérios oficiais usados como régua</h2>
+<p>O Google não publica checklist fechada. O que existe são os fatores citados nominalmente: utilidade e relevância da informação, facilidade de navegação, quantidade de links na página, e alinhamento com a expectativa criada pelo anúncio clicado. As recomendações práticas acrescentam consistência entre anúncio e página, otimização mobile e velocidade de carregamento. O Google declara que <strong>não</strong> entram no Índice: dispositivo, localização do usuário, horário do dia e assets do anúncio.</p>
+
+<h2 class="checklist-inicio">Checklist do que temos que fazer</h2>
+
+<p class="fonte">Sem ordem de prioridade embutida. Agrupado por onde o trabalho acontece, porque são responsáveis diferentes e podem correr em paralelo.</p>
+
+<h3>Na página (WordPress)</h3>
+<table>
+  <tr><th style="width:6%"></th><th>O que fazer</th><th style="width:16%">Tempo</th></tr>
+  <tr><td class="chk">☐</td><td>Trocar o <code>&lt;title&gt;</code>, hoje com rascunho interno e o nome da empresa duplicado</td><td>10 min</td></tr>
+  <tr><td class="chk">☐</td><td>Criar a <code>meta description</code>, que hoje não existe</td><td>junto</td></tr>
+  <tr><td class="chk">☐</td><td>Acrescentar as 3 perguntas novas no topo do FAQ</td><td>30 min</td></tr>
+  <tr><td class="chk">☐</td><td>Aprofundar a seção "Sistema de gestão" com o bloco pronto</td><td>30 min</td></tr>
+  <tr><td class="chk">☐</td><td>Reescrever o alt das 4 imagens listadas, incluindo "cardápio digital"</td><td>15 min</td></tr>
+  <tr><td class="chk">☐</td><td>Trocar o subtítulo abaixo do H1. <strong>Não mexer no H1.</strong></td><td>5 min</td></tr>
+  <tr><td class="chk">☐</td><td>Publicar telefone e e-mail de contato no rodapé <span class="fonte">(depende de definirmos quais)</span></td><td>15 min</td></tr>
+  <tr><td class="chk">☐</td><td>Publicar Política de Privacidade e Termos como página, e não como PDF</td><td>a estimar</td></tr>
+</table>
+
+<h3>No servidor · nesta ordem, ela importa</h3>
+<table>
+  <tr><th style="width:6%"></th><th>O que fazer</th><th style="width:16%">Tempo</th></tr>
+  <tr><td class="chk">☐</td><td>Mover a geração do <code>cw_ext_id</code> do PHP para JavaScript no navegador</td><td>a estimar</td></tr>
+  <tr><td class="chk">☐</td><td>Descobrir qual mecanismo de cache o site principal usa para responder em 0,200 s</td><td>1 h</td></tr>
+  <tr><td class="chk">☐</td><td>Ligar cache de página no subdomínio <code>lp.</code>, replicando o do site principal</td><td>a estimar</td></tr>
+  <tr><td class="chk">☐</td><td>Trocar o header <code>Cache-Control: public, max-age=0</code></td><td>15 min</td></tr>
+</table>
+
+<h3>Na conta do Google Ads · só o Alexandre enxerga</h3>
+<table>
+  <tr><th style="width:6%"></th><th>O que fazer</th><th style="width:16%">Tempo</th></tr>
+  <tr><td class="chk">☐</td><td>Conferir o Índice atual e o status dos 3 componentes das duas keywords. <strong>Se vier "—", nada na página resolve</strong> e o resto do checklist muda de sentido.</td><td>10 min</td></tr>
+  <tr><td class="chk">☐</td><td>Levantar os textos dos anúncios que apontam para esta URL e cruzar com o que a página entrega</td><td>20 min</td></tr>
+  <tr><td class="chk">☐</td><td>Verificar se as duas keywords estão no mesmo grupo de anúncios</td><td>5 min</td></tr>
+</table>
+
+<h3>Depois de aplicar</h3>
+<table>
+  <tr><th style="width:6%"></th><th>O que fazer</th><th style="width:16%">Quando</th></tr>
+  <tr><td class="chk">☐</td><td>Rodar <code>curl -s -o /dev/null -w "%{time_starttransfer}\n" &lt;url&gt;</code> 3 vezes. <strong>Meta abaixo de 0,3 s.</strong></td><td>no mesmo dia</td></tr>
+  <tr><td class="chk">☐</td><td>Conferir se a página segue abrindo certo com o cache ligado, principalmente o formulário</td><td>no mesmo dia</td></tr>
+  <tr><td class="chk">☐</td><td>Olhar a coluna "Índice de qualidade (hist.)" das duas keywords</td><td>2 a 4 semanas</td></tr>
+</table>
+
+<div class="destaque">
+  <p style="margin-bottom:0">Antes de riscar tudo, vale rodar primeiro a linha do Google Ads sobre o status atual. Se o Índice das duas keywords estiver como <strong>"—"</strong>, é falta de volume de busca e nenhum item da lista da página muda esse resultado.</p>
+</div>
+
+<footer>
+  <p><strong>Fontes.</strong> support.google.com/google-ads/answer/6167118 (Índice de qualidade) · answer/6167130 (5 formas de melhorar) · support.google.com/sa360/answer/9351020 (landing page experience) · support.google.com/adspolicy/answer/16427615 (destination experience) · answer/6368661 (destination requirements) · developers.google.com/search/docs/crawling-indexing/robots-meta-tag · developer.chrome.com/docs/performance/insights/document-latency</p>
+  <p>Medições feitas em 28/07/2026, horário de Brasília. Trace do Chrome em perfil mobile 412×915, Slow 4G, CPU 4×. Versão em markdown: <code>analises/2026-07-28_indice-qualidade-lp-google-ads.md</code></p>
+</footer>
+
+</div>
+</body>
+</html>

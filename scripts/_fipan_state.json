@@ -1,0 +1,7594 @@
+{
+ "2": {
+  "lead_id": 23803601,
+  "contact_id": 25969579,
+  "company_id": 25969571,
+  "merged": false,
+  "nome": "Isadora Correia",
+  "tel_ok": true
+ },
+ "3": {
+  "lead_id": 23803603,
+  "contact_id": 25969581,
+  "company_id": 25969573,
+  "merged": false,
+  "nome": "Ejessica Moreira",
+  "tel_ok": true
+ },
+ "4": {
+  "lead_id": 23803605,
+  "contact_id": 25969583,
+  "company_id": 25969575,
+  "merged": false,
+  "nome": "Jessica Lima",
+  "tel_ok": true
+ },
+ "5": {
+  "lead_id": 23803607,
+  "contact_id": 25969585,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria das Graças",
+  "tel_ok": true
+ },
+ "6": {
+  "lead_id": 23803609,
+  "contact_id": 25969587,
+  "company_id": 25969577,
+  "merged": false,
+  "nome": "Camila",
+  "tel_ok": true
+ },
+ "7": {
+  "lead_id": 23804337,
+  "contact_id": 25970295,
+  "company_id": 25970225,
+  "merged": false,
+  "nome": "Kamila Conceição",
+  "tel_ok": true
+ },
+ "8": {
+  "lead_id": 23804339,
+  "contact_id": 25970297,
+  "company_id": 25970227,
+  "merged": false,
+  "nome": "Priscila Ferreira",
+  "tel_ok": true
+ },
+ "9": {
+  "lead_id": 23804341,
+  "contact_id": 25970299,
+  "company_id": 25970229,
+  "merged": false,
+  "nome": "Ricardo",
+  "tel_ok": false
+ },
+ "10": {
+  "lead_id": 23804343,
+  "contact_id": 25970301,
+  "company_id": 25970231,
+  "merged": false,
+  "nome": "Luciana",
+  "tel_ok": true
+ },
+ "11": {
+  "lead_id": 23804345,
+  "contact_id": 25970303,
+  "company_id": 25970233,
+  "merged": false,
+  "nome": "Daniely",
+  "tel_ok": true
+ },
+ "12": {
+  "lead_id": 23804347,
+  "contact_id": 25970305,
+  "company_id": 25970235,
+  "merged": false,
+  "nome": "Thiago",
+  "tel_ok": true
+ },
+ "13": {
+  "lead_id": 23804349,
+  "contact_id": 25970307,
+  "company_id": 25970237,
+  "merged": false,
+  "nome": "Rosângela",
+  "tel_ok": false
+ },
+ "14": {
+  "lead_id": 23804351,
+  "contact_id": 25970309,
+  "company_id": 25970239,
+  "merged": false,
+  "nome": "Juliana",
+  "tel_ok": false
+ },
+ "15": {
+  "lead_id": 23804353,
+  "contact_id": 25970311,
+  "company_id": 25970241,
+  "merged": false,
+  "nome": "Poliana",
+  "tel_ok": false
+ },
+ "16": {
+  "lead_id": 23804355,
+  "contact_id": 25970313,
+  "company_id": 25970243,
+  "merged": false,
+  "nome": "Sabrina",
+  "tel_ok": true
+ },
+ "17": {
+  "lead_id": 23804357,
+  "contact_id": 25970315,
+  "company_id": 25970245,
+  "merged": false,
+  "nome": "Guilherme",
+  "tel_ok": true
+ },
+ "18": {
+  "lead_id": 23804359,
+  "contact_id": 25970317,
+  "company_id": 25970247,
+  "merged": false,
+  "nome": "Mirani",
+  "tel_ok": false
+ },
+ "19": {
+  "lead_id": 23804361,
+  "contact_id": 25970319,
+  "company_id": 25970249,
+  "merged": false,
+  "nome": "Victor",
+  "tel_ok": true
+ },
+ "20": {
+  "lead_id": 23804363,
+  "contact_id": 25970321,
+  "company_id": 25970251,
+  "merged": false,
+  "nome": "Israel",
+  "tel_ok": true
+ },
+ "21": {
+  "lead_id": 23804365,
+  "contact_id": 25970323,
+  "company_id": 25970253,
+  "merged": false,
+  "nome": "Manoel",
+  "tel_ok": true
+ },
+ "22": {
+  "lead_id": 23804367,
+  "contact_id": 25970325,
+  "company_id": 25970255,
+  "merged": false,
+  "nome": "Matheus",
+  "tel_ok": true
+ },
+ "23": {
+  "lead_id": 23804369,
+  "contact_id": 25970327,
+  "company_id": 25970257,
+  "merged": false,
+  "nome": "Juliano",
+  "tel_ok": true
+ },
+ "24": {
+  "lead_id": 23804371,
+  "contact_id": 25970329,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ângela",
+  "tel_ok": true
+ },
+ "25": {
+  "lead_id": 23804373,
+  "contact_id": 25970331,
+  "company_id": 25970259,
+  "merged": false,
+  "nome": "João",
+  "tel_ok": true
+ },
+ "26": {
+  "lead_id": 23804375,
+  "contact_id": 25970333,
+  "company_id": null,
+  "merged": false,
+  "nome": "Kelly",
+  "tel_ok": false
+ },
+ "27": {
+  "lead_id": 23804377,
+  "contact_id": 25970335,
+  "company_id": 25970261,
+  "merged": false,
+  "nome": "Luci",
+  "tel_ok": false
+ },
+ "28": {
+  "lead_id": 23804379,
+  "contact_id": 25970337,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ivan",
+  "tel_ok": false
+ },
+ "29": {
+  "lead_id": 23804381,
+  "contact_id": 25970339,
+  "company_id": 25970263,
+  "merged": false,
+  "nome": "Mônica",
+  "tel_ok": true
+ },
+ "30": {
+  "lead_id": 23804383,
+  "contact_id": 25970341,
+  "company_id": 25970265,
+  "merged": false,
+  "nome": "Iran",
+  "tel_ok": true
+ },
+ "31": {
+  "lead_id": 23804385,
+  "contact_id": 25970343,
+  "company_id": 25970267,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": false
+ },
+ "32": {
+  "lead_id": 23804387,
+  "contact_id": 25970345,
+  "company_id": 25970269,
+  "merged": false,
+  "nome": "Sandro",
+  "tel_ok": true
+ },
+ "33": {
+  "lead_id": 23804389,
+  "contact_id": 25970347,
+  "company_id": 25970271,
+  "merged": false,
+  "nome": "Joel",
+  "tel_ok": true
+ },
+ "34": {
+  "lead_id": 23804393,
+  "contact_id": 25970349,
+  "company_id": 25970273,
+  "merged": false,
+  "nome": "Eliana",
+  "tel_ok": true
+ },
+ "35": {
+  "lead_id": 23804395,
+  "contact_id": 25970351,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alexandre Fugi",
+  "tel_ok": true
+ },
+ "36": {
+  "lead_id": 23804397,
+  "contact_id": 25970353,
+  "company_id": 25970275,
+  "merged": false,
+  "nome": "Cirleide",
+  "tel_ok": true
+ },
+ "37": {
+  "lead_id": 23804399,
+  "contact_id": 25970355,
+  "company_id": null,
+  "merged": false,
+  "nome": "Antonio",
+  "tel_ok": true
+ },
+ "38": {
+  "lead_id": 23804401,
+  "contact_id": 25970357,
+  "company_id": 25970277,
+  "merged": false,
+  "nome": "Cintia",
+  "tel_ok": false
+ },
+ "39": {
+  "lead_id": 23804403,
+  "contact_id": 25970359,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elaine",
+  "tel_ok": false
+ },
+ "40": {
+  "lead_id": 23804405,
+  "contact_id": 25970361,
+  "company_id": 25970279,
+  "merged": false,
+  "nome": "Jaque Mariano",
+  "tel_ok": false
+ },
+ "41": {
+  "lead_id": 23804407,
+  "contact_id": 25970363,
+  "company_id": 25970281,
+  "merged": false,
+  "nome": "Thayna",
+  "tel_ok": false
+ },
+ "42": {
+  "lead_id": 23804409,
+  "contact_id": 25970365,
+  "company_id": 25970283,
+  "merged": false,
+  "nome": "Natália Pereira",
+  "tel_ok": true
+ },
+ "43": {
+  "lead_id": 23804411,
+  "contact_id": 25970367,
+  "company_id": 25970285,
+  "merged": false,
+  "nome": "Nelson",
+  "tel_ok": false
+ },
+ "44": {
+  "lead_id": 23804413,
+  "contact_id": 25970369,
+  "company_id": 25970287,
+  "merged": false,
+  "nome": "Nilma",
+  "tel_ok": false
+ },
+ "45": {
+  "lead_id": 23804415,
+  "contact_id": 25970371,
+  "company_id": 25970289,
+  "merged": false,
+  "nome": "Vanessa",
+  "tel_ok": true
+ },
+ "46": {
+  "lead_id": 23804417,
+  "contact_id": 25970373,
+  "company_id": null,
+  "merged": false,
+  "nome": "Joice Fernanda",
+  "tel_ok": false
+ },
+ "47": {
+  "lead_id": 23804419,
+  "contact_id": 25970375,
+  "company_id": 25970291,
+  "merged": false,
+  "nome": "Contato não informado",
+  "tel_ok": true
+ },
+ "48": {
+  "lead_id": 23804421,
+  "contact_id": 25970377,
+  "company_id": null,
+  "merged": false,
+  "nome": "Edna Lopes",
+  "tel_ok": true
+ },
+ "49": {
+  "lead_id": 23804423,
+  "contact_id": 25970379,
+  "company_id": null,
+  "merged": false,
+  "nome": "Claudiane Almeida",
+  "tel_ok": true
+ },
+ "50": {
+  "lead_id": 23804425,
+  "contact_id": 25970381,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ísis Cristina",
+  "tel_ok": true
+ },
+ "51": {
+  "lead_id": 23804427,
+  "contact_id": 25970383,
+  "company_id": null,
+  "merged": false,
+  "nome": "Flávio Moreira",
+  "tel_ok": true
+ },
+ "52": {
+  "lead_id": 23804429,
+  "contact_id": 25970385,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ana",
+  "tel_ok": true
+ },
+ "53": {
+  "lead_id": 23804431,
+  "contact_id": 25970387,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": true
+ },
+ "54": {
+  "lead_id": 23804433,
+  "contact_id": 25970389,
+  "company_id": null,
+  "merged": false,
+  "nome": "Madalena",
+  "tel_ok": true
+ },
+ "55": {
+  "lead_id": 23804435,
+  "contact_id": 25970391,
+  "company_id": null,
+  "merged": false,
+  "nome": "Thiago",
+  "tel_ok": true
+ },
+ "56": {
+  "lead_id": 23804437,
+  "contact_id": 25970393,
+  "company_id": null,
+  "merged": false,
+  "nome": "Aline",
+  "tel_ok": true
+ },
+ "57": {
+  "lead_id": 23804439,
+  "contact_id": 25970477,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cristina",
+  "tel_ok": true
+ },
+ "58": {
+  "lead_id": 23804441,
+  "contact_id": 25970479,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gabriel",
+  "tel_ok": true
+ },
+ "59": {
+  "lead_id": 23804443,
+  "contact_id": 25970481,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lucas",
+  "tel_ok": true
+ },
+ "60": {
+  "lead_id": 23804445,
+  "contact_id": 25970483,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alana",
+  "tel_ok": true
+ },
+ "61": {
+  "lead_id": 23804447,
+  "contact_id": 25970485,
+  "company_id": 25970395,
+  "merged": false,
+  "nome": "Eugenio",
+  "tel_ok": true
+ },
+ "62": {
+  "lead_id": 23804449,
+  "contact_id": 25970487,
+  "company_id": 25970397,
+  "merged": false,
+  "nome": "Ricardo",
+  "tel_ok": true
+ },
+ "63": {
+  "lead_id": 23804451,
+  "contact_id": 25970489,
+  "company_id": 25970399,
+  "merged": false,
+  "nome": "Renan",
+  "tel_ok": true
+ },
+ "64": {
+  "lead_id": 23804453,
+  "contact_id": 25970491,
+  "company_id": 25970401,
+  "merged": false,
+  "nome": "Rock",
+  "tel_ok": true
+ },
+ "65": {
+  "lead_id": 23804455,
+  "contact_id": 25970493,
+  "company_id": 25970403,
+  "merged": false,
+  "nome": "Anna Carolina",
+  "tel_ok": true
+ },
+ "66": {
+  "lead_id": 23804457,
+  "contact_id": 25970495,
+  "company_id": 25970405,
+  "merged": false,
+  "nome": "Vera Lucia",
+  "tel_ok": true
+ },
+ "67": {
+  "lead_id": 23804459,
+  "contact_id": 25970497,
+  "company_id": null,
+  "merged": false,
+  "nome": "Flor",
+  "tel_ok": false
+ },
+ "68": {
+  "lead_id": 23804461,
+  "contact_id": 25970499,
+  "company_id": 25970407,
+  "merged": false,
+  "nome": "Cassia",
+  "tel_ok": true
+ },
+ "69": {
+  "lead_id": 23804463,
+  "contact_id": 25970501,
+  "company_id": 25970409,
+  "merged": false,
+  "nome": "Kleydson",
+  "tel_ok": true
+ },
+ "70": {
+  "lead_id": 23804465,
+  "contact_id": 25970503,
+  "company_id": 25970411,
+  "merged": false,
+  "nome": "Raissa",
+  "tel_ok": true
+ },
+ "71": {
+  "lead_id": 23804467,
+  "contact_id": 25970505,
+  "company_id": 25970413,
+  "merged": false,
+  "nome": "Jonas",
+  "tel_ok": true
+ },
+ "72": {
+  "lead_id": 23804469,
+  "contact_id": 25970507,
+  "company_id": 25970415,
+  "merged": false,
+  "nome": "Cleber",
+  "tel_ok": true
+ },
+ "73": {
+  "lead_id": 23804471,
+  "contact_id": 25970509,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jaciane",
+  "tel_ok": true
+ },
+ "74": {
+  "lead_id": 23804473,
+  "contact_id": 25970511,
+  "company_id": 25970417,
+  "merged": false,
+  "nome": "Baubino",
+  "tel_ok": true
+ },
+ "75": {
+  "lead_id": 23804475,
+  "contact_id": 25970513,
+  "company_id": 25970419,
+  "merged": false,
+  "nome": "Nilda",
+  "tel_ok": false
+ },
+ "76": {
+  "lead_id": 23804477,
+  "contact_id": 25970515,
+  "company_id": 25970421,
+  "merged": false,
+  "nome": "Camila",
+  "tel_ok": false
+ },
+ "77": {
+  "lead_id": 23804479,
+  "contact_id": 25970517,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cristiano",
+  "tel_ok": true
+ },
+ "78": {
+  "lead_id": 23804481,
+  "contact_id": 25970519,
+  "company_id": 25970423,
+  "merged": false,
+  "nome": "Luiz",
+  "tel_ok": true
+ },
+ "79": {
+  "lead_id": 23804483,
+  "contact_id": 25970521,
+  "company_id": 25970425,
+  "merged": false,
+  "nome": "Damares",
+  "tel_ok": true
+ },
+ "80": {
+  "lead_id": 23804485,
+  "contact_id": 25970523,
+  "company_id": 25970427,
+  "merged": false,
+  "nome": "Marcio",
+  "tel_ok": true
+ },
+ "81": {
+  "lead_id": 23804487,
+  "contact_id": 25970525,
+  "company_id": 25970429,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": false
+ },
+ "82": {
+  "lead_id": 23804489,
+  "contact_id": 25970527,
+  "company_id": 25970431,
+  "merged": false,
+  "nome": "Luiz",
+  "tel_ok": false
+ },
+ "83": {
+  "lead_id": 23804491,
+  "contact_id": 25970529,
+  "company_id": 25970433,
+  "merged": false,
+  "nome": "Germana",
+  "tel_ok": true
+ },
+ "84": {
+  "lead_id": 23804493,
+  "contact_id": 25970531,
+  "company_id": 25970435,
+  "merged": false,
+  "nome": "Mayara",
+  "tel_ok": true
+ },
+ "85": {
+  "lead_id": 23804495,
+  "contact_id": 25970533,
+  "company_id": 25970437,
+  "merged": false,
+  "nome": "Monique",
+  "tel_ok": true
+ },
+ "86": {
+  "lead_id": 23804497,
+  "contact_id": 25970535,
+  "company_id": 25970439,
+  "merged": false,
+  "nome": "Cibelly",
+  "tel_ok": true
+ },
+ "87": {
+  "lead_id": 23804499,
+  "contact_id": 25970537,
+  "company_id": 25970441,
+  "merged": false,
+  "nome": "Gisely",
+  "tel_ok": true
+ },
+ "88": {
+  "lead_id": 23804501,
+  "contact_id": 25970539,
+  "company_id": 25970443,
+  "merged": false,
+  "nome": "Leia",
+  "tel_ok": true
+ },
+ "89": {
+  "lead_id": 23804503,
+  "contact_id": 25970541,
+  "company_id": 25970445,
+  "merged": false,
+  "nome": "Carmen",
+  "tel_ok": false
+ },
+ "90": {
+  "lead_id": 23804505,
+  "contact_id": 25970543,
+  "company_id": 25970447,
+  "merged": false,
+  "nome": "Danitza Mateo",
+  "tel_ok": true
+ },
+ "91": {
+  "lead_id": 23804507,
+  "contact_id": 25970545,
+  "company_id": 25970449,
+  "merged": false,
+  "nome": "Karla",
+  "tel_ok": false
+ },
+ "92": {
+  "lead_id": 23804509,
+  "contact_id": 25970547,
+  "company_id": 25970451,
+  "merged": false,
+  "nome": "Renata",
+  "tel_ok": false
+ },
+ "93": {
+  "lead_id": 23804511,
+  "contact_id": 25970549,
+  "company_id": 25970453,
+  "merged": false,
+  "nome": "Arthur",
+  "tel_ok": true
+ },
+ "94": {
+  "lead_id": 23804513,
+  "contact_id": 25970551,
+  "company_id": 25970455,
+  "merged": false,
+  "nome": "Rafael",
+  "tel_ok": true
+ },
+ "95": {
+  "lead_id": 23804515,
+  "contact_id": 25970553,
+  "company_id": 25970457,
+  "merged": false,
+  "nome": "Gabriela Gallo",
+  "tel_ok": true
+ },
+ "96": {
+  "lead_id": 23804517,
+  "contact_id": 25970555,
+  "company_id": 25970459,
+  "merged": false,
+  "nome": "Joana",
+  "tel_ok": true
+ },
+ "97": {
+  "lead_id": 23804519,
+  "contact_id": 25970557,
+  "company_id": 25970461,
+  "merged": false,
+  "nome": "Carla",
+  "tel_ok": false
+ },
+ "98": {
+  "lead_id": 23804521,
+  "contact_id": 25970559,
+  "company_id": 25970463,
+  "merged": false,
+  "nome": "Erica",
+  "tel_ok": true
+ },
+ "99": {
+  "lead_id": 23804523,
+  "contact_id": 25970561,
+  "company_id": 25970465,
+  "merged": false,
+  "nome": "Caroline",
+  "tel_ok": true
+ },
+ "100": {
+  "lead_id": 23804525,
+  "contact_id": 25970563,
+  "company_id": 25970467,
+  "merged": false,
+  "nome": "Andreia",
+  "tel_ok": true
+ },
+ "101": {
+  "lead_id": 23804527,
+  "contact_id": 25970565,
+  "company_id": 25970469,
+  "merged": false,
+  "nome": "Samanta",
+  "tel_ok": true
+ },
+ "102": {
+  "lead_id": 23804529,
+  "contact_id": 25970567,
+  "company_id": 25970471,
+  "merged": false,
+  "nome": "Ana Lima",
+  "tel_ok": false
+ },
+ "103": {
+  "lead_id": 23804531,
+  "contact_id": 25970569,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": false
+ },
+ "104": {
+  "lead_id": 23804533,
+  "contact_id": 25970571,
+  "company_id": 25970473,
+  "merged": false,
+  "nome": "Luciene",
+  "tel_ok": true
+ },
+ "105": {
+  "lead_id": 23804535,
+  "contact_id": 25970573,
+  "company_id": null,
+  "merged": false,
+  "nome": "Édson Aquino",
+  "tel_ok": true
+ },
+ "106": {
+  "lead_id": 23804537,
+  "contact_id": 25970575,
+  "company_id": 25970475,
+  "merged": false,
+  "nome": "Dani Dias Bolos e Delícias",
+  "tel_ok": true
+ },
+ "107": {
+  "lead_id": 23804541,
+  "contact_id": 25970583,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jessica Karmelo",
+  "tel_ok": true
+ },
+ "108": {
+  "lead_id": 23804543,
+  "contact_id": 25970585,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cibele Cunha",
+  "tel_ok": false
+ },
+ "109": {
+  "lead_id": 23804545,
+  "contact_id": 25970587,
+  "company_id": 25970579,
+  "merged": false,
+  "nome": "Erica Bolos",
+  "tel_ok": true
+ },
+ "110": {
+  "lead_id": 23804547,
+  "contact_id": 25970589,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ernâni Ribeiro",
+  "tel_ok": true
+ },
+ "111": {
+  "lead_id": 23804549,
+  "contact_id": 25970591,
+  "company_id": null,
+  "merged": false,
+  "nome": "João Pedro",
+  "tel_ok": false
+ },
+ "112": {
+  "lead_id": 23804551,
+  "contact_id": 25970593,
+  "company_id": null,
+  "merged": false,
+  "nome": "Márcia Teixeira",
+  "tel_ok": true
+ },
+ "113": {
+  "lead_id": 23804553,
+  "contact_id": 25970595,
+  "company_id": null,
+  "merged": false,
+  "nome": "Katlyn",
+  "tel_ok": true
+ },
+ "114": {
+  "lead_id": 23804555,
+  "contact_id": 25970597,
+  "company_id": null,
+  "merged": false,
+  "nome": "Julyane",
+  "tel_ok": false
+ },
+ "115": {
+  "lead_id": 23804557,
+  "contact_id": 25970599,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria Eduarda",
+  "tel_ok": true
+ },
+ "116": {
+  "lead_id": 23804559,
+  "contact_id": 25970601,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tatiane",
+  "tel_ok": true
+ },
+ "117": {
+  "lead_id": 23804561,
+  "contact_id": 25970603,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rodney Gomes",
+  "tel_ok": true
+ },
+ "118": {
+  "lead_id": 23804563,
+  "contact_id": 25970605,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fernanda",
+  "tel_ok": true
+ },
+ "119": {
+  "lead_id": 23804565,
+  "contact_id": 25970607,
+  "company_id": null,
+  "merged": false,
+  "nome": "Victor",
+  "tel_ok": true
+ },
+ "120": {
+  "lead_id": 23804567,
+  "contact_id": 25970609,
+  "company_id": null,
+  "merged": false,
+  "nome": "Adilene",
+  "tel_ok": true
+ },
+ "121": {
+  "lead_id": 23804569,
+  "contact_id": 25970611,
+  "company_id": null,
+  "merged": false,
+  "nome": "Veronica",
+  "tel_ok": true
+ },
+ "122": {
+  "lead_id": 23804571,
+  "contact_id": 25970613,
+  "company_id": null,
+  "merged": false,
+  "nome": "Andrea",
+  "tel_ok": true
+ },
+ "123": {
+  "lead_id": 23804573,
+  "contact_id": 25970615,
+  "company_id": 25970581,
+  "merged": false,
+  "nome": "Chef Carol",
+  "tel_ok": true
+ },
+ "124": {
+  "lead_id": 23804575,
+  "contact_id": 25970617,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jaqueline",
+  "tel_ok": true
+ },
+ "125": {
+  "lead_id": 23804577,
+  "contact_id": 25970619,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cristian",
+  "tel_ok": true
+ },
+ "126": {
+  "lead_id": 23804579,
+  "contact_id": 25970621,
+  "company_id": null,
+  "merged": false,
+  "nome": "Emília",
+  "tel_ok": true
+ },
+ "127": {
+  "lead_id": 23804581,
+  "contact_id": 25970623,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cristiane",
+  "tel_ok": true
+ },
+ "128": {
+  "lead_id": 23804583,
+  "contact_id": 25970625,
+  "company_id": null,
+  "merged": false,
+  "nome": "Silvana (Mãezona)",
+  "tel_ok": true
+ },
+ "129": {
+  "lead_id": 23804585,
+  "contact_id": 25970627,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renan",
+  "tel_ok": true
+ },
+ "130": {
+  "lead_id": 23804587,
+  "contact_id": 25970629,
+  "company_id": null,
+  "merged": false,
+  "nome": "Clara",
+  "tel_ok": true
+ },
+ "131": {
+  "lead_id": 23804589,
+  "contact_id": 25970631,
+  "company_id": null,
+  "merged": false,
+  "nome": "João",
+  "tel_ok": true
+ },
+ "132": {
+  "lead_id": 23804591,
+  "contact_id": 25970633,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gustavo",
+  "tel_ok": true
+ },
+ "133": {
+  "lead_id": 23804593,
+  "contact_id": 25970635,
+  "company_id": null,
+  "merged": false,
+  "nome": "Newton",
+  "tel_ok": true
+ },
+ "134": {
+  "lead_id": 23804595,
+  "contact_id": 25970637,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tessy",
+  "tel_ok": true
+ },
+ "135": {
+  "lead_id": 23804597,
+  "contact_id": 25970639,
+  "company_id": null,
+  "merged": false,
+  "nome": "Andréia",
+  "tel_ok": true
+ },
+ "136": {
+  "lead_id": 23804599,
+  "contact_id": 25970641,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rachel",
+  "tel_ok": true
+ },
+ "137": {
+  "lead_id": 23804601,
+  "contact_id": 25970643,
+  "company_id": null,
+  "merged": false,
+  "nome": "José",
+  "tel_ok": false
+ },
+ "138": {
+  "lead_id": 23804603,
+  "contact_id": 25970645,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patrícia",
+  "tel_ok": true
+ },
+ "139": {
+  "lead_id": 23804605,
+  "contact_id": 25970647,
+  "company_id": null,
+  "merged": false,
+  "nome": "Édison",
+  "tel_ok": true
+ },
+ "140": {
+  "lead_id": 23804607,
+  "contact_id": 25970649,
+  "company_id": null,
+  "merged": false,
+  "nome": "Faby",
+  "tel_ok": true
+ },
+ "141": {
+  "lead_id": 23804609,
+  "contact_id": 25970651,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sandriê",
+  "tel_ok": true
+ },
+ "142": {
+  "lead_id": 23804611,
+  "contact_id": 25970653,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tamires",
+  "tel_ok": true
+ },
+ "143": {
+  "lead_id": 23804613,
+  "contact_id": 25970655,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ruan Representa",
+  "tel_ok": true
+ },
+ "144": {
+  "lead_id": 23804615,
+  "contact_id": 25970657,
+  "company_id": null,
+  "merged": false,
+  "nome": "Anna",
+  "tel_ok": true
+ },
+ "145": {
+  "lead_id": 23804617,
+  "contact_id": 25970659,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jana",
+  "tel_ok": true
+ },
+ "146": {
+  "lead_id": 23804619,
+  "contact_id": 25970661,
+  "company_id": null,
+  "merged": false,
+  "nome": "Valéria",
+  "tel_ok": true
+ },
+ "147": {
+  "lead_id": 23804621,
+  "contact_id": 25970663,
+  "company_id": null,
+  "merged": false,
+  "nome": "Giceli",
+  "tel_ok": true
+ },
+ "148": {
+  "lead_id": 23804623,
+  "contact_id": 25970665,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ricardo",
+  "tel_ok": true
+ },
+ "149": {
+  "lead_id": 23804625,
+  "contact_id": 25970667,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rebeca",
+  "tel_ok": true
+ },
+ "150": {
+  "lead_id": 23804627,
+  "contact_id": 25970669,
+  "company_id": null,
+  "merged": false,
+  "nome": "Júlia",
+  "tel_ok": true
+ },
+ "151": {
+  "lead_id": 23804629,
+  "contact_id": 25970671,
+  "company_id": null,
+  "merged": false,
+  "nome": "Kelly",
+  "tel_ok": true
+ },
+ "152": {
+  "lead_id": 23804631,
+  "contact_id": 25970673,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eliane",
+  "tel_ok": true
+ },
+ "153": {
+  "lead_id": 23804633,
+  "contact_id": 25970675,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elenir",
+  "tel_ok": true
+ },
+ "154": {
+  "lead_id": 23804635,
+  "contact_id": 25970677,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fernando",
+  "tel_ok": true
+ },
+ "155": {
+  "lead_id": 23804637,
+  "contact_id": 25970679,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fátima",
+  "tel_ok": true
+ },
+ "156": {
+  "lead_id": 23804639,
+  "contact_id": 25970681,
+  "company_id": null,
+  "merged": false,
+  "nome": "Raissa Monteiro",
+  "tel_ok": true
+ },
+ "157": {
+  "lead_id": 23804641,
+  "contact_id": 25970685,
+  "company_id": null,
+  "merged": false,
+  "nome": "Wilson",
+  "tel_ok": true
+ },
+ "158": {
+  "lead_id": 23804643,
+  "contact_id": 25970687,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gabriel",
+  "tel_ok": true
+ },
+ "159": {
+  "lead_id": 23804645,
+  "contact_id": 25970689,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tamiris",
+  "tel_ok": true
+ },
+ "160": {
+  "lead_id": 23804647,
+  "contact_id": 25970691,
+  "company_id": null,
+  "merged": false,
+  "nome": "Livia",
+  "tel_ok": true
+ },
+ "161": {
+  "lead_id": 23804649,
+  "contact_id": 25970693,
+  "company_id": null,
+  "merged": false,
+  "nome": "Márcio",
+  "tel_ok": true
+ },
+ "162": {
+  "lead_id": 23804651,
+  "contact_id": 25970695,
+  "company_id": null,
+  "merged": false,
+  "nome": "Danielle",
+  "tel_ok": true
+ },
+ "163": {
+  "lead_id": 23804653,
+  "contact_id": 25970697,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cris Paula",
+  "tel_ok": true
+ },
+ "164": {
+  "lead_id": 23804655,
+  "contact_id": 25970699,
+  "company_id": null,
+  "merged": false,
+  "nome": "Yanna Paiva",
+  "tel_ok": true
+ },
+ "165": {
+  "lead_id": 23804657,
+  "contact_id": 25970701,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lucas Andrade",
+  "tel_ok": true
+ },
+ "166": {
+  "lead_id": 23804659,
+  "contact_id": 25970703,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marina Costa",
+  "tel_ok": true
+ },
+ "167": {
+  "lead_id": 23804661,
+  "contact_id": 25970705,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rafael Souza",
+  "tel_ok": true
+ },
+ "168": {
+  "lead_id": 23804663,
+  "contact_id": 25970707,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana Martins",
+  "tel_ok": true
+ },
+ "169": {
+  "lead_id": 23804665,
+  "contact_id": 25970709,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruno Oliveira",
+  "tel_ok": true
+ },
+ "170": {
+  "lead_id": 23804667,
+  "contact_id": 25970711,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fernanda Lima",
+  "tel_ok": true
+ },
+ "171": {
+  "lead_id": 23804669,
+  "contact_id": 25970713,
+  "company_id": null,
+  "merged": false,
+  "nome": "Thiago Rocha",
+  "tel_ok": true
+ },
+ "172": {
+  "lead_id": 23804671,
+  "contact_id": 25970715,
+  "company_id": null,
+  "merged": false,
+  "nome": "Camila Ferreira",
+  "tel_ok": true
+ },
+ "173": {
+  "lead_id": 23804673,
+  "contact_id": 25970717,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gustavo Almeida",
+  "tel_ok": true
+ },
+ "174": {
+  "lead_id": 23804675,
+  "contact_id": 25970719,
+  "company_id": null,
+  "merged": false,
+  "nome": "Aline Ribeiro",
+  "tel_ok": true
+ },
+ "175": {
+  "lead_id": 23804677,
+  "contact_id": 25970721,
+  "company_id": null,
+  "merged": false,
+  "nome": "Felipe Nogueira",
+  "tel_ok": true
+ },
+ "176": {
+  "lead_id": 23804679,
+  "contact_id": 25970723,
+  "company_id": null,
+  "merged": false,
+  "nome": "Amanda Carvalho",
+  "tel_ok": true
+ },
+ "177": {
+  "lead_id": 23804681,
+  "contact_id": 25970725,
+  "company_id": null,
+  "merged": false,
+  "nome": "Diego Martins",
+  "tel_ok": true
+ },
+ "178": {
+  "lead_id": 23804683,
+  "contact_id": 25970727,
+  "company_id": null,
+  "merged": false,
+  "nome": "Priscila Alves",
+  "tel_ok": true
+ },
+ "179": {
+  "lead_id": 23804685,
+  "contact_id": 25970729,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renato Freitas",
+  "tel_ok": true
+ },
+ "180": {
+  "lead_id": 23804687,
+  "contact_id": 25970731,
+  "company_id": null,
+  "merged": false,
+  "nome": "Larissa Gomes",
+  "tel_ok": true
+ },
+ "181": {
+  "lead_id": 23804689,
+  "contact_id": 25970733,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eduardo Ribeiro",
+  "tel_ok": true
+ },
+ "182": {
+  "lead_id": 23804691,
+  "contact_id": 25970735,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vanessa Moreira",
+  "tel_ok": true
+ },
+ "183": {
+  "lead_id": 23804693,
+  "contact_id": 25970737,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ricardo Melo",
+  "tel_ok": true
+ },
+ "184": {
+  "lead_id": 23804695,
+  "contact_id": 25970739,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patrícia Fernandes",
+  "tel_ok": true
+ },
+ "185": {
+  "lead_id": 23804697,
+  "contact_id": 25970741,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcelo Teixeira",
+  "tel_ok": true
+ },
+ "186": {
+  "lead_id": 23804699,
+  "contact_id": 25970743,
+  "company_id": null,
+  "merged": false,
+  "nome": "Beatriz Santos",
+  "tel_ok": true
+ },
+ "187": {
+  "lead_id": 23804701,
+  "contact_id": 25970745,
+  "company_id": null,
+  "merged": false,
+  "nome": "Henrique Dias",
+  "tel_ok": true
+ },
+ "188": {
+  "lead_id": 23804703,
+  "contact_id": 25970747,
+  "company_id": null,
+  "merged": false,
+  "nome": "Natália Rocha",
+  "tel_ok": true
+ },
+ "189": {
+  "lead_id": 23804705,
+  "contact_id": 25970749,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vinícius Barros",
+  "tel_ok": true
+ },
+ "190": {
+  "lead_id": 23804707,
+  "contact_id": 25970751,
+  "company_id": null,
+  "merged": false,
+  "nome": "Camila Duarte",
+  "tel_ok": true
+ },
+ "191": {
+  "lead_id": 23804709,
+  "contact_id": 25970753,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leonardo Pires",
+  "tel_ok": true
+ },
+ "192": {
+  "lead_id": 23804711,
+  "contact_id": 25970755,
+  "company_id": null,
+  "merged": false,
+  "nome": "Isabela Moraes",
+  "tel_ok": true
+ },
+ "193": {
+  "lead_id": 23804713,
+  "contact_id": 25970757,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gabriel Azevedo",
+  "tel_ok": true
+ },
+ "194": {
+  "lead_id": 23804715,
+  "contact_id": 25970759,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renata Farias",
+  "tel_ok": true
+ },
+ "195": {
+  "lead_id": 23804717,
+  "contact_id": 25970761,
+  "company_id": null,
+  "merged": false,
+  "nome": "Toninho",
+  "tel_ok": false
+ },
+ "196": {
+  "lead_id": 23804719,
+  "contact_id": 25970763,
+  "company_id": null,
+  "merged": false,
+  "nome": "Flávio Morais",
+  "tel_ok": true
+ },
+ "197": {
+  "lead_id": 23804721,
+  "contact_id": 25970765,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tatiana",
+  "tel_ok": true
+ },
+ "198": {
+  "lead_id": 23804723,
+  "contact_id": 25970767,
+  "company_id": null,
+  "merged": false,
+  "nome": "Guilherme",
+  "tel_ok": true
+ },
+ "199": {
+  "lead_id": 23804725,
+  "contact_id": 25970769,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rodrigo Luiz",
+  "tel_ok": true
+ },
+ "200": {
+  "lead_id": 23804727,
+  "contact_id": 25970771,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ruth Gomes",
+  "tel_ok": true
+ },
+ "201": {
+  "lead_id": 23804729,
+  "contact_id": 25970773,
+  "company_id": null,
+  "merged": false,
+  "nome": "Thalita De Abreu",
+  "tel_ok": true
+ },
+ "202": {
+  "lead_id": 23804731,
+  "contact_id": 25970775,
+  "company_id": null,
+  "merged": false,
+  "nome": "Thalita De Abreu",
+  "tel_ok": true
+ },
+ "203": {
+  "lead_id": 23804733,
+  "contact_id": 25970777,
+  "company_id": null,
+  "merged": false,
+  "nome": "Micaela Silva",
+  "tel_ok": true
+ },
+ "204": {
+  "lead_id": 23804735,
+  "contact_id": 25970779,
+  "company_id": 25970683,
+  "merged": false,
+  "nome": "Rayssa Doces",
+  "tel_ok": true
+ },
+ "205": {
+  "lead_id": 23804737,
+  "contact_id": 25970781,
+  "company_id": null,
+  "merged": false,
+  "nome": "Benício Momesio",
+  "tel_ok": true
+ },
+ "206": {
+  "lead_id": 23804739,
+  "contact_id": 25970783,
+  "company_id": null,
+  "merged": false,
+  "nome": "Paulo Aparecido",
+  "tel_ok": false
+ },
+ "207": {
+  "lead_id": 23804741,
+  "contact_id": 25970787,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daniele Silva",
+  "tel_ok": true
+ },
+ "208": {
+  "lead_id": 23804743,
+  "contact_id": 25970789,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lucia Silva",
+  "tel_ok": true
+ },
+ "209": {
+  "lead_id": 23804745,
+  "contact_id": 25970791,
+  "company_id": null,
+  "merged": false,
+  "nome": "Larissa Moraes",
+  "tel_ok": true
+ },
+ "210": {
+  "lead_id": 23804747,
+  "contact_id": 25970793,
+  "company_id": null,
+  "merged": false,
+  "nome": "Pedro Henrique Silva",
+  "tel_ok": true
+ },
+ "211": {
+  "lead_id": 23804749,
+  "contact_id": 25970795,
+  "company_id": null,
+  "merged": false,
+  "nome": "Camila Rezende",
+  "tel_ok": true
+ },
+ "212": {
+  "lead_id": 23804751,
+  "contact_id": 25970797,
+  "company_id": null,
+  "merged": false,
+  "nome": "Matheus Almeida",
+  "tel_ok": true
+ },
+ "213": {
+  "lead_id": 23804753,
+  "contact_id": 25970799,
+  "company_id": 25970785,
+  "merged": false,
+  "nome": "Bianca Fernandes",
+  "tel_ok": true
+ },
+ "214": {
+  "lead_id": 23804755,
+  "contact_id": 25970801,
+  "company_id": null,
+  "merged": false,
+  "nome": "João Vitor Costa",
+  "tel_ok": true
+ },
+ "215": {
+  "lead_id": 23804757,
+  "contact_id": 25970803,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fernanda Rocha",
+  "tel_ok": true
+ },
+ "216": {
+  "lead_id": 23804759,
+  "contact_id": 25970805,
+  "company_id": null,
+  "merged": false,
+  "nome": "Guilherme Barbosa",
+  "tel_ok": true
+ },
+ "217": {
+  "lead_id": 23804761,
+  "contact_id": 25970807,
+  "company_id": null,
+  "merged": false,
+  "nome": "Isadora Lima",
+  "tel_ok": true
+ },
+ "218": {
+  "lead_id": 23804763,
+  "contact_id": 25970809,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rick Yukio",
+  "tel_ok": true
+ },
+ "219": {
+  "lead_id": 23804765,
+  "contact_id": 25970811,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daniela Anjos",
+  "tel_ok": true
+ },
+ "220": {
+  "lead_id": 23804767,
+  "contact_id": 25970813,
+  "company_id": null,
+  "merged": false,
+  "nome": "José Nemesio",
+  "tel_ok": false
+ },
+ "221": {
+  "lead_id": 23804769,
+  "contact_id": 25970815,
+  "company_id": null,
+  "merged": false,
+  "nome": "Caroline Ferraz",
+  "tel_ok": true
+ },
+ "222": {
+  "lead_id": 23804771,
+  "contact_id": 25970817,
+  "company_id": null,
+  "merged": false,
+  "nome": "André Luiz Moraes",
+  "tel_ok": true
+ },
+ "223": {
+  "lead_id": 23804773,
+  "contact_id": 25970819,
+  "company_id": null,
+  "merged": false,
+  "nome": "Camila Fernandes",
+  "tel_ok": true
+ },
+ "224": {
+  "lead_id": 23804775,
+  "contact_id": 25970821,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renato Barbosa",
+  "tel_ok": true
+ },
+ "225": {
+  "lead_id": 23804777,
+  "contact_id": 25970823,
+  "company_id": null,
+  "merged": false,
+  "nome": "Aline Teixeira",
+  "tel_ok": true
+ },
+ "226": {
+  "lead_id": 23804779,
+  "contact_id": 25970825,
+  "company_id": null,
+  "merged": false,
+  "nome": "Thiago Nunes",
+  "tel_ok": true
+ },
+ "227": {
+  "lead_id": 23804781,
+  "contact_id": 25970827,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruna Oliveira",
+  "tel_ok": true
+ },
+ "228": {
+  "lead_id": 23804783,
+  "contact_id": 25970829,
+  "company_id": null,
+  "merged": false,
+  "nome": "Felipe Santos",
+  "tel_ok": true
+ },
+ "229": {
+  "lead_id": 23804785,
+  "contact_id": 25970831,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marina Costa",
+  "tel_ok": true
+ },
+ "230": {
+  "lead_id": 23804787,
+  "contact_id": 25970833,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leonardo Ribeiro",
+  "tel_ok": true
+ },
+ "231": {
+  "lead_id": 23804789,
+  "contact_id": 25970835,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana Alves",
+  "tel_ok": true
+ },
+ "232": {
+  "lead_id": 23804791,
+  "contact_id": 25970837,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rodrigo Freitas",
+  "tel_ok": true
+ },
+ "233": {
+  "lead_id": 23804793,
+  "contact_id": 25970839,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fernanda Gomes",
+  "tel_ok": true
+ },
+ "234": {
+  "lead_id": 23804795,
+  "contact_id": 25970841,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gustavo Martins",
+  "tel_ok": true
+ },
+ "235": {
+  "lead_id": 23804797,
+  "contact_id": 25970843,
+  "company_id": null,
+  "merged": false,
+  "nome": "Isabela Rocha",
+  "tel_ok": true
+ },
+ "236": {
+  "lead_id": 23804799,
+  "contact_id": 25970845,
+  "company_id": null,
+  "merged": false,
+  "nome": "Victor Hugo Lima",
+  "tel_ok": true
+ },
+ "237": {
+  "lead_id": 23804801,
+  "contact_id": 25970847,
+  "company_id": null,
+  "merged": false,
+  "nome": "Natália Mendes",
+  "tel_ok": true
+ },
+ "238": {
+  "lead_id": 23804803,
+  "contact_id": 25970849,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daniel Carvalho",
+  "tel_ok": true
+ },
+ "239": {
+  "lead_id": 23804805,
+  "contact_id": 25970851,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana Prado",
+  "tel_ok": true
+ },
+ "240": {
+  "lead_id": 23804807,
+  "contact_id": 25970853,
+  "company_id": null,
+  "merged": false,
+  "nome": "Valéria Da Silva",
+  "tel_ok": true
+ },
+ "241": {
+  "lead_id": 23804809,
+  "contact_id": 25970855,
+  "company_id": null,
+  "merged": false,
+  "nome": "Keyla Totem",
+  "tel_ok": true
+ },
+ "242": {
+  "lead_id": 23804811,
+  "contact_id": 25970857,
+  "company_id": null,
+  "merged": false,
+  "nome": "Michele Cristina",
+  "tel_ok": true
+ },
+ "243": {
+  "lead_id": 23804813,
+  "contact_id": 25970859,
+  "company_id": null,
+  "merged": false,
+  "nome": "Otávio Siqueira",
+  "tel_ok": true
+ },
+ "244": {
+  "lead_id": 23804815,
+  "contact_id": 25970861,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elisa Monteiro",
+  "tel_ok": true
+ },
+ "245": {
+  "lead_id": 23804817,
+  "contact_id": 25970863,
+  "company_id": null,
+  "merged": false,
+  "nome": "Caio Bittencourt",
+  "tel_ok": true
+ },
+ "246": {
+  "lead_id": 23804819,
+  "contact_id": 25970865,
+  "company_id": null,
+  "merged": false,
+  "nome": "Mirela Duarte",
+  "tel_ok": true
+ },
+ "247": {
+  "lead_id": 23804821,
+  "contact_id": 25970867,
+  "company_id": null,
+  "merged": false,
+  "nome": "Heitor Vasconcelos",
+  "tel_ok": true
+ },
+ "248": {
+  "lead_id": 23804823,
+  "contact_id": 25970869,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sofia Albuquerque",
+  "tel_ok": true
+ },
+ "249": {
+  "lead_id": 23804825,
+  "contact_id": 25970871,
+  "company_id": null,
+  "merged": false,
+  "nome": "Igor Peixoto",
+  "tel_ok": true
+ },
+ "250": {
+  "lead_id": 23804827,
+  "contact_id": 25970873,
+  "company_id": null,
+  "merged": false,
+  "nome": "Nicole Amaral",
+  "tel_ok": true
+ },
+ "251": {
+  "lead_id": 23804829,
+  "contact_id": 25970875,
+  "company_id": null,
+  "merged": false,
+  "nome": "Arthur Figueiredo",
+  "tel_ok": true
+ },
+ "252": {
+  "lead_id": 23804831,
+  "contact_id": 25970877,
+  "company_id": null,
+  "merged": false,
+  "nome": "Carina",
+  "tel_ok": true
+ },
+ "253": {
+  "lead_id": 23804833,
+  "contact_id": 25970879,
+  "company_id": null,
+  "merged": false,
+  "nome": "Laura",
+  "tel_ok": true
+ },
+ "254": {
+  "lead_id": 23804835,
+  "contact_id": 25970881,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cristiane",
+  "tel_ok": true
+ },
+ "255": {
+  "lead_id": 23804837,
+  "contact_id": 25970883,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fatima",
+  "tel_ok": true
+ },
+ "256": {
+  "lead_id": 23804839,
+  "contact_id": 25970885,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jéssica",
+  "tel_ok": true
+ },
+ "257": {
+  "lead_id": 23804841,
+  "contact_id": 25970887,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fabiana",
+  "tel_ok": true
+ },
+ "258": {
+  "lead_id": 23804843,
+  "contact_id": 25970889,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daniele",
+  "tel_ok": true
+ },
+ "259": {
+  "lead_id": 23804845,
+  "contact_id": 25970891,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ana Alice",
+  "tel_ok": true
+ },
+ "260": {
+  "lead_id": 23804847,
+  "contact_id": 25970893,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": true
+ },
+ "261": {
+  "lead_id": 23804849,
+  "contact_id": 25970895,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luana",
+  "tel_ok": true
+ },
+ "262": {
+  "lead_id": 23804851,
+  "contact_id": 25970897,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renata",
+  "tel_ok": true
+ },
+ "263": {
+  "lead_id": 23804853,
+  "contact_id": 25970899,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruno",
+  "tel_ok": true
+ },
+ "264": {
+  "lead_id": 23804855,
+  "contact_id": 25970901,
+  "company_id": null,
+  "merged": false,
+  "nome": "Nathalia",
+  "tel_ok": true
+ },
+ "265": {
+  "lead_id": 23804857,
+  "contact_id": 25970903,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ellen",
+  "tel_ok": true
+ },
+ "266": {
+  "lead_id": 23804859,
+  "contact_id": 25970905,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patricia",
+  "tel_ok": true
+ },
+ "267": {
+  "lead_id": 23804861,
+  "contact_id": 25970907,
+  "company_id": null,
+  "merged": false,
+  "nome": "Noelia",
+  "tel_ok": true
+ },
+ "268": {
+  "lead_id": 23804863,
+  "contact_id": 25970909,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vera",
+  "tel_ok": true
+ },
+ "269": {
+  "lead_id": 23804865,
+  "contact_id": 25970911,
+  "company_id": null,
+  "merged": false,
+  "nome": "Diogo",
+  "tel_ok": true
+ },
+ "270": {
+  "lead_id": 23804867,
+  "contact_id": 25970913,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria",
+  "tel_ok": true
+ },
+ "271": {
+  "lead_id": 23804869,
+  "contact_id": 25970915,
+  "company_id": null,
+  "merged": false,
+  "nome": "Geisa",
+  "tel_ok": true
+ },
+ "272": {
+  "lead_id": 23804871,
+  "contact_id": 25970917,
+  "company_id": null,
+  "merged": false,
+  "nome": "Larissa",
+  "tel_ok": true
+ },
+ "273": {
+  "lead_id": 23804873,
+  "contact_id": 25970919,
+  "company_id": null,
+  "merged": false,
+  "nome": "Dalila",
+  "tel_ok": true
+ },
+ "274": {
+  "lead_id": 23804875,
+  "contact_id": 25970921,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eliane",
+  "tel_ok": true
+ },
+ "275": {
+  "lead_id": 23804877,
+  "contact_id": 25970923,
+  "company_id": null,
+  "merged": false,
+  "nome": "Priscila",
+  "tel_ok": true
+ },
+ "276": {
+  "lead_id": 23804879,
+  "contact_id": 25970925,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ana Carolina",
+  "tel_ok": true
+ },
+ "277": {
+  "lead_id": 23804881,
+  "contact_id": 25970927,
+  "company_id": null,
+  "merged": false,
+  "nome": "Kety",
+  "tel_ok": true
+ },
+ "278": {
+  "lead_id": 23804883,
+  "contact_id": 25970929,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luana",
+  "tel_ok": true
+ },
+ "279": {
+  "lead_id": 23804885,
+  "contact_id": 25970931,
+  "company_id": null,
+  "merged": false,
+  "nome": "Emanuela",
+  "tel_ok": true
+ },
+ "280": {
+  "lead_id": 23804887,
+  "contact_id": 25970933,
+  "company_id": null,
+  "merged": false,
+  "nome": "Laura",
+  "tel_ok": true
+ },
+ "281": {
+  "lead_id": 23804889,
+  "contact_id": 25970935,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ju",
+  "tel_ok": true
+ },
+ "282": {
+  "lead_id": 23804891,
+  "contact_id": 25970937,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tatiana",
+  "tel_ok": true
+ },
+ "283": {
+  "lead_id": 23804893,
+  "contact_id": 25970939,
+  "company_id": null,
+  "merged": false,
+  "nome": "Wellington",
+  "tel_ok": true
+ },
+ "284": {
+  "lead_id": 23804895,
+  "contact_id": 25970941,
+  "company_id": null,
+  "merged": false,
+  "nome": "Felipe",
+  "tel_ok": true
+ },
+ "285": {
+  "lead_id": 23804897,
+  "contact_id": 25970943,
+  "company_id": null,
+  "merged": false,
+  "nome": "Hebert",
+  "tel_ok": true
+ },
+ "286": {
+  "lead_id": 23804899,
+  "contact_id": 25970945,
+  "company_id": null,
+  "merged": false,
+  "nome": "Andre",
+  "tel_ok": true
+ },
+ "287": {
+  "lead_id": 23804901,
+  "contact_id": 25970947,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eduardo",
+  "tel_ok": true
+ },
+ "288": {
+  "lead_id": 23804903,
+  "contact_id": 25970949,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cirineu",
+  "tel_ok": true
+ },
+ "289": {
+  "lead_id": 23804905,
+  "contact_id": 25970951,
+  "company_id": null,
+  "merged": false,
+  "nome": "Otavio",
+  "tel_ok": true
+ },
+ "290": {
+  "lead_id": 23804907,
+  "contact_id": 25970953,
+  "company_id": null,
+  "merged": false,
+  "nome": "Josi",
+  "tel_ok": true
+ },
+ "291": {
+  "lead_id": 23804909,
+  "contact_id": 25970955,
+  "company_id": null,
+  "merged": false,
+  "nome": "Layon",
+  "tel_ok": true
+ },
+ "292": {
+  "lead_id": 23804911,
+  "contact_id": 25970957,
+  "company_id": null,
+  "merged": false,
+  "nome": "Armando",
+  "tel_ok": true
+ },
+ "293": {
+  "lead_id": 23804913,
+  "contact_id": 25970959,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tereza",
+  "tel_ok": true
+ },
+ "294": {
+  "lead_id": 23804915,
+  "contact_id": 25970961,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cleia",
+  "tel_ok": true
+ },
+ "295": {
+  "lead_id": 23804917,
+  "contact_id": 25970963,
+  "company_id": null,
+  "merged": false,
+  "nome": "José Rui",
+  "tel_ok": true
+ },
+ "296": {
+  "lead_id": 23804919,
+  "contact_id": 25970965,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renata",
+  "tel_ok": true
+ },
+ "297": {
+  "lead_id": 23804921,
+  "contact_id": 25970967,
+  "company_id": null,
+  "merged": false,
+  "nome": "Camila",
+  "tel_ok": true
+ },
+ "298": {
+  "lead_id": 23804923,
+  "contact_id": 25970969,
+  "company_id": null,
+  "merged": false,
+  "nome": "Joice",
+  "tel_ok": true
+ },
+ "299": {
+  "lead_id": 23804925,
+  "contact_id": 25970971,
+  "company_id": null,
+  "merged": false,
+  "nome": "Giovanni",
+  "tel_ok": true
+ },
+ "300": {
+  "lead_id": 23804927,
+  "contact_id": 25970973,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ronaldo",
+  "tel_ok": true
+ },
+ "301": {
+  "lead_id": 23804929,
+  "contact_id": 25970975,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patricia",
+  "tel_ok": true
+ },
+ "302": {
+  "lead_id": 23804931,
+  "contact_id": 25970977,
+  "company_id": null,
+  "merged": false,
+  "nome": "Carlos",
+  "tel_ok": true
+ },
+ "303": {
+  "lead_id": 23804933,
+  "contact_id": 25970979,
+  "company_id": null,
+  "merged": false,
+  "nome": "Iscallith",
+  "tel_ok": true
+ },
+ "304": {
+  "lead_id": 23804935,
+  "contact_id": 25970981,
+  "company_id": null,
+  "merged": false,
+  "nome": "Carlos",
+  "tel_ok": true
+ },
+ "305": {
+  "lead_id": 23804937,
+  "contact_id": 25970983,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcela",
+  "tel_ok": true
+ },
+ "306": {
+  "lead_id": 23804939,
+  "contact_id": 25970985,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vera",
+  "tel_ok": true
+ },
+ "307": {
+  "lead_id": 23804943,
+  "contact_id": 25971055,
+  "company_id": 25970987,
+  "merged": false,
+  "nome": "Andre",
+  "tel_ok": true
+ },
+ "308": {
+  "lead_id": 23804945,
+  "contact_id": 25971057,
+  "company_id": null,
+  "merged": false,
+  "nome": "Miriam",
+  "tel_ok": true
+ },
+ "309": {
+  "lead_id": 23804947,
+  "contact_id": 25971059,
+  "company_id": null,
+  "merged": false,
+  "nome": "Regiane",
+  "tel_ok": true
+ },
+ "310": {
+  "lead_id": 23804949,
+  "contact_id": 25971061,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jessica",
+  "tel_ok": true
+ },
+ "311": {
+  "lead_id": 23804951,
+  "contact_id": 25971063,
+  "company_id": null,
+  "merged": false,
+  "nome": "Silva",
+  "tel_ok": true
+ },
+ "312": {
+  "lead_id": 23804953,
+  "contact_id": 25971065,
+  "company_id": null,
+  "merged": false,
+  "nome": "Carlos",
+  "tel_ok": true
+ },
+ "313": {
+  "lead_id": 23804955,
+  "contact_id": 25971067,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marilene",
+  "tel_ok": true
+ },
+ "314": {
+  "lead_id": 23804957,
+  "contact_id": 25971069,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leonice",
+  "tel_ok": true
+ },
+ "315": {
+  "lead_id": 23804959,
+  "contact_id": 25971071,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": true
+ },
+ "316": {
+  "lead_id": 23804961,
+  "contact_id": 25971073,
+  "company_id": null,
+  "merged": false,
+  "nome": "Nice",
+  "tel_ok": true
+ },
+ "317": {
+  "lead_id": 23804963,
+  "contact_id": 25971075,
+  "company_id": null,
+  "merged": false,
+  "nome": "Adriana",
+  "tel_ok": true
+ },
+ "318": {
+  "lead_id": 23804965,
+  "contact_id": 25971077,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marina",
+  "tel_ok": true
+ },
+ "319": {
+  "lead_id": 23804967,
+  "contact_id": 25971079,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tati",
+  "tel_ok": true
+ },
+ "320": {
+  "lead_id": 23804969,
+  "contact_id": 25971081,
+  "company_id": null,
+  "merged": false,
+  "nome": "Silvina",
+  "tel_ok": true
+ },
+ "321": {
+  "lead_id": 23804971,
+  "contact_id": 25971083,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rosângela",
+  "tel_ok": true
+ },
+ "322": {
+  "lead_id": 23804973,
+  "contact_id": 25971085,
+  "company_id": null,
+  "merged": false,
+  "nome": "João",
+  "tel_ok": true
+ },
+ "323": {
+  "lead_id": 23804975,
+  "contact_id": 25971087,
+  "company_id": null,
+  "merged": false,
+  "nome": "Franscisco",
+  "tel_ok": true
+ },
+ "324": {
+  "lead_id": 23804977,
+  "contact_id": 25971089,
+  "company_id": 25970989,
+  "merged": false,
+  "nome": "Janiel",
+  "tel_ok": true
+ },
+ "325": {
+  "lead_id": 23804979,
+  "contact_id": 25971091,
+  "company_id": 25970991,
+  "merged": false,
+  "nome": "Juiz",
+  "tel_ok": true
+ },
+ "326": {
+  "lead_id": 23804981,
+  "contact_id": 25971093,
+  "company_id": 25970993,
+  "merged": false,
+  "nome": "Luiz",
+  "tel_ok": true
+ },
+ "327": {
+  "lead_id": 23804983,
+  "contact_id": 25971095,
+  "company_id": 25970995,
+  "merged": false,
+  "nome": "Robson",
+  "tel_ok": true
+ },
+ "328": {
+  "lead_id": 23804985,
+  "contact_id": 25971097,
+  "company_id": 25970997,
+  "merged": false,
+  "nome": "Carol",
+  "tel_ok": true
+ },
+ "329": {
+  "lead_id": 23804987,
+  "contact_id": 25971099,
+  "company_id": 25970999,
+  "merged": false,
+  "nome": "Triele",
+  "tel_ok": true
+ },
+ "330": {
+  "lead_id": 23804989,
+  "contact_id": 25971101,
+  "company_id": 25971001,
+  "merged": false,
+  "nome": "Vivi Krambeck",
+  "tel_ok": true
+ },
+ "331": {
+  "lead_id": 23804991,
+  "contact_id": 25971103,
+  "company_id": 25971003,
+  "merged": false,
+  "nome": "Sandra",
+  "tel_ok": true
+ },
+ "332": {
+  "lead_id": 23804993,
+  "contact_id": 25971105,
+  "company_id": 25971005,
+  "merged": false,
+  "nome": "Zelia Soares",
+  "tel_ok": true
+ },
+ "333": {
+  "lead_id": 23804995,
+  "contact_id": 25971107,
+  "company_id": 25971007,
+  "merged": false,
+  "nome": "Diego Luiz",
+  "tel_ok": false
+ },
+ "334": {
+  "lead_id": 23804997,
+  "contact_id": 25971109,
+  "company_id": 25971009,
+  "merged": false,
+  "nome": "Giselle",
+  "tel_ok": true
+ },
+ "335": {
+  "lead_id": 23804999,
+  "contact_id": 25971111,
+  "company_id": 25971011,
+  "merged": false,
+  "nome": "Lucas",
+  "tel_ok": true
+ },
+ "336": {
+  "lead_id": 23805001,
+  "contact_id": 25971113,
+  "company_id": 25971013,
+  "merged": false,
+  "nome": "Miqueias",
+  "tel_ok": true
+ },
+ "337": {
+  "lead_id": 23805003,
+  "contact_id": 25971115,
+  "company_id": 25971015,
+  "merged": false,
+  "nome": "Susie",
+  "tel_ok": false
+ },
+ "338": {
+  "lead_id": 23805005,
+  "contact_id": 25971117,
+  "company_id": 25971017,
+  "merged": false,
+  "nome": "Silvia",
+  "tel_ok": true
+ },
+ "339": {
+  "lead_id": 23805007,
+  "contact_id": 25971119,
+  "company_id": 25971019,
+  "merged": false,
+  "nome": "Carmem",
+  "tel_ok": true
+ },
+ "340": {
+  "lead_id": 23805009,
+  "contact_id": 25971121,
+  "company_id": 25971021,
+  "merged": false,
+  "nome": "Eduardo",
+  "tel_ok": true
+ },
+ "341": {
+  "lead_id": 23805011,
+  "contact_id": 25971123,
+  "company_id": 25971023,
+  "merged": false,
+  "nome": "Irani",
+  "tel_ok": true
+ },
+ "342": {
+  "lead_id": 23805013,
+  "contact_id": 25971125,
+  "company_id": 25971025,
+  "merged": false,
+  "nome": "Juan",
+  "tel_ok": true
+ },
+ "343": {
+  "lead_id": 23805015,
+  "contact_id": 25971127,
+  "company_id": 25971027,
+  "merged": false,
+  "nome": "Michelle",
+  "tel_ok": true
+ },
+ "344": {
+  "lead_id": 23805017,
+  "contact_id": 25971129,
+  "company_id": 25971029,
+  "merged": false,
+  "nome": "Ana Cecília",
+  "tel_ok": true
+ },
+ "345": {
+  "lead_id": 23805019,
+  "contact_id": 25971131,
+  "company_id": 25971031,
+  "merged": false,
+  "nome": "Jenifer",
+  "tel_ok": true
+ },
+ "346": {
+  "lead_id": 23805021,
+  "contact_id": 25971133,
+  "company_id": 25971033,
+  "merged": false,
+  "nome": "Kazukas",
+  "tel_ok": true
+ },
+ "347": {
+  "lead_id": 23805023,
+  "contact_id": 25971135,
+  "company_id": 25971035,
+  "merged": false,
+  "nome": "Shirly",
+  "tel_ok": true
+ },
+ "348": {
+  "lead_id": 23805025,
+  "contact_id": 25971137,
+  "company_id": 25971037,
+  "merged": false,
+  "nome": "Marcus",
+  "tel_ok": true
+ },
+ "349": {
+  "lead_id": 23805027,
+  "contact_id": 25971139,
+  "company_id": 25971039,
+  "merged": false,
+  "nome": "Edna",
+  "tel_ok": true
+ },
+ "350": {
+  "lead_id": 23805029,
+  "contact_id": 25971141,
+  "company_id": 25971041,
+  "merged": false,
+  "nome": "Douglas",
+  "tel_ok": true
+ },
+ "351": {
+  "lead_id": 23805031,
+  "contact_id": 25971143,
+  "company_id": 25971043,
+  "merged": false,
+  "nome": "Geovana",
+  "tel_ok": true
+ },
+ "352": {
+  "lead_id": 23805033,
+  "contact_id": 25971145,
+  "company_id": 25971045,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": true
+ },
+ "353": {
+  "lead_id": 23805035,
+  "contact_id": 25971147,
+  "company_id": 25971047,
+  "merged": false,
+  "nome": "Cassia",
+  "tel_ok": true
+ },
+ "354": {
+  "lead_id": 23805037,
+  "contact_id": 25971149,
+  "company_id": 25971049,
+  "merged": false,
+  "nome": "Rafaela",
+  "tel_ok": true
+ },
+ "355": {
+  "lead_id": 23805039,
+  "contact_id": 25971151,
+  "company_id": 25971051,
+  "merged": false,
+  "nome": "Vanielle",
+  "tel_ok": true
+ },
+ "356": {
+  "lead_id": 23805041,
+  "contact_id": 25971153,
+  "company_id": 25971053,
+  "merged": false,
+  "nome": "Marcelo",
+  "tel_ok": true
+ },
+ "357": {
+  "lead_id": 23805043,
+  "contact_id": 25971181,
+  "company_id": 25971155,
+  "merged": false,
+  "nome": "Maria",
+  "tel_ok": true
+ },
+ "358": {
+  "lead_id": 23805045,
+  "contact_id": 25971183,
+  "company_id": 25971157,
+  "merged": false,
+  "nome": "Luana e Leonardo",
+  "tel_ok": false
+ },
+ "359": {
+  "lead_id": 23805047,
+  "contact_id": 25971185,
+  "company_id": 25971159,
+  "merged": false,
+  "nome": "Pamella",
+  "tel_ok": true
+ },
+ "360": {
+  "lead_id": 23805049,
+  "contact_id": 25971187,
+  "company_id": null,
+  "merged": false,
+  "nome": "Estefany",
+  "tel_ok": true
+ },
+ "361": {
+  "lead_id": 23805051,
+  "contact_id": 25971189,
+  "company_id": 25971161,
+  "merged": false,
+  "nome": "Vanessa",
+  "tel_ok": true
+ },
+ "362": {
+  "lead_id": 23805053,
+  "contact_id": 25971191,
+  "company_id": 25971163,
+  "merged": false,
+  "nome": "Vitória",
+  "tel_ok": true
+ },
+ "363": {
+  "lead_id": 23805055,
+  "contact_id": 25971193,
+  "company_id": null,
+  "merged": false,
+  "nome": "Shirley",
+  "tel_ok": true
+ },
+ "364": {
+  "lead_id": 23805057,
+  "contact_id": 25971195,
+  "company_id": 25971165,
+  "merged": false,
+  "nome": "Maria Clara",
+  "tel_ok": true
+ },
+ "365": {
+  "lead_id": 23805059,
+  "contact_id": 25971197,
+  "company_id": 25971167,
+  "merged": false,
+  "nome": "Luiza Trielli",
+  "tel_ok": true
+ },
+ "366": {
+  "lead_id": 23805061,
+  "contact_id": 25971199,
+  "company_id": 25971169,
+  "merged": false,
+  "nome": "Luiz Fernando",
+  "tel_ok": true
+ },
+ "367": {
+  "lead_id": 23805063,
+  "contact_id": 25971201,
+  "company_id": 25971171,
+  "merged": false,
+  "nome": "Thiago",
+  "tel_ok": true
+ },
+ "368": {
+  "lead_id": 23805065,
+  "contact_id": 25971203,
+  "company_id": 25971173,
+  "merged": false,
+  "nome": "Henrique",
+  "tel_ok": false
+ },
+ "369": {
+  "lead_id": 23805067,
+  "contact_id": 25971205,
+  "company_id": 25971175,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": true
+ },
+ "370": {
+  "lead_id": 23805069,
+  "contact_id": 25971207,
+  "company_id": 25971177,
+  "merged": false,
+  "nome": "Abraão",
+  "tel_ok": true
+ },
+ "371": {
+  "lead_id": 23805071,
+  "contact_id": 25971209,
+  "company_id": null,
+  "merged": false,
+  "nome": "Aline",
+  "tel_ok": true
+ },
+ "372": {
+  "lead_id": 23805073,
+  "contact_id": 25971211,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana",
+  "tel_ok": true
+ },
+ "373": {
+  "lead_id": 23805075,
+  "contact_id": 25971213,
+  "company_id": null,
+  "merged": false,
+  "nome": "Valda",
+  "tel_ok": true
+ },
+ "374": {
+  "lead_id": 23805077,
+  "contact_id": 25971215,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tatiane",
+  "tel_ok": true
+ },
+ "375": {
+  "lead_id": 23805079,
+  "contact_id": 25971217,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daniela",
+  "tel_ok": true
+ },
+ "376": {
+  "lead_id": 23805081,
+  "contact_id": 25971219,
+  "company_id": null,
+  "merged": false,
+  "nome": "Telma",
+  "tel_ok": true
+ },
+ "377": {
+  "lead_id": 23805083,
+  "contact_id": 25971221,
+  "company_id": null,
+  "merged": false,
+  "nome": "Pedro",
+  "tel_ok": true
+ },
+ "378": {
+  "lead_id": 23805085,
+  "contact_id": 25971223,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria",
+  "tel_ok": true
+ },
+ "379": {
+  "lead_id": 23805087,
+  "contact_id": 25971225,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jane",
+  "tel_ok": true
+ },
+ "380": {
+  "lead_id": 23805089,
+  "contact_id": 25971227,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcelo",
+  "tel_ok": true
+ },
+ "381": {
+  "lead_id": 23805091,
+  "contact_id": 25971229,
+  "company_id": null,
+  "merged": false,
+  "nome": "Flavia",
+  "tel_ok": true
+ },
+ "382": {
+  "lead_id": 23805093,
+  "contact_id": 25971231,
+  "company_id": null,
+  "merged": false,
+  "nome": "Caroline",
+  "tel_ok": true
+ },
+ "383": {
+  "lead_id": 23805095,
+  "contact_id": 25971233,
+  "company_id": null,
+  "merged": false,
+  "nome": "Beatriz",
+  "tel_ok": true
+ },
+ "384": {
+  "lead_id": 23805097,
+  "contact_id": 25971235,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lucas",
+  "tel_ok": true
+ },
+ "385": {
+  "lead_id": 23805099,
+  "contact_id": 25971237,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rudimar",
+  "tel_ok": true
+ },
+ "386": {
+  "lead_id": 23805101,
+  "contact_id": 25971239,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renata",
+  "tel_ok": true
+ },
+ "387": {
+  "lead_id": 23805103,
+  "contact_id": 25971241,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliano",
+  "tel_ok": true
+ },
+ "388": {
+  "lead_id": 23805105,
+  "contact_id": 25971243,
+  "company_id": null,
+  "merged": false,
+  "nome": "Erika",
+  "tel_ok": true
+ },
+ "389": {
+  "lead_id": 23805107,
+  "contact_id": 25971245,
+  "company_id": null,
+  "merged": false,
+  "nome": "Aleksandra",
+  "tel_ok": true
+ },
+ "390": {
+  "lead_id": 23805109,
+  "contact_id": 25971247,
+  "company_id": null,
+  "merged": false,
+  "nome": "Emily",
+  "tel_ok": true
+ },
+ "391": {
+  "lead_id": 23805111,
+  "contact_id": 25971249,
+  "company_id": null,
+  "merged": false,
+  "nome": "Silvana",
+  "tel_ok": true
+ },
+ "392": {
+  "lead_id": 23805113,
+  "contact_id": 25971251,
+  "company_id": null,
+  "merged": false,
+  "nome": "Valdirene",
+  "tel_ok": true
+ },
+ "393": {
+  "lead_id": 23805115,
+  "contact_id": 25971253,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ana",
+  "tel_ok": true
+ },
+ "394": {
+  "lead_id": 23805117,
+  "contact_id": 25971255,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rafael",
+  "tel_ok": true
+ },
+ "395": {
+  "lead_id": 23805119,
+  "contact_id": 25971257,
+  "company_id": null,
+  "merged": false,
+  "nome": "Silvio",
+  "tel_ok": true
+ },
+ "396": {
+  "lead_id": 23805121,
+  "contact_id": 25971259,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leticia",
+  "tel_ok": true
+ },
+ "397": {
+  "lead_id": 23805123,
+  "contact_id": 25971261,
+  "company_id": null,
+  "merged": false,
+  "nome": "Claudia",
+  "tel_ok": true
+ },
+ "398": {
+  "lead_id": 23805125,
+  "contact_id": 25971263,
+  "company_id": null,
+  "merged": false,
+  "nome": "Paula",
+  "tel_ok": true
+ },
+ "399": {
+  "lead_id": 23805127,
+  "contact_id": 25971265,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rafa",
+  "tel_ok": true
+ },
+ "400": {
+  "lead_id": 23805129,
+  "contact_id": 25971267,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lidia",
+  "tel_ok": true
+ },
+ "401": {
+  "lead_id": 23805131,
+  "contact_id": 25971269,
+  "company_id": null,
+  "merged": false,
+  "nome": "Idelson",
+  "tel_ok": true
+ },
+ "402": {
+  "lead_id": 23805133,
+  "contact_id": 25971271,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vilma",
+  "tel_ok": true
+ },
+ "403": {
+  "lead_id": 23805135,
+  "contact_id": 25971273,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rose",
+  "tel_ok": true
+ },
+ "404": {
+  "lead_id": 23805137,
+  "contact_id": 25971275,
+  "company_id": null,
+  "merged": false,
+  "nome": "Roberto",
+  "tel_ok": true
+ },
+ "405": {
+  "lead_id": 23805139,
+  "contact_id": 25971277,
+  "company_id": 25971179,
+  "merged": false,
+  "nome": "Nicolas",
+  "tel_ok": true
+ },
+ "406": {
+  "lead_id": 23805141,
+  "contact_id": 25971279,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leandro",
+  "tel_ok": true
+ },
+ "407": {
+  "lead_id": 23805143,
+  "contact_id": 25971301,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana",
+  "tel_ok": true
+ },
+ "408": {
+  "lead_id": 23805145,
+  "contact_id": 25971303,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elisabete",
+  "tel_ok": true
+ },
+ "409": {
+  "lead_id": 23805147,
+  "contact_id": 25971305,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jociene",
+  "tel_ok": true
+ },
+ "410": {
+  "lead_id": 23805149,
+  "contact_id": 25971307,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elaine",
+  "tel_ok": true
+ },
+ "411": {
+  "lead_id": 23805151,
+  "contact_id": 25971309,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fabio",
+  "tel_ok": true
+ },
+ "412": {
+  "lead_id": 23805153,
+  "contact_id": 25971311,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renata",
+  "tel_ok": true
+ },
+ "413": {
+  "lead_id": 23805155,
+  "contact_id": 25971313,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana",
+  "tel_ok": true
+ },
+ "414": {
+  "lead_id": 23805157,
+  "contact_id": 25971315,
+  "company_id": 25971281,
+  "merged": false,
+  "nome": "Ingrid",
+  "tel_ok": true
+ },
+ "415": {
+  "lead_id": 23805159,
+  "contact_id": 25971317,
+  "company_id": null,
+  "merged": false,
+  "nome": "Helivelton",
+  "tel_ok": true
+ },
+ "416": {
+  "lead_id": 23805161,
+  "contact_id": 25971319,
+  "company_id": null,
+  "merged": false,
+  "nome": "Amanda",
+  "tel_ok": true
+ },
+ "417": {
+  "lead_id": 23805163,
+  "contact_id": 25971321,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marluci",
+  "tel_ok": true
+ },
+ "418": {
+  "lead_id": 23805165,
+  "contact_id": 25971323,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tamara",
+  "tel_ok": true
+ },
+ "419": {
+  "lead_id": 23805167,
+  "contact_id": 25971325,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcos",
+  "tel_ok": true
+ },
+ "420": {
+  "lead_id": 23805169,
+  "contact_id": 25971327,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renato",
+  "tel_ok": true
+ },
+ "421": {
+  "lead_id": 23805171,
+  "contact_id": 25971329,
+  "company_id": null,
+  "merged": false,
+  "nome": "André",
+  "tel_ok": true
+ },
+ "422": {
+  "lead_id": 23805173,
+  "contact_id": 25971331,
+  "company_id": null,
+  "merged": false,
+  "nome": "Francisco",
+  "tel_ok": true
+ },
+ "423": {
+  "lead_id": 23805175,
+  "contact_id": 25971333,
+  "company_id": 25971283,
+  "merged": false,
+  "nome": "Dogão Lanches Roberto",
+  "tel_ok": true
+ },
+ "424": {
+  "lead_id": 23805177,
+  "contact_id": 25971335,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vanessa",
+  "tel_ok": true
+ },
+ "425": {
+  "lead_id": 23805179,
+  "contact_id": 25971337,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jamille",
+  "tel_ok": true
+ },
+ "426": {
+  "lead_id": 23805181,
+  "contact_id": 25971339,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vinicius",
+  "tel_ok": true
+ },
+ "427": {
+  "lead_id": 23805183,
+  "contact_id": 25971341,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leandro",
+  "tel_ok": true
+ },
+ "428": {
+  "lead_id": 23805185,
+  "contact_id": 25971343,
+  "company_id": null,
+  "merged": false,
+  "nome": "David",
+  "tel_ok": true
+ },
+ "429": {
+  "lead_id": 23805187,
+  "contact_id": 25971345,
+  "company_id": null,
+  "merged": false,
+  "nome": "Paula",
+  "tel_ok": true
+ },
+ "430": {
+  "lead_id": 23805189,
+  "contact_id": 25971347,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marta",
+  "tel_ok": true
+ },
+ "431": {
+  "lead_id": 23805191,
+  "contact_id": 25971349,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ivan",
+  "tel_ok": true
+ },
+ "432": {
+  "lead_id": 23805193,
+  "contact_id": 25971351,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daniel",
+  "tel_ok": true
+ },
+ "433": {
+  "lead_id": 23805195,
+  "contact_id": 25971353,
+  "company_id": null,
+  "merged": false,
+  "nome": "Francisco",
+  "tel_ok": true
+ },
+ "434": {
+  "lead_id": 23805197,
+  "contact_id": 25971355,
+  "company_id": null,
+  "merged": false,
+  "nome": "Geovana",
+  "tel_ok": true
+ },
+ "435": {
+  "lead_id": 23805199,
+  "contact_id": 25971357,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sérgio",
+  "tel_ok": true
+ },
+ "436": {
+  "lead_id": 23805201,
+  "contact_id": 25971359,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lê",
+  "tel_ok": true
+ },
+ "437": {
+  "lead_id": 23805203,
+  "contact_id": 25971361,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rodrigo",
+  "tel_ok": true
+ },
+ "438": {
+  "lead_id": 23805205,
+  "contact_id": 25971363,
+  "company_id": null,
+  "merged": false,
+  "nome": "Clécio",
+  "tel_ok": true
+ },
+ "439": {
+  "lead_id": 23805207,
+  "contact_id": 25971365,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jaqueline",
+  "tel_ok": true
+ },
+ "440": {
+  "lead_id": 23805209,
+  "contact_id": 25971367,
+  "company_id": null,
+  "merged": false,
+  "nome": "João Victor",
+  "tel_ok": true
+ },
+ "441": {
+  "lead_id": 23805211,
+  "contact_id": 25971369,
+  "company_id": null,
+  "merged": false,
+  "nome": "Raquel",
+  "tel_ok": true
+ },
+ "442": {
+  "lead_id": 23805213,
+  "contact_id": 25971371,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcela",
+  "tel_ok": true
+ },
+ "443": {
+  "lead_id": 23805215,
+  "contact_id": 25971373,
+  "company_id": null,
+  "merged": false,
+  "nome": "João Central",
+  "tel_ok": true
+ },
+ "444": {
+  "lead_id": 23805217,
+  "contact_id": 25971375,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renta",
+  "tel_ok": true
+ },
+ "445": {
+  "lead_id": 23805219,
+  "contact_id": 25971377,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gisele",
+  "tel_ok": true
+ },
+ "446": {
+  "lead_id": 23805221,
+  "contact_id": 25971379,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lili",
+  "tel_ok": true
+ },
+ "447": {
+  "lead_id": 23805223,
+  "contact_id": 25971381,
+  "company_id": null,
+  "merged": false,
+  "nome": "Anne",
+  "tel_ok": true
+ },
+ "448": {
+  "lead_id": 23805225,
+  "contact_id": 25971383,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lorena",
+  "tel_ok": true
+ },
+ "449": {
+  "lead_id": 23805227,
+  "contact_id": 25971385,
+  "company_id": 25971285,
+  "merged": false,
+  "nome": "Fátima",
+  "tel_ok": false
+ },
+ "450": {
+  "lead_id": 23805229,
+  "contact_id": 25971387,
+  "company_id": 25971287,
+  "merged": false,
+  "nome": "Amanda",
+  "tel_ok": true
+ },
+ "451": {
+  "lead_id": 23805231,
+  "contact_id": 25971389,
+  "company_id": 25971289,
+  "merged": false,
+  "nome": "Jefferson",
+  "tel_ok": true
+ },
+ "452": {
+  "lead_id": 23805233,
+  "contact_id": 25971391,
+  "company_id": 25971291,
+  "merged": false,
+  "nome": "Nicole",
+  "tel_ok": true
+ },
+ "453": {
+  "lead_id": 23805235,
+  "contact_id": 25971393,
+  "company_id": 25971293,
+  "merged": false,
+  "nome": "Pedro",
+  "tel_ok": true
+ },
+ "454": {
+  "lead_id": 23805237,
+  "contact_id": 25971395,
+  "company_id": 25971295,
+  "merged": false,
+  "nome": "Aline Moretti",
+  "tel_ok": true
+ },
+ "455": {
+  "lead_id": 23805239,
+  "contact_id": 25971397,
+  "company_id": 25971297,
+  "merged": false,
+  "nome": "Pedro Cabral",
+  "tel_ok": true
+ },
+ "456": {
+  "lead_id": 23805241,
+  "contact_id": 25971399,
+  "company_id": 25971299,
+  "merged": false,
+  "nome": "Alan Alves",
+  "tel_ok": true
+ },
+ "457": {
+  "lead_id": 23805245,
+  "contact_id": 25971469,
+  "company_id": 25971401,
+  "merged": false,
+  "nome": "Juliano Pedro Longo",
+  "tel_ok": true
+ },
+ "458": {
+  "lead_id": 23805247,
+  "contact_id": 25971471,
+  "company_id": 25971403,
+  "merged": false,
+  "nome": "Larissa",
+  "tel_ok": true
+ },
+ "459": {
+  "lead_id": 23805249,
+  "contact_id": 25971473,
+  "company_id": 25971405,
+  "merged": false,
+  "nome": "Luciene",
+  "tel_ok": true
+ },
+ "460": {
+  "lead_id": 23805251,
+  "contact_id": 25971475,
+  "company_id": 25971407,
+  "merged": false,
+  "nome": "Geoavana",
+  "tel_ok": true
+ },
+ "461": {
+  "lead_id": 23805253,
+  "contact_id": 25971477,
+  "company_id": null,
+  "merged": false,
+  "nome": "Olégario",
+  "tel_ok": true
+ },
+ "462": {
+  "lead_id": 23805255,
+  "contact_id": 25971479,
+  "company_id": 25971409,
+  "merged": false,
+  "nome": "Vinicius",
+  "tel_ok": true
+ },
+ "463": {
+  "lead_id": 23805257,
+  "contact_id": 25971481,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vanessa Peixoto",
+  "tel_ok": true
+ },
+ "464": {
+  "lead_id": 23805259,
+  "contact_id": 25971483,
+  "company_id": 25971411,
+  "merged": false,
+  "nome": "Gustavo",
+  "tel_ok": true
+ },
+ "465": {
+  "lead_id": 23805261,
+  "contact_id": 25971485,
+  "company_id": 25971413,
+  "merged": false,
+  "nome": "Graciela",
+  "tel_ok": true
+ },
+ "466": {
+  "lead_id": 23805263,
+  "contact_id": 25971487,
+  "company_id": 25971415,
+  "merged": false,
+  "nome": "José",
+  "tel_ok": true
+ },
+ "467": {
+  "lead_id": 23805265,
+  "contact_id": 25971489,
+  "company_id": 25971417,
+  "merged": false,
+  "nome": "Erica",
+  "tel_ok": true
+ },
+ "468": {
+  "lead_id": 23805267,
+  "contact_id": 25971491,
+  "company_id": 25971419,
+  "merged": false,
+  "nome": "Lillian Alves",
+  "tel_ok": true
+ },
+ "469": {
+  "lead_id": 23805269,
+  "contact_id": 25971493,
+  "company_id": 25971421,
+  "merged": false,
+  "nome": "Patrícia",
+  "tel_ok": true
+ },
+ "470": {
+  "lead_id": 23805271,
+  "contact_id": 25971495,
+  "company_id": 25971423,
+  "merged": false,
+  "nome": "Marcos Santos",
+  "tel_ok": true
+ },
+ "471": {
+  "lead_id": 23805273,
+  "contact_id": 25971497,
+  "company_id": 25971425,
+  "merged": false,
+  "nome": "Guilherme",
+  "tel_ok": true
+ },
+ "472": {
+  "lead_id": 23805275,
+  "contact_id": 25971499,
+  "company_id": 25971427,
+  "merged": false,
+  "nome": "Tamires",
+  "tel_ok": true
+ },
+ "473": {
+  "lead_id": 23805277,
+  "contact_id": 25971501,
+  "company_id": 25971429,
+  "merged": false,
+  "nome": "Damares",
+  "tel_ok": true
+ },
+ "474": {
+  "lead_id": 23805279,
+  "contact_id": 25971503,
+  "company_id": 25971431,
+  "merged": false,
+  "nome": "Graciele",
+  "tel_ok": true
+ },
+ "475": {
+  "lead_id": 23805281,
+  "contact_id": 25971505,
+  "company_id": 25971433,
+  "merged": false,
+  "nome": "Letícia",
+  "tel_ok": true
+ },
+ "476": {
+  "lead_id": 23805283,
+  "contact_id": 25971507,
+  "company_id": 25971435,
+  "merged": false,
+  "nome": "Rubens",
+  "tel_ok": true
+ },
+ "477": {
+  "lead_id": 23805285,
+  "contact_id": 25971509,
+  "company_id": 25971437,
+  "merged": false,
+  "nome": "Dilma",
+  "tel_ok": true
+ },
+ "478": {
+  "lead_id": 23805287,
+  "contact_id": 25971511,
+  "company_id": null,
+  "merged": false,
+  "nome": "Genésio",
+  "tel_ok": true
+ },
+ "479": {
+  "lead_id": 23805289,
+  "contact_id": 25971513,
+  "company_id": 25971439,
+  "merged": false,
+  "nome": "Thaís",
+  "tel_ok": true
+ },
+ "480": {
+  "lead_id": 23805291,
+  "contact_id": 25971515,
+  "company_id": 25971441,
+  "merged": false,
+  "nome": "Gabriel",
+  "tel_ok": true
+ },
+ "481": {
+  "lead_id": 23805293,
+  "contact_id": 25971517,
+  "company_id": 25971445,
+  "merged": false,
+  "nome": "Márcia Dezan",
+  "tel_ok": true
+ },
+ "482": {
+  "lead_id": 23805295,
+  "contact_id": 25971519,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luana Lima",
+  "tel_ok": true
+ },
+ "483": {
+  "lead_id": 23805297,
+  "contact_id": 25971521,
+  "company_id": 25971447,
+  "merged": false,
+  "nome": "Fernanda",
+  "tel_ok": true
+ },
+ "484": {
+  "lead_id": 23805299,
+  "contact_id": 25971523,
+  "company_id": 25971449,
+  "merged": false,
+  "nome": "Mayara",
+  "tel_ok": true
+ },
+ "485": {
+  "lead_id": 23805301,
+  "contact_id": 25971525,
+  "company_id": 25971451,
+  "merged": false,
+  "nome": "Brayan",
+  "tel_ok": true
+ },
+ "486": {
+  "lead_id": 23805303,
+  "contact_id": 25971527,
+  "company_id": 25971453,
+  "merged": false,
+  "nome": "Claudia",
+  "tel_ok": true
+ },
+ "487": {
+  "lead_id": 23805305,
+  "contact_id": 25971529,
+  "company_id": 25971455,
+  "merged": false,
+  "nome": "Isabel",
+  "tel_ok": true
+ },
+ "488": {
+  "lead_id": 23805307,
+  "contact_id": 25971531,
+  "company_id": 25971457,
+  "merged": false,
+  "nome": "Marcelo",
+  "tel_ok": true
+ },
+ "489": {
+  "lead_id": 23805309,
+  "contact_id": 25971533,
+  "company_id": null,
+  "merged": false,
+  "nome": "Laura",
+  "tel_ok": false
+ },
+ "490": {
+  "lead_id": 23805311,
+  "contact_id": 25971535,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ricardo Valansi",
+  "tel_ok": true
+ },
+ "491": {
+  "lead_id": 23805313,
+  "contact_id": 25971537,
+  "company_id": 25971459,
+  "merged": false,
+  "nome": "Erica",
+  "tel_ok": true
+ },
+ "492": {
+  "lead_id": 23805315,
+  "contact_id": 25971539,
+  "company_id": 25971461,
+  "merged": false,
+  "nome": "Leandro",
+  "tel_ok": true
+ },
+ "493": {
+  "lead_id": 23805317,
+  "contact_id": 25971541,
+  "company_id": 25971463,
+  "merged": false,
+  "nome": "Pamela",
+  "tel_ok": true
+ },
+ "494": {
+  "lead_id": 23805319,
+  "contact_id": 25971543,
+  "company_id": 25971465,
+  "merged": false,
+  "nome": "Claudia",
+  "tel_ok": false
+ },
+ "495": {
+  "lead_id": 23805321,
+  "contact_id": 25971545,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria",
+  "tel_ok": false
+ },
+ "496": {
+  "lead_id": 23805323,
+  "contact_id": 25971547,
+  "company_id": 25971467,
+  "merged": false,
+  "nome": "Édson",
+  "tel_ok": true
+ },
+ "497": {
+  "lead_id": 23805325,
+  "contact_id": 25971549,
+  "company_id": null,
+  "merged": false,
+  "nome": "Isaura",
+  "tel_ok": true
+ },
+ "498": {
+  "lead_id": 23805327,
+  "contact_id": 25971551,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luciana",
+  "tel_ok": true
+ },
+ "499": {
+  "lead_id": 23805329,
+  "contact_id": 25971553,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rosineia",
+  "tel_ok": true
+ },
+ "500": {
+  "lead_id": 23805331,
+  "contact_id": 25971555,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jessica",
+  "tel_ok": true
+ },
+ "501": {
+  "lead_id": 23805333,
+  "contact_id": 25971557,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alexandra",
+  "tel_ok": true
+ },
+ "502": {
+  "lead_id": 23805335,
+  "contact_id": 25971559,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sabrina",
+  "tel_ok": true
+ },
+ "503": {
+  "lead_id": 23805337,
+  "contact_id": 25971561,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patrícia",
+  "tel_ok": true
+ },
+ "504": {
+  "lead_id": 23805339,
+  "contact_id": 25971563,
+  "company_id": null,
+  "merged": false,
+  "nome": "Valéria",
+  "tel_ok": true
+ },
+ "505": {
+  "lead_id": 23805341,
+  "contact_id": 25971565,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juh",
+  "tel_ok": true
+ },
+ "506": {
+  "lead_id": 23805343,
+  "contact_id": 25971567,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ângela",
+  "tel_ok": true
+ },
+ "507": {
+  "lead_id": 23805347,
+  "contact_id": 25971581,
+  "company_id": null,
+  "merged": false,
+  "nome": "Matheus",
+  "tel_ok": true
+ },
+ "508": {
+  "lead_id": 23805349,
+  "contact_id": 25971583,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ricardo",
+  "tel_ok": true
+ },
+ "509": {
+  "lead_id": 23805351,
+  "contact_id": 25971585,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patrícia",
+  "tel_ok": true
+ },
+ "510": {
+  "lead_id": 23805353,
+  "contact_id": 25971587,
+  "company_id": null,
+  "merged": false,
+  "nome": "Neres",
+  "tel_ok": true
+ },
+ "511": {
+  "lead_id": 23805355,
+  "contact_id": 25971589,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elaine",
+  "tel_ok": true
+ },
+ "512": {
+  "lead_id": 23805357,
+  "contact_id": 25971591,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rafesla",
+  "tel_ok": true
+ },
+ "513": {
+  "lead_id": 23805359,
+  "contact_id": 25971593,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ge Borges",
+  "tel_ok": true
+ },
+ "514": {
+  "lead_id": 23805361,
+  "contact_id": 25971595,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patrícia",
+  "tel_ok": true
+ },
+ "515": {
+  "lead_id": 23805363,
+  "contact_id": 25971597,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ewellin",
+  "tel_ok": true
+ },
+ "516": {
+  "lead_id": 23805365,
+  "contact_id": 25971599,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cristóvão",
+  "tel_ok": true
+ },
+ "517": {
+  "lead_id": 23805367,
+  "contact_id": 25971601,
+  "company_id": null,
+  "merged": false,
+  "nome": "Abgaiu",
+  "tel_ok": true
+ },
+ "518": {
+  "lead_id": 23805369,
+  "contact_id": 25971603,
+  "company_id": null,
+  "merged": false,
+  "nome": "Pamela",
+  "tel_ok": true
+ },
+ "519": {
+  "lead_id": 23805371,
+  "contact_id": 25971605,
+  "company_id": null,
+  "merged": false,
+  "nome": "Barabara",
+  "tel_ok": true
+ },
+ "520": {
+  "lead_id": 23805373,
+  "contact_id": 25971607,
+  "company_id": null,
+  "merged": false,
+  "nome": "Mary",
+  "tel_ok": true
+ },
+ "521": {
+  "lead_id": 23805375,
+  "contact_id": 25971609,
+  "company_id": null,
+  "merged": false,
+  "nome": "Simone",
+  "tel_ok": true
+ },
+ "522": {
+  "lead_id": 23805377,
+  "contact_id": 25971611,
+  "company_id": null,
+  "merged": false,
+  "nome": "Edinea",
+  "tel_ok": true
+ },
+ "523": {
+  "lead_id": 23805379,
+  "contact_id": 25971613,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fabianne",
+  "tel_ok": true
+ },
+ "524": {
+  "lead_id": 23805381,
+  "contact_id": 25971615,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lucas",
+  "tel_ok": true
+ },
+ "525": {
+  "lead_id": 23805383,
+  "contact_id": 25971617,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rosivaldo",
+  "tel_ok": true
+ },
+ "526": {
+  "lead_id": 23805385,
+  "contact_id": 25971619,
+  "company_id": null,
+  "merged": false,
+  "nome": "Kelly",
+  "tel_ok": true
+ },
+ "527": {
+  "lead_id": 23805387,
+  "contact_id": 25971621,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luana",
+  "tel_ok": true
+ },
+ "528": {
+  "lead_id": 23805389,
+  "contact_id": 25971623,
+  "company_id": null,
+  "merged": false,
+  "nome": "Darlei",
+  "tel_ok": true
+ },
+ "529": {
+  "lead_id": 23805391,
+  "contact_id": 25971625,
+  "company_id": null,
+  "merged": false,
+  "nome": "Wanda",
+  "tel_ok": true
+ },
+ "530": {
+  "lead_id": 23805393,
+  "contact_id": 25971627,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruna",
+  "tel_ok": true
+ },
+ "531": {
+  "lead_id": 23805395,
+  "contact_id": 25971629,
+  "company_id": null,
+  "merged": false,
+  "nome": "Valéria",
+  "tel_ok": true
+ },
+ "532": {
+  "lead_id": 23805397,
+  "contact_id": 25971631,
+  "company_id": null,
+  "merged": false,
+  "nome": "Clovi",
+  "tel_ok": true
+ },
+ "533": {
+  "lead_id": 23805399,
+  "contact_id": 25971633,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ariel",
+  "tel_ok": true
+ },
+ "534": {
+  "lead_id": 23805401,
+  "contact_id": 25971635,
+  "company_id": null,
+  "merged": false,
+  "nome": "Creia",
+  "tel_ok": true
+ },
+ "535": {
+  "lead_id": 23805403,
+  "contact_id": 25971637,
+  "company_id": null,
+  "merged": false,
+  "nome": "Dayane",
+  "tel_ok": true
+ },
+ "536": {
+  "lead_id": 23805405,
+  "contact_id": 25971639,
+  "company_id": null,
+  "merged": false,
+  "nome": "Caroline",
+  "tel_ok": true
+ },
+ "537": {
+  "lead_id": 23805407,
+  "contact_id": 25971641,
+  "company_id": null,
+  "merged": false,
+  "nome": "Kellen",
+  "tel_ok": true
+ },
+ "538": {
+  "lead_id": 23805409,
+  "contact_id": 25971643,
+  "company_id": null,
+  "merged": false,
+  "nome": "Raissa",
+  "tel_ok": true
+ },
+ "539": {
+  "lead_id": 23805411,
+  "contact_id": 25971645,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gilomar",
+  "tel_ok": true
+ },
+ "540": {
+  "lead_id": 23805413,
+  "contact_id": 25971647,
+  "company_id": null,
+  "merged": false,
+  "nome": "Caio",
+  "tel_ok": true
+ },
+ "541": {
+  "lead_id": 23805415,
+  "contact_id": 25971649,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daiane",
+  "tel_ok": true
+ },
+ "542": {
+  "lead_id": 23805417,
+  "contact_id": 25971651,
+  "company_id": null,
+  "merged": false,
+  "nome": "Perlucio",
+  "tel_ok": true
+ },
+ "543": {
+  "lead_id": 23805419,
+  "contact_id": 25971653,
+  "company_id": null,
+  "merged": false,
+  "nome": "Edilson",
+  "tel_ok": true
+ },
+ "544": {
+  "lead_id": 23805421,
+  "contact_id": 25971655,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renata",
+  "tel_ok": true
+ },
+ "545": {
+  "lead_id": 23805423,
+  "contact_id": 25971657,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lúcia Helena",
+  "tel_ok": true
+ },
+ "546": {
+  "lead_id": 23805425,
+  "contact_id": 25971659,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruno",
+  "tel_ok": true
+ },
+ "547": {
+  "lead_id": 23805427,
+  "contact_id": 25971661,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luara",
+  "tel_ok": true
+ },
+ "548": {
+  "lead_id": 23805429,
+  "contact_id": 25971663,
+  "company_id": null,
+  "merged": false,
+  "nome": "Blanda",
+  "tel_ok": true
+ },
+ "549": {
+  "lead_id": 23805431,
+  "contact_id": 25971665,
+  "company_id": null,
+  "merged": false,
+  "nome": "Janete Paiva",
+  "tel_ok": true
+ },
+ "550": {
+  "lead_id": 23805433,
+  "contact_id": 25971667,
+  "company_id": 25971571,
+  "merged": false,
+  "nome": "Fernanda Soares",
+  "tel_ok": true
+ },
+ "551": {
+  "lead_id": 23805435,
+  "contact_id": 25971669,
+  "company_id": 25971573,
+  "merged": false,
+  "nome": "Cassia Silva",
+  "tel_ok": true
+ },
+ "552": {
+  "lead_id": 23805437,
+  "contact_id": 25971671,
+  "company_id": 25971575,
+  "merged": false,
+  "nome": "Joana Yann",
+  "tel_ok": true
+ },
+ "553": {
+  "lead_id": 23805439,
+  "contact_id": 25971673,
+  "company_id": 25971577,
+  "merged": false,
+  "nome": "Flora Cepam",
+  "tel_ok": true
+ },
+ "554": {
+  "lead_id": 23805441,
+  "contact_id": 25971675,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria Antonieta",
+  "tel_ok": true
+ },
+ "555": {
+  "lead_id": 23805443,
+  "contact_id": 25971677,
+  "company_id": 25971579,
+  "merged": false,
+  "nome": "Melissa Maia",
+  "tel_ok": true
+ },
+ "556": {
+  "lead_id": 23805445,
+  "contact_id": 25971679,
+  "company_id": null,
+  "merged": false,
+  "nome": "Nico Paneteria",
+  "tel_ok": true
+ },
+ "557": {
+  "lead_id": 23805447,
+  "contact_id": 25971753,
+  "company_id": 25971681,
+  "merged": false,
+  "nome": "Jorge Fernandes",
+  "tel_ok": true
+ },
+ "558": {
+  "lead_id": 23805449,
+  "contact_id": 25971755,
+  "company_id": 25971683,
+  "merged": false,
+  "nome": "Junior Souza",
+  "tel_ok": true
+ },
+ "559": {
+  "lead_id": 23805451,
+  "contact_id": 25971757,
+  "company_id": 25971685,
+  "merged": false,
+  "nome": "Edmar Cunha",
+  "tel_ok": true
+ },
+ "560": {
+  "lead_id": 23805453,
+  "contact_id": 25971759,
+  "company_id": 25971687,
+  "merged": false,
+  "nome": "Pâmella Pinto",
+  "tel_ok": true
+ },
+ "561": {
+  "lead_id": 23805455,
+  "contact_id": 25971761,
+  "company_id": 25971689,
+  "merged": false,
+  "nome": "Daiane Cunha",
+  "tel_ok": true
+ },
+ "562": {
+  "lead_id": 23805457,
+  "contact_id": 25971763,
+  "company_id": 25971691,
+  "merged": false,
+  "nome": "Felippe Diógenes",
+  "tel_ok": true
+ },
+ "563": {
+  "lead_id": 23805459,
+  "contact_id": 25971765,
+  "company_id": 25971693,
+  "merged": false,
+  "nome": "Fernanda Soares",
+  "tel_ok": true
+ },
+ "564": {
+  "lead_id": 23805461,
+  "contact_id": 25971767,
+  "company_id": 25971695,
+  "merged": false,
+  "nome": "Ruth Aragão",
+  "tel_ok": true
+ },
+ "565": {
+  "lead_id": 23805463,
+  "contact_id": 25971769,
+  "company_id": 25971697,
+  "merged": false,
+  "nome": "Mara Luma",
+  "tel_ok": true
+ },
+ "566": {
+  "lead_id": 23805465,
+  "contact_id": 25971771,
+  "company_id": 25971699,
+  "merged": false,
+  "nome": "Viviane Sousa",
+  "tel_ok": true
+ },
+ "567": {
+  "lead_id": 23805467,
+  "contact_id": 25971773,
+  "company_id": 25971701,
+  "merged": false,
+  "nome": "Jorge Gomes",
+  "tel_ok": true
+ },
+ "568": {
+  "lead_id": 23805469,
+  "contact_id": 25971775,
+  "company_id": 25971703,
+  "merged": false,
+  "nome": "Monica Silva",
+  "tel_ok": true
+ },
+ "569": {
+  "lead_id": 23805471,
+  "contact_id": 25971777,
+  "company_id": 25971705,
+  "merged": false,
+  "nome": "Eduarda Pinto",
+  "tel_ok": true
+ },
+ "570": {
+  "lead_id": 23805473,
+  "contact_id": 25971779,
+  "company_id": 25971707,
+  "merged": false,
+  "nome": "Camilla Paica",
+  "tel_ok": true
+ },
+ "571": {
+  "lead_id": 23805475,
+  "contact_id": 25971781,
+  "company_id": 25971709,
+  "merged": false,
+  "nome": "Gabriel Júlio",
+  "tel_ok": true
+ },
+ "572": {
+  "lead_id": 23805477,
+  "contact_id": 25971783,
+  "company_id": 25971711,
+  "merged": false,
+  "nome": "Mariana Souza",
+  "tel_ok": true
+ },
+ "573": {
+  "lead_id": 23805479,
+  "contact_id": 25971785,
+  "company_id": 25971713,
+  "merged": false,
+  "nome": "Gabriela Ferreira",
+  "tel_ok": true
+ },
+ "574": {
+  "lead_id": 23805481,
+  "contact_id": 25971787,
+  "company_id": 25971715,
+  "merged": false,
+  "nome": "Felipe Rama",
+  "tel_ok": true
+ },
+ "575": {
+  "lead_id": 23805483,
+  "contact_id": 25971789,
+  "company_id": 25971717,
+  "merged": false,
+  "nome": "Fabrício Cunhão",
+  "tel_ok": true
+ },
+ "576": {
+  "lead_id": 23805485,
+  "contact_id": 25971791,
+  "company_id": 25971719,
+  "merged": false,
+  "nome": "Samara Felipe",
+  "tel_ok": true
+ },
+ "577": {
+  "lead_id": 23805487,
+  "contact_id": 25971793,
+  "company_id": 25971721,
+  "merged": false,
+  "nome": "Clotilde Tavares",
+  "tel_ok": true
+ },
+ "578": {
+  "lead_id": 23805489,
+  "contact_id": 25971795,
+  "company_id": 25971723,
+  "merged": false,
+  "nome": "Felipe Neto",
+  "tel_ok": true
+ },
+ "579": {
+  "lead_id": 23805491,
+  "contact_id": 25971797,
+  "company_id": 25971725,
+  "merged": false,
+  "nome": "Michele Vitória",
+  "tel_ok": true
+ },
+ "580": {
+  "lead_id": 23805493,
+  "contact_id": 25971799,
+  "company_id": 25971727,
+  "merged": false,
+  "nome": "Janete Mathiss",
+  "tel_ok": true
+ },
+ "581": {
+  "lead_id": 23805495,
+  "contact_id": 25971801,
+  "company_id": null,
+  "merged": false,
+  "nome": "Floriana Silva",
+  "tel_ok": false
+ },
+ "582": {
+  "lead_id": 23805497,
+  "contact_id": 25971803,
+  "company_id": 25971729,
+  "merged": false,
+  "nome": "Edna Mendes",
+  "tel_ok": false
+ },
+ "583": {
+  "lead_id": 23805499,
+  "contact_id": 25971805,
+  "company_id": 25971731,
+  "merged": false,
+  "nome": "Rosemary Sousa",
+  "tel_ok": false
+ },
+ "584": {
+  "lead_id": 23805501,
+  "contact_id": 25971807,
+  "company_id": null,
+  "merged": false,
+  "nome": "Felipe Rama",
+  "tel_ok": true
+ },
+ "585": {
+  "lead_id": 23805503,
+  "contact_id": 25971809,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luiz Fernando",
+  "tel_ok": true
+ },
+ "586": {
+  "lead_id": 23805505,
+  "contact_id": 25971811,
+  "company_id": null,
+  "merged": false,
+  "nome": "William Sousa",
+  "tel_ok": true
+ },
+ "587": {
+  "lead_id": 23805507,
+  "contact_id": 25971813,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luciene Santana",
+  "tel_ok": true
+ },
+ "588": {
+  "lead_id": 23805509,
+  "contact_id": 25971815,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gilberto",
+  "tel_ok": true
+ },
+ "589": {
+  "lead_id": 23805511,
+  "contact_id": 25971817,
+  "company_id": null,
+  "merged": false,
+  "nome": "Valdira Lopes",
+  "tel_ok": true
+ },
+ "590": {
+  "lead_id": 23805513,
+  "contact_id": 25971819,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vanessa Marques",
+  "tel_ok": true
+ },
+ "591": {
+  "lead_id": 23805515,
+  "contact_id": 25971821,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana Silva",
+  "tel_ok": true
+ },
+ "592": {
+  "lead_id": 23805517,
+  "contact_id": 25971823,
+  "company_id": null,
+  "merged": false,
+  "nome": "Adriane Andrezza",
+  "tel_ok": true
+ },
+ "593": {
+  "lead_id": 23805519,
+  "contact_id": 25971825,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eliane Oliveira",
+  "tel_ok": true
+ },
+ "594": {
+  "lead_id": 23805521,
+  "contact_id": 25971827,
+  "company_id": null,
+  "merged": false,
+  "nome": "Raphaela",
+  "tel_ok": true
+ },
+ "595": {
+  "lead_id": 23805523,
+  "contact_id": 25971829,
+  "company_id": null,
+  "merged": false,
+  "nome": "Anderson Santos",
+  "tel_ok": true
+ },
+ "596": {
+  "lead_id": 23805525,
+  "contact_id": 25971831,
+  "company_id": 25971733,
+  "merged": false,
+  "nome": "Vladimir Braga",
+  "tel_ok": true
+ },
+ "597": {
+  "lead_id": 23805527,
+  "contact_id": 25971833,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ana Gabriela",
+  "tel_ok": true
+ },
+ "598": {
+  "lead_id": 23805529,
+  "contact_id": 25971835,
+  "company_id": 25971735,
+  "merged": false,
+  "nome": "Felipe Assunção",
+  "tel_ok": true
+ },
+ "599": {
+  "lead_id": 23805531,
+  "contact_id": 25971837,
+  "company_id": 25971737,
+  "merged": false,
+  "nome": "Amanda Silva",
+  "tel_ok": true
+ },
+ "600": {
+  "lead_id": 23805533,
+  "contact_id": 25971839,
+  "company_id": 25971739,
+  "merged": false,
+  "nome": "Diego Gendai",
+  "tel_ok": true
+ },
+ "601": {
+  "lead_id": 23805535,
+  "contact_id": 25971841,
+  "company_id": 25971741,
+  "merged": false,
+  "nome": "Priscila Prior",
+  "tel_ok": true
+ },
+ "602": {
+  "lead_id": 23805537,
+  "contact_id": 25971843,
+  "company_id": 25971743,
+  "merged": false,
+  "nome": "Renato Gabriel",
+  "tel_ok": true
+ },
+ "603": {
+  "lead_id": 23805539,
+  "contact_id": 25971845,
+  "company_id": 25971745,
+  "merged": false,
+  "nome": "Larissa Portela",
+  "tel_ok": true
+ },
+ "604": {
+  "lead_id": 23805541,
+  "contact_id": 25971847,
+  "company_id": 25971747,
+  "merged": false,
+  "nome": "Eduardo Costa",
+  "tel_ok": true
+ },
+ "605": {
+  "lead_id": 23805543,
+  "contact_id": 25971849,
+  "company_id": 25971749,
+  "merged": false,
+  "nome": "Vanessa Souza",
+  "tel_ok": true
+ },
+ "606": {
+  "lead_id": 23805545,
+  "contact_id": 25971851,
+  "company_id": 25971751,
+  "merged": false,
+  "nome": "Ricardo Silva",
+  "tel_ok": true
+ },
+ "607": {
+  "lead_id": 23805547,
+  "contact_id": 25971935,
+  "company_id": 25971853,
+  "merged": false,
+  "nome": "Patrícia Morais",
+  "tel_ok": true
+ },
+ "608": {
+  "lead_id": 23805549,
+  "contact_id": 25971937,
+  "company_id": 25971855,
+  "merged": false,
+  "nome": "Marcelo Kauê",
+  "tel_ok": true
+ },
+ "609": {
+  "lead_id": 23805551,
+  "contact_id": 25971939,
+  "company_id": 25971857,
+  "merged": false,
+  "nome": "Beatriz Freitas",
+  "tel_ok": true
+ },
+ "610": {
+  "lead_id": 23805553,
+  "contact_id": 25971941,
+  "company_id": 25971859,
+  "merged": false,
+  "nome": "Henrique Dias Souza",
+  "tel_ok": true
+ },
+ "611": {
+  "lead_id": 23805555,
+  "contact_id": 25971943,
+  "company_id": 25971861,
+  "merged": false,
+  "nome": "Natan Rocha",
+  "tel_ok": true
+ },
+ "612": {
+  "lead_id": 23805557,
+  "contact_id": 25971945,
+  "company_id": 25971863,
+  "merged": false,
+  "nome": "Vinícius Paiva",
+  "tel_ok": true
+ },
+ "613": {
+  "lead_id": 23805559,
+  "contact_id": 25971947,
+  "company_id": 25971865,
+  "merged": false,
+  "nome": "Camila Castro",
+  "tel_ok": true
+ },
+ "614": {
+  "lead_id": 23805561,
+  "contact_id": 25971949,
+  "company_id": 25971867,
+  "merged": false,
+  "nome": "Bruno Diógenes",
+  "tel_ok": true
+ },
+ "615": {
+  "lead_id": 23805563,
+  "contact_id": 25971951,
+  "company_id": 25971869,
+  "merged": false,
+  "nome": "Isabele Paz",
+  "tel_ok": true
+ },
+ "616": {
+  "lead_id": 23805565,
+  "contact_id": 25971953,
+  "company_id": 25971871,
+  "merged": false,
+  "nome": "Larissa Borges",
+  "tel_ok": true
+ },
+ "617": {
+  "lead_id": 23805567,
+  "contact_id": 25971955,
+  "company_id": 25971873,
+  "merged": false,
+  "nome": "Pedro Silva",
+  "tel_ok": true
+ },
+ "618": {
+  "lead_id": 23805569,
+  "contact_id": 25971957,
+  "company_id": 25971875,
+  "merged": false,
+  "nome": "Camila Rezende",
+  "tel_ok": true
+ },
+ "619": {
+  "lead_id": 23805571,
+  "contact_id": 25971959,
+  "company_id": 25971877,
+  "merged": false,
+  "nome": "Matheus Silva",
+  "tel_ok": true
+ },
+ "621": {
+  "lead_id": 23805573,
+  "contact_id": 25971961,
+  "company_id": 25971879,
+  "merged": false,
+  "nome": "João Vitor",
+  "tel_ok": true
+ },
+ "622": {
+  "lead_id": 23805575,
+  "contact_id": 25971963,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fernando Fernandes",
+  "tel_ok": true
+ },
+ "623": {
+  "lead_id": 23805577,
+  "contact_id": 25971965,
+  "company_id": 25971881,
+  "merged": false,
+  "nome": "Pedro Barbosa",
+  "tel_ok": true
+ },
+ "624": {
+  "lead_id": 23805579,
+  "contact_id": 25971967,
+  "company_id": null,
+  "merged": false,
+  "nome": "Isadora Barbosa",
+  "tel_ok": true
+ },
+ "625": {
+  "lead_id": 23805581,
+  "contact_id": 25971969,
+  "company_id": 25971883,
+  "merged": false,
+  "nome": "Maria de Fátima",
+  "tel_ok": true
+ },
+ "626": {
+  "lead_id": 23805583,
+  "contact_id": 25971971,
+  "company_id": null,
+  "merged": false,
+  "nome": "João Paulo",
+  "tel_ok": true
+ },
+ "627": {
+  "lead_id": 23805585,
+  "contact_id": 25971973,
+  "company_id": null,
+  "merged": false,
+  "nome": "Pedro Farias",
+  "tel_ok": true
+ },
+ "629": {
+  "lead_id": 23805587,
+  "contact_id": 25971975,
+  "company_id": null,
+  "merged": false,
+  "nome": "Renata",
+  "tel_ok": true
+ },
+ "630": {
+  "lead_id": 23805589,
+  "contact_id": 25971977,
+  "company_id": null,
+  "merged": false,
+  "nome": "Acsa",
+  "tel_ok": true
+ },
+ "631": {
+  "lead_id": 23805591,
+  "contact_id": 25971979,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leonardo",
+  "tel_ok": true
+ },
+ "632": {
+  "lead_id": 23805593,
+  "contact_id": 25971981,
+  "company_id": 25971885,
+  "merged": false,
+  "nome": "Julio",
+  "tel_ok": true
+ },
+ "633": {
+  "lead_id": 23805595,
+  "contact_id": 25971983,
+  "company_id": 25971887,
+  "merged": false,
+  "nome": "Karla",
+  "tel_ok": true
+ },
+ "634": {
+  "lead_id": 23805597,
+  "contact_id": 25971985,
+  "company_id": 25971889,
+  "merged": false,
+  "nome": "Elizio",
+  "tel_ok": true
+ },
+ "635": {
+  "lead_id": 23805599,
+  "contact_id": 25971987,
+  "company_id": null,
+  "merged": false,
+  "nome": "Robson",
+  "tel_ok": true
+ },
+ "636": {
+  "lead_id": 23805601,
+  "contact_id": 25971989,
+  "company_id": 25971891,
+  "merged": false,
+  "nome": "Denise",
+  "tel_ok": true
+ },
+ "637": {
+  "lead_id": 23805603,
+  "contact_id": 25971991,
+  "company_id": 25971893,
+  "merged": false,
+  "nome": "Marcos",
+  "tel_ok": true
+ },
+ "638": {
+  "lead_id": 23805605,
+  "contact_id": 25971993,
+  "company_id": 25971895,
+  "merged": false,
+  "nome": "Marcelo Lima",
+  "tel_ok": true
+ },
+ "639": {
+  "lead_id": 23805607,
+  "contact_id": 25971995,
+  "company_id": 25971897,
+  "merged": false,
+  "nome": "Rejane",
+  "tel_ok": true
+ },
+ "640": {
+  "lead_id": 23805609,
+  "contact_id": 25971997,
+  "company_id": 25971899,
+  "merged": false,
+  "nome": "Aroaldo",
+  "tel_ok": true
+ },
+ "641": {
+  "lead_id": 23805611,
+  "contact_id": 25971999,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tássia",
+  "tel_ok": true
+ },
+ "642": {
+  "lead_id": 23805613,
+  "contact_id": 25972001,
+  "company_id": 25971901,
+  "merged": false,
+  "nome": "Neria",
+  "tel_ok": true
+ },
+ "643": {
+  "lead_id": 23805615,
+  "contact_id": 25972003,
+  "company_id": 25971903,
+  "merged": false,
+  "nome": "Cimara",
+  "tel_ok": true
+ },
+ "644": {
+  "lead_id": 23805617,
+  "contact_id": 25972005,
+  "company_id": 25971905,
+  "merged": false,
+  "nome": "Wilson",
+  "tel_ok": true
+ },
+ "645": {
+  "lead_id": 23805619,
+  "contact_id": 25972007,
+  "company_id": 25971907,
+  "merged": false,
+  "nome": "Gilberto",
+  "tel_ok": true
+ },
+ "646": {
+  "lead_id": 23805621,
+  "contact_id": 25972009,
+  "company_id": 25971909,
+  "merged": false,
+  "nome": "Beto",
+  "tel_ok": true
+ },
+ "647": {
+  "lead_id": 23805623,
+  "contact_id": 25972011,
+  "company_id": 25971911,
+  "merged": false,
+  "nome": "Tais",
+  "tel_ok": true
+ },
+ "648": {
+  "lead_id": 23805625,
+  "contact_id": 25972013,
+  "company_id": 25971913,
+  "merged": false,
+  "nome": "Daiane",
+  "tel_ok": true
+ },
+ "649": {
+  "lead_id": 23805627,
+  "contact_id": 25972015,
+  "company_id": 25971915,
+  "merged": false,
+  "nome": "Luís",
+  "tel_ok": true
+ },
+ "650": {
+  "lead_id": 23805629,
+  "contact_id": 25972017,
+  "company_id": 25971917,
+  "merged": false,
+  "nome": "Ana",
+  "tel_ok": true
+ },
+ "651": {
+  "lead_id": 23805631,
+  "contact_id": 25972019,
+  "company_id": 25971919,
+  "merged": false,
+  "nome": "Jose",
+  "tel_ok": true
+ },
+ "652": {
+  "lead_id": 23805633,
+  "contact_id": 25972021,
+  "company_id": 25971921,
+  "merged": false,
+  "nome": "Nair",
+  "tel_ok": true
+ },
+ "653": {
+  "lead_id": 23805635,
+  "contact_id": 25972023,
+  "company_id": 25971923,
+  "merged": false,
+  "nome": "Gabriella",
+  "tel_ok": true
+ },
+ "654": {
+  "lead_id": 23805637,
+  "contact_id": 25972025,
+  "company_id": 25971925,
+  "merged": false,
+  "nome": "Celio",
+  "tel_ok": true
+ },
+ "655": {
+  "lead_id": 23805639,
+  "contact_id": 25972027,
+  "company_id": 25971927,
+  "merged": false,
+  "nome": "Adriano",
+  "tel_ok": true
+ },
+ "656": {
+  "lead_id": 23805641,
+  "contact_id": 25972029,
+  "company_id": 25971929,
+  "merged": false,
+  "nome": "Scarpini",
+  "tel_ok": true
+ },
+ "657": {
+  "lead_id": 23805643,
+  "contact_id": 25972031,
+  "company_id": 25971931,
+  "merged": false,
+  "nome": "Monica",
+  "tel_ok": true
+ },
+ "658": {
+  "lead_id": 23805645,
+  "contact_id": 25972033,
+  "company_id": 25971933,
+  "merged": false,
+  "nome": "Ulisses",
+  "tel_ok": true
+ },
+ "659": {
+  "lead_id": 23805653,
+  "contact_id": 25972103,
+  "company_id": 25972041,
+  "merged": false,
+  "nome": "Carolina",
+  "tel_ok": true
+ },
+ "660": {
+  "lead_id": 23805655,
+  "contact_id": 25972105,
+  "company_id": 25972043,
+  "merged": false,
+  "nome": "Marcos",
+  "tel_ok": true
+ },
+ "661": {
+  "lead_id": 23805657,
+  "contact_id": 25972107,
+  "company_id": 25972045,
+  "merged": false,
+  "nome": "Luciano",
+  "tel_ok": true
+ },
+ "662": {
+  "lead_id": 23805659,
+  "contact_id": 25972109,
+  "company_id": 25972047,
+  "merged": false,
+  "nome": "Marcia",
+  "tel_ok": true
+ },
+ "663": {
+  "lead_id": 23805661,
+  "contact_id": 25972111,
+  "company_id": 25972049,
+  "merged": false,
+  "nome": "Caroline",
+  "tel_ok": true
+ },
+ "664": {
+  "lead_id": 23805663,
+  "contact_id": 25972113,
+  "company_id": 25972051,
+  "merged": false,
+  "nome": "Sergio",
+  "tel_ok": true
+ },
+ "665": {
+  "lead_id": 23805665,
+  "contact_id": 25972115,
+  "company_id": 25972053,
+  "merged": false,
+  "nome": "Cinthia",
+  "tel_ok": true
+ },
+ "666": {
+  "lead_id": 23805667,
+  "contact_id": 25972117,
+  "company_id": 25972055,
+  "merged": false,
+  "nome": "Elisa",
+  "tel_ok": true
+ },
+ "667": {
+  "lead_id": 23805669,
+  "contact_id": 25972119,
+  "company_id": 25972057,
+  "merged": false,
+  "nome": "Edinaldo",
+  "tel_ok": true
+ },
+ "668": {
+  "lead_id": 23805671,
+  "contact_id": 25972121,
+  "company_id": 25972059,
+  "merged": false,
+  "nome": "Munir",
+  "tel_ok": true
+ },
+ "669": {
+  "lead_id": 23805673,
+  "contact_id": 25972123,
+  "company_id": 25972061,
+  "merged": false,
+  "nome": "Max",
+  "tel_ok": true
+ },
+ "670": {
+  "lead_id": 23805675,
+  "contact_id": 25972125,
+  "company_id": 25972063,
+  "merged": false,
+  "nome": "Rubens",
+  "tel_ok": true
+ },
+ "671": {
+  "lead_id": 23805677,
+  "contact_id": 25972127,
+  "company_id": 25972065,
+  "merged": false,
+  "nome": "Sabrina",
+  "tel_ok": true
+ },
+ "672": {
+  "lead_id": 23805679,
+  "contact_id": 25972129,
+  "company_id": 25972067,
+  "merged": false,
+  "nome": "João",
+  "tel_ok": true
+ },
+ "673": {
+  "lead_id": 23805681,
+  "contact_id": 25972131,
+  "company_id": 25972069,
+  "merged": false,
+  "nome": "Rosangela Doces",
+  "tel_ok": true
+ },
+ "674": {
+  "lead_id": 23805683,
+  "contact_id": 25972133,
+  "company_id": 25972071,
+  "merged": false,
+  "nome": "Eula",
+  "tel_ok": true
+ },
+ "675": {
+  "lead_id": 23805685,
+  "contact_id": 25972135,
+  "company_id": 25972073,
+  "merged": false,
+  "nome": "Jessica",
+  "tel_ok": true
+ },
+ "676": {
+  "lead_id": 23805687,
+  "contact_id": 25972137,
+  "company_id": 25972075,
+  "merged": false,
+  "nome": "Karina",
+  "tel_ok": false
+ },
+ "677": {
+  "lead_id": 23805689,
+  "contact_id": 25972139,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria José",
+  "tel_ok": true
+ },
+ "678": {
+  "lead_id": 23805691,
+  "contact_id": 25972141,
+  "company_id": 25972077,
+  "merged": false,
+  "nome": "Arnaldo Júnior",
+  "tel_ok": true
+ },
+ "679": {
+  "lead_id": 23805693,
+  "contact_id": 25972143,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elisangela Alda",
+  "tel_ok": true
+ },
+ "680": {
+  "lead_id": 23805695,
+  "contact_id": 25972145,
+  "company_id": 25972079,
+  "merged": false,
+  "nome": "Marilene Siqueira",
+  "tel_ok": true
+ },
+ "681": {
+  "lead_id": 23805697,
+  "contact_id": 25972147,
+  "company_id": 25972081,
+  "merged": false,
+  "nome": "Emanuel",
+  "tel_ok": true
+ },
+ "682": {
+  "lead_id": 23805699,
+  "contact_id": 25972149,
+  "company_id": 25972083,
+  "merged": false,
+  "nome": "Bruno Caetano",
+  "tel_ok": true
+ },
+ "683": {
+  "lead_id": 23805701,
+  "contact_id": 25972151,
+  "company_id": 25972085,
+  "merged": false,
+  "nome": "Victor Hugo",
+  "tel_ok": true
+ },
+ "684": {
+  "lead_id": 23805703,
+  "contact_id": 25972153,
+  "company_id": 25972087,
+  "merged": false,
+  "nome": "Nila Gabriela",
+  "tel_ok": true
+ },
+ "685": {
+  "lead_id": 23805705,
+  "contact_id": 25972155,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ana Paula",
+  "tel_ok": true
+ },
+ "686": {
+  "lead_id": 23805707,
+  "contact_id": 25972157,
+  "company_id": 25972089,
+  "merged": false,
+  "nome": "Renata",
+  "tel_ok": false
+ },
+ "687": {
+  "lead_id": 23805709,
+  "contact_id": 25972159,
+  "company_id": 25972091,
+  "merged": false,
+  "nome": "Júlia Bragança",
+  "tel_ok": true
+ },
+ "688": {
+  "lead_id": 23805711,
+  "contact_id": 25972161,
+  "company_id": null,
+  "merged": false,
+  "nome": "Roberto",
+  "tel_ok": false
+ },
+ "689": {
+  "lead_id": 23805713,
+  "contact_id": 25972163,
+  "company_id": 25972093,
+  "merged": false,
+  "nome": "Daniela Paixão",
+  "tel_ok": true
+ },
+ "690": {
+  "lead_id": 23805715,
+  "contact_id": 25972165,
+  "company_id": 25972095,
+  "merged": false,
+  "nome": "Rafael",
+  "tel_ok": true
+ },
+ "691": {
+  "lead_id": 23805717,
+  "contact_id": 25972167,
+  "company_id": 25972097,
+  "merged": false,
+  "nome": "Aurea Barros",
+  "tel_ok": true
+ },
+ "692": {
+  "lead_id": 23805719,
+  "contact_id": 25972169,
+  "company_id": 25972099,
+  "merged": false,
+  "nome": "Jenifer Paixão",
+  "tel_ok": true
+ },
+ "693": {
+  "lead_id": 23805721,
+  "contact_id": 25972171,
+  "company_id": 25972101,
+  "merged": false,
+  "nome": "Sudario",
+  "tel_ok": true
+ },
+ "694": {
+  "lead_id": 23805723,
+  "contact_id": 25972173,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rick Carlos",
+  "tel_ok": true
+ },
+ "695": {
+  "lead_id": 23805725,
+  "contact_id": 25972175,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eduard",
+  "tel_ok": true
+ },
+ "696": {
+  "lead_id": 23805727,
+  "contact_id": 25972177,
+  "company_id": null,
+  "merged": false,
+  "nome": "Nayara",
+  "tel_ok": true
+ },
+ "697": {
+  "lead_id": 23805729,
+  "contact_id": 25972179,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": true
+ },
+ "698": {
+  "lead_id": 23805731,
+  "contact_id": 25972181,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leda Lima",
+  "tel_ok": true
+ },
+ "699": {
+  "lead_id": 23805733,
+  "contact_id": 25972183,
+  "company_id": null,
+  "merged": false,
+  "nome": "Guilherme",
+  "tel_ok": true
+ },
+ "700": {
+  "lead_id": 23805735,
+  "contact_id": 25972185,
+  "company_id": null,
+  "merged": false,
+  "nome": "Larissa",
+  "tel_ok": true
+ },
+ "701": {
+  "lead_id": 23805737,
+  "contact_id": 25972187,
+  "company_id": null,
+  "merged": false,
+  "nome": "Walter",
+  "tel_ok": true
+ },
+ "702": {
+  "lead_id": 23805739,
+  "contact_id": 25972189,
+  "company_id": null,
+  "merged": false,
+  "nome": "Joice",
+  "tel_ok": true
+ },
+ "703": {
+  "lead_id": 23805741,
+  "contact_id": 25972191,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elini",
+  "tel_ok": true
+ },
+ "704": {
+  "lead_id": 23805743,
+  "contact_id": 25972193,
+  "company_id": null,
+  "merged": false,
+  "nome": "Suzana",
+  "tel_ok": true
+ },
+ "705": {
+  "lead_id": 23805745,
+  "contact_id": 25972195,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcos",
+  "tel_ok": true
+ },
+ "706": {
+  "lead_id": 23805747,
+  "contact_id": 25972197,
+  "company_id": null,
+  "merged": false,
+  "nome": "Helen",
+  "tel_ok": true
+ },
+ "707": {
+  "lead_id": 23805749,
+  "contact_id": 25972199,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jhonatas",
+  "tel_ok": true
+ },
+ "708": {
+  "lead_id": 23805751,
+  "contact_id": 25972201,
+  "company_id": null,
+  "merged": false,
+  "nome": "Guilherme Sarava",
+  "tel_ok": true
+ },
+ "709": {
+  "lead_id": 23805753,
+  "contact_id": 25972211,
+  "company_id": null,
+  "merged": false,
+  "nome": "Nataly",
+  "tel_ok": true
+ },
+ "710": {
+  "lead_id": 23805755,
+  "contact_id": 25972213,
+  "company_id": null,
+  "merged": false,
+  "nome": "Nadiel",
+  "tel_ok": true
+ },
+ "711": {
+  "lead_id": 23805757,
+  "contact_id": 25972215,
+  "company_id": null,
+  "merged": false,
+  "nome": "Orlando",
+  "tel_ok": true
+ },
+ "712": {
+  "lead_id": 23805759,
+  "contact_id": 25972217,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": true
+ },
+ "713": {
+  "lead_id": 23805761,
+  "contact_id": 25972219,
+  "company_id": 25972203,
+  "merged": false,
+  "nome": "Larissa",
+  "tel_ok": true
+ },
+ "714": {
+  "lead_id": 23805763,
+  "contact_id": 25972221,
+  "company_id": null,
+  "merged": false,
+  "nome": "Simone",
+  "tel_ok": true
+ },
+ "715": {
+  "lead_id": 23805765,
+  "contact_id": 25972223,
+  "company_id": null,
+  "merged": false,
+  "nome": "Denille",
+  "tel_ok": true
+ },
+ "716": {
+  "lead_id": 23805767,
+  "contact_id": 25972225,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria Fernanda",
+  "tel_ok": true
+ },
+ "717": {
+  "lead_id": 23805769,
+  "contact_id": 25972227,
+  "company_id": 25972205,
+  "merged": false,
+  "nome": "Elison",
+  "tel_ok": true
+ },
+ "718": {
+  "lead_id": 23805771,
+  "contact_id": 25972229,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria",
+  "tel_ok": true
+ },
+ "719": {
+  "lead_id": 23805773,
+  "contact_id": 25972231,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcilene",
+  "tel_ok": true
+ },
+ "720": {
+  "lead_id": 23805775,
+  "contact_id": 25972233,
+  "company_id": null,
+  "merged": false,
+  "nome": "Claudia",
+  "tel_ok": true
+ },
+ "721": {
+  "lead_id": 23805777,
+  "contact_id": 25972235,
+  "company_id": null,
+  "merged": false,
+  "nome": "Hilderbeto",
+  "tel_ok": true
+ },
+ "722": {
+  "lead_id": 23805779,
+  "contact_id": 25972237,
+  "company_id": null,
+  "merged": false,
+  "nome": "Antonio",
+  "tel_ok": true
+ },
+ "723": {
+  "lead_id": 23805781,
+  "contact_id": 25972239,
+  "company_id": null,
+  "merged": false,
+  "nome": "Carla",
+  "tel_ok": true
+ },
+ "724": {
+  "lead_id": 23805783,
+  "contact_id": 25972241,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jaqueline",
+  "tel_ok": true
+ },
+ "725": {
+  "lead_id": 23805785,
+  "contact_id": 25972243,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana",
+  "tel_ok": true
+ },
+ "726": {
+  "lead_id": 23805787,
+  "contact_id": 25972245,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vania",
+  "tel_ok": true
+ },
+ "727": {
+  "lead_id": 23805789,
+  "contact_id": 25972247,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rosemeire",
+  "tel_ok": true
+ },
+ "728": {
+  "lead_id": 23805791,
+  "contact_id": 25972249,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rose",
+  "tel_ok": true
+ },
+ "729": {
+  "lead_id": 23805793,
+  "contact_id": 25972251,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vanessa",
+  "tel_ok": true
+ },
+ "730": {
+  "lead_id": 23805795,
+  "contact_id": 25972253,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tainara",
+  "tel_ok": true
+ },
+ "731": {
+  "lead_id": 23805797,
+  "contact_id": 25972255,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruno Britto",
+  "tel_ok": true
+ },
+ "732": {
+  "lead_id": 23805799,
+  "contact_id": 25972257,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ronice",
+  "tel_ok": true
+ },
+ "733": {
+  "lead_id": 23805801,
+  "contact_id": 25972259,
+  "company_id": null,
+  "merged": false,
+  "nome": "Iraci",
+  "tel_ok": true
+ },
+ "734": {
+  "lead_id": 23805803,
+  "contact_id": 25972261,
+  "company_id": 25972207,
+  "merged": false,
+  "nome": "Luiz",
+  "tel_ok": true
+ },
+ "735": {
+  "lead_id": 23805805,
+  "contact_id": 25972263,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fabricio",
+  "tel_ok": true
+ },
+ "736": {
+  "lead_id": 23805807,
+  "contact_id": 25972265,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ademar",
+  "tel_ok": true
+ },
+ "737": {
+  "lead_id": 23805809,
+  "contact_id": 25972267,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jeniffer",
+  "tel_ok": true
+ },
+ "738": {
+  "lead_id": 23805811,
+  "contact_id": 25972269,
+  "company_id": null,
+  "merged": false,
+  "nome": "Stobaus",
+  "tel_ok": true
+ },
+ "739": {
+  "lead_id": 23805813,
+  "contact_id": 25972271,
+  "company_id": null,
+  "merged": false,
+  "nome": "Aline",
+  "tel_ok": true
+ },
+ "740": {
+  "lead_id": 23805815,
+  "contact_id": 25972273,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tom",
+  "tel_ok": true
+ },
+ "741": {
+  "lead_id": 23805817,
+  "contact_id": 25972275,
+  "company_id": null,
+  "merged": false,
+  "nome": "Milton",
+  "tel_ok": true
+ },
+ "742": {
+  "lead_id": 23805819,
+  "contact_id": 25972277,
+  "company_id": 25972209,
+  "merged": false,
+  "nome": "Emerson",
+  "tel_ok": true
+ },
+ "743": {
+  "lead_id": 23805821,
+  "contact_id": 25972279,
+  "company_id": null,
+  "merged": false,
+  "nome": "Aline",
+  "tel_ok": true
+ },
+ "744": {
+  "lead_id": 23805823,
+  "contact_id": 25972281,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lucinete",
+  "tel_ok": true
+ },
+ "745": {
+  "lead_id": 23805825,
+  "contact_id": 25972283,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcio",
+  "tel_ok": true
+ },
+ "746": {
+  "lead_id": 23805827,
+  "contact_id": 25972285,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tatiane (Namorada do lead)",
+  "tel_ok": true
+ },
+ "747": {
+  "lead_id": 23805829,
+  "contact_id": 25972287,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruna",
+  "tel_ok": true
+ },
+ "748": {
+  "lead_id": 23805831,
+  "contact_id": 25972289,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lourdes",
+  "tel_ok": true
+ },
+ "749": {
+  "lead_id": 23805833,
+  "contact_id": 25972291,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alessandra",
+  "tel_ok": true
+ },
+ "750": {
+  "lead_id": 23805835,
+  "contact_id": 25972293,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elzeni",
+  "tel_ok": true
+ },
+ "751": {
+  "lead_id": 23805837,
+  "contact_id": 25972295,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fabiana",
+  "tel_ok": true
+ },
+ "752": {
+  "lead_id": 23805839,
+  "contact_id": 25972297,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marina",
+  "tel_ok": true
+ },
+ "753": {
+  "lead_id": 23805841,
+  "contact_id": 25972299,
+  "company_id": null,
+  "merged": false,
+  "nome": "Dayana",
+  "tel_ok": true
+ },
+ "754": {
+  "lead_id": 23805843,
+  "contact_id": 25972301,
+  "company_id": null,
+  "merged": false,
+  "nome": "Denilson",
+  "tel_ok": true
+ },
+ "755": {
+  "lead_id": 23805845,
+  "contact_id": 25972303,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alexandra",
+  "tel_ok": false
+ },
+ "756": {
+  "lead_id": 23805847,
+  "contact_id": 25972305,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcos",
+  "tel_ok": true
+ },
+ "757": {
+  "lead_id": 23805849,
+  "contact_id": 25972307,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruna",
+  "tel_ok": true
+ },
+ "758": {
+  "lead_id": 23805851,
+  "contact_id": 25972309,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lemue",
+  "tel_ok": true
+ },
+ "759": {
+  "lead_id": 23805853,
+  "contact_id": 25972327,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria",
+  "tel_ok": true
+ },
+ "760": {
+  "lead_id": 23805855,
+  "contact_id": 25972329,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ana",
+  "tel_ok": true
+ },
+ "761": {
+  "lead_id": 23805857,
+  "contact_id": 25972331,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sônia",
+  "tel_ok": true
+ },
+ "762": {
+  "lead_id": 23805859,
+  "contact_id": 25972333,
+  "company_id": null,
+  "merged": false,
+  "nome": "Carla",
+  "tel_ok": true
+ },
+ "763": {
+  "lead_id": 23805861,
+  "contact_id": 25972335,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruna",
+  "tel_ok": true
+ },
+ "764": {
+  "lead_id": 23805863,
+  "contact_id": 25972337,
+  "company_id": null,
+  "merged": false,
+  "nome": "Édson",
+  "tel_ok": true
+ },
+ "765": {
+  "lead_id": 23805865,
+  "contact_id": 25972339,
+  "company_id": null,
+  "merged": false,
+  "nome": "Catuscia",
+  "tel_ok": true
+ },
+ "766": {
+  "lead_id": 23805867,
+  "contact_id": 25972341,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alexandre",
+  "tel_ok": true
+ },
+ "767": {
+  "lead_id": 23805869,
+  "contact_id": 25972343,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lígia",
+  "tel_ok": true
+ },
+ "768": {
+  "lead_id": 23805871,
+  "contact_id": 25972345,
+  "company_id": null,
+  "merged": false,
+  "nome": "Raiza",
+  "tel_ok": true
+ },
+ "769": {
+  "lead_id": 23805873,
+  "contact_id": 25972347,
+  "company_id": null,
+  "merged": false,
+  "nome": "Simone",
+  "tel_ok": true
+ },
+ "770": {
+  "lead_id": 23805875,
+  "contact_id": 25972349,
+  "company_id": null,
+  "merged": false,
+  "nome": "Amanda",
+  "tel_ok": true
+ },
+ "771": {
+  "lead_id": 23805877,
+  "contact_id": 25972351,
+  "company_id": null,
+  "merged": false,
+  "nome": "Diego",
+  "tel_ok": true
+ },
+ "772": {
+  "lead_id": 23805879,
+  "contact_id": 25972353,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bárbara",
+  "tel_ok": true
+ },
+ "773": {
+  "lead_id": 23805881,
+  "contact_id": 25972355,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliene",
+  "tel_ok": true
+ },
+ "774": {
+  "lead_id": 23805883,
+  "contact_id": 25972357,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cibele",
+  "tel_ok": true
+ },
+ "775": {
+  "lead_id": 23805885,
+  "contact_id": 25972359,
+  "company_id": null,
+  "merged": false,
+  "nome": "Elenize",
+  "tel_ok": true
+ },
+ "776": {
+  "lead_id": 23805887,
+  "contact_id": 25972361,
+  "company_id": null,
+  "merged": false,
+  "nome": "Dulce",
+  "tel_ok": true
+ },
+ "777": {
+  "lead_id": 23805889,
+  "contact_id": 25972363,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sônia",
+  "tel_ok": true
+ },
+ "778": {
+  "lead_id": 23805891,
+  "contact_id": 25972365,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gustavo",
+  "tel_ok": true
+ },
+ "779": {
+  "lead_id": 23805893,
+  "contact_id": 25972367,
+  "company_id": null,
+  "merged": false,
+  "nome": "Raiz",
+  "tel_ok": true
+ },
+ "780": {
+  "lead_id": 23805895,
+  "contact_id": 25972369,
+  "company_id": null,
+  "merged": false,
+  "nome": "Rose",
+  "tel_ok": true
+ },
+ "781": {
+  "lead_id": 23805897,
+  "contact_id": 25972371,
+  "company_id": null,
+  "merged": false,
+  "nome": "Adriana",
+  "tel_ok": true
+ },
+ "782": {
+  "lead_id": 23805899,
+  "contact_id": 25972373,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cristina",
+  "tel_ok": true
+ },
+ "783": {
+  "lead_id": 23805901,
+  "contact_id": 25972375,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lu",
+  "tel_ok": true
+ },
+ "784": {
+  "lead_id": 23805903,
+  "contact_id": 25972377,
+  "company_id": null,
+  "merged": false,
+  "nome": "André",
+  "tel_ok": true
+ },
+ "785": {
+  "lead_id": 23805905,
+  "contact_id": 25972379,
+  "company_id": null,
+  "merged": false,
+  "nome": "Adriana",
+  "tel_ok": true
+ },
+ "786": {
+  "lead_id": 23805907,
+  "contact_id": 25972381,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tiago",
+  "tel_ok": true
+ },
+ "787": {
+  "lead_id": 23805909,
+  "contact_id": 25972383,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ricardo",
+  "tel_ok": true
+ },
+ "788": {
+  "lead_id": 23805911,
+  "contact_id": 25972385,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sandra",
+  "tel_ok": true
+ },
+ "789": {
+  "lead_id": 23805913,
+  "contact_id": 25972387,
+  "company_id": null,
+  "merged": false,
+  "nome": "Edil Ane",
+  "tel_ok": true
+ },
+ "790": {
+  "lead_id": 23805915,
+  "contact_id": 25972389,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sofia",
+  "tel_ok": true
+ },
+ "791": {
+  "lead_id": 23805917,
+  "contact_id": 25972391,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lia",
+  "tel_ok": true
+ },
+ "792": {
+  "lead_id": 23805919,
+  "contact_id": 25972393,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daniele",
+  "tel_ok": true
+ },
+ "793": {
+  "lead_id": 23805921,
+  "contact_id": 25972395,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jonathan",
+  "tel_ok": true
+ },
+ "794": {
+  "lead_id": 23805923,
+  "contact_id": 25972397,
+  "company_id": null,
+  "merged": false,
+  "nome": "Camila",
+  "tel_ok": true
+ },
+ "795": {
+  "lead_id": 23805925,
+  "contact_id": 25972399,
+  "company_id": null,
+  "merged": false,
+  "nome": "Italo",
+  "tel_ok": true
+ },
+ "796": {
+  "lead_id": 23805927,
+  "contact_id": 25972401,
+  "company_id": null,
+  "merged": false,
+  "nome": "Leticia",
+  "tel_ok": true
+ },
+ "797": {
+  "lead_id": 23805929,
+  "contact_id": 25972403,
+  "company_id": null,
+  "merged": false,
+  "nome": "Chay",
+  "tel_ok": true
+ },
+ "798": {
+  "lead_id": 23805931,
+  "contact_id": 25972405,
+  "company_id": null,
+  "merged": false,
+  "nome": "Neuza",
+  "tel_ok": true
+ },
+ "799": {
+  "lead_id": 23805933,
+  "contact_id": 25972407,
+  "company_id": 25972311,
+  "merged": false,
+  "nome": "Ana Paula",
+  "tel_ok": true
+ },
+ "800": {
+  "lead_id": 23805935,
+  "contact_id": 25972409,
+  "company_id": 25972313,
+  "merged": false,
+  "nome": "Rodrigo",
+  "tel_ok": true
+ },
+ "801": {
+  "lead_id": 23805937,
+  "contact_id": 25972411,
+  "company_id": 25972315,
+  "merged": false,
+  "nome": "Neila Caroline",
+  "tel_ok": true
+ },
+ "802": {
+  "lead_id": 23805939,
+  "contact_id": 25972413,
+  "company_id": null,
+  "merged": false,
+  "nome": "Irani Silva",
+  "tel_ok": true
+ },
+ "803": {
+  "lead_id": 23805941,
+  "contact_id": 25972415,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eduarda da Silva",
+  "tel_ok": true
+ },
+ "804": {
+  "lead_id": 23805943,
+  "contact_id": 25972417,
+  "company_id": 25972317,
+  "merged": false,
+  "nome": "Barbara",
+  "tel_ok": true
+ },
+ "805": {
+  "lead_id": 23805945,
+  "contact_id": 25972419,
+  "company_id": 25972319,
+  "merged": false,
+  "nome": "Patrícia",
+  "tel_ok": true
+ },
+ "806": {
+  "lead_id": 23805947,
+  "contact_id": 25972421,
+  "company_id": 25972321,
+  "merged": false,
+  "nome": "Evelyn Santos",
+  "tel_ok": true
+ },
+ "807": {
+  "lead_id": 23805949,
+  "contact_id": 25972423,
+  "company_id": 25972323,
+  "merged": false,
+  "nome": "Greice",
+  "tel_ok": true
+ },
+ "808": {
+  "lead_id": 23805951,
+  "contact_id": 25972425,
+  "company_id": 25972325,
+  "merged": false,
+  "nome": "Sabrina Pacheco",
+  "tel_ok": true
+ },
+ "809": {
+  "lead_id": 23805955,
+  "contact_id": 25972501,
+  "company_id": 25972429,
+  "merged": false,
+  "nome": "Tamara Silvério",
+  "tel_ok": true
+ },
+ "810": {
+  "lead_id": 23805957,
+  "contact_id": 25972503,
+  "company_id": null,
+  "merged": false,
+  "nome": "Mônica Pontes",
+  "tel_ok": true
+ },
+ "811": {
+  "lead_id": 23805959,
+  "contact_id": 25972505,
+  "company_id": null,
+  "merged": false,
+  "nome": "Camila Diógenes",
+  "tel_ok": true
+ },
+ "812": {
+  "lead_id": 23805961,
+  "contact_id": 25972507,
+  "company_id": 25972431,
+  "merged": false,
+  "nome": "Paulo de Castro",
+  "tel_ok": true
+ },
+ "813": {
+  "lead_id": 23805963,
+  "contact_id": 25972509,
+  "company_id": null,
+  "merged": false,
+  "nome": "Manuel Pentecoste",
+  "tel_ok": true
+ },
+ "814": {
+  "lead_id": 23805965,
+  "contact_id": 25972511,
+  "company_id": 25972433,
+  "merged": false,
+  "nome": "Paula Tereza",
+  "tel_ok": true
+ },
+ "815": {
+  "lead_id": 23805967,
+  "contact_id": 25972513,
+  "company_id": null,
+  "merged": false,
+  "nome": "Laiane Silva",
+  "tel_ok": true
+ },
+ "816": {
+  "lead_id": 23805969,
+  "contact_id": 25972515,
+  "company_id": 25972435,
+  "merged": false,
+  "nome": "Castro Santos",
+  "tel_ok": true
+ },
+ "817": {
+  "lead_id": 23805971,
+  "contact_id": 25972517,
+  "company_id": 25972437,
+  "merged": false,
+  "nome": "João Fernando",
+  "tel_ok": true
+ },
+ "818": {
+  "lead_id": 23805973,
+  "contact_id": 25972519,
+  "company_id": 25972439,
+  "merged": false,
+  "nome": "Jéssica Ramos",
+  "tel_ok": true
+ },
+ "819": {
+  "lead_id": 23805975,
+  "contact_id": 25972521,
+  "company_id": null,
+  "merged": false,
+  "nome": "Flávia Farias",
+  "tel_ok": true
+ },
+ "820": {
+  "lead_id": 23805977,
+  "contact_id": 25972523,
+  "company_id": null,
+  "merged": false,
+  "nome": "Antonio",
+  "tel_ok": true
+ },
+ "821": {
+  "lead_id": 23805979,
+  "contact_id": 25972525,
+  "company_id": 25972441,
+  "merged": false,
+  "nome": "Romário",
+  "tel_ok": true
+ },
+ "822": {
+  "lead_id": 23805981,
+  "contact_id": 25972527,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sandra Sousa",
+  "tel_ok": true
+ },
+ "823": {
+  "lead_id": 23805983,
+  "contact_id": 25972529,
+  "company_id": null,
+  "merged": false,
+  "nome": "Viviane Alves",
+  "tel_ok": true
+ },
+ "824": {
+  "lead_id": 23805985,
+  "contact_id": 25972531,
+  "company_id": null,
+  "merged": false,
+  "nome": "Pedro Sabani",
+  "tel_ok": true
+ },
+ "825": {
+  "lead_id": 23805987,
+  "contact_id": 25972533,
+  "company_id": 25972443,
+  "merged": false,
+  "nome": "Célia Ramos",
+  "tel_ok": true
+ },
+ "826": {
+  "lead_id": 23805989,
+  "contact_id": 25972535,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patrícia Ribeiro",
+  "tel_ok": true
+ },
+ "827": {
+  "lead_id": 23805991,
+  "contact_id": 25972537,
+  "company_id": null,
+  "merged": false,
+  "nome": "Suely Cavalcante",
+  "tel_ok": true
+ },
+ "828": {
+  "lead_id": 23805993,
+  "contact_id": 25972539,
+  "company_id": null,
+  "merged": false,
+  "nome": "Casia Soares",
+  "tel_ok": true
+ },
+ "829": {
+  "lead_id": 23805995,
+  "contact_id": 25972541,
+  "company_id": 25972445,
+  "merged": false,
+  "nome": "Ribeiro",
+  "tel_ok": true
+ },
+ "830": {
+  "lead_id": 23805997,
+  "contact_id": 25972543,
+  "company_id": null,
+  "merged": false,
+  "nome": "Ronilson",
+  "tel_ok": true
+ },
+ "831": {
+  "lead_id": 23805999,
+  "contact_id": 25972545,
+  "company_id": 25972447,
+  "merged": false,
+  "nome": "Tarcísio Gomes",
+  "tel_ok": true
+ },
+ "832": {
+  "lead_id": 23806001,
+  "contact_id": 25972547,
+  "company_id": 25972449,
+  "merged": false,
+  "nome": "Diego",
+  "tel_ok": true
+ },
+ "833": {
+  "lead_id": 23806003,
+  "contact_id": 25972549,
+  "company_id": 25972451,
+  "merged": false,
+  "nome": "Erica Bueno",
+  "tel_ok": true
+ },
+ "834": {
+  "lead_id": 23806005,
+  "contact_id": 25972551,
+  "company_id": 25972453,
+  "merged": false,
+  "nome": "Crystalyne",
+  "tel_ok": true
+ },
+ "835": {
+  "lead_id": 23806007,
+  "contact_id": 25972553,
+  "company_id": 25972455,
+  "merged": false,
+  "nome": "Thais Pelic",
+  "tel_ok": true
+ },
+ "836": {
+  "lead_id": 23806009,
+  "contact_id": 25972555,
+  "company_id": 25972457,
+  "merged": false,
+  "nome": "Ana Caroline",
+  "tel_ok": false
+ },
+ "837": {
+  "lead_id": 23806011,
+  "contact_id": 25972557,
+  "company_id": 25972459,
+  "merged": false,
+  "nome": "Pamela Sobrinho",
+  "tel_ok": true
+ },
+ "838": {
+  "lead_id": 23806013,
+  "contact_id": 25972559,
+  "company_id": 25972461,
+  "merged": false,
+  "nome": "Katiuscia Cristina",
+  "tel_ok": true
+ },
+ "839": {
+  "lead_id": 23806015,
+  "contact_id": 25972561,
+  "company_id": 25972463,
+  "merged": false,
+  "nome": "Amanda Ribeiro",
+  "tel_ok": true
+ },
+ "840": {
+  "lead_id": 23806017,
+  "contact_id": 25972563,
+  "company_id": 25972465,
+  "merged": false,
+  "nome": "Sabrina Oliveira",
+  "tel_ok": true
+ },
+ "841": {
+  "lead_id": 23806019,
+  "contact_id": 25972565,
+  "company_id": 25972467,
+  "merged": false,
+  "nome": "Amanda Freire",
+  "tel_ok": true
+ },
+ "842": {
+  "lead_id": 23806021,
+  "contact_id": 25972567,
+  "company_id": 25972469,
+  "merged": false,
+  "nome": "Juliana Braga",
+  "tel_ok": true
+ },
+ "843": {
+  "lead_id": 23806023,
+  "contact_id": 25972569,
+  "company_id": 25972471,
+  "merged": false,
+  "nome": "Mariana Oliveira",
+  "tel_ok": true
+ },
+ "844": {
+  "lead_id": 23806025,
+  "contact_id": 25972571,
+  "company_id": 25972473,
+  "merged": false,
+  "nome": "Sandra Teles",
+  "tel_ok": true
+ },
+ "845": {
+  "lead_id": 23806027,
+  "contact_id": 25972573,
+  "company_id": 25972475,
+  "merged": false,
+  "nome": "Daniela Silva",
+  "tel_ok": true
+ },
+ "846": {
+  "lead_id": 23806029,
+  "contact_id": 25972575,
+  "company_id": 25972477,
+  "merged": false,
+  "nome": "Joice Visconde",
+  "tel_ok": true
+ },
+ "847": {
+  "lead_id": 23806031,
+  "contact_id": 25972577,
+  "company_id": 25972479,
+  "merged": false,
+  "nome": "Luiz Henrique",
+  "tel_ok": true
+ },
+ "848": {
+  "lead_id": 23806033,
+  "contact_id": 25972579,
+  "company_id": 25972481,
+  "merged": false,
+  "nome": "Mari Carolayne",
+  "tel_ok": true
+ },
+ "849": {
+  "lead_id": 23806035,
+  "contact_id": 25972581,
+  "company_id": 25972483,
+  "merged": false,
+  "nome": "Renata Mello",
+  "tel_ok": true
+ },
+ "850": {
+  "lead_id": 23806037,
+  "contact_id": 25972583,
+  "company_id": 25972485,
+  "merged": false,
+  "nome": "Daniela Santana",
+  "tel_ok": true
+ },
+ "851": {
+  "lead_id": 23806039,
+  "contact_id": 25972585,
+  "company_id": 25972487,
+  "merged": false,
+  "nome": "Márcia Teles",
+  "tel_ok": true
+ },
+ "852": {
+  "lead_id": 23806041,
+  "contact_id": 25972587,
+  "company_id": 25972489,
+  "merged": false,
+  "nome": "Ana Paula",
+  "tel_ok": true
+ },
+ "853": {
+  "lead_id": 23806043,
+  "contact_id": 25972589,
+  "company_id": 25972491,
+  "merged": false,
+  "nome": "Aline Fagundes",
+  "tel_ok": true
+ },
+ "854": {
+  "lead_id": 23806045,
+  "contact_id": 25972591,
+  "company_id": 25972493,
+  "merged": false,
+  "nome": "Leonardo Maia",
+  "tel_ok": true
+ },
+ "855": {
+  "lead_id": 23806047,
+  "contact_id": 25972593,
+  "company_id": 25972495,
+  "merged": false,
+  "nome": "Natalia Prado",
+  "tel_ok": true
+ },
+ "856": {
+  "lead_id": 23806049,
+  "contact_id": 25972595,
+  "company_id": 25972497,
+  "merged": false,
+  "nome": "Sergio Rycpczak Junior",
+  "tel_ok": true
+ },
+ "858": {
+  "lead_id": 23806051,
+  "contact_id": 25972597,
+  "company_id": null,
+  "merged": false,
+  "nome": "Vanessa Jenifer",
+  "tel_ok": true
+ },
+ "859": {
+  "lead_id": 23806053,
+  "contact_id": 25972599,
+  "company_id": 25972499,
+  "merged": false,
+  "nome": "Rosimario",
+  "tel_ok": true
+ },
+ "860": {
+  "lead_id": 23806055,
+  "contact_id": 25972641,
+  "company_id": 25972601,
+  "merged": false,
+  "nome": "Cristiane da Silva Torres",
+  "tel_ok": true
+ },
+ "861": {
+  "lead_id": 23806057,
+  "contact_id": 25972643,
+  "company_id": 25972603,
+  "merged": false,
+  "nome": "Amanda",
+  "tel_ok": true
+ },
+ "862": {
+  "lead_id": 23806059,
+  "contact_id": 25972645,
+  "company_id": 25972605,
+  "merged": false,
+  "nome": "Lorena",
+  "tel_ok": true
+ },
+ "863": {
+  "lead_id": 23806061,
+  "contact_id": 25972647,
+  "company_id": 25972607,
+  "merged": false,
+  "nome": "Fabricia",
+  "tel_ok": true
+ },
+ "864": {
+  "lead_id": 23806063,
+  "contact_id": 25972649,
+  "company_id": 25972609,
+  "merged": false,
+  "nome": "Rita Rezziti",
+  "tel_ok": true
+ },
+ "865": {
+  "lead_id": 23806065,
+  "contact_id": 25972651,
+  "company_id": 25972611,
+  "merged": false,
+  "nome": "Wellington",
+  "tel_ok": true
+ },
+ "866": {
+  "lead_id": 23806067,
+  "contact_id": 25972653,
+  "company_id": 25972613,
+  "merged": false,
+  "nome": "Márcio",
+  "tel_ok": true
+ },
+ "867": {
+  "lead_id": 23806069,
+  "contact_id": 25972655,
+  "company_id": 25972615,
+  "merged": false,
+  "nome": "Fabiana",
+  "tel_ok": true
+ },
+ "868": {
+  "lead_id": 23806071,
+  "contact_id": 25972657,
+  "company_id": null,
+  "merged": false,
+  "nome": "Márcia",
+  "tel_ok": true
+ },
+ "869": {
+  "lead_id": 23806073,
+  "contact_id": 25972659,
+  "company_id": 25972617,
+  "merged": false,
+  "nome": "Bárbara",
+  "tel_ok": true
+ },
+ "870": {
+  "lead_id": 23806075,
+  "contact_id": 25972661,
+  "company_id": 25972619,
+  "merged": false,
+  "nome": "Paulo",
+  "tel_ok": true
+ },
+ "871": {
+  "lead_id": 23806077,
+  "contact_id": 25972663,
+  "company_id": 25972621,
+  "merged": false,
+  "nome": "Estefany",
+  "tel_ok": true
+ },
+ "872": {
+  "lead_id": 23806079,
+  "contact_id": 25972665,
+  "company_id": 25972623,
+  "merged": false,
+  "nome": "Marcos",
+  "tel_ok": true
+ },
+ "873": {
+  "lead_id": 23806081,
+  "contact_id": 25972667,
+  "company_id": 25972625,
+  "merged": false,
+  "nome": "Dim",
+  "tel_ok": true
+ },
+ "874": {
+  "lead_id": 23806083,
+  "contact_id": 25972669,
+  "company_id": 25972627,
+  "merged": false,
+  "nome": "Igor",
+  "tel_ok": true
+ },
+ "895": {
+  "lead_id": 23806085,
+  "contact_id": 25972671,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruno",
+  "tel_ok": true
+ },
+ "896": {
+  "lead_id": 23806087,
+  "contact_id": 25972673,
+  "company_id": null,
+  "merged": false,
+  "nome": "Fátima Matos",
+  "tel_ok": true
+ },
+ "897": {
+  "lead_id": 23806089,
+  "contact_id": 25972675,
+  "company_id": null,
+  "merged": false,
+  "nome": "Luzia Rodrigues",
+  "tel_ok": true
+ },
+ "898": {
+  "lead_id": 23806091,
+  "contact_id": 25972677,
+  "company_id": null,
+  "merged": false,
+  "nome": "Joana Camargo",
+  "tel_ok": true
+ },
+ "899": {
+  "lead_id": 23806093,
+  "contact_id": 25972679,
+  "company_id": 25972629,
+  "merged": false,
+  "nome": "Fabiana",
+  "tel_ok": true
+ },
+ "900": {
+  "lead_id": 23806095,
+  "contact_id": 25972681,
+  "company_id": null,
+  "merged": false,
+  "nome": "Márcia",
+  "tel_ok": true
+ },
+ "901": {
+  "lead_id": 23806097,
+  "contact_id": 25972683,
+  "company_id": 25972631,
+  "merged": false,
+  "nome": "Jéssica Pontes",
+  "tel_ok": true
+ },
+ "902": {
+  "lead_id": 23806099,
+  "contact_id": 25972685,
+  "company_id": 25972633,
+  "merged": false,
+  "nome": "Carlos",
+  "tel_ok": true
+ },
+ "903": {
+  "lead_id": 23806101,
+  "contact_id": 25972687,
+  "company_id": 25972635,
+  "merged": false,
+  "nome": "Stella Ster",
+  "tel_ok": true
+ },
+ "904": {
+  "lead_id": 23806103,
+  "contact_id": 25972689,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cristina Chagas",
+  "tel_ok": true
+ },
+ "905": {
+  "lead_id": 23806105,
+  "contact_id": 25972691,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gabrielle",
+  "tel_ok": true
+ },
+ "906": {
+  "lead_id": 23806107,
+  "contact_id": 25972693,
+  "company_id": 25972637,
+  "merged": false,
+  "nome": "Luísa",
+  "tel_ok": true
+ },
+ "907": {
+  "lead_id": 23806109,
+  "contact_id": 25972695,
+  "company_id": null,
+  "merged": false,
+  "nome": "Helton",
+  "tel_ok": true
+ },
+ "908": {
+  "lead_id": 23806111,
+  "contact_id": 25972697,
+  "company_id": null,
+  "merged": false,
+  "nome": "André",
+  "tel_ok": true
+ },
+ "909": {
+  "lead_id": 23806113,
+  "contact_id": 25972699,
+  "company_id": null,
+  "merged": false,
+  "nome": "Beatriz",
+  "tel_ok": false
+ },
+ "910": {
+  "lead_id": 23806115,
+  "contact_id": 25972701,
+  "company_id": null,
+  "merged": false,
+  "nome": "Irene",
+  "tel_ok": true
+ },
+ "911": {
+  "lead_id": 23806117,
+  "contact_id": 25972703,
+  "company_id": null,
+  "merged": false,
+  "nome": "Juliana",
+  "tel_ok": true
+ },
+ "912": {
+  "lead_id": 23806119,
+  "contact_id": 25972705,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tiago Alves",
+  "tel_ok": true
+ },
+ "913": {
+  "lead_id": 23806121,
+  "contact_id": 25972707,
+  "company_id": null,
+  "merged": false,
+  "nome": "Edilsine",
+  "tel_ok": true
+ },
+ "914": {
+  "lead_id": 23806123,
+  "contact_id": 25972709,
+  "company_id": null,
+  "merged": false,
+  "nome": "Carla",
+  "tel_ok": true
+ },
+ "915": {
+  "lead_id": 23806125,
+  "contact_id": 25972711,
+  "company_id": null,
+  "merged": false,
+  "nome": "Andréia",
+  "tel_ok": true
+ },
+ "916": {
+  "lead_id": 23806127,
+  "contact_id": 25972713,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruna",
+  "tel_ok": true
+ },
+ "917": {
+  "lead_id": 23806129,
+  "contact_id": 25972715,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jacqueline",
+  "tel_ok": false
+ },
+ "918": {
+  "lead_id": 23806131,
+  "contact_id": 25972717,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lucineide",
+  "tel_ok": true
+ },
+ "919": {
+  "lead_id": 23806133,
+  "contact_id": 25972719,
+  "company_id": null,
+  "merged": false,
+  "nome": "Manuela",
+  "tel_ok": true
+ },
+ "920": {
+  "lead_id": 23806135,
+  "contact_id": 25972721,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tais",
+  "tel_ok": true
+ },
+ "921": {
+  "lead_id": 23806137,
+  "contact_id": 25972723,
+  "company_id": null,
+  "merged": false,
+  "nome": "Desiree",
+  "tel_ok": true
+ },
+ "922": {
+  "lead_id": 23806139,
+  "contact_id": 25972725,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alana",
+  "tel_ok": true
+ },
+ "923": {
+  "lead_id": 23806141,
+  "contact_id": 25972727,
+  "company_id": null,
+  "merged": false,
+  "nome": "Claudete",
+  "tel_ok": true
+ },
+ "924": {
+  "lead_id": 23806143,
+  "contact_id": 25972729,
+  "company_id": null,
+  "merged": false,
+  "nome": "Gislaine",
+  "tel_ok": true
+ },
+ "925": {
+  "lead_id": 23806145,
+  "contact_id": 25972731,
+  "company_id": null,
+  "merged": false,
+  "nome": "Paula",
+  "tel_ok": true
+ },
+ "926": {
+  "lead_id": 23806147,
+  "contact_id": 25972733,
+  "company_id": null,
+  "merged": false,
+  "nome": "Roberta",
+  "tel_ok": true
+ },
+ "927": {
+  "lead_id": 23806149,
+  "contact_id": 25972735,
+  "company_id": 25972639,
+  "merged": false,
+  "nome": "Flor de Açúcar",
+  "tel_ok": true
+ },
+ "928": {
+  "lead_id": 23806151,
+  "contact_id": 25972737,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tamiris",
+  "tel_ok": true
+ },
+ "929": {
+  "lead_id": 23806153,
+  "contact_id": 25972739,
+  "company_id": null,
+  "merged": false,
+  "nome": "Marcilio",
+  "tel_ok": true
+ },
+ "930": {
+  "lead_id": 23806157,
+  "contact_id": 25972749,
+  "company_id": null,
+  "merged": false,
+  "nome": "Mirele",
+  "tel_ok": true
+ },
+ "931": {
+  "lead_id": 23806159,
+  "contact_id": 25972751,
+  "company_id": null,
+  "merged": false,
+  "nome": "Simone",
+  "tel_ok": true
+ },
+ "932": {
+  "lead_id": 23806161,
+  "contact_id": 25972753,
+  "company_id": null,
+  "merged": false,
+  "nome": "Alan",
+  "tel_ok": true
+ },
+ "933": {
+  "lead_id": 23806163,
+  "contact_id": 25972755,
+  "company_id": null,
+  "merged": false,
+  "nome": "Izabel",
+  "tel_ok": true
+ },
+ "934": {
+  "lead_id": 23806165,
+  "contact_id": 25972757,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cecília",
+  "tel_ok": true
+ },
+ "935": {
+  "lead_id": 23806167,
+  "contact_id": 25972759,
+  "company_id": null,
+  "merged": false,
+  "nome": "Andressa",
+  "tel_ok": true
+ },
+ "936": {
+  "lead_id": 23806169,
+  "contact_id": 25972761,
+  "company_id": null,
+  "merged": false,
+  "nome": "Andreia",
+  "tel_ok": true
+ },
+ "937": {
+  "lead_id": 23806171,
+  "contact_id": 25972763,
+  "company_id": null,
+  "merged": false,
+  "nome": "Litzin",
+  "tel_ok": true
+ },
+ "938": {
+  "lead_id": 23806173,
+  "contact_id": 25972765,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cris",
+  "tel_ok": true
+ },
+ "939": {
+  "lead_id": 23806175,
+  "contact_id": 25972767,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eliane",
+  "tel_ok": true
+ },
+ "940": {
+  "lead_id": 23806177,
+  "contact_id": 25972769,
+  "company_id": null,
+  "merged": false,
+  "nome": "Caroliny",
+  "tel_ok": true
+ },
+ "941": {
+  "lead_id": 23806179,
+  "contact_id": 25972771,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eduardo",
+  "tel_ok": true
+ },
+ "942": {
+  "lead_id": 23806181,
+  "contact_id": 25972773,
+  "company_id": null,
+  "merged": false,
+  "nome": "Tais",
+  "tel_ok": true
+ },
+ "943": {
+  "lead_id": 23806183,
+  "contact_id": 25972775,
+  "company_id": null,
+  "merged": false,
+  "nome": "Mayara",
+  "tel_ok": true
+ },
+ "944": {
+  "lead_id": 23806185,
+  "contact_id": 25972777,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eliane",
+  "tel_ok": true
+ },
+ "945": {
+  "lead_id": 23806187,
+  "contact_id": 25972779,
+  "company_id": null,
+  "merged": false,
+  "nome": "Nira",
+  "tel_ok": true
+ },
+ "946": {
+  "lead_id": 23806189,
+  "contact_id": 25972781,
+  "company_id": null,
+  "merged": false,
+  "nome": "Grazi",
+  "tel_ok": true
+ },
+ "947": {
+  "lead_id": 23806191,
+  "contact_id": 25972783,
+  "company_id": null,
+  "merged": false,
+  "nome": "Patricia",
+  "tel_ok": true
+ },
+ "948": {
+  "lead_id": 23806193,
+  "contact_id": 25972785,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria Luiza",
+  "tel_ok": true
+ },
+ "949": {
+  "lead_id": 23806195,
+  "contact_id": 25972787,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jussara",
+  "tel_ok": true
+ },
+ "950": {
+  "lead_id": 23806197,
+  "contact_id": 25972789,
+  "company_id": null,
+  "merged": false,
+  "nome": "Débora",
+  "tel_ok": true
+ },
+ "951": {
+  "lead_id": 23806199,
+  "contact_id": 25972791,
+  "company_id": null,
+  "merged": false,
+  "nome": "Jussara",
+  "tel_ok": true
+ },
+ "952": {
+  "lead_id": 23806201,
+  "contact_id": 25972793,
+  "company_id": null,
+  "merged": false,
+  "nome": "Dani",
+  "tel_ok": true
+ },
+ "953": {
+  "lead_id": 23806203,
+  "contact_id": 25972795,
+  "company_id": null,
+  "merged": false,
+  "nome": "Wendel",
+  "tel_ok": true
+ },
+ "954": {
+  "lead_id": 23806205,
+  "contact_id": 25972797,
+  "company_id": null,
+  "merged": false,
+  "nome": "Lorena",
+  "tel_ok": true
+ },
+ "955": {
+  "lead_id": 23806207,
+  "contact_id": 25972799,
+  "company_id": null,
+  "merged": false,
+  "nome": "Andre",
+  "tel_ok": true
+ },
+ "956": {
+  "lead_id": 23806209,
+  "contact_id": 25972801,
+  "company_id": null,
+  "merged": false,
+  "nome": "Bruna",
+  "tel_ok": true
+ },
+ "957": {
+  "lead_id": 23806211,
+  "contact_id": 25972803,
+  "company_id": null,
+  "merged": false,
+  "nome": "Denise",
+  "tel_ok": true
+ },
+ "958": {
+  "lead_id": 23806213,
+  "contact_id": 25972805,
+  "company_id": null,
+  "merged": false,
+  "nome": "Maria Aparecida",
+  "tel_ok": true
+ },
+ "959": {
+  "lead_id": 23806215,
+  "contact_id": 25972807,
+  "company_id": null,
+  "merged": false,
+  "nome": "Daniele",
+  "tel_ok": true
+ },
+ "960": {
+  "lead_id": 23806217,
+  "contact_id": 25972809,
+  "company_id": null,
+  "merged": false,
+  "nome": "Raissa",
+  "tel_ok": true
+ },
+ "961": {
+  "lead_id": 23806219,
+  "contact_id": 25972811,
+  "company_id": null,
+  "merged": false,
+  "nome": "Sabrina",
+  "tel_ok": true
+ },
+ "962": {
+  "lead_id": 23806221,
+  "contact_id": 25972813,
+  "company_id": 25972741,
+  "merged": false,
+  "nome": "Thaís",
+  "tel_ok": true
+ },
+ "963": {
+  "lead_id": 23806223,
+  "contact_id": 25972815,
+  "company_id": 25972743,
+  "merged": false,
+  "nome": "Marta",
+  "tel_ok": true
+ },
+ "964": {
+  "lead_id": 23806225,
+  "contact_id": 25972817,
+  "company_id": null,
+  "merged": false,
+  "nome": "Kelly",
+  "tel_ok": true
+ },
+ "965": {
+  "lead_id": 23806227,
+  "contact_id": 25972819,
+  "company_id": null,
+  "merged": false,
+  "nome": "Cláudio Lopes",
+  "tel_ok": true
+ },
+ "966": {
+  "lead_id": 23806229,
+  "contact_id": 25972821,
+  "company_id": null,
+  "merged": false,
+  "nome": "Paula",
+  "tel_ok": true
+ },
+ "967": {
+  "lead_id": 23806231,
+  "contact_id": 25972823,
+  "company_id": null,
+  "merged": false,
+  "nome": "Benévolo",
+  "tel_ok": true
+ },
+ "968": {
+  "lead_id": 23806233,
+  "contact_id": 25972825,
+  "company_id": null,
+  "merged": false,
+  "nome": "Eduardo",
+  "tel_ok": true
+ },
+ "969": {
+  "lead_id": 23806235,
+  "contact_id": 25972827,
+  "company_id": 25972745,
+  "merged": false,
+  "nome": "Tromboni",
+  "tel_ok": true
+ },
+ "970": {
+  "lead_id": 23806237,
+  "contact_id": 25972829,
+  "company_id": 25972747,
+  "merged": false,
+  "nome": "Karen Torales",
+  "tel_ok": false
+ },
+ "971": {
+  "lead_id": 23806239,
+  "contact_id": 25972831,
+  "company_id": null,
+  "merged": false,
+  "nome": "Igor",
+  "tel_ok": true
+ },
+ "972": {
+  "lead_id": 23806241,
+  "contact_id": 25972833,
+  "company_id": null,
+  "merged": false,
+  "nome": "Aline Costa",
+  "tel_ok": true
+ },
+ "973": {
+  "lead_id": 23806243,
+  "contact_id": 25972835,
+  "company_id": null,
+  "merged": false,
+  "nome": "Caíque",
+  "tel_ok": true
+ }
+}

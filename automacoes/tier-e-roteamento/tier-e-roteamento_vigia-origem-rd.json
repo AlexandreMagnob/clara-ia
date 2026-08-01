@@ -46,7 +46,9 @@
     },
     {
       "parameters": {
-        "url": "https://api.pipedrive.com/api/v2/deals?sort_by=add_time&sort_direction=desc&limit=200&custom_fields=babc9dc70b0254caf284ed9ac6904531bdd2247b,fbef9289bf09467ab894d55a0da0785f7d131c92,1c61ffb7c5c72afcda0aa03ec34a699098fa82a3,ce55f714284ac86b8463c672880636db6568e5f8,a75682beeaee346f25771516d2f23cdaf4b7745c,921ee7657991cd504cd859f5b8fd0b47bb8b2ff6,4d61e8db7772570f774c6ba67cd8c3d42ebf74e6,346353ade45adcb68850667587de1da11b3bdadd,b603f8b2476b87146d418bd7692ca4d2a41f71a1,5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda&api_token=b3f0e4930cd82dd921597c19d422a495833201a4",
+        "url": "https://api.pipedrive.com/api/v2/deals?sort_by=add_time&sort_direction=desc&limit=200&pipeline_id=2&custom_fields=babc9dc70b0254caf284ed9ac6904531bdd2247b,fbef9289bf09467ab894d55a0da0785f7d131c92,1c61ffb7c5c72afcda0aa03ec34a699098fa82a3,ce55f714284ac86b8463c672880636db6568e5f8,a75682beeaee346f25771516d2f23cdaf4b7745c,921ee7657991cd504cd859f5b8fd0b47bb8b2ff6,4d61e8db7772570f774c6ba67cd8c3d42ebf74e6,346353ade45adcb68850667587de1da11b3bdadd,b603f8b2476b87146d418bd7692ca4d2a41f71a1,5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda,d99e4d95cb8baef612eacfe88ae62f0f133becf9&api_token=b3f0e4930cd82dd921597c19d422a495833201a4",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "pipedriveApi",
         "options": {}
       },
       "id": "8c899e90-5459-4a9c-93c1-1bfb4d13cfde",
@@ -56,11 +58,19 @@
       "position": [
         -208,
         0
-      ]
+      ],
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      }
     },
     {
       "parameters": {
-        "url": "=https://api.pipedrive.com/api/v2/deals?sort_by=add_time&sort_direction=desc&limit=200&custom_fields=babc9dc70b0254caf284ed9ac6904531bdd2247b,fbef9289bf09467ab894d55a0da0785f7d131c92,1c61ffb7c5c72afcda0aa03ec34a699098fa82a3,ce55f714284ac86b8463c672880636db6568e5f8,a75682beeaee346f25771516d2f23cdaf4b7745c,921ee7657991cd504cd859f5b8fd0b47bb8b2ff6,4d61e8db7772570f774c6ba67cd8c3d42ebf74e6,346353ade45adcb68850667587de1da11b3bdadd,b603f8b2476b87146d418bd7692ca4d2a41f71a1,5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda&api_token=b3f0e4930cd82dd921597c19d422a495833201a4&cursor={{ $json.additional_data.next_cursor }}",
+        "url": "=https://api.pipedrive.com/api/v2/deals?sort_by=add_time&sort_direction=desc&limit=200&pipeline_id=2&custom_fields=babc9dc70b0254caf284ed9ac6904531bdd2247b,fbef9289bf09467ab894d55a0da0785f7d131c92,1c61ffb7c5c72afcda0aa03ec34a699098fa82a3,ce55f714284ac86b8463c672880636db6568e5f8,a75682beeaee346f25771516d2f23cdaf4b7745c,921ee7657991cd504cd859f5b8fd0b47bb8b2ff6,4d61e8db7772570f774c6ba67cd8c3d42ebf74e6,346353ade45adcb68850667587de1da11b3bdadd,b603f8b2476b87146d418bd7692ca4d2a41f71a1,5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda,d99e4d95cb8baef612eacfe88ae62f0f133becf9&api_token=b3f0e4930cd82dd921597c19d422a495833201a4&cursor={{ $json.additional_data.next_cursor }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "pipedriveApi",
         "options": {}
       },
       "id": "cdc3ea75-9329-4109-864f-43c38d0a978b",
@@ -71,11 +81,17 @@
         0,
         0
       ],
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      },
       "onError": "continueRegularOutput"
     },
     {
       "parameters": {
-        "jsCode": "\n// junta as 2 paginas, dedupe, filtra: pipeline 2, ultimos 3 dias, e (rastreio 100% vazio OU tier vazio)\n// resolve tier por REGRA aqui mesmo: agente de parcerias/indicacao -> Agentes; criacao manual -> Adicao manual\nconst p1 = $('Deals p1').first().json.data || [];\nlet p2 = [];\ntry { p2 = $('Deals p2').first().json.data || []; } catch (e) {}\nconst TRACK = [\"babc9dc70b0254caf284ed9ac6904531bdd2247b\", \"fbef9289bf09467ab894d55a0da0785f7d131c92\", \"1c61ffb7c5c72afcda0aa03ec34a699098fa82a3\", \"ce55f714284ac86b8463c672880636db6568e5f8\", \"a75682beeaee346f25771516d2f23cdaf4b7745c\", \"921ee7657991cd504cd859f5b8fd0b47bb8b2ff6\"];\nconst seen = new Set(); const corte = Date.now() - 3*24*60*60*1000;\nconst vazio = v => v === null || v === undefined || v === '';\nconst out = [];\nfor (const d of [...p1, ...p2]) {\n  if (seen.has(d.id)) continue; seen.add(d.id);\n  if (d.pipeline_id !== 2) continue;\n  if (new Date(d.add_time).getTime() < corte) continue;\n  const cf = d.custom_fields || {};\n  const falta_utm = TRACK.every(k => vazio(cf[k]));\n  const falta_tier = vazio(cf['346353ade45adcb68850667587de1da11b3bdadd']);\n  if (!falta_utm && !falta_tier) continue;\n  let tier_regra = '';\n  if (falta_tier) {\n    if (!vazio(cf['b603f8b2476b87146d418bd7692ca4d2a41f71a1']) || cf['5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda'] === 1582) tier_regra = 'Agentes';\n    else if (d.origin === 'ManuallyCreated') tier_regra = 'Adição manual';\n  }\n  if (!d.person_id && !(falta_tier && tier_regra)) continue;\n  out.push({ json: { deal_id: d.id, person_id: d.person_id || '', falta_utm, falta_tier, tier_regra } });\n}\nreturn out;\n"
+        "jsCode": "\n// Junta as 2 paginas, dedupe e filtra: FUNIL DE VENDAS (pipeline 2), ultimos 3 dias\n// e (rastreio 100% vazio OU tier vazio).\n// TIER SO EXISTE NO FUNIL DE VENDAS: nada de outro funil entra aqui, e o pipeline_id\n// viaja junto com o item ate o momento da escrita, onde e conferido de novo.\n// Resolve tier por REGRA ja aqui: agente de parcerias/indicacao -> Agentes; criacao manual -> Adicao manual.\nconst FUNIL_VENDAS = 2;\nconst DIAS = 3;\n\nconst F_TIER   = '346353ade45adcb68850667587de1da11b3bdadd';\nconst F_AGENTE = 'b603f8b2476b87146d418bd7692ca4d2a41f71a1';\nconst F_ORIGEM = '5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda';\nconst F_COMO   = 'd99e4d95cb8baef612eacfe88ae62f0f133becf9'; // [QUAL] Como conheceu a Cardápio Web? (interno)\nconst OPT_COMO_AGP = 1212; // 'Indicação do Ag. de Parcerias' (NAO confundir com 1601 'Indicação de Parceiro')\nconst TRACK = ['babc9dc70b0254caf284ed9ac6904531bdd2247b', 'fbef9289bf09467ab894d55a0da0785f7d131c92', '1c61ffb7c5c72afcda0aa03ec34a699098fa82a3', 'ce55f714284ac86b8463c672880636db6568e5f8', 'a75682beeaee346f25771516d2f23cdaf4b7745c', '921ee7657991cd504cd859f5b8fd0b47bb8b2ff6'];\n\nconst p1 = $('Deals p1').first().json.data || [];\nlet p2 = [];\ntry { p2 = $('Deals p2').first().json.data || []; } catch (e) {}\n\nconst seen = new Set();\nconst corte = Date.now() - DIAS * 24 * 60 * 60 * 1000;\nconst vazio = v => v === null || v === undefined || v === '';\nconst out = [];\n\nfor (const d of [...p1, ...p2]) {\n  if (seen.has(d.id)) continue; seen.add(d.id);\n  if (Number(d.pipeline_id) !== FUNIL_VENDAS) continue;\n  if (new Date(d.add_time).getTime() < corte) continue;\n\n  const cf = d.custom_fields || {};\n  const falta_utm  = TRACK.every(k => vazio(cf[k]));\n  const falta_tier = vazio(cf[F_TIER]);\n  if (!falta_utm && !falta_tier) continue;\n\n  // TRAVA: tier=Adicao manual (id 1566) e definitivo. Uma vez preenchido, NENHUMA regra\n  // (Agente de Parcerias, Origem, Como conheceu) pode reavaliar/trocar o tier do deal -\n  // falta_tier ja cobre isso (so decide quando cf[F_TIER] esta vazio), este comentario so\n  // torna a garantia explicita: pedido dele 31/07, ex. tier=Adicao manual + Como conheceu=\n  // Indicacao do Ag. de Parcerias continua Adicao manual, nao vira Agentes.\n  let tier_regra = '';\n  if (falta_tier) {\n    if (!vazio(cf[F_AGENTE]) || cf[F_ORIGEM] === 1582 || cf[F_COMO] === OPT_COMO_AGP) tier_regra = 'Agentes';\n    else if (d.origin === 'ManuallyCreated') tier_regra = 'Adição manual';\n  }\n\n  const person_id = d.person_id || '';\n  if (!person_id && !(falta_tier && tier_regra)) continue;\n\n  out.push({ json: {\n    deal_id: d.id,\n    pipeline_id: Number(d.pipeline_id),\n    person_id,\n    tem_pessoa: !!person_id,\n    falta_utm,\n    falta_tier,\n    tier_regra\n  } });\n}\nreturn out;\n"
       },
       "id": "804f9cff-b049-46f3-bdc0-9d2529eebc7c",
       "name": "Filtra sem origem",
@@ -83,6 +99,40 @@
       "typeVersion": 2,
       "position": [
         208,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b1e0a1de-6c1e-4f4a-9d43-1c2f1a2b3c4d",
+              "leftValue": "={{ $json.tem_pessoa }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6f2a9c11-4b5e-4f0a-9a2c-7d1e5c8b0a33",
+      "name": "Tem pessoa?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        400,
         0
       ]
     },
@@ -97,8 +147,8 @@
       "type": "n8n-nodes-base.pipedrive",
       "typeVersion": 1,
       "position": [
-        400,
-        0
+        608,
+        -112
       ],
       "credentials": {
         "pipedriveApi": {
@@ -110,20 +160,20 @@
     },
     {
       "parameters": {
-        "jsCode": "\n// pareia por indice com o filtro e extrai email/fone\nconst base = $('Filtra sem origem').all();\nconst out = [];\nfor (let i = 0; i < items.length; i++) {\n  const b = base[i].json;\n  const resp = items[i].json.data || items[i].json || {};\n  const emails = resp.emails || resp.email || [];\n  const em = ((emails.find && emails.find(e => e && e.primary)) || emails[0] || {}).value || '';\n  const email = (em && em.includes('@')) ? em.trim().toLowerCase() : '';\n  const phones = resp.phones || resp.phone || [];\n  const ph = ((phones.find && phones.find(p => p && p.primary)) || phones[0] || {}).value || '';\n  const fone8 = String(ph).replace(/\\D/g, '').slice(-8);\n  if (!email && fone8.length < 8 && !(b.falta_tier && b.tier_regra)) continue;\n  out.push({ json: { ...b, email, fone8 } });\n}\nreturn out;\n"
+        "jsCode": "\n// Casa a resposta do Pipedrive PELO ID DA PESSOA (nao por indice) e extrai email + whatsapp normalizado.\n// Antes o pareamento era por posicao: bastava o no Pessoa devolver um numero diferente de itens\n// (id vazio -> o Pipedrive responde a LISTA de persons, pessoa apagada, erro) para o deal\n// herdar o telefone de outro lead. Era a origem dos telefones estranhos do antigo campo fone8.\n\nconst soDigitos = v => String(v === null || v === undefined ? '' : v).replace(/\\D/g, '');\n\n// Padrao da tabela leads do Supabase: 55 + DDD + 9 + 8 digitos, tudo junto (ex.: 5521976972751)\nfunction normalizaWhats(raw) {\n  let d = soDigitos(raw);\n  if (!d) return '';\n  if (d.startsWith('00')) d = d.slice(2);                     // 0055...\n  if (d.length >= 12 && d.startsWith('55')) d = d.slice(2);    // tira o DDI (nao mexe no DDD 55)\n  d = d.replace(/^0+/, '');                                   // 0 de operadora / tronco\n  if (d.length === 10) {                                      // DDD + 8: celular antigo ganha o 9\n    const ddd = d.slice(0, 2), n = d.slice(2);\n    if (/^[6-9]/.test(n)) d = ddd + '9' + n;\n  }\n  if (d.length !== 11) return '';                             // fixo ou numero torto nao serve de chave\n  return '55' + d;\n}\n\n// so os deals que realmente foram para o no Pessoa\nconst base = $('Filtra sem origem').all().filter(x => x.json.tem_pessoa);\n\nconst porId = {};\nfor (const it of items) {\n  const r = (it.json && it.json.data) ? it.json.data : (it.json || {});\n  if (!r || !r.id) continue;                                  // item de erro do no Pessoa\n  const emails = r.emails || r.email || [];\n  const em = ((emails.find && emails.find(e => e && e.primary)) || emails[0] || {}).value || '';\n  const phones = r.phones || r.phone || [];\n  const ph = ((phones.find && phones.find(p => p && p.primary)) || phones[0] || {}).value || '';\n  porId[String(r.id)] = {\n    email: (em && String(em).includes('@')) ? String(em).trim().toLowerCase() : '',\n    fone_pd: String(ph || '')\n  };\n}\n\nconst out = [];\nfor (const b of base) {\n  const p = porId[String(b.json.person_id)] || { email: '', fone_pd: '' };\n  const whats = normalizaWhats(p.fone_pd);\n  const j = Object.assign({}, b.json, { email: p.email, fone_pd: p.fone_pd, whats });\n  if (!j.email && !j.whats && !(j.falta_tier && j.tier_regra)) continue;\n  out.push({ json: j });\n}\nreturn out;\n"
       },
       "id": "367bf1d1-5553-46f1-8398-ec7d8f8d6bbe",
       "name": "Extrai email",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        608,
-        0
+        816,
+        -112
       ]
     },
     {
       "parameters": {
-        "url": "=https://api.rd.services/platform/contacts/email:{{ encodeURIComponent($('Extrai email').item.json.email || 'sem_email@nao.existe') }}",
+        "url": "=https://api.rd.services/platform/contacts/email:{{ encodeURIComponent($json.email || 'sem_email@nao.existe') }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -153,21 +203,56 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1040,
-        0
-      ]
+        1024,
+        -112
+      ],
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
-        "jsCode": "\n// UTM via RD (como antes) + tier: regra > RD cf_tier_atual; o que sobrar vai pro desvio do Supabase\nconst SRC_OK = ['direto','google','outros','meta','cardapioweb_com','bing','chatgpt','seo','portal_cardapioweb','brave','yahoo','claude','wpp','youtube','ig','tiktok','rd_station_link_na_bio','fb','an'];\nconst MED_OK = ['direct','organic','paid','paidsearch','referral','social'];\nconst DERIVA = {direto:'direct', bing:'organic', brave:'organic', yahoo:'organic', seo:'organic',\n  meta:'paid', chatgpt:'referral', claude:'referral', cardapioweb_com:'referral', portal_cardapioweb:'referral'};\nconst MAPA = {'direto':'direto','meta':'meta','facebook':'meta','fb':'fb','ig':'ig','instagram':'ig',\n  'www.bing.com':'bing','bing':'bing','search.brave.com':'brave','br.search.yahoo.com':'yahoo',\n  'chatgpt.com':'chatgpt','claude.ai':'claude','cardapioweb.com':'cardapioweb_com',\n  'www.cardapioweb.com':'cardapioweb_com','lp.cardapioweb.com':'cardapioweb_com',\n  'portal.cardapioweb.com':'portal_cardapioweb','rd_station_link_na_bio':'rd_station_link_na_bio',\n  'wpp':'wpp','whatsapp':'wpp','www.youtube.com':'youtube','youtube':'youtube','tiktok':'tiktok','seo':'seo'};\nconst TIER_MAP = {'1':'Tier 1','2':'Tier 2','3.1':'Tier 3.1','3.2':'Tier 3.2','4':'Tier 4','5':'Tier 5'};\nconst base = $('Extrai email').all();\nconst out = [];\nfor (let i = 0; i < items.length; i++) {\n  const b = base[i].json;\n  const r = items[i].json; const status = r.statusCode || (r.body ? 200 : 0);\n  const c = (status === 200) ? (r.body || r) : {};\n  let fonte = '', med = '';\n  if (b.falta_utm && status === 200) {\n    const raw = String(c.cf_utm_source || '').toLowerCase().trim();\n    const gclid = c.cf_gclid || ''; const fbclid = c.cf_fbclid || '';\n    const tags = (c.tags || []).map(t => String(t).toLowerCase());\n    if (raw) {\n      if (/^[0-9]{12,}$/.test(raw)) fonte = 'meta';\n      else if (raw.includes('google')) fonte = 'google';\n      else fonte = MAPA[raw] || 'outros';\n    } else if (fbclid) fonte = 'meta';\n    else if (gclid) fonte = 'google';\n    else if (tags.some(t => t.includes('origem seo'))) fonte = 'seo';\n    else if (tags.some(t => t.includes('origem google'))) fonte = 'google';\n    if (fonte && !SRC_OK.includes(fonte)) fonte = '';\n    if (fonte) {\n      med = String(c.cf_utm_medium || '').trim();\n      if (!(med && MED_OK.includes(med))) { med = DERIVA[fonte] || ''; if (!med && fonte === 'google' && (c.cf_gclid||'')) med = 'paidsearch'; }\n    }\n  }\n  let tier = '';\n  if (b.falta_tier) {\n    tier = b.tier_regra || '';\n    if (!tier && status === 200) {\n      const rt = String(c.cf_tier_atual || '').trim();\n      if (TIER_MAP[rt]) tier = TIER_MAP[rt];\n    }\n  }\n  const precisa_supa = !!(b.falta_tier && !tier && b.fone8 && b.fone8.length === 8);\n  const escreve_utm = !!(b.falta_utm && fonte);\n  if (!escreve_utm && !tier && !precisa_supa) continue;\n  out.push({ json: { deal_id: b.deal_id, escreve_utm, fonte, med,\n    camp: escreve_utm ? String(c.cf_utm_campaign || '').slice(0, 250) : '',\n    cont: escreve_utm ? String(c.cf_utm_content || '').slice(0, 250) : '',\n    gclid: escreve_utm ? String(c.cf_gclid || '').slice(0, 250) : '',\n    fbclid: escreve_utm ? String(c.cf_fbclid || '').slice(0, 250) : '',\n    tier, precisa_supa, fone8: b.fone8 } });\n}\nreturn out;\n"
+        "jsCode": "\n// UTM via RD + tier em camadas: regra de negocio > cf_tier_atual da RD > (desvio) tabela leads do Supabase.\n// A resposta da RD e conferida pelo email antes de ser usada - se vier de outro contato, e descartada.\nconst SRC_OK = ['direto','google','outros','meta','cardapioweb_com','bing','chatgpt','seo','portal_cardapioweb','brave','yahoo','claude','wpp','youtube','ig','tiktok','rd_station_link_na_bio','fb','an'];\nconst MED_OK = ['direct','organic','paid','paidsearch','referral','social'];\nconst DERIVA = {direto:'direct', bing:'organic', brave:'organic', yahoo:'organic', seo:'organic',\n  meta:'paid', chatgpt:'referral', claude:'referral', cardapioweb_com:'referral', portal_cardapioweb:'referral'};\nconst MAPA = {'direto':'direto','meta':'meta','facebook':'meta','fb':'fb','ig':'ig','instagram':'ig',\n  'www.bing.com':'bing','bing':'bing','search.brave.com':'brave','br.search.yahoo.com':'yahoo',\n  'chatgpt.com':'chatgpt','claude.ai':'claude','cardapioweb.com':'cardapioweb_com',\n  'www.cardapioweb.com':'cardapioweb_com','lp.cardapioweb.com':'cardapioweb_com',\n  'portal.cardapioweb.com':'portal_cardapioweb','rd_station_link_na_bio':'rd_station_link_na_bio',\n  'wpp':'wpp','whatsapp':'wpp','www.youtube.com':'youtube','youtube':'youtube','tiktok':'tiktok','seo':'seo'};\nconst TIER_MAP = {'1':'Tier 1','2':'Tier 2','3.1':'Tier 3.1','3.2':'Tier 3.2','4':'Tier 4','5':'Tier 5'};\n\nconst base = $('Extrai email').all();\nconst out = [];\n\nfor (let i = 0; i < items.length; i++) {\n  const b = (base[i] || {}).json;\n  if (!b) continue;\n\n  const r = items[i].json || {};\n  const status = r.statusCode || (r.body ? 200 : 0);\n  const c = (status === 200) ? (r.body || r) : {};\n  const emailRD = String(c.email || '').trim().toLowerCase();\n  // so aceita o contato da RD se ele for mesmo do email que perguntamos\n  const rd_ok = status === 200 && !!b.email && (!emailRD || emailRD === b.email);\n\n  let fonte = '', med = '';\n  if (b.falta_utm && rd_ok) {\n    const raw = String(c.cf_utm_source || '').toLowerCase().trim();\n    const gclid = c.cf_gclid || ''; const fbclid = c.cf_fbclid || '';\n    const tags = (c.tags || []).map(t => String(t).toLowerCase());\n    if (raw) {\n      if (/^[0-9]{12,}$/.test(raw)) fonte = 'meta';\n      else if (raw.includes('google')) fonte = 'google';\n      else fonte = MAPA[raw] || 'outros';\n    } else if (fbclid) fonte = 'meta';\n    else if (gclid) fonte = 'google';\n    else if (tags.some(t => t.includes('origem seo'))) fonte = 'seo';\n    else if (tags.some(t => t.includes('origem google'))) fonte = 'google';\n    if (fonte && !SRC_OK.includes(fonte)) fonte = '';\n    if (fonte) {\n      med = String(c.cf_utm_medium || '').trim();\n      if (!(med && MED_OK.includes(med))) { med = DERIVA[fonte] || ''; if (!med && fonte === 'google' && (c.cf_gclid || '')) med = 'paidsearch'; }\n    }\n  }\n\n  let tier = '';\n  if (b.falta_tier) {\n    tier = b.tier_regra || '';\n    if (!tier && rd_ok) {\n      const rt = String(c.cf_tier_atual || '').trim().replace(/^tier\\s*/i, '');\n      if (TIER_MAP[rt]) tier = TIER_MAP[rt];\n    }\n  }\n\n  const precisa_supa = !!(b.falta_tier && !tier && b.whats);\n  const escreve_utm  = !!(b.falta_utm && fonte);\n  const precisa_tier = !!(tier || precisa_supa);\n  if (!escreve_utm && !precisa_tier) continue;\n\n  out.push({ json: {\n    deal_id: b.deal_id,\n    pipeline_id: b.pipeline_id,\n    escreve_utm, fonte, med,\n    camp:   escreve_utm ? String(c.cf_utm_campaign || '').slice(0, 250) : '',\n    cont:   escreve_utm ? String(c.cf_utm_content  || '').slice(0, 250) : '',\n    gclid:  escreve_utm ? String(c.cf_gclid  || '').slice(0, 250) : '',\n    fbclid: escreve_utm ? String(c.cf_fbclid || '').slice(0, 250) : '',\n    tier, precisa_tier, precisa_supa,\n    whats: b.whats, email: b.email, fone_pd: b.fone_pd\n  } });\n}\nreturn out;\n"
       },
       "id": "5edf358b-fc4e-4acd-8f26-9e7d404c03de",
       "name": "Deriva origem",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1248,
-        0
+        1232,
+        -112
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e46aad92-ba1f-47b8-8d28-6cdcdc9a3c0e",
+              "leftValue": "={{ $json.escreve_utm }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9e95e60a-65fa-4d2f-96fa-4401a07b1d90",
+      "name": "Escreve UTM?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1456,
+        -240
       ]
     },
     {
@@ -214,8 +299,8 @@
       "type": "n8n-nodes-base.pipedrive",
       "typeVersion": 1,
       "position": [
-        1648,
-        -80
+        1680,
+        -240
       ],
       "credentials": {
         "pipedriveApi": {
@@ -236,8 +321,8 @@
           },
           "conditions": [
             {
-              "id": "e46aad92-ba1f-47b8-8d28-6cdcdc9a3c0e",
-              "leftValue": "={{ $json.escreve_utm }}",
+              "id": "c7a4d2b1-8e33-4f57-9b02-5a6d7e8f9012",
+              "leftValue": "={{ $json.precisa_tier }}",
               "rightValue": true,
               "operator": {
                 "type": "boolean",
@@ -250,69 +335,29 @@
         },
         "options": {}
       },
-      "id": "9e95e60a-65fa-4d2f-96fa-4401a07b1d90",
-      "name": "Escreve UTM?",
+      "id": "d3c8b6a7-2f14-4e59-8c7b-9a0d1e2f3a45",
+      "name": "Precisa tier?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1440,
-        0
+        1456,
+        48
       ]
     },
     {
       "parameters": {
-        "operation": "update",
-        "dealId": "={{ $json.deal_id }}",
-        "updateFields": {
-          "customProperties": {
-            "property": [
-              {
-                "name": "346353ade45adcb68850667587de1da11b3bdadd",
-                "value": "={{ $json.tier }}"
-              }
-            ]
-          }
-        }
+        "jsCode": "\n// Contexto minimo do ramo de tier. Le direto do proprio input, sem buscar item de outro no,\n// entao nao depende de pareamento e nao quebra quando um no anterior falha.\n// pode_tier = tem rotulo de tier E o deal e do FUNIL DE VENDAS. Sem os dois, nao escreve nada.\nconst FUNIL_VENDAS = 2;\nreturn items.map(it => {\n  const d = it.json || {};\n  const tier = d.tier || '';\n  return { json: {\n    deal_id: d.deal_id,\n    pipeline_id: Number(d.pipeline_id),\n    tier,\n    precisa_supa: !!d.precisa_supa,\n    whats: d.whats || '',\n    pode_tier: !!tier && Number(d.pipeline_id) === FUNIL_VENDAS\n  } };\n});\n"
       },
-      "id": "7ddf909f-ca31-4ee2-bfb2-c13e95b2f2a4",
-      "name": "Atualiza tier",
-      "type": "n8n-nodes-base.pipedrive",
-      "typeVersion": 1,
-      "position": [
-        2140,
-        40
-      ],
-      "credentials": {
-        "pipedriveApi": {
-          "id": "H9PcNTD5kU5NLzRH",
-          "name": "Pipedrive - Comercial"
-        }
-      },
-      "onError": "continueRegularOutput"
-    },
-    {
       "id": "86a8c308-06eb-4ab8-bf49-91af749064e5",
       "name": "Contexto tier",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1500,
-        0
-      ],
-      "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "const d = $('Deriva origem').item.json;\nreturn { json: { deal_id: d.deal_id, tier: d.tier, precisa_supa: d.precisa_supa, fone8: d.fone8 } };"
-      }
+        1664,
+        48
+      ]
     },
     {
-      "id": "56658ba2-930a-4dfc-84e3-72513da6cb16",
-      "name": "Tier via base?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        1660,
-        0
-      ],
       "parameters": {
         "conditions": {
           "options": {
@@ -336,17 +381,17 @@
           "combinator": "and"
         },
         "options": {}
-      }
+      },
+      "id": "56658ba2-930a-4dfc-84e3-72513da6cb16",
+      "name": "Tier via base?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1872,
+        48
+      ]
     },
     {
-      "id": "42fc4a4a-97c3-483d-95d6-32f8f2996336",
-      "name": "Supabase lead",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        1820,
-        -100
-      ],
       "parameters": {
         "operation": "get",
         "tableId": "leads",
@@ -354,12 +399,19 @@
           "conditions": [
             {
               "keyName": "whatsapp",
-              "condition": "like",
-              "keyValue": "={{ '*' + $json.fone8 }}"
+              "keyValue": "={{ $json.whats }}"
             }
           ]
         }
       },
+      "id": "42fc4a4a-97c3-483d-95d6-32f8f2996336",
+      "name": "Supabase lead",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        -64
+      ],
       "credentials": {
         "supabaseApi": {
           "id": "kRKH2lDi70K6YQIf",
@@ -369,18 +421,97 @@
       "onError": "continueRegularOutput"
     },
     {
+      "parameters": {
+        "jsCode": "\n// Casa a linha do Supabase pelo WHATSAPP NORMALIZADO, nao por indice/pareamento:\n// se o no devolver zero, uma ou varias linhas, cada deal so pega a linha que e dele.\n// A tabela leads mistura '4' e 'Tier 4' (dado migrado x novo) - os dois viram 'Tier 4'.\nconst FUNIL_VENDAS = 2;\nconst TIER_MAP = {'1':'Tier 1','2':'Tier 2','3.1':'Tier 3.1','3.2':'Tier 3.2','4':'Tier 4','5':'Tier 5'};\nconst rotulo = v => {\n  const s = String(v === null || v === undefined ? '' : v).trim().replace(/^tier\\s*/i, '');\n  return TIER_MAP[s] || '';\n};\n\nconst porWhats = {};\nfor (const it of items) {\n  const r = it.json || {};\n  const w = String(r.whatsapp || '').replace(/\\D/g, '');\n  const t = rotulo(r.tier);\n  if (!w || !t) continue;\n  if (!porWhats[w]) porWhats[w] = t;\n}\n\nconst out = [];\nfor (const c of $('Contexto tier').all()) {\n  const d = c.json;\n  if (!d.precisa_supa || !d.whats) continue;\n  const t = porWhats[d.whats] || '';\n  if (!t) continue;\n  out.push({ json: {\n    deal_id: d.deal_id,\n    pipeline_id: Number(d.pipeline_id),\n    tier: t,\n    pode_tier: Number(d.pipeline_id) === FUNIL_VENDAS\n  } });\n}\nreturn out;\n"
+      },
       "id": "32438282-1987-467c-bfc0-3740bcf31cb6",
       "name": "Tier da base",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1980,
-        -100
-      ],
+        2288,
+        -64
+      ]
+    },
+    {
       "parameters": {
-        "mode": "runOnceForEachItem",
-        "jsCode": "const TIER_MAP = {'1':'Tier 1','2':'Tier 2','3.1':'Tier 3.1','3.2':'Tier 3.2','4':'Tier 4','5':'Tier 5'};\nconst t = TIER_MAP[String($json.tier || '').trim()] || '';\nreturn { json: { deal_id: $('Contexto tier').item.json.deal_id, tier: t } };"
-      }
+        "jsCode": "\n// Deal sem pessoa nao tem email nem telefone: nao da para consultar RD nem Supabase.\n// Ele so chega ate aqui se ja tiver tier resolvido por REGRA - entao vai direto para a escrita.\nconst FUNIL_VENDAS = 2;\nreturn items.map(it => {\n  const d = it.json || {};\n  const tier = d.tier_regra || '';\n  return { json: {\n    deal_id: d.deal_id,\n    pipeline_id: Number(d.pipeline_id),\n    tier,\n    pode_tier: !!tier && Number(d.pipeline_id) === FUNIL_VENDAS\n  } };\n}).filter(x => x.json.pode_tier);\n"
+      },
+      "id": "9b7e4c22-5a1d-4c88-b3f6-0e2a7d9c4b10",
+      "name": "So tier (sem pessoa)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        608,
+        144
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f0e1d2c3-b4a5-4968-8778-6a5b4c3d2e1f",
+              "leftValue": "={{ $json.pode_tier }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4a5b6c7d-8e9f-40a1-b2c3-d4e5f6a7b8c9",
+      "name": "Tem tier?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2496,
+        144
+      ],
+      "notesInFlow": true,
+      "notes": "Trava final: so passa quem tem rotulo de tier E esta no funil de vendas (2). Impede gravar tier vazio."
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dealId": "={{ $json.deal_id }}",
+        "updateFields": {
+          "customProperties": {
+            "property": [
+              {
+                "name": "346353ade45adcb68850667587de1da11b3bdadd",
+                "value": "={{ $json.tier }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "7ddf909f-ca31-4ee2-bfb2-c13e95b2f2a4",
+      "name": "Atualiza tier",
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        128
+      ],
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      },
+      "onError": "continueRegularOutput"
     }
   ],
   "connections": {
@@ -432,7 +563,25 @@
       "main": [
         [
           {
+            "node": "Tem pessoa?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem pessoa?": {
+      "main": [
+        [
+          {
             "node": "Pessoa",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "So tier (sem pessoa)",
             "type": "main",
             "index": 0
           }
@@ -479,6 +628,11 @@
             "node": "Escreve UTM?",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Precisa tier?",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -492,16 +646,10 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Contexto tier",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
-    "Atualiza UTM": {
+    "Precisa tier?": {
       "main": [
         [
           {
@@ -509,7 +657,8 @@
             "type": "main",
             "index": 0
           }
-        ]
+        ],
+        []
       ]
     },
     "Contexto tier": {
@@ -534,7 +683,7 @@
         ],
         [
           {
-            "node": "Atualiza tier",
+            "node": "Tem tier?",
             "type": "main",
             "index": 0
           }
@@ -556,11 +705,34 @@
       "main": [
         [
           {
-            "node": "Atualiza tier",
+            "node": "Tem tier?",
             "type": "main",
             "index": 0
           }
         ]
+      ]
+    },
+    "So tier (sem pessoa)": {
+      "main": [
+        [
+          {
+            "node": "Tem tier?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tem tier?": {
+      "main": [
+        [
+          {
+            "node": "Atualiza tier",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
       ]
     }
   },

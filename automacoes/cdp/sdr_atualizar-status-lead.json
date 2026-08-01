@@ -120,7 +120,7 @@
     },
     {
       "parameters": {
-        "url": "https://api.pipedrive.com/v1/users?api_token=b3f0e4930cd82dd921597c19d422a495833201a4",
+        "url": "https://api.pipedrive.com/v1/users",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",

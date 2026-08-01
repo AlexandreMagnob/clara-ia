@@ -1,0 +1,4011 @@
+{
+  "updatedAt": "2026-07-28T21:08:34.569Z",
+  "createdAt": "2025-06-18T13:35:19.722Z",
+  "id": "9XuS5237ROvgJBc5",
+  "name": "[PAR][MAIN][ADICAO][LEADS] Envia os leads da página de adição manual de leads para a Meetime",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f1624383-a840-4d6f-a820-2c6bfa3ea2ee",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -2128,
+        -464
+      ],
+      "id": "273b5b1a-3826-43b4-9c06-cbb18d5b9470",
+      "name": "Webhook",
+      "webhookId": "f1624383-a840-4d6f-a820-2c6bfa3ea2ee"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07E84K5EJW",
+          "mode": "list",
+          "cachedResultName": "indicação-parcerias"
+        },
+        "text": "=*LEAD ENVIADO NO FORMS*\n\n*Nome:* {{ $('Webhook').item.json.body.Nome }}\n*Telefone:* {{ $('Webhook').item.json.body.Telefone }}\n*Parceiro:* {{ $('Webhook').item.json.body.Parceiro }}\n*Cupom:* {{ $('Webhook').item.json.body.Cupom }}\n*Agente de Parcerias:* {{ $('Webhook').item.json.body['Agente de Parcerias'] }}\n*SDR:* {{ $('Menção ao SDR no Slack').item.json.sdr }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        2928,
+        -608
+      ],
+      "id": "90473f04-793e-47b0-bb40-b00048e2c017",
+      "name": "Slack",
+      "webhookId": "b5fce425-e6a8-483e-9d76-d433aca831ac",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const email = $input.first().json.body.Email || \"\";\nconst namePart = email.split('@')[0];\n\n// Verifica se tem muitos números\nconst hasManyNumbers = (namePart.match(/\\d/g) || []).length > 5;\n\n// Verifica se é muito curto ou muito longo\nconst isTooShortOrLong = namePart.length < 5 || namePart.length > 20;\n\n// Verifica se é só letras e números\nconst isAlphanumericOnly = /^[a-z0-9]+$/i.test(namePart);\n\n// Se todas essas condições forem verdadeiras, parece aleatório\nconst isProbablyRandom = hasManyNumbers && isAlphanumericOnly && isTooShortOrLong;\n\nreturn [{ json: { isRandomEmail: isProbablyRandom } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        912,
+        -688
+      ],
+      "id": "b6d4a41a-b002-4221-b6d7-1c97152e5281",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9a79e0b3-4eb4-4256-9b02-dd5955d7615e",
+              "leftValue": "={{ $json.isRandomEmail }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1136,
+        -688
+      ],
+      "id": "cdd572fa-97b9-4a28-b37a-c11fee4f05ea",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e9b6eb18-e601-428b-a8b5-01e9069d0f0f",
+              "leftValue": "={{ $('Webhook').item.json.body.Email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        688,
+        -608
+      ],
+      "id": "c6dbaeed-9599-4d21-bcf3-0b9aec0f864c",
+      "name": "Verifica se tem email"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.meetime.com.br/v2/prospections/cadence/45150/lead?token=<MEETIME_TOKEN>",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"firstName\": \"{{ $('Webhook').item.json.body['Nome'] }}\",\n  \"name\": \"{{ $('Webhook').item.json.body['Nome'] }}\",\n  \"email\": \"{{ $('Webhook').item.json.body['Email'] }}\",\n  \"annotations\": \"Parceiro: {{ $('Webhook').item.json.body['Parceiro'] }}\",\n  \"startImmediately\": true,\n  \"phones\": [\n    {\n      \"label\": \"Contato\",\n      \"phone\": \"{{ $('Webhook').item.json.body['Telefone'] }}\"\n    }\n  ],\n  \"customFields\": {\n    \"onParceiro\": \"{{ $('Webhook').item.json.body.Parceiro }}\",\n    \"trackCupom\": \"{{ $('Webhook').item.json.body['Cupom'] }}\",\n    \"setupCanalDeOrigem\": \"{{ $('Webhook').item.json.body['Origem'] }} ({{ $('Webhook').item.json.body['form_name'] }})\",\n    \"setupTipoDeConexao\": \"{{ $('Webhook').item.json.body['Tipo de conexão'] }}\",\n    \"qualComoConheceuACardapioWebInterno\": \"{{ $('Webhook').item.json.body['Como conheceu a Cardápio Web?'] === 'Indicação do Ag. de Parcerias' ? 'b40c2fef-250e-4f3b-9b26-82478bb1dbf8' : '' }}\",\n    \"setupAgenteDeParcerias\": \"{{ \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Beatriz Magalhães' ? 'eadaa0b3-0d97-416b-9e25-cf46ac51f288' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Layza Batista' ? '82590d3b-f437-4f50-87e2-a337db8b7ef5' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Marilia' ?     '7ccb87c5-f171-4939-87a7-cb73056b1772' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Wanessa Gomes' ?     '11ee168b-a913-425c-a38f-06c6ad908de4' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Eric Sousa' ?     '663689f8-9b09-42f6-9c1b-fe7a15c3f067' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Letícia Rocha' ? '4e215ae5-2587-4818-b7a2-e8ed91c0c06a' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Joana Anjos' ? '12721493-af0b-4ce2-ad94-1069d0eb3883' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Michael Douglas' ? 'c85f4aaa-b1b4-4203-99af-80b5c56cbd28' : \n      '' \n    }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2016,
+        -640
+      ],
+      "id": "ed13e9ce-3e7f-4402-b8f6-e8d67254eb33",
+      "name": "Cria na Meetime sem email"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "n4sEAnrMqvG70nHp",
+          "mode": "list",
+          "cachedResultName": "rd_station_token",
+          "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/n4sEAnrMqvG70nHp"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "keyValue": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        -752
+      ],
+      "id": "862a47e9-9bb8-41be-bcff-bed6df3831c4",
+      "name": "Get Refresh token"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.rd.services/platform/events?event_type=conversion",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "={\n  \"Authorization\": \"Bearer {{ $json.Access_token }}\",\n  \"Content-Type\": \"application/json\",\n  \"Accept\": \"application/json\"\n}\n",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"event_type\": \"CONVERSION\",\n  \"event_family\": \"CDP\",\n  \"payload\": {\n    \"conversion_identifier\": \"{{ $('Webhook').item.json.body.form_name }}\",\n    \"name\": \"{{ $('Webhook').item.json.body.Nome }}\",\n    \"email\": \"{{ $('Webhook').item.json.body.Email }}\",\n    \"personal_phone\": \"{{ $('Webhook').item.json.body.Telefone }}\",\n    \"cf_qual_parceiro\": \"{{ $('Webhook').item.json.body.Parceiro }}\",\n    \"cf_cupom\": \"{{ $('Webhook').item.json.body.Cupom }}\",\n    \"cf_origem\": \"{{ $('Webhook').item.json.body.Origem }}\"\n}\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1808,
+        -752
+      ],
+      "id": "cf064d97-ae73-4490-9dda-127f97b3d58c",
+      "name": "Cria conversão na RD1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "SXHexklEC3KniZ7l",
+          "mode": "list",
+          "cachedResultName": "[UTIL] Refresh token Rd Station"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1360,
+        -752
+      ],
+      "id": "9fefcc46-3b59-4da6-baa1-93432323a973",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "dxsALgo2EbgMYCEt",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/dxsALgo2EbgMYCEt",
+          "cachedResultName": "[PAR][CORE] Enviar leads de parcerias para o pipedrive"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        3376,
+        -704
+      ],
+      "id": "1835ef8a-1f84-4baf-95bc-f3ed79468ce0",
+      "name": "[PAR][CORE] Enviar leads de parcerias para o pipedrive"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4936cb2f-ff47-4f19-8455-acdc81916d29",
+              "name": "Nome",
+              "value": "={{ $('Webhook').item.json.body.Nome }}",
+              "type": "string"
+            },
+            {
+              "id": "0d0b3c76-2d42-4a56-926e-7075e578cb6c",
+              "name": "Telefone",
+              "value": "={{ $('Webhook').item.json.body.Telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "2f69cd93-a52d-4010-afdb-1deaafce47af",
+              "name": "Agente de Parcerias",
+              "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] }}",
+              "type": "string"
+            },
+            {
+              "id": "65205306-3416-424f-b8b7-40a0741945cb",
+              "name": "Parceiro",
+              "value": "={{ $('Webhook').item.json.body.Parceiro }}",
+              "type": "string"
+            },
+            {
+              "id": "6ea5270a-71f1-4e29-b886-359e60487323",
+              "name": "Cupom",
+              "value": "={{ $('Webhook').item.json.body.Cupom }}",
+              "type": "string"
+            },
+            {
+              "id": "3c03f3e6-f5b8-445a-8ed9-459da29f8951",
+              "name": "sdr",
+              "value": "={{ $('Cria na Meetime sem email').item.json.sdr.name }}",
+              "type": "string"
+            },
+            {
+              "id": "26896e81-8e03-47ef-90fe-356a0e0487ed",
+              "name": "slack_ts",
+              "value": "={{ $('Slack').item.json.message.ts }}",
+              "type": "string"
+            },
+            {
+              "id": "38e66a9b-1b3c-4c34-8826-03e517e490de",
+              "name": "Quantidade de indicações já fechadas",
+              "value": "={{ $('Webhook').item.json.body['Quantidade de indicações já fechadas'] || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3152,
+        -608
+      ],
+      "id": "36e07d3b-ec02-4571-bec7-24de30937da5",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8534328e-a0fc-4815-8ac3-ee29ec1a664e",
+              "leftValue": "={{ $('Webhook').item.json.body.Closer }}",
+              "rightValue": "Selecionar",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        -464
+      ],
+      "id": "e3a7a245-1c7c-4e39-aeec-e3c9d5419db3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "person",
+        "name": "={{ $('Webhook').item.json.body.Nome }}",
+        "additionalFields": {
+          "email": [
+            "={{ $('Webhook').item.json.body.Email }}"
+          ],
+          "phone": [
+            "={{ $('Webhook').item.json.body.Telefone }}"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        688,
+        -320
+      ],
+      "id": "3a7cc0d1-b45f-45af-9aeb-0bb80cf9de8d",
+      "name": "Create a person",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "UxPJ6fXvXPl6Nzuu",
+          "name": "Pipedrive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "title": "={{ $json.name }}",
+        "associateWith": "person",
+        "person_id": "={{ $json.id }}",
+        "additionalFields": {
+          "customProperties": {
+            "property": [
+              {
+                "name": "3af9af9f37c29c0b9a0aa908ee7d235af723fc39",
+                "value": "={{ $('Webhook').item.json.body['Tipo de conexão'] }}"
+              },
+              {
+                "name": "5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda",
+                "value": "={{ $('Webhook').item.json.body.Origem }}"
+              },
+              {
+                "name": "0a4479dceef7863b2d2b5309be444728692c0415",
+                "value": "={{ $('Webhook').item.json.body.Cupom }}"
+              },
+              {
+                "name": "d99e4d95cb8baef612eacfe88ae62f0f133becf9",
+                "value": "={{ $('Webhook').item.json.body['Como conheceu a Cardápio Web?'] }}"
+              },
+              {
+                "name": "b603f8b2476b87146d418bd7692ca4d2a41f71a1",
+                "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] }}"
+              },
+              {
+                "name": "6923fbb1124e878857122243e216138c84f6e930",
+                "value": "Sim"
+              },
+              {
+                "name": "99074bb20d864fdd73ad53f83304871e44e465fb",
+                "value": "={{ $('Webhook').item.json.body.Cupom }}"
+              },
+              {
+                "name": "5aa244c3b5f5a637c98334902223fa96ae525de0",
+                "value": "={{ $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '0' ? 1754 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '1' ? 1755 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '2' ? 1756 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '3' ? 1757 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '4' ? 1758 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '5' ? 1759 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === 'A partir de 6' ? 1760 : '' }}"
+              },
+              {
+                "name": "346353ade45adcb68850667587de1da11b3bdadd",
+                "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] ? 'Agentes' : 'Adição manual' }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        912,
+        -320
+      ],
+      "id": "daf52037-00f6-4449-9b19-c6b2e7d7890e",
+      "name": "Create a deal",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "H9PcNTD5kU5NLzRH",
+          "name": "Pipedrive - Comercial"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "title": "={{ $json.person_id.name }}",
+        "associateWith": "person",
+        "person_id": "={{ $json.person_id.value }}",
+        "additionalFields": {
+          "customProperties": {
+            "property": [
+              {
+                "name": "3af9af9f37c29c0b9a0aa908ee7d235af723fc39",
+                "value": "={{ $('Webhook').item.json.body['Tipo de conexão'] }}"
+              },
+              {
+                "name": "5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda",
+                "value": "={{ $('Webhook').item.json.body.Origem }}"
+              },
+              {
+                "name": "0a4479dceef7863b2d2b5309be444728692c0415",
+                "value": "={{ $('Webhook').item.json.body.Cupom }}"
+              },
+              {
+                "name": "d99e4d95cb8baef612eacfe88ae62f0f133becf9",
+                "value": "={{ $('Webhook').item.json.body['Como conheceu a Cardápio Web?'] }}"
+              },
+              {
+                "name": "b603f8b2476b87146d418bd7692ca4d2a41f71a1",
+                "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] }}"
+              },
+              {
+                "name": "99074bb20d864fdd73ad53f83304871e44e465fb",
+                "value": "={{ $('Webhook').item.json.body.Cupom }}"
+              },
+              {
+                "name": "6923fbb1124e878857122243e216138c84f6e930",
+                "value": "Sim"
+              },
+              {
+                "name": "5aa244c3b5f5a637c98334902223fa96ae525de0",
+                "value": "={{ $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '0' ? 1754 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '1' ? 1755 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '2' ? 1756 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '3' ? 1757 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '4' ? 1758 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '5' ? 1759 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === 'A partir de 6' ? 1760 : '' }}"
+              },
+              {
+                "name": "346353ade45adcb68850667587de1da11b3bdadd",
+                "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] ? 'Agentes' : 'Adição manual' }}"
+              }
+            ]
+          },
+          "stage_id": 212
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        1136,
+        -320
+      ],
+      "id": "8acf867b-b8f9-46e4-9217-aac9aa5b8ece",
+      "name": "Create a deal1",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "UxPJ6fXvXPl6Nzuu",
+          "name": "Pipedrive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.pipedrive.com/v1/users?api_token=<MEETIME_TOKEN>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1360,
+        -320
+      ],
+      "id": "5615bd92-f0c2-4b84-a97d-d3dab77f744d",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "const users = $input.first().json.data; // retorno do HTTP Request\nconst nomeFormulario = $('Webhook').first().json.body['Closer'] || '';\n\nconst norm = s => (s || '')\n  .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n  .toLowerCase().trim();\n\nconst alvo = norm(nomeFormulario);\nconst user = users.find(u => norm(u.name) === alvo);\n\nif (!user) {\n  throw new Error(`Closer não encontrado por nome: ${nomeFormulario}`);\n}\n\nreturn [{ json: { owner_id: user.id, closer_name: user.name } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1584,
+        -320
+      ],
+      "id": "e6166b1b-2552-47a1-94e6-fc42e81a7621",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dealId": "={{ $('Create a deal').item.json.id }}",
+        "updateFields": {
+          "user_id": "={{ $json.owner_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        1808,
+        -320
+      ],
+      "id": "e600c748-3436-42ad-9019-bf19b5566322",
+      "name": "Update a deal",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "UxPJ6fXvXPl6Nzuu",
+          "name": "Pipedrive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const users = $('HTTP Request').first().json.data; // retorno do HTTP Request\nconst nomeFormulario = $('Webhook').first().json.body['Agente de Parcerias'] || '';\n\nconst norm = s => (s || '')\n  .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n  .toLowerCase().trim();\n\nconst alvo = norm(nomeFormulario);\nconst user = users.find(u => norm(u.name) === alvo);\n\nif (!user) {\n  throw new Error(`Closer não encontrado por nome: ${nomeFormulario}`);\n}\n\nreturn [{ json: { owner_id: user.id, closer_name: user.name } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2032,
+        -320
+      ],
+      "id": "6420e9de-7ede-4612-8c78-5f6b82c77ed5",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dealId": "={{ $('Create a deal1').item.json.id }}",
+        "updateFields": {
+          "user_id": "={{ $('Code2').item.json.owner_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.pipedrive",
+      "typeVersion": 1,
+      "position": [
+        2256,
+        -320
+      ],
+      "id": "7810a047-8274-45e8-b133-f0d7307da013",
+      "name": "Update a deal1",
+      "credentials": {
+        "pipedriveApi": {
+          "id": "UxPJ6fXvXPl6Nzuu",
+          "name": "Pipedrive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C09BK6X20LV",
+          "mode": "list",
+          "cachedResultName": "indicação-parcerias-closers"
+        },
+        "text": "=*LEAD ENVIADO NO FORMS*\n\n*Nome:* {{ $('Webhook').item.json.body.Nome }}\n*Email:* {{ $('Webhook').item.json.body.Email }}\n*Telefone:* {{ $('Webhook').item.json.body.Telefone }}\n*Parceiro:* {{ $('Webhook').item.json.body.Parceiro }}\n*Cupom:* {{ $('Webhook').item.json.body.Cupom }}\n*Agente de Parcerias:* {{ $('Webhook').item.json.body['Agente de Parcerias'] }}\n*Closer:* <@{{ $('Busca o usuário do Closer no Slack1').item.json.user.id || $('Webhook').item.json.body.Closer }}>",
+        "otherOptions": {
+          "includeLinkToWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        2704,
+        -320
+      ],
+      "id": "2e76a9bd-f144-4336-ad00-1e33fd75f1ae",
+      "name": "Send a message",
+      "webhookId": "b5fce425-e6a8-483e-9d76-d433aca831ac",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {
+          "includeBinaries": "={{$('Cria na Meetime sem email').item.json.sdr.name.toLowerCase()}}"
+        }
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        -608
+      ],
+      "id": "8c6b5437-3c05-4a9d-91e6-b92aa2fde2f5",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "resource": "user",
+        "operation": "getAll",
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        2256,
+        -608
+      ],
+      "id": "eac0bcc6-2bc3-4804-8b49-be78dea8ad30",
+      "name": "Usuários do slack",
+      "webhookId": "491b4176-17f3-42af-a3f4-6a77bc7a2ddb",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d4718fcb-7d17-4b26-9c3b-854821ae7361",
+              "name": "sdr",
+              "value": "={{\nnome_sdr = $('Cria na Meetime sem email').item.json.sdr.name.toLowerCase(),\n\nid_sdr_slack = $('Aggregate').item.json.data.find(item =>\n  !item.deleted\n  &&\n  (\n    item.profile.display_name?.toLowerCase() == nome_sdr\n    ||\n    item.profile.real_name?.toLowerCase() == nome_sdr\n    ||\n    (item.profile.real_name?.length > 5 && item.profile.real_name?.toLowerCase().includes(nome_sdr))\n    ||\n    (item.profile.real_name?.length > 5 && nome_sdr.includes(item.profile.real_name?.toLowerCase()))\n  )\n)?.id,\n\nid_sdr_slack ? `<@${id_sdr_slack}>` : nome_sdr\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2704,
+        -608
+      ],
+      "id": "4a44f15c-3447-414b-9a58-74f6f0cc6630",
+      "name": "Menção ao SDR no Slack"
+    },
+    {
+      "parameters": {
+        "url": "https://slack.com/api/users.lookupByEmail",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $('Update a deal').item.json.user_id.email }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer SLACK_TOKEN_PLACEHOLDER"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2480,
+        -320
+      ],
+      "id": "fb92e13e-eb0e-4087-a3d0-9c2f8f82eec6",
+      "name": "Busca o usuário do Closer no Slack1"
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C09BK6X20LV",
+          "mode": "list",
+          "cachedResultName": "indicação-parcerias-closers"
+        },
+        "text": "=Au au 🐶\nO lead {{ $('Create a deal1').item.json.title }} foi enviado para o Pipedrive.\nVerifique o cliente e finalize as configurações: https://cardapioweb.pipedrive.com/deal/{{ $('Create a deal1').item.json.id }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "thread_ts": {
+            "replyValues": {
+              "thread_ts": "={{ $('Send a message').item.json.message_timestamp }}"
+            }
+          }
+        }
+      },
+      "id": "e47780cb-1fd0-4838-838f-69c023763037",
+      "name": "Envia mensagem informando que o lead foi criado no pipedrive",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        2928,
+        -320
+      ],
+      "webhookId": "ac58343d-786d-4176-9cfb-f91e440b7b1e",
+      "credentials": {
+        "slackApi": {
+          "id": "SsQksTzv99K5SqDV",
+          "name": "Slack Doguinho Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1EyCf8dkvD8jLzvRTQ7NwiQ4Mo6TWE6ApXuWjHxtZpRg",
+          "mode": "list",
+          "cachedResultName": "[SDR] Feedback parcerias",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EyCf8dkvD8jLzvRTQ7NwiQ4Mo6TWE6ApXuWjHxtZpRg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Mês atual",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "SDR": "=",
+            "Agente": "={{ $('Edit Fields').item.json['Agente de Parcerias'] }}",
+            "Nome do lead": "={{ $('Edit Fields').item.json.Nome }}",
+            "Telefone": "={{ $('Edit Fields').item.json.Telefone }}",
+            "Data de criação": "={{ $now.format('dd/MM/yyyy') }}",
+            "Parceiro": "={{ $('Edit Fields').item.json.Parceiro }}",
+            "Track CUPOM": "={{ $('Edit Fields').item.json.Cupom }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "SDR",
+              "displayName": "SDR",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Agente",
+              "displayName": "Agente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome do lead",
+              "displayName": "Nome do lead",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data de criação",
+              "displayName": "Data de criação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Motivo da perda",
+              "displayName": "Motivo da perda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Parceiro",
+              "displayName": "Parceiro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Track CUPOM",
+              "displayName": "Track CUPOM",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "01/01/2026",
+              "displayName": "01/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "02/01/2026",
+              "displayName": "02/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "03/01/2026",
+              "displayName": "03/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "04/01/2026",
+              "displayName": "04/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "05/06/2026",
+              "displayName": "05/06/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "06/01/2026",
+              "displayName": "06/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "07/01/2026",
+              "displayName": "07/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "08/01/2026",
+              "displayName": "08/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "09/01/2026",
+              "displayName": "09/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "10/01/2026",
+              "displayName": "10/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "11/01/2026",
+              "displayName": "11/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "12/01/2026",
+              "displayName": "12/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "13/01/2026",
+              "displayName": "13/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "14/01/2026",
+              "displayName": "14/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "15/01/2026",
+              "displayName": "15/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "16/01/2026",
+              "displayName": "16/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "17/01/2026",
+              "displayName": "17/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "18/01/2026",
+              "displayName": "18/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "19/01/2026",
+              "displayName": "19/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "20/01/2026",
+              "displayName": "20/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "21/01/2026",
+              "displayName": "21/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "22/01/2026",
+              "displayName": "22/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "23/01/2026",
+              "displayName": "23/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "24/01/2026",
+              "displayName": "24/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "25/01/2026",
+              "displayName": "25/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "26/01/2026",
+              "displayName": "26/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "27/01/2026",
+              "displayName": "27/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "28/01/2026",
+              "displayName": "28/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "29/01/2026",
+              "displayName": "29/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "30/01/2026",
+              "displayName": "30/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "31/01/2026",
+              "displayName": "31/01/2026",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Feedback SDR (extra)",
+              "displayName": "Feedback SDR (extra)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Feedback da Agente",
+              "displayName": "Feedback da Agente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED",
+          "locationDefine": {
+            "values": {
+              "headerRow": 5
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3600,
+        -480
+      ],
+      "id": "dfb9f36b-f634-4536-805f-b4b57218a6d7",
+      "name": "Adiciona na planilha [SDR] Feedback parcerias",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Sf357rOfdJLgmQHd",
+          "name": "Operações - Google Sheets (geral)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Função para normalizar nome (lowercase + remover acentos + trim)\nfunction normalizeName(name) {\n  return name\n    .toLowerCase()\n    .normalize(\"NFD\")\n    .replace(/[\\u0300-\\u036f]/g, \"\")\n    .trim();\n}\n\n// Nome do SDR vindo da Meetime\nconst sdrNameOriginal = $input.first().json.sdr.name || '';\nconst sdrName = normalizeName(sdrNameOriginal);\n\n// Mapa: Nome do SDR (Meetime) → ID do usuário (Kommo)\nconst kommoUsersMap = {\n  // Usuários DESATIVADOS na Kommo removidos do mapa (caem no default = Glauton):\n  // ana clara 12615807, vanessa alencar 12615819, beatriz magalhaes 12718719,\n  // breno frate 12878927, eduarda melo 14236008, ellen morais 14896287\n  // Meetime devolve \"Douglas Barroso Teixeira\" quando cai no fallback da cadência;\n  // não atribuir ao dono da conta — redirecionar pro responsável padrão (Glauton):\n  \"douglas barroso teixeira\": 12707071,\n  \"glauton santos\": 12707071,\n  \"luan nicolas\": 12913959,\n  \"gregory lavor\": 12990371,\n  \"gustavo duarte\": 12990395,\n  \"leandro dos santos\": 12990399,\n  \"joao paulo\": 13411147,\n  \"marcos vinicius\": 13411155,\n  \"lara stefanny\": 14139747,\n  \"gabrielly oliveira\": 14269088,\n  \"felipe alexandrino\": 14342520,\n  \"miguel nunes\": 14482331,\n  \"michael douglas\": 14593771,\n  \"michel douglas\": 14593771,   // alias: Meetime envia \"Michel\"\n  \"layza batista\": 14643491,\n  \"ana alice\": 14649655,\n  \"thais giurizatto\": 14649683,\n  \"victoria viana\": 14710539,\n  \"caique silva\": 14746199,\n  \"ryan felipe\": 14767531,\n  \"luis lincon\": 14878819,\n  \"leonardo dos santos\": 14880219,\n  \"eduarda costa\": 14902435,\n  \"wanessa gomes\": 14910475,\n  \"guilherme gomes\": 14954507,\n  \"dayana ferreira\": 14963555,\n  \"matheus cunha\": 14978343,\n  \"jonas sobreira\": 14978355,\n  \"leticia wendy da silva alves\": 15007363,\n  \"tatyanna freitas\": 15068127,\n  \"karoline santos\": 15084811,\n  \"raissa fonseca\": 15085079,\n  \"jose guilherme\": 15093407,\n  \"kailane carvalho\": 15108627,\n  \"leticia rocha\": 15121915,\n  \"marilia araujo\": 15147411,\n  \"ranier oliveira\": 15183875,\n  \"rebeca garcez\": 15189299,\n  \"fabiola azevedo\": 15200975,\n  \"raquel alves\": 15256903,\n  \"maria gabriele\": 15256919,\n  \"enizia evangelista\": 15256939,\n  \"eric sousa\": 15281031,\n  \"clara rodrigues\": 15297963,\n  \"joana d'arc assis dos anjos\": 15300419,\n  \"gabriel alves\": 15300959,\n  \"felipe queiroz\": 15301003,\n  \"cleber rodrigues souza\": 15369887,\n  \"gustavo tavares\": 15383075\n};\n\n// ID padrão (caso não encontre o SDR) — NUNCA usar 0 (lead fica órfão)\n// e NUNCA usar o Douglas (dono da conta)\nconst DEFAULT_KOMMO_USER_ID = 12707071; // Glauton Santos (admin)\n\nconst kommoResponsibleId = kommoUsersMap[sdrName] || DEFAULT_KOMMO_USER_ID;\n\nreturn [\n  {\n    json: {\n      original_sdr_name: sdrNameOriginal,\n      normalized_sdr_name: sdrName,\n      kommo_responsible_id: kommoResponsibleId,\n      kommo_user_found: Boolean(kommoUsersMap[sdrName])\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2256,
+        -800
+      ],
+      "id": "7e43f414-df45-4995-918d-b480ee9dc36b",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://marketingcardapiowebcom.kommo.com/api/v4/contacts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer <KOMMO_LONG_DURATION_KEY>"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n  {\n    \"name\": \"{{ $('Cria na Meetime sem email').item.json.name }}\",\n    \"responsible_user_id\": {{ $json.kommo_responsible_id }},\n    \"custom_fields_values\": [\n      {\n        \"field_code\": \"EMAIL\",\n        \"values\": [\n          { \"value\": \"{{ $('Cria na Meetime sem email').item.json.email }}\" }\n        ]\n      },\n      {\n        \"field_code\": \"PHONE\",\n        \"values\": [\n          { \"value\": \"{{ $('Cria na Meetime sem email').item.json.phones[0].phone }}\" }\n        ]\n      }\n    ]\n  }\n]\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2480,
+        -800
+      ],
+      "id": "a2ebcc29-2b62-40a5-87ad-a0ad1ff9b9eb",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://marketingcardapiowebcom.kommo.com/api/v4/leads",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "=Authorization",
+              "value": "Bearer <KOMMO_LONG_DURATION_KEY>"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n  {\n    \"name\": \"{{ $('Cria na Meetime sem email').item.json.name }}\",\n    \"responsible_user_id\": {{ $('Code in JavaScript').item.json.kommo_responsible_id }},\n    \"pipeline_id\": 10516651,\n    \"status_id\": 80643275,\n    \"_embedded\": {\n      \"contacts\": [\n        { \"id\": {{ $json._embedded.contacts[0].id }} }\n      ]\n    }\n  }\n]\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2896,
+        -800
+      ],
+      "id": "0e24ecb9-2557-4eb3-bbdb-6ab5a4b9da0c",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: JSON.parse($input.first().json.data.trim())\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2688,
+        -800
+      ],
+      "id": "62c2e755-802c-4063-aafc-f038c5980fe0",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c473ed29-ebac-4a37-9864-a71d6b518690",
+              "name": "SDR",
+              "value": "={{ $('Edit Fields').item.json.sdr }}",
+              "type": "string"
+            },
+            {
+              "id": "87f82b67-f7a8-49cb-a21b-9c5cf2295af9",
+              "name": "Agente",
+              "value": "={{ $('Edit Fields').item.json['Agente de Parcerias'] }}",
+              "type": "string"
+            },
+            {
+              "id": "4cbdb1be-9b6c-42b7-b00a-c45ed4d6c7c1",
+              "name": "Nome do lead",
+              "value": "={{ $('Edit Fields').item.json.Nome }}",
+              "type": "string"
+            },
+            {
+              "id": "f6b9d579-96d7-4dab-9a9a-75a8fb7d4567",
+              "name": "Telefone",
+              "value": "={{ $('Edit Fields').item.json.Telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "22eb0ebb-3209-470c-ad01-ddcdcf8a7dd1",
+              "name": "Data de criação",
+              "value": "={{ $now.format('dd/MM/yyyy') }}",
+              "type": "string"
+            },
+            {
+              "id": "5830abc2-8534-43f2-a19e-3ee12cef8d8e",
+              "name": "Parceiro",
+              "value": "={{ $('Edit Fields').item.json.Parceiro }}",
+              "type": "string"
+            },
+            {
+              "id": "10d0adc9-bf39-4614-99c6-7f06386f16de",
+              "name": "Track CUPOM",
+              "value": "={{ $('Edit Fields').item.json.Cupom }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3376,
+        -480
+      ],
+      "id": "57d60d82-3169-4b68-956f-b85995fec7d4",
+      "name": "Dados com atributos prontos para a planilha"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "V4oAC5E4yL5isIKz",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/V4oAC5E4yL5isIKz",
+          "cachedResultName": "[PAR] Atualizar número de indicações dos parceiros no pipedrive"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        208,
+        -464
+      ],
+      "id": "5cec52a8-5e99-40d3-84be-f3f10015037c",
+      "name": "Call 'My workflow 121'"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Call 'My workflow 121'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se tem email": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cria na Meetime sem email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria na Meetime sem email": {
+      "main": [
+        [
+          {
+            "node": "Usuários do slack",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cria na Meetime sem email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Refresh token": {
+      "main": [
+        [
+          {
+            "node": "Cria conversão na RD1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get Refresh token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria conversão na RD1": {
+      "main": [
+        [
+          {
+            "node": "Cria na Meetime sem email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "[PAR][CORE] Enviar leads de parcerias para o pipedrive",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Dados com atributos prontos para a planilha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Verifica se tem email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a person",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a person": {
+      "main": [
+        [
+          {
+            "node": "Create a deal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a deal": {
+      "main": [
+        [
+          {
+            "node": "Create a deal1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a deal1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Update a deal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Update a deal1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a deal": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a deal1": {
+      "main": [
+        [
+          {
+            "node": "Busca o usuário do Closer no Slack1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Menção ao SDR no Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Usuários do slack": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Menção ao SDR no Slack": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca o usuário do Closer no Slack1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Envia mensagem informando que o lead foi criado no pipedrive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona na planilha [SDR] Feedback parcerias": {
+      "main": [
+        []
+      ]
+    },
+    "Dados com atributos prontos para a planilha": {
+      "main": [
+        [
+          {
+            "node": "Adiciona na planilha [SDR] Feedback parcerias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'My workflow 121'": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "errorWorkflow": "KZnsnHXniT6dimsv"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {
+    "Update a deal": [
+      {
+        "json": {
+          "id": 453821,
+          "creator_user_id": {
+            "id": 11726977,
+            "name": "Glauton Santos",
+            "email": "glauton.santos@cardapioweb.com",
+            "has_pic": 1,
+            "pic_hash": "d1215e5c6dccf1a27afaaeeb927010de",
+            "active_flag": true,
+            "value": 11726977
+          },
+          "user_id": {
+            "id": 24616030,
+            "name": "Letícia Wendy",
+            "email": "leticia.silva@cardapioweb.com",
+            "has_pic": 1,
+            "pic_hash": "9569032ae6376f341e460019437a659f",
+            "active_flag": true,
+            "value": 24616030
+          },
+          "person_id": {
+            "active_flag": true,
+            "name": "Jonathan Nataniel",
+            "email": [
+              {
+                "label": "work",
+                "value": "jonathanvaaz@gmail.com",
+                "primary": true
+              }
+            ],
+            "phone": [
+              {
+                "label": "",
+                "value": "(85) 99992-6900",
+                "primary": true
+              }
+            ],
+            "owner_id": 11726977,
+            "company_id": 7685295,
+            "value": 123436
+          },
+          "org_id": null,
+          "stage_id": 43,
+          "title": "Jonathan Nataniel",
+          "value": 0,
+          "acv": null,
+          "mrr": null,
+          "arr": null,
+          "currency": "BRL",
+          "add_time": "2026-06-18 19:30:28",
+          "update_time": "2026-06-18 19:30:29",
+          "stage_change_time": null,
+          "active": true,
+          "deleted": false,
+          "status": "open",
+          "probability": null,
+          "next_activity_date": null,
+          "next_activity_time": null,
+          "next_activity_id": null,
+          "last_activity_id": null,
+          "last_activity_date": null,
+          "lost_reason": null,
+          "visible_to": "1",
+          "close_time": null,
+          "pipeline_id": 2,
+          "won_time": null,
+          "first_won_time": null,
+          "lost_time": null,
+          "products_count": 0,
+          "files_count": 0,
+          "notes_count": 0,
+          "followers_count": 1,
+          "email_messages_count": 0,
+          "activities_count": 0,
+          "done_activities_count": 0,
+          "undone_activities_count": 0,
+          "participants_count": 1,
+          "expected_close_date": null,
+          "last_incoming_mail_time": null,
+          "last_outgoing_mail_time": null,
+          "label": null,
+          "local_won_date": null,
+          "local_lost_date": null,
+          "local_close_date": null,
+          "origin": "API",
+          "origin_id": null,
+          "channel": null,
+          "channel_id": null,
+          "is_archived": false,
+          "archive_time": null,
+          "score": null,
+          "sequence_enrollment": null,
+          "source_lead_id": null,
+          "stage_order_nr": 1,
+          "person_name": "Jonathan Nataniel",
+          "org_name": null,
+          "next_activity_subject": null,
+          "next_activity_type": null,
+          "next_activity_duration": null,
+          "next_activity_note": null,
+          "formatted_value": "R$ 0",
+          "weighted_value": 0,
+          "formatted_weighted_value": "R$ 0",
+          "weighted_value_currency": "BRL",
+          "rotten_time": null,
+          "acv_currency": null,
+          "mrr_currency": null,
+          "arr_currency": null,
+          "owner_name": "Letícia Wendy",
+          "cc_email": "cardapioweb+deal453821@pipedrivemail.com",
+          "8251f930f44d52d4c8775dcb398feadc4b4529b2": null,
+          "eec0913359ab4183c20ec9239ff1cbd6e6de0d2a": null,
+          "eec0913359ab4183c20ec9239ff1cbd6e6de0d2a_currency": null,
+          "7bc59a0a1deea2b1cdaee3fc27fa4bf4d8d849ee": null,
+          "4d9451c2bd04944c9424fb2c5cfad9ea35f05891": null,
+          "c585b1e29301ef6ed5801e09d4b6b149313239b6": null,
+          "8643175ba2f29f4e26faedffffdc9a9e24a378f7": null,
+          "7efe0a11092300a31cbc4673d91ccc158f4887c6": null,
+          "11f363a2484c5a21327a4d5307316f7cabd753fa": null,
+          "527cd87f190262e3318f557af36b64331c1788bf": null,
+          "b9aba17d1f119513aa7f17fc31b4311fbc53b783": null,
+          "787cd476102bceeb71f2b5752ee7238331ff1ab9": null,
+          "3e15d106b347a6408a2847f51f7ac38789f1614b": null,
+          "3eb3da6c3e3b5616799f7a2c77cd1346885b606d": null,
+          "45c30984b427f19cbcefc2ae24421d00578d6dbe": null,
+          "f853ec0fb4fd34ab643a5570ca0b5dbd7a1c8498": null,
+          "32fa0fd3593d52ed673ac048dbdc08edaa5ae9af": null,
+          "cc5d9fd5074a5890c0adef8e3686b9a294057a71": null,
+          "5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda": null,
+          "3735c1a0eaaf8a1496faf570cf6ccae018beaa39": null,
+          "320a274f986d43f6f2127d7ff4589b0c29748826": null,
+          "22d8d5b48389d1d6fdd4ab85451aadbd57379fe8": null,
+          "59d427bcd92d9edc91f68d4b68851360cb5a8c71": null,
+          "ce39d035fad6c74095053ffe04bdb9bbc9ae2a53": null,
+          "09ff1bc6cc52f4be41ca44d83f6a849eee11b467": null,
+          "3af9af9f37c29c0b9a0aa908ee7d235af723fc39": null,
+          "d434a6680a23588c8be3fa73b63615b822f12ca3": null,
+          "7ce61728ee842cceecbdc4881b7be4d85544658c": null,
+          "49921b0216b16d3adb363706795f657d76936931": null,
+          "2b9d7dd6cc6fac6aa4bc1f9f9f744bb500019995": null,
+          "ca72a6495c0825ee3a8fc6c361d93c922d6cae5b": null,
+          "658f3932d17b55d4b12ec99bb4eafef831190ff4": null,
+          "988a960a4d34327c21a8dbff22170ca27ed05a6e": null,
+          "7ceeb62a4510c6d319cd066b783645f11377243f": null,
+          "5cafbd9ccbdda08c84d9fb8deb04113c7168cef8": null,
+          "e3241d6fec2266696cb90b6ae5581490c95b6162": null,
+          "2fade3f018474be31329d4ce74906a6b04b940ca": null,
+          "494539c331183498eb8a9fd84a82f978623cf878": null,
+          "ad089f59ba3d0ec818f2b83fc9b6265029ef3a17": null,
+          "86b122a83f2b5f42ba264c6511f4b8b2f4767fcc": null,
+          "74058f62bf7b133aeea13d6bda4042707db8dabd": null,
+          "f12938d60bec3bae623aa8ded23feaa55188298f": null,
+          "5665def98f9340539f2ca7c8ef0b3a32a6f07664": null,
+          "113966c3075d0078d3c8b84ec1ca2c3d1244a262": null,
+          "3d3311b37eb7bd732bfe9be8b918019cadab8704": null,
+          "dc673945dc21669c89001470d7bb268bf0192ed7": null,
+          "ef44dac39019dae4249631fca267b57fdfa05759": null,
+          "12cc4dc9013c5bd35c5f7a4a7743bba11edb87a7": null,
+          "d6dce3a5aa25d45672a3166514026c4a19afbbae": null,
+          "aa660f3923373738904bb0ab65d090cfdec7450e": null,
+          "626cc1ea6a8af9305aeecefe606c53101ccfb1dc": null,
+          "46ab8fc237f9b86189458a9cbaff713b013604cb": null,
+          "f2d5584886290b1b793762d08f8b2b3119f26ea9": null,
+          "76b2dbca1f7af8605f95b5650abd5fb64931bc9c": null,
+          "2100b9cabdc8ad7a0d6ab42dd188fe2248da1463": null,
+          "a75682beeaee346f25771516d2f23cdaf4b7745c": null,
+          "921ee7657991cd504cd859f5b8fd0b47bb8b2ff6": null,
+          "dcbc3bde705ae37c2c8957d4024f63d0c304933f": null,
+          "ce822872d1147b63481fd3ae19badeb0064a9d62": null,
+          "dcc0479fb871f3723a16d03c16f5171c4428bd42": null,
+          "868ce157b263a9750aabb55f38060559866f8218": null,
+          "6d1d6dae48f336c6b64864681c3672dfb3273c7d": null,
+          "0c10780120ee07938b5c98742c98882a142df916": null,
+          "8c2cec43406878161bff17b584d4d3719728b4b9": null,
+          "04a2bd9d646732c98dd0a9f491953749335f03d2": null,
+          "76d122a15941de13566bfd2589cd082eee17c7c4": null,
+          "01fa0fafdb854ee010148be13c7ef328d30ff198": null,
+          "71f8fcd96ab2ecfbb7245a0f559f622fe45856cd": null,
+          "091f49092cb12352b8d2d4d611ce2c61fffb771d": null,
+          "7a30eef11dabf3ca452921811c26c5b4d3aaf42d": null,
+          "a36c3ed39d4796ccf32568240717a507a7aa35d2": null,
+          "5147674710cf871873487b55767a433d25b16bda": null,
+          "fbef9289bf09467ab894d55a0da0785f7d131c92": null,
+          "babc9dc70b0254caf284ed9ac6904531bdd2247b": null,
+          "abba6c95ad959eb01b4f958fd495a02ebd5c88ea": null,
+          "d329318f6935ac391b843c7fd236ca3d729c197e": null,
+          "2a5f3b3083523bc395caa443da6a0ebb1b2091d3": null,
+          "9bad150d0f57b2250b3b714f54ac1d101bf0d0d3": null,
+          "15dacc333f0a2086518c09a15cc6b812b1de73f7": null,
+          "3c1b2272ff7ddec0f0aca0f3be959aa264564239": null,
+          "2b755d8a060cce38662837a3495d27aba89a7441": null,
+          "5f1b817effc329455d971cc2d0a61111944481a4": null,
+          "853430bab067840753f806cd89f3c2591a547d8b": null,
+          "2d9d0efd74f3862b2084cf7d3750bc92bf5a4a43": null,
+          "56b6be6811922be35453ddc01ce24171790a9d16": null,
+          "28b9150a79ae8cf7a78cfc1a29542427ebaca220": null,
+          "e2181ba2516084080bd0c802bac3f67b89fe47eb": null,
+          "2c8bc718d75d33a49a8afa41832dcadbcbe63de3": null,
+          "71a980a14214282678fc85993275f58caabe1000": null,
+          "1b44382bf47530b308439fcd25650aaa80aa8235": null,
+          "92eea09ba479ba765197ce052565f794bdde2bbc": null,
+          "8f999fb5834b92eee81167b9da1d00cc69fc2dbd": null,
+          "97bc46d31fdb8911704003fe488aaafef5ddc27d": null,
+          "4a2c2618087f86a02c9cc78870a20218b526adb2": null,
+          "c226b372ebb63ec4c3d16a9d18653f10fe5270df": null,
+          "f988361de877573f65a75da11387956d7384c8be": null,
+          "4bd37dc645f3c5c4b53a9bb234498dce087945cd": null,
+          "f341bf42fa04c65b7373c7aa3d050ed4a4b7cac2": null,
+          "f278104501003ad99f13251c6f31aca26f373220": null,
+          "026f2795fcadf5a55be74b51d2c3ae013f8955f3": null,
+          "af620032757212f5f9a644c5416af4c61bf705cf": null,
+          "2976d7bacb3af3d273a98105d43ff0837062b78e": null,
+          "2976d7bacb3af3d273a98105d43ff0837062b78e_currency": null,
+          "986a284c2b72a22039b9afec0d8c8966676ea1d8": null,
+          "0126ead2b4d32831153568197b4d569efe8b9d8a": null,
+          "304f22497be5fb579b11365d79cb22079c22ca56": null,
+          "85f6abbc09fd98edbd98d58c33dd830375f83081": null,
+          "d99e4d95cb8baef612eacfe88ae62f0f133becf9": "1212",
+          "7b6faf899b290bfa7ba1da3fe2ac1bbe6ef118be": null,
+          "1d1e065768c26bb8dc5705b74816b56220ee1325": null,
+          "bae20bedb61c478d610c9e2750f9fc432f69264f": null,
+          "0e0dc950050d9f6e47d2d556fa8a5403570a7ad7": null,
+          "b08f69e752c49d4e47a9a208229fb49ac27742db": null,
+          "67225dec1d3befd7199467ca55372522eac0a7f6": null,
+          "7b39cdd11d240f2d4800cb86fc65afd8aa2020d2": null,
+          "cc4567e2e28684e83853751f823fac303899606c": null,
+          "bdb8912771b016d5e6b1b089ccce07e2c8a4b256": null,
+          "72e4a864220cd1046fc2bdc2c714b589739277cc": null,
+          "1993620ae2d5ce43fb11bcf71d4645c564b1f598": null,
+          "06eabc2056f4eaec75a5abcdac57569a05c1ec37": null,
+          "d71dabff13af51cabdb5a54f50eadf1fd4cda5d3": null,
+          "f8bd539b4a3277b392f639c4a67c990b58abf0ef": null,
+          "5f98721e1f64c45aafef3bfe205cac3abd43b945": null,
+          "1374ca908da83d3869b343ecc78300e3e6fdd70e": null,
+          "a2f866e0b03e7d2dfa8cdedaef27ca13b6997a9e": null,
+          "1bdccd022c6027dc40a23a6a46a2c1b1888d0188": null,
+          "99df83643d91ffe53a7aa502e9ee4e020f75d002": null,
+          "ef7c681dd0014b8f361bfdde4158131a8b83889a": null,
+          "386ba444bc64e6208ca31855a97220a71080661a": null,
+          "9b679c0120137f0d4ed2ba3503b3bbf9233415b3": null,
+          "852ee593d7d7204f235b87a60493347a61f7d97f": null,
+          "9a53146fee499a5e41525b357799323ef9fe2ec5": null,
+          "f5c363532622731c89bc1ca43568207b30b58db0": null,
+          "80ac1d1dbd615c4f3014fd3fe9fae4a8a573564d": null,
+          "5644f63d9f60dc27f7e15f42a425252d4f1f6cab": null,
+          "1c61ffb7c5c72afcda0aa03ec34a699098fa82a3": null,
+          "ce55f714284ac86b8463c672880636db6568e5f8": null,
+          "0a4479dceef7863b2d2b5309be444728692c0415": "MICAELANDERSONCW",
+          "3e046289deb4003f2d37408fe4284c0b0107e7ab": null,
+          "637322e79b924ef81fe9d5e7768e0694e120fe76": null,
+          "fb383f08e20d4cb0dbec9755ff3614c7b8fda814": null,
+          "b92224a5f170d311840aa38a035aaa276416de75": null,
+          "15dd706d8ab0cd6ecca8791b99f5602f620171de": null,
+          "f4ad1d9ea624c428e113b530feb9127b98abe5f3": null,
+          "0ed8a111ee670462640576310b3e7144fa70ab00": null,
+          "ed8ddca7b5b8aabfdeede9350cf52040074071ce": null,
+          "871d29214fb20eab4892543eba55909d3c9b05f3": null,
+          "e18c71f9c27a06a35ca809deceae9f59b95f8cf3": null,
+          "322ce922a5cf6f975a973e7a4a279f836ccf703b": null,
+          "41df17dbe8c47ae4c549eb218520ac7b63165312": null,
+          "e11f064ba665dc172a962c17269f78ba650a9abb": null,
+          "e196472cd26973a32f7309afe9cb2c484cdb9a4c": null,
+          "9703b6c1b3391a3f9936766967ada31f4ef33bd4": null,
+          "ccae1a36bcd56218d989a0feab2212c5920181c4": null,
+          "9cab53e1df2faf9e19e0efb8d75b0ee93b0b6925": null,
+          "ba2602c7687903021e6883489e60a035ca936a6b": null,
+          "8ff9202c9d07c823801bd6125abb605488e1b3d5": null,
+          "1fd89dc86e4a3cef3b938438136f3a36ea2f44a1": null,
+          "5b93bb9a481e2d02b8fded5ee07fa637691e47a2": null,
+          "b1311604e0fd3a32e3852c48d57514f7278a4bf3": null,
+          "b057bd9e642f42d119d61836deb7b2c1f8fd94df": null,
+          "dffc07123267f9f3da7c0d67146d8ccec29d6abb": null,
+          "e0ad620fe84d0f5a5dd08aed8125dde6e7d0a441": null,
+          "e5624abbf63dba9f34f9e0a84c1de34bc8fe49c3": null,
+          "56cd974dde37e9140efb8880055645a45b0b1030": null,
+          "3412bcc96ebf1a86b9695aa1a5cc5c658e178597": null,
+          "72eeb3ec642511557da5f3d93311a5bdc30f0d1b": null,
+          "9c9dc407abf2ac1c3fed41de9683826cb6649fad": null,
+          "0644b2697b8037240e06667c6533242b8ff34953": null,
+          "0caa348a183572f025bdf8d19633772e9290efc6": null,
+          "9a6486c13f1d9ba7380c3a8d6f23da07f50cb0aa": null,
+          "2a3e98df25768bd82d8a2fe98a5bde8a87595393": null,
+          "bec0011fa2314cbf2024a7137e4d46127d173975": null,
+          "c52efbe1499d751eb507605fa9800c83405fe3be": null,
+          "381a11a05f290bf6d953a3ca66eca7aca41e6109": null,
+          "442b10156398d730819127950466efcf783c3e88": null,
+          "6434e6ccf3c694f0bed5ae0c563f8fad59e298f4": null,
+          "813bbd855ba4dba3a84d23b4a8ed76ab9723df81": null,
+          "0a990e75308258b96c1fb29f9fd52a32f182d024": null,
+          "8b30a8044ac49d5054dddaed415a7d2670d00bb6": null,
+          "4901f716abb476aecf6774cf69bfd1d2323a0c4c": null,
+          "0dbb0e60a9c719ee189d126c2e061564ace46798": null,
+          "e99d3aa9df3bfaec3ad92a42f356f85950e46fb8": null,
+          "3dd65ef966e8555ed43a8acb2eb8d6df0cf9cd96": null,
+          "901cef3d7e421010ffee7437bb59fe141f421703": null,
+          "6923fbb1124e878857122243e216138c84f6e930": "1526",
+          "346353ade45adcb68850667587de1da11b3bdadd": null,
+          "ba280a0b1ae6e6168c3e25e28460b8a02089b0be": null,
+          "344c3b92b68bd10d3cbefd027b6c69373bda935d": null,
+          "970ceea26eadfe22ce6826ea659e3f9c7d918741": null,
+          "d474ca1190787f6eea6a13b21bc784e86f5760eb": null,
+          "c21fed688a6819d52afc044f7966fa9c9573188d": null,
+          "c21fed688a6819d52afc044f7966fa9c9573188d_currency": null,
+          "04dfcef1b95f2a6510e6a4b7bc8f37b05e5b33db": null,
+          "f370625129bd622ba1addf6e52bbc589b7e181c0": null,
+          "f5fd58b7740d4e4188ecdaab4c4f6c03679c5e51": null,
+          "cd50b1350284fc0bf025776682ca5066dc084d4f": null,
+          "3ed4d82635aaa23f87eeb27da66410111120d3e7": null,
+          "eb8657dac101122d34d1e5ee007ea7bc18a9702c": null,
+          "ca6059ef3220b4a0cafcf7f9c76bd2b2ba59b2e1": null,
+          "2f0ad09c6d2e1af1d8dc86db86c78b512e3f1b7a": null,
+          "9b5a40e0aceac73da364a0651b078b3246977ff8": null,
+          "09029dd27370ee050424c42afba276ff0139dad1": null,
+          "02e2b0cc1afea517338d8f309fee3a7a17deff85": null,
+          "6eac4a1164e70734e1a77a691a857bffa84bb9a1": null,
+          "c12cc312e0b6e0a4ef51adf98f8faf7f5e104a01": null,
+          "1f1e4a6536b9dcb99d968e829578cc5fc276aebf": null,
+          "e32714a8537cfb361b728e0c28e0501c78d441ea": null,
+          "78a7441ec07e8dc72880bda4c746eb14f612a8c3": null,
+          "48307459886ff3a2f8420b964eba769b9b32e1fa": null,
+          "f80d80aaffbbd5fdd2e93e0a064158368273608c": null,
+          "9e8add32325c2641a19d7b0a1165a190d77e8d9a": null,
+          "7e7ab32921c94214a75a800dcef4825de993d354": null,
+          "4d61e8db7772570f774c6ba67cd8c3d42ebf74e6": null,
+          "2ca956544e9f9f492a2ba2a96f5de86b077c5f4d": null,
+          "2c3baea14ce845e74c4cb7f220be819c036f2bee": null,
+          "9b448fbacbd136c0cf860a30da2f56a959e40a47": null,
+          "8bfee76527bde07d98606af2de1ce7aa0dac7e66": null,
+          "bc967a8671ea414a4b0021b2d302f47ed0addb2c": null,
+          "13871859a729f084a58461acdc524136473f4d63": null,
+          "677aff75d3e181a428e8bb09c099e943d0dba593": null,
+          "89a22e6970ad5f59e2163db71e2ca6f506058f41": null,
+          "cfe487a231d8799cde8c093f4ebde90410ae8f36": null,
+          "27c93d91263f667f59c9cf6eb25e5fcbe6d8be2a": null,
+          "6f2ffbe6f52bc0c04057fbb71d1f0c04ca9cbffe": null,
+          "c594f0f123af6b9d84461baa1b325d29d618b176": null,
+          "3a09cd9f13732af8289f5c3ec92891161f8309be": null,
+          "8ac84882991dd4d5c27e9fe376e1c81873eab8ec": null,
+          "632ce97453d4ae430ea9586058b63c253a39f025": null,
+          "b603f8b2476b87146d418bd7692ca4d2a41f71a1": "1254",
+          "7b06e39cd8ce91a0ef40d1b7ba3f79f50a2af6ee": null,
+          "6492dd676dff00400f9a226191735583a7b62b83": null,
+          "eb7249a5019ba68a396d9d44397fd3307ef8a8b4": null,
+          "29acf70ca517fc67ca5b30ea22fef0c47342bd0c": null,
+          "70871e9b221190f6f2e80ec8d61ce4c203d6a211": null,
+          "4da5fc7d7f125f510306dd3d92bdb07705c9f127": null,
+          "9064279879ca297445bdb6fb0b488fce6b905f1f": null,
+          "b77fff3ff3ceade5b607d2079beb447f90cdb9b8": null,
+          "aeed72d94caa006270b3fa036512bde941352427": null,
+          "f94b5e7efbab48dc2d3b9352675351daa7882fdd": null,
+          "f5da5433138197fb79ec98146bb8d53b2019917b": null,
+          "99074bb20d864fdd73ad53f83304871e44e465fb": "MICAELANDERSONCW",
+          "4e28098251ad28f8583a85216001dbb2b5fca28b": null,
+          "cee7630b2d6a146fef0c292f3686a46c52168880": null,
+          "58aadd598c3dfb63f8458ec628d1d9699bf7fd03": null,
+          "9c3e971a26ff276887f9de354c295032090946f4": null,
+          "f0e4086dad9e0a002e7f99cdecd243bc872e1a86": null,
+          "fae3d3e3587395c9466c5f1ddb7291ec9c044fdd": null,
+          "2bd110f3c01dbe1418fc89be9dcd32087d0a690c": null,
+          "6364c6d793f61dab2cdc3a138a033388bf155b70": null,
+          "bc791f3d3c995fb778677f14b037ca94d653af7d": null,
+          "552b98d647ed9c17091d6441fa86714f494a7ffb": null,
+          "e05018551c8f31753781572342933d0ceea403de": null,
+          "2fb7c1f7bac66bfb48bf13554b4bc5dce7feed20": null,
+          "a58d94756b9820cf4b690d31b137279301bf8726": null,
+          "5dea2080410bce82a317f99c98f69bca48a7ed28": null,
+          "74b785ad1daf800ceb4a1d5fedd05db95db026d1": null,
+          "de3d3d3341ae9ec756634274895a44f5543b447a": null,
+          "2e42dbc72f50ab1c7755378b104ae5f13a52c002": null,
+          "4afa5b562a7a105b3c5115eec99ca174eadf04b4": null,
+          "ee9568f2db468e47bff8e786c2be83deece6172a": null,
+          "730b7900e199e851b59ab2a55de0cbb6f7cd9b44": null,
+          "0a3fd26d0e1a2015ae43460e402d5d9264d45274": null,
+          "fde4cfef93cdf50aa92f5854224d4466ce23442c": null,
+          "bddfba78e932b0d2e21a43a9483da6fb644e6582": null,
+          "fc14dad9ab66201e00ac3a76ed15ffd9082626c8": null,
+          "c038fb3f9c9e792fb4d5c13e88a569dfa3d1389d": null,
+          "dd1f4b3ff279ea87a2b8974a493ebd8cd306a8fe": null,
+          "16133b81c3938191c71e049443c32cfa34990e6f": null,
+          "e1ed7ecf02fc13c9315f1a959f702db01f2a72a7": null,
+          "33d478e2c95b117e19e97f4f4cad141fb6b269e0": null,
+          "9417f9f1d36e3879e2e64c026978b77655125548": null,
+          "521e57d1679d8482671ffdb5091bdcc579614b3f": null,
+          "3ea840b28e12c006c10f57caac0023195f7f4905": null,
+          "e91c13841f37fab1aa8f868dd1ad77f1c792b497": null,
+          "2c353cfa424c6fe29d3cb609726bca2f94a63f8d": null,
+          "24f461765d7d568b371b18aff5a7b5ac31eefe37": null,
+          "3dc03370e9f5e3046077257419e3c8b891e7c013": null,
+          "365166a4443c645cd43d2f839da26f7a65d0cdf7": null,
+          "e85d3f3912c1a2843a5cf4eca9590696dee1d243": null,
+          "53b3dcde36e5f605ab6ba857c708cd33de9b93ac": null,
+          "6b6c2d28d7f0a70f306cbe66d98fed5b273885d4": null,
+          "org_hidden": false,
+          "person_hidden": false
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Code2": [
+      {
+        "json": {
+          "owner_id": 22792021,
+          "closer_name": "Beatriz Magalhães"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "177.154.191.134",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.cardapioweb.com",
+            "x-amzn-trace-id": "Root=1-6a68a556-34aed7507104fe2430a4722f",
+            "content-length": "690",
+            "user-agent": "WordPress/7.0.2; https://cardapioweb.com",
+            "accept": "*/*",
+            "accept-encoding": "deflate, gzip",
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Nome": "Carlos",
+            "Email": "",
+            "Telefone": "(35) 98434-4457",
+            "Tipo de conexão": "Central de parcerias",
+            "Origem": "Central de parcerias",
+            "Agente de Parcerias": "Layza Batista",
+            "Closer": "Selecionar",
+            "Parceiro": "Elias",
+            "Cupom": "DIGITALIZEMAISCW",
+            "Como conheceu a Cardápio Web?": "Indicação do Ag. de Parcerias",
+            "Quantidade de indicações já fechadas": "5",
+            "Date": "28/07/2026",
+            "Time": "09:49",
+            "Page URL": "https://cardapioweb.com/adicao-manual-de-leads/",
+            "User Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+            "Remote IP": "177.22.33.182",
+            "Powered by": "PRO Elements",
+            "form_id": "76b13f3",
+            "form_name": "Adição manual de leads"
+          },
+          "webhookUrl": "https://n8n.cardapioweb.com/webhook/f1624383-a840-4d6f-a820-2c6bfa3ea2ee",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "versionId": "23329f77-9f7f-473d-aeab-c04ddd4d8775",
+  "activeVersionId": "23329f77-9f7f-473d-aeab-c04ddd4d8775",
+  "versionCounter": 442,
+  "triggerCount": 1,
+  "tags": [],
+  "activeVersion": {
+    "updatedAt": "2026-07-28T21:08:34.571Z",
+    "createdAt": "2026-07-28T21:08:34.571Z",
+    "versionId": "23329f77-9f7f-473d-aeab-c04ddd4d8775",
+    "workflowId": "9XuS5237ROvgJBc5",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "f1624383-a840-4d6f-a820-2c6bfa3ea2ee",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          -2128,
+          -464
+        ],
+        "id": "273b5b1a-3826-43b4-9c06-cbb18d5b9470",
+        "name": "Webhook",
+        "webhookId": "f1624383-a840-4d6f-a820-2c6bfa3ea2ee"
+      },
+      {
+        "parameters": {
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "value": "C07E84K5EJW",
+            "mode": "list",
+            "cachedResultName": "indicação-parcerias"
+          },
+          "text": "=*LEAD ENVIADO NO FORMS*\n\n*Nome:* {{ $('Webhook').item.json.body.Nome }}\n*Telefone:* {{ $('Webhook').item.json.body.Telefone }}\n*Parceiro:* {{ $('Webhook').item.json.body.Parceiro }}\n*Cupom:* {{ $('Webhook').item.json.body.Cupom }}\n*Agente de Parcerias:* {{ $('Webhook').item.json.body['Agente de Parcerias'] }}\n*SDR:* {{ $('Menção ao SDR no Slack').item.json.sdr }}",
+          "otherOptions": {
+            "includeLinkToWorkflow": false
+          }
+        },
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.3,
+        "position": [
+          2928,
+          -608
+        ],
+        "id": "90473f04-793e-47b0-bb40-b00048e2c017",
+        "name": "Slack",
+        "webhookId": "b5fce425-e6a8-483e-9d76-d433aca831ac",
+        "credentials": {
+          "slackApi": {
+            "id": "SsQksTzv99K5SqDV",
+            "name": "Slack Doguinho Bot"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "const email = $input.first().json.body.Email || \"\";\nconst namePart = email.split('@')[0];\n\n// Verifica se tem muitos números\nconst hasManyNumbers = (namePart.match(/\\d/g) || []).length > 5;\n\n// Verifica se é muito curto ou muito longo\nconst isTooShortOrLong = namePart.length < 5 || namePart.length > 20;\n\n// Verifica se é só letras e números\nconst isAlphanumericOnly = /^[a-z0-9]+$/i.test(namePart);\n\n// Se todas essas condições forem verdadeiras, parece aleatório\nconst isProbablyRandom = hasManyNumbers && isAlphanumericOnly && isTooShortOrLong;\n\nreturn [{ json: { isRandomEmail: isProbablyRandom } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          912,
+          -688
+        ],
+        "id": "b6d4a41a-b002-4221-b6d7-1c97152e5281",
+        "name": "Code"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "9a79e0b3-4eb4-4256-9b02-dd5955d7615e",
+                "leftValue": "={{ $json.isRandomEmail }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          1136,
+          -688
+        ],
+        "id": "cdd572fa-97b9-4a28-b37a-c11fee4f05ea",
+        "name": "If1"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "e9b6eb18-e601-428b-a8b5-01e9069d0f0f",
+                "leftValue": "={{ $('Webhook').item.json.body.Email }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          688,
+          -608
+        ],
+        "id": "c6dbaeed-9599-4d21-bcf3-0b9aec0f864c",
+        "name": "Verifica se tem email"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.meetime.com.br/v2/prospections/cadence/45150/lead?token=<MEETIME_TOKEN>",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"firstName\": \"{{ $('Webhook').item.json.body['Nome'] }}\",\n  \"name\": \"{{ $('Webhook').item.json.body['Nome'] }}\",\n  \"email\": \"{{ $('Webhook').item.json.body['Email'] }}\",\n  \"annotations\": \"Parceiro: {{ $('Webhook').item.json.body['Parceiro'] }}\",\n  \"startImmediately\": true,\n  \"phones\": [\n    {\n      \"label\": \"Contato\",\n      \"phone\": \"{{ $('Webhook').item.json.body['Telefone'] }}\"\n    }\n  ],\n  \"customFields\": {\n    \"onParceiro\": \"{{ $('Webhook').item.json.body.Parceiro }}\",\n    \"trackCupom\": \"{{ $('Webhook').item.json.body['Cupom'] }}\",\n    \"setupCanalDeOrigem\": \"{{ $('Webhook').item.json.body['Origem'] }} ({{ $('Webhook').item.json.body['form_name'] }})\",\n    \"setupTipoDeConexao\": \"{{ $('Webhook').item.json.body['Tipo de conexão'] }}\",\n    \"qualComoConheceuACardapioWebInterno\": \"{{ $('Webhook').item.json.body['Como conheceu a Cardápio Web?'] === 'Indicação do Ag. de Parcerias' ? 'b40c2fef-250e-4f3b-9b26-82478bb1dbf8' : '' }}\",\n    \"setupAgenteDeParcerias\": \"{{ \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Beatriz Magalhães' ? 'eadaa0b3-0d97-416b-9e25-cf46ac51f288' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Layza Batista' ? '82590d3b-f437-4f50-87e2-a337db8b7ef5' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Marilia' ?     '7ccb87c5-f171-4939-87a7-cb73056b1772' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Wanessa Gomes' ?     '11ee168b-a913-425c-a38f-06c6ad908de4' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Eric Sousa' ?     '663689f8-9b09-42f6-9c1b-fe7a15c3f067' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Letícia Rocha' ? '4e215ae5-2587-4818-b7a2-e8ed91c0c06a' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Joana Anjos' ? '12721493-af0b-4ce2-ad94-1069d0eb3883' : \n      $('Webhook').item.json.body['Agente de Parcerias'] === 'Michael Douglas' ? 'c85f4aaa-b1b4-4203-99af-80b5c56cbd28' : \n      '' \n    }}\"\n  }\n}",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2016,
+          -640
+        ],
+        "id": "ed13e9ce-3e7f-4402-b8f6-e8d67254eb33",
+        "name": "Cria na Meetime sem email"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "n4sEAnrMqvG70nHp",
+            "mode": "list",
+            "cachedResultName": "rd_station_token",
+            "cachedResultUrl": "/projects/ELoknvJCeEVMoIH5/datatables/n4sEAnrMqvG70nHp"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "id",
+                "keyValue": 1
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1,
+        "position": [
+          1584,
+          -752
+        ],
+        "id": "862a47e9-9bb8-41be-bcff-bed6df3831c4",
+        "name": "Get Refresh token"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.rd.services/platform/events?event_type=conversion",
+          "sendHeaders": true,
+          "specifyHeaders": "json",
+          "jsonHeaders": "={\n  \"Authorization\": \"Bearer {{ $json.Access_token }}\",\n  \"Content-Type\": \"application/json\",\n  \"Accept\": \"application/json\"\n}\n",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n  \"event_type\": \"CONVERSION\",\n  \"event_family\": \"CDP\",\n  \"payload\": {\n    \"conversion_identifier\": \"{{ $('Webhook').item.json.body.form_name }}\",\n    \"name\": \"{{ $('Webhook').item.json.body.Nome }}\",\n    \"email\": \"{{ $('Webhook').item.json.body.Email }}\",\n    \"personal_phone\": \"{{ $('Webhook').item.json.body.Telefone }}\",\n    \"cf_qual_parceiro\": \"{{ $('Webhook').item.json.body.Parceiro }}\",\n    \"cf_cupom\": \"{{ $('Webhook').item.json.body.Cupom }}\",\n    \"cf_origem\": \"{{ $('Webhook').item.json.body.Origem }}\"\n}\n}\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1808,
+          -752
+        ],
+        "id": "cf064d97-ae73-4490-9dda-127f97b3d58c",
+        "name": "Cria conversão na RD1"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "SXHexklEC3KniZ7l",
+            "mode": "list",
+            "cachedResultName": "[UTIL] Refresh token Rd Station"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          1360,
+          -752
+        ],
+        "id": "9fefcc46-3b59-4da6-baa1-93432323a973",
+        "name": "Execute Workflow"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "dxsALgo2EbgMYCEt",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/dxsALgo2EbgMYCEt",
+            "cachedResultName": "[PAR][CORE] Enviar leads de parcerias para o pipedrive"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          3376,
+          -704
+        ],
+        "id": "1835ef8a-1f84-4baf-95bc-f3ed79468ce0",
+        "name": "[PAR][CORE] Enviar leads de parcerias para o pipedrive"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "4936cb2f-ff47-4f19-8455-acdc81916d29",
+                "name": "Nome",
+                "value": "={{ $('Webhook').item.json.body.Nome }}",
+                "type": "string"
+              },
+              {
+                "id": "0d0b3c76-2d42-4a56-926e-7075e578cb6c",
+                "name": "Telefone",
+                "value": "={{ $('Webhook').item.json.body.Telefone }}",
+                "type": "string"
+              },
+              {
+                "id": "2f69cd93-a52d-4010-afdb-1deaafce47af",
+                "name": "Agente de Parcerias",
+                "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] }}",
+                "type": "string"
+              },
+              {
+                "id": "65205306-3416-424f-b8b7-40a0741945cb",
+                "name": "Parceiro",
+                "value": "={{ $('Webhook').item.json.body.Parceiro }}",
+                "type": "string"
+              },
+              {
+                "id": "6ea5270a-71f1-4e29-b886-359e60487323",
+                "name": "Cupom",
+                "value": "={{ $('Webhook').item.json.body.Cupom }}",
+                "type": "string"
+              },
+              {
+                "id": "3c03f3e6-f5b8-445a-8ed9-459da29f8951",
+                "name": "sdr",
+                "value": "={{ $('Cria na Meetime sem email').item.json.sdr.name }}",
+                "type": "string"
+              },
+              {
+                "id": "26896e81-8e03-47ef-90fe-356a0e0487ed",
+                "name": "slack_ts",
+                "value": "={{ $('Slack').item.json.message.ts }}",
+                "type": "string"
+              },
+              {
+                "id": "38e66a9b-1b3c-4c34-8826-03e517e490de",
+                "name": "Quantidade de indicações já fechadas",
+                "value": "={{ $('Webhook').item.json.body['Quantidade de indicações já fechadas'] || '' }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          3152,
+          -608
+        ],
+        "id": "36e07d3b-ec02-4571-bec7-24de30937da5",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "8534328e-a0fc-4815-8ac3-ee29ec1a664e",
+                "leftValue": "={{ $('Webhook').item.json.body.Closer }}",
+                "rightValue": "Selecionar",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.2,
+        "position": [
+          416,
+          -464
+        ],
+        "id": "e3a7a245-1c7c-4e39-aeec-e3c9d5419db3",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "resource": "person",
+          "name": "={{ $('Webhook').item.json.body.Nome }}",
+          "additionalFields": {
+            "email": [
+              "={{ $('Webhook').item.json.body.Email }}"
+            ],
+            "phone": [
+              "={{ $('Webhook').item.json.body.Telefone }}"
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.pipedrive",
+        "typeVersion": 1,
+        "position": [
+          688,
+          -320
+        ],
+        "id": "3a7cc0d1-b45f-45af-9aeb-0bb80cf9de8d",
+        "name": "Create a person",
+        "credentials": {
+          "pipedriveApi": {
+            "id": "UxPJ6fXvXPl6Nzuu",
+            "name": "Pipedrive account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "title": "={{ $json.name }}",
+          "associateWith": "person",
+          "person_id": "={{ $json.id }}",
+          "additionalFields": {
+            "customProperties": {
+              "property": [
+                {
+                  "name": "3af9af9f37c29c0b9a0aa908ee7d235af723fc39",
+                  "value": "={{ $('Webhook').item.json.body['Tipo de conexão'] }}"
+                },
+                {
+                  "name": "5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda",
+                  "value": "={{ $('Webhook').item.json.body.Origem }}"
+                },
+                {
+                  "name": "0a4479dceef7863b2d2b5309be444728692c0415",
+                  "value": "={{ $('Webhook').item.json.body.Cupom }}"
+                },
+                {
+                  "name": "d99e4d95cb8baef612eacfe88ae62f0f133becf9",
+                  "value": "={{ $('Webhook').item.json.body['Como conheceu a Cardápio Web?'] }}"
+                },
+                {
+                  "name": "b603f8b2476b87146d418bd7692ca4d2a41f71a1",
+                  "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] }}"
+                },
+                {
+                  "name": "6923fbb1124e878857122243e216138c84f6e930",
+                  "value": "Sim"
+                },
+                {
+                  "name": "99074bb20d864fdd73ad53f83304871e44e465fb",
+                  "value": "={{ $('Webhook').item.json.body.Cupom }}"
+                },
+                {
+                  "name": "5aa244c3b5f5a637c98334902223fa96ae525de0",
+                  "value": "={{ $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '0' ? 1754 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '1' ? 1755 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '2' ? 1756 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '3' ? 1757 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '4' ? 1758 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '5' ? 1759 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === 'A partir de 6' ? 1760 : '' }}"
+                },
+                {
+                  "name": "346353ade45adcb68850667587de1da11b3bdadd",
+                  "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] ? 'Agentes' : 'Adição manual' }}"
+                }
+              ]
+            }
+          }
+        },
+        "type": "n8n-nodes-base.pipedrive",
+        "typeVersion": 1,
+        "position": [
+          912,
+          -320
+        ],
+        "id": "daf52037-00f6-4449-9b19-c6b2e7d7890e",
+        "name": "Create a deal",
+        "credentials": {
+          "pipedriveApi": {
+            "id": "H9PcNTD5kU5NLzRH",
+            "name": "Pipedrive - Comercial"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "title": "={{ $json.person_id.name }}",
+          "associateWith": "person",
+          "person_id": "={{ $json.person_id.value }}",
+          "additionalFields": {
+            "customProperties": {
+              "property": [
+                {
+                  "name": "3af9af9f37c29c0b9a0aa908ee7d235af723fc39",
+                  "value": "={{ $('Webhook').item.json.body['Tipo de conexão'] }}"
+                },
+                {
+                  "name": "5eb405ac4c55fa7ed5acf14c3af542d0a72aaeda",
+                  "value": "={{ $('Webhook').item.json.body.Origem }}"
+                },
+                {
+                  "name": "0a4479dceef7863b2d2b5309be444728692c0415",
+                  "value": "={{ $('Webhook').item.json.body.Cupom }}"
+                },
+                {
+                  "name": "d99e4d95cb8baef612eacfe88ae62f0f133becf9",
+                  "value": "={{ $('Webhook').item.json.body['Como conheceu a Cardápio Web?'] }}"
+                },
+                {
+                  "name": "b603f8b2476b87146d418bd7692ca4d2a41f71a1",
+                  "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] }}"
+                },
+                {
+                  "name": "99074bb20d864fdd73ad53f83304871e44e465fb",
+                  "value": "={{ $('Webhook').item.json.body.Cupom }}"
+                },
+                {
+                  "name": "6923fbb1124e878857122243e216138c84f6e930",
+                  "value": "Sim"
+                },
+                {
+                  "name": "5aa244c3b5f5a637c98334902223fa96ae525de0",
+                  "value": "={{ $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '0' ? 1754 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '1' ? 1755 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '2' ? 1756 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '3' ? 1757 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '4' ? 1758 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === '5' ? 1759 : $('Webhook').item.json.body['Quantidade de indicações já fechadas'] === 'A partir de 6' ? 1760 : '' }}"
+                },
+                {
+                  "name": "346353ade45adcb68850667587de1da11b3bdadd",
+                  "value": "={{ $('Webhook').item.json.body['Agente de Parcerias'] ? 'Agentes' : 'Adição manual' }}"
+                }
+              ]
+            },
+            "stage_id": 212
+          }
+        },
+        "type": "n8n-nodes-base.pipedrive",
+        "typeVersion": 1,
+        "position": [
+          1136,
+          -320
+        ],
+        "id": "8acf867b-b8f9-46e4-9217-aac9aa5b8ece",
+        "name": "Create a deal1",
+        "credentials": {
+          "pipedriveApi": {
+            "id": "UxPJ6fXvXPl6Nzuu",
+            "name": "Pipedrive account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "url": "https://api.pipedrive.com/v1/users?api_token=<MEETIME_TOKEN>",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1360,
+          -320
+        ],
+        "id": "5615bd92-f0c2-4b84-a97d-d3dab77f744d",
+        "name": "HTTP Request"
+      },
+      {
+        "parameters": {
+          "jsCode": "const users = $input.first().json.data; // retorno do HTTP Request\nconst nomeFormulario = $('Webhook').first().json.body['Closer'] || '';\n\nconst norm = s => (s || '')\n  .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n  .toLowerCase().trim();\n\nconst alvo = norm(nomeFormulario);\nconst user = users.find(u => norm(u.name) === alvo);\n\nif (!user) {\n  throw new Error(`Closer não encontrado por nome: ${nomeFormulario}`);\n}\n\nreturn [{ json: { owner_id: user.id, closer_name: user.name } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1584,
+          -320
+        ],
+        "id": "e6166b1b-2552-47a1-94e6-fc42e81a7621",
+        "name": "Code1"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dealId": "={{ $('Create a deal').item.json.id }}",
+          "updateFields": {
+            "user_id": "={{ $json.owner_id }}"
+          }
+        },
+        "type": "n8n-nodes-base.pipedrive",
+        "typeVersion": 1,
+        "position": [
+          1808,
+          -320
+        ],
+        "id": "e600c748-3436-42ad-9019-bf19b5566322",
+        "name": "Update a deal",
+        "credentials": {
+          "pipedriveApi": {
+            "id": "UxPJ6fXvXPl6Nzuu",
+            "name": "Pipedrive account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "const users = $('HTTP Request').first().json.data; // retorno do HTTP Request\nconst nomeFormulario = $('Webhook').first().json.body['Agente de Parcerias'] || '';\n\nconst norm = s => (s || '')\n  .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n  .toLowerCase().trim();\n\nconst alvo = norm(nomeFormulario);\nconst user = users.find(u => norm(u.name) === alvo);\n\nif (!user) {\n  throw new Error(`Closer não encontrado por nome: ${nomeFormulario}`);\n}\n\nreturn [{ json: { owner_id: user.id, closer_name: user.name } }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          2032,
+          -320
+        ],
+        "id": "6420e9de-7ede-4612-8c78-5f6b82c77ed5",
+        "name": "Code2"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dealId": "={{ $('Create a deal1').item.json.id }}",
+          "updateFields": {
+            "user_id": "={{ $('Code2').item.json.owner_id }}"
+          }
+        },
+        "type": "n8n-nodes-base.pipedrive",
+        "typeVersion": 1,
+        "position": [
+          2256,
+          -320
+        ],
+        "id": "7810a047-8274-45e8-b133-f0d7307da013",
+        "name": "Update a deal1",
+        "credentials": {
+          "pipedriveApi": {
+            "id": "UxPJ6fXvXPl6Nzuu",
+            "name": "Pipedrive account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "value": "C09BK6X20LV",
+            "mode": "list",
+            "cachedResultName": "indicação-parcerias-closers"
+          },
+          "text": "=*LEAD ENVIADO NO FORMS*\n\n*Nome:* {{ $('Webhook').item.json.body.Nome }}\n*Email:* {{ $('Webhook').item.json.body.Email }}\n*Telefone:* {{ $('Webhook').item.json.body.Telefone }}\n*Parceiro:* {{ $('Webhook').item.json.body.Parceiro }}\n*Cupom:* {{ $('Webhook').item.json.body.Cupom }}\n*Agente de Parcerias:* {{ $('Webhook').item.json.body['Agente de Parcerias'] }}\n*Closer:* <@{{ $('Busca o usuário do Closer no Slack1').item.json.user.id || $('Webhook').item.json.body.Closer }}>",
+          "otherOptions": {
+            "includeLinkToWorkflow": false
+          }
+        },
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.3,
+        "position": [
+          2704,
+          -320
+        ],
+        "id": "2e76a9bd-f144-4336-ad00-1e33fd75f1ae",
+        "name": "Send a message",
+        "webhookId": "b5fce425-e6a8-483e-9d76-d433aca831ac",
+        "credentials": {
+          "slackApi": {
+            "id": "SsQksTzv99K5SqDV",
+            "name": "Slack Doguinho Bot"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "options": {
+            "includeBinaries": "={{$('Cria na Meetime sem email').item.json.sdr.name.toLowerCase()}}"
+          }
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          2480,
+          -608
+        ],
+        "id": "8c6b5437-3c05-4a9d-91e6-b92aa2fde2f5",
+        "name": "Aggregate"
+      },
+      {
+        "parameters": {
+          "resource": "user",
+          "operation": "getAll",
+          "returnAll": true
+        },
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.3,
+        "position": [
+          2256,
+          -608
+        ],
+        "id": "eac0bcc6-2bc3-4804-8b49-be78dea8ad30",
+        "name": "Usuários do slack",
+        "webhookId": "491b4176-17f3-42af-a3f4-6a77bc7a2ddb",
+        "credentials": {
+          "slackApi": {
+            "id": "SsQksTzv99K5SqDV",
+            "name": "Slack Doguinho Bot"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "d4718fcb-7d17-4b26-9c3b-854821ae7361",
+                "name": "sdr",
+                "value": "={{\nnome_sdr = $('Cria na Meetime sem email').item.json.sdr.name.toLowerCase(),\n\nid_sdr_slack = $('Aggregate').item.json.data.find(item =>\n  !item.deleted\n  &&\n  (\n    item.profile.display_name?.toLowerCase() == nome_sdr\n    ||\n    item.profile.real_name?.toLowerCase() == nome_sdr\n    ||\n    (item.profile.real_name?.length > 5 && item.profile.real_name?.toLowerCase().includes(nome_sdr))\n    ||\n    (item.profile.real_name?.length > 5 && nome_sdr.includes(item.profile.real_name?.toLowerCase()))\n  )\n)?.id,\n\nid_sdr_slack ? `<@${id_sdr_slack}>` : nome_sdr\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2704,
+          -608
+        ],
+        "id": "4a44f15c-3447-414b-9a58-74f6f0cc6630",
+        "name": "Menção ao SDR no Slack"
+      },
+      {
+        "parameters": {
+          "url": "https://slack.com/api/users.lookupByEmail",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "email",
+                "value": "={{ $('Update a deal').item.json.user_id.email }}"
+              }
+            ]
+          },
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer SLACK_TOKEN_PLACEHOLDER"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          2480,
+          -320
+        ],
+        "id": "fb92e13e-eb0e-4087-a3d0-9c2f8f82eec6",
+        "name": "Busca o usuário do Closer no Slack1"
+      },
+      {
+        "parameters": {
+          "select": "channel",
+          "channelId": {
+            "__rl": true,
+            "value": "C09BK6X20LV",
+            "mode": "list",
+            "cachedResultName": "indicação-parcerias-closers"
+          },
+          "text": "=Au au 🐶\nO lead {{ $('Create a deal1').item.json.title }} foi enviado para o Pipedrive.\nVerifique o cliente e finalize as configurações: https://cardapioweb.pipedrive.com/deal/{{ $('Create a deal1').item.json.id }}",
+          "otherOptions": {
+            "includeLinkToWorkflow": false,
+            "thread_ts": {
+              "replyValues": {
+                "thread_ts": "={{ $('Send a message').item.json.message_timestamp }}"
+              }
+            }
+          }
+        },
+        "id": "e47780cb-1fd0-4838-838f-69c023763037",
+        "name": "Envia mensagem informando que o lead foi criado no pipedrive",
+        "type": "n8n-nodes-base.slack",
+        "typeVersion": 2.2,
+        "position": [
+          2928,
+          -320
+        ],
+        "webhookId": "ac58343d-786d-4176-9cfb-f91e440b7b1e",
+        "credentials": {
+          "slackApi": {
+            "id": "SsQksTzv99K5SqDV",
+            "name": "Slack Doguinho Bot"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1EyCf8dkvD8jLzvRTQ7NwiQ4Mo6TWE6ApXuWjHxtZpRg",
+            "mode": "list",
+            "cachedResultName": "[SDR] Feedback parcerias",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1EyCf8dkvD8jLzvRTQ7NwiQ4Mo6TWE6ApXuWjHxtZpRg/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "Mês atual",
+            "mode": "name"
+          },
+          "columns": {
+            "mappingMode": "autoMapInputData",
+            "value": {
+              "SDR": "=",
+              "Agente": "={{ $('Edit Fields').item.json['Agente de Parcerias'] }}",
+              "Nome do lead": "={{ $('Edit Fields').item.json.Nome }}",
+              "Telefone": "={{ $('Edit Fields').item.json.Telefone }}",
+              "Data de criação": "={{ $now.format('dd/MM/yyyy') }}",
+              "Parceiro": "={{ $('Edit Fields').item.json.Parceiro }}",
+              "Track CUPOM": "={{ $('Edit Fields').item.json.Cupom }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "SDR",
+                "displayName": "SDR",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Agente",
+                "displayName": "Agente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Nome do lead",
+                "displayName": "Nome do lead",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Telefone",
+                "displayName": "Telefone",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Data de criação",
+                "displayName": "Data de criação",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Status",
+                "displayName": "Status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "Motivo da perda",
+                "displayName": "Motivo da perda",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Parceiro",
+                "displayName": "Parceiro",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Track CUPOM",
+                "displayName": "Track CUPOM",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "01/01/2026",
+                "displayName": "01/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "02/01/2026",
+                "displayName": "02/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "03/01/2026",
+                "displayName": "03/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "04/01/2026",
+                "displayName": "04/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "05/06/2026",
+                "displayName": "05/06/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "06/01/2026",
+                "displayName": "06/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "07/01/2026",
+                "displayName": "07/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "08/01/2026",
+                "displayName": "08/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "09/01/2026",
+                "displayName": "09/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "10/01/2026",
+                "displayName": "10/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "11/01/2026",
+                "displayName": "11/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "12/01/2026",
+                "displayName": "12/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "13/01/2026",
+                "displayName": "13/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "14/01/2026",
+                "displayName": "14/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "15/01/2026",
+                "displayName": "15/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "16/01/2026",
+                "displayName": "16/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "17/01/2026",
+                "displayName": "17/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "18/01/2026",
+                "displayName": "18/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "19/01/2026",
+                "displayName": "19/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "20/01/2026",
+                "displayName": "20/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "21/01/2026",
+                "displayName": "21/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "22/01/2026",
+                "displayName": "22/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "23/01/2026",
+                "displayName": "23/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "24/01/2026",
+                "displayName": "24/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "25/01/2026",
+                "displayName": "25/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "26/01/2026",
+                "displayName": "26/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "27/01/2026",
+                "displayName": "27/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "28/01/2026",
+                "displayName": "28/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "29/01/2026",
+                "displayName": "29/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "30/01/2026",
+                "displayName": "30/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "31/01/2026",
+                "displayName": "31/01/2026",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": true
+              },
+              {
+                "id": "Feedback SDR (extra)",
+                "displayName": "Feedback SDR (extra)",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "Feedback da Agente",
+                "displayName": "Feedback da Agente",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {
+            "cellFormat": "USER_ENTERED",
+            "locationDefine": {
+              "values": {
+                "headerRow": 5
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          3600,
+          -480
+        ],
+        "id": "dfb9f36b-f634-4536-805f-b4b57218a6d7",
+        "name": "Adiciona na planilha [SDR] Feedback parcerias",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "Sf357rOfdJLgmQHd",
+            "name": "Operações - Google Sheets (geral)"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "// Função para normalizar nome (lowercase + remover acentos + trim)\nfunction normalizeName(name) {\n  return name\n    .toLowerCase()\n    .normalize(\"NFD\")\n    .replace(/[\\u0300-\\u036f]/g, \"\")\n    .trim();\n}\n\n// Nome do SDR vindo da Meetime\nconst sdrNameOriginal = $input.first().json.sdr.name || '';\nconst sdrName = normalizeName(sdrNameOriginal);\n\n// Mapa: Nome do SDR (Meetime) → ID do usuário (Kommo)\nconst kommoUsersMap = {\n  // Usuários DESATIVADOS na Kommo removidos do mapa (caem no default = Glauton):\n  // ana clara 12615807, vanessa alencar 12615819, beatriz magalhaes 12718719,\n  // breno frate 12878927, eduarda melo 14236008, ellen morais 14896287\n  // Meetime devolve \"Douglas Barroso Teixeira\" quando cai no fallback da cadência;\n  // não atribuir ao dono da conta — redirecionar pro responsável padrão (Glauton):\n  \"douglas barroso teixeira\": 12707071,\n  \"glauton santos\": 12707071,\n  \"luan nicolas\": 12913959,\n  \"gregory lavor\": 12990371,\n  \"gustavo duarte\": 12990395,\n  \"leandro dos santos\": 12990399,\n  \"joao paulo\": 13411147,\n  \"marcos vinicius\": 13411155,\n  \"lara stefanny\": 14139747,\n  \"gabrielly oliveira\": 14269088,\n  \"felipe alexandrino\": 14342520,\n  \"miguel nunes\": 14482331,\n  \"michael douglas\": 14593771,\n  \"michel douglas\": 14593771,   // alias: Meetime envia \"Michel\"\n  \"layza batista\": 14643491,\n  \"ana alice\": 14649655,\n  \"thais giurizatto\": 14649683,\n  \"victoria viana\": 14710539,\n  \"caique silva\": 14746199,\n  \"ryan felipe\": 14767531,\n  \"luis lincon\": 14878819,\n  \"leonardo dos santos\": 14880219,\n  \"eduarda costa\": 14902435,\n  \"wanessa gomes\": 14910475,\n  \"guilherme gomes\": 14954507,\n  \"dayana ferreira\": 14963555,\n  \"matheus cunha\": 14978343,\n  \"jonas sobreira\": 14978355,\n  \"leticia wendy da silva alves\": 15007363,\n  \"tatyanna freitas\": 15068127,\n  \"karoline santos\": 15084811,\n  \"raissa fonseca\": 15085079,\n  \"jose guilherme\": 15093407,\n  \"kailane carvalho\": 15108627,\n  \"leticia rocha\": 15121915,\n  \"marilia araujo\": 15147411,\n  \"ranier oliveira\": 15183875,\n  \"rebeca garcez\": 15189299,\n  \"fabiola azevedo\": 15200975,\n  \"raquel alves\": 15256903,\n  \"maria gabriele\": 15256919,\n  \"enizia evangelista\": 15256939,\n  \"eric sousa\": 15281031,\n  \"clara rodrigues\": 15297963,\n  \"joana d'arc assis dos anjos\": 15300419,\n  \"gabriel alves\": 15300959,\n  \"felipe queiroz\": 15301003,\n  \"cleber rodrigues souza\": 15369887,\n  \"gustavo tavares\": 15383075\n};\n\n// ID padrão (caso não encontre o SDR) — NUNCA usar 0 (lead fica órfão)\n// e NUNCA usar o Douglas (dono da conta)\nconst DEFAULT_KOMMO_USER_ID = 12707071; // Glauton Santos (admin)\n\nconst kommoResponsibleId = kommoUsersMap[sdrName] || DEFAULT_KOMMO_USER_ID;\n\nreturn [\n  {\n    json: {\n      original_sdr_name: sdrNameOriginal,\n      normalized_sdr_name: sdrName,\n      kommo_responsible_id: kommoResponsibleId,\n      kommo_user_found: Boolean(kommoUsersMap[sdrName])\n    }\n  }\n];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          2256,
+          -800
+        ],
+        "id": "7e43f414-df45-4995-918d-b480ee9dc36b",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://marketingcardapiowebcom.kommo.com/api/v4/contacts",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer <KOMMO_LONG_DURATION_KEY>"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "=[\n  {\n    \"name\": \"{{ $('Cria na Meetime sem email').item.json.name }}\",\n    \"responsible_user_id\": {{ $json.kommo_responsible_id }},\n    \"custom_fields_values\": [\n      {\n        \"field_code\": \"EMAIL\",\n        \"values\": [\n          { \"value\": \"{{ $('Cria na Meetime sem email').item.json.email }}\" }\n        ]\n      },\n      {\n        \"field_code\": \"PHONE\",\n        \"values\": [\n          { \"value\": \"{{ $('Cria na Meetime sem email').item.json.phones[0].phone }}\" }\n        ]\n      }\n    ]\n  }\n]\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          2480,
+          -800
+        ],
+        "id": "a2ebcc29-2b62-40a5-87ad-a0ad1ff9b9eb",
+        "name": "HTTP Request1"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://marketingcardapiowebcom.kommo.com/api/v4/leads",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "=Authorization",
+                "value": "Bearer <KOMMO_LONG_DURATION_KEY>"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          },
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "=[\n  {\n    \"name\": \"{{ $('Cria na Meetime sem email').item.json.name }}\",\n    \"responsible_user_id\": {{ $('Code in JavaScript').item.json.kommo_responsible_id }},\n    \"pipeline_id\": 10516651,\n    \"status_id\": 80643275,\n    \"_embedded\": {\n      \"contacts\": [\n        { \"id\": {{ $json._embedded.contacts[0].id }} }\n      ]\n    }\n  }\n]\n",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          2896,
+          -800
+        ],
+        "id": "0e24ecb9-2557-4eb3-bbdb-6ab5a4b9da0c",
+        "name": "HTTP Request2"
+      },
+      {
+        "parameters": {
+          "jsCode": "return [\n  {\n    json: JSON.parse($input.first().json.data.trim())\n  }\n];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          2688,
+          -800
+        ],
+        "id": "62c2e755-802c-4063-aafc-f038c5980fe0",
+        "name": "Code in JavaScript1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "c473ed29-ebac-4a37-9864-a71d6b518690",
+                "name": "SDR",
+                "value": "={{ $('Edit Fields').item.json.sdr }}",
+                "type": "string"
+              },
+              {
+                "id": "87f82b67-f7a8-49cb-a21b-9c5cf2295af9",
+                "name": "Agente",
+                "value": "={{ $('Edit Fields').item.json['Agente de Parcerias'] }}",
+                "type": "string"
+              },
+              {
+                "id": "4cbdb1be-9b6c-42b7-b00a-c45ed4d6c7c1",
+                "name": "Nome do lead",
+                "value": "={{ $('Edit Fields').item.json.Nome }}",
+                "type": "string"
+              },
+              {
+                "id": "f6b9d579-96d7-4dab-9a9a-75a8fb7d4567",
+                "name": "Telefone",
+                "value": "={{ $('Edit Fields').item.json.Telefone }}",
+                "type": "string"
+              },
+              {
+                "id": "22eb0ebb-3209-470c-ad01-ddcdcf8a7dd1",
+                "name": "Data de criação",
+                "value": "={{ $now.format('dd/MM/yyyy') }}",
+                "type": "string"
+              },
+              {
+                "id": "5830abc2-8534-43f2-a19e-3ee12cef8d8e",
+                "name": "Parceiro",
+                "value": "={{ $('Edit Fields').item.json.Parceiro }}",
+                "type": "string"
+              },
+              {
+                "id": "10d0adc9-bf39-4614-99c6-7f06386f16de",
+                "name": "Track CUPOM",
+                "value": "={{ $('Edit Fields').item.json.Cupom }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          3376,
+          -480
+        ],
+        "id": "57d60d82-3169-4b68-956f-b85995fec7d4",
+        "name": "Dados com atributos prontos para a planilha"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "V4oAC5E4yL5isIKz",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/V4oAC5E4yL5isIKz",
+            "cachedResultName": "[PAR] Atualizar número de indicações dos parceiros no pipedrive"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {},
+            "matchingColumns": [],
+            "schema": [],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          208,
+          -464
+        ],
+        "id": "5cec52a8-5e99-40d3-84be-f3f10015037c",
+        "name": "Call 'My workflow 121'"
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Call 'My workflow 121'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code": {
+        "main": [
+          [
+            {
+              "node": "If1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Verifica se tem email": {
+        "main": [
+          [
+            {
+              "node": "Code",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Cria na Meetime sem email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Cria na Meetime sem email": {
+        "main": [
+          [
+            {
+              "node": "Usuários do slack",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If1": {
+        "main": [
+          [
+            {
+              "node": "Execute Workflow",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Cria na Meetime sem email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Refresh token": {
+        "main": [
+          [
+            {
+              "node": "Cria conversão na RD1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Execute Workflow": {
+        "main": [
+          [
+            {
+              "node": "Get Refresh token",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Cria conversão na RD1": {
+        "main": [
+          [
+            {
+              "node": "Cria na Meetime sem email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Slack": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "[PAR][CORE] Enviar leads de parcerias para o pipedrive",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Dados com atributos prontos para a planilha",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "Verifica se tem email",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Create a person",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create a person": {
+        "main": [
+          [
+            {
+              "node": "Create a deal",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create a deal": {
+        "main": [
+          [
+            {
+              "node": "Create a deal1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Create a deal1": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          [
+            {
+              "node": "Code1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code1": {
+        "main": [
+          [
+            {
+              "node": "Update a deal",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code2": {
+        "main": [
+          [
+            {
+              "node": "Update a deal1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update a deal": {
+        "main": [
+          [
+            {
+              "node": "Code2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update a deal1": {
+        "main": [
+          [
+            {
+              "node": "Busca o usuário do Closer no Slack1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "node": "Menção ao SDR no Slack",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Usuários do slack": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Menção ao SDR no Slack": {
+        "main": [
+          [
+            {
+              "node": "Slack",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Busca o usuário do Closer no Slack1": {
+        "main": [
+          [
+            {
+              "node": "Send a message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a message": {
+        "main": [
+          [
+            {
+              "node": "Envia mensagem informando que o lead foi criado no pipedrive",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request1": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript1": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Adiciona na planilha [SDR] Feedback parcerias": {
+        "main": [
+          []
+        ]
+      },
+      "Dados com atributos prontos para a planilha": {
+        "main": [
+          [
+            {
+              "node": "Adiciona na planilha [SDR] Feedback parcerias",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'My workflow 121'": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "Operacao CW",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  }
+}

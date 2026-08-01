@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deals-fantasma no Funil de Vendas — investigação e correção</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --roxo: #a442fa; --dourado: #ffb700; --ink: #2b2338; --cinza: #6d6579; --fundo: #faf8fd; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', 'Segoe UI', sans-serif; color: var(--ink); background: var(--fundo); line-height: 1.55; }
+  .page { max-width: 860px; margin: 0 auto; padding: 40px 32px 64px; }
+  header { border-bottom: 4px solid var(--roxo); padding-bottom: 18px; margin-bottom: 28px; }
+  .kicker { color: var(--dourado); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; }
+  h1 { font-size: 1.7rem; font-weight: 800; color: var(--ink); margin-top: 4px; }
+  .meta { color: var(--cinza); font-size: .9rem; margin-top: 8px; }
+  .badge { display: inline-block; background: #e9fbf0; color: #157347; border: 1px solid #b7e4c7; border-radius: 20px; padding: 2px 12px; font-size: .82rem; font-weight: 700; margin: 10px 6px 0 0; }
+  h2 { color: var(--roxo); font-size: 1.15rem; font-weight: 800; margin: 30px 0 10px; }
+  p { margin-bottom: 10px; }
+  strong { font-weight: 700; }
+  .resumo { background: #fff; border-left: 5px solid var(--dourado); border-radius: 8px; padding: 16px 20px; box-shadow: 0 1px 4px rgba(43,35,56,.07); margin-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(43,35,56,.07); margin: 12px 0 16px; font-size: .92rem; }
+  th { background: var(--roxo); color: #fff; text-align: left; padding: 9px 12px; font-weight: 700; }
+  td { padding: 8px 12px; border-top: 1px solid #efeaf6; vertical-align: top; }
+  tr:nth-child(even) td { background: #fbf9fe; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  ul, ol { margin: 0 0 12px 22px; }
+  li { margin-bottom: 6px; }
+  .fonte { color: var(--cinza); font-size: .82rem; }
+  .destaque { background: #fff7e0; border: 1px solid #ffe1a1; border-radius: 8px; padding: 12px 16px; margin: 12px 0; }
+  code { background: #f1ecf8; border-radius: 4px; padding: 1px 6px; font-size: .88em; }
+  footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid #e5def0; color: var(--cinza); font-size: .82rem; }
+  @media print { body { background: #fff; } .page { padding: 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="kicker">CardápioWeb · RevOps / Growth</div>
+  <h1>Deals-fantasma no Funil de Vendas — investigação e correção</h1>
+  <div class="meta">23/07/2026 · reportado pela Whenna no dashboard "CLO | NEG INI (ANÁLISE SDR)" · horários em Brasília</div>
+  <span class="badge">✔ Causa identificada com prova direta</span>
+  <span class="badge">✔ Correção aplicada 14:04</span>
+  <span class="badge">✔ Validada em produção 15:01</span>
+</header>
+
+<div class="resumo">
+  <p><strong>O problema:</strong> 366 negócios criados em julho no Funil de Vendas com proprietário <strong>Glauton Santos</strong> (SEO — não deveria receber lead). <span class="fonte">Filtro: funil "Funil de Vendas", negócio criado de 01 a 23/07, proprietário Glauton.</span></p>
+  <p><strong>A causa:</strong> um fallback defeituoso do workflow n8n <strong>"[PAR][PIPEDRIVE] Vincular cupom com PARCEIRO"</strong>, que roda a cada negócio criado no Pipedrive com o campo Cupom preenchido (indicações de Parcerias) e criava um deal vazio na etapa Reunião Marcada em nome do Glauton. Ativo desde <strong>jul/2025</strong>; <strong>~3.551 deals-fantasma acumulados</strong>.</p>
+  <p><strong>O que foi feito:</strong> o fallback foi desativado e o filtro corrigido às 14:04 de 23/07. <strong>Resultado medido:</strong> nas 4 indicações que entraram em seguida, nenhum fantasma nasceu.</p>
+</div>
+
+<h2>O que os 366 negócios são</h2>
+<p>Todos os 366 foram puxados pela API e analisados um a um. O perfil é 100% homogêneo e não corresponde a lead real:</p>
+<ul>
+  <li>Criados via API pelo usuário do token das automações (Glauton), direto na etapa <strong>"Reunião Marcada"</strong>, todos em aberto;</li>
+  <li><strong>Sem pessoa vinculada, sem organização, sem nenhum campo preenchido, sem nota, sem atividade</strong> — só o título com o nome do lead indicado;</li>
+  <li>Nascem só em dia útil, em horário comercial (o ritmo do time de Parcerias); 99 dos 366 são o mesmo nome duplicado;</li>
+  <li>286 nascem <strong>1 a 3 segundos depois</strong> de um deal homônimo criado pelo fluxo de indicações de Parcerias, com IDs consecutivos (ex.: 462010 indicação → 462011 fantasma).</li>
+</ul>
+
+<h2>Como a causa foi encontrada</h2>
+<ol>
+  <li><strong>Pipedrive:</strong> caracterização dos 366 + histórico do padrão mês a mês + cruzamento com os 393 deals de indicação de julho (funil de clientes do parceiro).</li>
+  <li><strong>n8n:</strong> varredura de 278 workflows atrás de todo nó que cria ou duplica deal; dissecação dos suspeitos. O fluxo de adição manual de Parcerias foi conferido e está <strong>correto, by design</strong> — não era o problema.</li>
+  <li><strong>Webhooks do Pipedrive:</strong> os 29 inscritos foram datados; Make (out/2024), WordPress (mai/2026) e Railway (jul/2026) não batem com o início do padrão. O webhook <code>create.deal</code> criado em <strong>10/07/2025</strong> bate exatamente com o primeiro mês de fantasmas.</li>
+  <li><strong>Meetime, RD e Kommo:</strong> descartados por evidência — houve fantasma em execução que não tocou nenhum dos três.</li>
+  <li><strong>Flagrante ao vivo:</strong> um monitor capturou 3 fantasmas nascendo em tempo real (12:04) junto com todas as execuções do n8n daquele minuto. Abrindo as execuções nó a nó, o nó final do workflow "Vincular cupom com PARCEIRO" <strong>devolveu exatamente os IDs dos 3 fantasmas</strong> — prova direta de autoria.</li>
+</ol>
+
+<h2>A mecânica do defeito</h2>
+<p>O workflow deveria: negócio novo com cupom → achar o deal do parceiro no funil de acompanhamento → registrar nele a atividade "Indicação via Cupom". Três defeitos combinados desviavam praticamente tudo para o fallback:</p>
+<table>
+  <tr><th style="width:34%">Defeito</th><th>Efeito</th></tr>
+  <tr><td>O filtro procurava o parceiro no funil errado (44 em vez de 42, onde os parceiros realmente estão)</td><td>O "vincular" quase nunca encontrava o parceiro</td></tr>
+  <tr><td>Quando não achava, o código devolvia a resposta crua da busca em vez de vazio</td><td>O fluxo seguia para o fallback em vez de encerrar</td></tr>
+  <tr><td>O fallback criava o deal <strong>sem etapa e sem dono</strong></td><td>Sem etapa, o Pipedrive joga na 1ª etapa do funil padrão (= Reunião Marcada do Funil de Vendas); sem dono, atribui ao dono do token da API (= Glauton)</td></tr>
+</table>
+<p>Cada indicação gera 1 ou 2 negócios com cupom, então saíam 1–2 fantasmas por indicação. O fantasma nasce sem cupom e por isso não se multiplicava sozinho; deals da Meetime não têm cupom e nunca geraram fantasma.</p>
+
+<h2>Volume acumulado</h2>
+<p class="fonte">Filtro: Funil de Vendas, proprietário Glauton, negócio sem pessoa vinculada, por mês de criação (Brasília).</p>
+<table>
+  <tr><th>Mês</th><th class="num">Fantasmas</th><th>Mês</th><th class="num">Fantasmas</th></tr>
+  <tr><td>jul/2025</td><td class="num">122</td><td>fev/2026</td><td class="num">248</td></tr>
+  <tr><td>ago/2025</td><td class="num">182</td><td>mar/2026</td><td class="num">337</td></tr>
+  <tr><td>set/2025</td><td class="num">220</td><td>abr/2026</td><td class="num">342</td></tr>
+  <tr><td>out/2025</td><td class="num">244</td><td>mai/2026</td><td class="num">321</td></tr>
+  <tr><td>nov/2025</td><td class="num">221</td><td>jun/2026</td><td class="num">419</td></tr>
+  <tr><td>dez/2025</td><td class="num">195</td><td>jul/2026 (até dia 23)</td><td class="num">364</td></tr>
+  <tr><td>jan/2026</td><td class="num">336</td><td><strong>Total</strong></td><td class="num"><strong>3.551</strong></td></tr>
+</table>
+
+<h2>O que foi feito</h2>
+<p>Ajuste cirúrgico no próprio workflow em 23/07 às 14:04, com backup antes e depois e verificação pós-escrita:</p>
+<ul>
+  <li>Os 2 nós do fallback que criavam o fantasma foram <strong>desabilitados</strong>;</li>
+  <li>O código do filtro foi corrigido para encerrar limpo quando não há match;</li>
+  <li>Nada mais foi alterado: o caminho da atividade no deal do parceiro, o webhook, o filtro de cupom e o fluxo de adição manual de Parcerias seguem exatamente como estavam. O workflow continua ativo.</li>
+</ul>
+
+<h2>Resultado medido</h2>
+<p>Monitor de 55 minutos após o ajuste (14:05–15:01 de 23/07):</p>
+<table>
+  <tr><th>Indicação nova (funil de Parcerias)</th><th>Horário</th><th>Fantasma gerado?</th></tr>
+  <tr><td>Monique Custodio</td><td>14:23</td><td>Não</td></tr>
+  <tr><td>Wilson — Sushi Tem</td><td>14:35</td><td>Não</td></tr>
+  <tr><td>Thiago — Pizzas PerTutti</td><td>14:37</td><td>Não</td></tr>
+  <tr><td>Eric Fontes</td><td>14:56</td><td>Não</td></tr>
+</table>
+<p>Antes do ajuste, cada uma dessas teria gerado 1–2 fantasmas. O workflow processou os 4 eventos normalmente (15 execuções após o ajuste, todas com sucesso) — a correção não introduziu erro.</p>
+
+<div class="destaque">
+  <strong>Leitura do dashboard até a limpeza:</strong> os 366 de julho continuam visíveis no "CLO | NEG INI" até os fantasmas acumulados serem removidos — nesse meio-tempo, filtrar proprietário ≠ Glauton dá a visão real dos SDRs. A lista completa dos 366, com o deal de indicação correspondente, está em <code>analises/dados/2026-07-23_deals-fantasma-glauton-funil-vendas-julho.csv</code>.
+</div>
+
+<footer>
+  Investigação e correção: Alexandre (Growth) · 23/07/2026 · evidências por ID (deals 462084–462089, execuções n8n 106988855/106989116/106989118, webhook create.deal de 10/07/2025) reproduzíveis via API · versão fonte: analises/2026-07-23_deals-fantasma-glauton-funil-vendas.md
+</footer>
+
+</div>
+</body>
+</html>

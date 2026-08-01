@@ -1,0 +1,342 @@
+<meta charset="utf-8">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<title>Checklist — Experiência na página de destino</title>
+<link rel="stylesheet" href="cw-brand.css">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Museo Sans Rounded", "Nunito", "Quicksand", system-ui, sans-serif;
+    font-weight: 500;
+    color: var(--cw-eminence);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .pg {
+    width: 210mm; min-height: 297mm; padding: 16mm 15mm 14mm;
+    page-break-after: always; position: relative; background: #fff;
+  }
+  .pg:last-child { page-break-after: auto; }
+
+  /* ---------- capa ---------- */
+  .capa {
+    background: var(--cw-eminence);
+    color: #fff; display: flex; flex-direction: column; justify-content: center;
+    padding: 22mm 18mm;
+  }
+  .logo-box {
+    background: #fff; border-radius: 18px; padding: 14px 20px;
+    width: 62mm; margin-bottom: 16mm;
+  }
+  .logo-box img { display: block; width: 100%; }
+  .capa h1 {
+    font-weight: 1000; font-size: 40pt; line-height: 1.04;
+    margin: 0 0 8mm; letter-spacing: -0.5px;
+  }
+  .capa .sub { font-size: 14pt; line-height: 1.5; opacity: .92; max-width: 130mm; margin: 0 0 14mm; }
+  .capa .meta { font-size: 10.5pt; opacity: .8; line-height: 1.8; }
+  .capa .rule { width: 34mm; height: 5px; background: var(--cw-amarelo); border-radius: 99px; margin-bottom: 10mm; }
+
+  /* ---------- tipografia ---------- */
+  h2 {
+    font-weight: 1000; font-size: 21pt; margin: 0 0 3mm;
+    color: var(--cw-eminence); letter-spacing: -0.3px;
+  }
+  h3 { font-weight: 1000; font-size: 13pt; margin: 0 0 2mm; color: var(--cw-eminence); }
+  p  { font-size: 10.5pt; line-height: 1.62; margin: 0 0 4mm; }
+  .lead { font-size: 12pt; line-height: 1.55; }
+  .kicker {
+    font-size: 8.5pt; font-weight: 1000; letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--cw-purple-heart); margin-bottom: 2mm;
+  }
+  .secao-rule { height: 4px; width: 26mm; background: var(--cw-amarelo); border-radius: 99px; margin: 0 0 6mm; }
+
+  /* ---------- tabela ---------- */
+  table { width: 100%; border-collapse: collapse; font-size: 10pt; margin: 0 0 6mm; }
+  th {
+    background: var(--cw-eminence); color: #fff; font-weight: 1000; text-align: left;
+    padding: 3mm 3.5mm; font-size: 9.5pt;
+  }
+  th:first-child { border-radius: 10px 0 0 0; }
+  th:last-child  { border-radius: 0 10px 0 0; }
+  td { padding: 3mm 3.5mm; border-bottom: 1px solid rgba(89,50,122,.14); vertical-align: top; line-height: 1.45; }
+  tr:nth-child(even) td { background: var(--cw-magnolia); }
+
+  /* ---------- itens do checklist ---------- */
+  .item {
+    background: var(--cw-magnolia); border-radius: 14px; padding: 5mm 6mm;
+    margin-bottom: 4mm; border-left: 5px solid var(--cw-purple-heart);
+    page-break-inside: avoid;
+  }
+  .item.feito  { border-left-color: #2E9E5B; background: rgba(46,158,91,.09); }
+  .item.travado{ border-left-color: var(--cw-coral); }
+  .item-top { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 2mm; }
+  .num {
+    font-weight: 1000; font-size: 15pt; color: var(--cw-purple-heart);
+    min-width: 9mm; line-height: 1;
+  }
+  .item.feito .num { color: #2E9E5B; }
+  .item.travado .num { color: var(--cw-coral); }
+  .item h3 { margin: 0; flex: 1; font-size: 12.5pt; line-height: 1.3; }
+  .item p { font-size: 9.8pt; margin: 0 0 2.5mm; line-height: 1.55; }
+  .item p:last-child { margin-bottom: 0; }
+  .porque { color: rgba(89,50,122,.78); }
+  .porque b { color: var(--cw-eminence); }
+
+  .tags { display: flex; gap: 2mm; flex-wrap: wrap; margin-top: 3mm; }
+  .tag {
+    font-size: 8pt; font-weight: 1000; padding: 1.3mm 3mm; border-radius: 99px;
+    background: #fff; border: 1px solid rgba(89,50,122,.22); color: var(--cw-eminence);
+    letter-spacing: .3px;
+  }
+  .tag.conf  { background: var(--cw-eminence); color: #fff; border-color: var(--cw-eminence); }
+  .tag.cons  { background: var(--cw-amarelo); color: var(--cw-eminence); border-color: var(--cw-amarelo); }
+  .tag.hig   { background: #fff; }
+  .tag.ok    { background: #2E9E5B; color: #fff; border-color: #2E9E5B; }
+  .tag.wait  { background: var(--cw-magnolia); }
+  .tag.stop  { background: var(--cw-coral); color: #fff; border-color: var(--cw-coral); }
+
+  code {
+    font-family: "Cascadia Mono", Consolas, monospace; font-size: 9pt;
+    background: #fff; padding: .6mm 1.6mm; border-radius: 5px;
+    border: 1px solid rgba(89,50,122,.18);
+  }
+  .cod {
+    display: block; background: var(--cw-eminence); color: #fff; border: none;
+    padding: 3mm 4mm; border-radius: 10px; margin: 2.5mm 0; line-height: 1.5;
+    font-size: 8.6pt; white-space: pre-wrap; word-break: break-word;
+  }
+
+  .callout {
+    background: var(--cw-eminence); color: #fff; border-radius: 14px;
+    padding: 5mm 6mm; margin: 0 0 5mm;
+  }
+  .callout h3 { color: #fff; margin-bottom: 2mm; }
+  .callout p  { color: rgba(255,255,255,.92); font-size: 10pt; margin: 0; }
+  .callout .destaque { color: var(--cw-amarelo); font-weight: 1000; }
+
+  .nota {
+    border: 1px solid rgba(89,50,122,.22); border-radius: 12px;
+    padding: 4mm 5mm; font-size: 9.5pt; line-height: 1.55; margin-bottom: 4mm;
+    background: #fff;
+  }
+  .nota b { color: var(--cw-coral); }
+
+  .rodape {
+    position: absolute; bottom: 8mm; left: 15mm; right: 15mm;
+    font-size: 8pt; color: rgba(89,50,122,.5);
+    display: flex; justify-content: space-between;
+    border-top: 1px solid rgba(89,50,122,.14); padding-top: 2.5mm;
+  }
+  ul { margin: 0 0 4mm; padding-left: 5mm; font-size: 10pt; line-height: 1.62; }
+  li { margin-bottom: 1.6mm; }
+</style>
+</head>
+<body>
+
+<!-- ============ CAPA ============ -->
+<section class="pg capa">
+  <div class="logo-box"><img src="" id="logo" alt="Cardápio Web"></div>
+  <div class="rule"></div>
+  <h1>Experiência na<br>página de destino</h1>
+  <p class="sub">Checklist acionável para tirar nota máxima no Índice de qualidade do Google Ads, nas keywords <b>cardápio web</b> e <b>cardápio digital</b>.</p>
+  <div class="meta">
+    Página alvo · lp.cardapioweb.com/lp-google-ads-3/<br>
+    Alexandre Magno · Growth · 31 de julho de 2026<br>
+    Complementa a análise de 28/07/2026
+  </div>
+</section>
+
+<!-- ============ ONDE ESTAMOS ============ -->
+<section class="pg">
+  <div class="kicker">Ponto de partida</div>
+  <h2>Onde a gente está hoje</h2>
+  <div class="secao-rule"></div>
+
+  <p class="lead">O Índice de qualidade tem três componentes. Nos dois grupos de keywords, dois deles já estão no teto e <b>só a experiência da página está abaixo</b>. O alvo da atividade é exatamente o gargalo.</p>
+
+  <table>
+    <tr>
+      <th>Grupo de keywords</th><th>Índice</th><th>Exp. na página</th><th>Relevância do anúncio</th><th>CTR esperada</th>
+    </tr>
+    <tr>
+      <td><b>cardápio web</b><br><span style="font-size:8.5pt;opacity:.7">6 variantes de marca</span></td>
+      <td>8/10</td><td><b>Na média</b></td><td>Acima da média</td><td>Acima da média</td>
+    </tr>
+    <tr>
+      <td><b>cardápio digital</b><br><span style="font-size:8.5pt;opacity:.7">110 keywords</span></td>
+      <td>7/10</td><td><b>Abaixo da média</b></td><td>Acima da média</td><td>Acima da média</td>
+    </tr>
+  </table>
+
+  <p style="font-size:9.5pt;opacity:.75">Lido do painel da conta, período de 2 a 29 de julho de 2026, campanhas ativadas e pausadas. A coluna histórica é idêntica à atual nos dois grupos, o que indica patamar estável e não queda recente.</p>
+
+  <div class="callout">
+    <h3>O diagnóstico em uma frase</h3>
+    <p>As campanhas mandam todo o tráfego para esta página, e a página <span class="destaque">não conversava com o que o anúncio promete</span>. Some a isso um servidor que responde em 1,27 s enquanto os concorrentes do mesmo leilão respondem em 0,15 s.</p>
+  </div>
+
+  <div class="kicker" style="margin-top:8mm">Como ler este checklist</div>
+  <table>
+    <tr><th style="width:34mm">Nível</th><th>Significado</th></tr>
+    <tr><td><b>Confirmado</b></td><td>O Google afirma oficialmente que avalia isso, e a página falha de forma mensurável</td></tr>
+    <tr><td><b>Consenso</b></td><td>Prática recomendada de forma ampla, sem confirmação oficial do peso</td></tr>
+    <tr><td><b>Higiene</b></td><td>Não move o Índice sozinho, mas remove ruído e ajuda a conversão</td></tr>
+  </table>
+
+  <div class="nota">
+    <b>Sem promessa de resultado.</b> O status de cada componente é relativo aos concorrentes daquele leilão nos últimos 90 dias. Dá para fazer tudo certo e continuar &quot;Na média&quot; se os concorrentes também melhorarem. O que este checklist entrega é a remoção das causas conhecidas, que é a maior probabilidade disponível.
+  </div>
+
+  <div class="rodape"><span>Experiência na página de destino · Checklist</span><span>2</span></div>
+</section>
+
+<!-- ============ BLOCO 1 ============ -->
+<section class="pg">
+  <div class="kicker">Bloco 1 de 4</div>
+  <h2>Na página</h2>
+  <div class="secao-rule"></div>
+  <p class="lead">Tudo aqui se aplica direto no conteúdo da página, sem depender de dev. Somadas, são cerca de 30 minutos.</p>
+
+  <div class="item feito">
+    <div class="item-top"><span class="num">01</span><h3>Subheadline da primeira dobra</h3></div>
+    <p>A linha abaixo do H1 listava funcionalidades e não dizia nada do que o anúncio promete. Trocada por texto que espelha a descrição do anúncio.</p>
+    <span class="cod">Troque o cardápio de papel ou PDF por um cardápio digital com QR code. Seu cliente pede sozinho pelo celular e você atualiza preço na hora.</span>
+    <p class="porque"><b>Por quê:</b> &quot;manter consistência entre a mensagem do anúncio e a página de destino&quot; é recomendação nominal do Google. As palavras <i>papel</i> e <i>PDF</i>, que abrem o anúncio, não existiam em lugar nenhum da página.</p>
+    <div class="tags"><span class="tag ok">Aplicado em 31/07</span><span class="tag conf">Confirmado</span><span class="tag">5 min</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-top"><span class="num">02</span><h3>Título da página</h3></div>
+    <p>Está com o rascunho interno vazado em produção: <code>LP – Google Ads – Cardápio Web – Cardápio Web</code>. Troca no título do post, não no conteúdo.</p>
+    <span class="cod">Cardápio Digital com QR Code para Restaurantes | Cardápio Web</span>
+    <p class="porque"><b>Por quê:</b> é o campo textual mais forte da página, e hoje está gasto anunciando &quot;isto é uma LP de anúncio&quot; com a marca repetida duas vezes. O título novo cobre os dois grupos de keywords de uma vez.</p>
+    <div class="tags"><span class="tag wait">A fazer</span><span class="tag conf">Confirmado</span><span class="tag">5 min</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-top"><span class="num">03</span><h3>Três perguntas novas no FAQ</h3></div>
+    <p>As cinco perguntas atuais são sobre suporte, celular, comanda, pedido por telefone e pagamento. Nenhuma responde o que a pessoa buscou antes de clicar.</p>
+    <p class="porque"><b>Por quê:</b> &quot;utilidade e relevância da informação apresentada na página&quot; é fator citado nominalmente. Os termos que trazem tráfego são <i>como montar um cardápio digital</i>, <i>criar link de cardápio online</i>, <i>aplicativo para fazer cardápio</i> e <i>cardápio digital delivery</i>. A intenção é fazer, e a página não ensina a fazer.</p>
+    <p class="porque">Perguntas a acrescentar: como montar o cardápio digital · funciona com QR code na mesa · serve para delivery.</p>
+    <div class="tags"><span class="tag wait">A fazer</span><span class="tag cons">Consenso</span><span class="tag">15 min</span></div>
+  </div>
+
+  <div class="rodape"><span>Experiência na página de destino · Checklist</span><span>3</span></div>
+</section>
+
+<!-- ============ BLOCO 1 cont. + BLOCO 2 ============ -->
+<section class="pg">
+  <div class="kicker">Bloco 1 · continuação</div>
+  <h2>Na página</h2>
+  <div class="secao-rule"></div>
+
+  <div class="item">
+    <div class="item-top"><span class="num">04</span><h3>Trocar <code>nofollow</code> por <code>follow</code></h3></div>
+    <p>A página tem <code>noindex, nofollow</code>. O <code>noindex</code> pode ficar se a intenção é não competir organicamente com o site principal.</p>
+    <p class="porque"><b>Por quê:</b> o <code>nofollow</code> não traz benefício nenhum e sinaliza página isolada. Atenção, isso <b>não</b> é a causa da nota baixa: a documentação do Google Search Central é explícita em dizer que <code>noindex</code> genérico não bloqueia o AdsBot. Mudança barata e de risco zero, não espere efeito mensurável.</p>
+    <div class="tags"><span class="tag wait">A fazer</span><span class="tag hig">Higiene</span><span class="tag">2 min</span></div>
+  </div>
+
+  <div class="kicker" style="margin-top:10mm">Bloco 2 de 4</div>
+  <h2>No servidor</h2>
+  <div class="secao-rule"></div>
+  <p class="lead">Depende de quem tem acesso ao host. É o bloco de maior impacto e o mais lento a andar, então entra na fila primeiro.</p>
+
+  <div class="item">
+    <div class="item-top"><span class="num">05</span><h3>Cache de página, na ordem certa</h3></div>
+    <p><b>Primeiro</b> mover a geração do cookie <code>cw_ext_id</code> do PHP para o JavaScript. <b>Depois</b> ligar o cache. Inverter a ordem não funciona.</p>
+    <p class="porque"><b>Por quê:</b> a resposta do HTML vem com <code>Set-Cookie</code>, e resposta com <code>Set-Cookie</code> desliga o cache em praticamente qualquer CDN ou plugin. Enquanto o PHP gravar esse cookie, nenhum cache pega. O formulário já envia o <code>cw_ext_id</code> como campo, então muda só a origem do valor.</p>
+    <p class="porque"><b>Ganho:</b> o próprio Chrome estima <b>1.054 ms</b> de economia de LCP e FCP. É o único item do checklist com ganho quantificado, e velocidade de carregamento é fator que o Google confirma oficialmente.</p>
+    <div class="tags"><span class="tag wait">A fazer</span><span class="tag conf">Confirmado</span><span class="tag">2–4 h · dev</span></div>
+  </div>
+
+  <div class="item">
+    <div class="item-top"><span class="num">06</span><h3>Política e Termos como página HTML</h3></div>
+    <p>Hoje são PDFs de 97 KB e 250 KB, hospedados em outro domínio.</p>
+    <p class="porque"><b>Por quê:</b> a política de Destination Experience do Google desaconselha links que levam direto a um arquivo. Além disso, um PDF de 250 KB é uma barreira real no celular.</p>
+    <div class="tags"><span class="tag wait">A fazer</span><span class="tag cons">Consenso</span><span class="tag">1–2 h · dev</span></div>
+  </div>
+
+  <div class="rodape"><span>Experiência na página de destino · Checklist</span><span>4</span></div>
+</section>
+
+<!-- ============ BLOCO 3 + VALIDAÇÃO ============ -->
+<section class="pg">
+  <div class="kicker">Bloco 3 de 4</div>
+  <h2>Travado esperando decisão</h2>
+  <div class="secao-rule"></div>
+
+  <div class="item travado">
+    <div class="item-top"><span class="num">07</span><h3>Bloco de contato no rodapé</h3></div>
+    <p>A página tem CNPJ e endereço, mas <b>nenhum canal de contato</b>: sem telefone, sem e-mail, sem WhatsApp visível.</p>
+    <p class="porque"><b>Por quê:</b> transparência e facilidade de navegação são fatores citados. Uma página que pede dado de contato sem oferecer nenhum é assimétrica, e isso pesa tanto no critério quanto na conversão.</p>
+    <p class="porque"><b>O que falta:</b> definir qual telefone e qual e-mail públicos podem entrar. Sem essa definição o item não anda, e número não se inventa.</p>
+    <div class="tags"><span class="tag stop">Bloqueado</span><span class="tag conf">Confirmado</span><span class="tag">1 h após a decisão</span></div>
+  </div>
+
+  <div class="kicker" style="margin-top:10mm">Bloco 4 de 4</div>
+  <h2>Como validar</h2>
+  <div class="secao-rule"></div>
+
+  <table>
+    <tr><th style="width:52mm">O que medir</th><th>Como</th><th style="width:32mm">Meta</th></tr>
+    <tr><td><b>Tempo de resposta</b></td><td><code>curl -w "%{time_starttransfer}"</code> na URL, 3 execuções</td><td>abaixo de 0,3 s</td></tr>
+    <tr><td><b>LCP mobile</b></td><td>PageSpeed Insights, perfil celular</td><td>abaixo de 1,0 s</td></tr>
+    <tr><td><b>Exp. na página</b></td><td>Google Ads, coluna &quot;Exp. da página de destino (hist.)&quot;</td><td>subir um degrau</td></tr>
+    <tr><td><b>Formulário íntegro</b></td><td>Envio de teste após cada edição de conteúdo</td><td>lead chega</td></tr>
+  </table>
+
+  <div class="callout">
+    <h3>Sobre o prazo</h3>
+    <p>O Índice de qualidade é recalculado com o acúmulo de impressões, comparando com os últimos 90 dias dos concorrentes. <span class="destaque">Conte com 2 a 4 semanas de veiculação</span> depois das mudanças antes de julgar o resultado, e use a coluna histórica para comparar antes e depois com data.</p>
+  </div>
+
+  <div class="rodape"><span>Experiência na página de destino · Checklist</span><span>5</span></div>
+</section>
+
+<!-- ============ DESCARTADOS ============ -->
+<section class="pg">
+  <div class="kicker">Registro de decisões</div>
+  <h2>O que saiu do plano</h2>
+  <div class="secao-rule"></div>
+  <p class="lead">Quatro itens foram descartados no caminho. Ficam registrados para não voltarem por inércia.</p>
+
+  <table>
+    <tr><th style="width:60mm">Item</th><th>Motivo</th></tr>
+    <tr>
+      <td><b>Subir a seção de cardápio digital</b><br><span style="font-size:8.5pt;opacity:.7">da posição 13 para a 2</span></td>
+      <td>O Google não afirma em lugar nenhum que a posição do conteúdo na página pesa neste critério. O argumento era alinhamento na chegada, e o item 01 já resolveu isso.</td>
+    </tr>
+    <tr>
+      <td><b>Bloco explicando &quot;o que é um cardápio web&quot;</b></td>
+      <td>Cardápio Web é o nome da empresa. Explicar o termo trataria a marca como substantivo comum e a enfraqueceria. O genérico do mercado é cardápio digital, e é esse que a página explica.</td>
+    </tr>
+    <tr>
+      <td><b>Meta description</b></td>
+      <td>Não há plugin de SEO na página, então exigiria instalar plugin ou mexer no tema. É sinal de busca orgânica, não de Ads.</td>
+    </tr>
+    <tr>
+      <td><b>Adiar GTM e Pixel do Facebook</b></td>
+      <td>Ganharia responsividade, mas o risco de furar a atribuição de campanha é maior que o ganho no Índice.</td>
+    </tr>
+  </table>
+
+  <div class="nota" style="margin-top:6mm">
+    <b>Um número ainda em aberto.</b> A análise de 28/07 registra que a página tem 742 palavras, e uma medição posterior deu 1.605. São métodos de extração diferentes sobre a mesma página, que não mudou desde 09/07. Enquanto isso não for reconciliado, o número não deve ser usado em nenhuma decisão nem circulado.
+  </div>
+
+  <div class="rodape"><span>Experiência na página de destino · Checklist</span><span>6</span></div>
+</section>
+
+<script>
+  // logo em base64 vem do CSS da marca; injeta no <img> sem hardcodar o data URI
+  var v = getComputedStyle(document.documentElement).getPropertyValue('--cw-logo-stack-claro').trim();
+  var m = v.match(/url\((['"]?)(.*?)\1\)/);
+  if (m) document.getElementById('logo').src = m[2];
+</script>
+</body>
+</html>

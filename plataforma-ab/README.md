@@ -96,7 +96,7 @@ entrou, e nos dois casos o veredito sai fabricado sem nada denunciar.
 |---|---|
 | `api/` | funções da Vercel: `t.js` (roteador), `ev.js` (ingestão), `testes.js` (CRUD), `resultados.js`, `analisar.js` (job + Slack) |
 | `lib/` | `hash.js`, `estatistica.js`, `store.js`, `config.js`, `bots.js`, `http.js`, `tempo.js`, `slack.js`, `analise.js` |
-| `app/` | `index.html` (painel) e `ab.js` (snippet da LP) |
+| `app/` | `index.html` (painel), `ab.js` (snippet da LP), `design-system/` (cópia servida dos tokens/fontes/logos da CW — fonte de verdade em `../design-system/` na raiz do repo) e `vendor/daisyui.css` (daisyUI 5 self-hosted; o CSP bloqueia CDN) |
 | `scripts/` | `analisar.js` (rodar o job à mão), `semear-demo.js` |
 | `testes/` | kit de teste — ver abaixo |
 | `docs/` | pesquisa, estatística, como criar um teste, evidências |

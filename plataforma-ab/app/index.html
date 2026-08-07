@@ -1,146 +1,272 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="cardapioweb">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Teste A/B de LP — Cardápio Web</title>
 <link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="design-system/fontes/fontes.css">
+<link rel="stylesheet" href="design-system/cw-tokens.css">
+<link rel="stylesheet" href="vendor/daisyui.css">
 <style>
-/* Paleta oficial da CW — as 5 cores do manual, nada de hex inventado. */
-:root{
-  --eminence:#59327A; --purple-heart:#A543FA; --carnation:#FF5959;
-  --yellow:#FFB600; --magnolia:#F4EDF7;
-  --borda:rgba(89,50,122,.15); --sombra:rgba(89,50,122,.08);
+/* ── Tema CardápioWeb pro daisyUI — todo hex vem dos tokens do design system ── */
+:root, [data-theme="cardapioweb"]{
+  color-scheme: light;
+  --color-base-100:#FFFFFF;              /* card */
+  --color-base-200:#F4EDF7;              /* magnolia: fundo e zebra */
+  --color-base-300:#E4D9EF;              /* borda */
+  --color-base-content:#4B5563;          /* corpo */
+  --color-primary:#A543FA;   --color-primary-content:#FFFFFF;
+  --color-secondary:#FF5959; --color-secondary-content:#FFFFFF;
+  --color-accent:#FFB600;    --color-accent-content:#59327A;
+  --color-neutral:#59327A;   --color-neutral-content:#F4EDF7;
+  --color-info:#A543FA;      --color-info-content:#FFFFFF;
+  --color-success:#16A34A;   --color-success-content:#FFFFFF;
+  --color-warning:#FFB600;   --color-warning-content:#59327A;
+  --color-error:#EF4848;     --color-error-content:#FFFFFF;
+  --radius-selector:999px;   /* badge, status */
+  --radius-field:12px;       /* botão, campo (raio-botao/campo do DS) */
+  --radius-box:20px;         /* card, modal (raio-card do DS) */
+  --size-selector:.25rem; --size-field:.25rem;
+  --border:1.5px; --depth:1; --noise:0;
 }
+
+/* ── Base ── */
 *{box-sizing:border-box}
-body{
-  margin:0; background:var(--magnolia); color:var(--eminence);
-  font-family:"Museo Sans Rounded","Nunito","Quicksand",system-ui,sans-serif;
-  font-weight:500; font-size:15px; line-height:1.5;
-}
-h1,h2,h3{font-weight:1000; margin:0 0 8px}
-h1{font-size:26px} h2{font-size:20px} h3{font-size:16px}
-a{color:var(--purple-heart)}
-.wrap{max-width:1180px; margin:0 auto; padding:20px 16px 64px}
-header{background:#fff; border-bottom:1px solid var(--borda)}
-header .wrap{display:flex; align-items:center; gap:16px; padding:14px 16px; flex-wrap:wrap}
-header img{height:34px}
-header .sub{font-size:13px; opacity:.7}
-.card{background:#fff; border-radius:20px; padding:20px; margin:0 0 16px; box-shadow:0 1px 3px var(--sombra)}
-.linha{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
-.entre{justify-content:space-between}
-button,.bt{
-  font-family:inherit; font-weight:1000; font-size:14px; cursor:pointer;
-  border:0; border-radius:999px; padding:10px 20px;
-  background:var(--yellow); color:var(--eminence); /* CTA: amarelo com texto roxo */
-}
-button.sec{background:var(--magnolia); color:var(--eminence); border:1px solid var(--borda)}
-button.perigo{background:var(--carnation); color:#fff}
-button:disabled{opacity:.45; cursor:not-allowed}
-input,select,textarea{
-  font-family:inherit; font-size:14px; font-weight:500; padding:10px 12px;
-  border:1px solid var(--borda); border-radius:12px; background:#fff; color:var(--eminence); width:100%;
-}
-label{display:block; font-size:12px; font-weight:1000; text-transform:uppercase; letter-spacing:.04em; opacity:.75; margin:0 0 4px}
+html{font-family:var(--cw-fonte)}
+body{margin:0; background:var(--color-base-200); color:var(--color-base-content);
+     font-weight:var(--cw-peso-corpo); font-size:15px; line-height:1.55}
+.wrap{max-width:1180px; margin:0 auto; padding:0 20px}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace; font-variant-numeric:tabular-nums}
+code{background:var(--cw-superficie-2); color:var(--cw-roxo); padding:2px 7px; border-radius:6px;
+     font-size:12.5px; font-family:ui-monospace,Menlo,Consolas,monospace; word-break:break-all}
+.ic{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2;
+    stroke-linecap:round; stroke-linejoin:round; flex:none}
+
+/* ── Faixa assinatura (o dark dos posts da CW: gradiente-noite + grade + glow) ── */
+.faixa{background:var(--cw-gradiente-noite); color:#fff; position:relative; overflow:hidden;
+       border-radius:0 0 28px 28px; box-shadow:var(--cw-sombra-alta)}
+.faixa::before{content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:linear-gradient(rgba(165,67,250,.10) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(165,67,250,.10) 1px,transparent 1px);
+  background-size:44px 44px}
+.faixa > .wrap{position:relative; padding-top:22px; padding-bottom:30px}
+.topo{display:flex; align-items:center; gap:18px; flex-wrap:wrap}
+.topo img{height:34px; display:block}
+.topo .acoes{margin-left:auto; display:flex; gap:10px}
+.topo .btn-ghost{color:#fff}
+.topo .btn-ghost:hover{background:rgba(255,255,255,.12)}
+.topo .btn-primary{box-shadow:0 8px 20px rgba(165,67,250,.45)}
+.hero-tit{margin:26px 0 4px; font-size:clamp(24px,3.2vw,34px); font-weight:var(--cw-peso-display);
+          line-height:1.1; letter-spacing:-.02em; color:#fff}
+.hero-sub{color:rgba(244,237,247,.72); font-size:14.5px; margin:0 0 22px}
+.hero-sub b{color:var(--cw-amarelo); font-weight:var(--cw-peso-forte)} /* destaque amarelo sobre dark: padrão CW */
+
+/* stats na faixa: superfície translúcida do contexto escuro do DS */
+.stats-cw{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px}
+.stat-cw{background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
+         border-radius:16px; padding:14px 18px; display:flex; gap:14px; align-items:center}
+.stat-cw .bola{width:40px; height:40px; border-radius:50%; background:rgba(165,67,250,.28);
+               display:flex; align-items:center; justify-content:center; color:#fff; flex:none}
+.stat-cw .rot{font-size:11px; font-weight:var(--cw-peso-forte); letter-spacing:.09em;
+              text-transform:uppercase; color:rgba(244,237,247,.68)}
+.stat-cw .val{font-size:26px; font-weight:var(--cw-peso-display); line-height:1.15; color:#fff}
+
+/* ── Lista de testes ── */
+.lista{display:flex; flex-direction:column; gap:18px; padding:26px 0 72px}
+.card-t{background:var(--color-base-100); border-radius:var(--radius-box);
+        box-shadow:var(--cw-sombra); padding:26px 28px;
+        opacity:0; transform:translateY(14px); animation:sube .45s ease forwards;
+        animation-delay:calc(var(--i,0)*90ms)}
+@keyframes sube{to{opacity:1; transform:none}}
+@media (prefers-reduced-motion: reduce){ .card-t{animation:none; opacity:1; transform:none} }
+
+.card-cab{display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; margin:0 0 4px}
+.card-cab h2{margin:0; font-size:21px; font-weight:var(--cw-peso-titulo); color:var(--cw-roxo); line-height:1.25}
+.card-cab .meta{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:6px;
+                font-size:13px; color:var(--cw-texto-suave)}
+.card-cab .dir{margin-left:auto; display:flex; gap:10px; align-items:center}
+.hipotese{margin:8px 0 14px; font-size:13.5px; color:var(--cw-texto-suave); max-width:72ch}
+
+/* vereditos: funcionais do DS, texto sempre escuro o bastante */
+.badge-vered{font-weight:var(--cw-peso-forte); letter-spacing:.05em; border:none}
+.badge-vencedor{background:var(--cw-sucesso-fundo); color:#14532D}
+.badge-rodando{background:var(--cw-roxo); color:var(--cw-magnolia)}
+.badge-srm{background:var(--cw-erro-fundo); color:#99201D}
+.badge-outro{background:var(--cw-superficie-2); color:var(--cw-roxo)}
+
+.alert{font-size:14px}
+.alert-soft.alert-warning{color:var(--cw-roxo)} /* texto sobre atenção: sempre roxo */
+.alert-soft.alert-success{color:#14532D}
+.alert-soft.alert-error{color:#99201D}
+
+/* divisão do tráfego */
+.rot-sec{font-size:11px; font-weight:var(--cw-peso-forte); letter-spacing:.09em;
+         text-transform:uppercase; color:var(--cw-texto-suave); margin:16px 0 8px}
+.split{height:10px; border-radius:999px; overflow:hidden; display:flex; background:var(--cw-superficie-2)}
+.split i{display:block; height:100%}
+.legenda{display:flex; gap:16px; flex-wrap:wrap; margin-top:8px; font-size:12.5px; color:var(--cw-texto-suave)}
+.legenda .pt{width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:6px; vertical-align:-1px}
+
+/* tabela de variantes */
+.rolar{overflow-x:auto; margin-top:4px}
+.table{font-size:14px}
+.table thead th{font-size:10.5px; letter-spacing:.09em; color:var(--cw-texto-suave);
+                text-transform:uppercase; font-weight:var(--cw-peso-forte)}
+.table td{vertical-align:middle}
+td.num,th.num{text-align:right; font-family:ui-monospace,Menlo,Consolas,monospace; font-variant-numeric:tabular-nums}
+.v-nome-cel b{color:var(--cw-roxo); font-weight:var(--cw-peso-forte)}
+.v-nome-cel .sub{font-size:12px; color:var(--cw-texto-suave)}
+.taxa-cel{display:flex; align-items:center; gap:10px; min-width:170px}
+.taxa-cel .trilho{flex:1; height:8px; border-radius:999px; background:var(--cw-superficie-2); overflow:hidden}
+.taxa-cel .fill{height:100%; border-radius:999px}
+.taxa-cel .valor{font-weight:var(--cw-peso-forte); color:var(--cw-roxo); min-width:56px; text-align:right;
+                 font-family:ui-monospace,Menlo,Consolas,monospace}
+.lift-sobe{color:var(--cw-sucesso); font-weight:var(--cw-peso-forte)}
+.lift-desce{color:var(--cw-coral-forte); font-weight:var(--cw-peso-forte)}
+
+/* travas */
+.travas{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:10px}
+.trava{display:flex; gap:12px; align-items:flex-start; border:1.5px solid var(--color-base-300);
+       border-radius:14px; padding:13px 15px; background:var(--color-base-100)}
+.trava .bola{width:30px; height:30px; border-radius:50%; display:flex; align-items:center;
+             justify-content:center; flex:none; margin-top:1px}
+.trava .bola .ic{width:15px; height:15px}
+.trava-ok .bola{background:var(--cw-sucesso-fundo); color:var(--cw-sucesso)}
+.trava-pend .bola{background:var(--cw-superficie-2); color:var(--cw-texto-suave)}
+.trava-falha{border-color:rgba(239,72,72,.45)}
+.trava-falha .bola{background:var(--cw-erro-fundo); color:var(--cw-coral-forte)}
+.trava .n{font-size:13.5px; font-weight:var(--cw-peso-forte); color:var(--cw-roxo)}
+.trava .d{font-size:12.5px; color:var(--cw-texto-suave); margin-top:2px}
+.trava .p{font-size:12px; color:var(--cw-texto-suave); font-style:italic; margin-top:3px; opacity:.85}
+
+.rodape-t{display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-top:16px;
+          font-size:12.5px; color:var(--cw-texto-suave)}
+.rodape-t span{display:flex; gap:6px; align-items:center}
+.rodape-t .ic{width:14px; height:14px}
+
+/* estados vazios */
+.vazio{background:var(--color-base-100); border-radius:var(--radius-box); box-shadow:var(--cw-sombra);
+       text-align:center; padding:64px 24px; display:flex; flex-direction:column; align-items:center; gap:10px}
+.vazio .bola{width:56px; height:56px; border-radius:50%; background:var(--cw-info-fundo);
+             color:var(--cw-roxo-vivo); display:flex; align-items:center; justify-content:center}
+.vazio .bola .ic{width:26px; height:26px}
+.vazio h2{margin:6px 0 0; font-size:20px; font-weight:var(--cw-peso-titulo); color:var(--cw-roxo)}
+.vazio p{margin:0; color:var(--cw-texto-suave); max-width:46ch}
+
+/* modal */
+.modal-box{max-width:780px; width:94%; padding:28px 30px}
+.modal-box h2{margin:0 0 4px; font-size:22px; font-weight:var(--cw-peso-titulo); color:var(--cw-roxo)}
+.modal-box .aviso-topo{font-size:13px; color:var(--cw-texto-suave); margin:0 0 16px}
+.rotulo{display:block; font-size:13.5px; font-weight:var(--cw-peso-forte);
+        color:var(--cw-roxo-escuro); margin:0 0 5px}
 .campo{margin:0 0 12px}
 .grade{display:grid; gap:12px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-table{width:100%; border-collapse:collapse; font-size:14px}
-th,td{text-align:left; padding:9px 10px; border-bottom:1px solid var(--borda)}
-th{font-weight:1000; font-size:11px; text-transform:uppercase; letter-spacing:.04em; opacity:.7}
-td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
-.rolar{overflow-x:auto}
-.tag{display:inline-block; padding:3px 11px; border-radius:999px; font-size:11px; font-weight:1000; text-transform:uppercase; letter-spacing:.03em}
-.t-rodando{background:var(--yellow); color:var(--eminence)}
-.t-vencedor{background:var(--yellow); color:var(--eminence)}
-.t-srm{background:var(--carnation); color:#fff}
-.t-outro{background:var(--magnolia); color:var(--eminence); border:1px solid var(--borda)}
-.trava{display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--borda)}
-.trava:last-child{border:0}
-.trava .m{font-size:17px; line-height:1.2; width:20px; flex:none}
-.trava .n{font-weight:1000}
-.trava .d{font-size:12.5px; opacity:.8}
-.trava .p{font-size:12px; opacity:.6; font-style:italic}
-.barra{height:8px; background:var(--magnolia); border-radius:999px; overflow:hidden; display:flex; margin:6px 0}
-.barra i{display:block; height:100%}
-.aviso{background:var(--magnolia); border-left:4px solid var(--carnation); padding:12px 14px; border-radius:0 12px 12px 0; margin:0 0 12px; font-size:13.5px}
-.ok{background:var(--magnolia); border-left:4px solid var(--yellow); padding:12px 14px; border-radius:0 12px 12px 0; margin:0 0 12px; font-size:13.5px}
-code{background:var(--magnolia); padding:2px 6px; border-radius:6px; font-size:12.5px; font-family:ui-monospace,Menlo,Consolas,monospace; word-break:break-all}
-.mini{font-size:12px; opacity:.7}
-.vazio{text-align:center; padding:48px 20px; opacity:.65}
-dialog{border:0; border-radius:24px; padding:0; max-width:720px; width:94%; box-shadow:0 12px 48px rgba(89,50,122,.25)}
-dialog::backdrop{background:rgba(89,50,122,.45)}
-dialog .corpo{padding:24px; max-height:82vh; overflow:auto}
-.varlinha{display:grid; grid-template-columns:70px 1.1fr 2fr 88px 36px; gap:8px; align-items:end; margin:0 0 8px}
-@media(max-width:640px){ .varlinha{grid-template-columns:1fr 1fr; } }
-.sparkfundo{fill:none; stroke-width:2}
+.input,.select,.textarea{width:100%; font-size:14.5px}
+.sec-tit{display:flex; gap:8px; align-items:center; font-size:15px; font-weight:var(--cw-peso-titulo);
+         color:var(--cw-roxo); margin:20px 0 8px}
+.sec-tit .ic{width:16px; height:16px; color:var(--cw-roxo-vivo)}
+.varlinha{display:grid; grid-template-columns:64px 1.1fr 2fr 80px 40px; gap:8px; align-items:end; margin:0 0 8px}
+.varlinha .rotulo{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--cw-texto-suave)}
+@media(max-width:640px){ .varlinha{grid-template-columns:1fr 1fr} }
+.modal-acoes{display:flex; justify-content:space-between; gap:12px; margin-top:22px}
 </style>
 </head>
 <body>
 
-<header>
+<!-- ícones (lucide, inline por causa do CSP) -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-trofeu" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+  <symbol id="i-frasco" viewBox="0 0 24 24"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></symbol>
+  <symbol id="i-pessoas" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-clique" viewBox="0 0 24 24"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></symbol>
+  <symbol id="i-calendario" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-alvo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-alerta" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+  <symbol id="i-chave" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+  <symbol id="i-mais" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-lapis" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></symbol>
+</svg>
+
+<!-- ── Faixa assinatura ── -->
+<div class="faixa">
   <div class="wrap">
-    <img src="logo-h.png" alt="Cardápio Web">
-    <div>
-      <div style="font-weight:1000">Teste A/B de landing page</div>
-      <div class="sub">GWT-3256 · Growth</div>
+    <nav class="topo">
+      <img src="design-system/logos/cw-logo-horizontal-fundo-escuro.png" alt="Cardápio Web">
+      <div class="acoes">
+        <button class="btn btn-ghost" id="btToken"><svg class="ic"><use href="#i-chave"/></svg>Token</button>
+        <button class="btn btn-primary" id="btNovo"><svg class="ic"><use href="#i-mais"/></svg>Novo teste</button>
+      </div>
+    </nav>
+    <h1 class="hero-tit">Teste A/B de landing page</h1>
+    <p class="hero-sub">Vencedor só sai quando as <b>quatro travas</b> fecham — ciclo, SRM, origem e evidência. · GWT-3256 · Growth</p>
+    <div class="stats-cw" id="resumo">
+      <div class="stat-cw"><div class="bola"><svg class="ic"><use href="#i-frasco"/></svg></div><div><div class="rot">Testes rodando</div><div class="val" id="r-rodando">—</div></div></div>
+      <div class="stat-cw"><div class="bola"><svg class="ic"><use href="#i-trofeu"/></svg></div><div><div class="rot">Com vencedor</div><div class="val" id="r-vencedores">—</div></div></div>
+      <div class="stat-cw"><div class="bola"><svg class="ic"><use href="#i-pessoas"/></svg></div><div><div class="rot">Atribuições</div><div class="val" id="r-atribuicoes">—</div></div></div>
+      <div class="stat-cw"><div class="bola"><svg class="ic"><use href="#i-clique"/></svg></div><div><div class="rot">Conversões</div><div class="val" id="r-conversoes">—</div></div></div>
     </div>
-    <div style="flex:1"></div>
-    <button class="sec" id="btToken">Token</button>
-    <button id="btNovo">Novo teste</button>
   </div>
-</header>
+</div>
 
 <div class="wrap">
   <div id="alerta"></div>
-  <div id="lista"></div>
+  <div id="lista" class="lista"></div>
 </div>
 
-<!-- ── modal: criar/editar ───────────────────────────────────────────────── -->
-<dialog id="dlgTeste"><div class="corpo">
-  <h2 id="dlgTitulo">Novo teste</h2>
-  <p class="mini">O que estiver travado só muda com o teste parado — mexer em peso ou URL no ar reatribui quem já entrou e queima o resultado.</p>
-  <div id="erros"></div>
+<!-- ── modal: criar/editar ── -->
+<dialog id="dlgTeste" class="modal">
+  <div class="modal-box">
+    <h2 id="dlgTitulo">Novo teste</h2>
+    <p class="aviso-topo">O que estiver travado só muda com o teste parado — mexer em peso ou URL no ar reatribui quem já entrou e queima o resultado.</p>
+    <div id="erros"></div>
 
-  <div class="grade g2">
-    <div class="campo"><label>Slug (vai na URL do anúncio)</label><input id="f-slug" placeholder="hero-lp-sql"></div>
-    <div class="campo"><label>Nome</label><input id="f-nome" placeholder="Hero da LP de SQL"></div>
-  </div>
-  <div class="campo"><label>Hipótese</label><textarea id="f-hipotese" rows="2" placeholder="Se o hero mostrar o cardápio digital em vez do painel, a conversão sobe, porque…"></textarea></div>
-  <div class="grade g2">
-    <div class="campo"><label>Card do Jira</label><input id="f-jira" placeholder="GWT-0000"></div>
-    <div class="campo"><label>Status</label><select id="f-status">
-      <option value="rascunho">rascunho</option><option value="rodando">rodando</option>
-      <option value="pausado">pausado</option><option value="encerrado">encerrado</option>
-    </select></div>
-  </div>
+    <div class="grade g2">
+      <div class="campo"><label class="rotulo">Slug (vai na URL do anúncio)</label><input class="input" id="f-slug" placeholder="hero-lp-sql"></div>
+      <div class="campo"><label class="rotulo">Nome</label><input class="input" id="f-nome" placeholder="Hero da LP de SQL"></div>
+    </div>
+    <div class="campo"><label class="rotulo">Hipótese</label><textarea class="textarea" id="f-hipotese" rows="2" placeholder="Se o hero mostrar o cardápio digital em vez do painel, a conversão sobe, porque…"></textarea></div>
+    <div class="grade g2">
+      <div class="campo"><label class="rotulo">Card do Jira</label><input class="input" id="f-jira" placeholder="GWT-0000"></div>
+      <div class="campo"><label class="rotulo">Status</label><select class="select" id="f-status">
+        <option value="rascunho">rascunho</option><option value="rodando">rodando</option>
+        <option value="pausado">pausado</option><option value="encerrado">encerrado</option>
+      </select></div>
+    </div>
 
-  <h3 style="margin-top:16px">Variantes</h3>
-  <p class="mini">A primeira é o controle. Os pesos precisam somar 1.</p>
-  <div id="vars"></div>
-  <button class="sec" id="btAddVar" type="button">+ variante</button>
+    <div class="sec-tit"><svg class="ic"><use href="#i-frasco"/></svg>Variantes</div>
+    <p class="aviso-topo" style="margin-bottom:10px">A primeira é o controle. Os pesos precisam somar 1.</p>
+    <div id="vars"></div>
+    <button class="btn btn-ghost btn-sm" id="btAddVar" type="button"><svg class="ic"><use href="#i-mais"/></svg>variante</button>
 
-  <h3 style="margin-top:20px">Trava estatística</h3>
-  <div class="grade g3">
-    <div class="campo"><label>Baseline (taxa de hoje)</label><input id="f-baseline" placeholder="0.1237" inputmode="decimal"></div>
-    <div class="campo"><label>MDE (melhora relativa)</label><input id="f-mde" placeholder="0.2" inputmode="decimal"></div>
-    <div class="campo"><label>Cobertura</label><input id="f-cobertura" placeholder="1" inputmode="decimal"></div>
-    <div class="campo"><label>Dias mínimos</label><input id="f-mindias" placeholder="7" inputmode="numeric"></div>
-    <div class="campo"><label>Dias máximos</label><input id="f-maxdias" placeholder="30" inputmode="numeric"></div>
-  </div>
-  <div id="previaAmostra" class="ok" style="display:none"></div>
+    <div class="sec-tit"><svg class="ic"><use href="#i-alvo"/></svg>Trava estatística</div>
+    <div class="grade g3">
+      <div class="campo"><label class="rotulo">Baseline (taxa de hoje)</label><input class="input" id="f-baseline" placeholder="0.1237" inputmode="decimal"></div>
+      <div class="campo"><label class="rotulo">MDE (melhora relativa)</label><input class="input" id="f-mde" placeholder="0.2" inputmode="decimal"></div>
+      <div class="campo"><label class="rotulo">Cobertura</label><input class="input" id="f-cobertura" placeholder="1" inputmode="decimal"></div>
+      <div class="campo"><label class="rotulo">Dias mínimos</label><input class="input" id="f-mindias" placeholder="7" inputmode="numeric"></div>
+      <div class="campo"><label class="rotulo">Dias máximos</label><input class="input" id="f-maxdias" placeholder="30" inputmode="numeric"></div>
+    </div>
+    <div id="previaAmostra" class="alert alert-soft alert-info" style="display:none"></div>
 
-  <div class="linha entre" style="margin-top:20px">
-    <button class="sec" id="btCancelar" type="button">Cancelar</button>
-    <button id="btSalvar" type="button">Salvar</button>
+    <div class="modal-acoes">
+      <button class="btn btn-ghost" id="btCancelar" type="button">Cancelar</button>
+      <button class="btn btn-primary" id="btSalvar" type="button">Salvar</button>
+    </div>
   </div>
-</div></dialog>
+</dialog>
 
 <script>
 /* ────────────────────────────────────────────────────────────────────────────
-   Painel. HTML/CSS/JS puro, sem build — igual à plataforma de experimentos.
+   Painel. HTML/CSS/JS puro, sem build. Componentes: daisyUI (vendor/daisyui.css,
+   self-hosted por causa do CSP) tematizado com os tokens do design system da CW.
    Toda a estatística mora no servidor; aqui só desenha o que ele devolve.
    ──────────────────────────────────────────────────────────────────────────── */
 const $ = (s, r) => (r || document).querySelector(s);
@@ -148,6 +274,7 @@ const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pct = (x, c) => (x == null || !isFinite(x)) ? '—' : (x * 100).toFixed(c == null ? 2 : c) + '%';
 const num = (x) => (x == null ? '—' : Number(x).toLocaleString('pt-BR'));
+const icone = (id) => '<svg class="ic"><use href="#' + id + '"/></svg>';
 
 let TOKEN = localStorage.getItem('ab_token') || '';
 let EDITANDO = null;
@@ -176,63 +303,95 @@ function pedirToken() {
 }
 
 /* ── lista ────────────────────────────────────────────────────────────────── */
+function resumo(dados) {
+  const soma = (f) => dados.reduce((a, d) => a + (d.variantes || []).reduce((b, v) => b + (f(v) || 0), 0), 0);
+  $('#r-rodando').textContent = dados.filter((d) => d.teste.status === 'rodando').length;
+  $('#r-vencedores').textContent = dados.filter((d) => d.veredito === 'vencedor').length;
+  $('#r-atribuicoes').textContent = num(soma((v) => v.n));
+  $('#r-conversoes').textContent = num(soma((v) => v.conv));
+}
+
 async function carregar() {
   const el = $('#lista');
   $('#alerta').innerHTML = '';
-  el.innerHTML = '<div class="vazio">carregando…</div>';
+  el.innerHTML = '<div class="vazio"><span class="loading loading-dots loading-lg" style="color:var(--cw-roxo-vivo)"></span></div>';
   try {
     const dados = await api('/api/resultados');
+    resumo(dados);
     if (!dados.length) {
-      el.innerHTML = '<div class="card vazio"><h2>Nenhum teste ainda</h2>' +
-        '<p>Crie o primeiro em <b>Novo teste</b>. A URL do anúncio vira <code>/t/&lt;slug&gt;</code>.</p></div>';
+      el.innerHTML = '<div class="vazio"><div class="bola">' + icone('i-frasco') + '</div>' +
+        '<h2>Nenhum teste ainda</h2>' +
+        '<p>Crie o primeiro em <b>Novo teste</b>. A URL do anúncio vira <code>/t/&lt;slug&gt;</code> e cada visitante é sorteado numa variante.</p></div>';
       return;
     }
     el.innerHTML = dados.map(cardTeste).join('');
   } catch (e) {
     if (e.status === 401 || e.status === 503) {
-      el.innerHTML = '<div class="card vazio"><h2>Acesso</h2><p>' + esc(e.message) +
-        '</p><button onclick="pedirToken()">Informar token</button></div>';
+      el.innerHTML = '<div class="vazio"><div class="bola">' + icone('i-chave') + '</div>' +
+        '<h2>Informe o token de acesso</h2><p>' + esc(e.message) + '</p>' +
+        '<button class="btn btn-primary" onclick="pedirToken()">Informar token</button></div>';
     } else {
-      el.innerHTML = '<div class="card"><div class="aviso"><b>Erro:</b> ' + esc(e.message) + '</div></div>';
+      el.innerHTML = '<div class="alert alert-soft alert-error">' + icone('i-alerta') + '<span><b>Erro:</b> ' + esc(e.message) + '</span></div>';
     }
   }
 }
 
-function classeVeredito(v) {
-  if (v === 'vencedor') return 't-vencedor';
-  if (String(v).startsWith('SRM')) return 't-srm';
-  if (v === 'rodando') return 't-rodando';
-  return 't-outro';
+function badgeVeredito(v) {
+  const cls = v === 'vencedor' ? 'badge-vencedor' : String(v).startsWith('SRM') ? 'badge-srm'
+    : v === 'rodando' ? 'badge-rodando' : 'badge-outro';
+  return '<span class="badge badge-lg badge-vered ' + cls + '">' + esc(String(v).toUpperCase()) + '</span>';
 }
 
-function cardTeste(d) {
+function statusPonto(s) {
+  const cor = s === 'rodando' ? 'status-success' : s === 'pausado' ? 'status-warning' : 'status-neutral';
+  return '<span class="status ' + cor + '"></span> ' + esc(s);
+}
+
+const CORES = ['var(--cw-serie-1)', 'var(--cw-serie-2)', 'var(--cw-serie-3)', 'var(--cw-serie-4)', 'var(--cw-serie-5)'];
+
+function cardTeste(d, idx) {
   const t = d.teste;
-  const total = (d.variantes || []).reduce((a, v) => a + v.n, 0);
-  const cores = ['var(--eminence)', 'var(--purple-heart)', 'var(--carnation)', 'var(--yellow)', 'var(--magnolia)'];
+  const vs = d.variantes || [];
+  const total = vs.reduce((a, v) => a + v.n, 0);
+  const taxaMax = Math.max.apply(null, vs.map((v) => (v.n ? v.conv / v.n : 0)).concat([1e-9]));
+  const srmFalhou = String(d.veredito).startsWith('SRM');
 
-  const barra = (d.variantes || []).map((v, i) =>
-    '<i style="width:' + (total ? (v.n / total * 100) : 0) + '%;background:' + cores[i % cores.length] + '"></i>').join('');
+  const split = vs.map((v, i) =>
+    '<i style="width:' + (total ? (v.n / total * 100) : 0) + '%;background:' + CORES[i % CORES.length] + '"></i>').join('');
+  const legenda = vs.map((v, i) =>
+    '<span><span class="pt" style="background:' + CORES[i % CORES.length] + '"></span><b>' + esc(v.chave) + '</b> ' +
+    (total ? pct(v.n / total, 1) : '—') + '</span>').join('');
 
-  const linhas = (d.variantes || []).map((v, i) => {
+  const linhas = vs.map((v, i) => {
     const comp = (d.comparacoes || []).find((c) => c.chave === v.chave);
     const venceu = d.vencedor === v.chave;
+    const taxa = v.n ? v.conv / v.n : null;
     return '<tr>' +
-      '<td><b>' + esc(v.chave) + '</b>' + (venceu ? ' 🏆' : '') + (i === 0 ? ' <span class="mini">controle</span>' : '') +
-        '<div class="mini">' + esc(v.nome) + '</div></td>' +
+      '<td class="v-nome-cel"><b>' + esc(v.chave) + '</b>' +
+        (venceu ? ' <svg class="ic" style="width:14px;height:14px;color:var(--cw-amarelo);vertical-align:-2px"><use href="#i-trofeu"/></svg>' : '') +
+        (i === 0 ? ' <span class="badge badge-xs badge-outro">controle</span>' : '') +
+        '<div class="sub">' + esc(v.nome) + '</div></td>' +
+      '<td><div class="taxa-cel"><div class="trilho"><div class="fill" style="width:' +
+        (taxa != null ? Math.max(2, taxa / taxaMax * 100) : 0) + '%;background:' + CORES[i % CORES.length] + '"></div></div>' +
+        '<span class="valor">' + pct(taxa) + '</span></div></td>' +
       '<td class="num">' + num(v.n) + '</td>' +
       '<td class="num">' + num(v.conv) + '</td>' +
-      '<td class="num"><b>' + pct(v.n ? v.conv / v.n : null) + '</b></td>' +
-      '<td class="num">' + (comp && comp.lift != null ? (comp.lift > 0 ? '+' : '') + pct(comp.lift, 1) : '—') + '</td>' +
+      '<td class="num">' + (comp && comp.lift != null ?
+        '<span class="' + (comp.lift >= 0 ? 'lift-sobe' : 'lift-desce') + '">' + (comp.lift > 0 ? '▲ +' : '▼ ') + pct(comp.lift, 1) + '</span>' : '—') + '</td>' +
       '<td class="num">' + (comp ? esc(fmtP(comp.p_horizonte_fixo)) : '—') + '</td>' +
       '<td class="num">' + (comp ? esc(fmtP(comp.p_sempre_valido)) : '—') + '</td>' +
       '</tr>';
   }).join('');
 
-  const travas = (d.travas || []).map((tr) =>
-    '<div class="trava"><div class="m">' + (tr.ok ? '✅' : '⬜') + '</div><div>' +
-    '<div class="n">' + esc(tr.nome) + '</div>' +
-    '<div class="d">' + esc(tr.detalhe) + '</div>' +
-    '<div class="p">' + esc(tr.porque) + '</div></div></div>').join('');
+  const travas = (d.travas || []).map((tr) => {
+    const falhou = srmFalhou && /SRM/i.test(tr.nome);
+    const cls = tr.ok ? 'trava-ok' : falhou ? 'trava-falha' : 'trava-pend';
+    const ic = tr.ok ? 'i-check' : falhou ? 'i-x' : 'i-relogio';
+    return '<div class="trava ' + cls + '"><div class="bola">' + icone(ic) + '</div><div>' +
+      '<div class="n">' + esc(tr.nome) + '</div>' +
+      '<div class="d">' + esc(tr.detalhe) + '</div>' +
+      '<div class="p">' + esc(tr.porque) + '</div></div></div>';
+  }).join('');
 
   const saude = d.saude || {};
   const avisos = [];
@@ -245,32 +404,39 @@ function cardTeste(d) {
       'O snippet pode não estar em uma das variantes — confira antes de confiar na conversão.');
   }
 
-  return '<div class="card">' +
-    '<div class="linha entre" style="margin-bottom:6px">' +
-      '<div><h2 style="margin:0">' + esc(t.nome) + '</h2>' +
-        '<div class="mini"><code>/t/' + esc(t.slug) + '</code> · ' + esc(t.status) +
-        (t.jira ? ' · ' + esc(t.jira) : '') + '</div></div>' +
-      '<div class="linha">' +
-        '<span class="tag ' + classeVeredito(d.veredito) + '">' + esc(d.veredito) + '</span>' +
-        '<button class="sec" onclick="editar(\'' + esc(t.slug) + '\')">Editar</button>' +
+  const alertaDecisao = d.pode_decidir
+    ? '<div class="alert alert-soft alert-success">' + icone('i-check') + '<span><b>Pode decidir.</b> ' + esc(d.motivo || '') + '</span></div>'
+    : srmFalhou
+      ? '<div class="alert alert-soft alert-error">' + icone('i-alerta') + '<span><b>Resultado suspeito.</b> ' + esc(d.motivo || '') + '</span></div>'
+      : '<div class="alert alert-soft alert-warning">' + icone('i-relogio') + '<span><b>Ainda não dá pra decidir.</b> ' + esc(d.motivo || '') + '</span></div>';
+
+  return '<div class="card-t" style="--i:' + idx + '">' +
+    '<div class="card-cab">' +
+      '<div><h2>' + esc(t.nome) + '</h2>' +
+        '<div class="meta"><code>/t/' + esc(t.slug) + '</code><span>' + statusPonto(t.status) + '</span>' +
+        (t.jira ? '<span>' + esc(t.jira) + '</span>' : '') + '</div></div>' +
+      '<div class="dir">' + badgeVeredito(d.veredito) +
+        '<button class="btn btn-ghost btn-sm" onclick="editar(\'' + esc(t.slug) + '\')">' + icone('i-lapis') + 'Editar</button>' +
       '</div>' +
     '</div>' +
-    (t.hipotese ? '<p class="mini" style="margin:0 0 10px">' + esc(t.hipotese) + '</p>' : '') +
-    '<div class="' + (d.pode_decidir ? 'ok' : 'aviso') + '"><b>' +
-      (d.pode_decidir ? 'Pode decidir. ' : 'Ainda não dá pra decidir. ') + '</b>' + esc(d.motivo || '') + '</div>' +
-    avisos.map((a) => '<div class="aviso">' + esc(a) + '</div>').join('') +
-    '<div class="barra">' + barra + '</div>' +
-    '<div class="rolar"><table><thead><tr>' +
-      '<th>Variante</th><th class="num">Atribuições</th><th class="num">Conversões</th>' +
-      '<th class="num">Taxa</th><th class="num">Lift</th>' +
-      '<th class="num">p (planejado)</th><th class="num">p (sempre-válido)</th>' +
+    (t.hipotese ? '<p class="hipotese">' + esc(t.hipotese) + '</p>' : '') +
+    alertaDecisao +
+    avisos.map((a) => '<div class="alert alert-soft alert-warning" style="margin-top:8px">' + icone('i-alerta') + '<span>' + esc(a) + '</span></div>').join('') +
+    '<div class="rot-sec">Divisão do tráfego</div>' +
+    '<div class="split">' + split + '</div>' +
+    '<div class="legenda">' + legenda + '</div>' +
+    '<div class="rot-sec">Variantes</div>' +
+    '<div class="rolar"><table class="table table-zebra table-sm"><thead><tr>' +
+      '<th>Variante</th><th>Taxa de conversão</th><th class="num">Atribuições</th><th class="num">Conversões</th>' +
+      '<th class="num">Lift</th><th class="num">p (planejado)</th><th class="num">p (sempre-válido)</th>' +
     '</tr></thead><tbody>' + linhas + '</tbody></table></div>' +
-    '<div class="mini" style="margin:8px 0 14px">' +
-      'Denominador = atribuição no servidor (não pageview). ' +
-      (d.amostra_minima ? 'Amostra alvo: ' + num(d.amostra_minima) + ' por braço. ' : '') +
-      (d.periodo && d.periodo.de ? 'De ' + esc(d.periodo.de) + ' a ' + esc(d.periodo.ate) + ' (' + d.dias_rodados + ' dias).' : '') +
+    '<div class="rot-sec">Travas da decisão</div>' +
+    '<div class="travas">' + travas + '</div>' +
+    '<div class="rodape-t">' +
+      (d.periodo && d.periodo.de ? '<span>' + icone('i-calendario') + 'De ' + esc(d.periodo.de) + ' a ' + esc(d.periodo.ate) + ' (' + d.dias_rodados + ' dias)</span>' : '') +
+      (d.amostra_minima ? '<span>' + icone('i-alvo') + 'Amostra alvo: ' + num(d.amostra_minima) + ' por braço</span>' : '') +
+      '<span>' + icone('i-info') + 'Denominador = atribuição no servidor, não pageview</span>' +
     '</div>' +
-    '<h3>Travas</h3>' + travas +
   '</div>';
 }
 
@@ -284,11 +450,11 @@ function fmtP(p) {
 function linhaVar(v, i) {
   v = v || { chave: '', nome: '', url: '', peso: '' };
   return '<div class="varlinha" data-i="' + i + '">' +
-    '<div><label>Chave</label><input class="v-chave" value="' + esc(v.chave) + '" placeholder="' + (i === 0 ? 'A' : 'B') + '"></div>' +
-    '<div><label>Nome</label><input class="v-nome" value="' + esc(v.nome) + '" placeholder="' + (i === 0 ? 'controle' : 'variante') + '"></div>' +
-    '<div><label>URL</label><input class="v-url" value="' + esc(v.url) + '" placeholder="https://lp.cardapioweb.com/..."></div>' +
-    '<div><label>Peso</label><input class="v-peso" value="' + esc(v.peso) + '" placeholder="0.5" inputmode="decimal"></div>' +
-    '<div><button class="sec" type="button" onclick="this.closest(\'.varlinha\').remove()" title="remover">×</button></div>' +
+    '<div><label class="rotulo">Chave</label><input class="input v-chave" value="' + esc(v.chave) + '" placeholder="' + (i === 0 ? 'A' : 'B') + '"></div>' +
+    '<div><label class="rotulo">Nome</label><input class="input v-nome" value="' + esc(v.nome) + '" placeholder="' + (i === 0 ? 'controle' : 'variante') + '"></div>' +
+    '<div><label class="rotulo">URL</label><input class="input v-url" value="' + esc(v.url) + '" placeholder="https://lp.cardapioweb.com/..."></div>' +
+    '<div><label class="rotulo">Peso</label><input class="input v-peso" value="' + esc(v.peso) + '" placeholder="0.5" inputmode="decimal"></div>' +
+    '<div><button class="btn btn-ghost btn-sm btn-square" type="button" onclick="this.closest(\'.varlinha\').remove()" title="remover variante">' + icone('i-x') + '</button></div>' +
   '</div>';
 }
 
@@ -322,10 +488,10 @@ function previa() {
   const p2 = Math.min(0.999999, b * (1 + m));
   const n = Math.ceil(Math.pow(1.959963985 + 0.841621234, 2) *
     (b * (1 - b) + p2 * (1 - p2)) / Math.pow(p2 - b, 2));
-  el.style.display = 'block';
-  el.innerHTML = '<b>Amostra alvo: ' + num(n) + ' por braço</b> (' + num(n * 2) + ' no total) — ' +
+  el.style.display = 'flex';
+  el.innerHTML = icone('i-alvo') + '<span><b>Amostra alvo: ' + num(n) + ' por braço</b> (' + num(n * 2) + ' no total) — ' +
     'pra detectar ' + pct(m, 0) + ' de melhora sobre ' + pct(b) + ' com 80% de poder. ' +
-    'Se o tráfego da campanha não chega perto disso no prazo, aumente o MDE ou não rode o teste.';
+    'Se o tráfego da campanha não chega perto disso no prazo, aumente o MDE ou não rode o teste.</span>';
 }
 ['#f-baseline', '#f-mde'].forEach((s) => document.addEventListener('input', (e) => {
   if (e.target.matches(s)) previa();
@@ -365,8 +531,9 @@ async function salvar() {
     carregar();
   } catch (e) {
     const lista = (e.corpo && e.corpo.detalhes) || [e.message];
-    $('#erros').innerHTML = '<div class="aviso"><b>Não salvou:</b><ul style="margin:6px 0 0;padding-left:18px">' +
-      lista.map((x) => '<li>' + esc(x) + '</li>').join('') + '</ul></div>';
+    $('#erros').innerHTML = '<div class="alert alert-soft alert-error" style="margin-bottom:12px">' + icone('i-alerta') +
+      '<span><b>Não salvou:</b><ul style="margin:6px 0 0;padding-left:18px">' +
+      lista.map((x) => '<li>' + esc(x) + '</li>').join('') + '</ul></span></div>';
   } finally {
     bt.disabled = false;
   }

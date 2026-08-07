@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System — CardápioWeb</title>
+<link rel="stylesheet" href="fontes/fontes.css">
+<link rel="stylesheet" href="cw.css">
+<style>
+  /* ---- estilos do próprio guia (usa os tokens, não inventa cor) ---- */
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--cw-fundo); }
+  .guia { max-width: 1100px; margin: 0 auto; padding: 0 28px 80px; }
+  .secao { margin-top: 84px; }
+  .olho {
+    font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--cw-roxo-vivo); margin-bottom: 10px;
+  }
+  .secao > .cw-h2 { margin-bottom: 8px; }
+  .secao-desc { max-width: 640px; color: var(--cw-texto-suave); margin: 0 0 30px; }
+  .painel {
+    background: var(--cw-superficie-2); border-radius: var(--cw-raio-card);
+    padding: 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+  }
+  .painel--branco { background: #fff; border: 1.5px solid var(--cw-borda); }
+  .painel--coluna { flex-direction: column; align-items: stretch; }
+
+  /* capa */
+  .capa {
+    background: var(--cw-gradiente);
+    border-radius: 0 0 32px 32px;
+    padding: 84px 28px 72px; text-align: center; color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .capa::after { /* glow discreto, como no hero real */
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 50% at 50% -10%, rgba(255,255,255,.14), transparent 70%);
+  }
+  .capa > * { position: relative; }
+  .capa img { height: 92px; margin-bottom: 28px; }
+  .capa .cw-display { color: #fff; margin-bottom: 12px; }
+  .capa p { color: rgba(255,255,255,.92); max-width: 560px; margin: 0 auto 26px; font-size: 17px; }
+
+  /* nav do guia */
+  .nav-guia {
+    position: sticky; top: 0; z-index: 30;
+    background: rgba(255,255,255,.94); backdrop-filter: blur(8px);
+    border-bottom: 1.5px solid var(--cw-borda);
+    display: flex; gap: 4px; overflow-x: auto; padding: 10px 28px;
+  }
+  .nav-guia a {
+    font-size: 13.5px; font-weight: 700; color: var(--cw-texto-suave);
+    padding: 7px 14px; border-radius: 999px; white-space: nowrap; text-decoration: none;
+  }
+  .nav-guia a:hover { color: var(--cw-roxo); background: var(--cw-magnolia); text-decoration: none; }
+
+  /* swatches */
+  .paleta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .swatch { border-radius: var(--cw-raio-card); overflow: hidden; box-shadow: var(--cw-sombra); background: #fff; }
+  .swatch-cor { height: 110px; display: flex; align-items: flex-end; padding: 14px; }
+  .swatch-hex { font-size: 13px; font-weight: 700; letter-spacing: .04em; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,.92); color: var(--cw-roxo); }
+  .swatch-info { padding: 14px 16px 16px; }
+  .swatch-nome { font-weight: 900; color: var(--cw-roxo); font-size: 15.5px; }
+  .swatch-papel { font-size: 13px; color: var(--cw-texto-suave); line-height: 1.45; margin-top: 3px; }
+  .swatch--mini .swatch-cor { height: 64px; }
+
+  /* tipografia */
+  .especime { display: grid; grid-template-columns: 210px 1fr; gap: 10px 28px; align-items: baseline; }
+  .especime .meta { font-size: 13px; color: var(--cw-texto-suave); font-weight: 700; }
+  @media (max-width: 640px) { .especime { grid-template-columns: 1fr; } .especime .meta { margin-top: 14px; } }
+  .aa {
+    font-size: 120px; font-weight: 1000; line-height: 1; color: var(--cw-roxo);
+    background: var(--cw-magnolia); border-radius: var(--cw-raio-card);
+    display: flex; align-items: center; justify-content: center; padding: 30px 0;
+  }
+  .pesos { display: grid; gap: 6px; }
+  .pesos div { font-size: 26px; color: var(--cw-roxo); line-height: 1.35; }
+
+  /* gradientes */
+  .grad-card { border-radius: var(--cw-raio-card); min-height: 190px; padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; position: relative; overflow: hidden; }
+  .grad-card code { background: rgba(0,0,0,.28); padding: 4px 10px; border-radius: 8px; font-size: 12px; align-self: flex-start; }
+  .grad-card strong { font-size: 19px; font-weight: 900; margin-bottom: 6px; }
+
+  /* tabela de contraste */
+  .ok { color: var(--cw-sucesso); font-weight: 900; }
+  .cuidado { color: #B27F00; font-weight: 900; }
+  .nunca { color: var(--cw-coral-forte); font-weight: 900; }
+
+  /* dataviz demo */
+  .barras { display: flex; align-items: flex-end; gap: 18px; height: 170px; padding: 10px 6px 0; }
+  .barras > div { flex: 1; border-radius: 10px 10px 4px 4px; }
+  .rodape { margin-top: 90px; padding-top: 28px; border-top: 1.5px solid var(--cw-borda); }
+  code.tk { background: var(--cw-superficie-2); color: var(--cw-roxo); border-radius: 7px; padding: 2px 8px; font-size: 13px; }
+</style>
+</head>
+<body class="cw">
+
+<header class="capa">
+  <img src="logos/cw-logo-stack-fundo-escuro.png" alt="CardápioWeb">
+  <div class="cw-display">Design System</div>
+  <p>A marca da CardápioWeb como ela é usada de verdade — apurada da home, das LPs e do
+  Instagram — pronta para páginas, dashboards e plataformas.</p>
+  <div class="cw-linha" style="justify-content:center">
+    <span class="cw-chip" style="background:rgba(255,255,255,.14); color:#fff">Páginas</span>
+    <span class="cw-chip" style="background:rgba(255,255,255,.14); color:#fff">Dashboards</span>
+    <span class="cw-chip" style="background:rgba(255,255,255,.14); color:#fff">Plataformas</span>
+  </div>
+</header>
+
+<nav class="nav-guia">
+  <a href="#cores">Cores</a>
+  <a href="#gradientes">Gradientes</a>
+  <a href="#tipografia">Tipografia</a>
+  <a href="#botoes">Botões</a>
+  <a href="#badges">Badges</a>
+  <a href="#cards">Cards e KPI</a>
+  <a href="#formulario">Formulário</a>
+  <a href="#alertas">Alertas</a>
+  <a href="#tabela">Tabela</a>
+  <a href="#abas">Abas</a>
+  <a href="#noite">Modo noite</a>
+  <a href="#dataviz">Gráficos</a>
+  <a href="#contraste">Contraste</a>
+</nav>
+
+<main class="guia">
+
+  <!-- ==================== CORES ==================== -->
+  <section class="secao" id="cores">
+    <div class="olho">Fundamento</div>
+    <h2 class="cw-h2">Cores</h2>
+    <p class="secao-desc">Cinco cores oficiais do manual, mais os dois roxos profundos que a
+    produção consagrou. Tom intermediário se faz com opacidade — nunca com hex novo.</p>
+
+    <div class="paleta">
+      <div class="swatch">
+        <div class="swatch-cor" style="background:#59327A"><span class="swatch-hex">#59327A</span></div>
+        <div class="swatch-info"><div class="swatch-nome">Roxo · Eminence</div>
+        <div class="swatch-papel">Institucional: título sobre claro, botão do header, início do gradiente.</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-cor" style="background:#A543FA"><span class="swatch-hex">#A543FA</span></div>
+        <div class="swatch-info"><div class="swatch-nome">Roxo vivo · Purple Heart</div>
+        <div class="swatch-papel">CTA em superfície clara, link, glow, primeira série de gráfico.</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-cor" style="background:#FF5959"><span class="swatch-hex">#FF5959</span></div>
+        <div class="swatch-info"><div class="swatch-nome">Coral · Carnation</div>
+        <div class="swatch-papel">CTA de conversão em LP, ícone, badge, sublinhado de título. Hover #EF4848.</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-cor" style="background:#FFB600"><span class="swatch-hex">#FFB600</span></div>
+        <div class="swatch-info"><div class="swatch-nome">Amarelo · Selective Yellow</div>
+        <div class="swatch-papel">Raro e pontual: badge "NOVA", destaque sobre roxo escuro. Texto por cima sempre roxo.</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-cor" style="background:#F4EDF7"><span class="swatch-hex" style="background:#59327A;color:#fff">#F4EDF7</span></div>
+        <div class="swatch-info"><div class="swatch-nome">Magnolia</div>
+        <div class="swatch-papel">A única clara da marca: superfície, faixa de seção, zebra de tabela.</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-cor" style="background:#421A64"><span class="swatch-hex">#421A64</span></div>
+        <div class="swatch-info"><div class="swatch-nome">Roxo escuro</div>
+        <div class="swatch-papel">Rótulo de formulário (widget oficial) e camada de dark. Real em produção, fora do manual.</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-cor" style="background:#2A1640"><span class="swatch-hex">#2A1640</span></div>
+        <div class="swatch-info"><div class="swatch-nome">Roxo noite</div>
+        <div class="swatch-papel">Fundo dark de LP e dos posts do Instagram. Real em produção, fora do manual.</div></div>
+      </div>
+    </div>
+
+    <h3 class="cw-h3" style="margin-top:40px">Neutros (colhidos da LP no ar)</h3>
+    <div class="paleta">
+      <div class="swatch swatch--mini">
+        <div class="swatch-cor" style="background:#4B5563"><span class="swatch-hex">#4B5563</span></div>
+        <div class="swatch-info"><div class="swatch-papel"><strong>Texto de corpo</strong> sobre claro</div></div>
+      </div>
+      <div class="swatch swatch--mini">
+        <div class="swatch-cor" style="background:#6B6478"><span class="swatch-hex">#6B6478</span></div>
+        <div class="swatch-info"><div class="swatch-papel"><strong>Texto secundário</strong>, legenda</div></div>
+      </div>
+      <div class="swatch swatch--mini">
+        <div class="swatch-cor" style="background:#E4D9EF"><span class="swatch-hex" style="background:#59327A;color:#fff">#E4D9EF</span></div>
+        <div class="swatch-info"><div class="swatch-papel"><strong>Borda</strong> e divisor</div></div>
+      </div>
+      <div class="swatch swatch--mini">
+        <div class="swatch-cor" style="background:#F4F1F7"><span class="swatch-hex" style="background:#59327A;color:#fff">#F4F1F7</span></div>
+        <div class="swatch-info"><div class="swatch-papel"><strong>Superfície rebaixada</strong>, painel, código</div></div>
+      </div>
+    </div>
+
+    <h3 class="cw-h3" style="margin-top:40px">Funcionais (dashboard e produto — não são marca)</h3>
+    <div class="cw-linha">
+      <span class="cw-badge cw-badge--sucesso">Sucesso #16A34A</span>
+      <span class="cw-badge" style="background:var(--cw-atencao-fundo); color:#8A6400">Atenção #FFB600</span>
+      <span class="cw-badge cw-badge--erro">Erro #EF4848</span>
+      <span class="cw-badge" style="background:var(--cw-info-fundo); color:var(--cw-roxo-vivo)">Info #A543FA</span>
+    </div>
+    <p class="cw-legenda" style="margin-top:12px">O verde que aparece no Instagram é contextual
+    (assunto WhatsApp) — nunca cor de marca em peça institucional.</p>
+  </section>
+
+  <!-- ==================== GRADIENTES ==================== -->
+  <section class="secao" id="gradientes">
+    <div class="olho">Fundamento</div>
+    <h2 class="cw-h2">Gradientes</h2>
+    <p class="secao-desc">O manual de 2023 pedia cor chapada; a marca de 2026 é gradiente e glow.
+    O hero da home e o da LP usam exatamente o mesmo gradiente — ele é a assinatura visual.</p>
+    <div class="cw-grade cw-grade--2">
+      <div class="grad-card" style="background:var(--cw-gradiente)">
+        <strong>Assinatura</strong>
+        <code>linear-gradient(266deg, #A543FA → #59327A)</code>
+      </div>
+      <div class="grad-card cw-noite--grade" style="background:var(--cw-gradiente-noite)">
+        <strong>Noite (social)</strong>
+        <code>glow #A543FA sobre #421A64 → #2A1640 + grade</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TIPOGRAFIA ==================== -->
+  <section class="secao" id="tipografia">
+    <div class="olho">Fundamento</div>
+    <h2 class="cw-h2">Tipografia</h2>
+    <p class="secao-desc">Museo Sans Rounded em quatro pesos. Corpo 500, botão e H3 700,
+    H2 900, display e H1 1000. Fallback: Nunito → Quicksand → system-ui. Nunca Arial, Helvetica ou Inter.</p>
+
+    <div class="cw-grade cw-grade--2" style="align-items:stretch">
+      <div class="aa">Aa</div>
+      <div class="painel painel--branco pesos" style="align-content:center">
+        <div style="font-weight:500">Corpo 500 — Peça o seu pelo cardápio digital</div>
+        <div style="font-weight:700">Forte 700 — Peça o seu pelo cardápio digital</div>
+        <div style="font-weight:900">Título 900 — Peça o seu pelo cardápio digital</div>
+        <div style="font-weight:1000">Display 1000 — Peça o seu pelo cardápio digital</div>
+      </div>
+    </div>
+
+    <div class="painel painel--branco painel--coluna" style="margin-top:16px; gap:6px">
+      <div class="especime">
+        <div class="cw-display" style="margin:0">Display</div><div class="meta">clamp 40–64px · peso 1000 · -0.02em · .cw-display</div>
+        <div class="cw-h1" style="margin:0">Título H1</div><div class="meta">clamp 30–40px · peso 1000 · .cw-h1</div>
+        <div class="cw-h2" style="margin:0">Subtítulo H2</div><div class="meta">clamp 23–28px · peso 900 · .cw-h2</div>
+        <div class="cw-h3" style="margin:0">Seção H3</div><div class="meta">19px · peso 700 · .cw-h3</div>
+        <div class="cw-corpo" style="margin:0">Corpo — o cardápio digital mais completo do Brasil.</div><div class="meta">16px · peso 500 · entrelinha 1.6</div>
+        <div class="cw-legenda">Legenda para nota, data e fonte de gráfico.</div><div class="meta">13.5px · .cw-legenda</div>
+        <div class="cw-rotulo-caps">Rótulo em caixa alta</div><div class="meta">12px · tracking .10em · máx. 3 palavras · .cw-rotulo-caps</div>
+      </div>
+    </div>
+
+    <div class="cw-alerta cw-alerta--info" style="margin-top:16px">
+      <span>💡</span>
+      <div>Palavra de destaque: <strong class="cw-destaque">roxo vivo</strong> sobre fundo claro;
+      sobre roxo escuro o destaque vira <strong>amarelo</strong> — padrão dos posts do Instagram
+      (<code class="tk">.cw-destaque</code> resolve sozinho dentro de <code class="tk">.cw-escuro</code>).</div>
+    </div>
+  </section>
+
+  <!-- ==================== BOTÕES ==================== -->
+  <section class="secao" id="botoes">
+    <div class="olho">Componentes</div>
+    <h2 class="cw-h2">Botões</h2>
+    <p class="secao-desc">Cada cor tem um papel fixo — o erro clássico é usar a cor errada
+    no contexto errado. Decoreba: <strong>conversão é coral, ação é roxo vivo, instituição é roxo.</strong></p>
+
+    <div class="painel">
+      <button class="cw-botao cw-botao--conversao">Solicitar atendimento</button>
+      <button class="cw-botao cw-botao--primario">Teste agora</button>
+      <button class="cw-botao cw-botao--marca">Teste agora</button>
+      <button class="cw-botao cw-botao--suave">Login</button>
+      <button class="cw-botao cw-botao--amarelo">Garanta sua vaga</button>
+      <button class="cw-botao cw-botao--contorno">Saiba mais</button>
+      <button class="cw-botao cw-botao--fantasma">Ver detalhes</button>
+    </div>
+    <div class="painel" style="margin-top:14px">
+      <button class="cw-botao cw-botao--conversao cw-botao--gr">CTA grande de LP</button>
+      <button class="cw-botao cw-botao--primario cw-botao--pilula">Em pílula</button>
+      <button class="cw-botao cw-botao--primario cw-botao--pq">Pequeno</button>
+      <button class="cw-botao cw-botao--primario" disabled>Desativado</button>
+    </div>
+
+    <div class="painel painel--branco painel--coluna" style="margin-top:16px; overflow-x:auto">
+      <table class="cw-tabela">
+        <thead><tr><th>Contexto</th><th>Classe</th><th>Uso real de onde veio</th></tr></thead>
+        <tbody>
+          <tr><td>CTA de conversão</td><td><code class="tk">.cw-botao--conversao</code></td><td>"SOLICITAR ATENDIMENTO" da LP de Ads (coral, hover #EF4848)</td></tr>
+          <tr><td>Ação principal em tela clara</td><td><code class="tk">.cw-botao--primario</code></td><td>"TESTE AGORA" do formulário da home (roxo vivo)</td></tr>
+          <tr><td>Institucional / header</td><td><code class="tk">.cw-botao--marca</code></td><td>"Teste agora" do header da home (roxo + texto Magnolia)</td></tr>
+          <tr><td>Secundária</td><td><code class="tk">.cw-botao--suave</code></td><td>"Login" do header (Magnolia + texto roxo)</td></tr>
+          <tr><td>Pontual festivo</td><td><code class="tk">.cw-botao--amarelo</code></td><td>Peça de campanha; texto sempre roxo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== BADGES ==================== -->
+  <section class="secao" id="badges">
+    <div class="olho">Componentes</div>
+    <h2 class="cw-h2">Badges e chips</h2>
+    <p class="secao-desc">Badge marca estado; chip filtra e navega. Chips são sempre pílula —
+    como as tags "Gestão · Automação · +Vendas" do hero da LP.</p>
+    <div class="painel">
+      <span class="cw-badge">Padrão</span>
+      <span class="cw-badge cw-badge--amarelo">Nova</span>
+      <span class="cw-badge cw-badge--coral">Ao vivo</span>
+      <span class="cw-badge cw-badge--roxo">Beta</span>
+      <span class="cw-badge cw-badge--sucesso">Validada</span>
+      <span class="cw-badge cw-badge--erro">Refutada</span>
+    </div>
+    <div class="painel" style="margin-top:14px">
+      <span class="cw-chip cw-chip--coral">Gestão</span>
+      <span class="cw-chip cw-chip--coral">Automação</span>
+      <span class="cw-chip cw-chip--coral">+ Vendas</span>
+      <span class="cw-chip cw-chip--ativo">Filtro ativo</span>
+      <span class="cw-chip">Filtro normal</span>
+    </div>
+  </section>
+
+  <!-- ==================== CARDS E KPI ==================== -->
+  <section class="secao" id="cards">
+    <div class="olho">Componentes</div>
+    <h2 class="cw-h2">Cards e KPI</h2>
+    <p class="secao-desc">Raio de 20px, sombra sempre roxa. Em dashboard, o número usa peso 1000
+    e o delta usa cor funcional.</p>
+    <div class="cw-grade cw-grade--3">
+      <div class="cw-card">
+        <div class="cw-card-titulo">Card padrão</div>
+        <p class="cw-legenda" style="margin:0">Sombra roxa suave, para fundo branco ou Magnolia.</p>
+      </div>
+      <div class="cw-card cw-card--borda">
+        <div class="cw-card-titulo">Card com borda</div>
+        <p class="cw-legenda" style="margin:0">Sem sombra, para telas densas de dashboard.</p>
+      </div>
+      <div class="cw-card cw-card--magnolia">
+        <div class="cw-card-titulo">Card Magnolia</div>
+        <p class="cw-legenda" style="margin:0">Bloco de apoio, citação, nota.</p>
+      </div>
+    </div>
+    <div class="cw-grade cw-grade--4" style="margin-top:20px">
+      <div class="cw-kpi">
+        <span class="cw-kpi-rotulo">Leads no mês</span>
+        <span class="cw-kpi-valor">1.284</span>
+        <span class="cw-kpi-delta cw-kpi-delta--sobe">▲ 12% vs julho</span>
+      </div>
+      <div class="cw-kpi">
+        <span class="cw-kpi-rotulo">Taxa de resposta</span>
+        <span class="cw-kpi-valor">38,2%</span>
+        <span class="cw-kpi-delta cw-kpi-delta--desce">▼ 2,1 pp</span>
+      </div>
+      <div class="cw-kpi">
+        <span class="cw-kpi-rotulo">No-show</span>
+        <span class="cw-kpi-valor">29,7%</span>
+        <span class="cw-kpi-delta" style="color:var(--cw-texto-suave)">— estável</span>
+      </div>
+      <div class="cw-kpi cw-kpi--vivo">
+        <span class="cw-kpi-rotulo">Reuniões agendadas</span>
+        <span class="cw-kpi-valor">312</span>
+        <span class="cw-kpi-delta">▲ 9% — recorde</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FORMULÁRIO ==================== -->
+  <section class="secao" id="formulario">
+    <div class="olho">Componentes</div>
+    <h2 class="cw-h2">Formulário</h2>
+    <p class="secao-desc">Rótulo roxo escuro (#421A64 — a cor de rótulo do widget oficial da CW),
+    campo com foco roxo vivo, erro em coral.</p>
+    <div class="cw-grade cw-grade--2">
+      <div class="cw-card cw-card--vitrine cw-coluna" style="gap:18px">
+        <div>
+          <label class="cw-rotulo" for="ex-nome">Nome</label>
+          <input class="cw-campo" id="ex-nome" placeholder="Nome">
+        </div>
+        <div>
+          <label class="cw-rotulo" for="ex-fat">Faturamento mensal</label>
+          <select class="cw-select" id="ex-fat"><option>Selecionar</option><option>Até R$ 30 mil</option><option>R$ 30–100 mil</option><option>Acima de R$ 100 mil</option></select>
+        </div>
+        <div>
+          <label class="cw-rotulo" for="ex-zap">WhatsApp</label>
+          <input class="cw-campo cw-campo--erro" id="ex-zap" value="(85) 99">
+          <div class="cw-ajuda cw-ajuda--erro">Número incompleto — confira o DDD e os 9 dígitos.</div>
+        </div>
+        <button class="cw-botao cw-botao--conversao cw-botao--bloco">Solicitar atendimento</button>
+      </div>
+      <div class="painel painel--branco painel--coluna" style="gap:18px; justify-content:center">
+        <label class="cw-linha" style="gap:10px"><input type="checkbox" class="cw-caixa" checked> <span>Aceito a política de privacidade</span></label>
+        <label class="cw-linha" style="gap:10px"><input type="checkbox" class="cw-caixa"> <span>Quero receber novidades</span></label>
+        <div class="cw-linha" style="gap:22px">
+          <label class="cw-linha" style="gap:10px"><input type="radio" name="ex-r" class="cw-radio" checked> <span>Delivery</span></label>
+          <label class="cw-linha" style="gap:10px"><input type="radio" name="ex-r" class="cw-radio"> <span>Salão</span></label>
+          <label class="cw-linha" style="gap:10px"><input type="radio" name="ex-r" class="cw-radio"> <span>Os dois</span></label>
+        </div>
+        <label class="cw-linha" style="gap:12px">
+          <span class="cw-alternador"><input type="checkbox" checked><span></span></span>
+          <span>Clara IA ativa para este funil</span>
+        </label>
+        <div>
+          <div class="cw-linha" style="justify-content:space-between; margin-bottom:8px"><span class="cw-rotulo" style="margin:0">Meta da sprint</span><span class="cw-legenda">68%</span></div>
+          <div class="cw-progresso"><div style="width:68%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ALERTAS ==================== -->
+  <section class="secao" id="alertas">
+    <div class="olho">Componentes</div>
+    <h2 class="cw-h2">Alertas</h2>
+    <div class="cw-coluna">
+      <div class="cw-alerta cw-alerta--info"><span>💜</span><div><strong>Info.</strong> A Clara assume os leads de tier 4 e 5 automaticamente.</div></div>
+      <div class="cw-alerta cw-alerta--sucesso"><span>✅</span><div><strong>Sucesso.</strong> Experimento validado: 2,71% contra 2,39% do controle.</div></div>
+      <div class="cw-alerta cw-alerta--atencao"><span>⚠️</span><div><strong>Atenção.</strong> A amostra ainda não atingiu o mínimo — segure o veredito.</div></div>
+      <div class="cw-alerta cw-alerta--erro"><span>⛔</span><div><strong>Erro.</strong> O disparo falhou para 12 leads — fila do WhatsApp indisponível.</div></div>
+    </div>
+  </section>
+
+  <!-- ==================== TABELA ==================== -->
+  <section class="secao" id="tabela">
+    <div class="olho">Componentes</div>
+    <h2 class="cw-h2">Tabela</h2>
+    <p class="secao-desc">Cabeçalho em caixa alta discreta, zebra Magnolia, primeira coluna forte.
+    Números pedem <code class="tk">.cw-tabela--num</code> (alinha à direita).</p>
+    <div class="cw-card" style="padding:10px 6px; overflow-x:auto">
+      <table class="cw-tabela cw-tabela--num">
+        <thead><tr><th>Experimento</th><th>Braço A</th><th>Braço B</th><th>Diferença</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>EXP-16 mensal vs anual</td><td>2,39%</td><td>2,71%</td><td class="ok">+0,32 pp</td><td style="text-align:right"><span class="cw-badge cw-badge--sucesso">Validada</span></td></tr>
+          <tr><td>EXP-17 lembrete em vídeo</td><td>50,0%</td><td>20,8%</td><td class="nunca">−29,2 pp</td><td style="text-align:right"><span class="cw-badge cw-badge--erro">Confundida</span></td></tr>
+          <tr><td>EXP-18 lembrete 10 min</td><td>50,0%</td><td>28,9%</td><td class="nunca">−21,1 pp</td><td style="text-align:right"><span class="cw-badge cw-badge--erro">Refutada</span></td></tr>
+          <tr><td>SM30H7 prova social</td><td>—</td><td>—</td><td>—</td><td style="text-align:right"><span class="cw-badge">No ar</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== ABAS E EXTRAS ==================== -->
+  <section class="secao" id="abas">
+    <div class="olho">Componentes</div>
+    <h2 class="cw-h2">Abas, avatar, tooltip e loading</h2>
+    <div class="painel painel--branco painel--coluna" style="gap:26px">
+      <div class="cw-abas">
+        <button class="cw-aba cw-aba--ativa">Visão geral</button>
+        <button class="cw-aba">Experimentos</button>
+        <button class="cw-aba">Funil</button>
+        <button class="cw-aba">Configurações</button>
+      </div>
+      <div class="cw-abas cw-abas--pilula">
+        <button class="cw-aba cw-aba--ativa">Semana</button>
+        <button class="cw-aba">Mês</button>
+        <button class="cw-aba">Trimestre</button>
+      </div>
+      <div class="cw-linha" style="gap:18px">
+        <span class="cw-avatar">AM</span>
+        <span class="cw-avatar cw-avatar--vivo">CL</span>
+        <button class="cw-botao cw-botao--suave cw-botao--pq cw-dica" data-dica="O sublinhado da aba ativa é coral, como no site">Passe o mouse</button>
+        <div class="cw-esqueleto" style="width:180px; height:20px"></div>
+        <div class="cw-esqueleto" style="width:44px; height:44px; border-radius:50%"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MODO NOITE ==================== -->
+  <section class="secao" id="noite">
+    <div class="olho">Contexto</div>
+    <h2 class="cw-h2">Modo noite (peça social e seção de impacto)</h2>
+    <p class="secao-desc">O visual dos posts do Instagram: roxo noite com glow, grade sutil,
+    display branco e a palavra de destaque em amarelo. Basta <code class="tk">.cw-escuro</code>
+    na seção — os componentes se adaptam sozinhos.</p>
+    <div class="cw-noite cw-noite--grade cw-escuro cw-texto-centro">
+      <span class="cw-badge cw-badge--amarelo">Novidade</span>
+      <h3 class="cw-display" style="margin:18px 0 10px">O e-commerce <span class="cw-destaque">dos restaurantes</span></h3>
+      <p style="max-width:520px; margin:0 auto 26px">Mais de 17 mil restaurantes vendendo com
+      cardápio digital, gestão e marketing no mesmo lugar.</p>
+      <div class="cw-linha" style="justify-content:center">
+        <button class="cw-botao cw-botao--conversao cw-botao--gr">Teste agora</button>
+        <button class="cw-botao cw-botao--contorno">Ver como funciona</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DATAVIZ ==================== -->
+  <section class="secao" id="dataviz">
+    <div class="olho">Dashboard</div>
+    <h2 class="cw-h2">Cores de gráfico</h2>
+    <p class="secao-desc">Séries sempre nesta ordem. Fundo de gráfico branco ou Magnolia,
+    grade discreta, eixo na cor de texto secundário.</p>
+    <div class="cw-grade cw-grade--2">
+      <div class="cw-card">
+        <div class="barras" aria-hidden="true">
+          <div style="height:88%; background:var(--cw-serie-1)"></div>
+          <div style="height:64%; background:var(--cw-serie-2)"></div>
+          <div style="height:46%; background:var(--cw-serie-3)"></div>
+          <div style="height:72%; background:var(--cw-serie-4)"></div>
+          <div style="height:33%; background:var(--cw-serie-5)"></div>
+        </div>
+        <div class="cw-legenda cw-texto-centro" style="margin-top:10px">Ordem fixa das séries 1–5</div>
+      </div>
+      <div class="painel painel--coluna" style="justify-content:center; gap:10px">
+        <div class="cw-linha"><span style="width:16px;height:16px;border-radius:5px;background:var(--cw-serie-1)"></span><code class="tk">--cw-serie-1</code> #A543FA — série principal</div>
+        <div class="cw-linha"><span style="width:16px;height:16px;border-radius:5px;background:var(--cw-serie-2)"></span><code class="tk">--cw-serie-2</code> #FF5959 — comparação</div>
+        <div class="cw-linha"><span style="width:16px;height:16px;border-radius:5px;background:var(--cw-serie-3)"></span><code class="tk">--cw-serie-3</code> #FFB600 — terceira série</div>
+        <div class="cw-linha"><span style="width:16px;height:16px;border-radius:5px;background:var(--cw-serie-4)"></span><code class="tk">--cw-serie-4</code> #59327A — quarta série</div>
+        <div class="cw-linha"><span style="width:16px;height:16px;border-radius:5px;background:var(--cw-serie-5)"></span><code class="tk">--cw-serie-5</code> #16A34A — funcional</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTRASTE ==================== -->
+  <section class="secao" id="contraste">
+    <div class="olho">Regras</div>
+    <h2 class="cw-h2">Contraste e "não faça"</h2>
+    <div class="cw-grade cw-grade--2" style="align-items:start">
+      <div class="cw-card" style="padding:10px 6px; overflow-x:auto">
+        <table class="cw-tabela">
+          <thead><tr><th>Combinação</th><th>Veredito</th></tr></thead>
+          <tbody>
+            <tr><td>Roxo sobre branco / branco sobre roxo</td><td class="ok">✔ qualquer tamanho</td></tr>
+            <tr><td>Roxo sobre Magnolia</td><td class="ok">✔ qualquer tamanho</td></tr>
+            <tr><td>Roxo sobre amarelo</td><td class="ok">✔ botão amarelo</td></tr>
+            <tr><td>Branco sobre roxo vivo</td><td class="cuidado">⚠ só ≥18px ou bold</td></tr>
+            <tr><td>Branco sobre coral</td><td class="cuidado">⚠ só título grande</td></tr>
+            <tr><td>Branco sobre amarelo</td><td class="nunca">✘ nunca</td></tr>
+            <tr><td>Roxo vivo sobre roxo</td><td class="nunca">✘ nunca para texto</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cw-coluna">
+        <div class="cw-alerta cw-alerta--erro"><span>⛔</span><div><strong>Não faça:</strong> hex fora dos tokens; amarelo como fundo grande ou CTA principal; sombra cinza; logo ou mascote solto sobre roxo/pattern (sempre box branco ou Magnolia); recriar o logotipo em texto; Arial/Helvetica/Inter.</div></div>
+        <div class="cw-alerta cw-alerta--info"><span>💜</span><div><strong>Na dúvida:</strong> superfície clara + título roxo + ação roxo vivo + acento coral. É a combinação que nunca erra.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <div class="cw-linha" style="justify-content:space-between">
+      <div class="cw-legenda">Design System CardápioWeb · apurado da produção em 07/08/2026 ·
+      fontes: manual 2023, cardapioweb.com, lp.cardapioweb.com/lp-google-ads-3, @cardapio.web</div>
+      <div class="cw-legenda">Arquivos: <code class="tk">design-system/cw.css</code> · guia vivo: <code class="tk">styleguide.html</code></div>
+    </div>
+  </footer>
+
+</main>
+</body>
+</html>

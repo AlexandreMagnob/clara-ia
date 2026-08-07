@@ -1,0 +1,31 @@
+/* Museo Sans Rounded — fontes oficiais da CardápioWeb (caminho relativo).
+   Para HTML standalone (artifact, e-mail, arquivo avulso), use ../fontes-embutidas.css. */
+
+@font-face {
+  font-family: "Museo Sans Rounded";
+  src: url("museosansrounded-500.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Museo Sans Rounded";
+  src: url("museosansrounded-700.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Museo Sans Rounded";
+  src: url("museosansrounded-900.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Museo Sans Rounded";
+  src: url("museosansrounded-1000.otf") format("opentype");
+  font-weight: 1000;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,81 @@
+/* ============================================================
+   CardápioWeb — Design Tokens (cw-tokens.css)
+   Fonte: Manual de Identidade Visual 2023 + uso real em produção
+   (cardapioweb.com, lp.cardapioweb.com, @cardapio.web) em 2026-08.
+   Regra: NUNCA invente hex fora daqui. Tom intermediário = opacidade.
+   ============================================================ */
+
+:root {
+  /* ---- Cores de marca (manual 2023) ---- */
+  --cw-roxo: #59327A;         /* Eminence — roxo institucional: título sobre claro, botão escuro, início do gradiente */
+  --cw-roxo-vivo: #A543FA;    /* Purple Heart — CTA primário em superfície clara, link, glow, gráfico */
+  --cw-coral: #FF5959;        /* Carnation — CTA de conversão em LP, ícone, badge, sublinhado de título */
+  --cw-amarelo: #FFB600;      /* Selective Yellow — PONTUAL: badge "NOVA", destaque de display sobre roxo escuro */
+  --cw-magnolia: #F4EDF7;     /* a única cor clara da marca: superfície, faixa, zebra */
+
+  /* ---- Roxos profundos (uso real, fora do manual — validados em produção) ---- */
+  --cw-roxo-escuro: #421A64;  /* rótulo sobre claro no widget oficial; camada intermediária de dark */
+  --cw-roxo-noite: #2A1640;   /* fundo dark: LP, posts do Instagram, seção social */
+
+  /* ---- Derivados reais (colhidos da LP no ar) ---- */
+  --cw-coral-forte: #EF4848;  /* hover/pressed do coral; texto de erro sobre claro */
+
+  /* ---- Neutros (reais da LP; nunca cinza puro frio) ---- */
+  --cw-texto-titulo: var(--cw-roxo);
+  --cw-texto: #4B5563;                        /* corpo sobre claro */
+  --cw-texto-suave: #6B6478;                  /* secundário, legenda */
+  --cw-borda: #E4D9EF;                        /* borda e divisor sobre claro */
+  --cw-borda-suave: rgba(89, 50, 122, .12);
+  --cw-fundo: #FFFFFF;
+  --cw-superficie: #FFFFFF;                   /* card */
+  --cw-superficie-2: #F4F1F7;                 /* bloco rebaixado, código, zebra alternativa */
+
+  /* ---- Funcionais (dashboard/produto; não são cor de marca) ---- */
+  --cw-sucesso: #16A34A;        --cw-sucesso-fundo: #E7F6EC;
+  --cw-atencao: #FFB600;        --cw-atencao-fundo: #FFF4D6;   /* texto sobre atenção: sempre --cw-roxo */
+  --cw-erro: #EF4848;           --cw-erro-fundo: #FFECEC;
+  --cw-info: #A543FA;           --cw-info-fundo: #F6EFFE;
+
+  /* ---- Gradiente assinatura (idêntico na home e na LP) ---- */
+  --cw-gradiente: linear-gradient(266deg, var(--cw-roxo-vivo) 0%, var(--cw-roxo) 100%);
+  --cw-gradiente-noite: radial-gradient(120% 90% at 80% 0%, rgba(165, 67, 250, .38) 0%, rgba(165, 67, 250, 0) 55%), linear-gradient(200deg, var(--cw-roxo-escuro) 0%, var(--cw-roxo-noite) 70%);
+
+  /* ---- Tipografia ---- */
+  --cw-fonte: "Museo Sans Rounded", "Nunito", "Quicksand", "Varela Round", system-ui, sans-serif;
+  --cw-peso-corpo: 500;
+  --cw-peso-forte: 700;
+  --cw-peso-titulo: 900;
+  --cw-peso-display: 1000;
+
+  /* ---- Forma ---- */
+  --cw-raio-card: 20px;
+  --cw-raio-botao: 12px;
+  --cw-raio-campo: 10px;
+  --cw-raio-pilula: 999px;
+
+  /* ---- Sombra (sempre roxa, nunca cinza) ---- */
+  --cw-sombra: 0 8px 24px rgba(89, 50, 122, .12);
+  --cw-sombra-alta: 0 16px 48px rgba(42, 22, 64, .22);
+  --cw-sombra-glow: 0 0 48px rgba(165, 67, 250, .45);
+
+  /* ---- Séries de gráfico (nesta ordem) ---- */
+  --cw-serie-1: #A543FA;
+  --cw-serie-2: #FF5959;
+  --cw-serie-3: #FFB600;
+  --cw-serie-4: #59327A;
+  --cw-serie-5: #16A34A;
+}
+
+/* ---- Contexto escuro (peça social, dashboard dark, seção de impacto) ----
+   Aplique .cw-escuro na section/body: os componentes se adaptam sozinhos. */
+.cw-escuro {
+  --cw-texto-titulo: #FFFFFF;
+  --cw-texto: #E9DFF2;
+  --cw-texto-suave: rgba(244, 237, 247, .68);
+  --cw-borda: rgba(255, 255, 255, .16);
+  --cw-borda-suave: rgba(255, 255, 255, .10);
+  --cw-fundo: var(--cw-roxo-noite);
+  --cw-superficie: rgba(255, 255, 255, .07);
+  --cw-superficie-2: rgba(255, 255, 255, .05);
+  --cw-sombra: 0 8px 24px rgba(0, 0, 0, .35);
+}

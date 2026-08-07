@@ -1,0 +1,82 @@
+==========================================================================
+ SAIDA DAS BATERIAS DE TESTE — plataforma-ab (GWT-3256)
+ gerado em: 2026-08-07 05:46  ·  depois das correcoes do QA adversarial
+==========================================================================
+
+### 1. node testes/ataques.js   (60 · entrada hostil no nivel HTTP)
+
+
+══════════════════════════════════════════════════════════════════════════════
+  60/60 checagens passaram.
+══════════════════════════════════════════════════════════════════════════════
+
+### 2. node --test testes/unidade.js   (54 · unidade)
+
+ℹ tests 54
+ℹ pass 54
+ℹ fail 0
+
+### 3. python testes/validar_estatistica.py   (48 · vs stdlib do Python)
+
+====================================================================================================
+TODAS AS 48 CHECAGENS PASSARAM -- a estatistica do JS bate com a rota independente.
+
+### 4. node testes/store-supabase.js   (20 · driver do Supabase)
+
+  20/20 passaram.
+
+### 5. node testes/simulacao.js   (13 · ponta a ponta)
+
+RESUMO
+──────────────────────────────────────────────────────────────────────────────
+   [x] Roteamento 302 serve variantes diferentes................. OK
+   [x] Conferência manual (cwforce) não entra na amostra......... OK
+   [x] Grude: mesmo visitante cai sempre na mesma variante....... OK
+   [x] UTM preservado no redirect................................ OK
+   [x] Bot vai pro controle e não é contabilizado................ OK
+   [x] Prefetch do navegador não é contabilizado................. OK
+   [x] Trava de ciclo mínimo segura vencedor de 1 dia............ OK
+   [x] Veredito de vencedor com amostra e prazo atendidos........ OK
+   [x] Achou o vencedor certo (B, que é o melhor no universo simulado) OK
+   [x] Tracking de view chegou................................... OK
+   [x] Conversões atribuídas sem órfãs........................... OK
+   [x] Job não re-notifica quando o veredito não mudou........... OK
+   [x] SRM tranca o veredito quando o tráfego some de um braço... OK
+
+   13/13 checagens passaram.
+   dados da simulação em: C:\Users\Alexandre\Desktop\clara-ia\plataforma-ab\dados-simulacao
+
+### 6. node testes/snippet-dom.js   (11 · ab.js real num DOM de mentira)
+
+
+### 7. node testes/slack-local.js   (6 · caminho do Slack)
+
+RESUMO
+──────────────────────────────────────────────────────────────────────────────
+   [x] Envio chega com o JSON certo........................ OK
+   [x] 200 com "invalid_payload" é tratado como FALHA...... OK
+   [x] Webhook fora do ar = falha reentrante............... OK
+   [x] Sem webhook = não é falha........................... OK
+   [x] Cor da barra é o amarelo da CW...................... OK
+   [x] Mensagem traz o vencedor............................ OK
+
+   6/6 passaram.
+
+   Para o print no canal de verdade: defina AB_SLACK_WEBHOOK e rode
+
+### 8. node testes/aa-falso-positivo.js   (4 · teste A/A)
+
+Teste A/A — todos os braços com taxa idêntica de 12%
+14 dias × 400/dia por braço · 1500 repetições por cenário
+Alvo: 5% de falso positivo (o alfa configurado).
+
+  braços   alfa/comparação   falso positivo   medido pelo QA (antes)
+  ──────────────────────────────────────────────────────────────────────
+      2           0.0500            4.7%                   5,5%   
+      3           0.0253            4.7%                  10,7%   
+      4           0.0170            5.1%                  13,6%   
+      6           0.0102            3.5%                  20,1%   
+
+  ──────────────────────────────────────────────────────────────────────
+  OK — o erro global fica no alvo de 5% em todos os cenários.
+  (Šidák é levemente conservador: ficar ABAIXO de 5% é esperado.)

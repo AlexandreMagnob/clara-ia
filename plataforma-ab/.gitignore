@@ -1,0 +1,6 @@
+# dados locais de teste — nunca versionar
+dados/
+dados-simulacao/
+node_modules/
+.vercel/
+*.tmp

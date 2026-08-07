@@ -36,6 +36,8 @@ Reunião agendada → Closer fecha
 | [experimentos/](experimentos/) | Specs e planos de experimento (GWT-xxxx, EXP-xx, SM30Hx). |
 | [analises/](analises/) | Investigações e relatórios de métricas — o **resultado**. |
 | [dashboards/](dashboards/) | Painéis HTML standalone. |
+| [plataforma-experimentos/](plataforma-experimentos/) | Máquina de Experimentos — app de hipóteses e pós-mortem (GWT-3144). |
+| [plataforma-ab/](plataforma-ab/) | Teste A/B de landing page — roteador, tracking e trava estatística (GWT-3256). |
 | [docs/](docs/) | Arquitetura, integrações, processos, guias e referências. |
 | [planejamento/](planejamento/) | Roadmap e backlog de ideias. |
 | [estudos/](estudos/) | Notas de podcasts, cursos e material de estudo. |
@@ -59,6 +61,7 @@ Regra de bolso — **se a resposta for "sei lá", é `docs/`**.
 | um passo a passo repetível | `docs/guias/` | `<slug>.md` |
 | doc de API de terceiro | `docs/referencias/<produto>/` | `<slug>.md` |
 | uma ideia solta, ainda não validada | `planejamento/backlog-de-ideias.md` | — |
+| uma aplicação com front + API própria | `plataforma-<slug>/` | pasta com `README.md` próprio |
 | **qualquer coisa com senha/token** | **fora do repo** | veja abaixo |
 
 ### Convenções de nome

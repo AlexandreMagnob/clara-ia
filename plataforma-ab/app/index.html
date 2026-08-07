@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Teste A/B de LP — Cardápio Web</title>
+<link rel="icon" href="favicon.png">
+<style>
+/* Paleta oficial da CW — as 5 cores do manual, nada de hex inventado. */
+:root{
+  --eminence:#59327A; --purple-heart:#A543FA; --carnation:#FF5959;
+  --yellow:#FFB600; --magnolia:#F4EDF7;
+  --borda:rgba(89,50,122,.15); --sombra:rgba(89,50,122,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--magnolia); color:var(--eminence);
+  font-family:"Museo Sans Rounded","Nunito","Quicksand",system-ui,sans-serif;
+  font-weight:500; font-size:15px; line-height:1.5;
+}
+h1,h2,h3{font-weight:1000; margin:0 0 8px}
+h1{font-size:26px} h2{font-size:20px} h3{font-size:16px}
+a{color:var(--purple-heart)}
+.wrap{max-width:1180px; margin:0 auto; padding:20px 16px 64px}
+header{background:#fff; border-bottom:1px solid var(--borda)}
+header .wrap{display:flex; align-items:center; gap:16px; padding:14px 16px; flex-wrap:wrap}
+header img{height:34px}
+header .sub{font-size:13px; opacity:.7}
+.card{background:#fff; border-radius:20px; padding:20px; margin:0 0 16px; box-shadow:0 1px 3px var(--sombra)}
+.linha{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+.entre{justify-content:space-between}
+button,.bt{
+  font-family:inherit; font-weight:1000; font-size:14px; cursor:pointer;
+  border:0; border-radius:999px; padding:10px 20px;
+  background:var(--yellow); color:var(--eminence); /* CTA: amarelo com texto roxo */
+}
+button.sec{background:var(--magnolia); color:var(--eminence); border:1px solid var(--borda)}
+button.perigo{background:var(--carnation); color:#fff}
+button:disabled{opacity:.45; cursor:not-allowed}
+input,select,textarea{
+  font-family:inherit; font-size:14px; font-weight:500; padding:10px 12px;
+  border:1px solid var(--borda); border-radius:12px; background:#fff; color:var(--eminence); width:100%;
+}
+label{display:block; font-size:12px; font-weight:1000; text-transform:uppercase; letter-spacing:.04em; opacity:.75; margin:0 0 4px}
+.campo{margin:0 0 12px}
+.grade{display:grid; gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+table{width:100%; border-collapse:collapse; font-size:14px}
+th,td{text-align:left; padding:9px 10px; border-bottom:1px solid var(--borda)}
+th{font-weight:1000; font-size:11px; text-transform:uppercase; letter-spacing:.04em; opacity:.7}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums}
+.rolar{overflow-x:auto}
+.tag{display:inline-block; padding:3px 11px; border-radius:999px; font-size:11px; font-weight:1000; text-transform:uppercase; letter-spacing:.03em}
+.t-rodando{background:var(--yellow); color:var(--eminence)}
+.t-vencedor{background:var(--yellow); color:var(--eminence)}
+.t-srm{background:var(--carnation); color:#fff}
+.t-outro{background:var(--magnolia); color:var(--eminence); border:1px solid var(--borda)}
+.trava{display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--borda)}
+.trava:last-child{border:0}
+.trava .m{font-size:17px; line-height:1.2; width:20px; flex:none}
+.trava .n{font-weight:1000}
+.trava .d{font-size:12.5px; opacity:.8}
+.trava .p{font-size:12px; opacity:.6; font-style:italic}
+.barra{height:8px; background:var(--magnolia); border-radius:999px; overflow:hidden; display:flex; margin:6px 0}
+.barra i{display:block; height:100%}
+.aviso{background:var(--magnolia); border-left:4px solid var(--carnation); padding:12px 14px; border-radius:0 12px 12px 0; margin:0 0 12px; font-size:13.5px}
+.ok{background:var(--magnolia); border-left:4px solid var(--yellow); padding:12px 14px; border-radius:0 12px 12px 0; margin:0 0 12px; font-size:13.5px}
+code{background:var(--magnolia); padding:2px 6px; border-radius:6px; font-size:12.5px; font-family:ui-monospace,Menlo,Consolas,monospace; word-break:break-all}
+.mini{font-size:12px; opacity:.7}
+.vazio{text-align:center; padding:48px 20px; opacity:.65}
+dialog{border:0; border-radius:24px; padding:0; max-width:720px; width:94%; box-shadow:0 12px 48px rgba(89,50,122,.25)}
+dialog::backdrop{background:rgba(89,50,122,.45)}
+dialog .corpo{padding:24px; max-height:82vh; overflow:auto}
+.varlinha{display:grid; grid-template-columns:70px 1.1fr 2fr 88px 36px; gap:8px; align-items:end; margin:0 0 8px}
+@media(max-width:640px){ .varlinha{grid-template-columns:1fr 1fr; } }
+.sparkfundo{fill:none; stroke-width:2}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="logo-h.png" alt="Cardápio Web">
+    <div>
+      <div style="font-weight:1000">Teste A/B de landing page</div>
+      <div class="sub">GWT-3256 · Growth</div>
+    </div>
+    <div style="flex:1"></div>
+    <button class="sec" id="btToken">Token</button>
+    <button id="btNovo">Novo teste</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="alerta"></div>
+  <div id="lista"></div>
+</div>
+
+<!-- ── modal: criar/editar ───────────────────────────────────────────────── -->
+<dialog id="dlgTeste"><div class="corpo">
+  <h2 id="dlgTitulo">Novo teste</h2>
+  <p class="mini">O que estiver travado só muda com o teste parado — mexer em peso ou URL no ar reatribui quem já entrou e queima o resultado.</p>
+  <div id="erros"></div>
+
+  <div class="grade g2">
+    <div class="campo"><label>Slug (vai na URL do anúncio)</label><input id="f-slug" placeholder="hero-lp-sql"></div>
+    <div class="campo"><label>Nome</label><input id="f-nome" placeholder="Hero da LP de SQL"></div>
+  </div>
+  <div class="campo"><label>Hipótese</label><textarea id="f-hipotese" rows="2" placeholder="Se o hero mostrar o cardápio digital em vez do painel, a conversão sobe, porque…"></textarea></div>
+  <div class="grade g2">
+    <div class="campo"><label>Card do Jira</label><input id="f-jira" placeholder="GWT-0000"></div>
+    <div class="campo"><label>Status</label><select id="f-status">
+      <option value="rascunho">rascunho</option><option value="rodando">rodando</option>
+      <option value="pausado">pausado</option><option value="encerrado">encerrado</option>
+    </select></div>
+  </div>
+
+  <h3 style="margin-top:16px">Variantes</h3>
+  <p class="mini">A primeira é o controle. Os pesos precisam somar 1.</p>
+  <div id="vars"></div>
+  <button class="sec" id="btAddVar" type="button">+ variante</button>
+
+  <h3 style="margin-top:20px">Trava estatística</h3>
+  <div class="grade g3">
+    <div class="campo"><label>Baseline (taxa de hoje)</label><input id="f-baseline" placeholder="0.1237" inputmode="decimal"></div>
+    <div class="campo"><label>MDE (melhora relativa)</label><input id="f-mde" placeholder="0.2" inputmode="decimal"></div>
+    <div class="campo"><label>Cobertura</label><input id="f-cobertura" placeholder="1" inputmode="decimal"></div>
+    <div class="campo"><label>Dias mínimos</label><input id="f-mindias" placeholder="7" inputmode="numeric"></div>
+    <div class="campo"><label>Dias máximos</label><input id="f-maxdias" placeholder="30" inputmode="numeric"></div>
+  </div>
+  <div id="previaAmostra" class="ok" style="display:none"></div>
+
+  <div class="linha entre" style="margin-top:20px">
+    <button class="sec" id="btCancelar" type="button">Cancelar</button>
+    <button id="btSalvar" type="button">Salvar</button>
+  </div>
+</div></dialog>
+
+<script>
+/* ────────────────────────────────────────────────────────────────────────────
+   Painel. HTML/CSS/JS puro, sem build — igual à plataforma de experimentos.
+   Toda a estatística mora no servidor; aqui só desenha o que ele devolve.
+   ──────────────────────────────────────────────────────────────────────────── */
+const $ = (s, r) => (r || document).querySelector(s);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
+  ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const pct = (x, c) => (x == null || !isFinite(x)) ? '—' : (x * 100).toFixed(c == null ? 2 : c) + '%';
+const num = (x) => (x == null ? '—' : Number(x).toLocaleString('pt-BR'));
+
+let TOKEN = localStorage.getItem('ab_token') || '';
+let EDITANDO = null;
+
+async function api(caminho, opts) {
+  opts = opts || {};
+  const r = await fetch(caminho, {
+    method: opts.method || 'GET',
+    headers: Object.assign({ 'X-AB-Token': TOKEN }, opts.body ? { 'Content-Type': 'application/json' } : {}),
+    body: opts.body ? JSON.stringify(opts.body) : undefined,
+  });
+  const txt = await r.text();
+  let corpo = null;
+  try { corpo = txt ? JSON.parse(txt) : null; } catch (e) { corpo = { erro: txt.slice(0, 300) }; }
+  if (!r.ok) throw Object.assign(new Error((corpo && corpo.erro) || r.status), { corpo, status: r.status });
+  return corpo;
+}
+
+function pedirToken() {
+  const t = prompt('Token de acesso (AB_ADMIN_TOKEN):', TOKEN || '');
+  if (t === null) return false;
+  TOKEN = t.trim();
+  localStorage.setItem('ab_token', TOKEN);
+  carregar();
+  return true;
+}
+
+/* ── lista ────────────────────────────────────────────────────────────────── */
+async function carregar() {
+  const el = $('#lista');
+  $('#alerta').innerHTML = '';
+  el.innerHTML = '<div class="vazio">carregando…</div>';
+  try {
+    const dados = await api('/api/resultados');
+    if (!dados.length) {
+      el.innerHTML = '<div class="card vazio"><h2>Nenhum teste ainda</h2>' +
+        '<p>Crie o primeiro em <b>Novo teste</b>. A URL do anúncio vira <code>/t/&lt;slug&gt;</code>.</p></div>';
+      return;
+    }
+    el.innerHTML = dados.map(cardTeste).join('');
+  } catch (e) {
+    if (e.status === 401 || e.status === 503) {
+      el.innerHTML = '<div class="card vazio"><h2>Acesso</h2><p>' + esc(e.message) +
+        '</p><button onclick="pedirToken()">Informar token</button></div>';
+    } else {
+      el.innerHTML = '<div class="card"><div class="aviso"><b>Erro:</b> ' + esc(e.message) + '</div></div>';
+    }
+  }
+}
+
+function classeVeredito(v) {
+  if (v === 'vencedor') return 't-vencedor';
+  if (String(v).startsWith('SRM')) return 't-srm';
+  if (v === 'rodando') return 't-rodando';
+  return 't-outro';
+}
+
+function cardTeste(d) {
+  const t = d.teste;
+  const total = (d.variantes || []).reduce((a, v) => a + v.n, 0);
+  const cores = ['var(--eminence)', 'var(--purple-heart)', 'var(--carnation)', 'var(--yellow)', 'var(--magnolia)'];
+
+  const barra = (d.variantes || []).map((v, i) =>
+    '<i style="width:' + (total ? (v.n / total * 100) : 0) + '%;background:' + cores[i % cores.length] + '"></i>').join('');
+
+  const linhas = (d.variantes || []).map((v, i) => {
+    const comp = (d.comparacoes || []).find((c) => c.chave === v.chave);
+    const venceu = d.vencedor === v.chave;
+    return '<tr>' +
+      '<td><b>' + esc(v.chave) + '</b>' + (venceu ? ' 🏆' : '') + (i === 0 ? ' <span class="mini">controle</span>' : '') +
+        '<div class="mini">' + esc(v.nome) + '</div></td>' +
+      '<td class="num">' + num(v.n) + '</td>' +
+      '<td class="num">' + num(v.conv) + '</td>' +
+      '<td class="num"><b>' + pct(v.n ? v.conv / v.n : null) + '</b></td>' +
+      '<td class="num">' + (comp && comp.lift != null ? (comp.lift > 0 ? '+' : '') + pct(comp.lift, 1) : '—') + '</td>' +
+      '<td class="num">' + (comp ? esc(fmtP(comp.p_horizonte_fixo)) : '—') + '</td>' +
+      '<td class="num">' + (comp ? esc(fmtP(comp.p_sempre_valido)) : '—') + '</td>' +
+      '</tr>';
+  }).join('');
+
+  const travas = (d.travas || []).map((tr) =>
+    '<div class="trava"><div class="m">' + (tr.ok ? '✅' : '⬜') + '</div><div>' +
+    '<div class="n">' + esc(tr.nome) + '</div>' +
+    '<div class="d">' + esc(tr.detalhe) + '</div>' +
+    '<div class="p">' + esc(tr.porque) + '</div></div></div>').join('');
+
+  const saude = d.saude || {};
+  const avisos = [];
+  if (saude.conversoes_orfas > 0) {
+    avisos.push(saude.conversoes_orfas + ' conversão(ões) sem atribuição — descartadas. ' +
+      'Normal em pouca quantidade (cookie limpo); em volume, o snippet pode estar em página fora do teste.');
+  }
+  if (saude.taxa_view_por_atribuicao != null && saude.taxa_view_por_atribuicao < 0.5 && total > 100) {
+    avisos.push('Só ' + pct(saude.taxa_view_por_atribuicao, 0) + ' das atribuições viraram pageview. ' +
+      'O snippet pode não estar em uma das variantes — confira antes de confiar na conversão.');
+  }
+
+  return '<div class="card">' +
+    '<div class="linha entre" style="margin-bottom:6px">' +
+      '<div><h2 style="margin:0">' + esc(t.nome) + '</h2>' +
+        '<div class="mini"><code>/t/' + esc(t.slug) + '</code> · ' + esc(t.status) +
+        (t.jira ? ' · ' + esc(t.jira) : '') + '</div></div>' +
+      '<div class="linha">' +
+        '<span class="tag ' + classeVeredito(d.veredito) + '">' + esc(d.veredito) + '</span>' +
+        '<button class="sec" onclick="editar(\'' + esc(t.slug) + '\')">Editar</button>' +
+      '</div>' +
+    '</div>' +
+    (t.hipotese ? '<p class="mini" style="margin:0 0 10px">' + esc(t.hipotese) + '</p>' : '') +
+    '<div class="' + (d.pode_decidir ? 'ok' : 'aviso') + '"><b>' +
+      (d.pode_decidir ? 'Pode decidir. ' : 'Ainda não dá pra decidir. ') + '</b>' + esc(d.motivo || '') + '</div>' +
+    avisos.map((a) => '<div class="aviso">' + esc(a) + '</div>').join('') +
+    '<div class="barra">' + barra + '</div>' +
+    '<div class="rolar"><table><thead><tr>' +
+      '<th>Variante</th><th class="num">Atribuições</th><th class="num">Conversões</th>' +
+      '<th class="num">Taxa</th><th class="num">Lift</th>' +
+      '<th class="num">p (planejado)</th><th class="num">p (sempre-válido)</th>' +
+    '</tr></thead><tbody>' + linhas + '</tbody></table></div>' +
+    '<div class="mini" style="margin:8px 0 14px">' +
+      'Denominador = atribuição no servidor (não pageview). ' +
+      (d.amostra_minima ? 'Amostra alvo: ' + num(d.amostra_minima) + ' por braço. ' : '') +
+      (d.periodo && d.periodo.de ? 'De ' + esc(d.periodo.de) + ' a ' + esc(d.periodo.ate) + ' (' + d.dias_rodados + ' dias).' : '') +
+    '</div>' +
+    '<h3>Travas</h3>' + travas +
+  '</div>';
+}
+
+function fmtP(p) {
+  if (p == null || isNaN(p)) return '—';
+  if (p < 0.0001) return p.toExponential(1);
+  return Number(p).toFixed(4);
+}
+
+/* ── formulário ───────────────────────────────────────────────────────────── */
+function linhaVar(v, i) {
+  v = v || { chave: '', nome: '', url: '', peso: '' };
+  return '<div class="varlinha" data-i="' + i + '">' +
+    '<div><label>Chave</label><input class="v-chave" value="' + esc(v.chave) + '" placeholder="' + (i === 0 ? 'A' : 'B') + '"></div>' +
+    '<div><label>Nome</label><input class="v-nome" value="' + esc(v.nome) + '" placeholder="' + (i === 0 ? 'controle' : 'variante') + '"></div>' +
+    '<div><label>URL</label><input class="v-url" value="' + esc(v.url) + '" placeholder="https://lp.cardapioweb.com/..."></div>' +
+    '<div><label>Peso</label><input class="v-peso" value="' + esc(v.peso) + '" placeholder="0.5" inputmode="decimal"></div>' +
+    '<div><button class="sec" type="button" onclick="this.closest(\'.varlinha\').remove()" title="remover">×</button></div>' +
+  '</div>';
+}
+
+function abrirForm(teste) {
+  EDITANDO = teste || null;
+  $('#dlgTitulo').textContent = teste ? 'Editar: ' + teste.nome : 'Novo teste';
+  $('#erros').innerHTML = '';
+  $('#f-slug').value = teste ? teste.slug : '';
+  $('#f-slug').disabled = !!teste;
+  $('#f-nome').value = teste ? teste.nome : '';
+  $('#f-hipotese').value = teste ? (teste.hipotese || '') : '';
+  $('#f-jira').value = teste ? (teste.jira || '') : '';
+  $('#f-status').value = teste ? teste.status : 'rascunho';
+  $('#f-baseline').value = teste && teste.baseline != null ? teste.baseline : '';
+  $('#f-mde').value = teste && teste.mde != null ? teste.mde : '0.2';
+  $('#f-cobertura').value = teste && teste.cobertura != null ? teste.cobertura : '1';
+  $('#f-mindias').value = teste && teste.min_dias != null ? teste.min_dias : '7';
+  $('#f-maxdias').value = teste && teste.max_dias != null ? teste.max_dias : '30';
+  const vs = (teste && teste.variantes && teste.variantes.length) ? teste.variantes : [{}, {}];
+  $('#vars').innerHTML = vs.map(linhaVar).join('');
+  previa();
+  $('#dlgTeste').showModal();
+}
+
+function previa() {
+  const b = parseFloat($('#f-baseline').value);
+  const m = parseFloat($('#f-mde').value);
+  const el = $('#previaAmostra');
+  if (!(b > 0 && b < 1) || !(m > 0)) { el.style.display = 'none'; return; }
+  // Mesma fórmula do servidor (z 1,96 e 0,8416 pra alfa 5% e poder 80%).
+  const p2 = Math.min(0.999999, b * (1 + m));
+  const n = Math.ceil(Math.pow(1.959963985 + 0.841621234, 2) *
+    (b * (1 - b) + p2 * (1 - p2)) / Math.pow(p2 - b, 2));
+  el.style.display = 'block';
+  el.innerHTML = '<b>Amostra alvo: ' + num(n) + ' por braço</b> (' + num(n * 2) + ' no total) — ' +
+    'pra detectar ' + pct(m, 0) + ' de melhora sobre ' + pct(b) + ' com 80% de poder. ' +
+    'Se o tráfego da campanha não chega perto disso no prazo, aumente o MDE ou não rode o teste.';
+}
+['#f-baseline', '#f-mde'].forEach((s) => document.addEventListener('input', (e) => {
+  if (e.target.matches(s)) previa();
+}));
+
+function colher() {
+  const vars = [].slice.call(document.querySelectorAll('#vars .varlinha')).map((el, i) => ({
+    chave: $('.v-chave', el).value.trim(),
+    nome: $('.v-nome', el).value.trim(),
+    url: $('.v-url', el).value.trim(),
+    peso: parseFloat($('.v-peso', el).value),
+    ordem: i,
+  }));
+  const n = (id) => { const v = $(id).value.trim(); return v === '' ? null : Number(v); };
+  return {
+    slug: $('#f-slug').value.trim().toLowerCase(),
+    nome: $('#f-nome').value.trim(),
+    hipotese: $('#f-hipotese').value.trim(),
+    jira: $('#f-jira').value.trim(),
+    status: $('#f-status').value,
+    baseline: n('#f-baseline'),
+    mde: n('#f-mde'),
+    cobertura: n('#f-cobertura') == null ? 1 : n('#f-cobertura'),
+    min_dias: n('#f-mindias') == null ? 7 : n('#f-mindias'),
+    max_dias: n('#f-maxdias') == null ? 30 : n('#f-maxdias'),
+    variantes: vars,
+  };
+}
+
+async function salvar() {
+  $('#erros').innerHTML = '';
+  const bt = $('#btSalvar');
+  bt.disabled = true;
+  try {
+    await api('/api/testes', { method: 'POST', body: colher() });
+    $('#dlgTeste').close();
+    carregar();
+  } catch (e) {
+    const lista = (e.corpo && e.corpo.detalhes) || [e.message];
+    $('#erros').innerHTML = '<div class="aviso"><b>Não salvou:</b><ul style="margin:6px 0 0;padding-left:18px">' +
+      lista.map((x) => '<li>' + esc(x) + '</li>').join('') + '</ul></div>';
+  } finally {
+    bt.disabled = false;
+  }
+}
+
+async function editar(slug) {
+  try { abrirForm(await api('/api/testes?s=' + encodeURIComponent(slug))); }
+  catch (e) { alert('Erro: ' + e.message); }
+}
+
+$('#btNovo').onclick = () => abrirForm(null);
+$('#btToken').onclick = pedirToken;
+$('#btSalvar').onclick = salvar;
+$('#btCancelar').onclick = () => $('#dlgTeste').close();
+$('#btAddVar').onclick = () => {
+  const n = document.querySelectorAll('#vars .varlinha').length;
+  $('#vars').insertAdjacentHTML('beforeend', linhaVar({ chave: String.fromCharCode(65 + n) }, n));
+};
+
+carregar();
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+
+──────────────────────────────────────────────────────────────────────────────
+VEREDITO
+──────────────────────────────────────────────────────────────────────────────
+   VENCEDOR · vencedor: B · rota: parada antecipada (mSPRT)
+   cardápio digital bateu o controle: 16.30% vs 11.10% (lift 46.8%, p=0.0477 por parada antecipada (mSPRT))
+
+──────────────────────────────────────────────────────────────────────────────
+1. WEBHOOK SAUDÁVEL — o que chega no Slack
+──────────────────────────────────────────────────────────────────────────────
+   enviado: true · HTTP 200 · resposta: "ok"
+
+   POST http://localhost:60521/services/…
+   Content-Type: application/json
+
+   ── corpo (JSON exato) ────────────────────────────────────────
+   {
+     "text": "Hero da LP de SQL: painel vs. cardápio digital: vencedor",
+     "attachments": [
+       {
+         "color": "#FFB600",
+         "text": ":trophy: *Hero da LP de SQL: painel vs. cardápio digital* — `hero-lp-sql`\nVeredito: *vencedor*\ncardápio digital bateu o controle: 16.30% vs 11.10% (lift 46.8%, p=0.0477 por parada antecipada (mSPRT))\n\n• *A* controle (painel) — 90/811 = *11.10%*  ·  controle\n• *B* cardápio digital — 132/810 = *16.30%*  ·  p=0.0023 (sempre-válido 0.0477) :trophy:\n\n_Rota de decisão: parada antecipada (mSPRT). Rodou 10 dias._\n\n<https://ab-cardapioweb.vercel.app/|Abrir no painel>",
+         "mrkdwn_in": [
+           "text"
+         ]
+       }
+     ]
+   }
+
+   ── como aparece no canal ─────────────────────────────────────
+   ┃ (barra #FFB600)
+   ┃ :trophy: *Hero da LP de SQL: painel vs. cardápio digital* — `hero-lp-sql`
+   ┃ Veredito: *vencedor*
+   ┃ cardápio digital bateu o controle: 16.30% vs 11.10% (lift 46.8%, p=0.0477 por parada antecipada (mSPRT))
+   ┃ 
+   ┃ • *A* controle (painel) — 90/811 = *11.10%*  ·  controle
+   ┃ • *B* cardápio digital — 132/810 = *16.30%*  ·  p=0.0023 (sempre-válido 0.0477) :trophy:
+   ┃ 
+   ┃ _Rota de decisão: parada antecipada (mSPRT). Rodou 10 dias._
+   ┃ 
+   ┃ <https://ab-cardapioweb.vercel.app/|Abrir no painel>
+
+──────────────────────────────────────────────────────────────────────────────
+2. WEBHOOK DEVOLVENDO 200 COM "invalid_payload"
+──────────────────────────────────────────────────────────────────────────────
+   O Slack responde 200 mesmo recusando o payload. Quem checa só o
+   status acha que enviou.
+
+   HTTP 200 · resposta: "invalid_payload"
+   enviado: false  ← correto, o corpo foi conferido
+
+──────────────────────────────────────────────────────────────────────────────
+3. WEBHOOK FORA DO AR
+──────────────────────────────────────────────────────────────────────────────
+   enviado: false · configurado: true · motivo: TypeError: fetch failed
+   correto — "configurado mas falhou" faz o job tentar de novo amanhã
+
+──────────────────────────────────────────────────────────────────────────────
+4. SEM WEBHOOK CONFIGURADO
+──────────────────────────────────────────────────────────────────────────────
+   enviado: false · configurado: false
+   correto — "não configurado" ≠ "falhou": o job persiste o veredito e não re-notifica pra sempre
+
+──────────────────────────────────────────────────────────────────────────────
+RESUMO
+──────────────────────────────────────────────────────────────────────────────
+   [x] Envio chega com o JSON certo........................ OK
+   [x] 200 com "invalid_payload" é tratado como FALHA...... OK
+   [x] Webhook fora do ar = falha reentrante............... OK
+   [x] Sem webhook = não é falha........................... OK
+   [x] Cor da barra é o amarelo da CW...................... OK
+   [x] Mensagem traz o vencedor............................ OK
+
+   6/6 passaram.
+
+   Para o print no canal de verdade: defina AB_SLACK_WEBHOOK e rode
+   `node scripts/analisar.js`. Este teste prova tudo, menos o Slack real.

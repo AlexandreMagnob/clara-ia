@@ -1,0 +1,22 @@
+{
+  "name": "plataforma-ab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Teste A/B de landing page da Cardapio Web (GWT-3256) — roteamento por variante, tracking, trava estatistica e aviso no Slack",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node testes/dev-server.js",
+    "teste": "node --test testes/unidade.js",
+    "teste-ataques": "node testes/ataques.js",
+    "teste-snippet": "node testes/snippet-dom.js",
+    "teste-supabase": "node testes/store-supabase.js",
+    "teste-slack": "node testes/slack-local.js",
+    "teste-aa": "node testes/aa-falso-positivo.js",
+    "simulacao": "node testes/simulacao.js",
+    "validar-estatistica": "python testes/validar_estatistica.py",
+    "analisar": "node scripts/analisar.js",
+    "semear": "node scripts/semear-demo.js"
+  },
+  "dependencies": {}
+}

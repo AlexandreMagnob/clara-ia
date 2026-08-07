@@ -2,8 +2,33 @@
 
 > 07/08/2026 · Alexandre · [Card no Jira](https://cardapio-web.atlassian.net/browse/GWT-3256)
 
-**Onde está:** ferramenta construída, testada e passada por QA adversarial. **Roda local,
-não foi publicada.** Falta subir na Vercel + Supabase e rodar o primeiro teste real.
+**Onde está: 100% NO AR desde 07/08/2026 — https://plataforma-ab.vercel.app**
+(`scripts/publicar.py` republica tudo; token do painel = `AB_ADMIN_TOKEN` no `.env` da
+raiz). Peças, todas verificadas em produção:
+
+- **Banco:** Supabase da Máquina de Experimentos (org CW Growth, do Alexandre), tabelas
+  `ab_*` criadas pelo schema. A hibernação que travava foi resolvida rebaixando o admin
+  no teto de projetos free (regra da Supabase: restore exige vaga de TODO owner/admin da
+  org). O cron diário da plataforma mantém o projeto acordado daqui em diante.
+- **E2E de produção passou:** criar teste → rotear visitante → atribuição gravada no
+  Supabase → encerrar → apagar (cascade). De quebra pegou e corrigiu um vazamento: o
+  rewrite da Vercel injeta `slug=` na query e ele ia parar na URL da LP — `slug` agora
+  está em `PARAMS_INTERNOS`.
+- **Slack:** workflow n8n `[AB] Aviso de vencedor no Slack` (webhook
+  `/webhook/ab_aviso_vencedor` → canal growth → responde "ok" só depois de postar).
+- **Snippet:** mu-plugin `cw-ab.php` no lp.cardapioweb.com; contexto e campos
+  `cw_ab`/`cw_ab_vid` injetados, verificado no navegador contra LP real.
+
+**Falta pro D.O.D:** rodar o 1º teste real (item 4/5 do guia), print do aviso de
+vencedor REAL no growth, e confirmar o campo `cw_ab` no REGISTRO do lead após uma
+submissão de verdade.
+
+**Redesign 07/08 (à noite):** painel reskinnado na direção **"Fusão"** escolhida pelo
+Alexandre na exploração de design (artifact com 4 direções + modo mesclar): carimbo de
+bancada no topo, contadores de instrumento com régua, travas como checklist de inspeção,
+mono só em dado/micro-rótulo, acento único roxo-vivo com glow, série de gráfico
+roxo/laranja/ciano/âmbar/verde validada pra daltonismo. Tipografia: Museo Sans Rounded.
+Deploy feito no mesmo dia.
 
 ---
 
@@ -150,9 +175,14 @@ Duas coisas ficaram propositalmente de fora, por dependerem de acesso ou aval:
 
 ### 5. Depois do primeiro teste
 - [ ] Anexar as 5 evidências no card e mover pra Concluído.
-- [ ] Quebrar as 4 tarefas da estimativa (13h: 2+5+4+2) no Jira, se ainda quiser o registro
-      de horas — elas nunca foram criadas.
 - [ ] Pós-mortem pela skill `/pos-mortem-experimento`.
+
+### Tarefas da quebra no Jira (13h: 2+5+4+2)
+
+Existem como split do card: GWT-3257 (pesquisa + arquitetura, ✅ reporte + docs anexados
+07/08), GWT-3258 (roteador + registro por variante, ✅ reporte + prints/QA/testes anexados
+07/08), GWT-3259 (vencedor + trava + Slack — aberta até o aviso sair no canal real),
+GWT-3260 (primeiro teste real + documentação — aberta, depende de publicar).
 
 ---
 

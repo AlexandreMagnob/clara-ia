@@ -10,167 +10,253 @@
 <link rel="stylesheet" href="design-system/cw-tokens.css">
 <link rel="stylesheet" href="vendor/daisyui.css">
 <style>
-/* ── Tema CardápioWeb pro daisyUI — todo hex vem dos tokens do design system ── */
+/* ══ Direção "Fusão" (exploração 07/08, escolhida por ele): estrutura de
+   instrumento com canto arredondado, mono SÓ em dado/micro-rótulo, papel frio
+   com grade de pontos e UM acento — o roxo-vivo da CW, com glow.
+   Tipografia: Museo Sans Rounded (design-system/fontes). ══ */
 :root, [data-theme="cardapioweb"]{
   color-scheme: light;
   --color-base-100:#FFFFFF;              /* card */
-  --color-base-200:#F4EDF7;              /* magnolia: fundo e zebra */
-  --color-base-300:#E4D9EF;              /* borda */
-  --color-base-content:#4B5563;          /* corpo */
+  --color-base-200:#F5F4FA;              /* papel frio */
+  --color-base-300:#E3DFEE;              /* hairline */
+  --color-base-content:#3F3A56;          /* corpo */
   --color-primary:#A543FA;   --color-primary-content:#FFFFFF;
-  --color-secondary:#FF5959; --color-secondary-content:#FFFFFF;
+  --color-secondary:#E8551C; --color-secondary-content:#FFFFFF;
   --color-accent:#FFB600;    --color-accent-content:#59327A;
-  --color-neutral:#59327A;   --color-neutral-content:#F4EDF7;
+  --color-neutral:#171130;   --color-neutral-content:#F5F4FA;
   --color-info:#A543FA;      --color-info-content:#FFFFFF;
-  --color-success:#16A34A;   --color-success-content:#FFFFFF;
-  --color-warning:#FFB600;   --color-warning-content:#59327A;
+  --color-success:#0E9F6E;   --color-success-content:#FFFFFF;
+  --color-warning:#FFB600;   --color-warning-content:#171130;
   --color-error:#EF4848;     --color-error-content:#FFFFFF;
   --radius-selector:999px;   /* badge, status */
-  --radius-field:12px;       /* botão, campo (raio-botao/campo do DS) */
-  --radius-box:20px;         /* card, modal (raio-card do DS) */
+  --radius-field:10px;       /* botão, campo */
+  --radius-box:16px;         /* card, modal */
   --size-selector:.25rem; --size-field:.25rem;
-  --border:1.5px; --depth:1; --noise:0;
+  --border:1px; --depth:1; --noise:0;
+  /* tokens da Fusão */
+  --f-tinta:#171130; --f-suave:#645D80; --f-acento:#A543FA; --f-borda:#E3DFEE;
+  --f-verde:#0E9F6E; --f-coral:#EF4848;
+  /* série de gráfico (validada p/ daltonismo em 07/08): roxo, laranja, ciano, âmbar, verde */
+  --g1:#A543FA; --g2:#E8551C; --g3:#0891B2; --g4:#B45309; --g5:#2E8B57;
 }
 
 /* ── Base ── */
 *{box-sizing:border-box}
 html{font-family:var(--cw-fonte)}
 body{margin:0; background:var(--color-base-200); color:var(--color-base-content);
-     font-weight:var(--cw-peso-corpo); font-size:15px; line-height:1.55}
+     font-weight:var(--cw-peso-corpo); font-size:15px; line-height:1.55;
+     background-image:radial-gradient(rgba(23,17,48,.07) 1px,transparent 1px);
+     background-size:22px 22px}
 .wrap{max-width:1180px; margin:0 auto; padding:0 20px}
 .mono{font-family:ui-monospace,Menlo,Consolas,monospace; font-variant-numeric:tabular-nums}
-code{background:var(--cw-superficie-2); color:var(--cw-roxo); padding:2px 7px; border-radius:6px;
-     font-size:12.5px; font-family:ui-monospace,Menlo,Consolas,monospace; word-break:break-all}
+code{background:#fff; border:1px solid var(--f-borda); color:var(--f-acento); padding:2px 7px;
+     border-radius:6px; font-size:12px; font-family:ui-monospace,Menlo,Consolas,monospace; word-break:break-all}
+.micro{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:10px; letter-spacing:.13em;
+       text-transform:uppercase; color:var(--f-suave)}
+.filete{height:2px; width:56px; border-radius:2px; margin:8px 0 14px;
+        background:linear-gradient(90deg,var(--f-acento),transparent)}
 .ic{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2;
     stroke-linecap:round; stroke-linejoin:round; flex:none}
 
-/* ── Faixa assinatura (o dark dos posts da CW: gradiente-noite + grade + glow) ── */
-.faixa{background:var(--cw-gradiente-noite); color:#fff; position:relative; overflow:hidden;
-       border-radius:0 0 28px 28px; box-shadow:var(--cw-sombra-alta)}
-.faixa::before{content:""; position:absolute; inset:0; pointer-events:none;
-  background-image:linear-gradient(rgba(165,67,250,.10) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(165,67,250,.10) 1px,transparent 1px);
-  background-size:44px 44px}
-.faixa > .wrap{position:relative; padding-top:22px; padding-bottom:30px}
-.topo{display:flex; align-items:center; gap:18px; flex-wrap:wrap}
-.topo img{height:34px; display:block}
-.topo .acoes{margin-left:auto; display:flex; gap:10px}
-.topo .btn-ghost{color:#fff}
-.topo .btn-ghost:hover{background:rgba(255,255,255,.12)}
-.topo .btn-primary{box-shadow:0 8px 20px rgba(165,67,250,.45)}
-.hero-tit{margin:26px 0 4px; font-size:clamp(24px,3.2vw,34px); font-weight:var(--cw-peso-display);
-          line-height:1.1; letter-spacing:-.02em; color:#fff}
-.hero-sub{color:rgba(244,237,247,.72); font-size:14.5px; margin:0 0 22px}
-.hero-sub b{color:var(--cw-amarelo); font-weight:var(--cw-peso-forte)} /* destaque amarelo sobre dark: padrão CW */
+/* ── Topo: carimbo de bancada (a assinatura da Fusão) ── */
+.carimbo{background:var(--color-base-100); border:1px solid var(--f-borda); border-radius:20px;
+         margin-top:24px; display:flex; flex-wrap:wrap; overflow:hidden;
+         box-shadow:0 1px 2px rgba(23,17,48,.04)}
+.carimbo .titulo{padding:26px 28px; flex:1 1 420px; border-right:1px solid var(--f-borda)}
+.carimbo .linha-logo{display:flex; align-items:center; gap:14px; margin:0 0 14px}
+.carimbo .linha-logo img{height:26px; display:block}
+.hero-tit{margin:0; font-size:clamp(22px,2.6vw,28px); font-weight:var(--cw-peso-display);
+          line-height:1.12; letter-spacing:-.015em; color:var(--f-tinta)}
+.hero-tit i{display:inline-block; width:10px; height:10px; border-radius:3px; background:var(--f-acento);
+            box-shadow:0 0 12px rgba(165,67,250,.8); font-style:normal; vertical-align:2px; margin-left:8px}
+.hero-sub{color:var(--f-suave); font-size:13.5px; margin:8px 0 0; max-width:56ch}
+.hero-sub b{color:var(--f-acento); font-weight:var(--cw-peso-forte)}
+.carimbo .acoes{display:flex; gap:10px; margin-top:16px}
+.carimbo .btn-primary{box-shadow:0 8px 22px rgba(165,67,250,.30)}
+.carimbo .campos{flex:1 1 380px; display:grid; grid-template-columns:repeat(3,1fr)}
+.carimbo .campo-c{padding:12px 16px; border-left:1px solid var(--f-borda); border-top:1px solid var(--f-borda)}
+.carimbo .campo-c:nth-child(-n+3){border-top:0}
+.carimbo .campo-c .v{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12px;
+                     font-weight:700; margin-top:2px; color:var(--f-tinta)}
 
-/* stats na faixa: superfície translúcida do contexto escuro do DS */
-.stats-cw{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px}
-.stat-cw{background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
-         border-radius:16px; padding:14px 18px; display:flex; gap:14px; align-items:center}
-.stat-cw .bola{width:40px; height:40px; border-radius:50%; background:rgba(165,67,250,.28);
-               display:flex; align-items:center; justify-content:center; color:#fff; flex:none}
-.stat-cw .rot{font-size:11px; font-weight:var(--cw-peso-forte); letter-spacing:.09em;
-              text-transform:uppercase; color:rgba(244,237,247,.68)}
-.stat-cw .val{font-size:26px; font-weight:var(--cw-peso-display); line-height:1.15; color:#fff}
+/* stats: contadores de instrumento com régua */
+.stats-cw{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-top:18px}
+.stat-cw{background:var(--color-base-100); border:1px solid var(--f-borda); border-radius:16px; padding:16px 18px}
+.stat-cw .val{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:27px; font-weight:700;
+              line-height:1.15; color:var(--f-tinta); margin:5px 0 8px; font-variant-numeric:tabular-nums}
+.stat-cw .val em{font-style:normal; color:var(--f-acento)}
+.stat-cw .regua{height:7px; background:repeating-linear-gradient(90deg,var(--f-borda) 0 1px,transparent 1px 7px);
+                -webkit-mask-image:linear-gradient(90deg,#000 55%,transparent);
+                mask-image:linear-gradient(90deg,#000 55%,transparent)}
 
 /* ── Lista de testes ── */
 .lista{display:flex; flex-direction:column; gap:18px; padding:26px 0 72px}
-.card-t{background:var(--color-base-100); border-radius:var(--radius-box);
-        box-shadow:var(--cw-sombra); padding:26px 28px;
+.card-t{background:var(--color-base-100); border:1px solid var(--f-borda);
+        border-radius:var(--radius-box); box-shadow:0 1px 2px rgba(23,17,48,.04); padding:26px 28px;
         opacity:0; transform:translateY(14px); animation:sube .45s ease forwards;
         animation-delay:calc(var(--i,0)*90ms)}
 @keyframes sube{to{opacity:1; transform:none}}
 @media (prefers-reduced-motion: reduce){ .card-t{animation:none; opacity:1; transform:none} }
 
 .card-cab{display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; margin:0 0 4px}
-.card-cab h2{margin:0; font-size:21px; font-weight:var(--cw-peso-titulo); color:var(--cw-roxo); line-height:1.25}
+.card-cab h2{margin:0; font-size:20px; font-weight:var(--cw-peso-titulo); color:var(--f-tinta);
+             line-height:1.25; letter-spacing:-.015em}
 .card-cab .meta{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:6px;
-                font-size:13px; color:var(--cw-texto-suave)}
+                font-size:13px; color:var(--f-suave)}
 .card-cab .dir{margin-left:auto; display:flex; gap:10px; align-items:center}
-.hipotese{margin:8px 0 14px; font-size:13.5px; color:var(--cw-texto-suave); max-width:72ch}
+.hipotese{margin:8px 0 14px; font-size:13.5px; color:var(--f-suave); max-width:72ch}
 
-/* vereditos: funcionais do DS, texto sempre escuro o bastante */
-.badge-vered{font-weight:var(--cw-peso-forte); letter-spacing:.05em; border:none}
-.badge-vencedor{background:var(--cw-sucesso-fundo); color:#14532D}
-.badge-rodando{background:var(--cw-roxo); color:var(--cw-magnolia)}
-.badge-srm{background:var(--cw-erro-fundo); color:#99201D}
-.badge-outro{background:var(--cw-superficie-2); color:var(--cw-roxo)}
+/* vereditos: pill de instrumento — borda hairline, micro-rótulo mono, ponto com glow */
+.badge-vered{border:1px solid var(--f-borda); background:#fff;
+             font-family:ui-monospace,Menlo,Consolas,monospace; font-weight:700; font-size:10px;
+             letter-spacing:.1em; text-transform:uppercase;
+             height:24px; padding:0 12px; gap:7px; white-space:nowrap}
+.badge-vered.badge-lg{height:28px; padding:0 14px; font-size:11px}
+.badge-vered .bv-pt{width:6px; height:6px; border-radius:50%; flex:none; background:currentColor}
+.badge-vencedor{color:var(--f-verde)}
+.badge-vencedor .bv-pt{background:var(--f-verde); box-shadow:0 0 8px rgba(14,159,110,.7)}
+.badge-rodando{color:var(--f-acento)}
+.badge-rodando .bv-pt{background:var(--f-acento);
+                      box-shadow:0 0 8px rgba(165,67,250,.7); animation:pulsa 2.2s ease-out infinite}
+@keyframes pulsa{70%{box-shadow:0 0 8px 4px rgba(165,67,250,.15)}100%{box-shadow:0 0 8px rgba(165,67,250,.7)}}
+@media (prefers-reduced-motion: reduce){ .badge-rodando .bv-pt{animation:none} }
+.badge-srm{color:var(--f-coral)}
+.badge-srm .bv-pt{background:var(--f-coral); box-shadow:0 0 8px rgba(239,72,72,.6)}
+.badge-outro{color:var(--f-suave)}
+.badge-outro .bv-pt{background:var(--f-borda)}
 
-.alert{font-size:14px}
-.alert-soft.alert-warning{color:var(--cw-roxo)} /* texto sobre atenção: sempre roxo */
-.alert-soft.alert-success{color:#14532D}
-.alert-soft.alert-error{color:#99201D}
+.alert{font-size:14px; border:1px solid var(--f-borda)}
+.alert-soft.alert-warning{background:#F6F3FB; color:var(--f-tinta); border-color:var(--f-borda)}
+.alert-soft.alert-success{background:#F2FBF7; color:#0A6B4B; border-color:rgba(14,159,110,.35)}
+.alert-soft.alert-error{background:#FDF1F1; color:#99201D; border-color:rgba(239,72,72,.35)}
 
 /* divisão do tráfego */
-.rot-sec{font-size:11px; font-weight:var(--cw-peso-forte); letter-spacing:.09em;
-         text-transform:uppercase; color:var(--cw-texto-suave); margin:16px 0 8px}
-.split{height:10px; border-radius:999px; overflow:hidden; display:flex; background:var(--cw-superficie-2)}
+.rot-sec{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:10px; font-weight:700;
+         letter-spacing:.13em; text-transform:uppercase; color:var(--f-suave); margin:16px 0 8px}
+.split{height:10px; border-radius:999px; overflow:hidden; display:flex; background:#EDEAF4}
 .split i{display:block; height:100%}
-.legenda{display:flex; gap:16px; flex-wrap:wrap; margin-top:8px; font-size:12.5px; color:var(--cw-texto-suave)}
-.legenda .pt{width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:6px; vertical-align:-1px}
+.legenda{display:flex; gap:16px; flex-wrap:wrap; margin-top:8px;
+         font-family:ui-monospace,Menlo,Consolas,monospace; font-size:10.5px;
+         letter-spacing:.08em; text-transform:uppercase; color:var(--f-suave)}
+.legenda .pt{width:9px; height:9px; border-radius:3px; display:inline-block; margin-right:6px; vertical-align:-1px}
 
-/* tabela de variantes */
+/* tabela de variantes: ficha — hairlines, th mono micro, números mono */
 .rolar{overflow-x:auto; margin-top:4px}
 .table{font-size:14px}
-.table thead th{font-size:10.5px; letter-spacing:.09em; color:var(--cw-texto-suave);
-                text-transform:uppercase; font-weight:var(--cw-peso-forte)}
-.table td{vertical-align:middle}
-td.num,th.num{text-align:right; font-family:ui-monospace,Menlo,Consolas,monospace; font-variant-numeric:tabular-nums}
-.v-nome-cel b{color:var(--cw-roxo); font-weight:var(--cw-peso-forte)}
-.v-nome-cel .sub{font-size:12px; color:var(--cw-texto-suave)}
+.table thead th{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:10px;
+                letter-spacing:.13em; color:var(--f-suave);
+                text-transform:uppercase; font-weight:700; border-color:var(--f-borda)}
+.table td{vertical-align:middle; border-color:var(--f-borda)}
+td.num,th.num{text-align:right; font-family:ui-monospace,Menlo,Consolas,monospace;
+              font-variant-numeric:tabular-nums; font-size:13px}
+.v-nome-cel b{color:var(--f-tinta); font-weight:var(--cw-peso-forte)}
+.v-nome-cel .sub{font-size:12px; color:var(--f-suave)}
+.v-linha1{display:flex; align-items:center; gap:6px; white-space:nowrap}
+.badge-venceu{background:#fff; color:var(--f-verde); border:1px solid rgba(14,159,110,.4);
+              font-family:ui-monospace,Menlo,Consolas,monospace; font-size:9px; letter-spacing:.1em;
+              text-transform:uppercase; font-weight:700; gap:4px}
+.badge-venceu .ic{width:11px; height:11px; color:var(--f-verde)}
 .taxa-cel{display:flex; align-items:center; gap:10px; min-width:170px}
-.taxa-cel .trilho{flex:1; height:8px; border-radius:999px; background:var(--cw-superficie-2); overflow:hidden}
+.taxa-cel .trilho{flex:1; height:8px; border-radius:999px; background:#EDEAF4; overflow:hidden}
 .taxa-cel .fill{height:100%; border-radius:999px}
-.taxa-cel .valor{font-weight:var(--cw-peso-forte); color:var(--cw-roxo); min-width:56px; text-align:right;
+.taxa-cel .valor{font-weight:700; color:var(--f-tinta); min-width:56px; text-align:right;
                  font-family:ui-monospace,Menlo,Consolas,monospace}
-.lift-sobe{color:var(--cw-sucesso); font-weight:var(--cw-peso-forte)}
-.lift-desce{color:var(--cw-coral-forte); font-weight:var(--cw-peso-forte)}
+.lift-sobe{color:var(--f-verde); font-weight:700; font-family:ui-monospace,Menlo,Consolas,monospace}
+.lift-desce{color:var(--f-coral); font-weight:700; font-family:ui-monospace,Menlo,Consolas,monospace}
 
-/* travas */
-.travas{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:10px}
-.trava{display:flex; gap:12px; align-items:flex-start; border:1.5px solid var(--color-base-300);
-       border-radius:14px; padding:13px 15px; background:var(--color-base-100)}
-.trava .bola{width:30px; height:30px; border-radius:50%; display:flex; align-items:center;
+/* travas: checklist de inspeção — lista com hairlines, caixa de estado arredondada */
+.travas{display:flex; flex-direction:column; border:1px solid var(--f-borda); border-radius:12px;
+        overflow:hidden; background:var(--color-base-100)}
+.trava{display:flex; gap:13px; align-items:flex-start; padding:12px 16px;
+       border-bottom:1px solid var(--f-borda)}
+.trava:last-child{border-bottom:0}
+.trava .bola{width:22px; height:22px; border-radius:7px; display:flex; align-items:center;
              justify-content:center; flex:none; margin-top:1px}
-.trava .bola .ic{width:15px; height:15px}
-.trava-ok .bola{background:var(--cw-sucesso-fundo); color:var(--cw-sucesso)}
-.trava-pend .bola{background:var(--cw-superficie-2); color:var(--cw-texto-suave)}
-.trava-falha{border-color:rgba(239,72,72,.45)}
-.trava-falha .bola{background:var(--cw-erro-fundo); color:var(--cw-coral-forte)}
-.trava .n{font-size:13.5px; font-weight:var(--cw-peso-forte); color:var(--cw-roxo)}
-.trava .d{font-size:12.5px; color:var(--cw-texto-suave); margin-top:2px}
-.trava .p{font-size:12px; color:var(--cw-texto-suave); font-style:italic; margin-top:3px; opacity:.85}
+.trava .bola .ic{width:13px; height:13px}
+.trava-ok .bola{background:#E7F6EF; color:var(--f-verde)}
+.trava-pend .bola{background:#EDEAF4; color:var(--f-suave)}
+.trava-falha{background:#FDF6F4}
+.trava-falha .bola{background:#FCE9E9; color:var(--f-coral)}
+.trava .n{font-size:13.5px; font-weight:var(--cw-peso-forte); color:var(--f-tinta)}
+.trava .d{font-size:12.5px; color:var(--f-suave); margin-top:1px}
+.trava .p{font-size:12px; color:var(--f-suave); font-style:italic; margin-top:2px; opacity:.85}
 
 .rodape-t{display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-top:16px;
-          font-size:12.5px; color:var(--cw-texto-suave)}
+          padding-top:12px; border-top:1px solid var(--f-borda);
+          font-size:12.5px; color:var(--f-suave)}
 .rodape-t span{display:flex; gap:6px; align-items:center}
 .rodape-t .ic{width:14px; height:14px}
 
+/* ── abas ── */
+.abas{margin-top:22px; background:var(--color-base-100); border:1px solid var(--f-borda);
+      border-radius:12px; padding:4px; display:inline-flex; gap:4px}
+.abas .tab{border-radius:8px; height:36px; padding:0 18px; border:none;
+           font-weight:var(--cw-peso-forte); font-size:14px; color:var(--f-suave)}
+.abas .tab.tab-active{background:var(--f-acento); color:#fff; box-shadow:0 4px 14px rgba(165,67,250,.35)}
+
+/* ── visão geral ── */
+.painel-geral{display:flex; flex-direction:column; gap:18px; padding:22px 0 72px}
+.card-g{background:var(--color-base-100); border:1px solid var(--f-borda);
+        border-radius:var(--radius-box); box-shadow:0 1px 2px rgba(23,17,48,.04); padding:24px 28px}
+.card-g h3{margin:0 0 2px; font-size:18px; font-weight:var(--cw-peso-titulo); color:var(--f-tinta);
+           letter-spacing:-.015em; display:flex; gap:8px; align-items:center}
+.card-g h3 .ic{color:var(--f-acento)}
+.card-g .desc{margin:0 0 6px; font-size:13px; color:var(--f-suave)}
+.graf-rot{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:10px; font-weight:700;
+          letter-spacing:.13em; text-transform:uppercase; color:var(--f-suave); margin:14px 0 6px}
+.graf-wrap{position:relative}
+svg.graf{display:block; width:100%; height:auto}
+svg.graf text{font-family:var(--cw-fonte)}
+svg.graf .hit{transition:fill .12s}
+svg.graf .hit:hover, svg.graf .hit:focus{fill:rgba(23,17,48,.05); outline:none}
+.tt{position:absolute; top:0; left:0; pointer-events:none; background:var(--f-tinta); color:#fff;
+    border-radius:10px; padding:10px 13px; font-size:12.5px; box-shadow:0 14px 34px rgba(23,17,48,.35);
+    opacity:0; transition:opacity .12s; z-index:5; min-width:180px}
+.tt .tt-tit{font-weight:var(--cw-peso-forte); color:#D9CBF2; margin-bottom:5px}
+.tt .l{display:flex; align-items:center; gap:7px; margin:3px 0; white-space:nowrap}
+.tt .l b{font-family:ui-monospace,Menlo,Consolas,monospace; font-variant-numeric:tabular-nums}
+.tt .l span{color:rgba(244,237,247,.75)}
+.tt .k{width:12px; height:3px; border-radius:2px; flex:none}
+.tt .tt-tot{border-top:1px solid rgba(255,255,255,.18); padding-top:5px; margin-top:5px}
+.pt{width:9px; height:9px; border-radius:50%; display:inline-block}
+.saude-linha{display:flex; gap:18px; flex-wrap:wrap; margin-top:14px; padding-top:12px;
+             border-top:1px solid var(--f-borda); font-size:12.5px; color:var(--f-suave)}
+.saude-linha span{display:flex; gap:6px; align-items:center}
+.saude-linha .ic{width:14px; height:14px}
+.dots{display:inline-flex; gap:4px; vertical-align:middle}
+.dots i{width:9px; height:9px; border-radius:3px}
+.dot-ok{background:var(--f-verde)} .dot-pend{background:var(--f-borda)} .dot-falha{background:var(--f-coral)}
+.sub-inline{color:var(--f-suave); font-size:11px}
+.t-nome .pt{margin-right:8px; vertical-align:-1px}
+.acao-lista .alert{margin-bottom:10px}
+.acao-lista .alert .btn{margin-left:auto}
+
 /* estados vazios */
-.vazio{background:var(--color-base-100); border-radius:var(--radius-box); box-shadow:var(--cw-sombra);
+.vazio{background:var(--color-base-100); border:1px solid var(--f-borda); border-radius:var(--radius-box);
        text-align:center; padding:64px 24px; display:flex; flex-direction:column; align-items:center; gap:10px}
-.vazio .bola{width:56px; height:56px; border-radius:50%; background:var(--cw-info-fundo);
-             color:var(--cw-roxo-vivo); display:flex; align-items:center; justify-content:center}
+.vazio .bola{width:56px; height:56px; border-radius:18px; background:#F3EAFD;
+             color:var(--f-acento); display:flex; align-items:center; justify-content:center}
 .vazio .bola .ic{width:26px; height:26px}
-.vazio h2{margin:6px 0 0; font-size:20px; font-weight:var(--cw-peso-titulo); color:var(--cw-roxo)}
-.vazio p{margin:0; color:var(--cw-texto-suave); max-width:46ch}
+.vazio h2{margin:6px 0 0; font-size:20px; font-weight:var(--cw-peso-titulo); color:var(--f-tinta)}
+.vazio p{margin:0; color:var(--f-suave); max-width:46ch}
 
 /* modal */
-.modal-box{max-width:780px; width:94%; padding:28px 30px}
-.modal-box h2{margin:0 0 4px; font-size:22px; font-weight:var(--cw-peso-titulo); color:var(--cw-roxo)}
-.modal-box .aviso-topo{font-size:13px; color:var(--cw-texto-suave); margin:0 0 16px}
-.rotulo{display:block; font-size:13.5px; font-weight:var(--cw-peso-forte);
-        color:var(--cw-roxo-escuro); margin:0 0 5px}
+.modal-box{max-width:780px; width:94%; padding:28px 30px; border:1px solid var(--f-borda)}
+.modal-box h2{margin:0 0 4px; font-size:22px; font-weight:var(--cw-peso-titulo); color:var(--f-tinta);
+              letter-spacing:-.015em}
+.modal-box .aviso-topo{font-size:13px; color:var(--f-suave); margin:0 0 16px}
+.rotulo{display:block; font-size:13px; font-weight:var(--cw-peso-forte);
+        color:var(--f-tinta); margin:0 0 5px}
 .campo{margin:0 0 12px}
 .grade{display:grid; gap:12px}
 .g2{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 .input,.select,.textarea{width:100%; font-size:14.5px}
 .sec-tit{display:flex; gap:8px; align-items:center; font-size:15px; font-weight:var(--cw-peso-titulo);
-         color:var(--cw-roxo); margin:20px 0 8px}
-.sec-tit .ic{width:16px; height:16px; color:var(--cw-roxo-vivo)}
+         color:var(--f-tinta); margin:20px 0 8px}
+.sec-tit .ic{width:16px; height:16px; color:var(--f-acento)}
 .varlinha{display:grid; grid-template-columns:64px 1.1fr 2fr 80px 40px; gap:8px; align-items:end; margin:0 0 8px}
-.varlinha .rotulo{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--cw-texto-suave)}
+.varlinha .rotulo{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--f-suave)}
 @media(max-width:640px){ .varlinha{grid-template-columns:1fr 1fr} }
 .modal-acoes{display:flex; justify-content:space-between; gap:12px; margin-top:22px}
 </style>
@@ -193,32 +279,46 @@ td.num,th.num{text-align:right; font-family:ui-monospace,Menlo,Consolas,monospac
   <symbol id="i-chave" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
   <symbol id="i-mais" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
   <symbol id="i-lapis" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></symbol>
+  <symbol id="i-pulso" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
 </svg>
 
-<!-- ── Faixa assinatura ── -->
-<div class="faixa">
-  <div class="wrap">
-    <nav class="topo">
-      <img src="design-system/logos/cw-logo-horizontal-fundo-escuro.png" alt="Cardápio Web">
+<!-- ── Topo: carimbo de bancada ── -->
+<div class="wrap">
+  <div class="carimbo">
+    <div class="titulo">
+      <div class="linha-logo"><img src="design-system/logos/cw-logo-horizontal-fundo-claro.png" alt="Cardápio Web"></div>
+      <h1 class="hero-tit">Bancada de teste A/B<i></i></h1>
+      <p class="hero-sub">Vencedor só sai quando as <b>quatro travas</b> fecham — ciclo, SRM, origem e evidência.</p>
       <div class="acoes">
-        <button class="btn btn-ghost" id="btToken"><svg class="ic"><use href="#i-chave"/></svg>Token</button>
         <button class="btn btn-primary" id="btNovo"><svg class="ic"><use href="#i-mais"/></svg>Novo teste</button>
+        <button class="btn btn-ghost" id="btToken"><svg class="ic"><use href="#i-chave"/></svg>Token</button>
       </div>
-    </nav>
-    <h1 class="hero-tit">Teste A/B de landing page</h1>
-    <p class="hero-sub">Vencedor só sai quando as <b>quatro travas</b> fecham — ciclo, SRM, origem e evidência. · GWT-3256 · Growth</p>
-    <div class="stats-cw" id="resumo">
-      <div class="stat-cw"><div class="bola"><svg class="ic"><use href="#i-frasco"/></svg></div><div><div class="rot">Testes rodando</div><div class="val" id="r-rodando">—</div></div></div>
-      <div class="stat-cw"><div class="bola"><svg class="ic"><use href="#i-trofeu"/></svg></div><div><div class="rot">Com vencedor</div><div class="val" id="r-vencedores">—</div></div></div>
-      <div class="stat-cw"><div class="bola"><svg class="ic"><use href="#i-pessoas"/></svg></div><div><div class="rot">Atribuições</div><div class="val" id="r-atribuicoes">—</div></div></div>
-      <div class="stat-cw"><div class="bola"><svg class="ic"><use href="#i-clique"/></svg></div><div><div class="rot">Conversões</div><div class="val" id="r-conversoes">—</div></div></div>
     </div>
+    <div class="campos">
+      <div class="campo-c"><div class="micro">Projeto</div><div class="v">GWT-3256</div></div>
+      <div class="campo-c"><div class="micro">Time</div><div class="v">GROWTH</div></div>
+      <div class="campo-c"><div class="micro">Norma</div><div class="v">mSPRT · χ² · Šidák</div></div>
+      <div class="campo-c"><div class="micro">Denominador</div><div class="v">ATRIB. NO SERVIDOR</div></div>
+      <div class="campo-c"><div class="micro">Job diário</div><div class="v">09:00 BRT</div></div>
+      <div class="campo-c"><div class="micro">Estado</div><div class="v" style="color:var(--f-verde)">OPERANDO</div></div>
+    </div>
+  </div>
+  <div class="stats-cw" id="resumo">
+    <div class="stat-cw"><div class="micro">Testes rodando</div><div class="val" id="r-rodando">—</div><div class="regua"></div></div>
+    <div class="stat-cw"><div class="micro">Com vencedor</div><div class="val" id="r-vencedores">—</div><div class="regua"></div></div>
+    <div class="stat-cw"><div class="micro">Atribuições</div><div class="val" id="r-atribuicoes">—</div><div class="regua"></div></div>
+    <div class="stat-cw"><div class="micro">Conversões</div><div class="val" id="r-conversoes">—</div><div class="regua"></div></div>
   </div>
 </div>
 
 <div class="wrap">
   <div id="alerta"></div>
-  <div id="lista" class="lista"></div>
+  <div role="tablist" class="tabs tabs-box abas">
+    <button role="tab" class="tab tab-active" data-aba="geral" onclick="mostrarAba('geral')">Visão geral</button>
+    <button role="tab" class="tab" data-aba="testes" onclick="mostrarAba('testes')">Testes</button>
+  </div>
+  <section id="abaGeral" class="painel-geral"></section>
+  <section id="abaTestes" style="display:none"><div id="lista" class="lista"></div></section>
 </div>
 
 <!-- ── modal: criar/editar ── -->
@@ -312,34 +412,52 @@ function resumo(dados) {
 }
 
 async function carregar() {
-  const el = $('#lista');
   $('#alerta').innerHTML = '';
-  el.innerHTML = '<div class="vazio"><span class="loading loading-dots loading-lg" style="color:var(--cw-roxo-vivo)"></span></div>';
+  const nasDuas = (html) => { $('#abaGeral').innerHTML = html; $('#lista').innerHTML = html; };
+  nasDuas('<div class="vazio"><span class="loading loading-dots loading-lg" style="color:var(--f-acento)"></span></div>');
   try {
     const dados = await api('/api/resultados');
     resumo(dados);
     if (!dados.length) {
-      el.innerHTML = '<div class="vazio"><div class="bola">' + icone('i-frasco') + '</div>' +
+      nasDuas('<div class="vazio"><div class="bola">' + icone('i-frasco') + '</div>' +
         '<h2>Nenhum teste ainda</h2>' +
-        '<p>Crie o primeiro em <b>Novo teste</b>. A URL do anúncio vira <code>/t/&lt;slug&gt;</code> e cada visitante é sorteado numa variante.</p></div>';
+        '<p>Crie o primeiro em <b>Novo teste</b>. A URL do anúncio vira <code>/t/&lt;slug&gt;</code> e cada visitante é sorteado numa variante.</p></div>');
       return;
     }
-    el.innerHTML = dados.map(cardTeste).join('');
+    painelGeral(dados);
+    $('#lista').innerHTML = dados.map(cardTeste).join('');
   } catch (e) {
     if (e.status === 401 || e.status === 503) {
-      el.innerHTML = '<div class="vazio"><div class="bola">' + icone('i-chave') + '</div>' +
+      nasDuas('<div class="vazio"><div class="bola">' + icone('i-chave') + '</div>' +
         '<h2>Informe o token de acesso</h2><p>' + esc(e.message) + '</p>' +
-        '<button class="btn btn-primary" onclick="pedirToken()">Informar token</button></div>';
+        '<button class="btn btn-primary" onclick="pedirToken()">Informar token</button></div>');
     } else {
-      el.innerHTML = '<div class="alert alert-soft alert-error">' + icone('i-alerta') + '<span><b>Erro:</b> ' + esc(e.message) + '</span></div>';
+      nasDuas('<div class="alert alert-soft alert-error">' + icone('i-alerta') + '<span><b>Erro:</b> ' + esc(e.message) + '</span></div>');
     }
   }
 }
 
-function badgeVeredito(v) {
+/* ── abas ─────────────────────────────────────────────────────────────────── */
+function mostrarAba(nome) {
+  document.querySelectorAll('.abas .tab').forEach((b) =>
+    b.classList.toggle('tab-active', b.dataset.aba === nome));
+  $('#abaGeral').style.display = nome === 'geral' ? '' : 'none';
+  $('#abaTestes').style.display = nome === 'testes' ? '' : 'none';
+}
+
+function verTeste(slug) {
+  mostrarAba('testes');
+  setTimeout(() => {
+    const el = document.getElementById('t-' + slug);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 40);
+}
+
+function badgeVeredito(v, curto) {
   const cls = v === 'vencedor' ? 'badge-vencedor' : String(v).startsWith('SRM') ? 'badge-srm'
     : v === 'rodando' ? 'badge-rodando' : 'badge-outro';
-  return '<span class="badge badge-lg badge-vered ' + cls + '">' + esc(String(v).toUpperCase()) + '</span>';
+  const rot = curto && String(v).startsWith('SRM') ? 'SRM' : String(v).toUpperCase();
+  return '<span class="badge ' + (curto ? '' : 'badge-lg ') + 'badge-vered ' + cls + '"><i class="bv-pt"></i>' + esc(rot) + '</span>';
 }
 
 function statusPonto(s) {
@@ -347,7 +465,7 @@ function statusPonto(s) {
   return '<span class="status ' + cor + '"></span> ' + esc(s);
 }
 
-const CORES = ['var(--cw-serie-1)', 'var(--cw-serie-2)', 'var(--cw-serie-3)', 'var(--cw-serie-4)', 'var(--cw-serie-5)'];
+const CORES = ['var(--g1)', 'var(--g2)', 'var(--g3)', 'var(--g4)', 'var(--g5)'];
 
 function cardTeste(d, idx) {
   const t = d.teste;
@@ -367,10 +485,10 @@ function cardTeste(d, idx) {
     const venceu = d.vencedor === v.chave;
     const taxa = v.n ? v.conv / v.n : null;
     return '<tr>' +
-      '<td class="v-nome-cel"><b>' + esc(v.chave) + '</b>' +
-        (venceu ? ' <svg class="ic" style="width:14px;height:14px;color:var(--cw-amarelo);vertical-align:-2px"><use href="#i-trofeu"/></svg>' : '') +
-        (i === 0 ? ' <span class="badge badge-xs badge-outro">controle</span>' : '') +
-        '<div class="sub">' + esc(v.nome) + '</div></td>' +
+      '<td class="v-nome-cel"><div class="v-linha1"><b>' + esc(v.chave) + '</b>' +
+        (i === 0 ? '<span class="badge badge-xs badge-outro">controle</span>' : '') +
+        (venceu ? '<span class="badge badge-xs badge-venceu">' + icone('i-trofeu') + 'vencedora</span>' : '') +
+        '</div><div class="sub">' + esc(v.nome) + '</div></td>' +
       '<td><div class="taxa-cel"><div class="trilho"><div class="fill" style="width:' +
         (taxa != null ? Math.max(2, taxa / taxaMax * 100) : 0) + '%;background:' + CORES[i % CORES.length] + '"></div></div>' +
         '<span class="valor">' + pct(taxa) + '</span></div></td>' +
@@ -378,7 +496,6 @@ function cardTeste(d, idx) {
       '<td class="num">' + num(v.conv) + '</td>' +
       '<td class="num">' + (comp && comp.lift != null ?
         '<span class="' + (comp.lift >= 0 ? 'lift-sobe' : 'lift-desce') + '">' + (comp.lift > 0 ? '▲ +' : '▼ ') + pct(comp.lift, 1) + '</span>' : '—') + '</td>' +
-      '<td class="num">' + (comp ? esc(fmtP(comp.p_horizonte_fixo)) : '—') + '</td>' +
       '<td class="num">' + (comp ? esc(fmtP(comp.p_sempre_valido)) : '—') + '</td>' +
       '</tr>';
   }).join('');
@@ -410,7 +527,7 @@ function cardTeste(d, idx) {
       ? '<div class="alert alert-soft alert-error">' + icone('i-alerta') + '<span><b>Resultado suspeito.</b> ' + esc(d.motivo || '') + '</span></div>'
       : '<div class="alert alert-soft alert-warning">' + icone('i-relogio') + '<span><b>Ainda não dá pra decidir.</b> ' + esc(d.motivo || '') + '</span></div>';
 
-  return '<div class="card-t" style="--i:' + idx + '">' +
+  return '<div class="card-t" id="t-' + esc(t.slug) + '" style="--i:' + idx + '">' +
     '<div class="card-cab">' +
       '<div><h2>' + esc(t.nome) + '</h2>' +
         '<div class="meta"><code>/t/' + esc(t.slug) + '</code><span>' + statusPonto(t.status) + '</span>' +
@@ -426,9 +543,10 @@ function cardTeste(d, idx) {
     '<div class="split">' + split + '</div>' +
     '<div class="legenda">' + legenda + '</div>' +
     '<div class="rot-sec">Variantes</div>' +
-    '<div class="rolar"><table class="table table-zebra table-sm"><thead><tr>' +
+    '<div class="rolar"><table class="table table-sm"><thead><tr>' +
       '<th>Variante</th><th>Taxa de conversão</th><th class="num">Atribuições</th><th class="num">Conversões</th>' +
-      '<th class="num">Lift</th><th class="num">p (planejado)</th><th class="num">p (sempre-válido)</th>' +
+      '<th class="num" title="Melhora relativa da variante sobre o controle">Lift</th>' +
+      '<th class="num" title="p-valor sempre-válido (mSPRT) — pode ser olhado todo dia sem inflar o falso positivo. O z-test do plano pré-registrado aparece na trava de evidência quando a amostra alvo fecha.">p-valor</th>' +
     '</tr></thead><tbody>' + linhas + '</tbody></table></div>' +
     '<div class="rot-sec">Travas da decisão</div>' +
     '<div class="travas">' + travas + '</div>' +
@@ -442,8 +560,239 @@ function cardTeste(d, idx) {
 
 function fmtP(p) {
   if (p == null || isNaN(p)) return '—';
-  if (p < 0.0001) return p.toExponential(1);
+  // Abaixo disso o valor exato não muda decisão nenhuma, e notação científica
+  // (5.9e-5) lê como código pra quem decide. Padrão de relatório: "< 0.0001".
+  if (p < 0.0001) return '< 0.0001';
   return Number(p).toFixed(4);
+}
+
+/* ── visão geral ──────────────────────────────────────────────────────────────
+   Séries do gráfico = testes. Paleta da direção Fusão (roxo, laranja, ciano,
+   âmbar, verde), validada pra visão de cor em 07/08. */
+const CORES_TESTE = ['var(--g1)', 'var(--g2)', 'var(--g3)', 'var(--g4)', 'var(--g5)'];
+
+function diasJanela(dados, n) {
+  const tudo = new Set();
+  dados.forEach((d) => Object.values(d.serieDiaria || {}).forEach((arr) => arr.forEach((p) => tudo.add(p.dia))));
+  if (!tudo.size) return [];
+  const fim = new Date([...tudo].sort().pop() + 'T12:00:00Z');
+  const dias = [];
+  for (let i = n - 1; i >= 0; i--) {
+    const d = new Date(fim);
+    d.setUTCDate(fim.getUTCDate() - i);
+    dias.push(d.toISOString().slice(0, 10));
+  }
+  return dias;
+}
+
+function seriesPorTeste(dados) {
+  return dados.map((d, i) => {
+    const porDia = {};
+    Object.values(d.serieDiaria || {}).forEach((arr) => arr.forEach((p) => {
+      if (!porDia[p.dia]) porDia[p.dia] = { n: 0, conv: 0 };
+      porDia[p.dia].n += p.n;
+      porDia[p.dia].conv += p.conv;
+    }));
+    return { slug: d.teste.slug, cor: CORES_TESTE[i % CORES_TESTE.length], porDia };
+  });
+}
+
+function tetoBonito(v) {
+  if (v <= 10) return 10;
+  const p = Math.pow(10, Math.floor(Math.log10(v)));
+  for (const m of [1, 2, 5, 10]) if (v <= m * p) return m * p;
+  return 10 * p;
+}
+
+// Retângulo com só o topo arredondado: a ponta do dado é redonda, a base é reta.
+function topoRedondo(x, y, w, h, r) {
+  r = Math.max(0, Math.min(r, h / 2, w / 2));
+  return 'M' + x + ',' + (y + r) + ' Q' + x + ',' + y + ' ' + (x + r) + ',' + y +
+    ' L' + (x + w - r) + ',' + y + ' Q' + (x + w) + ',' + y + ' ' + (x + w) + ',' + (y + r) +
+    ' L' + (x + w) + ',' + (y + h) + ' L' + x + ',' + (y + h) + ' Z';
+}
+
+function grafEmpilhado(series, dias, campo, altura, comEixoX, rotulo) {
+  const W = 1000, mL = 46, mR = 10, mT = 8, mB = comEixoX ? 26 : 10;
+  const plotW = W - mL - mR, plotH = altura - mT - mB, base = mT + plotH;
+  const banda = plotW / Math.max(dias.length, 1);
+  const bw = Math.min(24, banda * 0.6);
+  const totais = dias.map((dia) => series.reduce((a, s) => a + ((s.porDia[dia] || {})[campo] || 0), 0));
+  const teto = tetoBonito(Math.max.apply(null, totais.concat([1])));
+  const yDe = (v) => base - v / teto * plotH;
+
+  let svg = '<svg class="graf" viewBox="0 0 ' + W + ' ' + altura + '" role="img" aria-label="' + esc(rotulo) + '">';
+  [teto, teto / 2].forEach((v) => {
+    svg += '<line x1="' + mL + '" x2="' + (W - mR) + '" y1="' + yDe(v) + '" y2="' + yDe(v) + '" stroke="var(--f-borda)" stroke-width="1" opacity=".55"/>' +
+      '<text x="' + (mL - 8) + '" y="' + (yDe(v) + 4) + '" text-anchor="end" font-size="11" fill="var(--f-suave)">' + num(v) + '</text>';
+  });
+  svg += '<line x1="' + mL + '" x2="' + (W - mR) + '" y1="' + base + '" y2="' + base + '" stroke="var(--f-borda)" stroke-width="1"/>';
+
+  dias.forEach((dia, i) => {
+    const x = mL + banda * i + (banda - bw) / 2;
+    let topoAtual = base;
+    const vivos = series.filter((s) => ((s.porDia[dia] || {})[campo] || 0) > 0);
+    vivos.forEach((s, k) => {
+      const h = s.porDia[dia][campo] / teto * plotH;
+      const segTopo = topoAtual - h;
+      const corte = k > 0 ? 2 : 0; // 2px de superfície entre segmentos empilhados
+      const hSeg = Math.max(h - corte, 1);
+      svg += k === vivos.length - 1
+        ? '<path d="' + topoRedondo(x, segTopo, bw, hSeg, 4) + '" fill="' + s.cor + '"/>'
+        : '<rect x="' + x + '" y="' + segTopo + '" width="' + bw + '" height="' + hSeg + '" fill="' + s.cor + '"/>';
+      topoAtual = segTopo;
+    });
+  });
+
+  if (comEixoX) {
+    dias.forEach((dia, i) => {
+      svg += '<text x="' + (mL + banda * i + banda / 2) + '" y="' + (altura - 8) + '" text-anchor="middle" font-size="11" fill="var(--f-suave)">' +
+        dia.slice(8, 10) + '/' + dia.slice(5, 7) + '</text>';
+    });
+  }
+  // Área de acerto do hover: a coluna inteira do dia, não só os pixels pintados.
+  dias.forEach((dia, i) => {
+    svg += '<rect class="hit" data-dia="' + dia + '" tabindex="0" x="' + (mL + banda * i) + '" y="' + mT + '" width="' + banda + '" height="' + plotH + '" fill="transparent"/>';
+  });
+  return svg + '</svg>';
+}
+
+// Tooltip montado com textContent (nunca innerHTML): nome de teste é dado, não markup.
+function montarTT(tt, series, dia) {
+  tt.textContent = '';
+  const tit = document.createElement('div');
+  tit.className = 'tt-tit';
+  tit.textContent = new Date(dia + 'T12:00:00Z')
+    .toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: '2-digit', timeZone: 'UTC' });
+  tt.appendChild(tit);
+  let tn = 0, tc = 0;
+  series.forEach((s) => {
+    const p = s.porDia[dia];
+    if (!p || !p.n) return;
+    tn += p.n; tc += p.conv;
+    const l = document.createElement('div'); l.className = 'l';
+    const k = document.createElement('i'); k.className = 'k'; k.style.background = s.cor;
+    const b = document.createElement('b'); b.textContent = num(p.n);
+    const sp = document.createElement('span'); sp.textContent = '· ' + p.conv + ' conv — ' + s.slug;
+    l.append(k, b, sp);
+    tt.appendChild(l);
+  });
+  const tot = document.createElement('div');
+  tot.className = 'l tt-tot';
+  if (!tn) {
+    tot.textContent = 'sem tráfego neste dia';
+  } else {
+    const b = document.createElement('b'); b.textContent = num(tn);
+    const sp = document.createElement('span'); sp.textContent = '· ' + tc + ' conv — total';
+    tot.append(b, sp);
+  }
+  tt.appendChild(tot);
+}
+
+function ligarTooltip(wrap, series) {
+  const tt = wrap.querySelector('.tt');
+  wrap.querySelectorAll('.hit').forEach((r) => {
+    const mostrar = (ev) => {
+      montarTT(tt, series, r.getAttribute('data-dia'));
+      const caixa = wrap.getBoundingClientRect();
+      const rb = r.getBoundingClientRect();
+      const cx = (ev && ev.clientX != null ? ev.clientX : rb.left + rb.width / 2) - caixa.left;
+      tt.style.opacity = 1;
+      const larg = tt.offsetWidth;
+      tt.style.left = Math.max(0, Math.min(cx + 14, caixa.width - larg - 4)) + 'px';
+      tt.style.top = '18px';
+    };
+    r.addEventListener('mousemove', mostrar);
+    r.addEventListener('focus', mostrar);
+    r.addEventListener('mouseleave', () => { tt.style.opacity = 0; });
+    r.addEventListener('blur', () => { tt.style.opacity = 0; });
+  });
+}
+
+function acaoHtml(tipo, ic, titulo, d) {
+  return '<div class="alert alert-soft alert-' + tipo + '">' + icone(ic) +
+    '<span><b>' + titulo + ':</b> ' + esc(d.teste.nome) + ' — ' + esc(d.motivo || '') + '</span>' +
+    '<button class="btn btn-ghost btn-sm" onclick="verTeste(\'' + esc(d.teste.slug) + '\')">Ver teste</button></div>';
+}
+
+function tabelaTestes(dados) {
+  const linhas = dados.map((d, i) => {
+    const t = d.teste, vs = d.variantes || [];
+    const n = vs.reduce((a, v) => a + v.n, 0);
+    const conv = vs.reduce((a, v) => a + v.conv, 0);
+    const taxaCtrl = vs[0] && vs[0].n ? vs[0].conv / vs[0].n : null;
+    let melhor = null;
+    vs.slice(1).forEach((v) => {
+      const tx = v.n ? v.conv / v.n : null;
+      if (tx != null && (melhor == null || tx > melhor.tx)) melhor = { chave: v.chave, tx };
+    });
+    const comp = melhor ? (d.comparacoes || []).find((c) => c.chave === melhor.chave) : null;
+    const srmFalhou = String(d.veredito).startsWith('SRM');
+    const dots = (d.travas || []).map((tr) => {
+      const falhou = srmFalhou && /SRM/i.test(tr.nome);
+      return '<i class="' + (tr.ok ? 'dot-ok' : falhou ? 'dot-falha' : 'dot-pend') + '" title="' + esc(tr.nome) + '"></i>';
+    }).join('');
+    return '<tr>' +
+      '<td class="v-nome-cel t-nome"><span class="pt" style="background:' + CORES_TESTE[i % CORES_TESTE.length] + '"></span><b>' + esc(t.nome) + '</b>' +
+        '<div class="sub" style="margin-left:17px"><code>/t/' + esc(t.slug) + '</code></div></td>' +
+      '<td>' + statusPonto(t.status) + '</td>' +
+      '<td>' + badgeVeredito(d.veredito, true) + '</td>' +
+      '<td class="num">' + d.dias_rodados + '<span class="sub-inline">/' + t.min_dias + '</span></td>' +
+      '<td class="num">' + num(n) + '</td>' +
+      '<td class="num">' + num(conv) + '</td>' +
+      '<td class="num">' + (taxaCtrl != null && melhor ? pct(taxaCtrl, 1) + ' → ' + pct(melhor.tx, 1) : '—') + '</td>' +
+      '<td class="num">' + (comp && comp.lift != null
+        ? '<span class="' + (comp.lift >= 0 ? 'lift-sobe' : 'lift-desce') + '">' + (comp.lift > 0 ? '▲ +' : '▼ ') + pct(comp.lift, 1) + '</span>'
+        : '—') + '</td>' +
+      '<td><span class="dots">' + dots + '</span></td>' +
+      '<td><button class="btn btn-ghost btn-xs" onclick="verTeste(\'' + esc(t.slug) + '\')">Abrir</button></td>' +
+      '</tr>';
+  }).join('');
+  return '<div class="rolar"><table class="table table-zebra table-sm"><thead><tr>' +
+    '<th>Teste</th><th>Status</th><th>Veredito</th><th class="num">Dias</th><th class="num">Atrib.</th><th class="num">Conv.</th>' +
+    '<th class="num">Controle → melhor</th><th class="num">Lift</th><th>Travas</th><th></th>' +
+    '</tr></thead><tbody>' + linhas + '</tbody></table></div>';
+}
+
+function painelGeral(dados) {
+  const el = $('#abaGeral');
+  const acoes = dados.map((d) => {
+    if (d.pode_decidir) return acaoHtml('success', 'i-check', 'Pode decidir', d);
+    if (String(d.veredito).startsWith('SRM')) return acaoHtml('error', 'i-alerta', 'Resultado suspeito', d);
+    return '';
+  }).filter(Boolean).join('');
+
+  const dias = diasJanela(dados, 14);
+  const series = seriesPorTeste(dados);
+  const legenda = series.map((s) =>
+    '<span><span class="pt" style="background:' + s.cor + '"></span> ' + esc(s.slug) + '</span>').join('');
+  const sa = dados.reduce((a, d) => {
+    const s = d.saude || {};
+    a.orfas += s.conversoes_orfas || 0;
+    a.bots += s.bots_ignorados || 0;
+    return a;
+  }, { orfas: 0, bots: 0 });
+
+  el.innerHTML =
+    (acoes ? '<div class="acao-lista">' + acoes + '</div>' : '') +
+    '<div class="card-g"><h3>' + icone('i-pulso') + 'Atividade — últimos 14 dias</h3>' +
+      '<p class="desc">Todos os testes vivos, empilhados por dia. Passe o mouse num dia pra abrir o detalhe.</p>' +
+      '<div class="graf-wrap" id="gAtr"><div class="graf-rot">Atribuições por dia</div>' +
+        grafEmpilhado(series, dias, 'n', 240, false, 'Atribuições por dia, por teste') + '<div class="tt"></div></div>' +
+      '<div class="graf-wrap" id="gConv"><div class="graf-rot">Conversões por dia</div>' +
+        grafEmpilhado(series, dias, 'conv', 150, true, 'Conversões por dia, por teste') + '<div class="tt"></div></div>' +
+      '<div class="legenda" style="margin-top:12px">' + legenda + '</div>' +
+      '<div class="saude-linha">' +
+        '<span>' + icone('i-info') + 'Denominador = atribuição no servidor, não pageview</span>' +
+        '<span>' + icone('i-alerta') + num(sa.orfas) + ' conversão(ões) órfã(s) descartada(s)</span>' +
+        '<span>' + icone('i-pessoas') + num(sa.bots) + ' evento(s) de bot ignorado(s)</span>' +
+      '</div></div>' +
+    '<div class="card-g"><h3>' + icone('i-frasco') + 'Todos os testes</h3>' +
+      '<p class="desc">Resumo de cada teste vivo. “Abrir” leva pro card completo, com travas e variantes.</p>' +
+      tabelaTestes(dados) + '</div>';
+
+  ligarTooltip($('#gAtr'), series);
+  ligarTooltip($('#gConv'), series);
 }
 
 /* ── formulário ───────────────────────────────────────────────────────────── */

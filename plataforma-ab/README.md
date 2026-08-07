@@ -4,7 +4,9 @@ Ferramenta do Growth pra rodar teste A/B de LP: a URL do anúncio aponta pra cá
 visitante é sorteado numa variante, a conversão é rastreada por variante, e o vencedor só
 é declarado quando as travas estatísticas fecham. Aviso no Slack quando há decisão a tomar.
 
-**Ainda não publicada.** Roda local hoje; o alvo é a Vercel. Ver [Publicar](#publicar).
+**Publicada em 07/08/2026: https://plataforma-ab.vercel.app** (deploy por
+`scripts/publicar.py`). Pendência única: o banco — ver [Publicar](#publicar) e o
+[`ESTADO.md`](ESTADO.md).
 
 ## Por que existe (e por que não é uma ferramenta pronta)
 

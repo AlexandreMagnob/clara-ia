@@ -44,8 +44,12 @@ export function urlPermitida(url) {
   return ok ? { ok: true, url: u } : { ok: false, motivo: `domínio "${host}" fora da lista permitida (${permitidos.join(', ')})` };
 }
 
-/** Parâmetros da plataforma — nunca são repassados pro destino. */
-export const PARAMS_INTERNOS = new Set(['cwab', 'cwvid', 'cwref', 'cwforce', 's']);
+/** Parâmetros da plataforma — nunca são repassados pro destino.
+ * `s` E `slug`: o rewrite da Vercel (`/t/:slug` → `/api/t?s=:slug`) injeta os
+ * DOIS na query — o `s` do destino e o `slug` do segmento nomeado. Confirmado
+ * em produção no smoke de 07/08: sem o `slug` aqui, a LP recebia
+ * `&slug=<teste>` junto com os UTMs. */
+export const PARAMS_INTERNOS = new Set(['cwab', 'cwvid', 'cwref', 'cwforce', 's', 'slug']);
 
 const RE_SLUG = /^[a-z0-9][a-z0-9-]{1,48}[a-z0-9]$/;
 const RE_CHAVE = /^[A-Za-z0-9_-]{1,12}$/;

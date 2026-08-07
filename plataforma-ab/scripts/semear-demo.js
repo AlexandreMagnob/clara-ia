@@ -98,7 +98,22 @@ await store.salvarTeste({
 });
 await popular('video-lp-meta', 9, [['A', 100, 0.1237], ['B', 68, 0.152]]);
 
-// 4 — demonstração do roteador, apontando pras LPs de mentira do dev-server.
+// 4 — três braços (A/B/C): mostra a correção de Šidák apertando o corte
+await store.salvarTeste({
+  ...comum, slug: 'headline-precos-3',
+  nome: 'Headline da LP de preços: 3 abordagens',
+  hipotese: 'Headline ancorada em economia vence a institucional e a de urgência, porque preço é a dor número 1 do lojista.',
+  jira: 'GWT-3310', seed: 'headline-precos-3', baseline: 0.11, mde: 0.3,
+  iniciado_em: diaAtras(7) + 'T09:00:00.000Z',
+  variantes: [
+    { chave: 'A', nome: 'controle (institucional)', url: 'https://lp.cardapioweb.com/precos', peso: 0.34, ordem: 0 },
+    { chave: 'B', nome: 'economia', url: 'https://lp.cardapioweb.com/precos-economia', peso: 0.33, ordem: 1 },
+    { chave: 'C', nome: 'urgência', url: 'https://lp.cardapioweb.com/precos-urgencia', peso: 0.33, ordem: 2 },
+  ],
+});
+await popular('headline-precos-3', 7, [['A', 70, 0.11], ['B', 69, 0.145], ['C', 69, 0.098]]);
+
+// 5 — demonstração do roteador, apontando pras LPs de mentira do dev-server.
 // É este que os prints de roteamento usam.
 if (process.env.AB_PERMITIR_HTTP === '1') {
   const p = process.env.AB_PORTA_DEV || '3100';
